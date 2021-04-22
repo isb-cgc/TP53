@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <script type="text/javascript">
+        active_menu = 'recab_search';
+    </script>
+    <script src="{{ url_for('static', filename='js/result.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <h1 class="search-header">Recurrent Chromosome Aberrations Search Result</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {% for table in result_tables %}
+                {% if loop.index > 1 %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <hr>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="result-div">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <strong>
+                                {% if table.id == 's_recab_result' %}
+                                    Structural Chromosomal Abnormalities
+                                {% elif table.id == 'n_recab_result' %}
+                                    Numerical Chromosomal Abnormalities
+                                {% endif %}
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row float-left">
+                        <div class="col-md-12 backbutton-div">
+                            <button class="btn btn-outline-secondary back-button"><i class="fas fa-chevron-left"
+                                                                             style="margin-right: 5px;"></i>Back
+                            </button>
+                        </div>
+                    </div>
+                    {% if table.data|length %}
+                        <div class="row float-right">
+                            <div class="col-md-12 button-div"></div>
+                        </div>
+                        <table id="{{ table.id }}" class="table table-striped result-table" cellspacing="0"
+                               width="100%">
+                            <thead>
+                            <tr>
+                                {% for header in table.headers %}
+                                    <th>{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for row in table.data %}
+                                <tr>
+                                    {% if table.id == 's_recab_result' %}
+                                        <td>
+                                            {% if row.Type == 'U' %}
+                                                Unbalanced
+                                            {% elif row.Type == 'B' %}
+                                                Balanced
+                                            {% endif %}
+                                        </td>
+
+                                        <td>
+                                            {% if row.MorphName %}
+                                            <a href="{{ url_for('search_result', search_type='recab', ab_str='S', morph=row.Morph) }}">
+                                                {{ row.MorphName }}</a>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if row.TopoName %}
+                                            <a href="{{ url_for('search_result', search_type='recab', ab_str='S', topo=row.Topo) }}">
+                                                {{ row.TopoName }}</a>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% set gene_items = row.Gene.split(',') if row.Gene %}
+                                            {% for gene_item in gene_items %}
+                                                {% if loop.index > 1 %}
+                                                    <br>
+                                                {% endif %}
+                                                {% set genes = gene_item.split('/') %}
+                                                {% for gene in genes %}{{ '/' if loop.index > 1}}<a target="_blank" href="https://www.ncbi.nlm.nih.gov/gene/?term={{gene}}">{{ gene }}</a>{% endfor %}
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            <a href="https://omim.org/search/?index=geneMap&search={{ row.Chromosome }}{{ row.Arm }}{{ row.Band }}" target="_blank">
+                                                {{ row.Chromosome }}{{ row.Arm }}{{ row.Band }}
+                                            </a>
+                                        </td>
+                                        <td>{{ row.Abnormality }}</td>
+                                        <td>
+                                            <a href="{{ url_for('search_result', search_type='case', abNormOptions='a', inputAbnorm=row.Abnormality, topo_list=row.Topo, morph_list=row.Morph, totalCases=1) }}">
+                                                {{ row.TotalCases }}</a>
+                                        </td>
+                                    {% else %}
+                                        <td>
+                                            {{ row.Type if row.Type }}
+                                        </td>
+                                        <td>
+                                            {% if row.MorphName %}
+                                            <a href="{{ url_for('search_result', search_type='recab', ab_num='N', morph=row.Morph) }}">
+                                                {{ row.MorphName }}</a>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if row.TopoName %}
+                                            <a href="{{ url_for('search_result', search_type='recab', ab_num='N', topo=row.Topo) }}">
+                                                {{ row.TopoName }}</a>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ row.Abnormality }}</td>
+                                        <td>
+                                            <a href="{{ url_for('search_result', search_type='case', abNormOptions='n', inputAbnorm=row.Abnormality, topo_list=row.Topo, morph_list=row.Morph, totalCases=1) }}">
+                                                {{ row.TotalCases if row.TotalCases }}</a></td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% elif table.msg %}
+                        <div class="row">
+                            <div class="col-md-12 text-center"><strong>{{ table.msg|safe }}</strong>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="row">
+                            <div class="col-md-12 text-center"><strong>No Results Matched Your Search Criteria</strong>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

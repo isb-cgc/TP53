@@ -1,0 +1,454 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'resources';
+    active_submenu = '';
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"></nav>
+    <main class="main-panel col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>tp53 Gene Sequence</h1>
+        <div class="p-3">
+            <div>
+                This sequence corresponds to the genomic sequence NC_000017.11 (hg38) on chr17:7687599...7668459, from
+                TP53
+                5'UTR to 3'UTR (reverse base).
+            </div>
+            <br>
+
+            <div class="bg-light">
+                <label style="color:red; font-weight:bold">Exons</label> are in red and bold (the initiation and STOP
+                codons, in exons 2 and 11 respectively, are underlined). <br/>
+                <label style="font-weight:bold">Intronic splice sites</label> are in bold. <br/>
+            </div>
+
+            <pre>
+            <label style="font-family:Courier New; font-size:11pt"></label>
+            <label style="color:blue">7687599</label> <label style="color:red; font-weight:bold">acttgtcatg gcgactgtcc agctttgtgc caggagcctc gcaggggttg atgggattgg</label>
+            <label style="color:blue">7687539</label> <label style="color:red; font-weight:bold">ggttttcccc tcccatgtgc tcaagactgg cgctaaaagt tttgagcttc tcaaaagtct <u><i>exon 1</i></u></label>
+            <label style="color:blue">7687479</label> <label style="color:red; font-weight:bold">agagccaccg tccagggagc aggtagctgc tgggctccgg ggacactttg cgttcgggct</label>
+            <label style="color:blue">7687419</label> <label style="color:red; font-weight:bold">gggagcgtgc tttccacgac ggtgacacgc ttccctggat tgg</label><b>gt</b>aagct cctgactgaa
+            <label style="color:blue">7687359</label> cttgatgagt cctctctgag tcacgggctc tcggctccgt gtattttcag ctcgggaaaa
+            <label style="color:blue">7687299</label> tcgctggggc tgggggtggg gcagtgggga ct<label
+                    style="background-color:#FFFFFF">t</label>agcgagt ttgggggtga gtgggatgga
+            <label style="color:blue">7687239</label> agcttggcta <label style="background-color:#FFFFFF">g</label>agggatcat cataggagtt gcattgttgg gagacctggg tgtagatgat
+            <label style="color:blue">7687179</label> ggggatgtta ggaccatccg aactcaaagt tgaacgcc<label
+                    style="background-color:#FFFFFF">t</label>a ggcagaggag tggagctttg
+            <label style="color:blue">7687119</label> gggaaccttg agccggccta aagcgtactt ctttgcacat ccacccggtg ctgggcgtag
+            <label style="color:blue">7687059</label> ggaatccctg aaataaaaga tgcacaaagc attgaggtct gagacttttg gatctcgaaa
+            <label style="color:blue">7686999</label> cattgagaac tcatagctgt atattttaga gcccatggca tcctagtgaa aactggggct
+            <label style="color:blue">7686939</label> ccattccgaa atgatcattt gggggtgatc cggggagccc aagctgctaa ggtcccacaa
+            <label style="color:blue">7686879</label> cttccggacc tttgtccttc ctggagcgat ctttccaggc agcccccggc tccgctagat
+            <label style="color:blue">7686819</label> ggagaaaatc caa<label style="background-color:#FFFFFF">t</label>tgaagg ctgtcagtcg tggaagtgag aagtgctaaa ccaggggttt
+            <label style="color:blue">7686759</label> gcccgccagg ccgaggagga ccgtcgcaat ctgagaggcc cggcagccct gttattgttt
+            <label style="color:blue">7686699</label> ggctccacat ttacatttct gcctcttgca gcagcatttc cggtttcttt ttgccggagc
+            <label style="color:blue">7686639</label> agctcactat tcacccgatg agaggggagg agagagagag aaaatgtcct ttaggccggt
+            <label style="color:blue">7686579</label> tcctcttact tggcagaggg aggctgctat tctccgcctg catttctttt t<label
+                    style="background-color:#FFFFFF">c</label>tggattac
+            <label style="color:blue">7686519</label> ttagttatgg cctttgcaaa ggcaggggta tttgttttga tgcaaacctc aatccctccc
+            <label style="color:blue">7686459</label> cttctttgaa tggtgtgccc cacccc<label
+                    style="background-color:#FFFFFF">g</label>cgg gtcgcctgca acctaggcgg acgctaccat
+            <label style="color:blue">7686399</label> ggcgtgagac agggagggaa agaagtgtgc agaaggcaag cccggaggta ttttcaagaa
+            <label style="color:blue">7686339</label> tgagtatatc tcatcttccc ggaggaaaaa aaaaaagaat gggtacgtct gagaatcaaa
+            <label style="color:blue">7686279</label> ttttgaaaga gtgcaatgat gggtcgtttg ataatttgtc ggaaaaacaa tctacctgtt
+            <label style="color:blue">7686219</label> atctagcttt gggctaggcc attccagttc cagacgcagg ctgaacgtcg tgaagcggaa
+            <label style="color:blue">7686159</label> ggggcgggcc cgcaggcgtc cgt<label
+                    style="background-color:#FFFFFF">g</label>tggtcc tccgtgcagc cctccggccc gagccggttc
+            <label style="color:blue">7686099</label> ttcctggtag gaggcggaac tcgaattcat ttctcccgct gccccatctc ttagctcgcg
+            <label style="color:blue">7686039</label> gttgtttcat tccgcagttt cttcccatgc acctgccgcg taccgg<label
+                    style="background-color:#FFFFFF">c</label>cac tttgtgccgt
+            <label style="color:blue">7685979</label> acttacgtca tctttttcct aaatcgaggt ggcatttaca cacagcgcca gtgcacacag
+            <label style="color:blue">7685919</label> caagtgcaca ggaagatgag ttttggcccc taaccgctcc gtgatgccta ccaagtcaca
+            <label style="color:blue">7685859</label> gacccttttc atcgtcccag aaacgtttca tcacgtctct tcccagtcga ttcccgaccc
+            <label style="color:blue">7685799</label> cacctttatt ttgatctcca taaccatttt gcctgttgga gaacttcata tagaatggaa
+            <label style="color:blue">7685739</label> tcaggctggg cgctgtggct cacgcctgca ctttgggagg ccgaggcggg cggattactt
+            <label style="color:blue">7685679</label> gaggatagga gttccagacc agcgtggcca acgtggtgaa t<label
+                    style="background-color:#FFFFFF">c</label>cccgtctc tactaaaaaa
+            <label style="color:blue">7685619</label> tacaaaaatt agctgggcgt ggtgggtgcc tgtaatccca gctattcggg agggtgaggc
+            <label style="color:blue">7685559</label> aggagaatcg cttgaacccg ggaggcagag gttgcagtga gccaagatcg tgccactaca
+            <label style="color:blue">7685499</label> ctccagcctg ggcgacaaga acgaaactcc gtctcaaaaa <label
+                    style="background-color:#FFFFFF">a</label>aagggggga atcatacatt
+            <label style="color:blue">7685439</label> atgtgct<label style="background-color:#FFFFFF">c</label>at ttttgtcggg cttctgtcct tcaatgtact gtctgacatt cgttcatgtt
+            <label style="color:blue">7685379</label> gtatatatca gtatttt<label
+                    style="background-color:#FFFFFF">g</label>ct ccttttcatt tagtatagtc catcgattgt atatccgtcc
+            <label style="color:blue">7685319</label> ttttgatggc cttttgagtt gtttcccatt tgcggttatg aaataaagct gctataaaca
+            <label style="color:blue">7685259</label> ttcttgtaca attcttt<label
+                    style="background-color:#FFFFFF">t</label>tg tgatcatatg ttttcgtgtt tcttggagaa atacttagga
+            <label style="color:blue">7685199</label> ggggaattgc gagtttggaa gtaaaaagta gctgtatttt gaacttt<label
+                    style="background-color:#FFFFFF">t</label>tc agaagctctg
+            <label style="color:blue">7685139</label> agttttccag agcggttgta ccattttaca ctccaactag caaggtatgg gagttattat
+            <label style="color:blue">7685079</label> ggttgtgcca cagccttccg gacattaggt attgtcagtc tttctaatgt ggtatatcct
+            <label style="color:blue">7685019</label> tgtggttgta atttacagtt ctctattgac taaggatgtt cagcattttt tcatgtgcct
+            <label style="color:blue">7684959</label> attggccatt cgtattttgt ttgtaaagta gctcttcgag tcttttacct gttattttgg
+            <label style="color:blue">7684899</label> ttttttgttt gtttttattg ttcagttgtg ggactgcttt atacattctg gatacaagtc
+            <label style="color:blue">7684839</label> ctttatcaga tccatgtgtc gtgaatgttt tcttctgatc tgt<label
+                    style="background-color:#FFFFFF">t</label>gcttgc ctatttgttt
+            <label style="color:blue">7684779</label> gctttacaga gtttacagta tcttaagagg agtggattta tcttttttat gttcagtatt
+            <label style="color:blue">7684719</label> tgccttgtcc tgtttaggac atcttttttt t<label
+                    style="background-color:#FFFFFF">t</label>ttttttaa ccccagggtc atgaagatat
+            <label style="color:blue">7684659</label> tatcttacat tttcttttag gacctttatg gttgtaagtt ttacagtaag gtccttgagc
+            <label style="color:blue">7684599</label> cattaattaa ttcttaaa<label
+                    style="background-color:#FFFFFF">a</label>t taattgttta tggtgtgagg tgtaggagtc agtctctggt
+            <label style="color:blue">7684539</label> atctttcctg tatggaaatc cagttattct gtctccactt gttgaaatag gcttcctttc
+            <label style="color:blue">7684479</label> tctactgaat gcttttaatt ttaattattt tacagttgga gtatagggct accattttag
+            <label style="color:blue">7684419</label> tgctattttc tttttttctt tgttaatttt tgagacaggg actcacactg ttgcccaggc
+            <label style="color:blue">7684359</label> tagagtacaa tggcacaatc aaggcttact gcagcctcga acccctgggc tcaagcagtc
+            <label style="color:blue">7684299</label> ctctagcagc ctcacgagta gctgggatta ctccaccaca cccagctaac tattttattt
+            <label style="color:blue">7684239</label> ttttgtattg acaggatctc actatgttgc ccaggctggt ctcaaactgc tggcctcaag
+            <label style="color:blue">7684179</label> ctttcatccc atctcggcct cccaaagtgc tgggattaca ggtgtgagcc accatgcctg
+            <label style="color:blue">7684119</label> acctcttagt gctattttct atttatctcc tctgttctct gctctcttta aacgttggag
+            <label style="color:blue">7684059</label> gaagaaacag tacccatctt acacaaactc ttcagaaaac agaggaacag actgggcgcg
+            <label style="color:blue">7683999</label> gtggctcata cctgtaatct cagcactttg gtacgctgag gcaggggatc atttgaggtc
+            <label style="color:blue">7683939</label> gggagttcga gaccagcctg gccaacacgg cgaaacccca tctctactaa aaatacaaaa
+            <label style="color:blue">7683879</label> agtagctagg cgtggtg<label
+                    style="background-color:#FFFFFF">a</label>ca catacctgta atgccagtta ctcaggaggc tgaggcacaa
+            <label style="color:blue">7683819</label> gaatcccttg aacctgggaa gcggaggttg cagtgagccg agattgcgcc actgcactcc
+            <label style="color:blue">7683759</label> agcctgggca acagagtgag accctgtctc agaaaaaaaa agaaagaaag aaaaaataga
+            <label style="color:blue">7683699</label> ggaatatttc ccaacttgtt ttcgaagcca gcataatcct ggtaccaaaa ccaaacaagg
+            <label style="color:blue">7683639</label> acattataag aaaagaaaat atagaccaat attcctgtta gcatagacat gcaacagcta
+            <label style="color:blue">7683579</label> accaatttta gcaaaccaaa cctggtaata tagaaaaaag gataaatagg ccagtcgcgg
+            <label style="color:blue">7683519</label> tggctcacgc ctgtaatccc agcactttgg gaggctgagg caggcagatc acttgaggtc
+            <label style="color:blue">7683459</label> aggagtttga gaccagcctg accaacatgg tgaaaccccg tttctaataa aaatacaaaa
+            <label style="color:blue">7683399</label> atcaggctgg gcacggtggc tcacgcctgt aatcccagca ctttgggagg ccgaggtggg
+            <label style="color:blue">7683339</label> cagatcacga ggtcaggagt tcaagaccag cctgaccaat gtggtgaaac gccatctcta
+            <label style="color:blue">7683279</label> ctaaaaatac aaaaatcagc cggtgtggtg gcacctgcct gtaatcccag ctactcagga
+            <label style="color:blue">7683219</label> ggctgaggca gaattgcttg aacccgggag gcagaggttg cagtgagcca agatcgtgcc
+            <label style="color:blue">7683159</label> actgcactcc agcctgggcg acagagcaag acttcatctc aaaaaaaaaa aaaaa<label
+                    style="background-color:#FFFFFF">t</label>tagc
+            <label style="color:blue">7683099</label> tgggcatggt ggtgggcacc tgaaatccca gctact<label
+                    style="background-color:#FFFFFF">c</label>ggg agtctgaggc aggagaatc<label
+                    style="background-color:#FFFFFF">g</label>
+            <label style="color:blue">7683039</label> cttgaaccca ggaggcagaa gttgcactga gctgggatca caccattgca ctccagcctg
+            <label style="color:blue">7682979</label> ggcaacagag tgagactcca tctcaaaaaa agaaaaagaa aaaggataaa tacattctaa
+            <label style="color:blue">7682919</label> ccaaataatg tttatctcat gattgtagct gattcaacat tcaaaaattg gcctggtgca
+            <label style="color:blue">7682859</label> gtagctcagg cctgtaatcc caacatttta ggaggctgag gcaggaagat ctcttgagcc
+            <label style="color:blue">7682799</label> caggatttca agaccagcct gggcaacata gtcagactgg tctttactgg gggg<label
+                    style="background-color:#FFFFFF">a</label>a<label style="background-color:#FFFFFF">a</label>aaa
+            <label style="color:blue">7682739</label> atcagtctgt gtaattcacc acattaacaa agggaaacat aaaaacccta tgatcatttc
+            <label style="color:blue">7682679</label> aacagatgta gcaaaagcag ttaatgatat tcaacacata tgcatgatta caaaccaacc
+            <label style="color:blue">7682619</label> aacctcctag caaactaggg aaaggaaact taacctagtt tgataacagg gcgtccacag
+            <label style="color:blue">7682559</label> tcggagttcc actagcagca tacataatgg tagaaaactc agtgctgccg ggcgcggtgg
+            <label style="color:blue">7682499</label> ctcacgcctg taatgccagc actttgggag gcctaggcgg gcggatcacg aggtcaggag
+            <label style="color:blue">7682439</label> atcgagactg tcctgactag catgctgaaa ccccgtctct actaaaaata caaaaacaaa
+            <label style="color:blue">7682379</label> aaattagccg ggcatggtgg cgggcgccta tagtcccagc tactcgggag gctgaggcga
+            <label style="color:blue">7682319</label> gagaatggcg tgaacccggg aggcggagct tgcagagcct agatcgtgcc actgcactcc
+            <label style="color:blue">7682259</label> agcctgggtg acagagtgag acttcgtctc aaaaaaaaaa aaaaaaaaaa aagaaaagaa
+            <label style="color:blue">7682199</label> aactcaacgc tttttcctct aagatcagga actagaaaag gatttgactc tcacaacgtt
+            <label style="color:blue">7682139</label> gataccatac tggaggtttt aaccaggcaa gaaaaagaaa taatgagggc cgggtgcggt
+            <label style="color:blue">7682079</label> ggctcaggcc tgtaatccca gcactttggg aagccgagac gggtggatca cgaggtcagg
+            <label style="color:blue">7682019</label> agatcgagac catcctggct aacacggtga aaccctgtct ctactaaata tacaaaaaat
+            <label style="color:blue">7681959</label> tagccgggcg tagtggcggg cgcctgtagt cccagctact cgggaggctg aggcaggaga
+            <label style="color:blue">7681899</label> atggcgtgaa ctcagggggc ggagcttgca gtgagctgag atcgagccac tgcactccag
+            <label style="color:blue">7681839</label> cctgggcgac agagcaagac tgtgtctcaa aaaaaaaaaa agaaaaagaa ataatgatta
+            <label style="color:blue">7681779</label> gtggcccgat gtctcacgcc tataatccca gcactttggg aggccgaggt gggcagatca
+            <label style="color:blue">7681719</label> cctgaggtct ggagttggag accagcctga caaagatggt gaaacctcgt ctctattaaa
+            <label style="color:blue">7681659</label> atattaaaaa aatagccagg cgttggccgg gtacagtggc tcatgcctgt aatcccagca
+            <label style="color:blue">7681599</label> ctttgggagg ccgaggtggg tggatcacct gaggtcagga gttcaacacc agcctggcca
+            <label style="color:blue">7681539</label> acatggtgaa accccatctc tactaaaaat acaaaaatta gccgggcgta gtggcgggcg
+            <label style="color:blue">7681479</label> cctgtaatcc cagctacttg ggaggcttag gcaggagaat cgcttgaacc tgggaggcgg
+            <label style="color:blue">7681419</label> aggttgtagt gagccgagat tgcaccattg cactccagcc tgggtgacaa aagcaaaaac
+            <label style="color:blue">7681359</label> tccgtctcaa aaaaaaaaga attagccagg ggtagtggtg aacgcctgta gtcccagcta
+            <label style="color:blue">7681299</label> ctcaggaggc agaggcagga gaatcacttg aacccaggag gcagaggttg cagtgagccg
+            <label style="color:blue">7681239</label> agattgtccc attgcactcc agcctaggcg acaagagcaa aattccatgt caaaaaaaaa
+            <label style="color:blue">7681179</label> aaaaaaaaag gaaagaaaaa aaataacgat tagaaaggaa gaaataaaac acattcacag
+            <label style="color:blue">7681119</label> ccagtatgat tctatacata catgtcctaa tggggcc<label
+                    style="background-color:#FFFFFF">a</label>gg cgtggtggct catgcctgta
+            <label style="color:blue">7681059</label> atcctagcac ttttaggagg ctgaggcagg tggcttccct gggaccagcc tggccaacat
+            <label style="color:blue">7680999</label> ggtgaaaccc caactctaat aaaaatacaa aaaatcagcc aggcgtggtg a<label
+                    style="background-color:#FFFFFF">c</label>gggcacct
+            <label style="color:blue">7680939</label> ctaatcccag ctactcagga ggctgaggca ggagaattgc ttggacctgg gaggcagagg
+            <label style="color:blue">7680879</label> ttgcagtgag ccgagatcgc gctattgcac tccagcctgg gcaacaagag tgaaactccg
+            <label style="color:blue">7680819</label> gcagggtgtg gtggcttacg cctgtaatcc cagcacttcg ggaggctgag gcaggccgat
+            <label style="color:blue">7680759</label> cacctgaggt caggagtttg agaccaacct aacatggtga aaccc<label
+                    style="background-color:#FFFFFF">c</label>gtct ctactaaaaa
+            <label style="color:blue">7680699</label> tacaagaatt agctgggtgt agtggtgggc gcctgtaatc ccagctactt gggaggctga
+            <label style="color:blue">7680639</label> gacagaagaa ttgcttgaac ccaggaggtg gaggttgcag tgagctgaga tcat<label
+                    style="background-color:#FFFFFF">g</label>ccatt
+            <label style="color:blue">7680579</label> gcacaccacg ccgggcaaca gagcgagatt ccgtctcaaa aaaaaaaaaa aagagtgaaa
+            <label style="color:blue">7680519</label> ctctatctca aaaaaaaaaa aaagtcctaa tggaaaatcc ataaaaagct accaaaacta
+            <label style="color:blue">7680459</label> ataaataaat atagcagggt tgcaggttac agggcaatat agttatccct ctatctgtag
+            <label style="color:blue">7680399</label> gggcttggtt ctgggactcc tcacacacca aacccacaga tgtctaagtc ccatatataa
+            <label style="color:blue">7680339</label> gacggtatag tatttggatt taacctacac atatcctccc atatagttta aattatctct
+            <label style="color:blue">7680279</label> agattactta cattaccccc atacaatgaa aatgctaatg tacatgcaag tatgtatgta
+            <label style="color:blue">7680219</label> agtacttgta ctatattgtt tagggaatca ctggacatat aggccttcaa gactgatacc
+            <label style="color:blue">7680159</label> agcagccact gttaagattc tggtcaggcc tgcccctgtt tggggtctca gttgatctca
+            <label style="color:blue">7680099</label> ttgccttccc acccagccaa gggcacctgc atttctcttg gctccctggc catttggaag
+            <label style="color:blue">7680039</label> gcctagttca gcctggcaca tttgtatcct ggcccactga tgctggtacc cctgggaagg
+            <label style="color:blue">7679979</label> tcctgctctg aaaaacacgg agattttagt tgctactgaa gatttgagag ataaagacag
+            <label style="color:blue">7679919</label> ggagacctgt <label style="background-color:#FFFFFF">c</label>tgtagacct gtgtccctcc aagtgggat<label
+                    style="background-color:#FFFFFF">t</label> gagactttgg gccccccatt
+            <label style="color:blue">7679859</label> tcaggacagc acctcctggc ctgttgactg aatagatccc tgaaggaggt gtacttgcat
+            <label style="color:blue">7679799</label> taatggagtg ggggtgggag cagtaccaca gatc<label
+                    style="background-color:#FFFFFF">c</label>gcact aacaa<label
+                    style="background-color:#FFFFFF">t</label>caca cagttctctc
+            <label style="color:blue">7679739</label> tagaataata atatagaaca agtgaaatag aacaattgca gaaa<label
+                    style="background-color:#FFFFFF">g</label>agcta acctttgttg
+            <label style="color:blue">7679679</label> agctcttact gtgtgcccag cactttcctc aactctacat ttcccataat acacagagta
+            <label style="color:blue">7679619</label> ctaggtaggc caggcttggt ggctcacgcc tgtaatccca gcactttagg aggccaaggg
+            <label style="color:blue">7679559</label> ggg<label style="background-color:#FFFFFF">t</label>ggatca cctgaggtcg ggagttcaag accagcctga ccaacatggt gaaaccccgt
+            <label style="color:blue">7679499</label> ctctactaga agtacaaaat tagccaggtg tggtggcaca tgcttgtagt cctagctact
+            <label style="color:blue">7679439</label> cagcaggctg aggcaggaga atcatttgaa tccgggagga ggttgcagta agcggagata
+            <label style="color:blue">7679379</label> gtgccactgt actccagcct gggcaataag agctgagact ccgtctcaaa ataaaataaa
+            <label style="color:blue">7679319</label> ataaaataaa ataaaataaa ataaaataaa aaaagaaaag agcctgccat taaaggagct
+            <label style="color:blue">7679259</label> gtttggtagg ggatgttttg tcagtgcaaa caacagaaaa gtgggctggg cacagtggtt
+            <label style="color:blue">7679199</label> catgcctgta atcccagcac tttgggaggc caaggcgggc ggatcacctg aagttgggag
+            <label style="color:blue">7679139</label> ttcaagacca gcctgaccaa tatggagaaa ccccgtctct actaaaaata caaaattagc
+            <label style="color:blue">7679079</label> cgggcgcagt ggcgcatgcc tgtaatccca gctactcggg aggctgaggc aggagaatcg
+            <label style="color:blue">7679019</label> cttgaacctg ggaggcagag gttgcggtga gccgagatcg caccattgca ctccagcctg
+            <label style="color:blue">7678959</label> gacgagagca aaactctgtc tcaaaaaaaa aaaaaaacag aaaagtgtaa caaacactta
+            <label style="color:blue">7678899</label> cagtaggcat gtttcttagc aaatctgatg acaaatttgg cataaagaaa gagagcatcc
+            <label style="color:blue">7678839</label> ctgaaaaaaa aaaaaagaaa aagaaagaga gcatcctgcc tgggcaacat agtgaaaccc
+            <label style="color:blue">7678779</label> tgcctctaca aaaaaactca aaaattggcc gggtgcagtg gctcacacct gtaatcccag
+            <label style="color:blue">7678719</label> cactttggga gtcggaggcg ggaggatcac ctgaggtcag gagttcgaaa ccagcctggc
+            <label style="color:blue">7678659</label> caacatggca aaaccccatc tctactaaaa atacaaaaaa ttaatcaggc gcattggtgg
+            <label style="color:blue">7678599</label> gcgcctgtaa tcccagctac tcaggaagtt gaggcaagag gatcgcttga atctgggagg
+            <label style="color:blue">7678539</label> tggaggttac agtgagtcga gatcacacca ctgcactcta gcctgggtga cagggcgaga
+            <label style="color:blue">7678479</label> ctccgtctcc aaaaaaaaaa agaaaaagaa aaagactaaa aaattagcca ggcaggcctc
+            <label style="color:blue">7678419</label> tgtggtccca gctacttggg aggctgaggc aggagaatca ctgagcccag gagtccgagg
+            <label style="color:blue">7678359</label> ctgtagtgag ccatgattgc accactgtac cctagcttgg gcaacaaagc aagaccctgc
+            <label style="color:blue">7678299</label> ctcaaaagaa aaaagaaaga aagaaagaac atggcgggcc aggcacagtg gctcacacct
+            <label style="color:blue">7678239</label> gtaatcccag cgctttgaga ggccgaggca ggtggatcac aaggtcagga gttccacacc
+            <label style="color:blue">7678179</label> agcctggcca acatggtgaa accctgtctc tactaaaaat acaaaaaatc agccaggcat
+            <label style="color:blue">7678119</label> ggtggcaggg gcctgtaatc ccagctactc gggaggctga ggcaggagaa ttgcttgaaa
+            <label style="color:blue">7678059</label> ccagaaggca gaggttgcag tgagcctaga ctgcaccact gcactccagc ctgggcgaaa
+            <label style="color:blue">7677999</label> agagccaaac tccatctcaa aaaacaaaca aaaaaacaaa acaaaa<label
+                    style="background-color:#FFFFFF">g</label>aaa acatggcaaa
+            <label style="color:blue">7677939</label> gcctttgaaa gcttgtctgg gagaaggtg<label
+                    style="background-color:#FFFFFF">c</label> gatgatagtt gcataacttc gtgcaagatg
+            <label style="color:blue">7677879</label> ctggtccaca caggggctgc cccttgctct ttctcgctct cttaacctct catataacag
+            <label style="color:blue">7677819</label> gcttgtgtgt tat<label style="background-color:#FFFFFF">t</label>cacatt tattgagccc aagcaggtgc aaggcattgt gatctaatac
+            <label style="color:blue">7677759</label> tttggtcagc aagacaacaa gatagatcac tgccctgccc ttaggaagtg tatatgctat
+            <label style="color:blue">7677699</label> tagaggaaac agataaaata aacaaggaaa agtatcagac aatgtaagtg ctatgagaat
+            <label style="color:blue">7677639</label> gcaaatgagg tgatgt<label style="background-color:#FFFFFF">g</label>aat taaaatagga tgacttaaag tctgcacggg aaggagccta
+            <label style="color:blue">7677579</label> cccccatgtt cctggctagc caaggaacca ccagttgatt agcagagaag ggcagccagt
+            <label style="color:blue">7677519</label> ctagctagag cttttgggga agagggagtg gttgttaaga gatgagatta aagaagccga
+            <label style="color:blue">7677459</label> gacgggccat tcgtgagggg tttgtaatgc agggctgagg agtgtccgaa gagaatgggc
+            <label style="color:blue">7677399</label> aggtgagcgg tgagacagtt gttcttccag aagctttgca gtgaaaggaa tcaaagaaat
+            <label style="color:blue">7677339</label> ggagccgtgt atcaggtggg gaagggtggg ggccaagggg gtgtccttcc ccatacagag
+            <label style="color:blue">7677279</label> attgcaggct gagaatgact atatccttgt taacaggagg tgggagcagg gcacggtagc
+            <label style="color:blue">7677219</label> tcacacctgt aatcttggca ctttaggagg ctgaggc<label
+                    style="background-color:#FFFFFF">g</label>gg ccgatcacct gaagtaagga
+            <label style="color:blue">7677159</label> gttcgagacc agcctggcca acatgcaaag ccctgtctct actaaaaata caaaaattag
+            <label style="color:blue">7677099</label> ctgggtgtgg tggtactcgc ctgtaatccc agctactcgg gagactgagg caggagaatg
+            <label style="color:blue">7677039</label> gcttgaaccc ggaaggtaga ggttgcagtg agctgagatc atgccactgt gctccagcct
+            <label style="color:blue">7676979</label> aggtgacaga gagagactcc atctcaaaaa aaaaaaaaaa atacaggaag ggagttggga
+            <label style="color:blue">7676919</label> atagggtgca catttaggaa gtcttgggga tttagtggtg ggaaggttgg aagtccctct
+            <label style="color:blue">7676859</label> ctgattgtct tttcctcaaa gaagtgcatg gctggtgagg ggtggggcag gagtgcttgg
+            <label style="color:blue">7676799</label> gttgtggtga aacattggaa gagagaatgt gaagcagcca ttcttttcct gctccacagg
+            <label style="color:blue">7676739</label> aagcc<label style="background-color:#FFFFFF">g</label>agct gtctcagaca ctggcatggt gttgggggag ggggttcctt ctctgcaggc
+            <label style="color:blue">7676679</label> ccaggtgacc cagggttgga agtgtctcat gctggatccc cacttttcct cttgc<b>ag</b><label
+                    style="color:red; font-weight:bold">cag</label>
+            <label style="color:blue">7676619</label> <label style="color:red; font-weight:bold">ccagactgcc ttccgggtca ctgcc<u>atg</u>ga ggagccgcag tcagatccta gcgtcgagcc <u><i>exon 2</i></u></label>
+            <label style="color:blue">7676559</label> <label style="color:red; font-weight:bold">ccctctgagt caggaaacat tttcagacct atggaaact</label><b>g t</b>gagtggatc cattggaagg
+            <label style="color:blue">7676499</label> gcaggcccac cacccc<label style="background-color:#FFFFFF">c</label>acc ccaaccccag ccccctagca gagacctgtg ggaagcgaaa
+            <label style="color:blue">7676439</label> attccatggg actgactttc tgctcttgtc tttc<b>ag</b><label
+                    style="color:red; font-weight:bold">actt cctgaaaaca ac<label
+                    style="background-color:#FFFFFF">g</label>ttctg</label><b>gt</b> <label
+                    style="color:red; font-weight:bold"><u><i>exon 3</i></u></label>
+            <label style="color:blue">7676379</label> aaggacaagg gttgggctgg ggacctggag ggctgggg<label
+                    style="background-color:#FFFFFF">ac ctggagggct gggg</label>ggctgg
+            <label style="color:blue">7676319</label> ggggctgagg acctggtc<label
+                    style="background-color:#FFFFFF">c</label>t ctgactgctc ttttcaccca t<label
+                    style="background-color:#FFFFFF">c</label>tac<b>ag</b><label
+                    style="color:red; font-weight:bold">tcc cc<label
+                    style="background-color:#FFFFFF">c</label>ttgcc<label
+                    style="background-color:#FFFFFF">g</label>t <i><u>exon 4</u></i></label>
+            <label style="color:blue">7676259</label> <label style="color:red; font-weight:bold">cccaagcaat ggatgatttg atgctgtcc<label
+                    style="background-color:#FFFFFF">c</label> cggacgatat tgaacaatgg ttcactgaag</label>
+            <label style="color:blue">7676199</label> <label style="color:red; font-weight:bold">acccaggtcc agatgaagct cccagaatgc cagaggctgc tcccc<label
+                    style="background-color:#FFFFFF">cc</label>gtg gcccctgcac</label>
+            <label style="color:blue">7676139</label> <label style="color:red; font-weight:bold">cagcagctcc tacaccggcg gcccctgcac cagccccctc ctggcccctg tcatcttctg</label>
+            <label style="color:blue">7676079</label> <label style="color:red; font-weight:bold">tcccttccca gaaaacctac cagggcagct acggtttccg tctgggcttc ttgcattctg</label>
+            <label style="color:blue">7676019</label> <label style="color:red; font-weight:bold">ggacagccaa gtctgtgact tgcacg</label><b>gt</b>ca gttgccctga ggggctggct tccatgagac
+            <label style="color:blue">7675959</label> ttcaatgcct ggccgtatcc ccctgcattt cttttgtttg gaactttggg attcctcttc
+            <label style="color:blue">7675899</label> accctttggc ttcctgtcag tgttttttta tagtttaccc acttaatgtg tgatctctga
+            <label style="color:blue">7675839</label> ctcctgtccc aaagttgaat attcccccct tgaatttggg cttttatcca tcccatcaca
+            <label style="color:blue">7675779</label> ccctcagcat ctctcctggg gatgcagaac ttttcttttt cttcatccac gtgtattcct
+            <label style="color:blue">7675719</label> tggcttttga aaataagctc ctgaccaggc ttggtggctc acacctgcaa tcccagcact
+            <label style="color:blue">7675659</label> ctcaaagagg ccaaggcagg cagatcacct gagcccagga gttcaagacc agcctgggta
+            <label style="color:blue">7675599</label> acatgatgaa acctcgtctc tacaaaaaaa tacaaaaaat tagccaggca tggtggtgca
+            <label style="color:blue">7675539</label> cacctatagt cccagccact <label
+                    style="background-color:#FFFFFF">t</label>aggaggctg aggtgggaag atcacttgag gccaggagat
+            <label style="color:blue">7675479</label> ggaggctgca gtgagctgtg atcacaccac tgtgctccag cctgagtgac agagcaagac
+            <label style="color:blue">7675419</label> cctatctcaa aaaaaaaaaa aaaaaagaaa agctcctgag gtgtagacgc caactctc<label
+                    style="background-color:#FFFFFF">t</label>c
+            <label style="color:blue">7675359</label> tagctc<label style="background-color:#FFFFFF">g</label>cta gtgggttgca gg<label
+                    style="background-color:#FFFFFF">a</label>ggtgctt ac<label
+                    style="background-color:#FFFFFF">g</label>catg<label style="background-color:#FFFFFF">t</label>tt gtttctttgc tgccgtcttc
+            <label style="color:blue">7675299</label> cagttgcttt atctgttcac ttgtgccctg actttcaact ctgtctcctt cctcttccta
+            <label style="color:blue">7675239</label> c<b>ag</b><label style="color:red; font-weight:bold">tactccc ctgccctcaa caagatgttt tgccaactgg ccaagacctg ccctgtgcag <u><i>exon 5</i></u></label>
+            <label style="color:blue">7675179</label> <label style="color:red; font-weight:bold">ctgtgggttg attccacacc cccgcccggc acccgcgtcc g<label
+                    style="background-color:#FFFFFF">c</label>gccatggc catctacaag</label>
+            <label style="color:blue">7675119</label> <label style="color:red; font-weight:bold">cagtcacagc acatgacgga ggttgtgagg cgctgccccc accatgagcg ctgctcagat</label>
+            <label style="color:blue">7675059</label> <label
+                    style="color:red; font-weight:bold">agcgatg</label><b>gt</b>g agcagctggg gctggagaga cgacagggct ggttgcccag ggtccccagg
+            <label style="color:blue">7674999</label> cctctgattc ctcactgatt gctctt<b>ag</b><label
+                    style="color:red; font-weight:bold">gt ctggcccctc ctcagcatct tatccgagtg <i><u>exon 6</i></u></label>
+            <label style="color:blue">7674939</label> <label style="color:red; font-weight:bold">gaaggaaatt tgcgtgtgga gtatttggat gacagaaaca cttttcg<label
+                    style="background-color:#FFFFFF">a</label>ca tagtgtg<label
+                    style="background-color:#FFFFFF">g</label>tg</label>
+            <label style="color:blue">7674879</label> <label style="color:red; font-weight:bold">gtgccctatg agcc<label
+                    style="background-color:#FFFFFF">g</label>cctga g</label><b>gt</b>ctggttt gcaactgggg tctctgggag g<label
+                    style="background-color:#FFFFFF">a</label>ggggttaa
+            <label style="color:blue">7674819</label> gggtggttgt cagtggccct cc<label
+                    style="background-color:#FFFFFF">a</label>ggtgagc agtagggggg ctttctcctg ctgcttattt
+            <label style="color:blue">7674759</label> gacctcccta taaccccatg agatgtgcaa agtaaatggg tttaactatt gcacagttga
+            <label style="color:blue">7674699</label> aaaaactgaa gcttacagag gctaagggcc tcccctgctt ggctgggcgc agtggctcat
+            <label style="color:blue">7674639</label> <label style="background-color:#FFFFFF">g</label>cctgtaatc ccagcacttt gggaggccaa ggcaggcgga tcacgaggtt gggagatcga
+            <label style="color:blue">7674579</label> gaccatcctg gctaacggtg aaaccccgtc tctactgaaa aatacaaaaa aaaattagcc
+            <label style="color:blue">7674519</label> gggcgtggtg ctgggcacct gtagtcccag ctactcggga ggctgaggaa ggagaatggc
+            <label style="color:blue">7674459</label> gtgaacctgg gcggtggagc ttgcagtgag ctgagatcac gccactgcac tccagcctgg
+            <label style="color:blue">7674399</label> gcgacagagc gagattccat ctcaaaaaaa aaaaaaaaag gcctcccctg cttgccacag
+            <label style="color:blue">7674339</label> gtctccccaa ggc<label style="background-color:#FFFFFF">g</label>cactgg cctcatcttg ggcctgtgtt atctcct<b>ag</b><label
+                    style="color:red; font-weight:bold">g ttggctctga <i><u>exon 7</i></u></label>
+            <label style="color:blue">7674279</label> <label style="color:red; font-weight:bold">ctgtaccacc atccactaca actacatgtg taacagttcc tgcatgggcg gcatgaaccg</label>
+            <label style="color:blue">7674219</label> <label style="color:red; font-weight:bold">gaggcccatc ctcaccatca tcacactgga agactccag</label><b>g t</b>caggagcca cttgc<label
+                    style="background-color:#FFFFFF">c</label>accc
+            <label style="color:blue">7674159</label> tgcacactgg cctgctgtgc cccagcctct gcttgcctct gacccctggg <label
+                    style="background-color:#FFFFFF">c</label>ccacctctt
+            <label style="color:blue">7674099</label> accgatttct <label style="background-color:#FFFFFF">t</label>ccatactac tacccatcca cctctcatca cat<label
+                    style="background-color:#FFFFFF">c</label>cccggc ggggaatctc
+            <label style="color:blue">7674039</label> cttactgctc ccactcagtt ttcttttctc tggctttggg acctcttaac ctgtggcttc
+            <label style="color:blue">7673979</label> tcctccacct acctggagct ggagcttagg ctccagaaag gacaagggtg gttgggagta
+            <label style="color:blue">7673919</label> gatggagcct ggttttttaa atgggacagg taggacctga tttccttact gcctcttgct
+            <label style="color:blue">7673859</label> tctcttttcc tatcctgagt <b>ag</b><label
+                    style="color:red; font-weight:bold">tggtaatc tactgggacg gaacagcttt gaggtgcgtg <i><u>exon 8</i></u></label>
+            <label style="color:blue">7673799</label> <label style="color:red; font-weight:bold">tttgtgcctg tcctgggaga gaccggcgca cagaggaaga gaatctccgc aagaaagggg</label>
+            <label style="color:blue">7673739</label> <label style="color:red; font-weight:bold">agcctcacca cgagctgccc ccagggagca ctaagcgag</label><b>g t</b>aagcaagca ggacaagaag
+            <label style="color:blue">7673679</label> cggtggagga gaccaagggt gcagttatgc ctcagattca cttttatcac ctttccttgc
+            <label style="color:blue">7673619</label> ctcttt<label
+                    style="background-color:#FFFFFF">c</label>ct<b>a g</b><label style="color:red; font-weight:bold">cactgccca acaaca<label
+                    style="background-color:#FFFFFF">c</label>cag ctcctctccc cagccaaaga agaaaccact <i><u>exon 9</i></u></label>
+            <label style="color:blue">7673559</label> <label
+                    style="color:red; font-weight:bold">ggatggagaa tatttcaccc ttcag</label><b>gt</b>act aagtct<label
+                    style="background-color:#FFFFFF">t</label>ggg acctcttatc aagtggaaag
+            <label style="color:blue">7673499</label> tttccagtct aacactcaaa atgccgtttt cttcttgact gttttacctg caattggggc
+            <label style="color:blue">7673439</label> atttgccatc agggggcagt gatgcctcaa agacaatggc tcctggttgt agctaactaa
+            <label style="color:blue">7673379</label> cttcagaaca ccaacttata ccataatata tattttaaag gaccagacca gctttcaaaa
+            <label style="color:blue">7673319</label> agaaaattgt taaagagagc atgaaaatgg ttctatgact ttgcctgata cagatgctac
+            <label style="color:blue">7673259</label> ttgacttacg atggtgttac ttcctgataa actcgtcgta agttgaaaat attgtaagtt
+            <label style="color:blue">7673199</label> gaaaatggat ttaata<label style="background-color:#FFFFFF">c</label>acc taatctaagg aacatcatag cttagcctag cctgcttttt
+            <label style="color:blue">7673139</label> tttttttttt ttttggagac agagtctcac tctgt<label
+                    style="background-color:#FFFFFF">c</label>accc aggctggagt gcagtggcgg
+            <label style="color:blue">7673079</label> gatctcggct cactgcaacc tccgccttct gggttcaagc gattctcctg cctcagccca
+            <label style="color:blue">7673019</label> ctgagtagct gggattacag gcacctgccc cgacgcccag ctaatttttt gttatttatt
+            <label style="color:blue">7672959</label> tatttttttt tttagtagag atgaggtttc accatgttgg ccaggctagt ctcgaactcc
+            <label style="color:blue">7672899</label> tgaccttgtg atctgcctgc cttggcctcc caaagtgctg ggattacagg cgtgagccac
+            <label style="color:blue">7672839</label> cgcacc<label style="background-color:#FFFFFF">c</label>ggc ctgcctagcc tacttttatt ttatttttaa tggagacagc atcttgctct
+            <label style="color:blue">7672779</label> gttgcccagg ctggattaca gtgatgtgat catagctcat tataccctcc tgggctcaag
+            <label style="color:blue">7672719</label> caatccccct aactctgcct ccccagtagc taggaccaca ggcatacacc accataccca
+            <label style="color:blue">7672659</label> gctaattttt aaaatttttt gtagatagat agagtctcac tatgttgccc aggctggtct
+            <label style="color:blue">7672599</label> ctagcctact tttttgagac aaggtcttgc tctgtcaccc aggctggata gagtgcagta
+            <label style="color:blue">7672539</label> gtgcagtcac agctcactgc agcctccacc tcccaggctc catccatcct cccagctcag
+            <label style="color:blue">7672479</label> cctcccaagt tgcttcaact acaggcctgc accaccatgc ctggctaatt tttatttatt
+            <label style="color:blue">7672419</label> tatt<label style="background-color:#FFFFFF">t</label>ttatt ttattttatt ttattttttt gagactcagt ctcactctgt cgcccaggct
+            <label style="color:blue">7672359</label> ggagtgcagt ggcatgatct cggctcactg caacctctgc ctcctgggtt caagtgattc
+            <label style="color:blue">7672299</label> tcctgcctca gcctcccgaa tagctaggac tacaagcgcc tgctaccacg ccc<label
+                    style="background-color:#FFFFFF">a</label>gctaat
+            <label style="color:blue">7672239</label> ttttgtattt ttagtagaga cagggtttca ccatgttggc caggctggtc tcgaacttct
+            <label style="color:blue">7672179</label> gaccatgtga tccgcccgcc tcggcctccc aaagtgctgg gattacaggt gtgagccacc
+            <label style="color:blue">7672119</label> acgcccggct aatttttatt tatttattta aagacagagt ctcactctgt cactcaggct
+            <label style="color:blue">7672059</label> agagtgcagt ggcaccatct cagctcactg cagccttgac ctccctgggc tccggtgatt
+            <label style="color:blue">7671999</label> tcaccctccc aagtagctag gactacaggc acatgccacg acacccagct aattttttat
+            <label style="color:blue">7671939</label> tttctgtgaa gtcaaggtct tgctacgttg cccatgctgg tatcaaaccc ctgggctcaa
+            <label style="color:blue">7671879</label> tcaatccttc cacctcagcc tccccaagta ttggggttac aggcatgagc taccacactc
+            <label style="color:blue">7671819</label> agccctagcc tacttgaaac gtgttcagag catttaagtt accctacagt tgggcaaagt
+            <label style="color:blue">7671759</label> catctaacac aaagcccttt ttatagtaat aaaatgttgt atatctcatg tgatttattg
+            <label style="color:blue">7671699</label> aatattgtta ct<label style="background-color:#FFFFFF">g</label>aaagtga gaaacagcat ggttgcatga aaggaggcac agtcgagcca
+            <label style="color:blue">7671639</label> ggcacagcct gggcgcagag c<label
+                    style="background-color:#FFFFFF">g</label>agactcaa aaaaagaaaa ggccaggcgc actggctcac
+            <label style="color:blue">7671579</label> gcctgtaatc ccagcatttc gggaggctga ggc<label
+                    style="background-color:#FFFFFF">g</label>ggtgga tcacctgagg tcaggagttc
+            <label style="color:blue">7671519</label> aagaccagcc tagccaacat ggtgaaaccc cgtctctact aaaatacaaa aattaacc<label
+                    style="background-color:#FFFFFF">g</label>g
+            <label style="color:blue">7671459</label> gc<label style="background-color:#FFFFFF">g</label>tgatggc aggtgcctgt aatcccagct acttgggagg ctgaggcagg agaatc<label
+                    style="background-color:#FFFFFF">g</label>ctt
+            <label style="color:blue">7671399</label> gaaccaggag gcggaggttg cagggagcca agatggcgcc actgcactcc agcctgggcg
+            <label style="color:blue">7671339</label> atagagtgag actccgtctc agaaaaaaaa gaaaagaaac gaggcacagt cgcatgcaca
+            <label style="color:blue">7671279</label> tgtagtccca gttacttgag aggctaaggc aggaggatct cttgagccc<label
+                    style="background-color:#FFFFFF">a</label> agagtttgag
+            <label style="color:blue">7671219</label> tccagcctga acaacatagc aagacatcat ctctaaaatt taaaaaaggg ccgggcacag
+            <label style="color:blue">7671159</label> tggctcacac ctgtaatccc agcactttgg gaggtggagg tgggtagatc acctgacgtc
+            <label style="color:blue">7671099</label> aggagttgga aaccagcctg gctaacatgg tgaagcccca tctctactaa aaacacaaaa
+            <label style="color:blue">7671039</label> attagccagg tgtggtagca cacgcctgta gtcccagcta ct<label
+                    style="background-color:#FFFFFF">c</label>gggaggc tgaggcacaa
+            <label style="color:blue">7670979</label> gaatcacttg aaccccagag gcggagattg caatcagcca agattgcacc attgcactcc
+            <label style="color:blue">7670919</label> cgcctgggca acagagtgag accccatctc aaaataaata aataaatatt tttaaaagtc
+            <label style="color:blue">7670859</label> agctgtatag gtacttgaag tgcagtttct actaaatgca tgttgctttt gtaccgtcat
+            <label style="color:blue">7670799</label> aaagtcaaac aattgtaact tgaaccatct tttaactcag gtactgtgta tatacttact
+            <label style="color:blue">7670739</label> tctccccctc ctctgttgct gc<b>ag</b><label
+                    style="color:red; font-weight:bold">atccgt gggcgtgagc gcttcgagat gttccgagag <i><u>exon 10</i></u></label>
+            <label style="color:blue">7670679</label> <label style="color:red; font-weight:bold">ctgaatgagg ccttggaact caaggatgcc caggctggga aggagccag<label
+                    style="background-color:#FFFFFF">g</label> ggggagcagg</label>
+            <label style="color:blue">7670619</label> <label
+                    style="color:red; font-weight:bold">gctcactcca g</label><b>gt</b>gagtgac ctcagcccct tcctggccct <label
+                    style="background-color:#FFFFFF">a</label>ctcccctgc cttcctaggt
+            <label style="color:blue">7670559</label> tggaaagcca taggattcca ttctcatcct gccttcatgg tcaaaggcag ctgaccccat
+            <label style="color:blue">7670499</label> ctcattgggt cccagccctg cacagacatt tttttagtct tcct<label
+                    style="background-color:#FFFFFF">c</label>cggtt gaatcctata
+            <label style="color:blue">7670439</label> accacattct tgcctcagtg tatccacaga acatccaaac ccagggacga gtgtggatac
+            <label style="color:blue">7670379</label> ttctttgcca ttctccgcaa ctcccagccc agagctggag ggtctcaagg aggggcctaa
+            <label style="color:blue">7670319</label> taattgtgta atactgaata cagccagagt ttcaggtcat atactcagcc ctgccatgca
+            <label style="color:blue">7670259</label> ccggcaggtc ctaggtgacc cccgtcaaac tcagtttcct tatatataaa atggggtaag
+            <label style="color:blue">7670199</label> ggggccgggc gcagtggctc acgaatccca cactctggga ggccaaggcg agtggatcac
+            <label style="color:blue">7670139</label> ctgaggtc<label style="background-color:#FFFFFF">g</label>g gagtttgagc ccagcctgac caacatggag aaaccccatc tctactaaaa
+            <label style="color:blue">7670079</label> atacaaaagt agcc<label style="background-color:#FFFFFF">g</label>ggcgt ggtgatgcat gcctgtaatc ccagctacct actcgggagg
+            <label style="color:blue">7670019</label> ctgaggcagg agaatcgctt gaacccggga ggcagaggtt gcggtgagct gagatctcac
+            <label style="color:blue">7669959</label> cattacactc cagcctgggc aacaagagtg aaactccgtc tcaaaaaa<label
+                    style="background-color:#FFFFFF">g</label>a taaat<label style="background-color:#FFFFFF">a</label>aagt
+            <label style="color:blue">7669899</label> aaaatggggt aagggaagat tacgagacta atacacacta atactctga<label
+                    style="background-color:#FFFFFF">g</label> gtgctcagta
+            <label style="color:blue">7669839</label> aacatatttg catggggtgt ggccaccatc ttgatttgaa ttcccgttgt cccagcctta
+            <label style="color:blue">7669779</label> ggcccttcaa agcatt<label style="background-color:#FFFFFF">g</label>gtc agggaaaagg ggcacagacc <label
+                    style="background-color:#FFFFFF">c</label>tctcactca tgtgatgtca
+            <label style="color:blue">7669719</label> tctctcctcc ctgcttctgt ctcctac<b>ag</b><label
+                    style="color:red; font-weight:bold">c cacctgaagt ccaaaaaggg tcagtctacc <i><u>exon 11</i></u></label>
+            <label style="color:blue">7669659</label> <label style="color:red; font-weight:bold">tcccgccata aaaaactcat gttcaagaca gaagggcctg actcagac<u>tg a</u>cattctcca</label>
+            <label style="color:blue">7669599</label> <label style="color:red; font-weight:bold">cttcttgttc cccactgaca gcctcccacc cccatctctc cctcccctgc cattttgggt</label>
+            <label style="color:blue">7669539</label> <label style="color:red; font-weight:bold">tttgggtctt tgaacccttg cttgcaatag gtgtg<label
+                    style="background-color:#FFFFFF">c</label>gtca gaagcaccca ggacttccat</label>
+            <label style="color:blue">7669479</label> <label style="color:red; font-weight:bold">ttgctttgtc ccggggctcc actgaacaag ttggcctgca ctggtgtttt gttgtgggga</label>
+            <label style="color:blue">7669419</label> <label style="color:red; font-weight:bold">ggaggatggg gagta<label
+                    style="background-color:#FFFFFF">g</label>gaca taccagctta gattttaagg tttttactgt gagggatgtt</label>
+            <label style="color:blue">7669359</label> <label style="color:red; font-weight:bold">tgggagatgt aagaaatgtt cttgcagtta agggttagtt tacaatcagc cacattctag</label>
+            <label style="color:blue">7669299</label> <label style="color:red; font-weight:bold">gtag<label
+                    style="background-color:#FFFFFF">g</label>ggccc acttcacc<label
+                    style="background-color:#FFFFFF">g</label>t actaaccagg gaagctgtcc ctcactgttg aattttctct</label>
+            <label style="color:blue">7669239</label> <label style="color:red; font-weight:bold">aacttcaagg cccatatctg tgaaatgctg gcatttgcac ctacctcaca gagtgcattg</label>
+            <label style="color:blue">7669179</label> <label style="color:red; font-weight:bold">tgagggttaa tgaaataatg tacatctggc cttgaaacca ccttttatta catgg<label
+                    style="background-color:#FFFFFF">g</label>gtct</label>
+            <label style="color:blue">7669119</label> <label style="color:red; font-weight:bold">agaacttgac ccccttgagg gtgcttgttc cctctccctg ttggtcggtg ggttggtagt</label>
+            <label style="color:blue">7669059</label> <label
+                    style="color:red; font-weight:bold">ttctacagtt gggcagctg<label
+                    style="background-color:#FFFFFF">g t</label>taggtagag ggagttgtca agtctctgct ggcccagcca</label>
+            <label style="color:blue">7668999</label> <label style="color:red; font-weight:bold">aac<label
+                    style="background-color:#FFFFFF">c</label>ctgtct gacaacctct tggtgaacct tagtacctaa aaggaaatct caccccatcc</label>
+            <label style="color:blue">7668939</label> <label style="color:red; font-weight:bold">cacaccctgg aggatttcat ctcttgtata tgatgatctg gatccaccaa gacttgtttt</label>
+            <label style="color:blue">7668879</label> <label style="color:red; font-weight:bold">atgctcaggg tcaatttctt ttttcttttt tttttttttt tttctttttc tttgagactg</label>
+            <label style="color:blue">7668819</label> <label style="color:red; font-weight:bold">ggtctcgctt tgttgcccag gctggagtgg agtggc<label
+                    style="background-color:#FFFFFF">g</label>tga tcttggctta ctgcagcctt</label>
+            <label style="color:blue">7668759</label> <label style="color:red; font-weight:bold">tgcctccccg gctcgagcag tcctgcctca gcctcc<label
+                    style="background-color:#FFFFFF">g</label>gag tagctgggac cacaggttca</label>
+            <label style="color:blue">7668699</label> <label style="color:red; font-weight:bold">tgccaccatg gccagccaac ttttgcatgt tttgtagaga tggggtctca cagtgttgcc</label>
+            <label style="color:blue">7668639</label> <label style="color:red; font-weight:bold">caggctggtc tcaaactcct gggctcaggc gatccacctg tctcagcctc ccagagtgct</label>
+            <label style="color:blue">7668579</label> <label style="color:red; font-weight:bold">gggattacaa ttgtgagcca ccacgtccag ctggaagggt caacatcttt tacattctgc</label>
+            <label style="color:blue">7668519</label> <label style="color:red; font-weight:bold">aagcacatct gcattttcac cccacccttc ccctccttct ccctttttat atcccatttt</label>
+            <label style="color:blue">7668459</label> <label style="color:red; font-weight:bold">tatatcgatc tcttatttta caata<label
+                    style="background-color:#FFFFFF">a</label>aact ttgctgccac ctgtgtgtct gaggggtg </label>
+
+        </pre>
+
+            <div class="bg-light">
+                <label style="color:red; font-weight:bold">Exons</label> are in red and bold (the initiation and STOP
+                codons, in exons 2 and 11 respectively, are underlined). <br/>
+                <label style="font-weight:bold">Intronic splice sites</label> are in bold. <br/>
+            </div>
+        </div>
+
+    </main>
+</div>
+{% endblock %}

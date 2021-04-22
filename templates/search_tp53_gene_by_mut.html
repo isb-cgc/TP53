@@ -1,0 +1,375 @@
+{% extends "tp53data.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'search_tp53data';
+</script>
+
+
+{% endblock %}
+
+{% block subcontent %}
+<div class="jump-div">
+    <h2>Search tp53 by Mutation Features</h2>
+    <hr>
+    <div id="search_tp53_gmut" class="p-3">
+        <div class="p-3 bg-light rounded-2">
+            <form>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="Nature of the mutation. The terms
+                                    occurring in this column are 'A:T&gt;C:G' (A to C or T
+                                    to G base change), 'A:T&gt;G:C' (A to G or T to C base
+                                    change), 'A:T&gt;T:A' (A to T or T to A base change),
+                                    'G:C&gt;A:T' (G to A or C to T base change at non CpG
+                                    sites), 'G:C&gt;A:T at CpG' (G to A or C to T base
+                                    change at CpG sites),
+                                    'G:C&gt;C:G' (G to C or C to G base change),
+                                    'G:C&gt;T:A' (G to T or C to A base change),
+                                    'tandem' (two consecutive base changes), 'ins'
+                                    (insertion), 'del' (deletion) and 'complex'
+                                    (complex changes).">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Type
+                    </legend>
+                    <div class="col-sm-8">
+                        <select name="type_list" class="form-control chosen-select" id="type_input"
+                                data-placeholder="Choose Types..." aria-label="Type List" multiple>
+                        </select>
+                    </div>
+                </fieldset>
+                <hr>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="Nucleotide change read from the coding sequence. For
+                                        deletions and insertions, the number of bases deleted (del) or
+                                        inserted (ins) is given. For more complex mutation events, a full
+                                        description is given as indicated in the original publication.">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Description
+                    </legend>
+                    <div class="col-sm-8">
+                        <select name="description_list" class="form-control chosen-select" id="description_input"
+                                data-placeholder="Choose Descriptions..." aria-label="Description List" multiple>
+                        </select>
+                    </div>
+                </fieldset>
+                <hr>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="2D and 3D motifs where the mutation is located according to structures described in
+                                        <a href='http://www.ncbi.nlm.nih.gov/pubmed/8023157' target='_blank'>Cho
+                                        et al. (1994)</a> and <a href='https://www.ncbi.nlm.nih.gov/pubmed/10618702' target='_blank'>
+                                        May and May (1999)</a>">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Struct-Function Motif
+                    </legend>
+                    <div class="col-sm-8">
+                        <select name="motif_list" class="form-control chosen-select" id="motif_input"
+                                data-placeholder="Choose Struct-Function Motifs..."
+                                aria-label="Struct-Function Motif List" multiple>
+                        </select>
+                    </div>
+                </fieldset>
+                <hr>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="Location of the mutation in the introns or exons in TP53 gene for the reference sequence NM_000546.5.
+                                        Terms occurring in this column are '1-intron' to '11-intron' and '2-exon'
+                                        to '11-exon'. An 'i' or 'e' in front mean that the mutation is located within the indicated intron
+                                        or exon with no information on the precise location.">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Exon/Intron
+                    </legend>
+                    <div class="col-sm-8">
+                        <select name="exonintron_list" class="form-control chosen-select" id="exonintron_input"
+                                data-placeholder="Choose Exons or Introns..." aria-label="Exon Intron List" multiple>
+                        </select>
+                    </div>
+                </fieldset>
+                <hr>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="Effect of the mutation. The terms
+                                        occurring in this column are: missense (change of one amino-acid), nonsense (introduction of a stop codon), FS
+                                        (frameshift), silent (no change in the protein sequence),
+                                        splice (mutations located in the two first and two last conserved nucleotides of the introns and are thus predicted to alter splicing,
+                                        or mutations that have been shown to alter splicing experimentally), other (inframe deletions or insertions), intronic (mutations in introns outside splicing sites), NA (mutations upstream in 5' or 3' UTR).">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Effect
+                    </legend>
+                    <div class="col-sm-8">
+                        <select name="effect_list" class="form-control chosen-select" id="effect_input"
+                                data-placeholder="Choose Effects..." aria-label="Effect List" multiple>
+                        </select>
+                    </div>
+                </fieldset>
+                <hr>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="Functional classification based on the overall transcriptional activity (TA) on 8 different promoters as measured in yeast assays by <a href='https://www.ncbi.nlm.nih.gov/pubmed/12826609' target='_blank'>Kato et al</a>.
+							            For each mutant, the median of the 8 promoter-specific activities (expressed as percent of the wild-type protein) is calculated and missense mutations are classified as 'non-functional' if the median is &lt;=20,
+							            partially functional' if the median is &gt;20 and &lt;=75, 'functional' if the median is &gt;75 and &lt;=140, and 'supertrans' if the median is &gt;140.">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Transactivation Class
+                    </legend>
+                    <div class="col-sm-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="trans_func" id="trans_func">
+                            <label class="form-check-label" for="trans_func">
+                                Functional
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="trans_nonfunc" id="trans_nonfunc">
+                            <label class="form-check-label" for="trans_nonfunc">
+                                Non-Functional
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="trans_pfunc" id="trans_pfunc">
+                            <label class="form-check-label" for="trans_pfunc">
+                                Partially Functional
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="trans_supertr" id="trans_supertr">
+                            <label class="form-check-label" for="trans_supertr">
+                                Supertrans
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                <hr>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="Functional classification based on <a href='https://sift.jcvi.org/protein_batch_submit.php?species=human' target='_blank'>SIFT program</a> using default settings.
+                                        Missense mutations are classified as 'damaging' or tolerated'.">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        SIFT Class
+                    </legend>
+                    <div class="col-sm-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="sift_damaging" id="sift_damaging">
+                            <label class="form-check-label" for="sift_damaging">
+                                Damaging
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="sift_tolerated">
+                            <label class="form-check-label" for="sift_tolerated">
+                                Tolerated
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                <hr>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="Chromosome coordinate of mutation: start position based on hg19 or hg38 human genome assembly.">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Chromosome Positioning
+                    </legend>
+                    <div class="col-sm-8">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="chrpos_type" id="chrpos_hg19">
+                            <label class="form-check-label" for="chrpos_hg19">
+                                hg19
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="chrpos_type" id="chrpos_hg38">
+                            <label class="form-check-label" for="chrpos_hg38">
+                                hg38
+                            </label>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" id="chrpos" name="chrpos" min="1" max="24">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <hr>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="Mutant base, described on the coding strand.">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Mutant Base (coding)
+                    </legend>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="mut_base" name="mut_base" min="1" max="24">
+                    </div>
+                </fieldset>
+                <hr>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="For mutations in exons, codon number
+                                        at which the mutation is located (1-393). If a mutation spans more
+                                        than one codon, (e.g. tandem mutation or deletion of several
+                                        bases) only the first (5') codon is entered. For mutations in
+                                        introns, 0 is entered.">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Codon Number
+                    </legend>
+                    <div class="col-sm-8">
+                        <div class="form-check form-switch">
+                            <input data-bs-toggle="collapse" data-bs-target=".codon-collapse" aria-expanded="true"
+                                   aria-controls=".codon-collapse" class="form-check-input" type="checkbox"
+                                   id="codon_byrange">
+                            <label class="form-check-label" for="codon_byrange">Enter by Range</label>
+                        </div>
+                        <div id="codon_div">
+                            <div id="collapse_bysingle" class="codon-collapse row collapse show" data-bs-parent="#codon_div">
+                                <div class="col-lg-2">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control form-" id="codon_number"
+                                               name="codon_number"
+                                               min="1"
+                                               max="393">
+                                        <label for="codon_end">Codon No.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse_byrange" class="codon-collapse row collapse" data-bs-parent="#codon_div">
+                                <div class="col-lg-2">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control form-" id="codon_start"
+                                               name="codon_start"
+                                               min="1"
+                                               max="393">
+                                        <label for="codon_start">Start</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 text-center">
+                                    <label class="col-form-label">to</label>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control form-" id="codon_end"
+                                               name="codon_end"
+                                               min="1"
+                                               max="393">
+                                        <label for="codon_end">End</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="For mutations in exons, sequence of the codon in which the mutation occurred in NM_000546.5 transcript.">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Wild-Type Codon
+                    </legend>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="wild_codon" name="wild_codon">
+                    </div>
+                </fieldset>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="Base sequence of the mutated codon in NM_000546.5 transcript.">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Mutant Codon
+                    </legend>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="mut_codon" name="mut_codon">
+                    </div>
+                </fieldset>
+                <hr>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="Wild-type amino acid encoded at the codon in which the mutation occurred (three-letter amino acid
+                                        abbreviation). Check <a href='aa_codes' target='_blank'>AA letter code</a> and
+                                        <a href='genetic_code' target='_blank'>Genetic code</a>">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Wild-Type Amino Acid
+                    </legend>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="wild_aa" name="wild_aa">
+                    </div>
+                </fieldset>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                data-bs-placement="left"
+                                title="Mutated amino acid encoded at the
+                                        codon in which the mutation occurred (three-letter amino acid
+                                        abbreviation). The chain terminating mutations due to single base
+                                        substitutions are designated by 'stop'. &nbsp;&nbsp;
+                                        Check <a href='aa_codes' target='_blank'>AA letter code</a> and
+                                        <a href='genetic_code' target='_blank'>Genetic code</a>">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        Mutant Amino Acid
+                    </legend>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="mut_aa" name="mut_aa">
+                    </div>
+                </fieldset>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0 text-muted">*Help Resources</legend>
+                    <div class="col-sm-8">
+                        <div>
+                            <a href="tp53seq" target="_blank">p53 Coding Sequence</a>
+                        </div>
+                        <div>
+                            <a href="genetic_code" target="_blank">Genetic Code</a>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group row">
+                    <div class="col-sm-11">
+                        <div class="text-end">
+                            <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                            <button type="submit" class="btn btn-outline-primary "><i class="fas fa-search"
+                                                                                      style="margin-right: 5px;"></i>Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

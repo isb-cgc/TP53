@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <script type="text/javascript">
+        active_menu = 'case_search';
+    </script>
+    <script src="{{ url_for('static', filename='js/result.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <h1 class="search-header">
+        Cases Cytogenetics Search Result
+    </h1>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div>
+                {% for table in result_tables %}
+                    <div class="row float-left">
+                        <div class="col-md-12 backbutton-div">
+                            <button class="btn btn-outline-secondary back-button"><i class="fas fa-chevron-left"
+                                                                             style="margin-right: 5px;"></i>Back
+                            </button>
+                        </div>
+                    </div>
+                    {% if table.data|length %}
+                        <div class="row float-right">
+                            <div class="col-md-12 button-div"></div>
+                        </div>
+                        <table class="table table-striped result-table" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                {% for header in table.headers %}
+                                    <th>{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for row in table.data %}
+                                <tr>
+                                    <td>{{ row.Morph if row.Morph }}</td>
+                                    <td>{{ row.Topo if row.Topo }}</td>
+                                    <td>{{ row.KaryShort }}</td>
+                                    <td><a href="{{ url_for('case_details', refno=row.Refno, caseno=row.CaseNo) }}">{{ row.CaseNo }}</a></td>
+                                    <td><a href="{{ url_for('ref_details', refno=row.Refno) }}">{{ row.Abbreviation }}, {{ row.Journal }}</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% elif table.msg %}
+                        <div class="row">
+                            <div class="col-md-12 text-center"><strong>{{ table.msg|safe }}</strong>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="row">
+                            <div class="col-md-12 text-center"><strong>No Results Matched Your Search Criteria</strong>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

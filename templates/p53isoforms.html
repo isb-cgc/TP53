@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'resources';
+    active_submenu = '';
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"></nav>
+    <main class="main-panel col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>p53 Isoforms</h1>
+        <div class="p-3">
+            <p>Splicing variants of the human and mouse TP53 gene have been described in the eighties (<a
+                    target="_blank"
+                    href="https://www.ncbi.nlm.nih.gov/pubmed/2453013?dopt=Abstract">Matlashewski
+                et al., 1987</a>, <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/8632903?dopt=Abstract">Flaman
+                et al., 1996</a>, <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/3023970?dopt=Abstract">Arai
+                et
+                al., 1986</a>),
+                but the existence and significance of these variants has only been recognized 20 years later (<a
+                        target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/12360399?dopt=Abstract">Courtois et
+                    al.,
+                    2002</a>, <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15340061?dopt=Abstract">Ghosh
+                    et
+                    al., 2004</a>, <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/16131611?dopt=Abstract">Bourdon
+                    et al., 2005</a>, <a target="_blank"
+                                         href="https://www.ncbi.nlm.nih.gov/pubmed/17637683?dopt=Abstract">Bourdon
+                    et al., 2007</a>).
+            </p>
+
+            <p> Several p53 human isoforms have been characterized that are produced by alternative splicing, use of
+                alternative translation site or alternative promoter
+                (see <a target="_blank"
+                        href="https://www.researchgate.net/publication/291556490_p53_Isoforms_Key_Regulators_of_the_Cell_Fate_Decision">Joruiz
+                    & Bourdon, 2016</a>;
+                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/21941372">Marcel et al., 2011</a>).
+            </p>
+
+            <p>Most of these isoforms share a common DNA-binding domain with three different N-terminal domains
+                (TA: entire transactivation domain; delta40: deleted from the first 39 residues; delta133: deleted from
+                the
+                first 132 residues)
+                and/or three different C-terminal domains (alpha: entire oligomerisation domain; beta: 10 additional
+                residues; gamma: 15 additional residues).
+                By convention, TAp53alpha corresponds to the canonical p53 protein. In addition to these isoforms,
+                deltap53
+                has been described that lacks residues from center of exon 7 to center of exon 9.
+                See illustration below.
+            </p>
+
+            <p> Current knowledge on the role and activities of these isoforms is still limited. In the IARC TP53
+                Database,
+                all annotations and data are in relation to the full-lenght protein (TA isoform).
+                New annotations have been introduced on the predicted impact of TP53 gene mutations on the protein
+                status of
+                the different isoforms (see <a href="p53IsoformsPredictions">here</a>).
+            </p>
+
+            <br>
+            <h3>tp53 Gene and Transcripts</h3>
+            <img class="px-5" src="{{ url_for('static', filename='img/Humanp53Isoforms_mRNA_2016.png') }}"/>
+            <br/><br/>
+            <h3>p53 Protein Isoforms</h3>
+            <img class="px-5" src="{{ url_for('static', filename='img/Humanp53Isoforms_prot_2016.png') }}">
+
+            <br>
+
+            <p class="text-muted small">From Joruiz & Bourdon (CHS Prespectives, 2016). Top: TP53 gene and transcripts.
+                Bottom: p53 protein
+                isoforms.</p>
+        </div>
+
+    </main>
+
+</div>
+
+{% endblock %}

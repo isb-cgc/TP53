@@ -1,0 +1,179 @@
+{% extends "tp53data.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'get_tp53data';
+</script>
+popper.min.js
+{% endblock %}
+
+{% block subcontent %}
+<div class="jump-div">
+    <h2>Data Downloads</h2>
+    <hr>
+    <div class="p-3">
+        <div id="get_som_mut" class="jump-div">
+            <h3>Somatic Mutations</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Dataset</th>
+                    <th>Download</th>
+                    <th>Preview</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Somatic mutations in human tumor samples (data file)</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Somatic mutations in human tumor samples (references file)</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Prevalence of somatic mutations by tumor site</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Prevalence of the R249S TP53 mutations in liver cancer</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Prognostic value of somatic mutations</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div id="get_germ_mut" class="jump-div">
+            <h3>Germline Mutations</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Dataset</th>
+                    <th>Download</th>
+                    <th>Preview</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>TP53 germline mutations and family history (data file)</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                <tr>
+                    <td>TP53 germline mutations and family history (references file)</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                <tr>
+                    <td>TP53 germline mutations prevalence in selected cohorts</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Frequency of individual mutations in case-controls series (new dataset under development)</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+        <div id="get_cell" class="jump-div">
+            <h3>Cell Lines</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Dataset</th>
+                    <th>Download</th>
+                    <th>Preview</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>TP53 mutation status of human cell-lines</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="get_annot" class="jump-div">
+            <h3>Mutation Annotations and Phenotypes</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Dataset</th>
+                    <th>Download</th>
+                    <th>Preview</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Gene variations in TP53 with their annotations (includes validated polymorphisms)</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Functional assessment of p53 mutant proteins in various experimental assays</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Systematic functional assessment of p53 mutant proteins in yeast assays</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="get_mouse" class="jump-div">
+            <h3>Mouse-Models</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Dataset</th>
+                    <th>Download</th>
+                    <th>Preview</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Mouse models with engineered TP53</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="get_eim" class="jump-div">
+            <h3>Experimentally Induced Mutations</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Dataset</th>
+                    <th>Download</th>
+                    <th>Preview</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Mutations induced in experimental models of mutagenesis</td>
+                    <td><a href="#"><i class="fas fa-download"></i></a></td>
+                    <td><a href="#"><i class="fas fa-table"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

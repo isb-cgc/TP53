@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'resources';
+    active_submenu = '';
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"></nav>
+    <main class="main-panel col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>tp53 Coding Sequence</h1>
+        <div class="p-3">
+            <div>
+                Human TP53 coding and protein sequence with exon boundaries in blue and CpG sites in red.<br/>
+
+                Ref sequence: SwissProt <a href="https://www.uniprot.org/uniprot/P04637" target="_blank">#P04637</a>.
+            </div>
+            <br/>
+
+            <p> Note that at codon position 72 (polymorphic site), CCC (Pro) is used in the new genomic
+                reference sequence while CGC(Arg) is indicated here.
+            </p>
+
+            <div class="accordion" id="aminoacids">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading3LCA">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse3LCA" aria-expanded="true" aria-controls="collapse3LCA">
+                            3 Letter Code Amino-Acids
+                        </button>
+                    </h2>
+                    <div id="collapse3LCA" class="accordion-collapse collapse show" aria-labelledby="heading3LCA"
+                         data-bs-parent="#aminoacids">
+                        <div class="accordion-body">
+                            <img src="{{ url_for('static', filename='img/p53sequence.jpg') }}"
+                                 alt="p53 protein sequence"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading1LCA">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse1LCA" aria-expanded="false" aria-controls="collapse1LCA">
+                            1 Letter Code Amino-Acids
+                        </button>
+                    </h2>
+                    <div id="collapse1LCA" class="accordion-collapse collapse" aria-labelledby="heading1LCA"
+                         data-bs-parent="#aminoacids">
+                        <div class="accordion-body">
+                            <img src="{{ url_for('static', filename='img/p53sequence2.jpg') }}"
+                                 alt="p53 protein sequence"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+{% endblock %}

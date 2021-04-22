@@ -1,0 +1,34 @@
+#service: uat
+service: test
+#service: default
+
+runtime: python37
+instance_class: F4_HIGHMEM
+network:
+  instance_tag: isb-cgc-tp53
+
+# comment this section out for test-tier: test-tier does not need auto scaling
+#automatic_scaling:
+#  target_cpu_utilization: 0.65
+#  min_instances: 2
+#  max_instances: 10
+#  min_idle_instances: 1
+#  max_idle_instances: 4
+#  min_pending_latency: 30ms  # default value
+#  max_pending_latency: automatic
+#  max_concurrent_requests: 50
+#inbound_services:
+#- warmup
+
+#BQ_DATASET to set from prod, test or uat
+env_variables:
+#  TIER: 'prod'
+  TIER: 'test'
+#  TIER: 'uat'
+
+  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files/'
+
+handlers:
+- url: /.*
+  script: auto
+  secure: always

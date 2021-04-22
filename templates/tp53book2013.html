@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'refs_corner';
+    active_submenu = '';
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    </nav>
+    <main class="main-panel col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>p53 in the Clinics</h1>
+
+        <div class="pt-3">
+            <table>
+                <tr>
+                    <td class="align-top pe-5">
+                        <img width="150px" src="{{ url_for('static', filename='img/p53_2013.jpeg') }}"/>
+                        <div class="pt-3">2013, VII, 544 p.45 illus.<br/>
+                            Hardcover ISBN:<br/>
+                            978-1-4614-3675-1<br/>
+                            <a href="#toc">Table of Contents</a><br/>
+                            <a href="https://www.springer.com/gp/book/9781461436751"
+                               target="_blank">Ordering information</a>
+                        </div>
+                    </td>
+                    <td>
+                        <p>Edited by<br>
+                            <strong>Pierre Hainaut</strong><br>
+                            <i class="text-dark">International Agency for Research on Cancer (IARC), World Health
+                                Organization, Lyon, France</i><br>
+                            <br>
+                            <strong>Magali Olivier</strong><br>
+                            <i class="text-dark">International Agency for Research on Cancer (IARC), World Health
+                                Organization, Lyon, France</i><br>
+                            <br>
+                            <strong>Klas G. Wiman</strong><br>
+                            <i class="text-dark">Karolinska Institute, Dept. of Oncology-Pathology, Cancer Center
+                                Karolinska (CCK), Stockholm, Sweden</i><br>
+                            <br>
+                            With over 60,000 referenced publications, p53 has emerged as one of the most important
+                            factors in human cancer.
+                            Research on p53 has led to a complete overhaul of our understanding of the molecular basis
+                            of human cancer.
+                            In recent years, these major advances in knowledge are starting to impact on cancer
+                            management and therapy.
+                            This book thus captures a critical turning point in p53 research, from basic to
+                            translational research and clinical application.<br>
+                            <br>
+                            p53 in the Clinics follows the success of 25 Years of p53 Research and condensates in a
+                            series of authoritative chapters the considerable
+                            progress on the applications of p53 into the clinics and the substantial advances on
+                            diseases caused by inheritance of p53 defects,
+                            on somatic p53 mutations as biomarkers in molecular pathology, on progress in gene therapy
+                            and on developments of innovative drugs and clinical trials.
+                            This volume will appeal to a wide audience of students and professionals in basic and
+                            clinical cancer research and treatment,
+                            and will highlight the exciting “next steps” in p53 research and applications.
+                        </p>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="toc" class="jump-div">
+            <h2>Table of contents</h2>
+            <hr>
+            <div class="p-3">
+                <div>
+
+                    <strong>Chapter 1:</strong> <i>TP53: Coordinator of the Processes That Underlie the Hallmarks of
+                    Cancer</i>; Pierre Hainaut<br>
+                    <br>
+                    <strong>Chapter 2:</strong> <i>The inheritance of p53</i>; Lukasz F. Grochola, Jorge
+                    Zeron-Medina, Emmanouela Repapi,
+                    Alexander E. Finlayson, Ying Cai, Gurinder Singh Atwal, and Gareth L. Bond<br>
+                    <br>
+                    <strong>Chapter 3:</strong> <i>p53: guardian of the metabolome</i>; Masha V. Poyurovsky and
+                    Carol Prives<br>
+                    <br>
+                    <strong>Chapter 4:</strong> <i>The p53 family and stem cell biology</i>; Massimiliano Agostini,
+                    Alessandro Ruﬁni, Edward T.W. Bampton,
+                    Francesca Bernassola, Gerry Melino, and Richard A. Knight<br>
+                    <br>
+                    <strong>Chapter 5:</strong> <i>Mutant p53-driven tumorigenesis</i>; Tamara Terzian and
+                    Guillermina Lozano<br>
+                    <br>
+                    <strong>Chapter 6:</strong> <i> Humanised Mouse Models: Targeting the Murine p53 Locus
+                    with Human Sequences</i>; Monica Hollstein and Yang Xu<br>
+                    <br>
+                    <strong>Chapter 7:</strong> <i>p53 models for mammary carcinogenesis</i>; Wolfgang Deppert and
+                    Genrich Tolstonog<br>
+                    <br>
+                    <strong>Chapter 8:</strong> <i>TP53 Somatic Mutations: Prognostic and Predictive Value in Human
+                    Cancers </i>; Magali Olivier<br>
+                    <br>
+                    <strong>Chapter 9:</strong> <i>Assessing TP53 status in human tumors: lessons from breast
+                    cancer</i>; Anita Langerod, Magali Olivier, and Anne-Lise Borresen<br>
+                    <br>
+                    <strong>Chapter 10:</strong> <i>TP53 germline mutations: genetics of Li-Fraumeni Syndrome</i>;
+                    Doua Bakry and David Malkin<br>
+                    <br>
+                    <strong>Chapter 11:</strong> <i>Tp53 Gene Therapy for Cancer Treatment and Prevention </i>;
+                    Robert E. Sobol, Yong-Song Guan, Long-Jiang Li,
+                    Wei-Wei Zhang, Zhaohui Peng, Kerstin B. Menander, Sunil Chada, Daniel C. Maneval, Jane A.
+                    Horowitz, Robert Warren, Gary L. Clayman, Stephen G. Swisher, W. Jarrod Goodman,
+                    John Nemunaitis, and Jack A. Roth<br>
+                    <br>
+                    <strong>Chapter 12:</strong> <i>Upstream targets in the p53 pathway</i>; Anna R. McCarthy and
+                    Sonia Lain<br>
+                    <br>
+                    <strong>Chapter 13:</strong> <i>p53-Reactivating Molecules as Research Tools and Anticancer
+                    Drugs</i>; Vera V. Grinkevich, Andreas Warnecke, and Galina Selivanova<br>
+                    <br>
+                    <strong>Chapter 14:</strong> <i>Targeting Mutant p53 for Improved Cancer Therapy </i>; Jinfeng
+                    Shen, Vladimir J.N. Bykov, and Klas G. Wiman<br>
+                    <br>
+                    <strong>Chapter 15:</strong> <i>p53-immunotherapy of cancer</i>; Hakim Echchannaoui and Matthias
+                    Theobald<br>
+                    <br>
+                    <strong>Chapter 16:</strong> <i>Designing p53 trials: a surgical oncologists view</i>; Daniela
+                    Kandioler, Sonja Kappel, and Brigitte Wolf<br>
+                    <br>
+                    <strong>Chapter 17:</strong> <i>p53 in the clinic: a pathologists view</i>; Philippe Bertheau,
+                    Jean-François Fléjou, Yves Allory,
+                    Pascale Varlet, Sylvie Lantuejoul, Louis-François Plassa, Hugues de Thé, Anne Janin, and
+                    Jacqueline Lehmann-Che<br>
+                    <br>
+                    <strong>Chapter 18:</strong> <i>Genetic Counseling for TP53 germline mutations</i>; Maria Isabel
+                    Waddington Achatz and Patricia Ashton-Prolla<br>
+                    <br>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+{% endblock %}

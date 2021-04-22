@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'contact';
+    active_submenu = '';
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"></nav>
+    <main class="main-panel col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>Contact</h1>
+        <div class="pt-5">For questions on the web site, please email at <a href="mailto:feedback@isb-cgc.org"
+                                                             target="_top">feedback@isb-cgc.org</a>
+        </div>
+    </main>
+
+</div>
+
+{% endblock %}

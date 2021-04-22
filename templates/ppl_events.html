@@ -1,0 +1,396 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'ppl_events';
+    active_submenu = '';
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#community">p53 Community</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#events">Meetings and Events</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="main-panel col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>People and Events</h1>
+        <div id="community" class="jump-div">
+            <h2>p53 Community</h2>
+            <hr>
+            <div class="p-3">
+                <h3>Research groups</h3>
+                <table class="table table-sm table-striped">
+                    <tbody>
+                    <tr>
+                        <td>Laura
+                            Attardi's Lab
+                        </td>
+                        <td><a href="https://med.stanford.edu/attardilab/about/faculty.html" target="_blank">
+                            <i class="fas fa-home"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Jill Bargonetti's Lab
+                        </td>
+                        <td><a href="https://bargonetti.bioweb.hunter.cuny.edu/" target="_blank">
+                            <i class="fas fa-home"></i></a></td>
+                    </tr>
+
+                    <tr>
+                        <td>Giovanni Blandino's Lab</td>
+                        <td><a href="https://www.activep53.eu/index.html" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>Jean-Christophe Bourdon's Lab
+                        </td>
+                        <td>
+                            <a href="https://www.dundee.ac.uk/medicine/staff/profile/jean-christophe-bourdon.php#tab-Biography"
+                               target="_blank"><i class="fas fa-home"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Braithwaite's Lab</td>
+                        <td><a href="https://www.otago.ac.nz/dsm-pathology/research/otago114482.html"
+                               target="_blank"><i class="fas fa-home"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Swati and Sumitra Deb's Lab</td>
+                        <td><a href="https://www.people.vcu.edu/~sdeb/" target="_blank"><i class="fas fa-home"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Giannino Del Sal's Lab</td>
+                        <td><a href="https://phdjumbo.sissa.it/faculty/prof-giannino-del-sal" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>Mathias Dobbelstein's Lab</td>
+                        <td><a href="https://www.moloncol.med.uni-goettingen.de/de/content/researchgroups/34.html"
+                               target="_blank"><i class="fas fa-home"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Joaquin M Espinosa's Lab</td>
+                        <td><a href="https://espinosalab.org/projects" target="_blank"><i class="fas fa-home"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sir Alan Fersht's Lab</td>
+                        <td><a href="https://www.ch.cam.ac.uk/staff/arf.html" target="_blank"><i class="fas fa-home"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Wei Gu's Lab</td>
+                        <td><a href="https://icg.cpmc.columbia.edu/research-faculty/Wei-Gu" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Pierre Hainaut's Lab</td>
+                        <td>
+                            <a href="https://iab.univ-grenoble-alpes.fr/Recherche/departement-prevention-et-therapie-maladies-chroniques/equipe-hainaut-pathologie-moleculaire-cancers-et-biomarqueurs"
+                               target="_blank"><i class="fas fa-home"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Curt C Harris's Lab
+                        </td>
+                        <td><a href="https://ccr.cancer.gov/Laboratory-of-Human-Carcinogenesis/curtis-c-harris"
+                               target="_blank"><i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>Ygal Haupt's Lab</td>
+                        <td><a href="https://www.petermac.org/research/labs/ygal-haupt" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+                    <tr>
+                        <td>Paul Hwang's Lab</td>
+                        <td><a href="https://irp.nih.gov/pi/paul-hwang" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Alberto Inga's Lab</td>
+                        <td><a href="https://www.cibio.unitn.it/85/laboratory-of-transcriptional-networks"
+                               target="_blank"><i class="fas fa-home"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Daniela Kandioler's Lab</td>
+                        <td><a href="https://www.p53.at" target="_blank"><i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>Sir David Lane's Lab</td>
+                        <td><a href="https://www.a-star.edu.sg/p53Lab/" target="_blank"><i class="fas fa-home"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Arnold Levine's Lab</td>
+                        <td><a href="https://www.ias.edu/people/faculty-and-emeriti/levine" target="_blank">
+                            <i class="fas fa-home"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Scott Lowe's Lab</td>
+                        <td><a href="https://www.mskcc.org/research-areas/labs/scott-lowe" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+
+                    <tr>
+                        <td>Gigi Lozano's Lab
+                        </td>
+                        <td>
+                            <a href="https://www.mdanderson.org/research/departments-labs-institutes/labs/lozano-laboratory.html"
+                               target="_blank"><i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>Xin Lu's Lab</td>
+                        <td><a href="https://www.ludwig.ox.ac.uk/xin-lu-group-page" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>David Malkin's Lab
+                        </td>
+                        <td>
+                            <a href="https://www.sickkids.ca/AboutSickKids/Directory/People/M/David-Malkin-staff-profile.html"
+                               target="_blank"><i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>James Manfredi's Lab</td>
+                        <td><a href="https://www.mountsinai.org/profiles/james-j-manfredi" target="_blank">
+                            <i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>David W Meek's Lab</td>
+                        <td><a href="https://www.dundee.ac.uk/medicine/staff/profile/david-meek.php"
+                               target="_blank"><i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>Maureen Murphy's Lab</td>
+                        <td><a href="https://wistar.org/our-scientists/maureen-murphy" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+
+                    <tr>
+                        <td>Ute Moll's Lab</td>
+                        <td><a href="https://renaissance.stonybrookmedicine.edu/pathology/faculty/moll"
+                               target="_blank"><i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>Moshe Oren's Lab</td>
+                        <td><a href="https://www.weizmann.ac.il/mcb/MosheOren/" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>Carol Prives's Lab</td>
+                        <td><a href="https://www.columbia.edu/cu/biology/faculty/prives/" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+
+                    <tr>
+                        <td>Mike Resnick's Lab</td>
+                        <td><a href="https://www.niehs.nih.gov/research/atniehs/labs/gisbl/pi/cs/index.cfm"
+                               target="_blank"><i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>Varda Rotter's Lab</td>
+                        <td><a href="https://www.weizmann.ac.il/mcb/Varda/" target="_blank"><i class="fas fa-home"></i></a>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>Pierre Roux's Lab</td>
+                        <td><a href="https://www.crbm.cnrs.fr/team/migration-invasion-microenvironnement/"
+                               target="_blank"><i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>Galina Selivanova's Lab</td>
+                        <td><a href="https://ki.se/en/mtc/galina-selivanova-group" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+
+                    <tr>
+                        <td>Karen Vousden's Lab</td>
+                        <td><a href="https://www.crick.ac.uk/research/a-z-researchers/researchers-v-y/karen-vousden/"
+                               target="_blank"><i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>Geoffrey Wahl's Lab</td>
+                        <td><a href="https://www.salk.edu/scientist/geoffrey-wahl/" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+
+                    <tr>
+                        <td>Klas Wiman's Lab</td>
+                        <td><a href="https://ki.se/en/onkpat/klas-g-wimans-group" target="_blank"><i
+                                class="fas fa-home"></i></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="p-3">
+                <h3>p53 Projects and Associations</h3>
+
+                <table class="table-sm table table-striped">
+                    <tbody>
+                    <tr>
+                        <td>Li-Fraumeni Syndrome Study</td>
+                        <td><a href="https://lfs.cancer.gov/" target="_blank"><i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>LFS Association</td>
+                        <td><a href="https://www.lfsassociation.org/" target="_blank"><i class="fas fa-home"></i></a>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>Living LFS Association</td>
+                        <td><a href="https://www.livinglfs.org/" target="_blank"><i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td>The George Pantziarka TP53 Trust</td>
+                        <td><a href="https://www.tp53.org.uk/" target="_blank"><i class="fas fa-home"></i></a></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="events" class="jump-div">
+            <h2>Meeting and Events</h2>
+            <hr>
+            <div class="p-3">
+                <h3>Upcoming Events</h3>
+                <ul>
+                    <li>
+                        <a href="https://www.weizmann.ac.il/conferences/P53W2020/" target="_blank">The 18th
+                            International p53 Workshop, Rehovot, Israel, 11-15 July 2021.å</a>
+
+                    </li>
+                </ul>
+
+                <h3>Past Events</h3>
+                <ul>
+                    <li>
+                        <a href="https://p53p63p73isoforms.irb.hr/" target="_blank"> The International p53/p63/p73
+                            Isoforms
+                            Workshop, Dubrovnik, Croatia, 3-6 November 2019.</a>
+
+                    </li>
+                    <li>
+                        <a href="{{ url_for('static', filename='download/8thp53MutantWorkshopBook.pdf') }}"
+                           target="_blank">8th
+                            International Mutant p53
+                            Workshop, LYON, 15-18 May 2019</a>
+
+                    </li>
+                    <li>
+                        <a href="https://www.lfsassociation.org/4th-international-lfs-association-symposium-2018/"
+                           target="_blank">4th International LFS Association Symposium, Toronto, April 2018</a>
+
+                    </li>
+                    <li>
+
+                        <a href="https://www.nature.com/natureevents/science/events/55795-The_17th_International_p53_Workshop"
+                           target="_blank">The 17th International p53 Workshop, Singapore, 8-12 July 2017</a>
+
+                    </li>
+                    <li>
+                        <a href="https://www.uib.no/en/ccbio/98818/3rd-international-p53-isoforms-conference"
+                           target="_blank">3rd International p53 Isoforms Conference, Bergen, Norway, 18-21 June
+                            2017
+                        </a>
+
+                    <li>
+                        <a href="https://www.mutantp53.org.au" target="_blank">7th International Mutant p53 Workshop,
+                            Melbourne, Australia, October 2016</a>
+
+                    </li>
+                    <li>
+                        <a href="https://www.lfsassociation.org/reach2016gallery/" target="_blank">The 2016
+                            INTERNATIONAL
+                            LFS CONFERENCE &amp; THE 3RD ANNUAL LIFE CONSORTIUM</a>
+
+                    </li>
+                    <li>
+
+                        <a href="https://ers.snapuptickets.com/ers/online-registration-page.cfm?event=529&amp;y=cGFnZUlkPTI2MyZ0eXBlPXJlZGlyZWN0"
+                           target="_blank">6th International Mutant p53 Workshop, Toronto, Canada, June 2013</a>
+
+                    </li>
+                    <li>
+                        5th Mutant p53 Workshop, 22-25 May 2011, Palazzo Chigi, Ariccia, Italy
+                        ( <a href="{{ url_for('static', filename='download/CDD_Blandino_5thMutant_2012.pdf') }}">Meeting
+                        report</a> )
+
+                    <li>
+                        1st International p53 Isoforms Meeting, 13-15 September 2010, IARC, Lyon, France
+                        ( <a href="{{ url_for('static', filename='download/Book_p53Isoforms2010_Final.pdf') }}">AbstractBook</a>
+                        /
+                        <a href="{{ url_for('static', filename='download/1stInternationalp53IsoformsMeeting.jpg') }}">Group
+                            Photo</a> /
+                        <a href="{{ url_for('static', filename='download/CDD_Marcel_Isoformes_2011.pdf') }}">Meeting
+                            report</a> )
+
+                    <li>
+                        <a target="_blank"
+                           href="{{ url_for('static', filename='meetings/P53meeting2009/P53Meeting2009.html') }}">4th
+                            International p53 mutant workshop,
+                            Acre, 27-29 March 2009</a>
+
+                    </li>
+                    <li>
+                        <a target="_blank"
+                           href="{{ url_for('static', filename='meetings/P53meeting2007/P53Meeting2007.html') }}">3rd
+                            International p53 mutant workshop,
+                            Lyon, 12-16 November 2007</a>
+
+                    </li>
+                    <li>
+                        Training workshop on mutation databases and expert group discussion on mutation databases,
+                        Lyon,
+                        July 2007
+                        ( <a target="_blank"
+                             href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=19006239">
+                        paper produced by the expert group</a> )
+
+                    <li>
+                        <a target="_blank" href="https://www.columbia.edu/cu/biology/p53/index.html">13th
+                            International
+                            p53
+                            workshop, New York, May 2006</a>
+
+                    </li>
+                    <li>
+                        <a target="_blank"
+                           href="{{ url_for('static', filename='meetings/P53meeting2005/P53Meeting2005.html') }}">2nd
+                            p53
+                            mutant workshop, Ein Gedi,
+                            November 2005</a>
+
+                    </li>
+                    <li>
+                        <a target="_blank"
+                           href="{{ url_for('static', filename='download/1stp53MutantWorkshop_Lyon_2003.pdf') }}">1st
+                            p53 mutant workshop, Lyon, July 2003</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

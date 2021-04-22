@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+    <script type="text/javascript">
+        active_menu = 'recab_search';
+    </script>
+    <script src="{{ url_for('static', filename='js/recab.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/search.js') }}?v=1"></script>
+{% endblock %}
+
+{% block content %}
+<h1 class="search-header">Recurrent Chromosome Aberrations Searcher</h1>
+
+<div class="collapse" id="aboutSearch">
+    <div class="card card-body m-2">
+        <p>The <strong>Recurrent Aberrations</strong> include all cytogenetic changes present in at least two cases of the same morphologic entity, and whenever applicable for solid tumors, within the same site. The complete karyotypes, patient characteristics, and references are found in the <a href="/case_search">Cases Cytogenetics</a> Searcher.</p>
+        Tips for this Searcher:
+        <ul>
+            <li>You must choose at least one of the following two fields: <strong>Structural Aberrations</strong> and <strong>Numerical Aberrations</strong>.</li>
+            <li>You may select only one item in select menu
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="collapse"
+                data-target="#aboutSearch"
+                aria-expanded="false" aria-controls="aboutSearch">
+            <i class="fas fa-info-circle" style="margin-right: 5px;"></i>About This Search
+        </button>
+        <form action="{{ url_for('search_result') }}" method="POST">
+            <input type="hidden" name="search_type" value="recab">
+            <div class="form-group row">
+                <div class="col-sm-3 text-right fm-header"><strong>Aberrations</strong></div>
+                <div class="col-sm-6 text-right">
+                    <hr>
+                </div>
+            </div>
+            <fieldset class="form-group">
+                <legend class="d-none">Aberrations</legend>
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-5">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ab_str" id="aberCheckboxStr"
+                                   value="S">
+                            <label class="form-check-label" for="aberCheckboxStr">
+                                Structural Aberrations
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ab_num" id="aberCheckboxNum"
+                                   value="N">
+                            <label class="form-check-label" for="aberCheckboxNum">
+                                Numerical Aberrations
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="str-aberration">
+                <div class="form-group row">
+                    <div class="col-sm-3 text-right fm-header"><strong>Structural Aberrations</strong></div>
+                    <div class="col-sm-6 text-right">
+                        <hr>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputBreak" class="col-form-label col-sm-4 pt-0 text-right" for="inputBreak">Breakpoint</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="inputBreak" id="inputBreak">
+                    </div>
+                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-4 pt-0 text-right">Aberration Type</legend>
+
+                        <div class="col-sm-5">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sAberType" id="sAberTypeA"
+                                       value="" checked>
+                                <label class="form-check-label" for="sAberTypeA">All</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sAberType" id="sAberTypeB"
+                                       value="B">
+                                <label class="form-check-label" for="sAberTypeB">Balanced</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sAberType" id="sAberTypeU"
+                                       value="U">
+                                <label class="form-check-label" for="sAberTypeU">Unbalanced</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group row">
+                    <div class="col-sm-3 text-right fm-header"><strong>Gene Characteristics</strong></div>
+                    <div class="col-sm-6 text-right">
+                        <hr>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputGene" class="col-form-label col-sm-4 pt-0 text-right">Gene</label>
+
+                    <div class="col-sm-5">
+                        <select name="inputGene" class="form-control chosen-select" id="inputGene" data-placeholder="Choose a Gene..." aria-label="Gene Name">
+                        <option value="">All Genes</option>
+                        {% for gene in gene_list %}
+                            <option>{{ gene.label }}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="num-aberration">
+                <div class="form-group row">
+                    <div class="col-sm-3 text-right fm-header"><strong>Numeric Aberrations</strong></div>
+                    <div class="col-sm-6 text-right">
+                        <hr>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label for="inputChr" class="col-form-label col-sm-4 pt-0 text-right">Chromosome</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="inputChr" id="inputChr">
+                        </div>
+                    </div>
+                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-4 pt-0 text-right">Aberration Type</legend>
+                        <div class="col-sm-5">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nAberType" id="nAberTypeA"
+                                       value="" checked>
+                                <label class="form-check-label" for="nAberTypeA">All</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nAberType" id="nAberTypeT"
+                                       value="T">
+                                <label class="form-check-label" for="nAberTypeT">Trisomy</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nAberType" id="nAberTypeM"
+                                       value="M">
+                                <label class="form-check-label" for="nAberTypeM">Monosomy</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+            <div class="tumor-ch">
+                <div class="form-group row">
+                    <div class="col-sm-3 text-right fm-header"><strong>Tumor Characteristics</strong></div>
+                    <div class="col-sm-6 text-right">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputTopo" class="col-sm-4 col-form-label text-right">Topography</label>
+                    <div class="col-sm-5">
+                        <select name="topo" class="form-control chosen-select" id="inputTopo" data-placeholder="Choose a Topography..."
+                                aria-label="Topography Name">
+                            <option value="">All Topographies</option>
+                            {% for topo in topo_list %}
+                                <option value="{{ topo.value }}">{{ topo.label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputMorph" class="col-sm-4 col-form-label text-right">Morphology</label>
+                    <div class="col-sm-5">
+                        <select name="morph" class="form-control chosen-select" id="inputMorph" data-placeholder="Choose a Morphology"
+                                aria-label="Morphology Name">
+                            <option value="">All Morphologies</option>
+                            {% for morph in morph_list %}
+                                <option value="{{ morph.value }}">{{ morph.label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-9 text-right">
+                    <button id="recab_submit" type="submit" class="btn btn-outline-primary"><i class="fas fa-search" style="margin-right: 5px;"></i>Search</button>
+                    <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

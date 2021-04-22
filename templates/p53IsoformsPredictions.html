@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'tp53data';
+    active_submenu = '';
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"></nav>
+    <main class="main-panel col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>Predicted Impact of tp53 mutations on p53 Isoforms</h1>
+        <div class="pt-5">
+            <p> Several isoforms of p53 have been described that are produced by alternative splicing,
+                use of alternative translation site or alternative promoter (see figure below and
+                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/18854945?dopt=Abstract">Marcel & Hainaut,
+                    2008</a>,
+                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/21941372">Marcel et al., 2011</a>).
+            </p>
+
+            <p> In the IARC TP53 Database, all annotations and data are in relation to the full-lenght protein (p53 or
+                p53TA isoform).
+                Annotations were generated on the predicted impact of TP53 gene mutations on the protein status of
+                isoforms.
+            </p>
+
+            <p> All mutations recorded in the database have thus been analyzed to predict their consequences on the
+                status of each p53 protein isoform.
+                These predictions are based on theoretical approaches taking into account the known protein sequences of
+                each isoforms, the position of
+                the mutation in these sequences and the type of mutation.
+                <br/>
+                <br/>
+                <strong> Annotations and rules used for the predictions:</strong></p>
+
+            <ul>
+                <li> WT = no amino acid change compared to the wild-type sequence</li>
+                <li> Altered = any change in the amino acid sequence</li>
+                <li> Not produced = any mutation affecting the start codon of the isoform</li>
+                <li> Unknown = uncertain prediction of mutation effect</li>
+            </ul>
+
+            <p>These annotations can be retrieved from the 'Gene variations' search option.</p>
+            <br/>
+
+            <div><strong> Reference sequences of p53 isoforms:</strong></div>
+
+            <ul>
+                <li> p53alpha: <a target="_blank"
+                                  href="https://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=Nucleotide&amp;list_uids=8400737&amp;dopt=GenBank">NM_000546</a>
+                </li>
+                <li> p53beta: <a target="_blank"
+                                 href="https://www.ncbi.nlm.nih.gov/sites/entrez?db=nuccore&cmd=&term=DQ186648&go=Go">DQ186648</a>,
+                    <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/16131611?dopt=Abstract">Bourdon et al.,
+                        2005.</a></li>
+                <li> p53gamma: <a target="_blank"
+                                  href="https://www.ncbi.nlm.nih.gov/sites/entrez?db=nuccore&cmd=&term=DQ186649&go=Go">DQ186649</a>,
+                    <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/16131611?dopt=Abstract">Bourdon et al.,
+                        2005.</a></li>
+                <li> delta40p53alpha: <a target="_blank"
+                                         href="https://www.ncbi.nlm.nih.gov/pubmed/12360399?dopt=Abstract">Courtois et
+                    al, 2002.</a></li>
+                <li> delta40p53beta: <a target="_blank"
+                                        href="https://www.ncbi.nlm.nih.gov/pubmed/16131611?dopt=Abstract">Bourdon et
+                    al.,
+                    2005.</a></li>
+                <li> deltap4053gamma: <a target="_blank"
+                                         href="https://www.ncbi.nlm.nih.gov/pubmed/16131611?dopt=Abstract">Bourdon et
+                    al., 2005.</a></li>
+                <li> delta133p53alpha: <a target="_blank"
+                                          href="https://www.ncbi.nlm.nih.gov/sites/entrez?db=nuccore&cmd=&term=DQ186650&go=Go">DQ186650</a>,
+                    <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/16131611?dopt=Abstract">Bourdon et al.,
+                        2005.</a></li>
+                <li> delta133p53beta: <a target="_blank"
+                                         href="https://www.ncbi.nlm.nih.gov/sites/entrez?db=nuccore&cmd=&term=DQ186651&go=Go">DQ186651</a>,
+                    <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/16131611?dopt=Abstract">Bourdon et al.,
+                        2005.</a></li>
+                <li> delta133p53gamma: <a target="_blank"
+                                          href="https://www.ncbi.nlm.nih.gov/sites/entrez?db=nuccore&cmd=&term=DQ186652&go=Go">DQ186652</a>,
+                    <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/16131611?dopt=Abstract">Bourdon et al.,
+                        2005.</a></li>
+                <li> deltap53: <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/16009130?dopt=Abstract">Rohaly
+                    et al., 2005</a></li>
+            </ul>
+
+            <img width="600px" src="{{ url_for('static', filename='img/Humanp53Isoforms.png') }}"
+                 alt="p53 Isoforms"/><br/>
+            <div class="text-muted">From Marcel & Bourdon, 2010</div>
+
+        </div>
+    </main>
+</div>
+{% endblock %}

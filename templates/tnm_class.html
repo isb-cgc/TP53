@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'help';
+    active_submenu = '';
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"></nav>
+    <main class="main-panel col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>TNM Classification</h1>
+        <div class="pt-5">
+            <img src="{{ url_for('static', filename='img/tnm.gif') }}"/>
+            <!--<img src="images/tnm.gif" alt="tnm.GIF (48285 bytes)" style="width:567" height="379"/>-->
+        </div>
+    </main>
+</div>
+{% endblock %}

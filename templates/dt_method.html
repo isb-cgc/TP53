@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'resources';
+    active_submenu = '';
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"></nav>
+    <main class="main-panel col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>Structure-Function Predictions Based on Scores Eerived from Delaunay Tessellations</h1>
+
+        <div class="pt-5 px-3">
+            <div>
+                For a detailed description of the method and results, please refer to :
+            </div>
+            <div class="p-3 bg-light">
+                Mathe, E, Olivier, M., Kato, S., Ishioka, C., Vaisman, II, Hainaut, P. <b>2006</b>
+                Predicting the transactivation activity of p53 missense mutants using a four-body
+                potential score derived from Delaunay tessellations. <a
+                    href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=16395672&query_hl=1&itool=pubmed_docsum">
+                Human Mutat 27(2):163-72.</a>
+            </div>
+
+            <div class="pt-5">Here is a brief description:</div>
+            <div class="p-3">
+
+                <p>The Delaunay tessellation of a protein allows the identification of all four nearest neighbor
+                    residues
+                    (quadruplets),
+                    where each residue is represented by the position of its center of mass (determined from the 3D
+                    coordinates extracted from
+                    a PDB structure file). Delaunay tessellations represent an objective and unambiguous definition of
+                    nearest residue neighbors
+                    and provide a framework for calculating empirical potentials.
+                </p>
+
+                <p>The amino acid composition of quadruplets is evaluated to analyze which clusters of four amino acids
+                    tend
+                    to be close together
+                    in folded protein structures. The log-likelihood of the quadruplets derived from a Delaunay
+                    Tessellation
+                    were calculated from a
+                    training set of 1417 protein structures solved via x-ray crystallography (extracted from PDB), with
+                    low
+                    sequence homology
+                    and high resolution. Previous analyses of the distribution of
+                    these log likelihood scores showed that it is is non random. Quadruplets with highest log
+                    likelihoods
+                    contain cysteines, which are
+                    structurally important as they form sulfur bridges and they are involved in metal binding motifs
+                    [Vaisman II, 1998].
+                </p>
+
+                <p><b>Potential scores</b> for each residue are calculated by summing up the log-likelihoods of the
+                    quadruplets in which that residue
+                    participates, while potential scores for the entire protein are computed by taking the sum of the
+                    log-likelihoods of all
+                    quadruplets found in the protein. These scores were used for the identification of tertiary packing
+                    motifs and functional
+                    signature motifs common to structures belonging to the same protein family [Tropsha, et al., 2003].
+                    Furthermore, the distribution
+                    of the residue potential scores indicates that low scores are associated with surface residues,
+                    which
+                    have less structural
+                    neighbors, and high scores are associated with residues in the hydrophobic core, which are
+                    structurally
+                    important for maintaining
+                    the conformation of a protein [Carter, et al., 2001; Masso and Vaisman, 2003]. <b>Potential score
+                        profiles</b> for a protein are
+                    also derived by constructing a vector with N elements, where N is the number of amino acids in a
+                    given
+                    protein. Each element in
+                    the vector represents the potential score of the corresponding residue.
+                </p>
+
+                <p>To simulate the introduction of a missense mutation, the amino acid letter code is modified at the
+                    appropriate residue position,
+                    which changes the amino acid composition of the quadruplets in which it participates. <b>The
+                        potential
+                        score for the mutant is
+                        calculated using the Delaunay tessellation of the wild-type structure with the modified primary
+                        sequence</b>. Potential score
+                    differences, called <b>Residual Scores (RS)</b> are then calculated, for each residue or for the
+                    entire
+                    protein, by subtracting
+                    the potential score of mutants from that of the wild-type. RS has been shown to correlate well with
+                    the
+                    stability of mutants
+                    [Carter, et al., 2001] and have also been successfully applied to classify non-synonymous SNPs as
+                    disease-associated
+                    or not [Barenboim, et al., 2005]. Similar to potential profiles, <b>Residual Score Profiles
+                        (RSP)</b>
+                    are vectors of N (number of amino acids in a given protein) elements, each representing the residual
+                    score for every amino acid
+                    in the protein under study.
+                </p>
+            </div>
+
+            <h3>References:</h3>
+            <ul>
+                <li>
+                    Mathe, E, Olivier, M., Kato, S., Ishioka, C., Vaisman, II, Hainaut, P. <b>2006</b> Predicting the
+                    transactivation activity of p53 missense mutants using a four-body potential score derived from
+                    Delaunay tessellations.
+                    <a href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=16395672&query_hl=1&itool=pubmed_docsum">Human
+                        Mutat 27(2):163-72.</a>
+                </li>
+                <li>Poupon, A. (<b>2004</b>) Voronoi and Voronoi-related tessellations in studies of protein structure
+                    and
+                    interaction. Curr Opin Struct Biol, 14, 233-241.
+                </li>
+                <li>Krishnamoorthy, B. and Tropsha, A. (<b>2003</b>) Development of a four-body statistical
+                    pseudo-potential to discriminate native from non-native protein conformations. Bioinformatics, 19,
+                    1540-1548.
+                </li>
+                <li>Masso, M. and Vaisman, II. (<b>2003</b>) Comprehensive mutagenesis of HIV-1 protease: a
+                    computational
+                    geometry approach. Biochem Biophys Res Commun, 305, 322-326.
+                </li>
+                <li>Tropsha, A., Carter, C.W., Jr., Cammer, S. and Vaisman, II. (<b>2003</b>) Simplicial neighborhood
+                    analysis of protein packing (SNAPP): a computational geometry approach to studying proteins. Methods
+                    Enzymol, 374, 509-544.
+                </li>
+                <li>Carter, C.W., Jr., LeFebvre, B.C., Cammer, S.A., Tropsha, A. and Edgell, M.H. (<b>2001</b>)
+                    Four-body
+                    potentials reveal protein-specific correlations to stability changes caused by hydrophobic core
+                    mutations. J Mol Biol, 311, 625-638.
+                </li>
+                <li>Singh, R.K., Tropsha, A. and Vaisman, II. (<b>1996</b>) Delaunay tessellation of proteins: four body
+                    nearest-neighbor propensities of amino acid residues. J Comput Biol, 3, 213-221.
+                </li>
+                <li>Vaisman II, T.A., Zheng W. (<b>1996</b>) Compositional Preferences in Quadruplets of Nearest
+                    Neighbor
+                    Residues in Protein Structures: Statistical Geometry Analysis. IEEE Symposia on Intelligence and
+                    Systems, 163-168.
+                </li>
+                <li>Cho, Y., Gorina, S., Jeffrey, P.D. and Pavletich, N.P. (<b>1994</b>) Crystal structure of a p53
+                    tumor
+                    suppressor-DNA complex: understanding tumorigenic mutations. Science, 265, 346-355.
+                </li>
+            </ul>
+
+        </div>
+    </main>
+</div>
+{% endblock %}

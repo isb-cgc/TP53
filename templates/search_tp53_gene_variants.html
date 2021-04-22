@@ -1,0 +1,190 @@
+{% extends "tp53data.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'search_tp53data';
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/search_gv.js') }}"></script>
+
+
+{% endblock %}
+
+{% block subcontent %}
+<div class="jump-div">
+    <h2>Search tp53 Gene Variations</h2>
+    <hr>
+    <div id="search_tp53_gv" class="p-3">
+        <div class="p-3 bg-light rounded-2">
+            <h3>Enter List of Variants</h3>
+            <form class="search-form" action="{{ url_for('gv_result') }}" method="POST">
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">Search by:</legend>
+                    <div class="col-sm-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type_input" id="type_cdna"
+                                   value="type_cdna"
+                                   data-bs-toggle="collapse" data-bs-target="#cdna_div" aria-expanded="false"
+                                   aria-controls="cdna_div">
+                            <label class="form-check-label" for="type_cdna">
+                                cDNA Description
+                            </label>
+                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                    data-bs-placement="right"
+                                    title="Mutation nomenclature according to <a href='https://www.genomic.unimelb.edu.au/mdi/mutnomen/' target='_blank'>HGVS</a> standards and using the NM_000546.5 coding sequence as reference.">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type_input" id="type_p"
+                                   value="type_p"
+                                   data-bs-toggle="collapse" data-bs-target="#p_div" aria-expanded="false"
+                                   aria-controls="p_div">
+                            <label class="form-check-label" for="type_p">
+                                Protein Description
+                            </label>
+                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                    data-bs-placement="right"
+                                    title="Mutation description at the protein level as recommended by <a href='resources#mutation'>HGVS</a> and using the Uniprot reference sequence P04637.">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type_input" id="type_hg19"
+                                   value="type_hg19"
+                                   data-bs-toggle="collapse" data-bs-target="#hg19_div" aria-expanded="false"
+                                   aria-controls="hg19_div">
+                            <label class="form-check-label" for="type_hg19">
+                                Genomic Description (hg19)
+                            </label>
+
+                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                    data-bs-placement="right"
+                                    title="Mutation nomenclature according to <a href='https://www.genomic.unimelb.edu.au/mdi/mutnomen/' target='_blank'>HGVS</a> standards and using the GenBank NC_000017.10 (hg19 assembly) genomic sequence as reference.</td>">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type_input" id="type_hg38"
+                                   value="type_hg38"
+                                   data-bs-toggle="collapse" data-bs-target="#hg38_div" aria-expanded="false"
+                                   aria-controls="hg38_div">
+                            <label class="form-check-label" for="type_hg38">
+                                Genomic Description (hg38)
+                            </label>
+                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                                    data-bs-placement="right"
+                                    title="Mutation nomenclature according to <a href='https://www.genomic.unimelb.edu.au/mdi/mutnomen/' target='_blank'>HGVS</a> standards and using the GenBank NC_000017.11 (hg38 assembly) genomic sequence as reference.">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+                <div id="gv_type_collapse">
+                    <div id="cdna_div" class="collapse type-collapse" data-bs-parent="#gv_type_collapse">
+                        <fieldset class="row mb-3">
+                            <legend class="col-form-label col-sm-3 pt-0">cDNA Descriptions:</legend>
+
+                            <div class="col-sm-8">
+                                <select name="cdna_list" class="form-control chosen-select" id="cdna_input"
+                                        data-placeholder="Choose cDNA Descriptions..." aria-label="cDNA List" multiple>
+                                    {% for c_desc in c_desc_list %}
+                                    <option value="{{ c_desc.label }}">{{ c_desc.label }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="text-muted text-sm-start">Reference Sequence: NM_000546.5</div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <div id="p_div" class="collapse type-collapse" data-bs-parent="#gv_type_collapse">
+                        <fieldset class="row mb-3">
+                            <legend class="col-form-label col-sm-3 pt-0">Protein Descriptions:</legend>
+
+                            <div class="col-sm-8">
+                                <select name="p_list" class="form-control chosen-select" id="p_input"
+                                        data-placeholder="Choose Protein Descriptions..." aria-label="Protein List"
+                                        multiple>
+                                    {% for p_desc in p_desc_list %}
+                                    <option value="{{ p_desc.label }}">{{ p_desc.label }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="text-muted text-sm-start">Reference Sequence: UniProt P04637</div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <div id="hg19_div" class="collapse type-collapse" data-bs-parent="#gv_type_collapse">
+                        <fieldset class="row mb-3">
+                            <legend class="col-form-label col-sm-3 pt-0">Genomic Descriptions (hg19):</legend>
+
+                            <div class="col-sm-8">
+                                <select name="hg19_list" class="form-control chosen-select" id="hg19_input"
+                                        data-placeholder="Choose Genomic Descriptions (hg19)..."
+                                        aria-label="Genomic List (hg19)"
+                                        multiple>
+                                    {% for g_desc_hg19 in g_desc_hg19_list %}
+                                    <option value="{{ g_desc_hg19.label }}">{{ g_desc_hg19.label }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="text-muted text-sm-start">Reference Sequence: GenBank NC_000017.10</div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div id="hg38_div" class="collapse type-collapse" data-bs-parent="#gv_type_collapse">
+                        <fieldset class="row mb-3">
+                            <legend class="col-form-label col-sm-3 pt-0">Genomic Descriptions (hg38):</legend>
+
+                            <div class="col-sm-8">
+                                <select name="hg38_list" class="form-control chosen-select" id="hg38_input"
+                                        data-placeholder="Choose Genomic Descriptions (hg38)..."
+                                        aria-label="Genomic List (hg38)"
+                                        multiple>
+                                    {% for g_desc_hg38 in g_desc_hg38_list %}
+                                    <option value="{{ g_desc_hg38.label }}">{{ g_desc_hg38.label }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="text-muted text-sm-start">Reference Sequence: NC_000017.11</div>
+
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-11">
+
+                        <div class="text-end">
+                            <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                            <button type="submit" class="btn btn-outline-primary "><i class="fas fa-search"
+                                                                                      style="margin-right: 5px;"></i>Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-sm-11">
+                    <div class="text-muted pt-2">For format conversions, we recommend to use <a
+                            href="https://mutalyzer.nl/"
+                            target="_blank">Mutalyzer</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-3 mt-3 bg-light rounded-2">
+            <h3>PHANTM Classifier</h3>
+            <div class="col-sm-11">
+                <div>Explore the origin and phenotype of TP53 mutations with the PHANTM classifier</div>
+                <div class="text-end">
+                    <a type="button" class="btn btn-sm btn-outline-primary"
+                       href="https://mutantp53.broadinstitute.org" target="_blank"><i
+                            class="fas fa-external-link-alt"></i>
+                        <strong>PH</strong>enotypic
+                        <strong>AN</strong>notation of <strong>T</strong>P53 <strong>M</strong>utations</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

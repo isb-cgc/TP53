@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'tp53data';
+    active_submenu = '';
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/search_tp53.js') }}"></script>
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse has-submenubar">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a id="btn-search-data" data-bs-toggle="collapse" role="button" aria-expanded="true"
+                       aria-controls="searchmenu-collapse" class="nav-link active" aria-current="page"
+                       href="#searchmenu-collapse">Search
+                        Data</a>
+                </li>
+                <div id="searchmenu-collapse" class="ps-3 pb-3 collapse show">
+                    <li class="nav-item sub-navitem">
+                        <a class="nav-link active" href="#gene_var">tp53 Gene Variations</a>
+                    </li>
+                    <li class="nav-item sub-navitem">
+                        <a class="nav-link" href="#somatic_mut">tp53 Somatic Mutations</a>
+                    </li>
+                    <li class="nav-item sub-navitem">
+                        <a class="nav-link" href="#germ_var">tp53 Germline Mutations</a>
+                    </li>
+                    <li class="nav-item sub-navitem">
+                        <a class="nav-link" href="#cell_lines">Cell Lines</a>
+                    </li>
+                    <li class="nav-item sub-navitem">
+                        <a class="nav-link" href="#mouse_models">Mouse Models</a>
+                    </li>
+                    <li class="nav-item sub-navitem">
+                        <a class="nav-link" href="#exp_ind_mut">Exp. Induced Mutations</a>
+                    </li>
+                </div>
+
+
+
+                <li class="nav-item">
+                    <a id="get_tp53data" data-bs-toggle="collapse" role="button" aria-expanded="false"
+                       aria-controls="getdatamenu-collapse" class="nav-link"
+                       href="#getdatamenu-collapse">
+
+                        Data Downloads</a>
+                </li>
+                <div id="getdatamenu-collapse" class="ps-3 pb-3 collapse">
+                    <li class="nav-item sub-navitem">
+                        <a class="nav-link" href="get_tp53data#get_som_mut">Somatic Mutations</a>
+                    </li>
+                    <li class="nav-item sub-navitem">
+                        <a class="nav-link" href="get_tp53data#get_germ_mut">Germline Mutations</a>
+                    </li>
+                    <li class="nav-item sub-navitem">
+                        <a class="nav-link" href="get_tp53data#get_cell">Cell Lines</a>
+                    </li>
+                    <li class="nav-item sub-navitem">
+                        <a class="nav-link" href="get_tp53data#get_annot">Mutation Annotations and Phenotypes</a>
+                    </li>
+                    <li class="nav-item sub-navitem">
+                        <a class="nav-link" href="get_tp53data#get_mouse">Mouse-Models</a>
+                    </li>
+                    <li class="nav-item sub-navitem">
+                        <a class="nav-link" href="get_tp53data#get_eim">Exp. Induced Mutations</a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </nav>
+    <main class="main-panel col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>Data Exploration</h1>
+        {% block subcontent %}
+        {% endblock %}
+    </main>
+</div>
+{% endblock %}

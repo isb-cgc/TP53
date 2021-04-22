@@ -1,0 +1,911 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'resources';
+    active_submenu = '';
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"></nav>
+    <main class="main-panel col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>p53 target genes</h1>
+        <div class="pt-5">
+            <h2>p53 target genes</h2>
+            <hr/>
+            <p> Recent genome-wide analyses and meta-analyses of genome-wide datasets of p53 DNA-binding and gene
+                regulation show that p53 is a <strong>direct activator of a limited number of genes</strong> compared to
+                the number of putative response-elements
+                identified genome-wide. They also provide evidence that p53 <strong>is not a direct repressor of
+                    genes</strong>.
+            </p>
+            <ul>
+                <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=28288132">Census and
+                    evaluation of p53 target genes</a>:<br/>
+                    <p>This study identified <strong>350 genes that are confirmed direct p53 targets</strong> (see
+                        below) based
+                        on a meta-analysis of 15 genome-wide datasets and over 300 single-gene studies. These genes have
+                        roles
+                        in several cellular functions including
+                        apoptosis, cell-cycle arrest, autophagy, metabolism, DNA repair, translational control, feedback
+                        mechanisms.</p>
+                    <p>This study also summarizes <a target="_blank"
+                                                     href="https://www.ncbi.nlm.nih.gov/pubmed/?term=fischer+m%2C+p53+target">several
+                        other studies </a>that collectively show that p53 is not a direct repressor of genes but can
+                        <strong>indirectly
+                            repress genes through activation of the p21-DREAM/RB pathway</strong>.
+                        Most repressed genes through this p53-p21-DREAM/RB pathway are cell-cycle genes.</p>
+                </li>
+                <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=26081755">Whole-genome
+                    cartography of
+                    p53 response elements ranked on transactivation potential</a>:<br/>
+                    <p>This study provides a comprehensive annotation of canonical and non-canonical p53 REs in the
+                        human
+                        genome, ranked on predicted transactivation potential.</p>
+                </li>
+                <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=28904012">Identification of a
+                    core
+                    TP53 transcriptional program with highly distributed tumor suppressive activity</a>:<br/>
+                    <p>This study shows that TP53 activates a genetically robust transcriptional program with highly
+                        distributed tumor suppressive functions acting in diverse cellular contexts.</p>
+                </li>
+                <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=27197205">Multiplex
+                    enhancer-reporter
+                    assays uncover unsophisticated TP53 enhancer logic</a>:<br/>
+                    <p>This study shows that TP53 enhancers represent a class of unsophisticated cell-autonomous
+                        enhancers
+                        containing a single TP53 binding site.</p>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/30107566">Revealing a human p53
+                        universe</a>:<br/>
+                    <p>This study used a common analysis pipeline to perform a meta-analysis of 41 datasets from
+                        genome-wide
+                        ChIP-seq studies, providing a platform to characterize p53 binding throughout the human
+                        genome.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="pt-5">
+
+
+            <h2>Census p53 target genes by Fischer (2017)</h2>
+            <hr/>
+
+
+            <table class="table table-striped table-sm text-start code-text">
+                <tr>
+                    <td>
+                        CDKN1A
+                    </td>
+                    <td>ABCA12</td>
+                    <td>NTPCR</td>
+                    <td>PGPEP1</td>
+                    <td>RNF19B</td>
+                    <td>LCE1E</td>
+                    <td>EPN3</td>
+                    <td>SCN4B</td>
+                    <td>ARVCF</td>
+                    <td>FCHO2</td>
+                    <td>PANK2</td>
+                    <td>TMEM8B</td>
+                </tr>
+                <tr>
+                    <td>
+                        RRM2B
+                    </td>
+                    <td>ANKRA2</td>
+                    <td>ORAI3</td>
+                    <td>PLCL2</td>
+                    <td>SAC3D1</td>
+                    <td>LIMK2</td>
+                    <td>FBXO32</td>
+                    <td>SCRIB</td>
+                    <td>BHLHE40</td>
+                    <td>FCHSD2</td>
+                    <td>PAQR7</td>
+                    <td>TP53</td>
+                </tr>
+                <tr>
+                    <td>
+                        MDM2
+                    </td>
+                    <td>CCNG1</td>
+                    <td>PRKAB1</td>
+                    <td>PMAIP1</td>
+                    <td>SYTL1</td>
+                    <td>LRP1</td>
+                    <td>FHL2</td>
+                    <td>SEMA3B</td>
+                    <td>BMP7</td>
+                    <td>FLRT2</td>
+                    <td>PCBP4</td>
+                    <td>TP53I11</td>
+                </tr>
+                <tr>
+                    <td>
+                        SUSD6
+                    </td>
+                    <td>CYFIP2</td>
+                    <td>PTP4A1</td>
+                    <td>PRDM1</td>
+                    <td>TNFRSF10A</td>
+                    <td>MCC</td>
+                    <td>HES2</td>
+                    <td>SLC25A45</td>
+                    <td>BORCS7</td>
+                    <td>GBE1</td>
+                    <td>PERP</td>
+                    <td>TRAK1</td>
+                </tr>
+                <tr>
+                    <td>
+                        GDF15
+                    </td>
+                    <td>DRAM1</td>
+                    <td>SESN2</td>
+                    <td>RAP2B</td>
+                    <td>TNFRSF10D</td>
+                    <td>NUPR1</td>
+                    <td>KCNN4</td>
+                    <td>SLC44A5</td>
+                    <td>BTBD10</td>
+                    <td>GPC1</td>
+                    <td>PLLP</td>
+                    <td>TRIP6</td>
+                </tr>
+                <tr>
+                    <td>
+                        BTG2
+                    </td>
+                    <td>FBXO22</td>
+                    <td>SLC30A1</td>
+                    <td>RRAD</td>
+                    <td>TSPAN11</td>
+                    <td>PARD6G</td>
+                    <td>KLHDC7A</td>
+                    <td>SLC4A11</td>
+                    <td>BTG3</td>
+                    <td>HES1</td>
+                    <td>POU3F1</td>
+                    <td>TSGA10</td>
+                </tr>
+                <tr>
+                    <td>
+                        DDB2
+                    </td>
+                    <td>ISCU</td>
+                    <td>SPATA18</td>
+                    <td>ZNF219</td>
+                    <td>VWCE</td>
+                    <td>PHPT1</td>
+                    <td>LMNA</td>
+                    <td>SLC9A1</td>
+                    <td>C17orf89</td>
+                    <td>HRAS</td>
+                    <td>PPFIBP1</td>
+                    <td>UNC5B</td>
+                </tr>
+                <tr>
+                    <td>
+                        GADD45A
+                    </td>
+                    <td>PHLDA3</td>
+                    <td>TGFA</td>
+                    <td>ZNF337</td>
+                    <td>DDIT4</td>
+                    <td>PIDD1</td>
+                    <td>MLF2</td>
+                    <td>STAT3</td>
+                    <td>CAPN2</td>
+                    <td>HSD17B3</td>
+                    <td>PPM1J</td>
+                    <td>UQCC1</td>
+                </tr>
+                <tr>
+                    <td>
+                        PLK3
+                    </td>
+                    <td>SERPINB5</td>
+                    <td>TLR3</td>
+                    <td>ACTA2</td>
+                    <td>RAD51C</td>
+                    <td>PML</td>
+                    <td>MR1</td>
+                    <td>STK17A</td>
+                    <td>CASP6</td>
+                    <td>ICOSLG</td>
+                    <td>PPP4R3A</td>
+                    <td>VDR</td>
+                </tr>
+                <tr>
+                    <td>
+                        TIGAR
+                    </td>
+                    <td>SERTAD1</td>
+                    <td>TM7SF3</td>
+                    <td>EDN2</td>
+                    <td>SERPINE1</td>
+                    <td>PTPRE</td>
+                    <td>MYO6</td>
+                    <td>STX6</td>
+                    <td>CATSPERG</td>
+                    <td>IGFBP7</td>
+                    <td>PTAFR</td>
+                    <td>YPEL3</td>
+                </tr>
+                <tr>
+                    <td>
+                        RPS27L
+                    </td>
+                    <td>TRAF4</td>
+                    <td>TMEM68</td>
+                    <td>ALOX5</td>
+                    <td>TNFAIP8</td>
+                    <td>PVRL4</td>
+                    <td>NEFL</td>
+                    <td>TP73</td>
+                    <td>CAV1</td>
+                    <td>IL1B</td>
+                    <td>RALGDS</td>
+                    <td>ZNF195</td>
+                </tr>
+                <tr>
+                    <td>
+                        TNFRSF10B
+                    </td>
+                    <td>TRIM22</td>
+                    <td>WDR63</td>
+                    <td>ARHGEF3</td>
+                    <td>TSKU</td>
+                    <td>RETSAT</td>
+                    <td>NKAIN4</td>
+                    <td>TRIM32</td>
+                    <td>CCNK</td>
+                    <td>ISYNA1</td>
+                    <td>RBM38</td>
+                    <td>ZNF385A</td>
+                </tr>
+                <tr>
+                    <td>
+                        TRIAP1
+                    </td>
+                    <td>CES2</td>
+                    <td>ZNF561</td>
+                    <td>CERS5</td>
+                    <td>PCNA</td>
+                    <td>REV3L</td>
+                    <td>PCLO</td>
+                    <td>TRIM38</td>
+                    <td>CFLAR</td>
+                    <td>JAG1</td>
+                    <td>RGL1</td>
+                    <td>ZNF488</td>
+                </tr>
+                <tr>
+                    <td>
+                        ZMAT3
+                    </td>
+                    <td>CMBL</td>
+                    <td>ZNF79</td>
+                    <td>DDR1</td>
+                    <td>ACYP2</td>
+                    <td>RNASE7</td>
+                    <td>PDE4C</td>
+                    <td>TRIM5</td>
+                    <td>CGB7</td>
+                    <td>KRT8</td>
+                    <td>RGS20</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        BAX
+                    </td>
+                    <td>FBXW7</td>
+                    <td>ASCC3</td>
+                    <td>DHRS3</td>
+                    <td>APAF1</td>
+                    <td>SFN</td>
+                    <td>PGAP1</td>
+                    <td>TYMSOS</td>
+                    <td>CHST14</td>
+                    <td>KSR1</td>
+                    <td>RHOC</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        PGF
+                    </td>
+                    <td>HSPA4L</td>
+                    <td>ACER2</td>
+                    <td>DUSP14</td>
+                    <td>APOBEC3H</td>
+                    <td>TNFRSF10C</td>
+                    <td>PLCXD2</td>
+                    <td>AKAP9</td>
+                    <td>COBLL1</td>
+                    <td>LACC1</td>
+                    <td>RPS19</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        POLH
+                    </td>
+                    <td>KITLG</td>
+                    <td>ANXA4</td>
+                    <td>E2F7</td>
+                    <td>BCL2L1</td>
+                    <td>TRIML2</td>
+                    <td>PLEKHF1</td>
+                    <td>CCDC51</td>
+                    <td>CPEB2</td>
+                    <td>LPXN</td>
+                    <td>SARS</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        PPM1D
+                    </td>
+                    <td>SLC12A4</td>
+                    <td>APOBEC3C</td>
+                    <td>EPS8L2</td>
+                    <td>BCL6</td>
+                    <td>VCAN</td>
+                    <td>PLTP</td>
+                    <td>CDH8</td>
+                    <td>CPSF4</td>
+                    <td>LRPAP1</td>
+                    <td>SCIN</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        SULF2
+                    </td>
+                    <td>ATF3</td>
+                    <td>ASTN2</td>
+                    <td>FAM210B</td>
+                    <td>BLCAP</td>
+                    <td>ADCK3</td>
+                    <td>PLXNB1</td>
+                    <td>DUSP11</td>
+                    <td>DNAJB2</td>
+                    <td>MFAP3L</td>
+                    <td>SCN3B</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        XPC
+                    </td>
+                    <td>BBC3</td>
+                    <td>CD82</td>
+                    <td>GLS2</td>
+                    <td>C17orf82</td>
+                    <td>AK3</td>
+                    <td>PLXNB2</td>
+                    <td>GCC2</td>
+                    <td>DOCK8</td>
+                    <td>MKNK2</td>
+                    <td>SDC4</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        AEN
+                    </td>
+                    <td>CCDC90B</td>
+                    <td>CDIP1</td>
+                    <td>GPX1</td>
+                    <td>COL7A1</td>
+                    <td>ALDH1A3</td>
+                    <td>PRKAB2</td>
+                    <td>METTL8</td>
+                    <td>DUSP5</td>
+                    <td>MON2</td>
+                    <td>SDPR</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        BLOC1S2
+                    </td>
+                    <td>DYRK3</td>
+                    <td>CPE</td>
+                    <td>GRHL3</td>
+                    <td>CPEB4</td>
+                    <td>BBS2</td>
+                    <td>PRKX</td>
+                    <td>PPP1R3C</td>
+                    <td>DUSP7</td>
+                    <td>MRPL49</td>
+                    <td>SMAD3</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        FAS
+                    </td>
+                    <td>EDA2R</td>
+                    <td>CSF1</td>
+                    <td>HHAT</td>
+                    <td>CSNK1G1</td>
+                    <td>BTG1</td>
+                    <td>PRODH</td>
+                    <td>STEAP3</td>
+                    <td>EBI3</td>
+                    <td>MYBPHL</td>
+                    <td>SNX2</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        GPR87
+                    </td>
+                    <td>EPHA2</td>
+                    <td>DCP1B</td>
+                    <td>IGDCC4</td>
+                    <td>DGKA</td>
+                    <td>CEL</td>
+                    <td>PTPRU</td>
+                    <td>ABHD4</td>
+                    <td>EFNB1</td>
+                    <td>MYLK</td>
+                    <td>SOCS4</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        NINJ1
+                    </td>
+                    <td>FAM13C</td>
+                    <td>ENC1</td>
+                    <td>IKBIP</td>
+                    <td>FAM49A</td>
+                    <td>CLCA2</td>
+                    <td>RGMA</td>
+                    <td>ABTB2</td>
+                    <td>EI24</td>
+                    <td>MYOF</td>
+                    <td>TAB3</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        PLK2
+                    </td>
+                    <td>FAM198B</td>
+                    <td>FOSL1</td>
+                    <td>LAPTM5</td>
+                    <td>FAM84B</td>
+                    <td>CLDN1</td>
+                    <td>RGS16</td>
+                    <td>ADGRG1</td>
+                    <td>EML2</td>
+                    <td>NFKBIA</td>
+                    <td>TCAIM</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        PSTPIP2
+                    </td>
+                    <td>FAM212B</td>
+                    <td>FUCA1</td>
+                    <td>MAST4</td>
+                    <td>GNAI1</td>
+                    <td>CLP1</td>
+                    <td>RND3</td>
+                    <td>AIFM2</td>
+                    <td>ENPP2</td>
+                    <td>NHLH2</td>
+                    <td>TEP1</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        SESN1
+                    </td>
+                    <td>FDXR</td>
+                    <td>IER5</td>
+                    <td>MICALL1</td>
+                    <td>INPP1</td>
+                    <td>CROT</td>
+                    <td>RNF144B</td>
+                    <td>AMOTL1</td>
+                    <td>ETV7</td>
+                    <td>NLRP1</td>
+                    <td>TET2</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        TP53I3
+                    </td>
+                    <td>LIF</td>
+                    <td>PADI4</td>
+                    <td>NOTCH1</td>
+                    <td>ITGA3</td>
+                    <td>CYP4F3</td>
+                    <td>S100A2</td>
+                    <td>AMZ2</td>
+                    <td>FAM196A</td>
+                    <td>NYNRIN</td>
+                    <td>TEX9</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        TP53INP1
+                    </td>
+                    <td>NADSYN1</td>
+                    <td>PANK1</td>
+                    <td>RABGGTA</td>
+                    <td>KRT15</td>
+                    <td>DAPK1</td>
+                    <td>SCN2A</td>
+                    <td>ARC</td>
+                    <td>FAM98C</td>
+                    <td>P3H2</td>
+                    <td>TMEM63B</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="pt-5">
+            <h2>p53 responsive-elements</h2>
+            <hr>
+
+            <p>The canonical p53 response-element (p53-RE) consists of two copies of the palindromic half-site <strong>RRRCWWGYYY </strong>
+                where each p53 monomer binds five nucleotides (R = purine, W= A or T and Y = pyrimidine). </p>
+            <br/>
+            <p>A list of putative canonical and non-canonical p53 REs identified in the human genome by <a
+                    target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=26081755">Tebaldi et al., 2017</a>
+                can be <a href="{{ url_for('static', filename='download/Tebaldi_Inga_SupplementaryFile2.txt') }}">downloaded here</a>.</p>
+            <br/>
+            <p>Below are some example of p53RE:</p>
+            <table id="p53table" class="table table-sm table-striped">
+                <caption>
+                    <sup>(a)</sup> Non-functional putative p53-RE are indicated <i>in italic</i>.<br>
+                    <sup>(b)</sup> Bases that do not correspond to the p53-RE consensus sequence are in lowercase.
+                </caption>
+                <thead>
+                <tr>
+                    <th>p53-RE
+                        name
+                    </th>
+                    <th>Gene/Protein activity</th>
+                    <th>Tetrameric
+                        p53-RE sequence (5’&rarr;3’)<sup>(a)</sup><sup>(b)</sup></th>
+                    <th>p53-RE
+                        location
+                    </th>
+                    <th>PubMed</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>PG13</td>
+                    <td></td>
+                    <td>13
+                        copies of p53CON
+                    </td>
+                    <td></td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/1588974">1588974</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/601290">14-3-3s</a></td>
+                    <td>Cell
+                        cycle arrest
+                    </td>
+                    <td class="code-text">AGG<b>C</b>AT<b>G</b>TgC
+                        cAc<b>C</b>AT<b>G</b>CCC
+                    </td>
+                    <td>­ 2,5 kb</td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9659898">9659898</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="code-text">GtAG<b>C</b>AttA<b>G</b>CCC
+                        AGA<b>C</b>AT<b>G</b>TCC
+                    </td>
+                    <td>­ 1,8 kb</td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9659898">9659898</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/600040">BAX</a></td>
+                    <td>Apoptosis</td>
+                    <td class="code-text"><i>tcA<b>C</b>AA<b>G</b>TTa<span
+                            class="greencolor"><b>G</b></span>AGA<b>C</b>AA<b>G</b>CCT </i></td>
+                    <td><I>-113
+                        to -93</I></td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10559267">10559267</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="code-text">AGA<b>C</b>AA<b>G</b>CCT
+                        GGG<b>C</b>gT<b>G</b>ggC
+                    </td>
+                    <td>-102
+                        to -83
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10559267">10559267</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="code-text"><I>AGA<b>C</b>AA<b>G</b>CCT<span class="greencolor"><b>GGGCGT</b></span>GGG<b>C</b>TA<b>t</b>aTT</I>
+                    </td>
+                    <td><I>-102
+                        to -77</I></td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10559267">10559267</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/601597">BTG2</a></td>
+                    <td>Cell cycle arrest</td>
+                    <td class="code-text">AGt<b>C</b>cg<b>G</b>gCA<span
+                            class="greencolor"><b>G</b></span>AGc<b>C</b>cg<b>a</b>gCa
+                    </td>
+                    <td>-122 to -74</td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11814693">11814693</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/134637">CD95-Fas</a></td>
+                    <td>Apoptosis</td>
+                    <td class="code-text">GGA<b>C</b>AA<b>G</b>CCC
+                        tGA<b>C</b>AA<b>G</b>CCa
+                    </td>
+                    <td>intron
+                        1
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9841917">9841917</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/126335">GADD45</a></td>
+                    <td>Cell cycle arrest
+                    </td>
+                    <td class="code-text">GAA<b>C</b>AT<b>G</b>TCT
+                        AAG<b>C</b>AT<b>G</b>CTg
+                    </td>
+                    <td>intron 3
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/8226988">8226988</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/146732">IGF-BP3-boxA</a></td>
+                    <td>Apoptosis</td>
+                    <td class="code-text">AAA<b>C</b>AA<b>G</b>CCa<span
+                            class="greencolor"><b>C</b></span>cAA<b>C</b>AT<b>G</b>CTT
+                    </td>
+                    <td>intron
+                        1
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7566179">7566179</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>IGF-BP3-boxB</td>
+                    <td></td>
+                    <td class="code-text">GGG<b>C</b>AA<b>G</b>aCC
+                        tGc<b>C</b>AA<b>G</b>CCT
+                    </td>
+                    <td>intron
+                        2
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7566179">7566179</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/603612">KILLER/DR5</a></td>
+                    <td>Apoptosis</td>
+                    <td class="code-text">GGG<b>C</b>AT<b>G</b>TCC
+                        GGG<b>C</b>AA<b>G</b>aCg
+                    </td>
+                    <td>intron
+                        1
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10777207">10777207</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/164785">MDM2</a></td>
+                    <td>p53
+                        regulation
+                    </td>
+                    <td class="code-text">GGt<b>C</b>AA<b>G</b>TTC
+                        AGA<b>C</b>Ac<b>G</b>TCC
+                    </td>
+                    <td>intron
+                        1
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7651818">7651818</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="code-text"><i>AGt<b>t</b>AA<b>G</b>TCC
+                        tGA<b>C</b>TT<b>G</b>TCT </i></td>
+                    <td><I>intron
+                        1</I></td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7651818">7651818</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/604959">NOXA</a></td>
+                    <td>Apoptosis</td>
+                    <td class="code-text">AGG<b>C</b>TT<b>G</b>CCC
+                        cGG<b>C</b>AA<b>G</b>TTg
+                    </td>
+                    <td>-174 to -155
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10807576">10807576</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/606185">P53DINP1</a></td>
+                    <td>Regulation of p53-dependent apoptosis</td>
+                    <td class="code-text">GAA<b>C</b>TT<b>G</b>ggg
+                        GAA<b>C</b>AT<b>G</b>TTT
+                    </td>
+                    <td>intron 2</td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11511362">11511362</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/604712">P53R2</a></td>
+                    <td>DNA
+                        repair
+                    </td>
+                    <td class="code-text">tGA<b>C</b>AT<b>G</b>CCC
+                        AGG<b>C</b>AT<b>G</b>TCT
+                    </td>
+                    <td>intron
+                        1
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10716435">10716435</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>P53RFP</td>
+                    <td>p21<sup>WAF1</sup> regulation</td>
+                    <td class="code-text">AGA<b>C</b>Ag<b>G</b>TCC
+                        tGA<b>C</b>AA<b>G</b>Cag
+                    </td>
+                    <td>-157 to -137
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/12853982">12853982</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank"
+                           href="https://www.ncbi.nlm.nih.gov/entrez/dispomim.cgi?cmd=entry&id=606103">SESN1</a>
+                    </td>
+                    <td>Oxydative
+                        metabolism
+                    </td>
+                    <td class="code-text">GGA<b>C</b>AA<b>G</b>TCT
+                        ccA<b>C</b>AA<b>G</b>TTC
+                    </td>
+                    <td>intron
+                        2
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9926927">9926927</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/176740">PCNA</a></td>
+                    <td>DNA
+                        repair / Replication
+                    </td>
+                    <td class="code-text">GAA<b>C</b>AA<b>G</b>TCC
+                        GGG<b>C</b>AT<b>a</b>TgT
+                    </td>
+                    <td>-236 to -217
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/8570655">8570655</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/605247">PIDD</a></td>
+                    <td>Apoptosis</td>
+                    <td class="code-text">AGG<b>C</b>cT<b>G</b>CCT<span class="greencolor"><b>GCGTGCTG</b></span>GGA<b>C</b>AT<b>G</b>TCT
+                    </td>
+                    <td>-54 to -26
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10973264">10973264</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank"
+                           href="https://www.ncbi.nlm.nih.gov/entrez/dispomim.cgi?cmd=entry&id=605171">PIG3</a>
+                    </td>
+                    <td>Apoptosis</td>
+                    <td class="code-text">cAG<b>C</b>TT<b>G</b>CCC
+                        Acc<b>C</b>AT<b>G</b>CTC
+                    </td>
+                    <td>-328 to -308
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9305847">9305847</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/605854">PUMA</a></td>
+                    <td>Apoptosis</td>
+                    <td class="code-text"><i>ctc<b>C</b>TT<b>G</b>CCT<b>T</b>GGG<b>C</b>TA<b>G</b>gCC </i></td>
+                    <td><I>-230</I></td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11463391">11463391</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="code-text">ctG<b>C</b>AA<b>G</b>TCC
+                        tGA<b>C</b>TT<b>G</b>TCC
+                    </td>
+                    <td>-144</td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11463391">11463391</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>RGC</td>
+                    <td>Ribosomes
+                        synthesis
+                    </td>
+                    <td class="code-text">GGA<b>C</b>TT<b>G</b>CCT
+                        GGc<b>C</b>TT<b>G</b>CCT
+                    </td>
+                    <td>NA</td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/2047879">2047879</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="_blank" href="https://omim.org/entry/116899">WAF15’</a></td>
+                    <td>Cell
+                        cycle arrest
+                    </td>
+                    <td class="code-text">GAA<b>C</b>AT<b>G</b>TCC
+                        cAA<b>C</b>AT<b>G</b>TTg
+                    </td>
+                    <td>-2.3
+                        kb
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/8242752">8242752</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>WAF1
+                        3’</b></td>
+                    <td></td>
+                    <td class="code-text">GAA<b>g</b>AA<b>G</b>aCT
+                        GGG<b>C</b>AT<b>G</b>TCT
+                    </td>
+                    <td>-1.4
+                        kb
+                    </td>
+                    <td><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9679054">9679054</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+{% endblock %}

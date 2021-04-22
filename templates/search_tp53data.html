@@ -1,0 +1,240 @@
+{% extends "tp53data.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'search_tp53data';
+</script>
+{% endblock %}
+
+{% block subcontent %}
+<div class="jump-div">
+    <h2>Search Data</h2>
+    <hr>
+    <div id="search_tp53" class="p-3">
+        <div class="container">
+            <div class="row my-3">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            tp53 Gene Variations
+                        </div>
+                        <div class="card-body">
+                            <div class="search-submenu">
+                                <div class="list-group list-group-flush">
+                                    <a href="search_gv" type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-search"></i> Search Gene Variations
+                                    </a>
+                                    <a href="search_gmut" type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-search"></i> Search by Mutations
+                                    </a>
+                                    <a href="view_val_poly" type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-table"></i> View Validated Polymorphisms
+                                    </a>
+                                    <a href="get_tp53data#get_annot" type="button" class="list-group-item list-group-item-action"><i
+                                            class="fas fa-download"></i> View Downloads
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="abtGV" class="card-text collapse p-3 rounded bg-light">
+                                This search allows the functional and structural analysis of all
+                                possible single nucleotide substitutions in TP53 exonic sequences (including those that
+                                have never been reported in cancer). In addition, all other types of mutations that have
+                                been reported in human samples and validated polymorphisms are included in this dataset.
+                                Functional and structural annotations and frequency statistics for these gene variations
+                                can be retrieved with this search option. Each dataset entry corresponds to a unique
+                                gene variation.
+                            </div>
+                            <div class="pt-3">
+                                <a id="btn-abtGV"
+                                   data-bs-toggle="collapse" href="#abtGV" role="button" aria-expanded="false"
+                                   aria-controls="abtGV"
+                                   class="btn btn-outline-secondary btn-sm"><i class="fas fa-info-circle"></i>
+                                    About This Search</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            tp53 Somatic Mutations
+                        </div>
+                        <div class="card-body">
+                            <div class="search-submenu">
+                                <div class="list-group list-group-flush">
+                                    <a type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-search"></i>
+                                        Search Somatic Mutation Data
+                                    </a>
+                                    <a type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-search"></i>
+                                        Search Mutation Prevalence Data
+                                    </a>
+                                    <a type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-chart-bar"></i> Selected Statistics
+                                    </a>
+                                    <a href="get_tp53data#get_som_mut" type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-download"></i>
+                                        View Downloads
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div id="abtSM" class="card-text collapse p-3 rounded bg-light">
+                                This option allows the retrieval and analysis of TP53
+                                mutations
+                                reported as somatic events in tumor samples and cell-lines. Each dataset entry
+                                corresponds to a mutation identified in a human sample.
+                            </div>
+                            <div class="pt-3">
+                                <a id="btn-abtSM"
+                                   data-bs-toggle="collapse" href="#abtSM" role="button" aria-expanded="false"
+                                   aria-controls="abtSM"
+                                   class="btn btn-outline-secondary btn-sm"><i class="fas fa-info-circle"></i>
+                                    About This Search</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Germline Mutations
+                        </div>
+                        <div class="card-body">
+                            <div class="search-submenu">
+                                <div class="list-group list-group-flush">
+                                    <a type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-search"></i>
+                                        Search Germline Data
+                                    </a>
+                                    <a type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-chart-bar"></i>
+                                        Selected Statistics
+                                    </a>
+                                    <a href="get_tp53data#get_germ_mut" type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-download"></i>
+                                        View Downloads
+                                    </a>
+
+                                </div>
+                            </div>
+                            <div id="abtGM" class="card-text collapse p-3 rounded bg-light">
+                                This option allows the retrieval and analysis of TP53 mutations
+                                reported as germline events in human individuals. Each dataset entry corresponds to
+                                a tumor identified in an individual carrier of a TP53 germline mutation. The
+                                searchable dataset only includes cancer-affected individuals who are confirmed or
+                                obligatory
+                                carrier of a TP53 mutation (data on non-affected carriers or non-confirmed carrier
+                                can be retrieved by downloading the full dataset with the 'data downloads' option).
+                            </div>
+                            <div class="pt-3">
+                                <a id="btn-abtGM"
+                                   data-bs-toggle="collapse" href="#abtGM" role="button" aria-expanded="false"
+                                   aria-controls="abtGM"
+                                   class="btn btn-outline-secondary btn-sm"><i class="fas fa-info-circle"></i>
+                                    About This Search</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Cell Lines
+                        </div>
+                        <div class="card-body">
+                            <div class="search-submenu">
+                                <div class="list-group list-group-flush">
+                                    <a type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-search"></i>
+                                        Search Cell-Line Data
+                                    </a>
+                                    <a type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-chart-bar"></i>
+                                        Selected Statistics
+                                    </a>
+                                    <a href="get_tp53data#get_cell" type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-download"></i>
+                                        View Downloads
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div id="abtCL" class="card-text collapse p-3 rounded bg-light">
+                                This option allows the retrieval and analysis of TP53
+                                mutations reported in human cell-lines. Each dataset entry corresponds to a mutation
+                                identified in a cell-line.
+                            </div>
+                            <div class="pt-3">
+                                <a id="btn-abtCL"
+                                   data-bs-toggle="collapse" href="#abtCL" role="button" aria-expanded="false"
+                                   aria-controls="abtCL"
+                                   class="btn btn-outline-secondary btn-sm"><i class="fas fa-info-circle"></i>
+                                    About This Search</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Mouse Models
+                        </div>
+                        <div class="card-body">
+                            <div class="search-submenu">
+                                <div class="list-group list-group-flush">
+                                    <a type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-table"></i>
+                                        View Data
+                                    </a>
+                                    <a href="get_tp53data#get_mouse" type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-download"></i>
+                                        View Downloads
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="abtMM" class="card-text collapse p-3 rounded bg-light">
+                                This option allows the display or download of the description of mouse
+                                models with engineered p53 that are compiled in the caMOD database or reported in
+                                the scientific literature. Links to caMOD database are available for further details on
+                                the model phenotypes.
+                            </div>
+                            <div class="pt-3">
+                                <a id="btn-abtMM"
+                                   data-bs-toggle="collapse" href="#abtMM" role="button" aria-expanded="false"
+                                   aria-controls="abtMM"
+                                   class="btn btn-outline-secondary btn-sm"><i class="fas fa-info-circle"></i>
+                                    About This Search</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Experimentally Induced Models
+                        </div>
+                        <div class="card-body">
+                            <div class="search-submenu">
+                                <div class="list-group list-group-flush">
+                                    <a type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-table"></i>
+                                        View Data
+                                    </a>
+                                    <a href="get_tp53data#get_eim" type="button" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-download"></i>
+                                        View Downloads
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
