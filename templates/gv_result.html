@@ -22,7 +22,9 @@
 
             {% for criterion in criteria %}
             <span class="badge rounded-pill bg-secondary">{{ criterion.column_name }}
-                {% if criterion.vals|length > 1 %}
+                {% if criterion.between_op %}
+                BETWEEN [{{ criterion.vals[0] }} AND {{ criterion.vals[1] }}]
+                {% elif criterion.vals|length > 1 %}
                 IN (
                     {% for val in criterion.vals %}
                         {% if loop.index0 > 0 %},{% endif %} {{ criterion.wrap_with }}{{ val }}{{ criterion.wrap_with }}

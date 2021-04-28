@@ -1,5 +1,5 @@
 ###
-# Copyright 2019, ISB
+# Copyright 2021, ISB
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -128,9 +128,16 @@ def build_simple_query(criteria, table, column_filters, do_counts=False, distinc
         vals = criterion.get('vals')
         wrap_with = criterion.get('wrap_with', '')
 
-        op = 'IN' if len(vals) > 1 else '='
-        vals_str = ', '.join('{wrap_with}{val}{wrap_with}'.format(val=val, wrap_with=wrap_with) for val in vals)
-        where_clause += '\nAND {column_name} {op} ({vals_str})'.format(column_name=column_name, op=op,
+        #numeric range
+        between_op = criterion.get('between_op')
+        if between_op:
+            start_val = vals[0]
+            end_val = vals[1]
+            where_clause += '\nAND {column_name} >= {start_val} AND {column_name} <= {end_val}'.format(column_name=column_name, start_val=start_val, end_val=end_val)
+        else:
+            op = 'IN' if len(vals) > 1 else '='
+            vals_str = ', '.join('{wrap_with}{val}{wrap_with}'.format(val=val, wrap_with=wrap_with) for val in vals)
+            where_clause += '\nAND {column_name} {op} ({vals_str})'.format(column_name=column_name, op=op,
                                                                        vals_str=vals_str)
 
     columns = ', '.join(column_filters)

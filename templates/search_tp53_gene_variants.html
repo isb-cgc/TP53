@@ -81,74 +81,75 @@
                     </div>
                 </fieldset>
                 <div id="gv_type_collapse">
-                    <div id="cdna_div" class="collapse type-collapse" data-bs-parent="#gv_type_collapse">
-                        <fieldset class="row mb-3">
-                            <legend class="col-form-label col-sm-3 pt-0">cDNA Descriptions:</legend>
+                    {% include 'form_fields_variations.html' %}
+                    <!--<div id="cdna_div" class="collapse type-collapse" data-bs-parent="#gv_type_collapse">-->
+                        <!--<fieldset class="row mb-3">-->
+                            <!--<legend class="col-form-label col-sm-3 pt-0">cDNA Descriptions:</legend>-->
 
-                            <div class="col-sm-8">
-                                <select name="cdna_list" class="form-control chosen-select" id="cdna_input"
-                                        data-placeholder="Choose cDNA Descriptions..." aria-label="cDNA List" multiple>
-                                    {% for c_desc in c_desc_list %}
-                                    <option value="{{ c_desc.label }}">{{ c_desc.label }}</option>
-                                    {% endfor %}
-                                </select>
-                                <div class="text-muted text-sm-start">Reference Sequence: NM_000546.5</div>
-                            </div>
+                            <!--<div class="col-sm-8">-->
+                                <!--<select name="cdna_list" class="form-control chosen-select" id="cdna_input"-->
+                                        <!--data-placeholder="Choose cDNA Descriptions..." aria-label="cDNA List" multiple>-->
+                                    <!--{% for c_desc in c_desc_list %}-->
+                                    <!--<option value="{{ c_desc.label }}">{{ c_desc.label }}</option>-->
+                                    <!--{% endfor %}-->
+                                <!--</select>-->
+                                <!--<div class="text-muted text-sm-start">Reference Sequence: NM_000546.5</div>-->
+                            <!--</div>-->
 
-                        </fieldset>
-                    </div>
-                    <div id="p_div" class="collapse type-collapse" data-bs-parent="#gv_type_collapse">
-                        <fieldset class="row mb-3">
-                            <legend class="col-form-label col-sm-3 pt-0">Protein Descriptions:</legend>
+                        <!--</fieldset>-->
+                    <!--</div>-->
+                    <!--<div id="p_div" class="collapse type-collapse" data-bs-parent="#gv_type_collapse">-->
+                        <!--<fieldset class="row mb-3">-->
+                            <!--<legend class="col-form-label col-sm-3 pt-0">Protein Descriptions:</legend>-->
 
-                            <div class="col-sm-8">
-                                <select name="p_list" class="form-control chosen-select" id="p_input"
-                                        data-placeholder="Choose Protein Descriptions..." aria-label="Protein List"
-                                        multiple>
-                                    {% for p_desc in p_desc_list %}
-                                    <option value="{{ p_desc.label }}">{{ p_desc.label }}</option>
-                                    {% endfor %}
-                                </select>
-                                <div class="text-muted text-sm-start">Reference Sequence: UniProt P04637</div>
-                            </div>
+                            <!--<div class="col-sm-8">-->
+                                <!--<select name="p_list" class="form-control chosen-select" id="p_input"-->
+                                        <!--data-placeholder="Choose Protein Descriptions..." aria-label="Protein List"-->
+                                        <!--multiple>-->
+                                    <!--{% for p_desc in p_desc_list %}-->
+                                    <!--<option value="{{ p_desc.label }}">{{ p_desc.label }}</option>-->
+                                    <!--{% endfor %}-->
+                                <!--</select>-->
+                                <!--<div class="text-muted text-sm-start">Reference Sequence: UniProt P04637</div>-->
+                            <!--</div>-->
 
-                        </fieldset>
-                    </div>
-                    <div id="hg19_div" class="collapse type-collapse" data-bs-parent="#gv_type_collapse">
-                        <fieldset class="row mb-3">
-                            <legend class="col-form-label col-sm-3 pt-0">Genomic Descriptions (hg19):</legend>
+                        <!--</fieldset>-->
+                    <!--</div>-->
+                    <!--<div id="hg19_div" class="collapse type-collapse" data-bs-parent="#gv_type_collapse">-->
+                        <!--<fieldset class="row mb-3">-->
+                            <!--<legend class="col-form-label col-sm-3 pt-0">Genomic Descriptions (hg19):</legend>-->
 
-                            <div class="col-sm-8">
-                                <select name="hg19_list" class="form-control chosen-select" id="hg19_input"
-                                        data-placeholder="Choose Genomic Descriptions (hg19)..."
-                                        aria-label="Genomic List (hg19)"
-                                        multiple>
-                                    {% for g_desc_hg19 in g_desc_hg19_list %}
-                                    <option value="{{ g_desc_hg19.label }}">{{ g_desc_hg19.label }}</option>
-                                    {% endfor %}
-                                </select>
-                                <div class="text-muted text-sm-start">Reference Sequence: GenBank NC_000017.10</div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div id="hg38_div" class="collapse type-collapse" data-bs-parent="#gv_type_collapse">
-                        <fieldset class="row mb-3">
-                            <legend class="col-form-label col-sm-3 pt-0">Genomic Descriptions (hg38):</legend>
+                            <!--<div class="col-sm-8">-->
+                                <!--<select name="hg19_list" class="form-control chosen-select" id="hg19_input"-->
+                                        <!--data-placeholder="Choose Genomic Descriptions (hg19)..."-->
+                                        <!--aria-label="Genomic List (hg19)"-->
+                                        <!--multiple>-->
+                                    <!--{% for g_desc_hg19 in g_desc_hg19_list %}-->
+                                    <!--<option value="{{ g_desc_hg19.label }}">{{ g_desc_hg19.label }}</option>-->
+                                    <!--{% endfor %}-->
+                                <!--</select>-->
+                                <!--<div class="text-muted text-sm-start">Reference Sequence: GenBank NC_000017.10</div>-->
+                            <!--</div>-->
+                        <!--</fieldset>-->
+                    <!--</div>-->
+                    <!--<div id="hg38_div" class="collapse type-collapse" data-bs-parent="#gv_type_collapse">-->
+                        <!--<fieldset class="row mb-3">-->
+                            <!--<legend class="col-form-label col-sm-3 pt-0">Genomic Descriptions (hg38):</legend>-->
 
-                            <div class="col-sm-8">
-                                <select name="hg38_list" class="form-control chosen-select" id="hg38_input"
-                                        data-placeholder="Choose Genomic Descriptions (hg38)..."
-                                        aria-label="Genomic List (hg38)"
-                                        multiple>
-                                    {% for g_desc_hg38 in g_desc_hg38_list %}
-                                    <option value="{{ g_desc_hg38.label }}">{{ g_desc_hg38.label }}</option>
-                                    {% endfor %}
-                                </select>
-                                <div class="text-muted text-sm-start">Reference Sequence: NC_000017.11</div>
+                            <!--<div class="col-sm-8">-->
+                                <!--<select name="hg38_list" class="form-control chosen-select" id="hg38_input"-->
+                                        <!--data-placeholder="Choose Genomic Descriptions (hg38)..."-->
+                                        <!--aria-label="Genomic List (hg38)"-->
+                                        <!--multiple>-->
+                                    <!--{% for g_desc_hg38 in g_desc_hg38_list %}-->
+                                    <!--<option value="{{ g_desc_hg38.label }}">{{ g_desc_hg38.label }}</option>-->
+                                    <!--{% endfor %}-->
+                                <!--</select>-->
+                                <!--<div class="text-muted text-sm-start">Reference Sequence: NC_000017.11</div>-->
 
-                            </div>
-                        </fieldset>
-                    </div>
+                            <!--</div>-->
+                        <!--</fieldset>-->
+                    <!--</div>-->
                 </div>
 
                 <div class="form-group row">
