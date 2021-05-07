@@ -1,0 +1,28 @@
+{% extends "tp53data.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'search_tp53data';
+</script>
+
+
+{% endblock %}
+
+{% block subcontent %}
+<div class="jump-div">
+    <h2>Selected Statistics on Germline Mutation Data</h2>
+    <hr>
+    <div id="stats_germline_mut" class="p-3">
+        <div class="form-text">For details on dataset contents and annotations, see the <a href="help">user manual</a>.</div>
+        <div class="p-3 rounded-2">
+            <ul class="list-group list-group-flush">
+                <a href="results_germline_mutation?action=get_codon_dist" class="list-group-item list-group-item-action"><i class="fas fa-chart-bar me-2"></i>Codon Distribution of Mutations</a>
+                <a href="results_germline_mutation?action=get_mutation_dist" class="list-group-item list-group-item-action"><i class="fas fa-chart-bar me-2"></i>Mutation Distributions</a>
+                <a href="results_germline_mutation?action=get_tumor_dist" class="list-group-item list-group-item-action"><i class="fas fa-chart-bar me-2"></i>Tumor Site Distributions</a>
+                <a href="view_germline_prevalence" class="list-group-item list-group-item-action"><i class="fas fa-table me-2"></i>Prevalence of tp53 Germline Mutations in Selected Cohorts</a>
+                <a href="db_dev_germline_stats" class="list-group-item list-group-item-action"><i class="fas fa-database me-2"></i>Statistics on Dataset Development</a>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

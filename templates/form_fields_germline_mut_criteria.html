@@ -1,0 +1,245 @@
+<div class="accordion p-3 {{id_prefix}}_bg" id="{{ id_prefix }}_form_accordion">
+
+    <div class="accordion-item">
+        <h3 class="accordion-header" id="{{ id_prefix }}_heading_sample">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#{{ id_prefix }}_collapse_sample" aria-expanded="false"
+                    aria-controls="{{ id_prefix }}_collapse_sample">
+                Sample
+            </button>
+        </h3>
+        <div id="{{ id_prefix }}_collapse_sample" class="accordion-collapse collapse"
+             aria-labelledby="{{ id_prefix }}_heading_sample"
+             data-bs-parent="#{{ id_prefix }}_form_accordion">
+            <div class="accordion-body bg-light">
+                {% include 'form_fields_topo_morph.html' %}
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h3 class="accordion-header" id="{{ id_prefix }}_heading_mut">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#{{ id_prefix }}_collapse_mut" aria-expanded="false"
+                    aria-controls="{{ id_prefix }}_collapse_mut">
+                Mutation
+            </button>
+        </h3>
+        <div id="{{ id_prefix }}_collapse_mut" class="accordion-collapse collapse"
+             aria-labelledby="{{ id_prefix }}_heading_mut"
+             data-bs-parent="#{{ id_prefix }}_form_accordion">
+            <div class="accordion-body bg-light">
+                {% include 'form_fields_variations.html' %}
+                {% include 'form_fields_mutation.html' %}
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h3 class="accordion-header" id="{{ id_prefix }}_heading_ind">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#{{ id_prefix }}_collapse_ind" aria-expanded="false"
+                    aria-controls="{{ id_prefix }}_collapse_ind">
+                Individual and Pedigree
+            </button>
+        </h3>
+        <div id="{{ id_prefix }}_collapse_ind" class="accordion-collapse collapse"
+             aria-labelledby="{{ id_prefix }}_heading_ind"
+             data-bs-parent="#{{ id_prefix }}_form_accordion">
+            <div class="accordion-body bg-light">
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                data-bs-html="true"
+                                data-bs-placement="left"
+                                title="">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                        Age at Diagnosis
+                    </legend>
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="{{ id_prefix }}_age_start"
+                                           name="{{ id_prefix }}_age_start"
+                                           min="0"
+                                           max="120">
+                                    <label for="{{ id_prefix }}_age_start">Start</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 text-center">
+                                <label class="col-form-label">to</label>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="{{ id_prefix }}_age_end"
+                                           name="{{ id_prefix }}_age_end"
+                                           min="0"
+                                           max="120">
+                                    <label for="{{ id_prefix }}_age_end">End</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                data-bs-html="true"
+                                data-bs-placement="left"
+                                title="Nature of the mutation. The terms
+                                    occurring in this column are 'A:T&gt;C:G' (A to C or T
+                                    to G base change), 'A:T&gt;G:C' (A to G or T to C base
+                                    change), 'A:T&gt;T:A' (A to T or T to A base change),
+                                    'G:C&gt;A:T' (G to A or C to T base change at non CpG
+                                    sites), 'G:C&gt;A:T at CpG' (G to A or C to T base
+                                    change at CpG sites),
+                                    'G:C&gt;C:G' (G to C or C to G base change),
+                                    'G:C&gt;T:A' (G to T or C to A base change),
+                                    'tandem' (two consecutive base changes), 'ins'
+                                    (insertion), 'del' (deletion) and 'complex'
+                                    (complex changes).">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                        Sex
+                    </legend>
+                    <div class="col-sm-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_gender"
+                                   value="F"
+                                   id="{{ id_prefix }}_gender_f">
+                            <label class="form-check-label"
+                                   for="{{ id_prefix }}_gender_f">
+                                Female
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_gender"
+                                   value="M"
+                                   id="{{ id_prefix }}_gender_m">
+                            <label class="form-check-label"
+                                   for="{{ id_prefix }}_gender_m">
+                                Male
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                data-bs-html="true"
+                                data-bs-placement="left"
+                                title="2D and 3D motifs where the mutation is located according to structures described in
+                                        <a href='http://www.ncbi.nlm.nih.gov/pubmed/8023157' target='_blank'>Cho
+                                        et al. (1994)</a> and <a href='https://www.ncbi.nlm.nih.gov/pubmed/10618702' target='_blank'>
+                                        May and May (1999)</a>">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                        Family History
+                    </legend>
+                    <div class="col-sm-8">
+                        <select name="{{ id_prefix }}_family_hist_list" class="form-control chosen-select"
+                                id="{{ id_prefix }}_family_hist_input"
+                                data-placeholder="Choose Family Histories..."
+                                aria-label="Family History List" multiple>
+                            {% for family_hist in family_hist_list %}
+                            <option value="{{ family_hist.label }}">{{ family_hist.label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                data-bs-html="true"
+                                data-bs-placement="left"
+                                title="2D and 3D motifs where the mutation is located according to structures described in
+                                        <a href='http://www.ncbi.nlm.nih.gov/pubmed/8023157' target='_blank'>Cho
+                                        et al. (1994)</a> and <a href='https://www.ncbi.nlm.nih.gov/pubmed/10618702' target='_blank'>
+                                        May and May (1999)</a>">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                        Mode of Inheritance
+                    </legend>
+                    <div class="col-sm-8">
+                        <select name="{{ id_prefix }}_inh_mode_list" class="form-control chosen-select"
+                                id="{{ id_prefix }}_inh_mode_input"
+                                data-placeholder="Choose Modes of Inheritance..."
+                                aria-label="Mode of Inheritance" multiple>
+                            {% for inh_mode in inh_mode_list %}
+                            <option value="{{ inh_mode.label }}">{{ inh_mode.label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                data-bs-html="true"
+                                data-bs-placement="left"
+                                title="2D and 3D motifs where the mutation is located according to structures described in
+                                        <a href='http://www.ncbi.nlm.nih.gov/pubmed/8023157' target='_blank'>Cho
+                                        et al. (1994)</a> and <a href='https://www.ncbi.nlm.nih.gov/pubmed/10618702' target='_blank'>
+                                        May and May (1999)</a>">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                        Family Case
+                    </legend>
+                    <div class="col-sm-8">
+                        <select name="{{ id_prefix }}_family_case_list" class="form-control chosen-select"
+                                id="{{ id_prefix }}_family_case_input"
+                                data-placeholder="Choose Family Cases..."
+                                aria-label="Family Case" multiple>
+                            {% for family_case in family_case_list %}
+                            <option value="{{ family_case.label }}">{{ family_case.label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                data-bs-html="true"
+                                data-bs-placement="left"
+                                title="2D and 3D motifs where the mutation is located according to structures described in
+                                        <a href='http://www.ncbi.nlm.nih.gov/pubmed/8023157' target='_blank'>Cho
+                                        et al. (1994)</a> and <a href='https://www.ncbi.nlm.nih.gov/pubmed/10618702' target='_blank'>
+                                        May and May (1999)</a>">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                        Country/Population
+                    </legend>
+                    <div class="col-sm-8">
+                        <select name="{{ id_prefix }}_country_list" class="form-control chosen-select"
+                                id="{{ id_prefix }}_country_input"
+                                data-placeholder="Choose Countries..."
+                                aria-label="Country or Population List" multiple>
+                            {% for country in country_list %}
+                            <option value="{{ country.label }}">{{ country.label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h3 class="accordion-header" id="{{ id_prefix }}_heading_rm">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#{{ id_prefix }}_collapse_rm" aria-expanded="true"
+                    aria-controls="{{ id_prefix }}_collapse_rm">
+                Reference
+            </button>
+        </h3>
+        <div id="{{ id_prefix }}_collapse_rm" class="accordion-collapse collapse"
+             aria-labelledby="{{ id_prefix }}_heading_rm"
+             data-bs-parent="#{{ id_prefix }}_form_accordion">
+            <div class="accordion-body bg-light">
+                {% include 'form_fields_reference.html' %}
+            </div>
+        </div>
+    </div>
+</div>

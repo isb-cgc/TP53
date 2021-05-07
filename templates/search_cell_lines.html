@@ -35,8 +35,9 @@
             </div>
         </div>
         <div class="p-3 bg-light rounded-2">
-            <form action="{{ url_for('gmut_result') }}" method="POST">
+            <form action="{{ url_for('results_cell_lines') }}" method="POST">
                 <div class="accordion" id="cl_form_accordion">
+                    {% with id_prefix='cl' %}
                     <div class="accordion-item">
                         <h3 class="accordion-header" id="headingCL">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -64,7 +65,7 @@
                                     'tandem' (two consecutive base changes), 'ins'
                                     (insertion), 'del' (deletion) and 'complex'
                                     (complex changes).">
-                                            <i class="fas fa-info-circle"></i>
+                                            <i class="far fa-question-circle"></i>
                                         </button>
                                         Cell-Line Name
                                     </legend>
@@ -89,7 +90,7 @@
                                     'tandem' (two consecutive base changes), 'ins'
                                     (insertion), 'del' (deletion) and 'complex'
                                     (complex changes).">
-                                            <i class="fas fa-info-circle"></i>
+                                            <i class="far fa-question-circle"></i>
                                         </button>
                                         ATCC ID
                                     </legend>
@@ -114,7 +115,7 @@
                                     'tandem' (two consecutive base changes), 'ins'
                                     (insertion), 'del' (deletion) and 'complex'
                                     (complex changes).">
-                                            <i class="fas fa-info-circle"></i>
+                                            <i class="far fa-question-circle"></i>
                                         </button>
                                         COSMIC ID
                                     </legend>
@@ -139,7 +140,7 @@
                                     'tandem' (two consecutive base changes), 'ins'
                                     (insertion), 'del' (deletion) and 'complex'
                                     (complex changes).">
-                                            <i class="fas fa-info-circle"></i>
+                                            <i class="far fa-question-circle"></i>
                                         </button>
                                         TP53 Status
                                     </legend>
@@ -157,85 +158,11 @@
                                         {% endfor %}
                                     </div>
                                 </fieldset>
-                                <fieldset class="row mb-3">
-                                    <legend class="col-form-label col-sm-3 pt-0">
-                                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                                data-bs-html="true"
-                                                data-bs-placement="left"
-                                                title="Nature of the mutation. The terms
-                                    occurring in this column are 'A:T&gt;C:G' (A to C or T
-                                    to G base change), 'A:T&gt;G:C' (A to G or T to C base
-                                    change), 'A:T&gt;T:A' (A to T or T to A base change),
-                                    'G:C&gt;A:T' (G to A or C to T base change at non CpG
-                                    sites), 'G:C&gt;A:T at CpG' (G to A or C to T base
-                                    change at CpG sites),
-                                    'G:C&gt;C:G' (G to C or C to G base change),
-                                    'G:C&gt;T:A' (G to T or C to A base change),
-                                    'tandem' (two consecutive base changes), 'ins'
-                                    (insertion), 'del' (deletion) and 'complex'
-                                    (complex changes).">
-                                            <i class="fas fa-info-circle"></i>
-                                        </button>
-                                        Tumor Origin
-                                    </legend>
-                                    <div class="col-sm-8">
-                                        {% for to_item in cl_tumor_org_group_list%}
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="tumor_origin"
-                                                   value="{{ to_item.label }}"
-                                                   id="to_{{ to_item.label|lower }}">
-                                            <label class="form-check-label"
-                                                   for="to_{{ to_item.label|lower }}">
-                                                {{ to_item.label|title }}
-                                            </label>
-                                        </div>
-                                        {% endfor %}
-                                    </div>
-                                </fieldset>
-                                <fieldset class="row mb-3">
-                                    <legend class="col-form-label col-sm-3 pt-0">
-                                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                                data-bs-html="true"
-                                                data-bs-placement="left"
-                                                title="">
-                                            <i class="fas fa-info-circle"></i>
-                                        </button>
-                                        Topography
-                                    </legend>
-                                    <div class="col-sm-8">
-                                        <select name="topo_list" class="form-control chosen-select" id="topo_input"
-                                                data-placeholder="Choose Topographies..."
-                                                aria-label="Topography List" multiple>
-                                            {% for topo_item in cl_topo_list %}
-                                            <option value="{{ topo_item.label }}">{{ topo_item.label }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                </fieldset>
-                                <fieldset class="row mb-3">
-                                    <legend class="col-form-label col-sm-3 pt-0">
-                                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                                data-bs-html="true"
-                                                data-bs-placement="left"
-                                                title="">
-                                            <i class="fas fa-info-circle"></i>
-                                        </button>
-                                        Morphology
-                                    </legend>
-                                    <div class="col-sm-8">
-                                        <select name="morph_list" class="form-control chosen-select" id="morph_input"
-                                                data-placeholder="Choose Morphologies..."
-                                                aria-label="Morphology List" multiple>
-                                            {% for morph_item in cl_morph_list %}
-                                            <option value="{{ morph_item.label }}">{{ morph_item.label }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                </fieldset>
+                                {% include 'form_fields_tumor_origin.html' %}
+                                {% include 'form_fields_topo_morph.html' %}
                             </div>
                         </div>
                     </div>
-
                     <div class="accordion-item">
                         <h3 class="accordion-header" id="headingMDM">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -280,6 +207,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endwith %}
                 </div>
                 <div class="form-group row pt-5">
                     <div class="col">

@@ -1,0 +1,63 @@
+{% extends "tp53data.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'search_tp53data';
+</script>
+
+{% endblock %}
+
+{% block subcontent %}
+<div class="jump-div">
+    <h2>Search Results: Germline Mutations</h2>
+    <hr>
+    <div class="p-3">
+        {% if criteria_map.items()|length > 0 %}
+        <div id="criteria_div" class="my-2 collapse bg-light rounded-2 border border-1">
+            {% for type in ['include', 'exclude'] %}
+            <div class="border-secondary p-2">
+                <div class="fw-bold">{{ type|title }}d Criteria</div>
+                {% if criteria_map[type]|length == 0 %}
+                <div class="fw-light fst-italic">None Selected</div>
+                {% endif %}
+                {% for criterion in criteria_map[type] %}
+                {% if criterion.vals|length > 1 %}
+                <span class="badge rounded-pill bg-info">
+                {% else %}
+                <span class="badge rounded-pill bg-secondary">
+                {% endif %}
+                    {{ criterion.column_name }}
+                    {% if criterion.between_op %}
+                    BETWEEN [{{ criterion.vals[0] }} AND {{ criterion.vals[1] }}]</span><br>
+                    {% elif criterion.vals|length > 1 %}
+                    </span> IN (
+                {% for val in criterion.vals %}
+                <span class="badge rounded-pill bg-info">{{ val }}
+                            </span>
+                {% endfor %}
+                )<br>
+                {% else %}
+                = {{ criterion.vals[0] }}
+                </span><br>
+                {% endif %}
+
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+
+        </div>
+        <div class="pb-2">
+            <a type="button" class="text-start btn btn-sm btn-outline-secondary"
+               data-bs-toggle="collapse" href="#criteria_div" role="button" aria-expanded="false"
+               aria-controls="criteria_div">
+                <i class="fas fa-th-list"></i> View Selected Criteria</a>
+            <div class="btn-group btn-group-sm float-end" role="group" aria-label="Additional Search and Tools">
+                <button type="button" class="btn btn-outline-secondary"><i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

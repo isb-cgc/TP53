@@ -1,0 +1,24 @@
+<fieldset class="row mb-3">
+    <legend class="col-form-label col-sm-3 pt-0">
+        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                data-bs-html="true"
+                data-bs-placement="left"
+                title="">
+            <i class="far fa-question-circle"></i>
+        </button>
+        Tumor Origin
+    </legend>
+    <div class="col-sm-8">
+        {% for to_item in tumor_org_group_list%}
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_tumor_origin"
+                   value="{{ to_item.label }}"
+                   id="{{ id_prefix }}_to_{{ to_item.label|lower }}">
+            <label class="form-check-label"
+                   for="{{ id_prefix }}_to_{{ to_item.label|lower }}">
+                {{ to_item.label|title }}
+            </label>
+        </div>
+        {% endfor %}
+    </div>
+</fieldset>

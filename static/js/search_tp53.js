@@ -35,9 +35,32 @@ $(document).ready(function () {
         max_shown_results: 300
     });
 
-    $('.type-collapse').toggleClass('show', $('#gv_type_collapse').length === 0 );
-    $($('input[name="type_input"]:checked').data('bs-target')).addClass('show');
+    $('.topo-morph-select').on('change', function () {
+        var topo_morph_assc = $(this).data('topo-morph-assc');
+        var topos = $(this).val();
+        var morphs = [];
+        for (var i=0; i < topos.length; i++){
+            var topo = topos[i];
+            morphs = morphs.concat(topo_morph_assc[topo]);
+            console.log(morphs);
+        }
+        var morph_input_selector = $(this).data('morph-toggle');
+
+        $(morph_input_selector).val(morphs);
+        $(morph_input_selector).trigger("chosen:updated");
+
+    });
+
+
+
+
+
 });
+
+// $(window).on("unload", function() {
+//     console.log('unload called');
+//     display_spinner(true);
+// });
 
 var enableTooltip = function () {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
@@ -52,7 +75,7 @@ var displayGeneVariations = function (type, descrption) {
 
     var input = $("<input type='hidden' name='type_input' value='type_"+type+"'/>");
     input.appendTo(form);
-    input = $("<input type='hidden' name='"+type+"_list' value='"+descrption+"'/>");
+    input = $("<input type='hidden' name='gv_"+type+"_list' value='"+descrption+"'/>");
     input.appendTo(form);
     form.appendTo($("body"));
     form.submit();

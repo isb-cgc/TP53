@@ -1,0 +1,257 @@
+<div class="accordion p-3 {{id_prefix}}_bg" id="{{ id_prefix }}_form_accordion">
+    <div class="accordion-item">
+        <h3 class="accordion-header" id="{{ id_prefix }}_heading_rm">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#{{ id_prefix }}_collapse_rm" aria-expanded="true"
+                    aria-controls="{{ id_prefix }}_collapse_rm">
+                Reference and Method
+            </button>
+        </h3>
+        <div id="{{ id_prefix }}_collapse_rm" class="accordion-collapse collapse"
+             aria-labelledby="{{ id_prefix }}_heading_rm"
+             data-bs-parent="#{{ id_prefix }}_form_accordion">
+            <div class="accordion-body bg-light">
+                {% include 'form_fields_reference.html' %}
+                {% include 'form_fields_method.html' %}
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button"
+                                data-bs-toggle="tooltip"
+                                data-bs-html="true"
+                                data-bs-placement="left"
+                                title="">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                        NGS Study
+                    </legend>
+                    <div class="col-sm-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"
+                                   value="Yes"
+                                   id="{{ id_prefix }}_ngs_yes">
+                            <label class="form-check-label"
+                                   for="{{ id_prefix }}_ngs_yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"
+                                   value="No"
+                                   id="{{ id_prefix }}_ngs_no">
+                            <label class="form-check-label"
+                                   for="{{ id_prefix }}_ngs_no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                <!--<fieldset class="row mb-3">-->
+                <!--<legend class="col-form-label col-sm-3 pt-0">-->
+                <!--<button class="btn btn-sm pe-0" type="button"-->
+                <!--data-bs-toggle="tooltip"-->
+                <!--data-bs-html="true"-->
+                <!--data-bs-placement="left"-->
+                <!--title="Nature of the mutation. The terms-->
+                <!--occurring in this column are 'A:T&gt;C:G' (A to C or T-->
+                <!--to G base change), 'A:T&gt;G:C' (A to G or T to C base-->
+                <!--change), 'A:T&gt;T:A' (A to T or T to A base change),-->
+                <!--'G:C&gt;A:T' (G to A or C to T base change at non CpG-->
+                <!--sites), 'G:C&gt;A:T at CpG' (G to A or C to T base-->
+                <!--change at CpG sites),-->
+                <!--'G:C&gt;C:G' (G to C or C to G base change),-->
+                <!--'G:C&gt;T:A' (G to T or C to A base change),-->
+                <!--'tandem' (two consecutive base changes), 'ins'-->
+                <!--(insertion), 'del' (deletion) and 'complex'-->
+                <!--(complex changes).">-->
+                <!--<i class="far fa-question-circle"></i>-->
+                <!--</button>-->
+                <!--ATCC ID-->
+                <!--</legend>-->
+                <!--<div class="col-sm-8">-->
+                <!--<input type="text" class="form-control" id="{{ id_prefix }}_atcc_id"-->
+                <!--name="{{ id_prefix }}_atcc_id">-->
+                <!--</div>-->
+                <!--</fieldset>-->
+                <!--<fieldset class="row mb-3">-->
+                <!--<legend class="col-form-label col-sm-3 pt-0">-->
+                <!--<button class="btn btn-sm pe-0" type="button"-->
+                <!--data-bs-toggle="tooltip"-->
+                <!--data-bs-html="true"-->
+                <!--data-bs-placement="left"-->
+                <!--title="Nature of the mutation. The terms-->
+                <!--occurring in this column are 'A:T&gt;C:G' (A to C or T-->
+                <!--to G base change), 'A:T&gt;G:C' (A to G or T to C base-->
+                <!--change), 'A:T&gt;T:A' (A to T or T to A base change),-->
+                <!--'G:C&gt;A:T' (G to A or C to T base change at non CpG-->
+                <!--sites), 'G:C&gt;A:T at CpG' (G to A or C to T base-->
+                <!--change at CpG sites),-->
+                <!--'G:C&gt;C:G' (G to C or C to G base change),-->
+                <!--'G:C&gt;T:A' (G to T or C to A base change),-->
+                <!--'tandem' (two consecutive base changes), 'ins'-->
+                <!--(insertion), 'del' (deletion) and 'complex'-->
+                <!--(complex changes).">-->
+                <!--<i class="far fa-question-circle"></i>-->
+                <!--</button>-->
+                <!--COSMIC ID-->
+                <!--</legend>-->
+                <!--<div class="col-sm-8">-->
+                <!--<input type="text" class="form-control" id="cosmic_id"-->
+                <!--name="cosmic_id">-->
+                <!--</div>-->
+                <!--</fieldset>-->
+                <!--<fieldset class="row mb-3">-->
+                <!--<legend class="col-form-label col-sm-3 pt-0">-->
+                <!--<button class="btn btn-sm pe-0" type="button"-->
+                <!--data-bs-toggle="tooltip"-->
+                <!--data-bs-html="true"-->
+                <!--data-bs-placement="left"-->
+                <!--title="Nature of the mutation. The terms-->
+                <!--occurring in this column are 'A:T&gt;C:G' (A to C or T-->
+                <!--to G base change), 'A:T&gt;G:C' (A to G or T to C base-->
+                <!--change), 'A:T&gt;T:A' (A to T or T to A base change),-->
+                <!--'G:C&gt;A:T' (G to A or C to T base change at non CpG-->
+                <!--sites), 'G:C&gt;A:T at CpG' (G to A or C to T base-->
+                <!--change at CpG sites),-->
+                <!--'G:C&gt;C:G' (G to C or C to G base change),-->
+                <!--'G:C&gt;T:A' (G to T or C to A base change),-->
+                <!--'tandem' (two consecutive base changes), 'ins'-->
+                <!--(insertion), 'del' (deletion) and 'complex'-->
+                <!--(complex changes).">-->
+                <!--<i class="far fa-question-circle"></i>-->
+                <!--</button>-->
+                <!--TP53 Status-->
+                <!--</legend>-->
+                <!--<div class="col-sm-8">-->
+                <!--{% for stat_item in cl_tp53stat_list%}-->
+                <!--<div class="form-check">-->
+                <!--<input class="form-check-input" type="checkbox"-->
+                <!--name="tp53_status"-->
+                <!--value="{{ stat_item.label }}"-->
+                <!--id="status_{{ stat_item.label|lower }}">-->
+                <!--<label class="form-check-label"-->
+                <!--for="status_{{ stat_item.label|lower }}">-->
+                <!--{{ stat_item.label }}-->
+                <!--</label>-->
+                <!--</div>-->
+                <!--{% endfor %}-->
+                <!--</div>-->
+                <!--</fieldset>-->
+                <!--<fieldset class="row mb-3">-->
+                <!--<legend class="col-form-label col-sm-3 pt-0">-->
+                <!--<button class="btn btn-sm pe-0" type="button"-->
+                <!--data-bs-toggle="tooltip"-->
+                <!--data-bs-html="true"-->
+                <!--data-bs-placement="left"-->
+                <!--title="Nature of the mutation. The terms-->
+                <!--occurring in this column are 'A:T&gt;C:G' (A to C or T-->
+                <!--to G base change), 'A:T&gt;G:C' (A to G or T to C base-->
+                <!--change), 'A:T&gt;T:A' (A to T or T to A base change),-->
+                <!--'G:C&gt;A:T' (G to A or C to T base change at non CpG-->
+                <!--sites), 'G:C&gt;A:T at CpG' (G to A or C to T base-->
+                <!--change at CpG sites),-->
+                <!--'G:C&gt;C:G' (G to C or C to G base change),-->
+                <!--'G:C&gt;T:A' (G to T or C to A base change),-->
+                <!--'tandem' (two consecutive base changes), 'ins'-->
+                <!--(insertion), 'del' (deletion) and 'complex'-->
+                <!--(complex changes).">-->
+                <!--<i class="far fa-question-circle"></i>-->
+                <!--</button>-->
+                <!--Tumor Origin-->
+                <!--</legend>-->
+                <!--<div class="col-sm-8">-->
+                <!--{% for to_item in cl_tumor_org_group_list%}-->
+                <!--<div class="form-check">-->
+                <!--<input class="form-check-input" type="checkbox"-->
+                <!--name="tumor_origin"-->
+                <!--value="{{ to_item.label }}"-->
+                <!--id="to_{{ to_item.label|lower }}">-->
+                <!--<label class="form-check-label"-->
+                <!--for="to_{{ to_item.label|lower }}">-->
+                <!--{{ to_item.label|title }}-->
+                <!--</label>-->
+                <!--</div>-->
+                <!--{% endfor %}-->
+                <!--</div>-->
+                <!--</fieldset>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h3 class="accordion-header" id="{{ id_prefix }}_heading_mut">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#{{ id_prefix }}_collapse_mut" aria-expanded="false"
+                    aria-controls="{{ id_prefix }}_collapse_mut">
+                Mutation
+            </button>
+        </h3>
+        <div id="{{ id_prefix }}_collapse_mut" class="accordion-collapse collapse"
+             aria-labelledby="{{ id_prefix }}_heading_mut"
+             data-bs-parent="#{{ id_prefix }}_form_accordion">
+            <div class="accordion-body bg-light">
+                {% include 'form_fields_variations.html' %}
+                {% include 'form_fields_mutation.html' %}
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h3 class="accordion-header" id="{{ id_prefix }}_heading_sample">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#{{ id_prefix }}_collapse_sample" aria-expanded="false"
+                    aria-controls="{{ id_prefix }}_collapse_sample">
+                Sample
+            </button>
+        </h3>
+        <div id="{{ id_prefix }}_collapse_sample" class="accordion-collapse collapse"
+             aria-labelledby="{{ id_prefix }}_heading_sample"
+             data-bs-parent="#{{ id_prefix }}_form_accordion">
+            <div class="accordion-body bg-light">
+                {% include 'form_fields_topo_morph.html' %}
+                {% include 'form_fields_tumor_origin.html' %}
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                data-bs-html="true"
+                                data-bs-placement="left"
+                                title="">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                        Sample Source
+                    </legend>
+                    <div class="col-sm-8">
+                        {% for ss_item in sample_source_list%}
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_sample_source"
+                                   value="{{ ss_item.label }}"
+                                   id="{{ id_prefix }}_ss_{{ ss_item.label|lower }}">
+                            <label class="form-check-label"
+                                   for="{{ id_prefix }}_ss_{{ ss_item.label|lower }}">
+                                {{ ss_item.label|title }}
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h3 class="accordion-header" id="{{ id_prefix }}_heading_ind">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#{{ id_prefix }}_collapse_ind" aria-expanded="false"
+                    aria-controls="{{ id_prefix }}_collapse_ind">
+                Individual
+            </button>
+        </h3>
+        <div id="{{ id_prefix }}_collapse_ind" class="accordion-collapse collapse"
+             aria-labelledby="{{ id_prefix }}_heading_ind"
+             data-bs-parent="#{{ id_prefix }}_form_accordion">
+            <div class="accordion-body bg-light">
+                {% include 'form_fields_patient_info.html' %}
+            </div>
+        </div>
+    </div>
+</div>

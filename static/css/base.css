@@ -153,13 +153,12 @@ h1 a {
     min-height: 155px;
 }
 
-/*table.genticcode-table th, td {*/
-/*border: 1px solid black;*/
-/*}*/
-
-/*.margin-r-10 {*/
-/*margin-right: 10%;*/
-/*}*/
+.sm_include_bg, .gm_include_bg {
+    background-color: rgba(162, 222, 208, .1);
+}
+.sm_exclude_bg, .gm_exclude_bg {
+    background-color: rgba(241, 169, 160, .1);
+}
 
 .spinner {
     position: absolute;

@@ -47,6 +47,8 @@ $(document).ready(function () {
         $('.browser-alert').show();
     }
 
+
+
     // window.FontAwesomeConfig = {
     //     searchPseudoElements: true
     // }
@@ -60,6 +62,7 @@ var reset_spinner_dimension = function () {
 };
 
 var display_spinner = function (show) {
+    console.log('display_spinner: ' + show);
     // reset_spinner_dimension();
     if (show) {
         $('.spinner').show();
@@ -72,10 +75,10 @@ var display_spinner = function (show) {
 var toggle_collapse_jQSel = function (selections, triggerHide) {
     $.each(selections, function (index, value) {
 
-        var div_ids= $(value).prop('id');
+        var div_ids = $(value).prop('id');
         var divCollapse = document.getElementById(div_ids);
         new bootstrap.Collapse(divCollapse,
-            triggerHide ? { hide: true, show: false } : { hide: false, show: true }
+            triggerHide ? {hide: true, show: false} : {hide: false, show: true}
         );
     });
 }

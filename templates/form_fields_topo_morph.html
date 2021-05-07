@@ -1,0 +1,42 @@
+<fieldset class="row mb-3">
+    <legend class="col-form-label col-sm-3 pt-0">
+        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                data-bs-html="true"
+                data-bs-placement="left"
+                title="">
+            <i class="far fa-question-circle"></i>
+        </button>
+        Topography
+    </legend>
+    <div class="col-sm-8">
+        <select name="{{ id_prefix }}_topo_list" class="form-control chosen-select topo-morph-select" id="{{ id_prefix }}_topo_input"
+                data-placeholder="Choose Topographies..."
+                data-topo-morph-assc="{{ topo_morph_assc }}"
+                data-morph-toggle="#{{ id_prefix }}_morph_input"
+                aria-label="Topography List" multiple>
+            {% for topo_item in topo_list %}
+            <option value="{{ topo_item.label }}">{{ topo_item.label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</fieldset>
+<fieldset class="row mb-3">
+    <legend class="col-form-label col-sm-3 pt-0">
+        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                data-bs-html="true"
+                data-bs-placement="left"
+                title="">
+            <i class="far fa-question-circle"></i>
+        </button>
+        Morphology
+    </legend>
+    <div class="col-sm-8">
+        <select name="{{ id_prefix }}_morph_list" class="form-control chosen-select" id="{{ id_prefix }}_morph_input"
+                data-placeholder="Choose Morphologies..."
+                aria-label="Morphology List" multiple>
+            {% for morph_item in morph_list %}
+            <option value="{{ morph_item.label }}">{{ morph_item.label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</fieldset>
