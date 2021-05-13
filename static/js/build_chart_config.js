@@ -4,7 +4,7 @@ const color_scheme = ["#4e79a7", "#f28e2c", "#e15759", "#76b7b2", "#59a14f", "#e
     "#9c755f", "#bab0ab", "#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5",
     "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f"];
 
-var codon_scale = {
+const codon_scale = {
     min: 0,
     max: 395,
     type: 'linear',
@@ -19,19 +19,30 @@ var codon_scale = {
     }
 };
 
-// var exon_scale = {
-//     title: {
-//         text: 'Exon',
-//         display: true
-//     }
-// };
+const exon_scale = {
+    title: {
+        text: 'Exon',
+        display: true
+    }
+};
 
-var pecentile_scale = {
+const pecentile_scale = {
     ticks: {
         callback: function (value) {
             return value + '%';
         }
     }
+};
+
+const get_exon_intron_labels = function(){
+    var labels = [];
+    for(var i=1; i<12; i++){
+        labels.push(i+'-exon');
+        if (i === 11)
+            break;
+        labels.push(i+'-intron');
+    }
+    return labels;
 };
 
 var build_bar_config = function (chart_id, chart_title, data, is_horizontal, x_scale, y_scale, is_dist_chart) {
@@ -67,6 +78,7 @@ var build_bar_config = function (chart_id, chart_title, data, is_horizontal, x_s
         options: {
             indexAxis: is_horizontal ? 'y' : 'x',
             scales: scale_option,
+            aspectRatio: is_horizontal && data['labels'].length>30 ? (30/data['labels'].length) : 2,
             plugins: {
                 title: {
                     display: true,

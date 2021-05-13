@@ -955,7 +955,6 @@ def stats_somatic_mut():
 @app.route("/prevalence_somatic_stats")
 def prevalence_somatic_stats():
     sql_stm = bq_builder.build_mutation_prevalence()
-    print(sql_stm)
     query_job = bigquery_client.query(sql_stm)
     data = []
     error_msg = None
@@ -986,7 +985,7 @@ def prevalence_somatic_stats():
         error_msg = "Sorry, query job has timed out."
     # query_result = {'data': data, 'msg': error_msg}
 
-    return render_template("prevalence_somatic_stats.html", graph_data=graph_data)
+    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, subject='Tumor Site')
 
 
 @app.route("/results_somatic_mutation", methods=['GET', 'POST'])
@@ -1033,26 +1032,46 @@ def results_somatic_prevalence():
     action = get_param_val(request, 'action')
     if action == 'get_country_graph':
         group_by = 'Country'
+        subject = 'Country'
     elif action == 'get_topo_graph':
         group_by = 'Short_topo'
+        subject = 'Topography'
     else:
         # get_morph_graph
         group_by = 'Morphogroup'
+        subject = 'Morphography'
     sql_stm = bq_builder.build_group_sum_graph_query(criteria=criteria, view='PrevalenceView', group_by=group_by)
-    # print(sql_stm)
+    print(sql_stm)
 
     query_job = bigquery_client.query(sql_stm)
     data = []
     error_msg = None
     try:
         result = query_job.result(timeout=30)
-        data = list(result)
+        rows = list(result)
+        labels = []
+        total_cnt = 0
+        for row in rows:
+            label = row.get('LABEL')
+            anal_cnt = row.get('Sample_analyzed_SUM')
+            mut_cnt = row.get('Sample_mutated_SUM')
+            label = "{label} ({mut_cnt}/{anal_cnt})".format(label=label, anal_cnt=anal_cnt, mut_cnt=mut_cnt)
+            labels.append(label)
+            ratio = mut_cnt * 100 / anal_cnt
+            data.append(ratio)
+            total_cnt += mut_cnt
+        graph_data = {
+            'labels': labels,
+            'data': data,
+            'total': total_cnt
+        }
     except BadRequest:
         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
     query_result = {'data': data, 'msg': error_msg}
-    return render_template("results_somatic_prevalence.html", query_result=query_result)
+    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, subject = subject)
+    # return render_template("results_somatic_prevalence.html", query_result=query_result)
 
 
 @app.route("/search_germline_mut")
@@ -1177,11 +1196,21 @@ def results_germline_mutation():
     # return render_template("results_germline_mutation.html", criteria_map=criteria_map, query_result=query_result)
 
 def build_graph_configs(action, table):
+
     if action == 'get_mutation_dist':
+        exon_intron_labels = []
+        for n in range (1, 12):
+            exon_intron_labels.append('{n}-exon'.format(n=n))
+            if n == 12:
+                break
+            exon_intron_labels.append('{n}-intron'.format(n=n))
+
+        # exon_intron_labels.append('11-exon')
         graph_configs = {
             'exon_intron': {
                 'query_type': 'group_counts',
                 'group_by': 'ExonIntron',
+                'include_vals': exon_intron_labels,
                 'exclude_vals': ['', 'NA']
             },
             'type': {
@@ -1267,6 +1296,17 @@ def build_graph_sqls(graph_configs, criteria_map, table):
                 'exclude': []
             }
 
+        if graph_configs[graph_id].get('group_by') and graph_configs[graph_id].get('include_vals'):
+            include_cri = {'column_name': graph_configs[graph_id]['group_by']}
+            include_vals = graph_configs[graph_id].get('include_vals')
+            if include_vals and len(include_vals) > 0:
+                if type(include_vals[0]) == int:
+                    include_cri['vals'] = include_vals
+                    include_cri['wrap_with'] = ''
+                else:
+                    include_cri['vals'] = include_vals
+                    include_cri['wrap_with'] = '"'
+            cri['include'].append(include_cri)
         if graph_configs[graph_id].get('group_by') and graph_configs[graph_id].get('exclude_vals'):
             exclude_cri = {'column_name': graph_configs[graph_id]['group_by']}
             exclude_vals = graph_configs[graph_id].get('exclude_vals')

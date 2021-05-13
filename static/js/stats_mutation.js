@@ -34,7 +34,8 @@ $(document).ready(function () {
             title: 'Exon/Intron Distribution',
             type: 'bar',
             horizontal: false,
-            x_scale: null,
+            x_labels: get_exon_intron_labels(),
+            x_scale: exon_scale,
             y_scale: pecentile_scale
         },
         {
@@ -59,9 +60,9 @@ $(document).ready(function () {
             id: 'ta_class',
             title: 'Transactivation',
             type: 'pie'
-        },
+        }
     ];
-    for (var i=0; i < graph_config.length; i++){
+    for (var i = 0; i < graph_config.length; i++){
         var graph_id = graph_config[i].id;
         var canvas_id = graph_id+'_chart';
         var graph_type = graph_config[i].type;
@@ -73,6 +74,19 @@ $(document).ready(function () {
                 var horizontal = graph_config[i].horizontal;
                 var x_scale = graph_config[i].x_scale;
                 var y_scale = graph_config[i].y_scale;
+                if(Object.keys(graph_config[i]).includes('x_labels')){
+                    var x_labels = graph_config[i].x_labels;
+                    var graph_x = graph_data.labels;
+                    var graph_y = graph_data.data;
+                    var temp_data = [];
+                    for (var j = 0; j< x_labels.length; j++){
+                        var ind = graph_x.indexOf(x_labels[j]);
+                        temp_data.push(ind > -1 ? graph_y[ind]: 0);
+                    }
+                    graph_data.labels = x_labels;
+                    graph_data.data = temp_data;
+                }
+
                 build_bar_config(canvas_id, graph_title, graph_data, horizontal, x_scale, y_scale, true);
             }
             else{ // pi chart

@@ -38,12 +38,11 @@ def set_project_dataset(proj_id='isb-cgc-tp53-dev', d_set='TP53_data'):
 
 def build_group_sum_graph_query(criteria, view, group_by):
     query_temp = """
-        SELECT {group_by}, SUM(Sample_analyzed) AS Sample_analyzed_SUM, SUM(Sample_mutated) AS Sample_mutated_SUM, 
-        SUM(Sample_mutated)/SUM(Sample_analyzed) AS ratio
+        SELECT {group_by} AS LABEL, SUM(Sample_analyzed) AS Sample_analyzed_SUM, SUM(Sample_mutated) AS Sample_mutated_SUM
         FROM `{bq_proj_dataset}.{view}`	
         WHERE {where_clause}
         GROUP BY {group_by}
-        ORDER BY ratio
+        ORDER BY (Sample_mutated_SUM/Sample_analyzed_SUM) DESC
     """
     where_clause = build_where_clause(criteria)
     query = query_temp.format(bq_proj_dataset=bq_proj_dataset, view=view, group_by=group_by, where_clause=where_clause)
@@ -147,22 +146,22 @@ def build_mutation_dist_sum_query(criteria_map, table, group_by, sum_col):
     print(query)
     return query
 
-def build_tumor_graph_query(criteria, view):
-
-    query_temp = """
-        SELECT Country, SUM(Sample_analyzed) AS Sample_analyzed_SUM, SUM(Sample_mutated) AS Sample_mutated_SUM, 
-        SUM(Sample_mutated)/SUM(Sample_analyzed) AS ratio
-        FROM `{bq_proj_dataset}.{view}`	
-        WHERE {where_clause}
-        GROUP BY Country
-        ORDER BY ratio
-    """
-    where_clause = build_where_clause(criteria)
-    query = query_temp.format(bq_proj_dataset=bq_proj_dataset, view=view, where_clause=where_clause)
-    # columns = ', '.join("tbl.{0}".format(col) for col in column_filters)
-    # query = query_temp.format(bq_proj_dataset=bq_proj_dataset, mut_id=mut_id, join_table=join_table, columns=columns,
-    #                           join_column=join_column, ord_column=ord_column)
-    return query
+# def build_tumor_graph_query(criteria, view):
+#
+#     query_temp = """
+#         SELECT Country, SUM(Sample_analyzed) AS Sample_analyzed_SUM, SUM(Sample_mutated) AS Sample_mutated_SUM,
+#         SUM(Sample_mutated)/SUM(Sample_analyzed) AS ratio
+#         FROM `{bq_proj_dataset}.{view}`
+#         WHERE {where_clause}
+#         GROUP BY Country
+#         ORDER BY ratio
+#     """
+#     where_clause = build_where_clause(criteria)
+#     query = query_temp.format(bq_proj_dataset=bq_proj_dataset, view=view, where_clause=where_clause)
+#     # columns = ', '.join("tbl.{0}".format(col) for col in column_filters)
+#     # query = query_temp.format(bq_proj_dataset=bq_proj_dataset, mut_id=mut_id, join_table=join_table, columns=columns,
+#     #                           join_column=join_column, ord_column=ord_column)
+#     return query
 
 def build_mutation_view_join_query(mut_id, join_table, column_filters, join_column, ord_column):
     query_temp = """
