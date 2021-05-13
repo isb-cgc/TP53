@@ -3,21 +3,30 @@
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/chart.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/build_chart_config.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/prevalence_som_stats.js') }}"></script>
-
-<script type="text/javascript">
-    active_submenu = 'search_tp53data';
-    var graph_data = {{ graph_data | tojson | safe }};
-</script>
-
+<script type="text/javascript" src="{{ url_for('static', filename='js/stats_mutation.js') }}"></script>
 {% endblock %}
 
 {% block subcontent %}
+
+<script type="text/javascript">
+    active_submenu = 'search_tp53data';
+    var graph_result = {{ graph_result | tojson | safe }};
+</script>
+
 <div class="jump-div">
-    <h2>tp53 Somatic Prevalence by Tumor Site</h2>
+    <h2>{{ title }}</h2>
     <hr>
     <div class="p-2">
-        <canvas class="col" id="som_prev_chart"></canvas>
+        {% for graph_id in graph_result.graph_data %}
+        <div class="col-5 border rounded-2 p-3 my-3 mx-auto">
+            <canvas id="{{ graph_id }}_chart"></canvas>
+        </div>
+        {% endfor %}
+
     </div>
 </div>
+
+
 {% endblock %}
+
+

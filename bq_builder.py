@@ -58,7 +58,7 @@ def build_mutation_query(criteria_map, table, group_by):
         """
 
     count_query = """
-            SELECT {group_by}, COUNT(*)
+            SELECT {group_by} AS LABEL, COUNT(*) AS CNT
             FROM ({filtered_select_sql})
             GROUP BY {group_by}
     """
@@ -66,12 +66,12 @@ def build_mutation_query(criteria_map, table, group_by):
     for type in ['include', 'exclude']:
         if type == 'include':
             filtered_select_sql += query_module
-            where_clause = build_where_clause(criteria_map[type])
+            where_clause = build_where_clause(criteria_map[type], include=True)
         elif len(criteria_map[type]):
             filtered_select_sql += "\nEXCEPT DISTINCT ("
             filtered_select_sql += query_module
             filtered_select_sql += "\n)"
-            where_clause = build_where_clause(criteria_map[type])
+            where_clause = build_where_clause(criteria_map[type], include=False)
         else:
             where_clause = ''
 
@@ -85,7 +85,7 @@ def build_mutation_query(criteria_map, table, group_by):
 def build_codon_dist_query(column, table):
     query_temp = """
         (
-            SELECT {column}, COUNT(*) AS Counter
+            SELECT {column} AS LABEL, COUNT(*) AS CNT
             FROM `{bq_proj_dataset}.{table}`
             WHERE {column} > 0
             AND Type_ID IN (6, 7, 8, 9, 10, 11, 12) 
@@ -93,7 +93,7 @@ def build_codon_dist_query(column, table):
         )
         UNION DISTINCT
         (
-            SELECT Codon_number, 0 AS Counter 
+            SELECT Codon_number AS LABEL, 0 AS CNT 
             FROM `{bq_proj_dataset}.p53_sequence`
             WHERE Codon_number > 0
             AND Codon_number NOT IN
@@ -105,6 +105,7 @@ def build_codon_dist_query(column, table):
                 GROUP BY {column}
             )
         )
+        ORDER BY LABEL
     """
     query = query_temp.format(bq_proj_dataset=bq_proj_dataset, column=column, table=table)
     print(query)
@@ -114,6 +115,7 @@ def build_codon_dist_query(column, table):
 
 def build_mutation_dist_sum_query(criteria_map, table, group_by, sum_col):
 
+    print(criteria_map)
     query_module = """
             SELECT *
             FROM `{bq_proj_dataset}.{table}`	
@@ -121,20 +123,21 @@ def build_mutation_dist_sum_query(criteria_map, table, group_by, sum_col):
         """
 
     sum_query = """
-            SELECT {group_by}, SUM({sum_col})
+            SELECT {group_by} AS LABEL, SUM({sum_col}) AS CNT
             FROM ({filtered_select_sql})
             GROUP BY {group_by}
+            ORDER BY CNT DESC
     """
     filtered_select_sql = ''
     for type in ['include', 'exclude']:
         if type == 'include':
             filtered_select_sql += query_module
-            where_clause = build_where_clause(criteria_map[type])
+            where_clause = build_where_clause(criteria_map[type], include=True)
         elif len(criteria_map[type]):
             filtered_select_sql += "\nEXCEPT DISTINCT ("
             filtered_select_sql += query_module
             filtered_select_sql += "\n)"
-            where_clause = build_where_clause(criteria_map[type])
+            where_clause = build_where_clause(criteria_map[type], include=False)
         else:
             where_clause = ''
 
@@ -178,10 +181,10 @@ def build_mutation_view_join_query(mut_id, join_table, column_filters, join_colu
 
     return query
 
-def build_where_clause(criteria):
-    where_clause = 'TRUE'
+def build_where_clause(criteria, include = True):
+    where_clause = 'TRUE' if include else 'FALSE'
     or_groups = {}
-
+    log_op = 'AND' if include else 'OR'
     for criterion in criteria:
         column_name = criterion.get('column_name')
         vals = criterion.get('vals')
@@ -196,8 +199,8 @@ def build_where_clause(criteria):
         if between_op:
             start_val = vals[0]
             end_val = vals[1]
-            where_clause += '\nAND {column_name} >= {start_val} AND {column_name} <= {end_val}'.format(
-                column_name=column_name, start_val=start_val, end_val=end_val)
+            where_clause += '\n{log_op} ( {column_name} >= {start_val} AND {column_name} <= {end_val} )'.format(
+                column_name=column_name, start_val=start_val, end_val=end_val, log_op=log_op)
         else:
             op = 'IN' if len(vals) > 1 else '='
             vals_str = ', '.join('{wrap_with}{val}{wrap_with}'.format(val=val, wrap_with=wrap_with) for val in vals)
@@ -205,10 +208,10 @@ def build_where_clause(criteria):
                 or_groups[or_group].append('{column_name} {op} ({vals_str})'.format(column_name=column_name, op=op,
                                                                                     vals_str=vals_str))
             else:
-                where_clause += '\nAND {column_name} {op} ({vals_str})'.format(column_name=column_name, op=op,
-                                                                               vals_str=vals_str)
+                where_clause += '\n{log_op} {column_name} {op} ({vals_str})'.format(column_name=column_name, op=op,
+                                                                                    log_op=log_op, vals_str=vals_str)
     for group in or_groups:
-        where_clause += '\nAND (' + (' OR '.join(or_groups[group])) + ')'
+        where_clause += '\n{log_op} ('.format(log_op=log_op) + (' OR '.join(or_groups[group])) + ')'
     return where_clause
 
 def build_simple_query(criteria, table, column_filters, do_counts=False, distinct_col=None, ord_column=None,
@@ -251,13 +254,9 @@ def build_simple_query(criteria, table, column_filters, do_counts=False, distinc
 def build_mutation_prevalence():
     query_temp = """
             SELECT Topography, Sample_analyzed, Sample_mutated
-            FROM `{bq_proj_dataset}.PrevalenceStatView`	
-            WHERE Sample_analyzed > 500
-            ORDER BY ((Sample_mutated*100) / Sample_analyzed)
+            FROM `{bq_proj_dataset}.PrevalenceStat`	
+            WHERE Sample_analyzed > 500 AND Topography != ''
+            ORDER BY ((Sample_mutated*100) / Sample_analyzed) DESC
         """
     query = query_temp.format(bq_proj_dataset=bq_proj_dataset)
     return query
-# Select Topography, Sample_analyzed, Sample_mutated
-#         FROM PrevalenceStat
-#         Where Sample_analyzed>500
-#         order by ((Sample_mutated*100) / Sample_analyzed)";

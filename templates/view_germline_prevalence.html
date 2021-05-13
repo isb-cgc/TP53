@@ -64,8 +64,8 @@
             <tr>
                 <td>{{ row.Diagnosis }}</td>
                 <td>{{ row.Cohort }}</td>
-                <td>{{ row.Cases_Analyzed }}</td>
-                <td>{{ row.Cases_mutated }}</td>
+                <td>{{ row.Cases_Analyzed|int }}</td>
+                <td>{{ row.Cases_mutated|int }}</td>
                 <td>{{ row.Mutation_prevalence }}</td>
                 <td>{{ row.Remark }}</td>
                 <td><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank">{{ row.PubMed }}</a></td>
