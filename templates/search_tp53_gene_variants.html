@@ -3,6 +3,7 @@
 {{ super() }}
 <script type="text/javascript">
     active_submenu = 'search_tp53data';
+
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/search_gv.js') }}"></script>
 
@@ -17,7 +18,7 @@
     <div id="search_tp53_gv" class="p-3">
         <div class="p-3 bg-light rounded-2">
             <h3>Enter List of Variants</h3>
-            <form class="search-form" action="{{ url_for('gv_result') }}" method="POST">
+            <form class="search-form" action="{{ url_for('results_gene_mut_by_gv') }}" method="POST">
                 {% with id_prefix='gv' %}
                 <fieldset class="row mb-3">
                     <legend class="col-form-label col-sm-3 pt-0">Search by</legend>

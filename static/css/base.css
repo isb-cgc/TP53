@@ -1,14 +1,9 @@
 @import url("/static/css/bootstrap.min.css");
-/*@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");*/
 @import url("/static/css/all.min.css");
-/*@import url("/static/css/jquery-ui.min.css");*/
 @import url("/static/css/chosen.min.css");
-/*@import url("/static/css/buttons.dataTables.min.css");*/
-/*@import url("/static/css/buttons.bootstrap4.min.css");*/
+@import url("/static/css/buttons.dataTables.min.css");
 @import url("/static/css/datatables.min.css");
 @import url("/static/css/select.datatables.min.css");
-
-/*@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');*/
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -316,4 +311,8 @@ h1 a {
 .result-table{
     font-size: .8em;
 
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+    background-color: #f8f9fa;
+    border-bottom-color: #f8f9fa;
 }

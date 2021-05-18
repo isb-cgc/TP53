@@ -1,6 +1,5 @@
 /* browse_refs.js */
 'use strict';
-// const CHECKBOX_COL_ORD = 0;
 const REF_ID_COL_ORD = 0;
 const AUTHOR_COL_ORD = 1;
 const YEAR_COL_ORD = 2;
@@ -48,12 +47,6 @@ $(document).ready(function () {
                 {
                     orderable: false,
                     targets: [REF_ID_COL_ORD, ABSTRACT_COL_ORD]
-                },
-                {
-                    checkboxes: {
-                        'selectRow': true
-                    },
-                    targets: [REF_ID_COL_ORD]
                 }
             ],
             select: {

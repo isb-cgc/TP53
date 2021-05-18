@@ -1,0 +1,85 @@
+{% extends "tp53data.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/chart.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/build_chart_config.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/stats_mutation.js') }}"></script>
+{% endblock %}
+
+{% block subcontent %}
+
+<script type="text/javascript">
+    active_submenu = 'search_tp53data';
+    var graph_result = {{ graph_result | tojson | safe }};
+</script>
+
+<div>
+    <h2 class="mt-3">{{ title }}</h2>
+    <hr>
+    <nav>
+        <div class="nav nav-tabs" id="mut_stats_tabs" role="tablist">
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-mut-type-tab"
+                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Mutation Type
+            </button>
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-mut-effect-tab"
+                    type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Mutation Effect
+            </button>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane bg-light fade show active border border-top-0" id="nav-mut-type-tab" role="tabpanel" aria-labelledby="nav-mut-type-tab">
+            <div class="p-3">
+                <div class="row mt-2">
+                    <div class="col-2"></div>
+                    <div class="col-8 border rounded-2 p-3 bg-white m-1">
+                        <canvas id="exon_intron_chart"></canvas>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8 border rounded-2 p-3 bg-white m-1">
+                        <canvas id="codon_no_chart"></canvas>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4 border rounded-2 p-3 bg-white m-1">
+                        <canvas id="type_chart"></canvas>
+                    </div>
+                    <div class="col-6"></div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane bg-light fade border border-top-0" id="nav-mut-effect-tab" role="tabpanel" aria-labelledby="nav-mut-effect-tab">
+            <div class="p-3">
+                <div class="row mt-2">
+                    <div class="col-2"></div>
+                    <div class="col-4 border rounded-2 p-3 bg-white m-1">
+                        <canvas id="effect_chart"></canvas>
+                    </div>
+                    <div class="col-4 border rounded-2 p-3 bg-white m-1">
+                        <canvas id="mut_pt_chart"></canvas>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4 border rounded-2 p-3 bg-white m-1">
+                        <canvas id="sift_class_chart"></canvas>
+                    </div>
+                    <div class="col-4 border rounded-2 p-3 bg-white m-1">
+                        <canvas id="ta_class_chart"></canvas>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+

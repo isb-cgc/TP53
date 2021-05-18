@@ -313,9 +313,8 @@ def list_param_val(request, input_name):
     return method_request.getlist(input_name)
 
 
-@app.route("/gv_result", methods=['GET', 'POST'])
-def gv_result():
-    result_title = 'Gene Variations'
+@app.route("/results_gene_mutation", methods=['GET', 'POST'])
+def results_gene_mutation():
     criteria = []
     column_name = None
     variations = None
@@ -336,7 +335,7 @@ def gv_result():
 
     if column_name and variations and len(variations):
         criteria.append({'column_name': column_name, 'vals': variations, 'wrap_with': '"'})
-    return render_template("gv_result.html", criteria=criteria, result_title=result_title)
+    return render_template("results_gene_mutation.html", criteria=criteria,)
 
 
 def build_criteria(param_col_name_map):
@@ -354,6 +353,7 @@ def build_criteria(param_col_name_map):
             or_group = param_name
         else:
             param_name = param_key
+        print(param_name)
         if param_col_name_map[param_key].get('between_op', False):
             between_op = True
             start_param = get_param_val(request, param_col_name_map[param_key]['start_param'])
@@ -369,13 +369,24 @@ def build_criteria(param_col_name_map):
         else:
             val = get_param_val(request, param_name)
             vals = [val] if val else []
-
+        print(vals)
         if vals and len(vals):
             wrap_with = '"' if param_col_name_map[param_key].get('wrap', True) else ''
             criteria.append(
                 {'column_name': param_col_name_map[param_key]['col_name'], 'vals': vals, 'wrap_with': wrap_with,
                  'or_group': or_group, 'between_op': between_op})
     return criteria
+
+
+def get_mut_id_criteria():
+    param_col_name_map = {
+        'mut_id_list':{
+            'multi_val': True,
+            'col_name': 'MUT_ID',
+            'wrap': False
+        }
+    }
+    return build_criteria(param_col_name_map)
 
 
 def get_mutation_criteria(prefix):
@@ -660,12 +671,59 @@ def get_patient_criteria(prefix):
     return criteria
 
 
-@app.route("/gmut_result", methods=['GET', 'POST'])
-def gmut_result():
-    result_title = 'Gene Variations'
+@app.route("/results_gene_mut_by_gv", methods=['GET', 'POST'])
+def results_gene_mut_by_gv():
+    prefix = 'gv'
+    criteria = get_variation_criteria(prefix)
+    return render_template("results_gene_mutation.html", criteria=criteria)
+
+@app.route("/results_gene_mut_by_mutids", methods=['GET', 'POST'])
+def results_gene_mut_by_mutids():
+    criteria = get_mut_id_criteria()
+    return render_template("results_gene_mutation.html", criteria=criteria)
+
+@app.route("/results_gene_mut_by_mut", methods=['GET', 'POST'])
+def results_gene_mut_by_mut():
     prefix = 'gmut'
     criteria = get_mutation_criteria(prefix)
-    return render_template("gv_result.html", criteria=criteria, result_title=result_title)
+    return render_template("results_gene_mutation.html", criteria=criteria)
+
+@app.route("/results_gene_dist", methods=['GET', 'POST'])
+def results_gene_dist():
+
+    criteria_map = {
+        'include': get_mut_id_criteria(),
+        'exclude': []
+    }
+    action = get_param_val(request, 'action')
+    if action == 'get_gv_tumor_dist':
+        gv_tumor_dist_tables = {
+            'somatic_tumor_dist': 'SomaticView',
+            'germline_tumor_dist': 'GermlineView'
+        }
+        template = 'mutation_stats.html'
+        graph_configs = {}
+        sql_maps = {}
+        graph_configs[action] = build_graph_configs(action)['tumor_dist']
+        for dist_table in gv_tumor_dist_tables:
+            sql_maps[dist_table] = (build_graph_sqls(graph_configs, criteria_map=criteria_map, table=gv_tumor_dist_tables[dist_table])[action])
+        # print(sql_maps)
+        # print(graph_configs)
+    else:
+    # elif action == 'get_mutation_dist':
+        table = 'MutationView'
+        template = 'mutation_dist_stats.html'
+        graph_configs = build_graph_configs(action, table)
+        sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
+    # else:
+    #     # action = get_gv_tumor_dist
+    #     table1 = 'SomaticView'
+    #     table2 = 'GermlineView'
+    #     template = 'mutation_stats.html'
+    graph_result = build_graph_data(sql_maps)
+    print(graph_result)
+    return render_template(template, criteria_map=criteria_map, title='Statistics on Gene Variations',
+                           graph_result=graph_result)
 
 
 @app.route("/gv_query", methods=['GET', 'POST'])
@@ -761,8 +819,8 @@ def search_tp53data():
     return render_template("search_tp53data.html")
 
 
-@app.route("/search_gv")
-def search_gv():
+@app.route("/search_gene_by_var")
+def search_gene_by_var():
     return render_template("search_tp53_gene_variants.html", c_desc_list=m_c_desc_list, p_desc_list=m_p_desc_list,
                            g_desc_hg19_list=m_g_desc_hg19_list, g_desc_hg38_list=m_g_desc_hg38_list)
 
@@ -890,8 +948,8 @@ def mut_details():
     return render_template("mut_details.html", query_result=query_result, error_msg=error_msg)
 
 
-@app.route("/search_gmut")
-def search_gmut():
+@app.route("/search_gene_by_mut")
+def search_gene_by_mut():
     return render_template("search_tp53_gene_by_mut.html", type_list=m_type_list, desc_list=m_desc_list,
                            motif_list=m_motif_list, effect_list=m_effect_list,
                            exon_intron_list=m_exon_intron_list, ta_class_list=m_ta_class_list, sift_list=m_sift_list)
@@ -991,6 +1049,8 @@ def prevalence_somatic_stats():
 @app.route("/results_somatic_mutation", methods=['GET', 'POST'])
 def results_somatic_mutation():
     action = get_param_val(request, 'action')
+    template = "mutation_dist_stats.html" if action == 'get_mutation_dist' else "mutation_stats.html"
+
     if action == 'get_codon_dist':
         table = 'SomaticMutationStats'
     elif action == 'get_tumor_dist':
@@ -1016,10 +1076,8 @@ def results_somatic_mutation():
     graph_configs = build_graph_configs(action, table)
     sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
     graph_result = build_graph_data(sql_maps)
-    return render_template("mutation_stats.html", criteria_map=criteria_map, title='Statistics on Somatic Mutations',
+    return render_template(template, criteria_map=criteria_map, title='Statistics on Somatic Mutations',
                            graph_result=graph_result)
-
-    # return render_template("results_somatic_mutation.html", criteria_map=criteria_map, query_result=query_result)
 
 
 @app.route("/results_somatic_prevalence", methods=['GET', 'POST'])
@@ -1123,7 +1181,6 @@ def view_germline_prevalence():
         error_msg = "Sorry, query job has timed out."
     query_result = {'data': data, 'msg': error_msg}
 
-    # return render_template("view_val_poly.html", criteria=criteria, query_result=query_result)
     return render_template("view_germline_prevalence.html", criteria=criteria, query_result=query_result)
 
 
@@ -1168,13 +1225,18 @@ def get_germline_patient_criteria(prefix):
 
 @app.route("/results_germline_mutation", methods=['GET', 'POST'])
 def results_germline_mutation():
+    # template = "mutation_stats.html"
     action = get_param_val(request, 'action')
+    template = "mutation_dist_stats.html" if action == 'get_mutation_dist' else "mutation_stats.html"
     if action == 'get_codon_dist':
         table = 'GermlineMutationStats'
     elif action == 'get_tumor_dist':
         table = 'GermlineTumorStats'
+
     else:
-        # action == 'get_codon_dist'
+        # action == 'get_mutation_dist'
+        # or 'get_tumor_dist_view'
+        # template = "mutation_dist_stats.html"
         table = 'GermlineView'
     criteria_map = {}
     if request.method == 'POST':
@@ -1190,12 +1252,13 @@ def results_germline_mutation():
     graph_configs = build_graph_configs(action, table)
     sql_maps = build_graph_sqls(graph_configs, criteria_map, table)
     graph_result = build_graph_data(sql_maps)
-    return render_template("mutation_stats.html", criteria_map={}, title='Statistics on Germline Mutations',
+    # print(graph_result)
+    return render_template(template, criteria_map={}, title='Statistics on Germline Mutations',
                            graph_result=graph_result)
 
     # return render_template("results_germline_mutation.html", criteria_map=criteria_map, query_result=query_result)
 
-def build_graph_configs(action, table):
+def build_graph_configs(action, table=None):
 
     if action == 'get_mutation_dist':
         exon_intron_labels = []
@@ -1267,7 +1330,6 @@ def build_graph_configs(action, table):
     elif action == 'get_tumor_dist':
         stat_graph_col = 'StatisticGraphGermline' if table == 'GermlineTumorStats' else 'StatisticGraph'
         count_col = 'Count' if table == 'GermlineTumorStats' else 'DatasetRx'
-
         graph_configs = {
             'tumor_dist': {
                 'query_type': 'group_sums',
@@ -1275,9 +1337,22 @@ def build_graph_configs(action, table):
                 'sum_col': count_col
             }
         }
+    # elif action == 'get_gv_tumor_dist':
+    #     graph_configs = {
+    #         # 'topo_dist': {
+    #         'tumor_dist_somatic': {
+    #             'query_type': 'group_counts',
+    #             'group_by': 'Short_topo'
+    #         },
+    #         'tumor_dist_germline': {
+    #             'query_type': 'group_counts',
+    #             'group_by': 'Short_topo'
+    #         }
+    #     }
     else:
         graph_configs = {
-            'topo_dist': {
+            # 'topo_dist': {
+            'tumor_dist': {
                 'query_type': 'group_counts',
                 'group_by': 'Short_topo'
             }
@@ -1343,6 +1418,8 @@ def build_graph_sqls(graph_configs, criteria_map, table):
 def build_graph_data(sql_maps):
     query_jobs = {}
     for graph_id in sql_maps:
+        print(graph_id)
+        print(sql_maps[graph_id])
         job = bigquery_client.query(sql_maps[graph_id])
         query_jobs[graph_id] = job
     graph_data = {}
@@ -1487,33 +1564,23 @@ def cell_lines_mutation_stats():
     return render_template("mutation_stats.html", criteria_map={}, title='Statistics on Cell Line Mutations',
                            graph_result=graph_result)
 
-    # def build_codon_dist_data(column, view):
-    #     sql_stm = bq_builder.build_codon_dist_query(column, view)
-    #     query_page_job = bigquery_client.query(sql_stm)
-    #     try:
-    #         result = query_page_job.result(timeout=30)
-    #         data = list(result)
-    #     except BadRequest:
-    #         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
-    #     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
-    #         error_msg = "Sorry, query job has timed out."
-    #     query_result = {'data': data, 'msg': error_msg}
-
-    return query_result
-
 
 @app.route("/results_cell_line_mutation", methods=['GET', 'POST'])
 def results_cell_line_mutation():
     criteria = []
     if request.method == 'POST':
-        prefix = 'cl'
-        criteria += get_cell_line_criteria(prefix)
-        criteria += get_method_criteria(prefix)
-        criteria += get_variation_criteria(prefix)
-        criteria += get_mutation_criteria(prefix)
-        criteria += get_patient_criteria(prefix)
-        criteria += get_country_criteria(prefix)
-
+        mut_id_criteria = get_mut_id_criteria()
+        if (len(mut_id_criteria)):
+            criteria = mut_id_criteria
+        else:
+            prefix = 'cl'
+            criteria += get_cell_line_criteria(prefix)
+            criteria += get_method_criteria(prefix)
+            criteria += get_variation_criteria(prefix)
+            criteria += get_mutation_criteria(prefix)
+            criteria += get_patient_criteria(prefix)
+            criteria += get_country_criteria(prefix)
+            criteria += get_mut_id_criteria()
     return render_template("results_cell_lines.html", criteria=criteria)
 
 

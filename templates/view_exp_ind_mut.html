@@ -4,7 +4,9 @@
 <script type="text/javascript">
     active_submenu = 'search_tp53data';
 </script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/result.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.select.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/view_exp_ind_mut.js') }}"></script>
+
 
 
 {% endblock %}
@@ -15,30 +17,27 @@
     <hr>
 
     <div id="view_exp_ind_mut" class="p-3">
-        <div class="pb-2 text-end">
-            <div class="dropdown">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="shoppingCartButton"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-shopping-cart"></i><span class="badge rounded-pill bg-primary">0</span>
+        <div class="float-end d-inline-block">
+            <div class="btn-group btn-group-sm"><i class="fas fa-shopping-cart"></i><span
+                    class="cart-count badge rounded-pill bg-primary">0</span></div>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Additional Search and Tools">
+                <button type="button" class="btn btn-outline-secondary action-button disabled"
+                        value="get_mutation_dist">
+                    <i class="fas fa-search"></i>
+                    View Mutation Patterns
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="shoppingCartButton">
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-list-alt"></i> View Mutation Patterns</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-download"></i> Download</a></li>
-                </ul>
             </div>
-            <!--<div class="btn-group btn-group-sm " role="group" aria-label="Additional Search and Tools">-->
-            <!--<a role="button" class="btn btn-outline-secondary"><i class="fas fa-shopping-cart"></i> View Selected Mutation Patterns-->
-            <!--</a>-->
-            <!--<a role="button" class="btn btn-outline-secondary"><i class="fas fa-download"></i> Download-->
-            <!--</a>-->
-            <!--</div>-->
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-secondary"><i class="fas fa-download"></i> Download
+                </button>
+            </div>
         </div>
 
         {% if query_result.data|length %}
-        <table class="table table-striped table-sm result-table clientside-processed" cellspacing="0" width="100%">
+        <table id="eim-result-table" class="table table-striped table-sm result-table " cellspacing="0" width="100%">
             <thead>
             <tr>
-                <th><input class="form-check-input" type="checkbox" name="check_all" id="check_all"></th>
+                <th><input class="form-check-input check-all" type="checkbox"></th>
                 <th>Exposure</th>
                 <th>Genomic Description</th>
                 <th>cDNA Description</th>
@@ -47,12 +46,13 @@
                 <th>Clone ID</th>
                 <th>Add Info</th>
                 <th>PubMed</th>
+                <th>MUT ID</th>
             </tr>
             </thead>
             <tbody>
             {% for row in query_result.data %}
             <tr>
-                <td><input class="form-check-input" type="checkbox"></td>
+                <td><input class="form-check-input row-check" type="checkbox" aria-label="Select Row" value="{{ row.MUT_ID }}"></td>
                 <td>{{ row.Exposure }}</td>
                 <td>{{ row.g_description_GRCh38 }}</td>
                 <td><a href="javascript:displayGeneVariations('cdna','{{ row.c_description }}');">{{ row.c_description
@@ -66,6 +66,9 @@
                     <a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank">
                         {{ row.PubMed }}
                     </a>
+                </td>
+                <td>
+                    {{ row.MUT_ID }}:{{ row.Clone_ID }}
                 </td>
             </tr>
             {% endfor %}

@@ -1,4 +1,4 @@
-<div id="{{ id_prefix }}_cdna_div" class="collapse type-collapse show" data-bs-parent="#gv_type_collapse">
+<div id="{{ id_prefix }}_cdna_div" class="collapse type-collapse {{'' if id_prefix == 'gv' else 'show'}}" data-bs-parent="#gv_type_collapse">
     <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-3 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
@@ -10,7 +10,7 @@
         </legend>
 
         <div class="col-sm-8">
-            <select name="{{ id_prefix }}_cdna_list" class="form-control chosen-select" id="{{ id_prefix }}_cdna_input"
+            <select name="{{ id_prefix }}_cdna_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_cdna_input"
                     data-placeholder="Choose cDNA Descriptions..." aria-label="cDNA List" multiple>
                 {% for c_desc in c_desc_list %}
                 <option value="{{ c_desc.label }}">{{ c_desc.label }}</option>
@@ -21,7 +21,7 @@
 
     </fieldset>
 </div>
-<div id="{{ id_prefix }}_p_div" class="collapse type-collapse show" data-bs-parent="#gv_type_collapse">
+<div id="{{ id_prefix }}_p_div" class="collapse type-collapse {{'' if id_prefix == 'gv' else 'show'}}" data-bs-parent="#gv_type_collapse">
     <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-3 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
@@ -33,7 +33,7 @@
         </legend>
 
         <div class="col-sm-8">
-            <select name="{{ id_prefix }}_p_list" class="form-control chosen-select" id="{{ id_prefix }}_p_input"
+            <select name="{{ id_prefix }}_p_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_p_input"
                     data-placeholder="Choose Protein Descriptions..." aria-label="Protein List"
                     multiple>
                 {% for p_desc in p_desc_list %}
@@ -45,7 +45,7 @@
 
     </fieldset>
 </div>
-<div id="{{ id_prefix }}_hg19_div" class="collapse type-collapse show" data-bs-parent="#gv_type_collapse">
+<div id="{{ id_prefix }}_hg19_div" class="collapse type-collapse {{'' if id_prefix == 'gv' else 'show'}}" data-bs-parent="#gv_type_collapse">
     <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-3 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
@@ -57,7 +57,7 @@
         </legend>
 
         <div class="col-sm-8">
-            <select name="{{ id_prefix }}_hg19_list" class="form-control chosen-select" id="{{ id_prefix }}_hg19_input"
+            <select name="{{ id_prefix }}_hg19_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_hg19_input"
                     data-placeholder="Choose Genomic Descriptions (hg19)..."
                     aria-label="Genomic List (hg19)"
                     multiple>
@@ -69,8 +69,8 @@
         </div>
     </fieldset>
 </div>
-<div id="{{ id_prefix }}_hg38_div" class="collapse type-collapse show" data-bs-parent="#gv_type_collapse">
-    <fieldset class="row mb-3" data-bs-parent="#gv_type_collapse">
+<div id="{{ id_prefix }}_hg38_div" class="collapse type-collapse {{'' if id_prefix == 'gv' else 'show'}}" data-bs-parent="#gv_type_collapse">
+    <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-3 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                     data-bs-placement="left"
@@ -81,7 +81,7 @@
         </legend>
 
         <div class="col-sm-8">
-            <select name="{{ id_prefix }}_hg38_list" class="form-control chosen-select" id="{{ id_prefix }}_hg38_input"
+            <select name="{{ id_prefix }}_hg38_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_hg38_input"
                     data-placeholder="Choose Genomic Descriptions (hg38)..."
                     aria-label="Genomic List (hg38)"
                     multiple>
@@ -90,7 +90,6 @@
                 {% endfor %}
             </select>
             <div class="form-text">Reference Sequence: GenBank NC_000017.11</div>
-
         </div>
     </fieldset>
 </div>

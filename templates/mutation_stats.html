@@ -18,7 +18,7 @@
     <hr>
     <div class="p-2">
         {% for graph_id in graph_result.graph_data %}
-        <div class="col-5 border rounded-2 p-3 my-3 mx-auto">
+        <div class="small-chart col-5 border rounded-2 p-3 my-3 mx-auto">
             <canvas id="{{ graph_id }}_chart"></canvas>
         </div>
         {% endfor %}

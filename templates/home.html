@@ -9,8 +9,8 @@
 </div>
 
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="col-md-10 p-lg-10 mx-auto my-10">
-        <h1 class="display-4 fw-normal">TP53 Database</h1>
+    <div class="col-md-10 p-lg-10 mx-auto mt-5">
+        <h1 class="display-4 fw-light">TP53 Database</h1>
         <p class="lead fw-normal">The NCI TP53 Database compiles various types of data and information on human TP53
             gene variations related to cancer. Data are compiled from the peer-reviewed literature and from generalist
             databases.</p>
@@ -43,13 +43,44 @@
 <!--</div>-->
 <!--</div>-->
 
-<div class="row position-relative overflow-hidden p-2 p-md-12 m-md-3 bg-light">
+<div class="row position-relative overflow-hidden p-2 p-md-12 m-md-3">
     <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <div class="col-md-5">
+        <div>
+            <strong class="d-inline-block mb-2 text-primary">Quick Links</strong>
+        </div>
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-primary">Latest Updates</strong>
-                <!--<h3 class="mb-0">p53 in the Clinics</h3>-->
+            <ul class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action" href="search_gv"><i class="far fa-arrow-alt-circle-right"></i>
+                    Search
+                    Mutations / SNPs</a></a>
+                <a class="list-group-item list-group-item-action" href="search_cell_lines"><i class="far fa-arrow-alt-circle-right"></i>
+                    Search Cell
+                    Lines</a></a>
+                <a class="list-group-item list-group-item-action" href="resources#sequences"><i class="far fa-arrow-alt-circle-right"></i>
+                    tp53 Reference
+                    Sequence</a></a>
+                <a class="list-group-item list-group-item-action" href="get_tp53data"><i class="far fa-arrow-alt-circle-right"></i>
+                    Downloads</a>
+                </a>
+                <a class="list-group-item list-group-item-action" href="help"><i class="far fa-arrow-alt-circle-right"></i>
+                    User
+                    Manual</a></a>
+                <a class="list-group-item list-group-item-action" href="resources#tools"><i class="far fa-arrow-alt-circle-right"></i>
+                    Protocols and
+                    Tools</a></a>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <!--</div>-->
+    <div class="col-md-5">
+        <div>
+            <strong class="d-inline-block mb-2 text-primary">Latest Updates</strong>
+        </div>
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
                 <div class="mb-1 mt-2 text-muted">Aug 28, 2020</div>
                 <p class="card-text mb-auto">The IARC TP53 Database project will be transferred to another institution.
                     The current version of the database (R20, July 2019) will remain accessible until February 2021 to
@@ -61,35 +92,36 @@
                     Check new developments <a href="about#database-dev-div">here</a>.</p>
 
             </div>
-            <!--<div class="col-auto d-none d-lg-block">-->
-            <!--<a href="#"><img height="250px" src="{{ url_for('static', filename='img/p53_2013.jpeg') }}"></a>-->
-            <!--</div>-->
         </div>
     </div>
 </div>
-<!--<div class="row position-relative overflow-hidden p-3 p-md-5 m-md-3 bg-light">-->
-<div class="row position-relative overflow-hidden p-2 p-md-12 m-md-3 bg-light">
+<div class="row position-relative overflow-hidden pb-2 px-2 px-md-12 mx-md-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-11">
+        <strong class="text-primary">Books</strong>
+    </div>
+</div>
+<div class="row position-relative overflow-hidden px-2 px-md-12 mx-md-3">
     <div class="col-md-1"></div>
     <div class="col-md-5">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-primary">Books</strong>
-                <h3 class="mb-0">p53 in the Clinics</h3>
+                <strong class="d-inline-block mb-2 text-success">p53 in the Clinics</strong>
                 <p class="card-text mb-auto">With over 60,000 referenced publications, p53 has emerged as one of the
                     most important factors in human cancer. Research on p53 has led to a complete overhaul of our
                     understanding of the molecular basis of human cancer.</p>
                 <a href="tp53book2013" class="stretched-link">Continue reading</a>
             </div>
             <div class="col-auto d-none d-lg-block">
-                <a href="tp53book2013"><img height="250" src="{{ url_for('static', filename='img/p53_2013.jpeg') }}"></a>
+                <a href="tp53book2013"><img height="250"
+                                            src="{{ url_for('static', filename='img/p53_2013.jpeg') }}"></a>
             </div>
         </div>
     </div>
     <div class="col-md-5">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-success">Books</strong>
-                <h3 class="mb-0">25 Years of p53 Research</h3>
+                <strong class="d-inline-block mb-2 text-success">25 Years of p53 Research</strong>
                 <p class="mb-auto">The discovery of p53 in 1979 marks the beginning of a most fascinating era of modern
                     cancer research and molecular biology, an era that is still in full swing and does not show any
                     signs of ending in the foreseeable future.</p>
@@ -102,12 +134,15 @@
     </div>
 </div>
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 bg-light">
+<div class="row position-relative overflow-hidden pt-3 pb-2 px-2 px-md-12 mx-md-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-11">
+        <strong class="text-primary">Disclaimer</strong>
+    </div>
+</div>
+<div class="row position-relative overflow-hidden px-2 px-md-12 mx-md-3">
     <div class="col-md-10 p-lg-10 mx-auto my-10">
-        <h5>DISCLAIMER</h5>
-        <!--<div class="display-4 fw-normal">DISCLAIMER</div>-->
-        <p class="fw-normal">The NCI TP53 Database is a free service offered to the scientific community.
-
+        <p class="fw-light">The NCI TP53 Database is a free service offered to the scientific community.
             The database copyright is vested in WHO's International Agency for Research on Cancer, Lyon, France [2019]
             and National Cancer Institute.
             The data contained herein may be freely used, downloaded and reproduced, but are not for sale or for use in
@@ -125,10 +160,9 @@
             their accuracy. Information obtained through this resource is not a substitute for professional genetic
             counseling
             and is not intended for use as the basis of medical decision making.</p>
-        <!--<a class="btn btn-outline-secondary" href="#">Coming soon</a>-->
     </div>
-    <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    <!--<div class="product-device shadow-sm d-none d-md-block"></div>-->
+    <!--<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>-->
 </div>
 
 

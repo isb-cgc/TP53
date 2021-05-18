@@ -36,7 +36,7 @@ const pecentile_scale = {
 
 const get_exon_intron_labels = function(){
     var labels = [];
-    for(var i=1; i<12; i++){
+    for(var i = 1; i < 12; i++){
         labels.push(i+'-exon');
         if (i === 11)
             break;
@@ -72,13 +72,28 @@ var build_bar_config = function (chart_id, chart_title, data, is_horizontal, x_s
         }
     }
 
+    var aspectRatio = function(){
+        if (is_horizontal){
+            var no_of_bars = data['labels'].length;
+            if (no_of_bars > 20)
+                return (35/no_of_bars);
+            else if (no_of_bars > 5)
+                return 2;
+            else if (no_of_bars > 0)
+                return 10/no_of_bars;
+            else //0
+                return 4;
+        }
+        else
+            return 2;
+    };
     var config = {
         type: 'bar',
         data: chart_data,
         options: {
             indexAxis: is_horizontal ? 'y' : 'x',
             scales: scale_option,
-            aspectRatio: is_horizontal && data['labels'].length>30 ? (30/data['labels'].length) : 2,
+            aspectRatio: aspectRatio(),
             plugins: {
                 title: {
                     display: true,
@@ -100,15 +115,13 @@ var build_bar_config = function (chart_id, chart_title, data, is_horizontal, x_s
                             else{
                                 return (tooltipItem.raw).toFixed(2) + '%';
                             }
-
-                        },
+                        }
                     }
                 }
             }
         }
     };
-    // console.log(config);
-    $('#'+chart_id).parent('div').removeClass('col-5').addClass('col-10');
+    $('#'+chart_id).parent('div').filter('.small-chart').removeClass('col-5').addClass('col-10');
     new Chart(
         document.getElementById(chart_id),
         config
@@ -120,7 +133,7 @@ var build_pie_config = function (chart_id, chart_title, data) {
         labels: data['labels'],
         datasets: [{
             data: data['data'],
-            backgroundColor: color_scheme,
+            backgroundColor: color_scheme
         }]
     };
 
@@ -146,7 +159,7 @@ var build_pie_config = function (chart_id, chart_title, data) {
                 legend: {
                     position: 'bottom',
                     align: 'start'
-                },
+                }
             }
         }
     };
@@ -157,6 +170,5 @@ var build_pie_config = function (chart_id, chart_title, data) {
 };
 
 var formatNumbersByCommas = function(num){
-
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };

@@ -60,6 +60,7 @@ def build_mutation_query(criteria_map, table, group_by):
             SELECT {group_by} AS LABEL, COUNT(*) AS CNT
             FROM ({filtered_select_sql})
             GROUP BY {group_by}
+            ORDER BY CNT DESC
     """
     filtered_select_sql = ''
     for type in ['include', 'exclude']:

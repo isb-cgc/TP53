@@ -12,6 +12,22 @@ $(document).ready(function () {
             y_scale: pecentile_scale
         },
         {
+            id: 'somatic_tumor_dist',
+            title: 'Somatic Mutations: Tumor Distributions',
+            type: 'bar',
+            horizontal: true,
+            x_scale: null,
+            y_scale: pecentile_scale
+        },
+        {
+            id: 'germline_tumor_dist',
+            title: 'Germline Mutations: Tumor Distribution',
+            type: 'bar',
+            horizontal: true,
+            x_scale: null,
+            y_scale: pecentile_scale
+        },
+        {
             id: 'type',
             title: 'Mutation Pattern',
             type: 'pie'
@@ -62,34 +78,34 @@ $(document).ready(function () {
             type: 'pie'
         }
     ];
-    for (var i = 0; i < graph_config.length; i++){
+
+    for (var i = 0; i < graph_config.length; i++) {
         var graph_id = graph_config[i].id;
-        var canvas_id = graph_id+'_chart';
+        var canvas_id = graph_id + '_chart';
         var graph_type = graph_config[i].type;
         var graph_title = graph_config[i].title;
         var graph_data = graph_result['graph_data'][graph_id];
 
-        if(graph_data){
-            if(graph_type === 'bar'){
+        if (graph_data) {
+            if (graph_type === 'bar') {
                 var horizontal = graph_config[i].horizontal;
                 var x_scale = graph_config[i].x_scale;
                 var y_scale = graph_config[i].y_scale;
-                if(Object.keys(graph_config[i]).includes('x_labels')){
+                if (Object.keys(graph_config[i]).includes('x_labels')) {
                     var x_labels = graph_config[i].x_labels;
                     var graph_x = graph_data.labels;
                     var graph_y = graph_data.data;
                     var temp_data = [];
-                    for (var j = 0; j< x_labels.length; j++){
+                    for (var j = 0; j < x_labels.length; j++) {
                         var ind = graph_x.indexOf(x_labels[j]);
-                        temp_data.push(ind > -1 ? graph_y[ind]: 0);
+                        temp_data.push(ind > -1 ? graph_y[ind] : 0);
                     }
                     graph_data.labels = x_labels;
                     graph_data.data = temp_data;
                 }
-
                 build_bar_config(canvas_id, graph_title, graph_data, horizontal, x_scale, y_scale, true);
             }
-            else{ // pi chart
+            else { // pi chart
                 build_pie_config(canvas_id, graph_title, graph_data);
             }
         }

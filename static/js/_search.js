@@ -61,8 +61,7 @@ $(document).ready(function () {
         });
     }
 });
-
-$( window ).unload(function() {
+$(window).on("unload", function(e) {
     display_spinner(false);
 });
 
