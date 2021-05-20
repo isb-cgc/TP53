@@ -31,13 +31,16 @@ $(document).ready(function () {
             {
                 "data": "ATCC_ID",
                 "render": function (data) {
-                    return '<a href="http://www.lgcstandards-atcc.org/Products/All/' + data + '.aspx" target="_blank">' + data + '</a>';
+                    if (data)
+                        return '<a href="http://www.lgcstandards-atcc.org/Products/All/' + data + '.aspx" target="_blank">' + data + '</a>';
+                    else
+                        return '';
                 }
             },
             {
                 "data": "Cosmic_ID",
                 "render": function (data) {
-                    if (data != null)
+                    if (data)
                         return '<a href="http://cancer.sanger.ac.uk/cell_lines/sample/overview?id=' + data + '" target="_blank">' + data + '</a>';
                     else
                         return '';
@@ -47,7 +50,10 @@ $(document).ready(function () {
             {
                 "data": "depmap_ID",
                 "render": function (data) {
-                    return '<a href="https://depmap.org/portal/cell_line/' + data + '" target="_blank">' + data + '</a>';
+                    if (data)
+                        return '<a href="https://depmap.org/portal/cell_line/' + data + '" target="_blank">' + data + '</a>';
+                    else
+                        return '';
                 }
             },
             {"data": "Sex"},

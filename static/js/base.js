@@ -8,21 +8,20 @@ $(document).ready(function () {
         if (!menu_id) {
             menu_id = 'home_menu';
         }
-        // console.log(menu_id);
-        // $(".sidenav").find(".active").removeClass("active");
         $('#' + menu_id).parent().addClass("active");
     }
 
     function set_active_submenu(submenu_id) {
         if (!submenu_id)
             return;
-        $(".sidebar").find(".active").removeClass("active");
+        toggle_collapse_jQSel($(".collapsible-sidebar #"+submenu_id+".sub-navitem").parents('.collapse'), false);
+
+        $(".sidebar, .collapsible-sidebar").find(".active").removeClass("active");
         $('#' + submenu_id).addClass("active");
 
     }
 
     function set_data_bs_target(enableScrollspy) {
-        // $('body').attr("data-bs-target", data_bs_target)
         if (enableScrollspy) {
             scrollSpy = new bootstrap.ScrollSpy(document.body, {
                 target: '.sidebar',
@@ -47,11 +46,6 @@ $(document).ready(function () {
         $('.browser-alert').show();
     }
 
-
-
-    // window.FontAwesomeConfig = {
-    //     searchPseudoElements: true
-    // }
 });
 
 var reset_spinner_dimension = function () {
@@ -62,8 +56,6 @@ var reset_spinner_dimension = function () {
 };
 
 var display_spinner = function (show) {
-    console.log('display_spinner: ' + show);
-    // reset_spinner_dimension();
     if (show) {
         $('.spinner').show();
     }
@@ -74,11 +66,10 @@ var display_spinner = function (show) {
 
 var toggle_collapse_jQSel = function (selections, triggerHide) {
     $.each(selections, function (index, value) {
-
         var div_ids = $(value).prop('id');
         var divCollapse = document.getElementById(div_ids);
         new bootstrap.Collapse(divCollapse,
             triggerHide ? {hide: true, show: false} : {hide: false, show: true}
         );
     });
-}
+};

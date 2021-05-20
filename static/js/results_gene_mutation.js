@@ -50,11 +50,12 @@ $(document).ready(function () {
             {data: "Germline_count"},
             {data: "Cellline_count"},
             {data: "TCGA_ICGC_GENIE_count"},
+            {data: "Polymorphism"},
             {
                 data: "CLINVARlink",
                 render: function (data) {
                     if (data != null)
-                        return '<a href=\"https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '\" target=\"_blank\">' + data + '</a>';
+                        return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" title="Go to ClinVar '+data+'">ClinVar</a>';
                     else
                         return data;
                 }
@@ -63,17 +64,16 @@ $(document).ready(function () {
                 data: "COSMIClink",
                 render: function (data) {
                     if (data != null)
-                        return '<a href=\"https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '\" target=\"_blank\">' + data + '</a>';
+                        return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" title="Go to COSMIC '+data+'">COSMIC</a>';
                     else
                         return data;
                 }
             },
-            {data: "Polymorphism"},
             {
                 data: "SNPlink",
                 render: function (data) {
                     if (data !== '')
-                        return '<a href=\"https://www.ncbi.nlm.nih.gov/snp/rs' + data + '\" target=\"_blank\">' + data + '</a>';
+                        return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href=\"https://www.ncbi.nlm.nih.gov/snp/rs' + data + '" target="_blank" title="Go to dbSNP '+data+'">dbSNP</a>';
                     else
                         return data;
                 }
@@ -82,7 +82,7 @@ $(document).ready(function () {
                 data: "gnomADlink",
                 render: function (data) {
                     if (data !== '')
-                        return '<a href=\"https://gnomad.broadinstitute.org/variant/' + data + '\" target=\"_blank\">yes</a>';
+                        return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" title="Go to gnomAd '+data+'">gnomAD</a>';
                     else
                         return data;
                 }
@@ -91,7 +91,7 @@ $(document).ready(function () {
                 data: "MUT_ID",
                 orderable: false,
                 render: function(data){
-                    return '<a href="mut_details?mut_id='+data+'" type="button" style="text-decoration: none;" <i class="far fa-list-alt"></i></a>';
+                    return '<a type="button" class="rounded-circle btn btn-sm btn-tiny-round btn-outline-primary" href="mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
                 }
             }
         ],
