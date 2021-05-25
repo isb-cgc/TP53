@@ -16,7 +16,7 @@ $(document).ready(function () {
             buttons: [{
                 extend: 'csv',
                 exportOptions: {
-                    columns: ':not(:first-child):visible'
+                    columns: ':not(:first-child):not(:last-child)'
                 }
             }],
             order: [[EXPOSURE_COL_ORD, "asc"]],
