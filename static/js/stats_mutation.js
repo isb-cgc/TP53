@@ -60,7 +60,8 @@ $(document).ready(function () {
             type: 'bar',
             horizontal: false,
             x_scale: codon_scale,
-            y_scale: pecentile_scale
+            y_scale: pecentile_scale,
+            graph3D_id: 'struct_3D'
         },
         {
             id: 'mut_pt',
@@ -108,7 +109,22 @@ $(document).ready(function () {
             else { // pi chart
                 build_pie_config(canvas_id, graph_title, graph_data);
             }
+
+            if (Object.keys(graph_config[i]).includes('graph3D_id')) {
+
+                build_3d_graph(graph_config[i]['graph3D_id'], graph_data);
+            }
         }
     }
+
+
+
+
+
+        // return "load Jmol/1tsr_B.pdb; background [0,0,0]; rotate x 30; translate x 0.43; translate y 1.14; wireframe off; zoom 125; colour atoms [255,255,255]; spacefill off; select (*:E); wireframe on; select(*:F); wireframe on; select(*:B); cartoons on; " + String.Join("", jmolQueries) + "select (*:E); colour atoms [255,255,255]; select (*:F); colour atoms [255,255,255]; move 0 -360 0 0 0 0 0 0 15 25;";
+
+
+
+
 
 });

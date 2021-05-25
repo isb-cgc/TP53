@@ -1,7 +1,7 @@
-/*result.js*/
+/* view_exp_ind_mut.js*/
 'use strict';
 
-const CHECKBOX_COL_ORD = 0;
+// const CHECKBOX_COL_ORD = 0;
 const EXPOSURE_COL_ORD = 1;
 const MUT_ID_COL_ORD = 9;
 
@@ -9,23 +9,68 @@ $(document).ready(function () {
     const selectedRowSet = new Set();
     var table = $('#eim-result-table').DataTable(
         {
+            dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                "<'row d-none'<'col-sm-12 col-md-4'B>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            buttons: [{
+                extend: 'csv',
+                exportOptions: {
+                    columns: ':not(:first-child):visible'
+                }
+            }],
             order: [[EXPOSURE_COL_ORD, "asc"]],
-            columnDefs: [{
-                orderable: false,
-                // data: 'MUT_ID',
-                targets: CHECKBOX_COL_ORD
-            },{
-                visible: false,
-                targets: MUT_ID_COL_ORD
-            }
+            columns: [
+                {
+                    data: 'mut_id',
+                    render: function (data, type, row, meta) {
+                        return '<input class="form-check-input row-check" type="checkbox" aria-label="Select Row" value="' + data + '">';
+                    },
+                    orderable: false
+                },
+                {
+                    data: 'exposure'
+                },
+                {
+                    data: 'g_desc'
+                },
+                {
+                    data: 'c_desc',
+                    render: function (data, type, row, meta) {
+                        return '<a href="javascript:displayGeneVariations(\'cdna\',\'' + data + '\');">' + data + '</a>';
+                    }
+                },
+                {
+                    data: 'p_desc',
+                    render: function (data, type, row, meta) {
+                        return '<a href="javascript:displayGeneVariations(\'p\',\'' + data + '\');">' + data + '</a>';
+                    }
+                },
+                {
+                    data: 'model'
+                },
+                {
+                    data: 'clone_id'
+                },
+                {
+                    data: 'add_info'
+                },
+                {
+                    data: 'pubmed',
+                    render: function (data, type, row, meta) {
+                        return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank">' + data + '</a>';
+                    }
+                },
+                {
+                    data: 'row_id',
+                    visible: false
+                }
             ],
             select: {
                 style: 'multi',
                 selector: '.row-check'
             },
             rowCallback: function (row, data) {
-                // console.log(row);
-                // console.log(data);
                 if (selectedRowSet.has(data[MUT_ID_COL_ORD])) {
                     selectRow(row);
                     $(row).find('.row-check').prop('checked', true);
@@ -39,32 +84,34 @@ $(document).ready(function () {
     });
 
     table
-        .on( 'select', function ( e, dt, type, indexes ) {
+        .on('select', function (e, dt, type, indexes) {
             var rows_data = table.rows(indexes).data().toArray();
-            for(var i=0; i< rows_data.length; i++) {
-                if (!selectedRowSet.has(rows_data[i][MUT_ID_COL_ORD])){
+            for (var i = 0; i < rows_data.length; i++) {
+                if (!selectedRowSet.has(rows_data[i][MUT_ID_COL_ORD])) {
                     selectedRowSet.add(rows_data[i][MUT_ID_COL_ORD]);
                 }
             }
-            console.log(selectedRowSet);
             updateActionButtonGroups(selectedRowSet.size);
 
         })
-        .on( 'deselect', function ( e, dt, type, indexes ) {
+        .on('deselect', function (e, dt, type, indexes) {
             var rows_data = table.rows(indexes).data().toArray();
-            for(var i=0; i< rows_data.length; i++) {
+            for (var i = 0; i < rows_data.length; i++) {
                 selectedRowSet.delete(rows_data[i][MUT_ID_COL_ORD]);
             }
-            console.log(selectedRowSet);
             updateActionButtonGroups(selectedRowSet.size);
-        } );
+        });
 
-    var selectRow = function(r){
+    var selectRow = function (r) {
         table.row(r).select();
     };
 
-    $('button.action-button').on('click', function(){
+    $('button.action-button').on('click', function () {
         displayGeneVariations_by_mutids(selectedRowSet);
+    });
+
+    $('.download-btn').on('click', function () {
+        $('button.buttons-csv').trigger("click");
     });
 
 });

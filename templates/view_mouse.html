@@ -40,8 +40,17 @@
             <tr>
                 <td>{{ row.ModelDescription|safe }}</td>
                 <td>{{ row.TumorSites }}</td>
-                <td>{{ row.AAchange }}</td>
-                <td>{{ row.caMOD_ID }}</td>
+                <td>
+                {% if row.AAchange != 'NA' %}
+                <a href="javascript:displayGeneVariations('p','p.{{ row.AAchange }}');">{{ row.AAchange
+                    }}</a>
+                {% else %}
+                    NA
+                {% endif %}
+                </td>
+                <td>
+                    {{ row.caMOD_ID }}
+                </td>
                 <td>
                     {% if row.PubMed %}
                     <a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank">{{

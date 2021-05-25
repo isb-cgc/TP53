@@ -5,6 +5,24 @@
     active_menu = 'resources';
     active_submenu = '';
 </script>
+<!--<script src="https://cdn.jsdelivr.net/npm/babel-polyfill/dist/polyfill.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs/webcomponents-lite.js" charset="utf-8"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js" charset="utf-8"></script>-->
+<!--<link rel="stylesheet" type="text/css" href="https://www.ebi.ac.uk/pdbe/pdb-component-library/css/pdbe-molstar-light-1.1.0.css">-->
+<!--<script type="text/javascript" src="https://www.ebi.ac.uk/pdbe/pdb-component-library/js/pdbe-molstar-component-1.1.0.js"></script>-->
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/molstar.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/index.js') }}"></script>
+<style>
+    #app {
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        width: 800px;
+        height: 600px;
+    }
+</style>
+
 {% endblock %}
 
 {% block content %}
@@ -289,127 +307,162 @@
             <div class="p-3">
                 <h3>3D Viewer</h3>
                 <div class="pt-2">
-                    <table>
-                        <tr>
-                            <td align="center">
 
-                                <p>View structural motifs of p53 DNA-binding domain in contact with DNA*: color residues
-                                    (96
-                                    to
-                                    289) with options bellow (you may select several residues separated by a comma)
-                                </p>
-                                <br/>
 
-                                <form id="Request3D" action="MakeJMol.aspx" language="javascript" method="post">
 
-                                    <table>
-                                        <tr>
-                                            <td> Color:</td>
-                                            <td> Residue number:</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <select name="Colors" size="1" class="searchtext">
-                                                    <option value="blue">blue</option>
-                                                    <option value="red">red</option>
-                                                    <option value="cyan">cyan</option>
-                                                    <option value="pink">indigo</option>
-                                                    <option value="green">green</option>
-                                                    <option value="yellow">yellow</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="text" name="ResidueNumber"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <select name="Colors2" size="1" class="searchtext">
-                                                    <option value="cyan">cyan</option>
-                                                    <option value="pink">indigo</option>
-                                                    <option value="green">green</option>
-                                                    <option value="yellow">yellow</option>
-                                                    <option value="blue">blue</option>
-                                                    <option value="red">red</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="text" name="ResidueNumber2"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <select name="Colors3" size="1" class="searchtext">
-                                                    <option value="yellow">yellow</option>
-                                                    <option value="blue">blue</option>
-                                                    <option value="red">red</option>
-                                                    <option value="cyan">cyan</option>
-                                                    <option value="pink">indigo</option>
-                                                    <option value="green">green</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="text" name="ResidueNumber3"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <select name="Colors4" size="1" class="searchtext">
-                                                    <option value="green">green</option>
-                                                    <option value="blue">blue</option>
-                                                    <option value="red">red</option>
-                                                    <option value="cyan">cyan</option>
-                                                    <option value="pink">indigo</option>
-                                                    <option value="yellow">yellow</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="text" name="ResidueNumber4"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <select name="Colors5" size="1" class="searchtext">
-                                                    <option value="pink">indigo</option>
-                                                    <option value="blue">blue</option>
-                                                    <option value="red">red</option>
-                                                    <option value="cyan">cyan</option>
-                                                    <option value="green">green</option>
-                                                    <option value="yellow">yellow</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="text" name="ResidueNumber5"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <select name="Colors6" size="1" class="searchtext">
-                                                    <option value="red">red</option>
-                                                    <option value="blue">blue</option>
-                                                    <option value="cyan">cyan</option>
-                                                    <option value="pink">indigo</option>
-                                                    <option value="green">green</option>
-                                                    <option value="yellow">yellow</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="text" name="ResidueNumber6"/>
-                                            </td>
-                                        </tr>
-                                    </table>
+                    <!--<div id="molstarViewer">-->
+                        <!--<pdbe-molstar id="pdbeMolstarComponent" molecule-id="1tsr" bg-color-r="255" bg-color-g="255" bg-color-b="255"-->
+                                      <!--hide-controls="true"></pdbe-molstar>-->
+                    <!--</div>-->
 
-                                    <input type="submit" value="View 3D" class="searchbutton1"/>
-                                    <br/>
-                                    <p>* You need to download and install
-                                        <a href="https://java.com/fr/download/chrome.jsp?locale=fr t"
-                                           target="_blank">JAVA</a>
-                                        plug-in to use this tool.
-                                    </p>
-                                </form>
-                            </td>
-                        </tr>
-                    </table>
+                    <!--<pdbe-molstar molecule-id="1cbs"></pdbe-molstar>-->
+                    <div id="molstarViewer"></div>
+
+                    <script type="text/javascript">
+                        var viewer = new molstar.Viewer('molstarViewer', {
+                            layoutIsExpanded: false,
+                            layoutShowControls: false,
+                            layoutShowRemoteState: false,
+                            layoutShowSequence: true,
+                            layoutShowLog: false,
+                            layoutShowLeftPanel: true,
+
+                            viewportShowExpand: true,
+                            viewportShowSelectionMode: false,
+                            viewportShowAnimation: false,
+
+                            pdbProvider: 'rcsb',
+                            // emdbProvider: 'rcsb',
+                        });
+                        // viewer.loadPdb('1tsr');
+                        // viewer.loadEmdb('EMD-30210', {detail: 6});
+                        viewer.loadStructureFromUrl("{{ url_for('static', filename='pdb/1tsr_B.pdb') }}", format='pdb');
+                        MS.struct.generator.atomGroups({
+                            'residue-test': MS.core.set.has([MS.set([248, 195]), MS.ammp('auth_seq_id')])
+                        })
+                        // viewer.loadStructureFromUrl('./nsp6.pdb', format='pdb')
+                    </script>
+                    <!--<table>-->
+                        <!--<tr>-->
+                            <!--<td align="center">-->
+
+                                <!--<p>View structural motifs of p53 DNA-binding domain in contact with DNA*: color residues-->
+                                    <!--(96-->
+                                    <!--to-->
+                                    <!--289) with options bellow (you may select several residues separated by a comma)-->
+                                <!--</p>-->
+                                <!--<br/>-->
+
+                                <!--<form id="Request3D" action="MakeJMol.aspx" language="javascript" method="post">-->
+
+                                    <!--<table>-->
+                                        <!--<tr>-->
+                                            <!--<td> Color:</td>-->
+                                            <!--<td> Residue number:</td>-->
+                                        <!--</tr>-->
+                                        <!--<tr>-->
+                                            <!--<td>-->
+                                                <!--<select name="Colors" size="1" class="searchtext">-->
+                                                    <!--<option value="blue">blue</option>-->
+                                                    <!--<option value="red">red</option>-->
+                                                    <!--<option value="cyan">cyan</option>-->
+                                                    <!--<option value="pink">indigo</option>-->
+                                                    <!--<option value="green">green</option>-->
+                                                    <!--<option value="yellow">yellow</option>-->
+                                                <!--</select>-->
+                                            <!--</td>-->
+                                            <!--<td>-->
+                                                <!--<input type="text" name="ResidueNumber"/>-->
+                                            <!--</td>-->
+                                        <!--</tr>-->
+                                        <!--<tr>-->
+                                            <!--<td>-->
+                                                <!--<select name="Colors2" size="1" class="searchtext">-->
+                                                    <!--<option value="cyan">cyan</option>-->
+                                                    <!--<option value="pink">indigo</option>-->
+                                                    <!--<option value="green">green</option>-->
+                                                    <!--<option value="yellow">yellow</option>-->
+                                                    <!--<option value="blue">blue</option>-->
+                                                    <!--<option value="red">red</option>-->
+                                                <!--</select>-->
+                                            <!--</td>-->
+                                            <!--<td>-->
+                                                <!--<input type="text" name="ResidueNumber2"/>-->
+                                            <!--</td>-->
+                                        <!--</tr>-->
+                                        <!--<tr>-->
+                                            <!--<td>-->
+                                                <!--<select name="Colors3" size="1" class="searchtext">-->
+                                                    <!--<option value="yellow">yellow</option>-->
+                                                    <!--<option value="blue">blue</option>-->
+                                                    <!--<option value="red">red</option>-->
+                                                    <!--<option value="cyan">cyan</option>-->
+                                                    <!--<option value="pink">indigo</option>-->
+                                                    <!--<option value="green">green</option>-->
+                                                <!--</select>-->
+                                            <!--</td>-->
+                                            <!--<td>-->
+                                                <!--<input type="text" name="ResidueNumber3"/>-->
+                                            <!--</td>-->
+                                        <!--</tr>-->
+                                        <!--<tr>-->
+                                            <!--<td>-->
+                                                <!--<select name="Colors4" size="1" class="searchtext">-->
+                                                    <!--<option value="green">green</option>-->
+                                                    <!--<option value="blue">blue</option>-->
+                                                    <!--<option value="red">red</option>-->
+                                                    <!--<option value="cyan">cyan</option>-->
+                                                    <!--<option value="pink">indigo</option>-->
+                                                    <!--<option value="yellow">yellow</option>-->
+                                                <!--</select>-->
+                                            <!--</td>-->
+                                            <!--<td>-->
+                                                <!--<input type="text" name="ResidueNumber4"/>-->
+                                            <!--</td>-->
+                                        <!--</tr>-->
+                                        <!--<tr>-->
+                                            <!--<td>-->
+                                                <!--<select name="Colors5" size="1" class="searchtext">-->
+                                                    <!--<option value="pink">indigo</option>-->
+                                                    <!--<option value="blue">blue</option>-->
+                                                    <!--<option value="red">red</option>-->
+                                                    <!--<option value="cyan">cyan</option>-->
+                                                    <!--<option value="green">green</option>-->
+                                                    <!--<option value="yellow">yellow</option>-->
+                                                <!--</select>-->
+                                            <!--</td>-->
+                                            <!--<td>-->
+                                                <!--<input type="text" name="ResidueNumber5"/>-->
+                                            <!--</td>-->
+                                        <!--</tr>-->
+                                        <!--<tr>-->
+                                            <!--<td>-->
+                                                <!--<select name="Colors6" size="1" class="searchtext">-->
+                                                    <!--<option value="red">red</option>-->
+                                                    <!--<option value="blue">blue</option>-->
+                                                    <!--<option value="cyan">cyan</option>-->
+                                                    <!--<option value="pink">indigo</option>-->
+                                                    <!--<option value="green">green</option>-->
+                                                    <!--<option value="yellow">yellow</option>-->
+                                                <!--</select>-->
+                                            <!--</td>-->
+                                            <!--<td>-->
+                                                <!--<input type="text" name="ResidueNumber6"/>-->
+                                            <!--</td>-->
+                                        <!--</tr>-->
+                                    <!--</table>-->
+
+                                    <!--<input type="submit" value="View 3D" class="searchbutton1"/>-->
+                                    <!--<br/>-->
+                                    <!--<p>* You need to download and install-->
+                                        <!--<a href="https://java.com/fr/download/chrome.jsp?locale=fr t"-->
+                                           <!--target="_blank">JAVA</a>-->
+                                        <!--plug-in to use this tool.-->
+                                    <!--</p>-->
+                                <!--</form>-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
                 </div>
                 <h3>Structural impacts of mutations</h3>
                 <div class="pt-2">

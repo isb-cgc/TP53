@@ -6,6 +6,9 @@
     active_submenu = '';
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/search_tp53.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/chosen.jquery.min.js') }}"></script>
+
+
 
 {% endblock %}
 
@@ -13,13 +16,17 @@
 <div class="row">
     <div class="col-md-3 col-lg-2 bg-secondary collapsible-sidebar has-submenubar">
         <div class="position-sticky pt-2">
-            <div class="p-2 fw-bold"><i class="fas fa-search"></i> DATA EXPLORATION <i
+            <div class="p-2 fw-bold"><i class="fas fa-search"></i> Data Exploration<i
                     class="fas fa-search float-end pe-1 sidebar-icon"></i></div>
+            <hr>
             <ul id="expl-ul" class="nav flex-column pt-2">
+                <li class="ps-3 fw-bold nav-item">
+                    Search
+                </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" role="button" aria-expanded="false"
                        aria-controls="gv-collapse" class="nav-link" aria-current="page"
-                       href="#gv-collapse"> Gene Variations</a>
+                       href="#gv-collapse">Gene Variations</a>
                 </li>
                 <div id="gv-collapse" class="ps-3 pb-3 collapse" data-bs-parent="#expl-ul">
                     <li id="search_gene_by_var" class="nav-item sub-navitem">
@@ -38,8 +45,7 @@
                 <li class="nav-item">
                     <a id="" data-bs-toggle="collapse" role="button" aria-expanded="false"
                        aria-controls="som-collapse" class="nav-link"
-                       href="#som-collapse" data-bs-parent="#expl-ul">
-                        Somatic Mutations</a>
+                       href="#som-collapse" data-bs-parent="#expl-ul">Somatic Mutations</a>
                 </li>
                 <div id="som-collapse" class="ps-3 pb-3 collapse" data-bs-parent="#expl-ul">
                     <li id="search_somatic_mut" class="nav-item sub-navitem">
@@ -55,11 +61,11 @@
                         <a class="nav-link" href="get_tp53data#get_som_mut">Downloads</a>
                     </li>
                 </div>
+
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" role="button" aria-expanded="false"
                        aria-controls="germ-collapse" class="nav-link"
-                       href="#germ-collapse">
-                        Germline Mutations</a>
+                       href="#germ-collapse">Germline Mutations</a>
                 </li>
                 <div id="germ-collapse" class="ps-3 pb-3 collapse" data-bs-parent="#expl-ul">
                     <li id="search_germline_mut" class="nav-item sub-navitem">
@@ -76,8 +82,7 @@
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" role="button" aria-expanded="false"
                        aria-controls="cell-collapse" class="nav-link"
-                       href="#cell-collapse">
-                        Cell Lines</a>
+                       href="#cell-collapse">Cell Lines</a>
                 </li>
                 <div id="cell-collapse" class="ps-3 pb-3 collapse" data-bs-parent="#expl-ul">
                     <li id="search_cell_lines" class="nav-item sub-navitem">
@@ -94,8 +99,7 @@
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" role="button" aria-expanded="false"
                        aria-controls="mouse-collapse" class="nav-link"
-                       href="#mouse-collapse">
-                        Mouse Models</a>
+                       href="#mouse-collapse">Mouse Models</a>
                 </li>
                 <div id="mouse-collapse" class="ps-3 pb-3 collapse" data-bs-parent="#expl-ul">
                     <li id="view_mouse" class="nav-item sub-navitem">
@@ -109,8 +113,7 @@
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" role="button" aria-expanded="false"
                        aria-controls="eim-collapse" class="nav-link"
-                       href="#eim-collapse">
-                        Exp Induced Models</a>
+                       href="#eim-collapse">Exp Induced Models</a>
                 </li>
                 <div id="eim-collapse" class="ps-3 pb-3 collapse" data-bs-parent="#expl-ul">
                     <li id="view_exp_ind_mut" class="nav-item sub-navitem">
@@ -122,6 +125,7 @@
                 </div>
 
             </ul>
+            <hr>
             <ul id="dd-ul" class="nav flex-column pt-2">
                 <li id="get_tp53data" class="nav-item">
                     <a class="nav-link"

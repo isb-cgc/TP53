@@ -5,6 +5,8 @@
     active_submenu = 'view_exp_ind_mut';
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.select.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/view_exp_ind_mut.js') }}"></script>
 
 
@@ -28,7 +30,7 @@
                 </button>
             </div>
             <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-outline-secondary"><i class="fas fa-download"></i> Download
+                <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i> Download
                 </button>
             </div>
         </div>
@@ -46,30 +48,22 @@
                 <th>Clone ID</th>
                 <th>Add Info</th>
                 <th>PubMed</th>
-                <th>MUT ID</th>
+                <th>MUT_ID:Clone_ID</th>
             </tr>
             </thead>
             <tbody>
             {% for row in query_result.data %}
             <tr>
-                <td><input class="form-check-input row-check" type="checkbox" aria-label="Select Row" value="{{ row.MUT_ID }}"></td>
+                <td>{{ row.MUT_ID }}</td>
                 <td>{{ row.Exposure }}</td>
                 <td>{{ row.g_description_GRCh38 }}</td>
-                <td><a href="javascript:displayGeneVariations('cdna','{{ row.c_description }}');">{{ row.c_description
-                    }}</a></td>
-                <td><a href="javascript:displayGeneVariations('p','{{ row.ProtDescription }}');">{{ row.ProtDescription
-                    }}</a></td>
+                <td>{{ row.c_description }}</td>
+                <td>{{ row.ProtDescription}}</td>
                 <td>{{ row.Model }}</td>
                 <td>{{ row.Clone_ID }}</td>
                 <td>{{ row.Add_Info }}</td>
-                <td>
-                    <a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank">
-                        {{ row.PubMed }}
-                    </a>
-                </td>
-                <td>
-                    {{ row.MUT_ID }}:{{ row.Clone_ID }}
-                </td>
+                <td>{{ row.PubMed }}</td>
+                <td>{{ row.MUT_ID }}:{{ row.Clone_ID }}</td>
             </tr>
             {% endfor %}
             </tbody>

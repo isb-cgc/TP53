@@ -6,7 +6,7 @@ const color_scheme = ["#4e79a7", "#f28e2c", "#e15759", "#76b7b2", "#59a14f", "#e
 
 const codon_scale = {
     min: 0,
-    max: 395,
+    max: 394,
     type: 'linear',
     offset: false,
     grid: {
@@ -152,7 +152,7 @@ var build_pie_config = function (chart_id, chart_title, data) {
                         label: function (tooltipItem) {
                             var count = tooltipItem.parsed;
                             var percent = count * 100 / total_cnt;
-                            return tooltipItem.label + '  ' + (percent).toFixed(2) + '% (' + count + ')';
+                            return tooltipItem.label + '  ' + (percent).toFixed(2) + '% (' + formatNumbersByCommas(count) + ')';
                         }
                     }
                 },
@@ -169,6 +169,74 @@ var build_pie_config = function (chart_id, chart_title, data) {
     );
 };
 
+var build_3d_graph = function (chart_id, data){
+    var total_cnt = data['total'];
+    var y_data = data['data'];
+    var x_data = data['labels'];
+    var maxValue = Math.max.apply(Math, y_data);
+    var maxPercent = maxValue * 100 / total_cnt;
+    var highThreshold = maxPercent * .75;
+    var mediumThreshold = maxPercent * .5;
+    var lowThreshold = maxPercent * .25;
+    var data_by_threshold = {
+        high: [],
+        mid: [],
+        low: []
+    };
+    for(var i=0; i< y_data.length; i++){
+        var percent = y_data[i] * 100 / total_cnt;
+        if (percent >= highThreshold) {
+            data_by_threshold.high.push(x_data[i]);
+        } else if (percent >= mediumThreshold) {
+            data_by_threshold.mid.push(x_data[i]);
+        } else if (percent >= lowThreshold) {
+            data_by_threshold.low.push(x_data[i]);
+        }
+    }
+
+    var color_by_threshold = {
+        high: 'red',
+        mid: 'orange',
+        low: 'yellow'
+        // high: '[203, 0, 0]',
+        // mid: '[204, 102, 0]',
+        // low: '[204, 204, 0]'
+        // high: '[240, 59, 32]',
+        // mid: '[254, 178, 76]',
+        // low: '[255, 237, 160]'
+    };
+
+    var jsmolQueries = '';
+
+    for(const threshold in data_by_threshold){
+        if (data_by_threshold[threshold].length > 0)
+            jsmolQueries += "Select " + data_by_threshold[threshold].join() + "; colour atoms "+color_by_threshold[threshold]+" ; wireframe 0.25; ";
+
+    }
+    var jsmol_script = "load " + pdb_filepath + "; rotate x 30; translate x 0.43; translate y 1.14; wireframe off; zoom 125; colour atoms [255,255,255]; spacefill off; select (*:E); wireframe on; select(*:F); wireframe on; select(*:B); cartoons on;"+jsmolQueries+" select (*:E); colour atoms [255,255,255]; select (*:F); colour atoms [255,255,255]; move 0 -360 0 0 0 0 0 0 15 25;";
+
+    var jsmol_Info = {
+        width: "100%",
+        height: "90%",
+        debug: false,
+        color: "black",
+        use: "HTML5",
+        j2sPath: j2s_path,
+        isSigned: true,
+        disableJ2SLoadMonitor: true,
+        allowJavaScript: true,
+        script: jsmol_script
+    };
+
+    Jmol.setDocument(false);
+    Jmol.getApplet("tp53JSmol", jsmol_Info);
+    $('#'+chart_id).html(Jmol.getAppletHtml(tp53JSmol));
+    $('#legend').html();
+
+};
+
 var formatNumbersByCommas = function(num){
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
+
+

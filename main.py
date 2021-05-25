@@ -707,21 +707,12 @@ def results_gene_dist():
         graph_configs[action] = build_graph_configs(action)['tumor_dist']
         for dist_table in gv_tumor_dist_tables:
             sql_maps[dist_table] = (build_graph_sqls(graph_configs, criteria_map=criteria_map, table=gv_tumor_dist_tables[dist_table])[action])
-        # print(sql_maps)
-        # print(graph_configs)
     else:
-    # elif action == 'get_mutation_dist':
         table = 'MutationView'
         template = 'mutation_dist_stats.html'
         graph_configs = build_graph_configs(action, table)
         sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
-    # else:
-    #     # action = get_gv_tumor_dist
-    #     table1 = 'SomaticView'
-    #     table2 = 'GermlineView'
-    #     template = 'mutation_stats.html'
     graph_result = build_graph_data(sql_maps)
-    print(graph_result)
     return render_template(template, criteria_map=criteria_map, title='Statistics on Gene Variations',
                            graph_result=graph_result)
 

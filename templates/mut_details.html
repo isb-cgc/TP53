@@ -305,11 +305,8 @@
                     <td>{{ row.ModelDescription|safe }}</td>
                     <td>{{ row.TumorSites or '' }}</td>
                     <td>
-                        {% if row.caMOD_ID == 'NA' %}
                         {{ row.caMOD_ID }}
-                        {% else %}
-                        <a href="https://cancermodels.nci.nih.gov/camod/ViewModelAction.do?aModelID={{ row.caMOD_ID }}&unprotected_method=populateModelCharacteristics" target="_blank">{{ row.caMOD_ID or '' }}</a>
-                        {% endif %}
+                        <!--<a href="https://cancermodels.nci.nih.gov/camod/ViewModelAction.do?aModelID={{ row.caMOD_ID }}&unprotected_method=populateModelCharacteristics" target="_blank">{{ row.caMOD_ID or '' }}</a>-->
                     </td>
                     <td><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank">{{ row.PubMed }}</a></td>
                 </tr>
