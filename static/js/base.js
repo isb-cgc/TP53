@@ -56,6 +56,7 @@ var reset_spinner_dimension = function () {
 };
 
 var display_spinner = function (show) {
+    console.log('display_spinner show'+ show);
     if (show) {
         $('.spinner').show();
     }

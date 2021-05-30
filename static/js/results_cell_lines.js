@@ -1,36 +1,50 @@
-/*results_cell_lines.js*/
+/* results_cell_lines.js */
 'use strict';
 
 $(document).ready(function () {
     $('.serverside-processed').DataTable({
-        "pageLength": 10,
-        "processing": true,
-        "serverSide": true,
-        "ajax": {
-            "url": "/cl_query",
-            "type": "POST",
-            "data": {
-                "criteria": JSON.stringify($('#criteria_div').data('criteria'))
+        dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                "<'row d-none'<'col-sm-12 col-md-4'B>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        buttons: [{
+            extend: 'csv',
+            exportOptions: {
+                columns: ':visible',
+                // orthogonal: 'export'
+            }}],
+        pageLength: 10,
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: "/cl_query",
+            type: "POST",
+            data: {
+                criteria: JSON.stringify($('#criteria_div').data('criteria'))
             },
-            "dataType": "json",
-            "dataSrc": "data"
+            dataType: "json",
+            dataSrc: "data"
         },
-        "drawCallback": function () {
+        drawCallback: function () {
             enableTooltip();
+            $('a.do-gvsearch').on('click', function(e){
+                e.preventDefault();
+                displayGeneVariations($(this).data('gv-type'), $(this).text());
+            })
         },
-        "order": [[1, "asc"]],
-        "columns": [
+        order: [[1, "asc"]],
+        columns: [
             {
-                "data": "CellLineView_ID",
-                "visible": false,
-                "searchable": false
+                data: "CellLineView_ID",
+                visible: false,
+                searchable: false
             },
-            {"data": "Sample_Name"},
-            {"data": "Short_topo"},
-            {"data": "Morphology"},
+            {data: "Sample_Name"},
+            {data: "Short_topo"},
+            {data: "Morphology"},
             {
-                "data": "ATCC_ID",
-                "render": function (data) {
+                data: "ATCC_ID",
+                render: function (data) {
                     if (data)
                         return '<a href="http://www.lgcstandards-atcc.org/Products/All/' + data + '.aspx" target="_blank">' + data + '</a>';
                     else
@@ -38,8 +52,8 @@ $(document).ready(function () {
                 }
             },
             {
-                "data": "Cosmic_ID",
-                "render": function (data) {
+                data: "Cosmic_ID",
+                render: function (data) {
                     if (data)
                         return '<a href="http://cancer.sanger.ac.uk/cell_lines/sample/overview?id=' + data + '" target="_blank">' + data + '</a>';
                     else
@@ -48,37 +62,48 @@ $(document).ready(function () {
 
             },
             {
-                "data": "depmap_ID",
-                "render": function (data) {
+                data: "depmap_ID",
+                render: function (data) {
                     if (data)
                         return '<a href="https://depmap.org/portal/cell_line/' + data + '" target="_blank">' + data + '</a>';
                     else
                         return '';
                 }
             },
-            {"data": "Sex"},
-            {"data": "Age"},
-            {"data": "TP53status"},
-            {"data": "ExonIntron"},
+            {data: "Sex"},
+            {data: "Age"},
+            {data: "TP53status"},
+            {data: "ExonIntron"},
             {
-                "data": "c_description",
-                "render": function (data) {
-                    return '<a href="javascript:displayGeneVariations(\'cdna\', \'' + data + '\');">' + data + '</a>';
+                data: "c_description",
+                render: function(data){
+                    if (data)
+                        return '<a href="javascript:void(0);" class="do-gvsearch" data-gv-type="cdna">' + data + '</a>';
+                    else
+                        return data;
                 }
+
             },
 
             {
-                "data": "ProtDescription",
-                "render": function (data) {
-                    return '<a href="javascript:displayGeneVariations(\'p\', \'' + data + '\');">' + data + '</a>';
+                data: "ProtDescription",
+                render: function(data){
+                    if (data)
+                        return '<a href="javascript:void(0);" class="do-gvsearch" data-gv-type="p">' + data + '</a>';
+                    else
+                        return data;
                 }
             },
             {
-                "data": "Pubmed",
-                "render": function (data) {
+                data: "Pubmed",
+                render: function (data) {
                     return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank">' + data + '</a>';
                 }
             }
         ]
     });
+    $('.download-btn').on('click', function () {
+        $('button.buttons-csv').trigger("click");
+    });
+
 });

@@ -5,6 +5,16 @@ $(document).ready(function () {
     const selectedRowSet = new Set();
     var selectedRowCellLineCount = 0;
     var table = $('#gm-result-table').DataTable({
+        dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                "<'row d-none'<'col-sm-12 col-md-4'B>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        buttons: [{
+                extend: 'csv',
+                exportOptions: {
+                    columns: ':not(:first-child):not(:last-child)',
+                    orthogonal: 'export'
+                }}],
         pageLength: 10,
         processing: true,
         serverSide: true,
@@ -35,11 +45,16 @@ $(document).ready(function () {
             {
                 data: "ProtDescription",
                 render: function (data, type, row) {
-                    if (data !== '' && row['Effect'] === 'missense')
-                        return '<a data-bs-toggle=\"tooltip\" data-bs-placement=\"right\" title=\"Link to PHenotypic ANnotation of TP53 Mutations\" ' +
-                            'href=\"https://mutantp53.broadinstitute.org/query=\'' + data + '\'\" target=\"_blank\">' + data + '</a>';
-                    else
+                    if (type == 'export'){
                         return data;
+                    }
+                    else{
+                        if (data !== '' && row['Effect'] === 'missense')
+                            return '<a data-bs-toggle=\"tooltip\" data-bs-placement=\"right\" title=\"Link to PHenotypic ANnotation of TP53 Mutations\" ' +
+                                'href=\"https://mutantp53.broadinstitute.org/query=\'' + data + '\'\" target=\"_blank\">' + data + '</a>';
+                        else
+                            return data;
+                    }
                 }
             },
             {data: "ExonIntron"},
@@ -53,38 +68,58 @@ $(document).ready(function () {
             {data: "Polymorphism"},
             {
                 data: "CLINVARlink",
-                render: function (data) {
-                    if (data != null)
-                        return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" title="Go to ClinVar '+data+'">ClinVar</a>';
-                    else
+                render: function (data, type) {
+                    if (type == 'export'){
                         return data;
+                    }
+                    else {
+                        if (data != null)
+                            return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" title="Go to ClinVar ' + data + '">ClinVar</a>';
+                        else
+                            return data;
+                    }
                 }
             },
             {
                 data: "COSMIClink",
-                render: function (data) {
-                    if (data != null)
-                        return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" title="Go to COSMIC '+data+'">COSMIC</a>';
-                    else
+                render: function (data, type) {
+                    if (type == 'export'){
                         return data;
+                    }
+                    else {
+                        if (data != null)
+                            return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" title="Go to COSMIC ' + data + '">COSMIC</a>';
+                        else
+                            return data;
+                    }
                 }
             },
             {
                 data: "SNPlink",
-                render: function (data) {
-                    if (data !== '')
-                        return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href=\"https://www.ncbi.nlm.nih.gov/snp/rs' + data + '" target="_blank" title="Go to dbSNP '+data+'">dbSNP</a>';
-                    else
+                render: function (data, type) {
+                    if (type == 'export'){
                         return data;
+                    }
+                    else {
+                        if (data !== '')
+                            return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href=\"https://www.ncbi.nlm.nih.gov/snp/rs' + data + '" target="_blank" title="Go to dbSNP ' + data + '">dbSNP</a>';
+                        else
+                            return data;
+                    }
                 }
             },
             {
                 data: "gnomADlink",
-                render: function (data) {
-                    if (data !== '')
-                        return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" title="Go to gnomAd '+data+'">gnomAD</a>';
-                    else
+                render: function (data, type) {
+                    if (type == 'export'){
                         return data;
+                    }
+                    else {
+                        if (data !== '')
+                            return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" title="Go to gnomAd ' + data + '">gnomAD</a>';
+                        else
+                            return data;
+                    }
                 }
             },
             {
@@ -145,6 +180,10 @@ $(document).ready(function () {
 
     $('button.cell-search-button').on('click', function(){
         displayCellLines(selectedRowSet);
+    });
+
+    $('.download-btn').on('click', function () {
+        $('button.buttons-csv').trigger("click");
     });
 
 

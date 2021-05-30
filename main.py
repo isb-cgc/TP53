@@ -80,6 +80,8 @@ SM_SAMPLE_SOURCE_GROUP_FILE = 'SM_SAMPLE_SOURCE_GROUP.TXT.LIST'
 SM_GERM_MUT_FILE = 'SM_GERM_MUT.TXT.LIST'
 SM_INF_AGNT_FILE = 'SM_INF_AGNT.TXT.LIST'
 SM_EXPOSURE_FILE = 'SM_EXPOSURE.TXT.LIST'
+SM_REF_FILE = 'SM_REF.json'
+
 COUNTRY_FILE = 'COUNTRY.TXT.LIST'
 
 GM_C_DESC_FILE = 'GM_C_DESC.TXT.LIST'
@@ -99,6 +101,7 @@ GM_FAMILY_CASE_FILE = 'GM_FAMILY_CASE.TXT.LIST'
 
 TOPO_MORPH_JSON_FILE = 'TOPO_MORPH.json'
 GM_REF_FILE = 'GM_REF.json'
+
 
 app = Flask(__name__)
 
@@ -262,6 +265,8 @@ global topo_morph_assc
 topo_morph_assc = None
 global gm_ref_data
 gm_ref_data = None
+global sm_ref_data
+sm_ref_data = None
 
 IS_TEST = True
 BQ_DATASET = 'P53_data'
@@ -312,30 +317,30 @@ def list_param_val(request, input_name):
         method_request = request.args
     return method_request.getlist(input_name)
 
-
-@app.route("/results_gene_mutation", methods=['GET', 'POST'])
-def results_gene_mutation():
-    criteria = []
-    column_name = None
-    variations = None
-
-    type_input = get_param_val(request, 'type_input')
-    if type_input == 'type_cdna':
-        column_name = 'c_description'
-        variations = list_param_val(request, 'gv_cdna_list')
-    elif type_input == 'type_p':
-        column_name = 'ProtDescription'
-        variations = list_param_val(request, 'gv_p_list')
-    elif type_input == 'type_hg19':
-        column_name = 'g_description'
-        variations = list_param_val(request, 'gv_hg19_list')
-    elif type_input == 'type_hg38':
-        column_name = 'g_description_GRCh38'
-        variations = list_param_val(request, 'gv_hg38_list')
-
-    if column_name and variations and len(variations):
-        criteria.append({'column_name': column_name, 'vals': variations, 'wrap_with': '"'})
-    return render_template("results_gene_mutation.html", criteria=criteria,)
+#
+# @app.route("/results_gene_mutation", methods=['GET', 'POST'])
+# def results_gene_mutation():
+#     criteria = []
+#     column_name = None
+#     variations = None
+#
+#     type_input = get_param_val(request, 'type_input')
+#     if type_input == 'type_cdna':
+#         column_name = 'c_description'
+#         variations = list_param_val(request, 'gv_cdna_list')
+#     elif type_input == 'type_p':
+#         column_name = 'ProtDescription'
+#         variations = list_param_val(request, 'gv_p_list')
+#     elif type_input == 'type_hg19':
+#         column_name = 'g_description'
+#         variations = list_param_val(request, 'gv_hg19_list')
+#     elif type_input == 'type_hg38':
+#         column_name = 'g_description_GRCh38'
+#         variations = list_param_val(request, 'gv_hg38_list')
+#
+#     if column_name and variations and len(variations):
+#         criteria.append({'column_name': column_name, 'vals': variations, 'wrap_with': '"'})
+#     return render_template("results_gene_mutation.html", criteria=criteria)
 
 
 def build_criteria(param_col_name_map):
@@ -675,18 +680,18 @@ def get_patient_criteria(prefix):
 def results_gene_mut_by_gv():
     prefix = 'gv'
     criteria = get_variation_criteria(prefix)
-    return render_template("results_gene_mutation.html", criteria=criteria)
+    return render_template("results_gene_mutation.html", criteria=criteria, submenu = 'search_gene_by_var')
 
 @app.route("/results_gene_mut_by_mutids", methods=['GET', 'POST'])
 def results_gene_mut_by_mutids():
     criteria = get_mut_id_criteria()
-    return render_template("results_gene_mutation.html", criteria=criteria)
+    return render_template("results_gene_mutation.html", criteria=criteria, submenu = 'search_gene_by_mut')
 
 @app.route("/results_gene_mut_by_mut", methods=['GET', 'POST'])
 def results_gene_mut_by_mut():
     prefix = 'gmut'
     criteria = get_mutation_criteria(prefix)
-    return render_template("results_gene_mutation.html", criteria=criteria)
+    return render_template("results_gene_mutation.html", criteria=criteria, submenu = 'search_gene_by_mut')
 
 @app.route("/results_gene_dist", methods=['GET', 'POST'])
 def results_gene_dist():
@@ -728,11 +733,12 @@ def gv_query():
     criteria = json.loads(parameters['criteria'])
     column_filters = ["MUT_ID", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
                       "TransactivationClass", "AGVGDClass", "Somatic_count", "Germline_count", "Cellline_count",
-                      "TCGA_ICGC_GENIE_count", "CLINVARlink", "COSMIClink",
-                      "Polymorphism", "SNPlink", "gnomADlink"]
+                      "TCGA_ICGC_GENIE_count", "Polymorphism", "CLINVARlink", "COSMIClink",
+                       "SNPlink", "gnomADlink"]
     sql_stm = bq_builder.build_simple_query(criteria=criteria, table='MutationView', column_filters=column_filters,
                                             ord_column=column_filters[order_col], desc_ord=(order_dir == 'desc'),
                                             start=start, length=length)
+    print(sql_stm)
     sql_cnt_stm = bq_builder.build_simple_query(criteria=criteria, table='MutationView', column_filters=column_filters,
                                                 do_counts=True, distinct_col='MUT_ID')
 
@@ -971,7 +977,7 @@ def search_somatic_mut():
                            germ_mut_list=sm_germ_mut_list,
                            inf_agnt_list=sm_inf_agnt_list,
                            exposure_list=sm_exposure_list,
-
+                           ref_data=sm_ref_data
                            )
 
 
@@ -1041,6 +1047,8 @@ def prevalence_somatic_stats():
 def results_somatic_mutation():
     action = get_param_val(request, 'action')
     template = "mutation_dist_stats.html" if action == 'get_mutation_dist' else "mutation_stats.html"
+    submenu = 'stats_somatic_mut'
+    title = 'Statistics on Somatic Mutations'
 
     if action == 'get_codon_dist':
         table = 'SomaticMutationStats'
@@ -1051,6 +1059,8 @@ def results_somatic_mutation():
 
     criteria_map = {}
     if request.method == 'POST':
+        submenu = 'search_somatic_mut'
+        title = 'Search Results on Somatic Mutations'
         criteria_type = ['include', 'exclude']
         for type in criteria_type:
             prefix = 'sm_{type}'.format(type=type)
@@ -1067,7 +1077,7 @@ def results_somatic_mutation():
     graph_configs = build_graph_configs(action, table)
     sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
     graph_result = build_graph_data(sql_maps)
-    return render_template(template, criteria_map=criteria_map, title='Statistics on Somatic Mutations',
+    return render_template(template, criteria_map=criteria_map, title=title, submenu=submenu,
                            graph_result=graph_result)
 
 
@@ -1090,7 +1100,6 @@ def results_somatic_prevalence():
         group_by = 'Morphogroup'
         subject = 'Morphography'
     sql_stm = bq_builder.build_group_sum_graph_query(criteria=criteria, view='PrevalenceView', group_by=group_by)
-    print(sql_stm)
 
     query_job = bigquery_client.query(sql_stm)
     data = []
@@ -1118,7 +1127,7 @@ def results_somatic_prevalence():
         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
-    query_result = {'data': data, 'msg': error_msg}
+    # query_result = {'data': data, 'msg': error_msg}
     return render_template("prevalence_somatic_stats.html", graph_data=graph_data, subject = subject)
     # return render_template("results_somatic_prevalence.html", query_result=query_result)
 
@@ -1160,6 +1169,7 @@ def view_germline_prevalence():
     criteria = []
     sql_stm = bq_builder.build_simple_query(criteria=criteria, table='GermlinePrevalence',
                                             column_filters=column_filters)
+    print(sql_stm)
     query_job = bigquery_client.query(sql_stm)
     data = []
     error_msg = None
@@ -1216,21 +1226,21 @@ def get_germline_patient_criteria(prefix):
 
 @app.route("/results_germline_mutation", methods=['GET', 'POST'])
 def results_germline_mutation():
-    # template = "mutation_stats.html"
     action = get_param_val(request, 'action')
     template = "mutation_dist_stats.html" if action == 'get_mutation_dist' else "mutation_stats.html"
+    submenu = 'stats_germline_mut'
+    title = 'Statistics on Germline Mutations'
     if action == 'get_codon_dist':
         table = 'GermlineMutationStats'
     elif action == 'get_tumor_dist':
         table = 'GermlineTumorStats'
-
     else:
-        # action == 'get_mutation_dist'
-        # or 'get_tumor_dist_view'
-        # template = "mutation_dist_stats.html"
         table = 'GermlineView'
+
     criteria_map = {}
     if request.method == 'POST':
+        submenu = 'search_germline_mut'
+        title = 'Search Results on Germline Mutations'
         criteria_type = ['include', 'exclude']
         for type in criteria_type:
             prefix = 'gm_{type}'.format(type=type)
@@ -1244,7 +1254,8 @@ def results_germline_mutation():
     sql_maps = build_graph_sqls(graph_configs, criteria_map, table)
     graph_result = build_graph_data(sql_maps)
     # print(graph_result)
-    return render_template(template, criteria_map={}, title='Statistics on Germline Mutations',
+    return render_template(template, criteria_map={}, title=title,
+                           submenu=submenu,
                            graph_result=graph_result)
 
     # return render_template("results_germline_mutation.html", criteria_map=criteria_map, query_result=query_result)
@@ -1252,20 +1263,20 @@ def results_germline_mutation():
 def build_graph_configs(action, table=None):
 
     if action == 'get_mutation_dist':
-        exon_intron_labels = []
-        for n in range (1, 12):
-            exon_intron_labels.append('{n}-exon'.format(n=n))
-            if n == 12:
-                break
-            exon_intron_labels.append('{n}-intron'.format(n=n))
+        # exon_intron_labels = []
+        # for n in range (1, 12):
+        #     exon_intron_labels.append('{n}-exon'.format(n=n))
+        #     if n == 12:
+        #         break
+        #     exon_intron_labels.append('{n}-intron'.format(n=n))
 
         # exon_intron_labels.append('11-exon')
         graph_configs = {
             'exon_intron': {
                 'query_type': 'group_counts',
                 'group_by': 'ExonIntron',
-                'include_vals': exon_intron_labels,
-                'exclude_vals': ['', 'NA']
+                # 'include_vals': exon_intron_labels,
+                # 'exclude_vals': ['', 'NA']
             },
             'type': {
                 'query_type': 'group_counts',
@@ -1295,7 +1306,8 @@ def build_graph_configs(action, table=None):
             'ta_class': {
                 'query_type': 'group_counts',
                 'group_by': 'TransactivationClass',
-                'exclude_vals': ['NA', '']
+                'exclude_vals': ['']
+                # 'exclude_vals': ['NA', '']
             }
         }
     elif action == 'get_mutation_type':
@@ -1328,21 +1340,8 @@ def build_graph_configs(action, table=None):
                 'sum_col': count_col
             }
         }
-    # elif action == 'get_gv_tumor_dist':
-    #     graph_configs = {
-    #         # 'topo_dist': {
-    #         'tumor_dist_somatic': {
-    #             'query_type': 'group_counts',
-    #             'group_by': 'Short_topo'
-    #         },
-    #         'tumor_dist_germline': {
-    #             'query_type': 'group_counts',
-    #             'group_by': 'Short_topo'
-    #         }
-    #     }
     else:
         graph_configs = {
-            # 'topo_dist': {
             'tumor_dist': {
                 'query_type': 'group_counts',
                 'group_by': 'Short_topo'
@@ -1391,8 +1390,6 @@ def build_graph_sqls(graph_configs, criteria_map, table):
         elif graph_id == 'sift_class' or graph_id == 'ta_class':
             cri['include'].append({'column_name': 'Effect', 'vals': ["missense"], 'wrap_with': '"'})
 
-        # if graph_id == 'ta_class':
-        #     cri['exclude'].append({'column_name': 'TransactivationClass', 'vals': ["NA"], 'wrap_with': '"'})
         query_type = graph_configs[graph_id]['query_type']
         if query_type == 'group_sums':
             stm = bq_builder.build_mutation_dist_sum_query(criteria_map=cri, table=table,
@@ -1401,7 +1398,6 @@ def build_graph_sqls(graph_configs, criteria_map, table):
         elif query_type == 'codon_counts':
             stm = bq_builder.build_codon_dist_query(column=graph_configs[graph_id]['codon_col'], table=table)
         else:
-            # query type: 'group_counts'
             stm = bq_builder.build_mutation_query(criteria_map=cri, table=table, group_by=graph_configs[graph_id]['group_by'])
         sql_maps[graph_id] = stm
     return sql_maps
@@ -1553,6 +1549,7 @@ def cell_lines_mutation_stats():
     sql_maps = build_graph_sqls(graph_configs, {}, table)
     graph_result = build_graph_data(sql_maps)
     return render_template("mutation_stats.html", criteria_map={}, title='Statistics on Cell Line Mutations',
+                           submenu='stats_cell_lines',
                            graph_result=graph_result)
 
 
@@ -1975,6 +1972,9 @@ def setup_app(app):
     global gm_ref_data
     if not gm_ref_data:
         gm_ref_data = load_list(GM_REF_FILE, json=True)
+    global sm_ref_data
+    if not sm_ref_data:
+        sm_ref_data = load_list(SM_REF_FILE, json=True)
     return
 
 

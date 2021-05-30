@@ -6,7 +6,7 @@ const color_scheme = ["#4e79a7", "#f28e2c", "#e15759", "#76b7b2", "#59a14f", "#e
 
 const codon_scale = {
     min: 0,
-    max: 394,
+    max: 393,
     type: 'linear',
     offset: false,
     grid: {
@@ -152,7 +152,8 @@ var build_pie_config = function (chart_id, chart_title, data) {
                         label: function (tooltipItem) {
                             var count = tooltipItem.parsed;
                             var percent = count * 100 / total_cnt;
-                            return tooltipItem.label + '  ' + (percent).toFixed(2) + '% (' + formatNumbersByCommas(count) + ')';
+                            var tooltip_label = tooltipItem.label || 'null';
+                            return tooltip_label + '  ' + (percent).toFixed(2) + '% (' + formatNumbersByCommas(count) + ')';
                         }
                     }
                 },
@@ -169,7 +170,7 @@ var build_pie_config = function (chart_id, chart_title, data) {
     );
 };
 
-var build_3d_graph = function (chart_id, data){
+var build_3d_graph = function (chart_id, data, width, height){
     var total_cnt = data['total'];
     var y_data = data['data'];
     var x_data = data['labels'];
@@ -198,12 +199,6 @@ var build_3d_graph = function (chart_id, data){
         high: 'red',
         mid: 'orange',
         low: 'yellow'
-        // high: '[203, 0, 0]',
-        // mid: '[204, 102, 0]',
-        // low: '[204, 204, 0]'
-        // high: '[240, 59, 32]',
-        // mid: '[254, 178, 76]',
-        // low: '[255, 237, 160]'
     };
 
     var jsmolQueries = '';
@@ -216,8 +211,8 @@ var build_3d_graph = function (chart_id, data){
     var jsmol_script = "load " + pdb_filepath + "; rotate x 30; translate x 0.43; translate y 1.14; wireframe off; zoom 125; colour atoms [255,255,255]; spacefill off; select (*:E); wireframe on; select(*:F); wireframe on; select(*:B); cartoons on;"+jsmolQueries+" select (*:E); colour atoms [255,255,255]; select (*:F); colour atoms [255,255,255]; move 0 -360 0 0 0 0 0 0 15 25;";
 
     var jsmol_Info = {
-        width: "100%",
-        height: "90%",
+        width: width,
+        height: height,
         debug: false,
         color: "black",
         use: "HTML5",
@@ -225,18 +220,43 @@ var build_3d_graph = function (chart_id, data){
         isSigned: true,
         disableJ2SLoadMonitor: true,
         allowJavaScript: true,
-        script: jsmol_script
+        script: jsmol_script,
+        zIndexBase: 100
     };
 
     Jmol.setDocument(false);
     Jmol.getApplet("tp53JSmol", jsmol_Info);
-    $('#'+chart_id).html(Jmol.getAppletHtml(tp53JSmol));
-    $('#legend').html();
 
+    $('#'+chart_id).data('jmol', data_by_threshold);
+    $('#'+chart_id).data('jmol-info', jsmol_Info);
+    $('#'+chart_id).html(Jmol.getAppletHtml(tp53JSmol));
 };
+
 
 var formatNumbersByCommas = function(num){
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
+var convert_chartdata = function(chartjs_data){
+    var tsv_data = '';
+    if (chartjs_data.data.length) {
+        tsv_data += "x\ty\n";
+        for (var i = 0; i < chartjs_data.data.length; i++) {
+            var x = chartjs_data.labels[i];
+            var y = chartjs_data.data[i];
+            tsv_data += (x + '\t' + y + '\n');
+        }
+        tsv_data = 'data:text/tab-separated-values;charset=utf-8,' + tsv_data;
+    }
+    return encodeURI(tsv_data);
+};
+
+var trigger_file_download = function(filename, data){
+    var d_link = document.createElement('a');
+    d_link.setAttribute('href', data);
+    d_link.setAttribute('download', filename);
+    document.body.appendChild(d_link); // Required for FF
+    d_link.click();
+    document.body.removeChild(d_link);
+};
 

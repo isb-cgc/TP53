@@ -2,10 +2,14 @@
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
-    active_submenu = 'search_tp53data';
+    active_submenu = "{{ submenu }}";
 </script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/results_gene_mutation.js') }}"></script>
+
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.select.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/results_gene_mutation.js') }}"></script>
+
 
 {% endblock %}
 
@@ -60,7 +64,7 @@
                     </button>
                 </div>
                 <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-outline-secondary"><i class="fas fa-download"></i> Download
+                    <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i> Download
                     </button>
                 </div>
             </div>
@@ -74,130 +78,152 @@
                            aria-label="Select All">
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip" data-bs-html="true"
-                          data-bs-placement="top"
-                          title="Mutation nomenclature according to <a href='https://www.genomic.unimelb.edu.au/mdi/mutnomen/' target='_blank'>HGVS</a>
-                                                                    standards and using the GenBank NC_000017.11 (hg38 assembly) genomic sequence as reference.">
-                        Genomic Description (hg38)</span>
+                    Genomic Description (hg38)
+                    <!--<span data-bs-toggle="tooltip" data-bs-html="true"-->
+                          <!--data-bs-placement="top"-->
+                          <!--title="Mutation nomenclature according to <a href='https://www.genomic.unimelb.edu.au/mdi/mutnomen/' target='_blank'>HGVS</a>-->
+                                                                    <!--standards and using the GenBank NC_000017.11 (hg38 assembly) genomic sequence as reference.">-->
+                        <!--Genomic Description (hg38)</span>-->
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip" data-bs-html="true"
-                          data-bs-placement="top"
-                          title="Mutation nomenclature according to <a href='https://www.genomic.unimelb.edu.au/mdi/mutnomen/' target='_blank'>HGVS</a>
-                                                                    standards and using the NM_000546.5 coding sequence as reference.">
-                            cDNA Description</span>
+                    cDNA Description
+                    <!--<span data-bs-toggle="tooltip" data-bs-html="true"-->
+                          <!--data-bs-placement="top"-->
+                          <!--title="Mutation nomenclature according to <a href='https://www.genomic.unimelb.edu.au/mdi/mutnomen/' target='_blank'>HGVS</a>-->
+                                                                    <!--standards and using the NM_000546.5 coding sequence as reference.">-->
+                            <!--cDNA Description</span>-->
                 </th>
-                <th><span data-bs-toggle="tooltip" data-bs-html="true"
-                          data-bs-placement="top"
-                          title="Mutation description at the protein level as recommended by <a href='resources#mutation'>HGVS</a> and using the Uniprot
-                                                                    reference sequence P04637.">
-                        Protein Description</span>
-                </th>
-                <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Location of the mutation in the introns or exons in TP53 gene for the reference
-                              sequence NM_000546.5. Terms occurring in this column are '1-intron' to '11-intron' and
-                               '2-exon' to '11-exon'. An 'i' or 'e' in front mean that the mutation is located
-                              within the indicated intron or exon with no information on the precise location.">Exon Number</span>
+                <th>Protein Description
+                    <!--<span data-bs-toggle="tooltip" data-bs-html="true"-->
+                          <!--data-bs-placement="top"-->
+                          <!--title="Mutation description at the protein level as recommended by <a href='resources#mutation'>HGVS</a> and using the Uniprot-->
+                                                                    <!--reference sequence P04637.">-->
+                        <!--Protein Description</span>-->
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Effect of the mutation. The terms occurring in this column are: missense (change of
-                                 one amino-acid), nonsense (introduction of a stop codon), FS (frameshift), silent (no
-                                 change in the protein sequence), splice (mutations located in the two first and two
-                                 last conserved nucleotides of the introns and are thus predicted to alter splicing,
-                                 or mutations that have been shown to alter splicing experimentally), other (inframe
-                                 deletions or insertions), intronic (mutations in introns outside splicing sites), NA
-                                 (mutations upstream in 5' or 3' UTR).">
+                    Exon Number
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top"-->
+                          <!--title="Location of the mutation in the introns or exons in TP53 gene for the reference-->
+                              <!--sequence NM_000546.5. Terms occurring in this column are '1-intron' to '11-intron' and-->
+                               <!--'2-exon' to '11-exon'. An 'i' or 'e' in front mean that the mutation is located-->
+                              <!--within the indicated intron or exon with no information on the precise location.">Exon Number</span>-->
+                </th>
+                <th>
                     Effect
-                    </span>
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top"-->
+                          <!--title="Effect of the mutation. The terms occurring in this column are: missense (change of-->
+                                 <!--one amino-acid), nonsense (introduction of a stop codon), FS (frameshift), silent (no-->
+                                 <!--change in the protein sequence), splice (mutations located in the two first and two-->
+                                 <!--last conserved nucleotides of the introns and are thus predicted to alter splicing,-->
+                                 <!--or mutations that have been shown to alter splicing experimentally), other (inframe-->
+                                 <!--deletions or insertions), intronic (mutations in introns outside splicing sites), NA-->
+                                 <!--(mutations upstream in 5' or 3' UTR).">-->
+                    <!--Effect-->
+                    <!--</span>-->
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Functional classification based on the overall transcriptional activity (TA) on 8
-                          different promoters as measured in yeast assays by <a href='https://www.ncbi.nlm.nih.gov/pubmed/12826609'
-                          target='_blank'>Kato et al</a>. For each mutant, the median of the 8 promoter-specific activities
-                          (expressed as percent of the wild-type protein) is calculated and missense mutations are classified
-                          as 'non-functional' if the median is &lt;=20, 'partially functional' if the median is &gt;20 and
-                          &lt;=75, 'functional' if the median is &gt;75 and &lt;=140, and 'supertrans' if the median is
-                           &gt;140.">
                     TA Class
-                    </span>
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top" data-bs-html="true"-->
+                          <!--title="Functional classification based on the overall transcriptional activity (TA) on 8-->
+                          <!--different promoters as measured in yeast assays by <a href='https://www.ncbi.nlm.nih.gov/pubmed/12826609'-->
+                          <!--target='_blank'>Kato et al</a>. For each mutant, the median of the 8 promoter-specific activities-->
+                          <!--(expressed as percent of the wild-type protein) is calculated and missense mutations are classified-->
+                          <!--as 'non-functional' if the median is &lt;=20, 'partially functional' if the median is &gt;20 and-->
+                          <!--&lt;=75, 'functional' if the median is &gt;75 and &lt;=140, and 'supertrans' if the median is-->
+                           <!--&gt;140.">-->
+                    <!--TA Class-->
+                    <!--</span>-->
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Missense variant functional predictions by an optimized Align-GVGD tool. Mutations
-                          classified as 'C0' are considered tolerated while other classes are considered damaging.
-                          Further details in <a target='_blank' href='https://www.ncbi.nlm.nih.gov/pubmed/29775997'>
-                          Fortuno (2018)</a>.">
                     Align-GVGD Classr
-                    </span>
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top" data-bs-html="true"-->
+                          <!--title="Missense variant functional predictions by an optimized Align-GVGD tool. Mutations-->
+                          <!--classified as 'C0' are considered tolerated while other classes are considered damaging.-->
+                          <!--Further details in <a target='_blank' href='https://www.ncbi.nlm.nih.gov/pubmed/29775997'>-->
+                          <!--Fortuno (2018)</a>.">-->
+                    <!--Align-GVGD Classr-->
+                    <!--</span>-->
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Number of occurence in the somatic dataset (number of tumors reported to carry
-                          this somatic mutation). Total count is 29891 in R20.">
                     Somatic Count
-                    </span>
-                </th>
-                <th><span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Number of occurence in the germline dataset (number of pedigree/individual carriers of this germline mutation). Total count is 1532 in R20.">
-                    Germline Count</span>
-                </th>
-                <th><span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Number of occurence in the cell-line dataset (number of cell-lines reported to carry this mutation). Total cell-line count is 2766 in R20.">
-                    CellLine Count</span>
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top" data-bs-html="true"-->
+                          <!--title="Number of occurence in the somatic dataset (number of tumors reported to carry-->
+                          <!--this somatic mutation). Total count is 29891 in R20.">-->
+                    <!--Somatic Count-->
+                    <!--</span>-->
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Sum of mutation occurence from TCGA (MC3), ICGC (v28) and GENIE (V5) datasets. Total count is 23570.">
-                        TCGA ICGC GENIE count</span>
+                    Germline Count
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top" data-bs-html="true"-->
+                          <!--title="Number of occurence in the germline dataset (number of pedigree/individual carriers of this germline mutation). Total count is 1532 in R20.">-->
+                    <!--Germline Count</span>-->
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Polymorphic status of the gene variation. <br>
-                                 <b>Validated</b>: MAF &gt; 0.001 in ESP6500, 1000G or gnomAD databases; <br>
-                                 <b>No</b>: not reported or reported at MAF &lt; 0.001 in ESP6500, 1000G, or gnomAD databases;<br>
-                                 <b>NA</b>: not applicable.">
+                    CellLine Count
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top" data-bs-html="true"-->
+                          <!--title="Number of occurence in the cell-line dataset (number of cell-lines reported to carry this mutation). Total cell-line count is 2766 in R20.">-->
+                    <!--CellLine Count</span>-->
+                </th>
+                <th>
+                    TCGA ICGC GENIE Count
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top" data-bs-html="true"-->
+                          <!--title="Sum of mutation occurence from TCGA (MC3), ICGC (v28) and GENIE (V5) datasets. Total count is 23570.">-->
+                        <!--TCGA ICGC GENIE count</span>-->
+                </th>
+                <th>
                     Validated SNP
-                    </span>
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top" data-bs-html="true"-->
+                          <!--title="Polymorphic status of the gene variation. <br>-->
+                                 <!--<b>Validated</b>: MAF &gt; 0.001 in ESP6500, 1000G or gnomAD databases; <br>-->
+                                 <!--<b>No</b>: not reported or reported at MAF &lt; 0.001 in ESP6500, 1000G, or gnomAD databases;<br>-->
+                                 <!--<b>NA</b>: not applicable.">-->
+                    <!--Validated SNP-->
+                    <!--</span>-->
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Link to ClinVar database.">
-                        ClinVar Link</span>
+                    ClinVar Link
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top" data-bs-html="true"-->
+                          <!--title="Link to ClinVar database.">-->
+                        <!--ClinVar Link</span>-->
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Link to mutation ID in COSMIC database.">
-                        COSMIC Link
-                    </span>
+                    COSMIC Link
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top"-->
+                          <!--title="Link to mutation ID in COSMIC database.">-->
+                        <!--COSMIC Link-->
+                    <!--</span>-->
                 </th>
-                <th><span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Link to NCBI SNP database.">
-                    dbSNP Link</span>
+                <th>
+                    dbSNP Link
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top" data-bs-html="true"-->
+                          <!--title="Link to NCBI SNP database.">-->
+                    <!--dbSNP Link</span>-->
                 </th>
-                <th><span data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Link to gnomAD database.">
-                    gnomAD Link</span>
+                <th>
+                    gnomAD Link
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top"-->
+                          <!--title="Link to gnomAD database.">-->
+                    <!--gnomAD Link</span>-->
                 </th>
-                <th><span data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Click to view mutation details.">
-                    View</span>
+                <th>
+                    View
+                    <!--<span data-bs-toggle="tooltip"-->
+                          <!--data-bs-placement="top"-->
+                          <!--title="Click to view mutation details.">-->
+                    <!--View</span>-->
                 </th>
                 </tr>
                 </thead>

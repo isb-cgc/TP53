@@ -4,12 +4,13 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/chart.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/build_chart_config.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/stats_mutation.js') }}"></script>
+
 {% endblock %}
 
 {% block subcontent %}
 
 <script type="text/javascript">
-    active_submenu = 'search_tp53data';
+    active_submenu = "{{ submenu }}";
     var graph_result = {{ graph_result | tojson | safe }};
 </script>
 
@@ -19,13 +20,15 @@
     <div class="p-2">
         {% for graph_id in graph_result.graph_data %}
         <div class="small-chart col-5 border rounded-2 p-3 my-3 mx-auto">
+            <div data-graph-id="{{ graph_id }}" class="btn-group btn-group-sm float-end">
+                <button type="button" class="btn btn-outline-secondary d-img-btn"><i class="fas fa-download"></i> Image</button>
+                <button type="button" class="btn btn-outline-secondary d-data-btn"><i class="fas fa-download"></i> Data</button>
+            </div>
             <canvas id="{{ graph_id }}_chart"></canvas>
         </div>
         {% endfor %}
-
     </div>
 </div>
-
 
 {% endblock %}
 

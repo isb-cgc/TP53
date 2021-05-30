@@ -10,9 +10,10 @@ $(document).ready(function () {
         toggle_collapse_jQSel($("form.search-form .collapse.show"), true);
     });
 
-    $(":submit").on('click', function () {
-        display_spinner(true);
-    });
+    // $(":submit").on('click', function () {
+    //     console.log('submit clicked');
+    //     display_spinner(true);
+    // });
 
     $('.chosen-select').chosen({
         no_results_text: "Oops, nothing found!",

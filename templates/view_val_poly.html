@@ -4,7 +4,9 @@
 <script type="text/javascript">
     active_submenu = 'view_val_poly';
 </script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/result.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/view_val_poly.js') }}"></script>
 
 
 {% endblock %}
@@ -51,7 +53,13 @@
 
 
         {% if query_result.data|length %}
-        <table class="table table-striped table-sm result-table clientside-processed" cellspacing="0" width="100%">
+        <div class="float-end">
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+        <table id="val-poly-result-table" class="table table-striped table-sm result-table clientside-processed" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>Genomic Description (hg38)</th>
@@ -70,41 +78,14 @@
             {% for row in query_result.data %}
             <tr>
                 <td>{{ row.g_description_GRCh38 }}</td>
-
-                <td>
-                    {% if row.c_description %}
-                    <a href="javascript:displayGeneVariations('cdna', '{{ row.c_description }}');">{{ row.c_description }}</a>
-                    {% endif %}
-                </td>
-
-
+                <td>{{ row.c_description }}</td>
                 <td>{{ row.ProtDescription }}</td>
                 <td>{{ row.ExonIntron }}</td>
                 <td>{{ row.Effect }}</td>
-                <td>
-                    {% if row.SNPlink %}
-                    <a href="https://www.ncbi.nlm.nih.gov/snp/rs{{ row.SNPlink }}" target="_blank">{{ row.SNPlink }}</a>
-                    {% endif %}
-                </td>
-
-                <td>
-                    {% if row.gnomADlink %}
-                    <a href="http://gnomad.broadinstitute.org/variant/{{ row.gnomADlink }}" target="_blank">{{
-                        row.gnomADlink }}</a>
-                    {% endif %}
-                </td>
-                <td>
-                    {% if row.CLINVARlink %}
-                    <a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/{{ row.CLINVARlink }}" target="_blank">{{
-                        row.CLINVARlink }}</a>
-                    {% endif %}
-                </td>
-                <td>
-                    {% if row.PubMedlink %}
-                    <a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMedlink }}" target="_blank">{{
-                        row.PubMedlink }}</a>
-                    {% endif %}
-                </td>
+                <td>{{ row.SNPlink }}</td>
+                <td>{{ row.gnomADlink }}</td>
+                <td>{{ row.CLINVARlink }}</td>
+                <td>{{ row.PubMedlink }}</td>
                 <td>{{ row.SourceDatabases }}</td>
             </tr>
             {% endfor %}

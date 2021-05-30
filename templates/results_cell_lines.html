@@ -2,9 +2,11 @@
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
-    active_submenu = 'search_tp53data';
+    active_submenu = 'search_cell_lines';
 </script>
 
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/results_cell_lines.js') }}"></script>
 
 
@@ -44,7 +46,9 @@
                 <i class="fas fa-th-list"></i> View Selected Criteria</a>
 
             <div class="btn-group btn-group-sm float-end" role="group" aria-label="Additional Search and Tools">
-            <button type="button" class="btn btn-outline-secondary"><i class="fas fa-download"></i> Download</button>
+                <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i>
+                    Download
+                </button>
             </div>
         </div>
 
@@ -56,105 +60,43 @@
                     Cell Lines View ID
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip" data-bs-html="true"
-                          data-bs-placement="top"
-                          title="Mutation nomenclature according to <a href='https://www.genomic.unimelb.edu.au/mdi/mutnomen/' target='_blank'>HGVS</a>
-                                                                    standards and using the GenBank NC_000017.11 (hg38 assembly) genomic sequence as reference.">
-                        Name</span>
+                    Name
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip" data-bs-html="true"
-                          data-bs-placement="top"
-                          title="Mutation nomenclature according to <a href='https://www.genomic.unimelb.edu.au/mdi/mutnomen/' target='_blank'>HGVS</a>
-                                                                    standards and using the NM_000546.5 coding sequence as reference.">
-                            Topography</span>
-                </th>
-                <th><span data-bs-toggle="tooltip" data-bs-html="true"
-                          data-bs-placement="top"
-                          title="Mutation description at the protein level as recommended by <a href='resources#mutation'>HGVS</a> and using the Uniprot
-                                                                    reference sequence P04637.">
-                        Morphology</span>
+                    Topography
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Location of the mutation in the introns or exons in TP53 gene for the reference
-                              sequence NM_000546.5. Terms occurring in this column are '1-intron' to '11-intron' and
-                               '2-exon' to '11-exon'. An 'i' or 'e' in front mean that the mutation is located
-                              within the indicated intron or exon with no information on the precise location.">ATCC</span>
+                    Morphology
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Effect of the mutation. The terms occurring in this column are: missense (change of
-                                 one amino-acid), nonsense (introduction of a stop codon), FS (frameshift), silent (no
-                                 change in the protein sequence), splice (mutations located in the two first and two
-                                 last conserved nucleotides of the introns and are thus predicted to alter splicing,
-                                 or mutations that have been shown to alter splicing experimentally), other (inframe
-                                 deletions or insertions), intronic (mutations in introns outside splicing sites), NA
-                                 (mutations upstream in 5' or 3' UTR).">
+                    ATCC
+                </th>
+                <th>
                     COSMIC
-                    </span>
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Functional classification based on the overall transcriptional activity (TA) on 8
-                          different promoters as measured in yeast assays by <a href='https://www.ncbi.nlm.nih.gov/pubmed/12826609'
-                          target='_blank'>Kato et al</a>. For each mutant, the median of the 8 promoter-specific activities
-                          (expressed as percent of the wild-type protein) is calculated and missense mutations are classified
-                          as 'non-functional' if the median is &lt;=20, 'partially functional' if the median is &gt;20 and
-                          &lt;=75, 'functional' if the median is &gt;75 and &lt;=140, and 'supertrans' if the median is
-                           &gt;140.">
                     DepMap
-                    </span>
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Missense variant functional predictions by an optimized Align-GVGD tool. Mutations
-                          classified as 'C0' are considered tolerated while other classes are considered damaging.
-                          Further details in <a target='_blank' href='https://www.ncbi.nlm.nih.gov/pubmed/29775997'>
-                          Fortuno (2018)</a>.">
                     Sex
-                    </span>
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Number of occurence in the somatic dataset (number of tumors reported to carry
-                          this somatic mutation). Total count is 29891 in R20.">
                     Age
-                    </span>
-                </th>
-                <th><span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Number of occurence in the germline dataset (number of pedigree/individual carriers of this germline mutation). Total count is 1532 in R20.">
-                    tp53 Status</span>
-                </th>
-                <th><span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Number of occurence in the cell-line dataset (number of cell-lines reported to carry this mutation). Total cell-line count is 2766 in R20.">
-                    Exon</span>
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Sum of mutation occurence from TCGA (MC3), ICGC (v28) and GENIE (V5) datasets. Total count is 23570.">
-                        cDNA Description</span>
+                    tp53 Status
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top" data-bs-html="true"
-                          title="Link to ClinVar database.">
-                        Protein</span>
+                    Exon
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Link to mutation ID in COSMIC database.">
-                        PubMed
-                    </span>
+                    cDNA Description
+                </th>
+                <th>
+                    Protein
+                </th>
+                <th>
+                    PubMed
                 </th>
 
                 </tr>

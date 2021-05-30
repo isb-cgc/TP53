@@ -6,7 +6,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/stats_mutation.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/JSmol.min.nojq.js') }}"></script>
 <script type="text/javascript">
-    active_submenu = 'search_tp53data';
+    active_submenu = "{{ submenu }}";
     var graph_result = {{ graph_result | tojson | safe }};
     var pdb_filepath = "{{ url_for('static', filename='pdb/1tsr_B.pdb') }}";
     var j2s_path = "{{ url_for('static', filename='js/libs/j2s') }}";
@@ -14,8 +14,6 @@
 {% endblock %}
 
 {% block subcontent %}
-
-
 
 <div>
     <h2 class="mt-3">{{ title }}</h2>
@@ -36,24 +34,65 @@
                 <div class="row mt-2">
                     <div class="col-1"></div>
                     <div class="col-6 border rounded-2 p-3 bg-white m-1">
+                        <div data-graph-id="exon_intron" class="btn-group btn-group-sm float-end">
+                            <button type="button" class="btn btn-outline-secondary expand-btn" data-bs-toggle="modal"
+                                    data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                    class="fas fa-download"></i> Image
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                    class="fas fa-download"></i> Data
+                            </button>
+                        </div>
                         <canvas id="exon_intron_chart"></canvas>
                     </div>
                     <div class="col-4 border rounded-2 p-3 bg-white m-1">
+                        <div data-graph-id="type" class="btn-group btn-group-sm float-end">
+                            <button type="button" class="btn btn-outline-secondary expand-btn" data-bs-toggle="modal"
+                                    data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                    class="fas fa-download"></i> Image
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                    class="fas fa-download"></i> Data
+                            </button>
+                        </div>
                         <canvas id="type_chart"></canvas>
                     </div>
                     <div class="col-1"></div>
-
                 </div>
                 <div class="row">
                     <div class="col-1"></div>
                     <div class="col-6 border rounded-2 p-3 bg-white m-1">
+                        <div data-graph-id="codon_no" class="btn-group btn-group-sm float-end">
+                            <button type="button" class="btn btn-outline-secondary expand-btn" data-bs-toggle="modal"
+                                    data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                    class="fas fa-download"></i> Image
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                    class="fas fa-download"></i> Data
+                            </button>
+                        </div>
                         <canvas id="codon_no_chart"></canvas>
                     </div>
                     <div class="col-4 border rounded-2 p-3 bg-white m-1">
-                        <!--<div class="chart-title">3D Structure</div>-->
+                        <div class="text-end pb-1">
+                            <div data-graph-id="struct_3D" class="btn-group btn-group-sm">
+                                <button type="button" class="btn btn-outline-secondary expand-btn" data-bs-toggle="modal"
+                                    data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-jsmoldata-btn"><i
+                                        class="fas fa-download"></i> Data
+                                </button>
+                            </div>
+                        </div>
                         <span id="struct_3D">
                         </span>
-                        <div class="text-muted text-end legend-jsmol">
+                        <div id="jmol-legend" class="text-muted text-end small-font">
                             Mutation Frequency:
                             <div class="d-inline my-auto"><div class="legend-color legend-color-high"></div> High</div>
                             <div class="d-inline my-auto ms-2"><div class="legend-color legend-color-mid"></div> Medium</div>
@@ -69,9 +108,31 @@
                 <div class="row mt-2">
                     <div class="col-2"></div>
                     <div class="col-4 border rounded-2 p-3 bg-white m-1">
+                        <div data-graph-id="effect" class="btn-group btn-group-sm float-end">
+                            <button type="button" class="btn btn-outline-secondary expand-btn" data-bs-toggle="modal"
+                                    data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                    class="fas fa-download"></i> Image
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                    class="fas fa-download"></i> Data
+                            </button>
+                        </div>
                         <canvas id="effect_chart"></canvas>
                     </div>
                     <div class="col-4 border rounded-2 p-3 bg-white m-1">
+                        <div data-graph-id="mut_pt" class="btn-group btn-group-sm float-end">
+                            <button type="button" class="btn btn-outline-secondary expand-btn" data-bs-toggle="modal"
+                                    data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                    class="fas fa-download"></i> Image
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                    class="fas fa-download"></i> Data
+                            </button>
+                        </div>
                         <canvas id="mut_pt_chart"></canvas>
                     </div>
                     <div class="col-2"></div>
@@ -79,10 +140,31 @@
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-4 border rounded-2 p-3 bg-white m-1">
+                        <div data-graph-id="sift_class" class="btn-group btn-group-sm float-end">
+                            <button type="button" class="btn btn-outline-secondary expand-btn" data-bs-toggle="modal"
+                                    data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                    class="fas fa-download"></i> Image
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                    class="fas fa-download"></i> Data
+                            </button>
+                        </div>
                         <canvas id="sift_class_chart"></canvas>
                     </div>
                     <div class="col-4 border rounded-2 p-3 bg-white m-1">
-
+                        <div data-graph-id="ta_class" class="btn-group btn-group-sm float-end">
+                            <button type="button" class="btn btn-outline-secondary expand-btn" data-bs-toggle="modal"
+                                    data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                    class="fas fa-download"></i> Image
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                    class="fas fa-download"></i> Data
+                            </button>
+                        </div>
                         <canvas id="ta_class_chart"></canvas>
                     </div>
                     <div class="col-2"></div>
@@ -92,7 +174,47 @@
     </div>
 </div>
 
+<div class="modal fade" id="expand-modal" tabindex="-1"
+     aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="small-chart col-5 border rounded-2 p-3 my-3 mx-auto">
+                            <span id="expanded-struct3D"></span>
+                            <div class="small-font jsmol-content">
+                                <div id="modal-jsmol-info" class="d-inline text-muted text-start">
+                                    Menu: R-click/Ctr-click
+                                </div>
+                                <div id="modal-jsmol-legend" class="d-inline text-muted float-end">
+                                    Mutation Frequency:
+                                    <div class="d-inline my-auto">
+                                        <div class="legend-color legend-color-high"></div>
+                                        High
+                                    </div>
+                                    <div class="d-inline my-auto ms-2">
+                                        <div class="legend-color legend-color-mid"></div>
+                                        Medium
+                                    </div>
+                                    <div class="d-inline my-auto ms-2">
+                                        <div class="legend-color legend-color-low"></div>
+                                        Low
+                                    </div>
+                                </div>
+                            </div>
+                            <canvas id="expanded-canvas"></canvas>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 

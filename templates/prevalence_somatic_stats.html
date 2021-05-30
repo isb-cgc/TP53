@@ -6,7 +6,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/prevalence_som_stats.js') }}"></script>
 
 <script type="text/javascript">
-    active_submenu = 'search_tp53data';
+    active_submenu = 'search_somatic_prevalence';
     var graph_data = {{ graph_data | tojson | safe }};
 </script>
 
@@ -17,7 +17,17 @@
     <h2>tp53 Somatic Prevalence by {{subject}}</h2>
     <hr>
     <div class="p-2">
-        <canvas class="col" id="som_prev_chart"></canvas>
+        <div class="col-10 border rounded-2 p-3 my-3 mx-auto">
+            <div data-graph-id="som_prev" class="btn-group btn-group-sm float-end">
+                <!--<button type="button" class="btn btn-outline-secondary expand-btn"><i class="fas fa-expand"></i> Expand-->
+                <!--</button>-->
+                <button type="button" class="btn btn-outline-secondary d-img-btn"><i class="fas fa-download"></i> Image
+                </button>
+                <button type="button" class="btn btn-outline-secondary d-data-btn"><i class="fas fa-download"></i> Data
+                </button>
+            </div>
+            <canvas class="col" id="som_prev_chart"></canvas>
+        </div>
     </div>
 </div>
 {% endblock %}

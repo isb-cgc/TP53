@@ -2,9 +2,11 @@
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
-    active_submenu = 'search_tp53data';
+    active_submenu = 'stats_germline_mut';
 </script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/result.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/view_germline_prevalence.js') }}"></script>
 
 
 {% endblock %}
@@ -47,7 +49,13 @@
 
 
         {% if query_result.data|length %}
-        <table class="table table-striped table-sm result-table clientside-processed" cellspacing="0" width="100%">
+        <div class="float-end">
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+        <table id="germline-prev-result-table" class="table table-striped table-sm result-table" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>Diagnosis</th>
@@ -68,7 +76,7 @@
                 <td>{{ row.Cases_mutated|int }}</td>
                 <td>{{ row.Mutation_prevalence }}</td>
                 <td>{{ row.Remark }}</td>
-                <td><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank">{{ row.PubMed }}</a></td>
+                <td>{{ row.PubMed }}</td>
             </tr>
             {% endfor %}
             </tbody>
@@ -86,6 +94,5 @@
         {% endif %}
     </div>
 
-</div>
 </div>
 {% endblock %}
