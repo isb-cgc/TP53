@@ -1167,7 +1167,7 @@ def view_germline_prevalence():
     column_filters = ['Diagnosis', 'Cohort', 'Cases_Analyzed', 'Cases_mutated', 'Mutation_prevalence', 'Remark',
                       'PubMed']
     criteria = []
-    sql_stm = bq_builder.build_simple_query(criteria=criteria, table='GermlinePrevalence',
+    sql_stm = bq_builder.build_simple_query(criteria=criteria, table='GermlinePrevalenceView',
                                             column_filters=column_filters)
     print(sql_stm)
     query_job = bigquery_client.query(sql_stm)
