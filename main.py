@@ -294,7 +294,7 @@ project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
 bq_builder.set_project_dataset(proj_id=project_id, d_set=BQ_DATASET)
 
 bigquery_client = bigquery.Client()
-
+TP53_DATA_DIR_URL = os.environ.get('TP53_DATA_DIR_URL', 'https://storage.cloud.google.com/tp53-data-files')
 
 @app.route("/")
 def home():
@@ -1460,6 +1460,25 @@ def view_exp_ind_mut():
 
     return render_template("view_exp_ind_mut.html", criteria=criteria, query_result=query_result)
 
+@app.route("/view_data", methods = ['GET'])
+def view_data():
+    bq_view_name = request.args.get('bq_view_name', None)
+    if bq_view_name:
+        sql_stm = bq_builder.build_simple_query(criteria=[], table=bq_view_name, column_filters=['*'])
+        print(sql_stm)
+        query_job = bigquery_client.query(sql_stm)
+        data = []
+        error_msg = None
+        try:
+            data = query_job.result(timeout=30)
+        except BadRequest:
+            error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
+        except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
+            error_msg = "Sorry, query job has timed out."
+        query_result = {'data': data, 'msg': error_msg}
+
+    print(data)
+    return render_template("view_data.html", bq_view_name=bq_view_name, query_result=query_result)
 
 @app.route("/view_mouse")
 def view_mouse():
@@ -1578,7 +1597,8 @@ def results_cell_line_mutation():
 
 @app.route("/get_tp53data")
 def get_tp53data():
-    return render_template("get_tp53data.html")
+
+    return render_template("get_tp53data.html", TP53_DATA_DIR_URL=TP53_DATA_DIR_URL)
 
 
 @app.route("/help")

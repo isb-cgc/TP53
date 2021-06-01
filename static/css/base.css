@@ -281,6 +281,9 @@ h1 a {
 .legend-color-low{
     background-color: yellow;
 }
+th.custom50w{
+    width: 50%;
+}
 /*.chart-title{*/
     /*font-size: ;*/
 /*}*/

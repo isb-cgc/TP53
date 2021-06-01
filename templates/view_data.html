@@ -1,0 +1,65 @@
+{% extends "tp53data.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'get_tp53data';
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.select.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/view_data.js') }}"></script>
+
+{% endblock %}
+
+{% block subcontent %}
+<div class="jump-div">
+    <h2>View Data: {{ bq_view_name }}</h2>
+    <hr>
+
+    <div id="view_data" class="p-3">
+        {% if query_result.data.total_rows %}
+        <div class="float-end">
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+        <table id="view-data-table" class="table table-striped table-sm result-table" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>
+                    <input class="form-check-input check-all" type="checkbox">
+                </th>
+                {% for col in query_result.data.schema %}
+                    <th>{{ col.name }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in query_result.data %}
+            <tr>
+                <td>
+                    <input class="form-check-input row-check" type="checkbox" aria-label="Select Row">
+                </td>
+                {% for k in row.keys() %}
+                    <td>{{ row.get(k) }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% elif table.msg %}
+        <div class="row">
+            <div class="col-md-12 text-center"><strong>{{ table.msg|safe }}</strong>
+            </div>
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-md-12 text-center fw-light">No data has been found
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

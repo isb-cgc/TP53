@@ -225,7 +225,10 @@ def build_simple_query(criteria, table, column_filters, do_counts=False, distinc
         group_by = ''
     else:
         select_clause = columns
-        group_by = 'GROUP BY {columns}'.format(columns=columns)
+        if select_clause == '*':
+            group_by = ''
+        else:
+            group_by = 'GROUP BY {columns}'.format(columns=columns)
         if ord_column:
             ord_dir = "DESC" if desc_ord else ""
             order_by_clause = "ORDER BY {ord_column} {ord_dir}".format(ord_column=ord_column, ord_dir=ord_dir)
