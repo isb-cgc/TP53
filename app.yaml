@@ -1,9 +1,7 @@
-#service: uat
-service: test
-#service: default
+service: default
 
 runtime: python37
-instance_class: F4_HIGHMEM
+#instance_class: F4_HIGHMEM
 network:
   instance_tag: isb-cgc-tp53
 
@@ -23,10 +21,12 @@ network:
 #BQ_DATASET to set from prod, test or uat
 env_variables:
 #  TIER: 'prod'
-  TIER: 'test'
+#  TIER: 'test'
 #  TIER: 'uat'
+  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-dev'
+  TP53_DATA_DIR_URL: 'https://storage.cloud.google.com/tp53-data-files'
+  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-dev'
 
-  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files/'
 
 handlers:
 - url: /.*
