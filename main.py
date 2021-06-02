@@ -269,7 +269,8 @@ global sm_ref_data
 sm_ref_data = None
 
 IS_TEST = True
-BQ_DATASET = 'P53_data'
+# BQ_DATASET = 'P53_data'
+BQ_DATASET = os.environ.get('BQ_DATASET', 'P53_data')
 
 # hsts_max_age = 3600 if IS_TEST else 31536000
 #
@@ -317,30 +318,6 @@ def list_param_val(request, input_name):
         method_request = request.args
     return method_request.getlist(input_name)
 
-#
-# @app.route("/results_gene_mutation", methods=['GET', 'POST'])
-# def results_gene_mutation():
-#     criteria = []
-#     column_name = None
-#     variations = None
-#
-#     type_input = get_param_val(request, 'type_input')
-#     if type_input == 'type_cdna':
-#         column_name = 'c_description'
-#         variations = list_param_val(request, 'gv_cdna_list')
-#     elif type_input == 'type_p':
-#         column_name = 'ProtDescription'
-#         variations = list_param_val(request, 'gv_p_list')
-#     elif type_input == 'type_hg19':
-#         column_name = 'g_description'
-#         variations = list_param_val(request, 'gv_hg19_list')
-#     elif type_input == 'type_hg38':
-#         column_name = 'g_description_GRCh38'
-#         variations = list_param_val(request, 'gv_hg38_list')
-#
-#     if column_name and variations and len(variations):
-#         criteria.append({'column_name': column_name, 'vals': variations, 'wrap_with': '"'})
-#     return render_template("results_gene_mutation.html", criteria=criteria)
 
 
 def build_criteria(param_col_name_map):
@@ -1101,6 +1078,7 @@ def results_somatic_prevalence():
         subject = 'Morphography'
     sql_stm = bq_builder.build_group_sum_graph_query(criteria=criteria, view='PrevalenceView', group_by=group_by)
 
+    print(sql_stm)
     query_job = bigquery_client.query(sql_stm)
     data = []
     error_msg = None

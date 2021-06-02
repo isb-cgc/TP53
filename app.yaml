@@ -24,8 +24,9 @@ env_variables:
 #  TIER: 'test'
 #  TIER: 'uat'
   TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-dev'
-  TP53_DATA_DIR_URL: 'https://storage.cloud.google.com/tp53-data-files'
+  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files'
   DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-dev'
+  BQ_DATASET: 'P53_data'
 
 
 handlers:
