@@ -1021,22 +1021,22 @@ def prevalence_somatic_stats():
         error_msg = "Sorry, query job has timed out."
     # query_result = {'data': data, 'msg': error_msg}
 
-    return render_template("prevalence_somatic_stats.html", criteria=None, graph_data=graph_data, subject='Tumor Site')
+    return render_template("prevalence_somatic_stats.html", criteria=None, graph_data=graph_data, title='Statistics on Somatic Mutations', subtitle='Somatic Mutation Prevalence by Tumor Site')
 
 
 @app.route("/results_somatic_mutation", methods=['GET', 'POST'])
 def results_somatic_mutation():
     action = get_param_val(request, 'action')
-    template = "mutation_dist_stats.html" if action == 'get_mutation_dist' else "mutation_stats.html"
-    submenu = 'stats_somatic_mut'
     title = 'Statistics on Somatic Mutations'
-
-    if action == 'get_codon_dist':
-        table = 'SomaticMutationStats'
+    template = 'mutation_stats.html'
+    table = 'SomaticView'
+    submenu = 'stats_somatic_mut'
+    if action == 'get_mutation_dist':
+        subtitle = 'Mutation Distributions'
+        template = 'mutation_dist_stats.html'
     elif action == 'get_tumor_dist':
+        subtitle = 'Tumor Site Distribution of Mutations'
         table = 'SomaticTumorStats'
-    else:
-        table = 'SomaticView'
 
     criteria_map = {}
     if request.method == 'POST':
@@ -1058,7 +1058,7 @@ def results_somatic_mutation():
     graph_configs = build_graph_configs(action, table)
     sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
     graph_result = build_graph_data(sql_maps)
-    return render_template(template, criteria_map=criteria_map, title=title, submenu=submenu,
+    return render_template(template, criteria_map=criteria_map, title=title, subtitle=subtitle, submenu=submenu,
                            graph_result=graph_result)
 
 
@@ -1070,16 +1070,17 @@ def results_somatic_prevalence():
     criteria += get_ngs_criteria(prefix)
     criteria += get_country_criteria(prefix)
     action = get_param_val(request, 'action')
+    title = 'Search Results'
     if action == 'get_country_graph':
         group_by = 'Country'
-        subject = 'Country'
+        subtitle = 'Somatic Mutation Prevalence by Country'
     elif action == 'get_topo_graph':
         group_by = 'Short_topo'
-        subject = 'Topography'
+        subtitle = 'Somatic Mutation Prevalence by Topography'
     else:
         # get_morph_graph
         group_by = 'Morphogroup'
-        subject = 'Morphography'
+        subtitle = 'Somatic Mutation Prevalence by Morphography'
     sql_stm = bq_builder.build_group_sum_graph_query(criteria=criteria, view='PrevalenceView', group_by=group_by)
 
     # print(sql_stm)
@@ -1110,7 +1111,7 @@ def results_somatic_prevalence():
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
     # query_result = {'data': data, 'msg': error_msg}
-    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, criteria=criteria, subject = subject)
+    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, criteria=criteria, title=title, subtitle=subtitle)
     # return render_template("results_somatic_prevalence.html", query_result=query_result)
 
 

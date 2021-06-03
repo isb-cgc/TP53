@@ -15,8 +15,12 @@
 
 {% block subcontent %}
 
-<div>
-    <h2 class="mt-3">{{ title }}</h2>
+<div class="pt-4">
+    <h2>{{ title }}
+        {% if subtitle %}
+        :
+        {% endif %}
+        <span class="ms-2 fw-light">{{ subtitle }}</span></h2>
     <hr>
     <div class="py-2 text-end">
         {% include 'criteria_map_div.html' %}

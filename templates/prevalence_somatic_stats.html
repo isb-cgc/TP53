@@ -13,13 +13,16 @@
 {% endblock %}
 
 {% block subcontent %}
-<div class="jump-div">
-    <h2>tp53 Somatic Prevalence by {{subject}}</h2>
+<div class="pt-4">
+    <h2>{{ title }}
+        {% if subtitle %}
+        :
+        {% endif %}
+        <span class="ms-2 fw-light">{{ subtitle }}</span></h2>
     <hr>
     <div class="text-end">
         {% include 'criteria_div.html' %}
     </div>
-
     <div class="p-2">
         <div class="col-10 border rounded-2 p-3 my-3 mx-auto">
             <div data-graph-id="som_prev" class="btn-group btn-group-sm float-end">

@@ -14,8 +14,12 @@
     var graph_result = {{ graph_result | tojson | safe }};
 </script>
 
-<div class="jump-div">
-    <h2>{{ title }}</h2>
+<div class="pt-4">
+    <h2>{{ title }}
+        {% if subtitle %}
+        :
+        {% endif %}
+        <span class="ms-2 fw-light">{{ subtitle }}</span></h2>
     <hr>
     <div class="p-2">
         <div class="py-2 text-end">
