@@ -18,11 +18,18 @@
     <h2>{{ title }}</h2>
     <hr>
     <div class="p-2">
+        <div class="py-2 text-end">
+            {% include 'criteria_map_div.html' %}
+        </div>
         {% for graph_id in graph_result.graph_data %}
         <div class="small-chart col-5 border rounded-2 p-3 my-3 mx-auto">
             <div data-graph-id="{{ graph_id }}" class="btn-group btn-group-sm float-end">
-                <button type="button" class="btn btn-outline-secondary d-img-btn"><i class="fas fa-download"></i> Image</button>
-                <button type="button" class="btn btn-outline-secondary d-data-btn"><i class="fas fa-download"></i> Data</button>
+                <button type="button" class="btn btn-outline-secondary d-img-btn"><i class="fas fa-download"></i>
+                    Image
+                </button>
+                <button type="button" class="btn btn-outline-secondary d-data-btn"><i class="fas fa-download"></i>
+                    Data
+                </button>
             </div>
             <canvas id="{{ graph_id }}_chart"></canvas>
         </div>

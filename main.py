@@ -672,9 +672,13 @@ def results_gene_mut_by_mut():
 
 @app.route("/results_gene_dist", methods=['GET', 'POST'])
 def results_gene_dist():
-
+    criteria = get_param_val(request, 'criteria')
+    if criteria:
+        include_criteria = json.loads(criteria)
+    else:
+        include_criteria = get_mut_id_criteria()
     criteria_map = {
-        'include': get_mut_id_criteria(),
+        'include': include_criteria,
         'exclude': []
     }
     action = get_param_val(request, 'action')
@@ -1017,7 +1021,7 @@ def prevalence_somatic_stats():
         error_msg = "Sorry, query job has timed out."
     # query_result = {'data': data, 'msg': error_msg}
 
-    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, subject='Tumor Site')
+    return render_template("prevalence_somatic_stats.html", criteria=None, graph_data=graph_data, subject='Tumor Site')
 
 
 @app.route("/results_somatic_mutation", methods=['GET', 'POST'])
@@ -1078,7 +1082,7 @@ def results_somatic_prevalence():
         subject = 'Morphography'
     sql_stm = bq_builder.build_group_sum_graph_query(criteria=criteria, view='PrevalenceView', group_by=group_by)
 
-    print(sql_stm)
+    # print(sql_stm)
     query_job = bigquery_client.query(sql_stm)
     data = []
     error_msg = None
@@ -1106,7 +1110,7 @@ def results_somatic_prevalence():
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
     # query_result = {'data': data, 'msg': error_msg}
-    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, subject = subject)
+    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, criteria=criteria, subject = subject)
     # return render_template("results_somatic_prevalence.html", query_result=query_result)
 
 

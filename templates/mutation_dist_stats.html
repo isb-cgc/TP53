@@ -18,6 +18,10 @@
 <div>
     <h2 class="mt-3">{{ title }}</h2>
     <hr>
+    <div class="py-2 text-end">
+        {% include 'criteria_map_div.html' %}
+    </div>
+
     <nav>
         <div class="nav nav-tabs" id="mut_stats_tabs" role="tablist">
             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-mut-type-tab"

@@ -207,18 +207,26 @@ var selectAllRows = function (t, bool) {
 var updateActionButtonGroups = function (selectedRowCounts, selectedRowCellLineCounts) {
     $('.cart-count').html(selectedRowCounts);
     $('.cell-line-count-badge').html(selectedRowCellLineCounts);
-    $('.action-button').toggleClass('disabled', selectedRowCounts == 0);
+    // $('.action-button').toggleClass('disabled', selectedRowCounts == 0);
     $('button.cell-search-button').toggleClass('disabled', selectedRowCellLineCounts == 0);
 };
 
 
 var displayGeneVariationDistributions = function (action, selectedRowSet) {
-    var mutIds = Array.from(selectedRowSet);
     var form = $("<form method='POST' action='results_gene_dist'></form>");
-    for (var i = 0; i < mutIds.length; i++) {
-        var input = $("<input type='hidden' name='mut_id_list' value='" + mutIds[i] + "'/>");
-        input.appendTo(form);
+    if (selectedRowSet.size){
+        var mutIds = Array.from(selectedRowSet);
+        for (var i = 0; i < mutIds.length; i++) {
+            var input = $("<input type='hidden' name='mut_id_list' value='" + mutIds[i] + "'/>");
+            input.appendTo(form);
+        }
     }
+    else{
+        var input = $("<input type='hidden' name='criteria' value='" + JSON.stringify($('#criteria_div').data('criteria')) + "'/>");
+        input.appendTo(form);
+        // console.log($('#criteria_div').data('criteria'));
+    }
+
     input = $("<input type='hidden' name='action' value='" + action + "'/>");
     input.appendTo(form);
     form.appendTo($("body"));

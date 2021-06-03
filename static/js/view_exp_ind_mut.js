@@ -71,7 +71,8 @@ $(document).ready(function () {
                 selector: '.row-check'
             },
             rowCallback: function (row, data) {
-                if (selectedRowSet.has(data[MUT_ID_COL_ORD])) {
+                if (selectedRowSet.has(data.row_id)) {
+                // if (selectedRowSet.has(data[MUT_ID_COL_ORD])) {
                     selectRow(row);
                     $(row).find('.row-check').prop('checked', true);
                 }
@@ -86,9 +87,10 @@ $(document).ready(function () {
     table
         .on('select', function (e, dt, type, indexes) {
             var rows_data = table.rows(indexes).data().toArray();
+            console.log(rows_data[0].row_id);
             for (var i = 0; i < rows_data.length; i++) {
-                if (!selectedRowSet.has(rows_data[i][MUT_ID_COL_ORD])) {
-                    selectedRowSet.add(rows_data[i][MUT_ID_COL_ORD]);
+                if (!selectedRowSet.has(rows_data[i].row_id)) {
+                    selectedRowSet.add(rows_data[i].row_id);
                 }
             }
             updateActionButtonGroups(selectedRowSet.size);
@@ -134,6 +136,7 @@ var updateActionButtonGroups = function (selectedRowCounts) {
 
 var displayGeneVariations_by_mutids = function (selectedRowSet) {
     var rowIds = Array.from(selectedRowSet);
+    console.log(rowIds);
     var form = $("<form method='POST' action='results_gene_mut_by_mutids'></form>");
     for (var i = 0; i < rowIds.length; i++) {
         var indx = rowIds[i].indexOf(':');

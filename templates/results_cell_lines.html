@@ -17,43 +17,15 @@
     <h2>Search Results: Cell Lines</h2>
     <hr>
     <div class="p-3">
-        <div id="criteria_div" class="my-2 p-1 collapse bg-light rounded-2 border border-1"
-             data-criteria='{{ criteria|tojson }}'>
-            {% if criteria|length == 0 %}
-            <div class="fw-light fst-italic">None Selected</div>
-            {% endif %}
-
-            {% for criterion in criteria %}
-            <span class="badge rounded-pill bg-secondary">{{ criterion.column_name }}
-                {% if criterion.between_op %}
-                BETWEEN [{{ criterion.vals[0] }} AND {{ criterion.vals[1] }}]
-                {% elif criterion.vals|length > 1 %}
-                IN (
-                    {% for val in criterion.vals %}
-                        {% if loop.index0 > 0 %},{% endif %} {{ criterion.wrap_with }}{{ val }}{{ criterion.wrap_with }}
-                    {% endfor %}
-                )
-                {% else %}
-                = {{ criterion.wrap_with }}{{  criterion.vals[0] }}{{ criterion.wrap_with }}
-                {% endif %}
-            </span>
-            {% endfor %}
-        </div>
         <div class="pb-2">
-            <a type="button" class="text-start btn btn-sm btn-outline-secondary"
-               data-bs-toggle="collapse" href="#criteria_div" role="button" aria-expanded="false"
-               aria-controls="criteria_div">
-                <i class="fas fa-th-list"></i> View Selected Criteria</a>
-
-            <div class="btn-group btn-group-sm float-end" role="group" aria-label="Additional Search and Tools">
-                <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i>
-                    Download
-                </button>
-            </div>
+            {% include 'criteria_div.html' %}
         </div>
-
+        <div class="btn-group btn-group-sm float-end" role="group" aria-label="Additional Search and Tools">
+            <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i>
+                Download
+            </button>
+        </div>
         <div>
-
             <table class="table table-striped table-sm result-table serverside-processed" cellspacing="0" width="100%">
                 <thead>
                 <th>

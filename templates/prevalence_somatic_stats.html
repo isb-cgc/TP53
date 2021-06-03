@@ -16,17 +16,19 @@
 <div class="jump-div">
     <h2>tp53 Somatic Prevalence by {{subject}}</h2>
     <hr>
+    <div class="text-end">
+        {% include 'criteria_div.html' %}
+    </div>
+
     <div class="p-2">
         <div class="col-10 border rounded-2 p-3 my-3 mx-auto">
             <div data-graph-id="som_prev" class="btn-group btn-group-sm float-end">
-                <!--<button type="button" class="btn btn-outline-secondary expand-btn"><i class="fas fa-expand"></i> Expand-->
-                <!--</button>-->
                 <button type="button" class="btn btn-outline-secondary d-img-btn"><i class="fas fa-download"></i> Image
                 </button>
                 <button type="button" class="btn btn-outline-secondary d-data-btn"><i class="fas fa-download"></i> Data
                 </button>
             </div>
-            <canvas class="col" id="som_prev_chart"></canvas>
+            <canvas id="som_prev_chart"></canvas>
         </div>
     </div>
 </div>
