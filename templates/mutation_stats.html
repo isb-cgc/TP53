@@ -21,11 +21,24 @@
         {% endif %}
         <span class="ms-2 fw-light">{{ subtitle }}</span></h2>
     <hr>
-    <div class="p-2">
-        <div class="py-2 text-end">
+    <div>
+        <div class="pt-2 text-end">
             {% include 'criteria_map_div.html' %}
         </div>
+        {% if graph_result.graph_data|length >1 %}
+            <div class="pt-1 text-end">
+                {% for graph_id in graph_result.graph_data %}
+                {% if loop.index0 > 0 %}
+                <div>
+                    Jump to View: <a href="#{{ graph_id }}" class="ms-3"><span
+                            id="{{ graph_id }}_anchor_text"></span> <i class="far fa-arrow-alt-circle-down"></i></a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
         {% for graph_id in graph_result.graph_data %}
+        <div id="{{ graph_id }}" class="{{ 'jump-div' if loop.index0 > 0 }}">
         <div class="small-chart col-5 border rounded-2 p-3 my-3 mx-auto">
             <div data-graph-id="{{ graph_id }}" class="btn-group btn-group-sm float-end">
                 <button type="button" class="btn btn-outline-secondary d-img-btn"><i class="fas fa-download"></i>
@@ -36,7 +49,7 @@
                 </button>
             </div>
             <canvas id="{{ graph_id }}_chart"></canvas>
-        </div>
+        </div></div>
         {% endfor %}
     </div>
 </div>

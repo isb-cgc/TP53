@@ -178,6 +178,8 @@ var draw_charts = function (graph_config, target_id, is_dimension_static, includ
                 $('#' + canvas_id).parent('div').filter('.small-chart').removeClass('col-10').addClass('col-5');
             build_pie_config(canvas_id, graph_title, graph_data);
         }
+        $('#'+graph_id+'_anchor_text').html(graph_title); //update anchor titles
+
         if (include_3d_graph && Object.keys(graph_config).includes('graph3D_id')) {
             var jmol_legend = $('#jmol-legend');
             var width = jmol_legend.width();

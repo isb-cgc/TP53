@@ -688,6 +688,7 @@ def results_gene_dist():
             'germline_tumor_dist': 'GermlineView'
         }
         template = 'mutation_stats.html'
+        subtitle = 'Tumor Site Distribution of Mutations'
         graph_configs = {}
         sql_maps = {}
         graph_configs[action] = build_graph_configs(action)['tumor_dist']
@@ -696,10 +697,11 @@ def results_gene_dist():
     else:
         table = 'MutationView'
         template = 'mutation_dist_stats.html'
+        subtitle = 'Mutation Distributions'
         graph_configs = build_graph_configs(action, table)
         sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
     graph_result = build_graph_data(sql_maps)
-    return render_template(template, criteria_map=criteria_map, title='Statistics on Gene Variations',
+    return render_template(template, criteria_map=criteria_map, title='Statistics on Gene Variations', subtitle=subtitle,
                            graph_result=graph_result)
 
 
@@ -1213,12 +1215,19 @@ def results_germline_mutation():
     template = "mutation_dist_stats.html" if action == 'get_mutation_dist' else "mutation_stats.html"
     submenu = 'stats_germline_mut'
     title = 'Statistics on Germline Mutations'
-    if action == 'get_codon_dist':
+
+    if action == 'get_mutation_dist':
+        table = 'GermlineView'
+        subtitle = 'Mutation Distributions'
+    elif action == 'get_codon_dist':
         table = 'GermlineMutationStats'
+        subtitle = 'Codon Distribution of Point Mutations'
     elif action == 'get_tumor_dist':
         table = 'GermlineTumorStats'
-    else:
+        subtitle = 'Tumor Site Distribution of Mutations'
+    else: # action == 'get_tumor_dist_view':
         table = 'GermlineView'
+        subtitle = 'Tumor Site Distribution of Mutations'
 
     criteria_map = {}
     if request.method == 'POST':
@@ -1237,7 +1246,7 @@ def results_germline_mutation():
     sql_maps = build_graph_sqls(graph_configs, criteria_map, table)
     graph_result = build_graph_data(sql_maps)
     # print(graph_result)
-    return render_template(template, criteria_map={}, title=title,
+    return render_template(template, criteria_map=criteria_map, title=title, subtitle=subtitle,
                            submenu=submenu,
                            graph_result=graph_result)
 
@@ -1246,14 +1255,6 @@ def results_germline_mutation():
 def build_graph_configs(action, table=None):
 
     if action == 'get_mutation_dist':
-        # exon_intron_labels = []
-        # for n in range (1, 12):
-        #     exon_intron_labels.append('{n}-exon'.format(n=n))
-        #     if n == 12:
-        #         break
-        #     exon_intron_labels.append('{n}-intron'.format(n=n))
-
-        # exon_intron_labels.append('11-exon')
         graph_configs = {
             'exon_intron': {
                 'query_type': 'group_counts',
@@ -1388,8 +1389,8 @@ def build_graph_sqls(graph_configs, criteria_map, table):
 def build_graph_data(sql_maps):
     query_jobs = {}
     for graph_id in sql_maps:
-        print(graph_id)
-        print(sql_maps[graph_id])
+        # print(graph_id)
+        # print(sql_maps[graph_id])
         job = bigquery_client.query(sql_maps[graph_id])
         query_jobs[graph_id] = job
     graph_data = {}
@@ -1542,15 +1543,18 @@ def cell_lines_mutation_stats():
     action = get_param_val(request, 'action')
     if action == 'get_mutation_type':
         table = 'CellLineView'
+        subtitle='Type of Mutations'
     elif action == 'get_tumor_dist':
         table = 'CellLineSiteStats'
-    else:
-        # action == 'get_codon_dist'
+        subtitle = 'Tumor Site Distribution of Mutations'
+    else: # action == 'get_codon_dist'
         table = 'CellLineMutationStats'
+        subtitle = 'Codon Distribution of Point Mutations'
     graph_configs = build_graph_configs(action, table)
     sql_maps = build_graph_sqls(graph_configs, {}, table)
     graph_result = build_graph_data(sql_maps)
     return render_template("mutation_stats.html", criteria_map={}, title='Statistics on Cell Line Mutations',
+                           subtitle=subtitle,
                            submenu='stats_cell_lines',
                            graph_result=graph_result)
 
