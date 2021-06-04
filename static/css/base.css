@@ -24,7 +24,12 @@ body {
 .navbar-nav .nav-item.active .nav-link {
     color: white;
     font-weight: bold;
+    border-bottom: 5px solid rgba(179, 219, 230, 1);
 }
+
+/*.navbar-nav .nav-item.active {*/
+    /*border: 5px solid darkorange;*/
+/*}*/
 
 .cite-div {
     background-color: gainsboro;
@@ -284,9 +289,7 @@ h1 a {
 th.custom50w{
     width: 50%;
 }
-/*.chart-title{*/
-    /*font-size: ;*/
-/*}*/
+
 .criteria-btn.collapsed::after {
     content: 'View Selected Criteria'
 }
@@ -308,10 +311,20 @@ th.custom50w{
     font-weight: 900;
     content: "\f077";
     width: 1.1rem;
+}
 
-    /*content: "\f077";*/
-    /*background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e);*/
-    /*transform: rotate(*/
-    /*180deg*/
-    /*)*/
+#pubs img{
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 3px 6px 6px 3px rgba(0, 0, 0, 0.1);
+}
+
+#pubs img:hover{
+    box-shadow: 0 2px 4px 0 rgba(29, 57, 84, 0.3), 3px 6px 6px 3px rgba(29, 57, 84, 0.3);
+}
+
+#pubs table tr td{
+    padding-right: 10px;
+    /*text-align: center;*/
+
 }
