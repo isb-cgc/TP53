@@ -422,8 +422,8 @@ def get_mutation_criteria(prefix):
             'between_op': True,
             'max_val': 394,
             'min_val': 1,
-            'start_param': 'codon_start',
-            'end_param': 'codon_end',
+            'start_param': '{prefix}_codon_start'.format(prefix=prefix),
+            'end_param': '{prefix}_codon_end'.format(prefix=prefix),
             'col_name': 'Codon_number',
             'wrap': False
         },
@@ -1994,91 +1994,3 @@ if __name__ == '__main__':
             TIER = 'test'  # default DATA SET
         bq_builder.set_project_dataset(proj_id=project_id, d_set=TIER)
     app.run(host='127.0.0.1', port=8080, debug=True)
-
-# Select Topography, Sample_analyzed, Sample_mutated
-#         FROM PrevalenceStat
-#         Where Sample_analyzed>500
-#         order by ((Sample_mutated*100) / Sample_analyzed)";
-
-#
-# SELECT     topo.GroupOfOrgan AS Topography, SUM(prevDL.Sample_analyzed) AS Sample_analyzed,
-#                       SUM(prevDL.Sample_mutated) AS Sample_mutated
-# FROM         `isb-cgc-tp53-dev.P53_data.PrevalenceDownload` as prevDL INNER JOIN
-#                       `isb-cgc-tp53-dev.P53_data.Topography_dic` as topo ON prevDL.Topo_code = topo.Topo_code
-# WHERE     (topo.GroupOfOrgan IS NOT NULL) AND (prevDL.Exclude_analysis = 0)
-# GROUP BY topo.GroupOfOrgan
-# ORDER BY SUM(prevDL.Sample_mutated) DESC
-
-# SELECT    s_prev.Prevalence_ID, topo.Topography, s_prev.Topo_code, morph.Morphology,
-#                       morph.Morpho_code, s_prev.Sample_analyzed, s_prev.Sample_mutated, country.Population,
-#                       country.Country, s_prev.Comment, s_ref.Ref_ID, s_ref.Cross_Ref_ID, s_ref.Title,
-#                       s_ref.Authors, s_ref.S_Ref_Year, s_ref.Journal, s_ref.Volume, s_ref.Start_page,
-#                       s_ref.End_page, s_ref.PubMed, s_ref.Comment AS Ref_comment, s_ref.Tissue_processing,
-#                       s_ref.Start_material, s_ref.Prescreening, s_ref.Material_sequenced, s_ref.exon2,
-#                       s_ref.exon3, s_ref.exon4, s_ref.exon5, s_ref.exon6, s_ref.exon7, s_ref.exon8,
-#                       s_ref.exon9, s_ref.exon10, s_ref.exon11, s_ref.Exclude_analysis, s_ref.WGS_WXS
-# FROM         `isb-cgc-tp53-dev.P53_data.S_PREVALENCE` as s_prev INNER JOIN
-# `isb-cgc-tp53-dev.P53_data.S_REFERENCE` as s_ref ON s_prev.Ref_ID = s_ref.Ref_ID INNER JOIN
-#                       `isb-cgc-tp53-dev.P53_data.Topography_dic` as topo ON s_prev.Topo_code = topo.Topo_code INNER JOIN
-#                       `isb-cgc-tp53-dev.P53_data.Morphology_dic` as morph ON s_prev.Morpho_ID = morph.Morphology_ID INNER JOIN
-#                       `isb-cgc-tp53-dev.P53_data.Country_dic` as country ON s_prev.Country_ID = country.Country_ID
-# ORDER BY s_ref.Ref_ID
-
-
-# Select {0}, SUM({1}) as Counter FROM {2} GROUP BY {0} ORDER BY SUM({1}) ASC";
-# "SomaticTumorStats", "StatisticGraph"
-
-
-# SELECT     topo.StatisticGraph, topo.Short_topo, COUNT(topo.Short_topo) AS DatasetRx,
-#                       ref.Exclude_analysis
-# FROM         `isb-cgc-tp53-dev.P53_data.S_MUTATION` as mut  INNER JOIN
-#                       `isb-cgc-tp53-dev.P53_data.S_SAMPLE` as sam ON mut.Sample_ID = sam.Sample_ID INNER JOIN
-#                       `isb-cgc-tp53-dev.P53_data.Subtopography_dic` as sub ON sam.Subtopo_ID = sub.Subtopo_ID INNER JOIN
-#                       `isb-cgc-tp53-dev.P53_data.Topography_dic` as topo ON sub.Topo_code = topo.Topo_code INNER JOIN
-#                       `isb-cgc-tp53-dev.P53_data.S_INDIVIDUAL`as ind ON sam.Individual_ID = ind.Individual_ID INNER JOIN
-#                       `isb-cgc-tp53-dev.P53_data.S_REFERENCE` as ref ON ind.Ref_ID = ref.Ref_ID
-# WHERE     (ref.Ref_ID <> 2636) AND (ref.Ref_ID <> 2637) AND (ref.Ref_ID <> 2638)
-# GROUP BY topo.StatisticGraph, ref.Exclude_analysis, topo.Short_topo
-# HAVING      (ref.Exclude_analysis = 0)
-# ORDER BY COUNT(topo.Short_topo) DESC
-
-
-# CellLineMutationStatsView
-# SELECT s_mut.Mutation_ID, l.Codon_number, l.hg38_Chr17_coordinates, l.hg19_Chr17_coordinates, e.Effect, t.Type,
-#                          m.Description, m.Type_ID, m.Effect_ID, m.Mutant_nucleotide, m.Mutant_codon, s_sam.Sample_source_ID
-# FROM            `isb-cgc-tp53-dev.P53_data.MUTATION` as m INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.Location` as l ON m.Location_ID = l.Location_ID INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.Genetic_code` as g ON m.Mutant_codon = g.Codon INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.p53_sequence` as s ON l.Codon_number = s.Codon_number INNER JOIN
-#                          ON `isb-cgc-tp53-dev.P53_data.Effect_dic` as e m.Effect_ID = e.Effect_ID INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.Type_dic` as t ON m.Type_ID = t.Type_ID INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.S_MUTATION` as s_mut as ON m.MUT_ID = s_mut.MUT_ID INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.S_SAMPLE` as s_mut ON m.Sample_ID = s_sam.Sample_ID
-# WHERE        (s_sam.Sample_source_ID = 4)
-# ORDER BY l.Codon_number
-
-# GermlineMutationStatsView
-# SELECT        l.Codon_number, gc.Amino_Acid, seq.WT_AA, eff.Effect, t.Type, l.ExonIntron, dbo.MUTATION.Description, g_mut.Family_ID,
-#                          m.Type_ID, m.Effect_ID, m.Mutant_nucleotide, m.Mutant_codon, aa.AAchange, m.Polymorphism, m.c_description
-# FROM            `isb-cgc-tp53-dev.P53_data.G_P53_MUTATION` as g_mut  INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.MUTATION` as m ON g_mut.MUT_ID = m.MUT_ID INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.Location` as l ON m.Location_ID = l.Location_ID INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.Genetic_code` as gc ON m.Mutant_codon = gc.Codon INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.p53_sequence` as seq ON l.Codon_number = seq.Codon_number INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.Effect_dic` as eff ON m.Effect_ID = eff.Effect_ID INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.Type_dic` as t ON m.Type_ID = t.Type_ID INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.AA_change` as aa ON m.AAchangeID = aa.AAchange_ID
-# WHERE        (m.Polymorphism <> N'validated')
-
-# GermlineTumorStatsView
-# SELECT topo.StatisticGraphGermline, COUNT(topo.StatisticGraphGermline) AS Count
-# FROM            `isb-cgc-tp53-dev.P53_data.G_INDIVIDUAL` as ind INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.G_FAMILY` as fam ON ind.Family_ID = fam.Family_ID INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.G_TUMOR` as tum ON ind.Individual_ID = tum.Individual_ID INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.G_P53_MUTATION` as mut ON fam.Family_ID = mut.Family_ID INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.Subtopography_dic` as sub ON tum.Subtopo_ID = sub.Subtopo_ID INNER JOIN
-#                          `isb-cgc-tp53-dev.P53_data.Topography_dic` as topo ON sub.Topo_code = topo.Topo_code
-# WHERE        (ind.Germline_carrier = N'confirmed' OR
-#                          ind.Germline_carrier = N'obligatory') AND (topo.Short_topo IS NOT NULL) AND (fam.Germline_mutation LIKE N'TP53%')
-# GROUP BY topo.StatisticGraphGermline
-# ORDER BY Count DESC
