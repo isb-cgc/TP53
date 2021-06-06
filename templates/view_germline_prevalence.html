@@ -21,20 +21,53 @@
         {% if query_result.data|length %}
         <div class="float-end">
             <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i> Download
+                <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i>
+                    Download
                 </button>
             </div>
         </div>
-        <table id="germline-prev-result-table" class="table table-striped table-sm result-table" cellspacing="0" width="100%">
+        <table id="germline-prev-result-table" class="table table-striped table-sm result-table" cellspacing="0"
+               width="100%">
             <thead>
             <tr>
-                <th>Diagnosis</th>
-                <th>Cohort</th>
-                <th>Cases Analyzed</th>
-                <th>Cases Mutated</th>
-                <th>Mutation Prevalence %</th>
-                <th>Remark</th>
-                <th>PubMed</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="Tumor site or clinical description of the selected cohort.">
+                    Diagnosis
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="Detailed criteria for patient selection.">
+                    Cohort
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="Number of patients included in the mutation screen.">Cases Analyzed
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="Number of patients found to carry a TP53 mutation. Details on mutations can be found in the dataset of germline mutations when the information was provided, but many studies do not provide a detailed list of mutations.">
+                    Cases Mutated
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="Percent of mutated cases.">Mutation Prevalence %
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="Any further information on the cohort or method.">Remark
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="PubMed reference number provided by NCBI.">PubMed
+                </th>
             </tr>
             </thead>
             <tbody>

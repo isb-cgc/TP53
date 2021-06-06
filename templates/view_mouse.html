@@ -33,11 +33,32 @@
         <table id="mouse-result-table" class="table table-striped table-sm result-table" cellspacing="0" width="100%">
             <thead>
             <tr>
-                <th>Model Descriptor</th>
-                <th>Targeted or Affected Organs</th>
-                <th>AAChange in Human</th>
-                <th>CAMOD ID</th>
-                <th>PubMed</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="Model name as indicated in caMOD or original publication.">
+                    Model Descriptor</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="left"
+                    title="List of organs affected or targeted by transgene.">
+                    Targeted or Affected Organs</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="Amino-acid substitution. Note that amino-acids are numbered according to the human sequence.">
+                    AAChange in Human</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="Model ID from caMOD database.">
+                    CAMOD ID
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="PubMed reference number provided by NCBI.">
+                    PubMed</th>
             </tr>
             </thead>
             <tbody>
