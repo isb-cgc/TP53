@@ -27,10 +27,6 @@ body {
     border-bottom: 5px solid rgba(179, 219, 230, 1);
 }
 
-/*.navbar-nav .nav-item.active {*/
-    /*border: 5px solid darkorange;*/
-/*}*/
-
 .cite-div {
     background-color: gainsboro;
     border: 1px solid darkgrey;
@@ -169,7 +165,6 @@ h1 a {
     font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
 }
 
-
 #search_tp53 .card {
     min-height: 275px;
 }
@@ -181,6 +176,7 @@ h1 a {
 .sm_include_bg, .gm_include_bg {
     background-color: rgba(162, 222, 208, .1);
 }
+
 .sm_exclude_bg, .gm_exclude_bg {
     background-color: rgba(241, 169, 160, .1);
 }
@@ -325,6 +321,13 @@ th.custom50w{
 
 #pubs table tr td{
     padding-right: 10px;
-    /*text-align: center;*/
-
 }
+
+.wide-tooltip .tooltip-inner{
+    max-width: 800px;
+}
+
+.tooltip-inner{
+    text-align: left;
+}
+
