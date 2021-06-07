@@ -58,8 +58,10 @@ CL_SIFT_FILE = 'CL_SIFT.TXT.LIST'
 CL_EXON_INTRON_FILE = 'CL_EXON_INTRON.TXT.LIST'
 
 CL_GERM_MUT_FILE = 'CL_GERM_MUT.TXT.LIST'
+CL_TOBACCO_FILE = 'CL_TOBACCO.TXT.LIST'
 CL_INF_AGNT_FILE = 'CL_INF_AGNT.TXT.LIST'
 CL_EXPOSURE_FILE = 'CL_EXPOSURE.TXT.LIST'
+
 
 SM_START_MATERIAL_FILE = 'SM_START_MATERIAL.TXT.LIST'
 
@@ -78,6 +80,7 @@ SM_SIFT_FILE = 'SM_SIFT.TXT.LIST'
 SM_TUMOR_ORG_GROUP_FILE = 'SM_TUMOR_ORG_GROUP.TXT.LIST'
 SM_SAMPLE_SOURCE_GROUP_FILE = 'SM_SAMPLE_SOURCE_GROUP.TXT.LIST'
 SM_GERM_MUT_FILE = 'SM_GERM_MUT.TXT.LIST'
+SM_TOBACCO_FILE = 'SM_TOBACCO.TXT.LIST'
 SM_INF_AGNT_FILE = 'SM_INF_AGNT.TXT.LIST'
 SM_EXPOSURE_FILE = 'SM_EXPOSURE.TXT.LIST'
 SM_REF_FILE = 'SM_REF.json'
@@ -192,11 +195,15 @@ cl_inf_agnt_list = None
 global cl_germ_mut_list
 cl_germ_mut_list = None
 
+global cl_tobacco_list
+cl_tobacco_list = None
+
 global country_list
 country_list = None
 
 global cl_exposure_list
 cl_exposure_list = None
+
 global sm_c_desc_list
 sm_c_desc_list = None
 global sm_p_desc_list
@@ -233,6 +240,11 @@ global sm_inf_agnt_list
 sm_inf_agnt_list = None
 global sm_exposure_list
 sm_exposure_list = None
+global sm_tobacco_list
+sm_tobacco_list = None
+global sm_ref_data
+sm_ref_data = None
+
 global gm_c_desc_list
 gm_c_desc_list = None
 global gm_p_desc_list
@@ -265,8 +277,7 @@ global topo_morph_assc
 topo_morph_assc = None
 global gm_ref_data
 gm_ref_data = None
-global sm_ref_data
-sm_ref_data = None
+
 
 IS_TEST = True
 # BQ_DATASET = 'P53_data'
@@ -958,6 +969,7 @@ def search_somatic_mut():
                            tumor_org_group_list=sm_tumor_org_group_list,
                            sample_source_list=sm_sample_source_list,
                            germ_mut_list=sm_germ_mut_list,
+                           tobacco_list=sm_tobacco_list,
                            inf_agnt_list=sm_inf_agnt_list,
                            exposure_list=sm_exposure_list,
                            ref_data=sm_ref_data
@@ -1033,12 +1045,14 @@ def results_somatic_mutation():
     template = 'mutation_stats.html'
     table = 'SomaticView'
     submenu = 'stats_somatic_mut'
+    subtitle = 'Tumor Site Distribution of Mutations'
     if action == 'get_mutation_dist':
         subtitle = 'Mutation Distributions'
         template = 'mutation_dist_stats.html'
     elif action == 'get_tumor_dist':
-        subtitle = 'Tumor Site Distribution of Mutations'
+        # subtitle = 'Tumor Site Distribution of Mutations'
         table = 'SomaticTumorStats'
+
 
     criteria_map = {}
     if request.method == 'POST':
@@ -1526,6 +1540,7 @@ def search_cell_lines():
                            exon_intron_list=cl_exon_intron_list,
                            ta_class_list=cl_ta_class_list,
                            germ_mut_list=cl_germ_mut_list,
+                           tobacco_list=cl_tobacco_list,
                            inf_agnt_list=cl_inf_agnt_list,
                            country_list=country_list,
                            exposure_list=cl_exposure_list
@@ -1863,6 +1878,10 @@ def setup_app(app):
     if not cl_germ_mut_list:
         cl_germ_mut_list = load_list(CL_GERM_MUT_FILE)
 
+    global cl_tobacco_list
+    if not cl_tobacco_list:
+        cl_tobacco_list = load_list(CL_TOBACCO_FILE)
+
     global cl_inf_agnt_list
     if not cl_inf_agnt_list:
         cl_inf_agnt_list = load_list(CL_INF_AGNT_FILE)
@@ -1925,6 +1944,9 @@ def setup_app(app):
     global sm_germ_mut_list
     if not sm_germ_mut_list:
         sm_germ_mut_list = load_list(SM_GERM_MUT_FILE)
+    global sm_tobacco_list
+    if not sm_tobacco_list:
+        sm_tobacco_list = load_list(SM_TOBACCO_FILE)
     global sm_inf_agnt_list
     if not sm_inf_agnt_list:
         sm_inf_agnt_list = load_list(SM_INF_AGNT_FILE)

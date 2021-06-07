@@ -1,9 +1,8 @@
 <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-3 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                data-bs-html="true"
-                data-bs-placement="left"
-                title="">
+                data-bs-placement="top"
+                title="Age of the patient at the time of diagnosis.">
             <i class="far fa-question-circle"></i>
         </button>
         Age at Diagnosis
@@ -37,20 +36,8 @@
 <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-3 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                data-bs-html="true"
-                data-bs-placement="left"
-                title="Nature of the mutation. The terms
-                                    occurring in this column are 'A:T&gt;C:G' (A to C or T
-                                    to G base change), 'A:T&gt;G:C' (A to G or T to C base
-                                    change), 'A:T&gt;T:A' (A to T or T to A base change),
-                                    'G:C&gt;A:T' (G to A or C to T base change at non CpG
-                                    sites), 'G:C&gt;A:T at CpG' (G to A or C to T base
-                                    change at CpG sites),
-                                    'G:C&gt;C:G' (G to C or C to G base change),
-                                    'G:C&gt;T:A' (G to T or C to A base change),
-                                    'tandem' (two consecutive base changes), 'ins'
-                                    (insertion), 'del' (deletion) and 'complex'
-                                    (complex changes).">
+                data-bs-placement="top"
+                title="Sex of the patient (M for male, F for female).">
             <i class="far fa-question-circle"></i>
         </button>
         Sex
@@ -79,20 +66,8 @@
 <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-3 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                data-bs-html="true"
-                data-bs-placement="left"
-                title="Nature of the mutation. The terms
-                                    occurring in this column are 'A:T&gt;C:G' (A to C or T
-                                    to G base change), 'A:T&gt;G:C' (A to G or T to C base
-                                    change), 'A:T&gt;T:A' (A to T or T to A base change),
-                                    'G:C&gt;A:T' (G to A or C to T base change at non CpG
-                                    sites), 'G:C&gt;A:T at CpG' (G to A or C to T base
-                                    change at CpG sites),
-                                    'G:C&gt;C:G' (G to C or C to G base change),
-                                    'G:C&gt;T:A' (G to T or C to A base change),
-                                    'tandem' (two consecutive base changes), 'ins'
-                                    (insertion), 'del' (deletion) and 'complex'
-                                    (complex changes).">
+                data-bs-placement="top"
+                title="Germline mutation detected in any gene in the patient.">
             <i class="far fa-question-circle"></i>
         </button>
         Germline Mutation
@@ -125,51 +100,33 @@
 <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-3 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                data-bs-html="true"
-                data-bs-placement="left"
-                title="Nature of the mutation. The terms
-                                    occurring in this column are 'A:T&gt;C:G' (A to C or T
-                                    to G base change), 'A:T&gt;G:C' (A to G or T to C base
-                                    change), 'A:T&gt;T:A' (A to T or T to A base change),
-                                    'G:C&gt;A:T' (G to A or C to T base change at non CpG
-                                    sites), 'G:C&gt;A:T at CpG' (G to A or C to T base
-                                    change at CpG sites),
-                                    'G:C&gt;C:G' (G to C or C to G base change),
-                                    'G:C&gt;T:A' (G to T or C to A base change),
-                                    'tandem' (two consecutive base changes), 'ins'
-                                    (insertion), 'del' (deletion) and 'complex'
-                                    (complex changes).">
+                data-bs-placement="top"
+                title="Information on the smoking status of the patient. Terms occurring in this column are 'smoker' (with
+                  qualitative amount in brackets), 'non-smoker', 'passive-smoker' and 'chewer'.">
             <i class="far fa-question-circle"></i>
         </button>
         Tobacco
     </legend>
     <div class="col-sm-8">
+        {% for tobacco_opt in tobacco_list %}
         <div class="form-check">
             <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_tobacco"
-                   value="smoker"
-                   id="{{ id_prefix }}_tobacco_smoker">
+                   value="{{ tobacco_opt.label }}"
+                   id="{{ id_prefix }}_{{ tobacco_opt.label|lower }}">
             <label class="form-check-label"
-                   for="{{ id_prefix }}_tobacco_smoker">
-                Smoker
+                   for="{{ id_prefix }}_{{ tobacco_opt.label|lower }}">
+                {{ tobacco_opt.label }}
             </label>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_tobacco"
-                   value="non-smoker"
-                   id="{{ id_prefix }}_tobacco_n_smoker">
-            <label class="form-check-label"
-                   for="{{ id_prefix }}_tobacco_n_smoker">
-                Non-Smoker
-            </label>
-        </div>
+        {% endfor %}
     </div>
 </fieldset>
 <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-3 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                data-bs-html="true"
-                data-bs-placement="left"
-                title="">
+                data-bs-placement="top"
+                title="Information on the drinking status of the patient. Terms occurring in this column are ‘drinker’,
+                 and 'non-drinker'.">
             <i class="far fa-question-circle"></i>
         </button>
         Alcohol
@@ -199,11 +156,10 @@
     <legend class="col-form-label col-sm-3 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                 data-bs-html="true"
-                data-bs-placement="left"
-                title="2D and 3D motifs where the mutation is located according to structures described in
-                                        <a href='http://www.ncbi.nlm.nih.gov/pubmed/8023157' target='_blank'>Cho
-                                        et al. (1994)</a> and <a href='https://www.ncbi.nlm.nih.gov/pubmed/10618702' target='_blank'>
-                                        May and May (1999)</a>">
+                data-bs-placement="top"
+                title="Country/Region in which the patient was living at the time of surgery. When not otherwise
+                specified in the original publication, the country corresponding to the address of the hospital
+                is entered.">
             <i class="far fa-question-circle"></i>
         </button>
         Country/Population
@@ -222,12 +178,8 @@
 <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-3 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                data-bs-html="true"
-                data-bs-placement="left"
-                title="2D and 3D motifs where the mutation is located according to structures described in
-                                        <a href='http://www.ncbi.nlm.nih.gov/pubmed/8023157' target='_blank'>Cho
-                                        et al. (1994)</a> and <a href='https://www.ncbi.nlm.nih.gov/pubmed/10618702' target='_blank'>
-                                        May and May (1999)</a>">
+                data-bs-placement="top"
+                title="Pathogen (virus or bacteria) detected in the patient.">
             <i class="far fa-question-circle"></i>
         </button>
         Infectious Agent
@@ -246,12 +198,8 @@
 <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-3 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                data-bs-html="true"
-                data-bs-placement="left"
-                title="2D and 3D motifs where the mutation is located according to structures described in
-                                        <a href='http://www.ncbi.nlm.nih.gov/pubmed/8023157' target='_blank'>Cho
-                                        et al. (1994)</a> and <a href='https://www.ncbi.nlm.nih.gov/pubmed/10618702' target='_blank'>
-                                        May and May (1999)</a>">
+                data-bs-placement="top"
+                title="Risk factors to which the patient has been exposed to, such as aflatoxins, radon, thorotrast, etc...">
             <i class="far fa-question-circle"></i>
         </button>
         Exposure
