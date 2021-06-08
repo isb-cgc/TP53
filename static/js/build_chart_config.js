@@ -208,7 +208,7 @@ var build_3d_graph = function (chart_id, data, width, height){
             jsmolQueries += "Select " + data_by_threshold[threshold].join() + "; colour atoms "+color_by_threshold[threshold]+" ; wireframe 0.25; ";
 
     }
-    var jsmol_script = "load " + pdb_filepath + "; rotate x 30; translate x 0.43; translate y 1.14; wireframe off; zoom 125; colour atoms [255,255,255]; spacefill off; select (*:E); wireframe on; select(*:F); wireframe on; select(*:B); cartoons on;"+jsmolQueries+" select (*:E); colour atoms [255,255,255]; select (*:F); colour atoms [255,255,255]; move 0 -360 0 0 0 0 0 0 15 25;";
+    var jsmol_script = "load " + pdb_filepath + "; rotate x 30; translate x 0.43; translate y 1.14; wireframe off; colour atoms [255,255,255]; spacefill off; select (*:E); wireframe on; select(*:F); wireframe on; select(*:B); cartoons on;"+jsmolQueries+" select (*:E); colour atoms [255,255,255]; select (*:F); colour atoms [255,255,255];";
 
     var jsmol_Info = {
         width: width,

@@ -84,6 +84,7 @@ $(document).ready(function () {
     });
 
     $('.reset-ref').on('click', function () {
+        // reset row selections
         var selected_table = $(this).parents('.modal').find('table');
         var table = tables.table(selected_table);
         table.rows().deselect(); // deselect datatables row selection
