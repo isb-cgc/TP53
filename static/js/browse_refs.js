@@ -10,13 +10,13 @@ const ABSTRACT_COL_ORD = 6;
 
 
 $(document).ready(function () {
-
+    var ref_tables = $('.refs-table');
     $('.refs-table thead tr').each(function () {
         $(this).clone(true).appendTo($(this).parents('thead'))
     });
 
 
-    $('.refs-table').each(function () {
+    ref_tables.each(function () {
         $($(this).find('thead tr')[1]).find('th').each(function (j) {
             if (j === REF_ID_COL_ORD || j === ABSTRACT_COL_ORD) {
                 $(this).html('');
@@ -38,11 +38,12 @@ $(document).ready(function () {
         });
     });
 
-    var tables = $('.refs-table').DataTable(
+    var tables = ref_tables.DataTable(
         {
             orderCellsTop: true,
             fixedHeader: true,
             order: [[AUTHOR_COL_ORD, "asc"]], //JOURNAL_COL_ORD
+            page: 'current',
             columnDefs: [
                 {
                     orderable: false,
@@ -82,15 +83,58 @@ $(document).ready(function () {
         $(input_selector).trigger("chosen:updated");
     });
 
+    $('.reset-ref').on('click', function () {
+        var selected_table = $(this).parents('.modal').find('table');
+        var table = tables.table(selected_table);
+        table.rows().deselect(); // deselect datatables row selection
+        selected_table.find('input:checkbox').prop('checked', false); // deselect all checkboxes
+        selected_table.find('input:text').val('').change();
+    });
+
+    // events
+
     $(".ref-select").on('change', function (evt, params) {
-        var ref_id = params['deselected'];
-        var selected_checkboxes = $(this).parents('fieldset').siblings('.modal').find('table input:checked[value="'+ref_id+'"]');
+        // if reference selection has been deleted from the chosen.js UI update the modal's checkboxes
+        var deselected_ref_id = params['deselected'];
+        var selected_checkboxes = $(this).parents('fieldset').siblings('.modal').find('table input:checked[value="'+deselected_ref_id+'"]');
         selected_checkboxes.prop("checked", false);
         selected_checkboxes.parents('tr').removeClass('selected');
-        $(this).find('option[value="' + ref_id + '"]').remove();
+        $(this).find('option[value="' + deselected_ref_id + '"]').remove();
         $(this).prop('disabled', !$(this).find('option').length);
         $(this).trigger('chosen:updated');
     });
 
+    $('input.ref-check-all').on('change', function (e) {
+        // checkbox to select all (filtered rows) is changed update the row selection
+        var is_checked = $(this).is(':checked');
+        var table = tables.table($(this).parents('table'));
+        selectFilteredRows(table, is_checked);
+    });
+
+    ref_tables.on( 'draw.dt', function () {
+        // deselect/reset the .ref-check-all checkbox whenever the table is redrawn by column searches
+        var ref_check_all = $(this).find('input.ref-check-all');
+        if(ref_check_all.is(':checked'))
+            ref_check_all.prop('checked', false).change();
+    });
+
 
 });
+
+
+
+var selectFilteredRows = function (t, bool) {
+    if (bool) {
+        t.rows( {search:'applied'} ).select();
+        // t.rows().select();
+
+    }
+    else {
+        t.rows().deselect();
+    }
+    // $('.ref-check').prop('checked', bool);
+};
+
+// var deselectAllRows = function (t) {
+//     t.rows().deselect();
+// };

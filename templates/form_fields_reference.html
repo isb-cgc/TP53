@@ -58,10 +58,10 @@
                             {{ row.PubMed if row.PubMed !='NA' }}  </a>
                         </td>
                         <td>
-                            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                            <div class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                                     data-bs-custom-class="wide-tooltip"
-                                    data-bs-placement="left" title="{{ row.Abstract}}">
-                                <i class="far fa-sticky-note"></i></button>
+                                    data-bs-placement="left" title="{{ row.Abstract }}">
+                                <i class="fas fa-book-open"></i></div>
                         </td>
                     </tr>
                     {% endfor %}
@@ -69,7 +69,7 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary reset-ref">Reset</button>
                 <button type="button" class="btn btn-primary add-ref" data-bs-dismiss="modal"
                         data-ref-dest="#{{ id_prefix }}_refs_input_select">Add/Update
                 </button>

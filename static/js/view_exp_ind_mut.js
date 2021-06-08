@@ -87,7 +87,6 @@ $(document).ready(function () {
     table
         .on('select', function (e, dt, type, indexes) {
             var rows_data = table.rows(indexes).data().toArray();
-            console.log(rows_data[0].row_id);
             for (var i = 0; i < rows_data.length; i++) {
                 if (!selectedRowSet.has(rows_data[i].row_id)) {
                     selectedRowSet.add(rows_data[i].row_id);
