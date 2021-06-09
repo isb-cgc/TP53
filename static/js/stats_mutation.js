@@ -103,7 +103,8 @@ $(document).ready(function () {
         if (graph_id === 'struct_3D') {
             $('#expanded-struct3D').parent('div').removeClass('col-5').addClass('col-10');
             var width = $('#expanded-struct3D').parent('div').width();
-            var height = width * .65;
+            var height = width * .55;
+            // var height = width * .65;
             var jsmol_Info = $('#struct_3D').data('jmol-info');
             jsmol_Info.width = width;
             jsmol_Info.height = height;
