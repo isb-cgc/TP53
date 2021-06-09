@@ -14,12 +14,12 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-md-3 col-lg-2 bg-secondary collapsible-sidebar has-submenubar">
+    <div class="bg-secondary collapsible-sidebar has-submenubar">
         <div class="position-sticky pt-2">
             <div class="p-2 fw-bold"><i class="fas fa-search"></i> Data Exploration<i
                     class="fas fa-search float-end pe-1 sidebar-icon"></i></div>
             <hr>
-            <ul id="expl-ul" class="nav flex-column pt-2">
+            <ul id="expl-ul" class="nav flex-column">
                 <li class="ps-3 fw-bold nav-item">
                     Search
                 </li>
@@ -126,7 +126,7 @@
 
             </ul>
             <hr>
-            <ul id="dd-ul" class="nav flex-column pt-2">
+            <ul id="dd-ul" class="nav flex-column">
                 <li id="get_tp53data" class="nav-item">
                     <a class="nav-link"
                        href="get_tp53data"><i class="fas fa-download"></i> Dataset Downloads
@@ -135,8 +135,9 @@
             </ul>
         </div>
     </div>
-    <div class="col-point03"></div>
-    <main class="main-panel col-point97 ms-sm-auto px-md-4">
+    <!--<div class="col-point03"></div>-->
+    <main class="wide-panel main-panel">
+    <!--<main class="main-panel col-point97 ms-sm-auto px-md-4">-->
         <h1>Data Exploration</h1>
         {% block subcontent %}
         {% endblock %}

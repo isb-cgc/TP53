@@ -6,13 +6,14 @@
 @import url("/static/css/select.dataTables.min.css");
 @import url("/static/css/molstar.css");
 
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
 }
 
 .navbar-brand {
-    width: 230px;
+    width: 240px;
     margin: 0;
     padding: 0;
 }
@@ -60,21 +61,29 @@ a{
 a:hover{
     color: #17a2b8;
 }
+
+
 .sidebar {
     position: fixed;
+    width: 240px;
     top: 0;
     bottom: 0;
     left: 0;
     z-index: 100;
+    /*padding: 100px 0 0;*/
     padding: 53px 0 0;
 }
+
+
 .collapsible-sidebar {
     position: fixed;
     transition: 0.3s;
+    width: 240px;
     left: -200px;
     top: 0;
     bottom: 0;
     z-index: 100;
+    /*padding: 100px 0 0;*/
     padding: 53px 0 0;
     color: white;
 }
@@ -139,18 +148,52 @@ a:hover{
     background-color: rgba(179, 219, 230, .5);
 }
 
-.main-panel {
+.main-panel{
     padding-top: 70px;
     min-height: 85vh;
+    padding-left: 280px;
 }
+
+.jump-div {
+    padding-top: 70px;
+}
+
+.msp-plugin .msp-layout-expanded .msp-layout-hide-top .msp-layout-main {
+    top: 58px;
+    left: 240px;
+}
+
+@media (max-width: 991px) {
+    .sidebar{
+        left: -240px;
+    }
+    .main-panel {
+        padding-left: 10px;
+    }
+}
+
+
+@media (min-width: 992px) and (max-width: 1143px) {
+    .collapsible-sidebar, .sidebar, .main-panel{
+        padding-top: 85px;
+    }
+    .jump-div{
+        padding-top: 90px;
+    }
+}
+
+.wide-panel{
+    padding-left: 60px;
+}
+
 
 img {
     display: block;
 }
 
-.jump-div {
-    padding-top: 65px;
-}
+
+
+
 
 h1 a {
     color: #1d3954;
@@ -167,6 +210,7 @@ h1 a {
 
 #search_tp53 .card {
     min-height: 275px;
+    margin-bottom: 10px;
 }
 
 #search_tp53 .card .search-submenu {
@@ -194,21 +238,20 @@ h1 a {
     /*z-index: 10;*/
 /*}*/
 
-.spinner .spinner-group
-{
+.spinner .spinner-group {
     position: fixed;
     top: 50vh;
     transform: translateY(-50%);
     left: 50%;
 }
 
-.col-point97{
-    width: 97%;
-}
+/*.col-point97{*/
+    /*width: 97%;*/
+/*}*/
 
-.col-point03{
-    width: 3%;
-}
+/*.col-point03{*/
+    /*width: 3%;*/
+/*}*/
 
 .collapsible-sidebar:hover .sidebar-icon{
     display: none;
@@ -258,7 +301,8 @@ h1 a {
 }
 
 #molstarViewer {
-    width: 400px;
+    width: 800px;
+    /*width: 400px;*/
     height: 400px;
     position: relative;
 }
