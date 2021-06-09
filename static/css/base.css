@@ -403,3 +403,10 @@ button[aria-expanded="true"].btn-view-details::before{
     font-weight: 900;
     content: "\f068";
 }
+
+.col-45px{
+    width: 45px;
+}
+.col-7-plus{
+    width: -webkit-calc(67% - 50px)
+}
