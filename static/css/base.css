@@ -377,3 +377,29 @@ th.custom50w{
     text-align: left;
 }
 
+button.btn-view-details{
+    color: #007bff;
+    width: 30px;
+    height: 30px;
+    border: none;
+    text-align: center;
+    display: inline-block;
+    background-color: white;
+}
+button.btn-view-details:hover{
+    border-radius: 50%;
+    background-color: #e7f1ff;
+}
+
+
+button[aria-expanded="false"].btn-view-details::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: "\f067";
+}
+
+button[aria-expanded="true"].btn-view-details::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: "\f068";
+}
