@@ -209,7 +209,6 @@ h1 a {
 }
 
 #search_tp53 .card {
-    min-height: 275px;
     margin-bottom: 10px;
 }
 
@@ -217,6 +216,9 @@ h1 a {
     min-height: 155px;
 }
 
+#search_tp53 .short-ht-row .card .search-submenu {
+    min-height: 118px;
+}
 .sm_include_bg, .gm_include_bg {
     background-color: rgba(162, 222, 208, .1);
 }

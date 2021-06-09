@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                             <div id="abtGV" class="card-text collapse p-3 rounded bg-light">
-                                This search allows the functional and structural analysis of all
+                                This dataset contains the functional and structural analysis of all
                                 possible single nucleotide substitutions in TP53 exonic sequences (including those that
                                 have never been reported in cancer). In addition, all other types of mutations that have
                                 been reported in human samples and validated polymorphisms are included in this dataset.
@@ -49,7 +49,7 @@
                                    data-bs-toggle="collapse" href="#abtGV" role="button" aria-expanded="false"
                                    aria-controls="abtGV"
                                    class="btn btn-outline-secondary btn-sm"><i class="far fa-question-circle"></i>
-                                    About This Search</a>
+                                    About this Dataset</a>
                             </div>
                         </div>
                     </div>
@@ -80,17 +80,17 @@
                             </div>
 
                             <div id="abtSM" class="card-text collapse p-3 rounded bg-light">
-                                This option allows the retrieval and analysis of TP53
-                                mutations
-                                reported as somatic events in tumor samples and cell-lines. Each dataset entry
-                                corresponds to a mutation identified in a human sample.
+                                This dataset contains TP53 somatic mutations identified in human tumor samples
+                                (including metastasis and cell-lines). It includes data on the type and position of
+                                mutations, detailed information on the tumor in which the mutations have been found,
+                                and on various characteristics of the patients in which the tumor developed.
                             </div>
                             <div class="pt-3">
                                 <a id="btn-abtSM"
                                    data-bs-toggle="collapse" href="#abtSM" role="button" aria-expanded="false"
                                    aria-controls="abtSM"
                                    class="btn btn-outline-secondary btn-sm"><i class="far fa-question-circle"></i>
-                                    About This Search</a>
+                                    About this Dataset</a>
                             </div>
                         </div>
                     </div>
@@ -118,26 +118,26 @@
                                 </div>
                             </div>
                             <div id="abtGM" class="card-text collapse p-3 rounded bg-light">
-                                This option allows the retrieval and analysis of TP53 mutations
-                                reported as germline events in human individuals. Each dataset entry corresponds to
-                                a tumor identified in an individual carrier of a TP53 germline mutation. The
-                                searchable dataset only includes cancer-affected individuals who are confirmed or
-                                obligatory
-                                carrier of a TP53 mutation (data on non-affected carriers or non-confirmed carrier
-                                can be retrieved by downloading the full dataset with the 'Dataset Downloads' option).
+                                This dataset contains information on individuals that are carriers of a TP53 germline
+                                mutation and families in which at least one family member has been identied as a carrier
+                                of a germline mutation in the TP53 gene.Criteria for inclusion are the
+                                following:<ul><li>individuals carrying a sequenced TP53 germline mutation, affected or not
+                                by a cancer</li><li>individuals affected by a cancer and belonging to a family in which at
+                                least one family member has been identified as a carrier of a germline mutation in the
+                                TP53 gene.</li></ul>
                             </div>
                             <div class="pt-3">
                                 <a id="btn-abtGM"
                                    data-bs-toggle="collapse" href="#abtGM" role="button" aria-expanded="false"
                                    aria-controls="abtGM"
                                    class="btn btn-outline-secondary btn-sm"><i class="far fa-question-circle"></i>
-                                    About This Search</a>
+                                    About this Dataset</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row py-0">
+            <div class="row short-ht-row py-0">
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-header">
@@ -161,7 +161,13 @@
                             </div>
 
                             <div id="abtCL" class="card-text collapse p-3 rounded bg-light">
-                                This option allows the retrieval and analysis of TP53
+                                This dataset includes cell-lines that have been screened for TP53 mutation and have been
+                                published in the scientific literature, or in the
+                                <a href="https://www.sanger.ac.uk/genetics/CGP/CellLines/" target="_blank">
+                                    Sanger cell-line database
+                                </a> or the <a href="https://www.broadinstitute.org/ccle/home" target="_blank">Broad
+                                Cancer cell-line Encyclopedia</a>.<br>
+                                The search option allows the retrieval and analysis of TP53
                                 mutations reported in human cell-lines. Each dataset entry corresponds to a mutation
                                 identified in a cell-line.
                             </div>
@@ -170,7 +176,7 @@
                                    data-bs-toggle="collapse" href="#abtCL" role="button" aria-expanded="false"
                                    aria-controls="abtCL"
                                    class="btn btn-outline-secondary btn-sm"><i class="far fa-question-circle"></i>
-                                    About This Search</a>
+                                    About this Dataset</a>
                             </div>
                         </div>
                     </div>
@@ -193,17 +199,20 @@
                                 </div>
                             </div>
                             <div id="abtMM" class="card-text collapse p-3 rounded bg-light">
-                                This option allows the display or download of the description of mouse
-                                models with engineered p53 that are compiled in the caMOD database or reported in
-                                the scientific literature. Links to caMOD database are available for further details on
-                                the model phenotypes.
+                                The dataset contains mouse models with engineered p53 that are compiled in the caMOD
+                                database or reported in the scientific literature. Data curated at caMOD were courteously
+                                provided by the caMOD team. A direct link to the caMOD web site is available for each
+                                model for a detailed description of model genetics and phenotypes. Data reported in the
+                                literature but not compiled in caMOD are curated at IARC and a link to PubMed abstract
+                                is provided. For a detailed description of model genetics and phenotypes, please refer to
+                                caMOD and/or original publication
                             </div>
                             <div class="pt-3">
                                 <a id="btn-abtMM"
                                    data-bs-toggle="collapse" href="#abtMM" role="button" aria-expanded="false"
                                    aria-controls="abtMM"
                                    class="btn btn-outline-secondary btn-sm"><i class="far fa-question-circle"></i>
-                                    About This Search</a>
+                                    About this Dataset</a>
                             </div>
                         </div>
                     </div>
@@ -224,6 +233,19 @@
                                         <i class="fas fa-download"></i> Downloads
                                     </a>
                                 </div>
+                            </div>
+                            <div id="abtEIM" class="card-text collapse p-3 rounded bg-light">
+                                This dataset contains list of mutations in the human TP53 gene obtained from
+                                mutagenicity assays in the <a href="https://www.ncbi.nlm.nih.gov/pubmed/16777987"
+                                target="_blank">Hupki mouse model</a> (MEF cells treated with the indicated carcinogen
+                                agent) or in a yeast assay.
+                            </div>
+                            <div class="pt-3">
+                                <a id="btn-abtEIM"
+                                   data-bs-toggle="collapse" href="#abtEIM" role="button" aria-expanded="false"
+                                   aria-controls="abtEIM"
+                                   class="btn btn-outline-secondary btn-sm"><i class="far fa-question-circle"></i>
+                                    About this Dataset</a>
                             </div>
                         </div>
                     </div>
