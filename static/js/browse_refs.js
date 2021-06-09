@@ -57,8 +57,6 @@ $(document).ready(function () {
         }
     );
 
-
-
     $('.add-ref').on('click', function () {
         var option_list = '';
         var input_selector = $(this).data('ref-dest');
@@ -112,30 +110,28 @@ $(document).ready(function () {
         selectFilteredRows(table, is_checked);
     });
 
-    ref_tables.on( 'draw.dt', function () {
-        // deselect/reset the .ref-check-all checkbox whenever the table is redrawn by column searches
-        var ref_check_all = $(this).find('input.ref-check-all');
-        if(ref_check_all.is(':checked'))
-            ref_check_all.prop('checked', false).change();
-    });
+    // ref_tables.on( 'draw.dt', function () {
+    //     console.log('redrawn');
+    //     // deselect/reset the .ref-check-all checkbox whenever the table is redrawn by column searches
+    //     var ref_check_all = $(this).find('input.ref-check-all');
+    //     if(ref_check_all.is(':checked'))
+    //         ref_check_all.prop('checked', false).change();
+    // });
 
 
 });
 
 
-
 var selectFilteredRows = function (t, bool) {
+    var selection = '';
     if (bool) {
-        t.rows( {search:'applied'} ).select();
-        // t.rows().select();
-
+        t.rows({search: 'applied'}).select();
+        selection = 'tr.selected';
     }
     else {
         t.rows().deselect();
+        selection = 'tr'
     }
-    // $('.ref-check').prop('checked', bool);
+    t.$(selection).find('input.ref-check').prop('checked', bool);
 };
 
-// var deselectAllRows = function (t) {
-//     t.rows().deselect();
-// };

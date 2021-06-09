@@ -1,9 +1,30 @@
-/* view_data.js*/
+/* view_data.js */
 'use strict';
 
 $(document).ready(function () {
+    $('#view-data-table thead tr').clone(true).appendTo( '#view-data-table thead' );
+    $('#view-data-table thead tr:eq(1) th').each(function(i) {
+        if (i === 0) {
+            $(this).html('');
+        }
+        else {
+            var title = $(this).text();
+            $(this).html('<input type="text" placeholder="' + title + '" />');
+            $('input', this).on('keyup change', function () {
+                if (table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        }
+    });
+
     var table = $('#view-data-table').DataTable(
         {
+            orderCellsTop: true,
+            fixedHeader: true,
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
                 "<'row d-none'<'col-sm-12 col-md-4'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
@@ -28,7 +49,7 @@ $(document).ready(function () {
 
     $('input.check-all').on('change', function (e) {
         var is_checked = $(this).is(':checked');
-        selectAllRows(table, is_checked);
+        selectAllRows(is_checked);
     });
 
 
@@ -36,14 +57,25 @@ $(document).ready(function () {
         $('button.buttons-csv').trigger("click");
     });
 
-    var selectAllRows = function (t, bool) {
+    // table.on('draw.dt', function () {
+        // deselect/reset the .ref-check-all checkbox whenever the table is redrawn by column searches
+        // console.log('panda');
+        // var check_all = $(this).find('input.check-all');
+        // if(check_all.is(':checked'))
+        //     check_all.prop('checked', false).change();
+    // });
+
+    var selectAllRows = function (bool) {
+        var selection = '';
         if (bool) {
-            t.rows().select();
+            table.rows( {search:'applied'} ).select();
+            selection = 'tr.selected';
         }
         else {
-            t.rows().deselect();
+            table.rows().deselect();
+            selection = 'tr'
         }
-        $('.row-check').prop('checked', bool);
+        table.$(selection).find('input.row-check').prop('checked', bool);
     };
 
 });
