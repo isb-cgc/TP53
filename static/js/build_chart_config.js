@@ -251,12 +251,12 @@ var convert_chartdata = function(chartjs_data){
     return encodeURI(tsv_data);
 };
 
-var trigger_file_download = function(filename, data){
-    var d_link = document.createElement('a');
-    d_link.setAttribute('href', data);
-    d_link.setAttribute('download', filename);
-    document.body.appendChild(d_link); // Required for FF
-    d_link.click();
-    document.body.removeChild(d_link);
-};
+// var trigger_file_download = function(filename, data){
+//     var d_link = document.createElement('a');
+//     d_link.setAttribute('href', data);
+//     d_link.setAttribute('download', filename);
+//     document.body.appendChild(d_link); // Required for FF
+//     d_link.click();
+//     document.body.removeChild(d_link);
+// };
 

@@ -5,26 +5,31 @@
     active_submenu = 'search_tp53data';
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/mut_details.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/libs/html2pdf.bundle.min.js') }}"></script>
+<!--<script type="text/javascript" src="{{ url_for('static', filename='js/libs/html2pdf.bundle.min.js') }}"></script>-->
 
 {% endblock %}
 
 {% block subcontent %}
 <div class="jump-div">
+    <!--<div class="float-end">-->
+        <!--<button class="text-start btn btn-sm btn-outline-secondary download-pdf-btn">-->
+            <!--<i class="fas fa-download"></i> Download PDF-->
+        <!--</button>-->
+    <!--</div>-->
     <div class="float-end">
-        <button class="text-start btn btn-sm btn-outline-secondary download-pdf-btn">
-            <i class="fas fa-download"></i> Download PDF
+        <button data-download="{{ tsv_data }}" class="text-start btn btn-sm btn-outline-secondary download-btn">
+            <i class="fas fa-download"></i> Download Selected Dataset
         </button>
     </div>
     <div id="mut_details">
-        <h2>Mutation Details: {{ query_result.mut_desc[0].c_description }}</h2>
+        <h2>Mutation Details: {{ mut_desc.c_description }}</h2>
 
         <hr>
 
         <div class="p-3">
             <div class="my-2 p-3 bg-light rounded-2">
                 <h3>Mutation Description</h3>
-                {% if query_result.mut_desc|length == 0 %}
+                {% if not mut_desc %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
                 <table id="mutation-description" class="table table-sm result-table">
@@ -44,21 +49,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for row in query_result.mut_desc %}
                     <tr>
-                        <td>{{ row.g_description_GRCh38 }}</td>
-                        <td>{{ row.c_description }}</td>
-                        <td>{{ row.ProtDescription }}</td>
-                        <td>{{ row.ExonIntron }}</td>
-                        <td>{{ row.CpG_site }}</td>
-                        <td>{{ row.Splice_site }}</td>
-                        <td>{{ row.Context_coding_3 }}</td>
-                        <td>{{ row.WT_codon }}</td>
-                        <td>{{ row.Mutant_codon }}</td>
-                        <td>{{ row.Effect }}</td>
-                        <td>{{ row.EffectGroup3 }}</td>
+                        <td>{{ mut_desc.g_description_GRCh38 }}</td>
+                        <td>{{ mut_desc.c_description }}</td>
+                        <td>{{ mut_desc.ProtDescription }}</td>
+                        <td>{{ mut_desc.ExonIntron }}</td>
+                        <td>{{ mut_desc.CpG_site }}</td>
+                        <td>{{ mut_desc.Splice_site }}</td>
+                        <td>{{ mut_desc.Context_coding_3 }}</td>
+                        <td>{{ mut_desc.WT_codon }}</td>
+                        <td>{{ mut_desc.Mutant_codon }}</td>
+                        <td>{{ mut_desc.Effect }}</td>
+                        <td>{{ mut_desc.EffectGroup3 }}</td>
                     </tr>
-                    {% endfor %}
                     </tbody>
                 </table>
                 {% endif %}
@@ -95,8 +98,8 @@
                 {% endif %}
             </div>
             <div class="my-2 p-3 bg-light rounded-2">
-                <h3>Protein features</h3>
-                {% if query_result.prot_desc|length == 0 %}
+                <h3>Protein Features</h3>
+                {% if not prot_desc %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
                 <table id="protein-description" class="table table-sm result-table">
@@ -111,18 +114,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for row in query_result.prot_desc %}
                     <tr>
-                        <td>{{ row.Structural_motif or '' }}</td>
-                        <td>{{ row.Domain_function or '' }}</td>
-                        <td>{{ row.Residue_function or '' }}</td>
-                        <td>{{ row.Hotspot or '' }}</td>
-                        <td>{{ row.Mut_rate or '' }}</td>
+                        <td>{{ prot_desc.Structural_motif or '' }}</td>
+                        <td>{{ prot_desc.Domain_function or '' }}</td>
+                        <td>{{ prot_desc.Residue_function or '' }}</td>
+                        <td>{{ prot_desc.Hotspot or '' }}</td>
+                        <td>{{ prot_desc.Mut_rate or '' }}</td>
                         <td><a target="_blank"
-                               href="https://web.expasy.org/variant_pages/VAR_{{row.SwissProtLink}}.html">
-                            {{ row.SwissProtLink or '' }}</a></td>
+                               href="https://web.expasy.org/variant_pages/VAR_{{prot_desc.SwissProtLink}}.html">
+                            {{ prot_desc.SwissProtLink or '' }}</a></td>
                     </tr>
-                    {% endfor %}
                     </tbody>
                 </table>
                 {% endif %}
@@ -133,7 +134,7 @@
                     (2003)</a> and <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15781620">Kakudo
                     (2005)</a>
                 </h3>
-                {% if query_result.sys_assess|length == 0 %}
+                {% if not sys_assess %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
                 <table id="assessment" class="table table-sm result-table">
@@ -156,31 +157,29 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for row in query_result.sys_assess %}
                     <tr>
-                        <td>{{ row.WAF1nWT or '' }}</td>
-                        <td>{{ row.MDM2nWT or '' }}</td>
-                        <td>{{ row.BAXnWT or '' }}</td>
-                        <td>{{ row.h1433snWT or '' }}</td>
-                        <td>{{ row.AIP1nWT or '' }}</td>
-                        <td>{{ row.GADD45nWT or '' }}</td>
-                        <td>{{ row.NOXAnWT or '' }}</td>
-                        <td>{{ row.P53R2nWT or '' }}</td>
-                        <td>{{ row.WAF1nWT_Saos2 or '' }}</td>
-                        <td>{{ row.MDM2nWT_Saos2 or '' }}</td>
-                        <td>{{ row.BAXnWT_Saos2 or '' }}</td>
-                        <td>{{ row.h1433snWT_Saos2 or '' }}</td>
-                        <td>{{ row.AIP1nWT_Saos2 or '' }}</td>
-                        <td>{{ row.PUMAnWT_Saos2 or '' }}</td>
+                        <td>{{ sys_assess.WAF1nWT or '' }}</td>
+                        <td>{{ sys_assess.MDM2nWT or '' }}</td>
+                        <td>{{ sys_assess.BAXnWT or '' }}</td>
+                        <td>{{ sys_assess.h1433snWT or '' }}</td>
+                        <td>{{ sys_assess.AIP1nWT or '' }}</td>
+                        <td>{{ sys_assess.GADD45nWT or '' }}</td>
+                        <td>{{ sys_assess.NOXAnWT or '' }}</td>
+                        <td>{{ sys_assess.P53R2nWT or '' }}</td>
+                        <td>{{ sys_assess.WAF1nWT_Saos2 or '' }}</td>
+                        <td>{{ sys_assess.MDM2nWT_Saos2 or '' }}</td>
+                        <td>{{ sys_assess.BAXnWT_Saos2 or '' }}</td>
+                        <td>{{ sys_assess.h1433snWT_Saos2 or '' }}</td>
+                        <td>{{ sys_assess.AIP1nWT_Saos2 or '' }}</td>
+                        <td>{{ sys_assess.PUMAnWT_Saos2 or '' }}</td>
                     </tr>
-                    {% endfor %}
                     </tbody>
                 </table>
                 {% endif %}
             </div>
             <div class="my-2 p-3 bg-light rounded-2">
                 <h3>Predicted or Observed Impacts on Protein Functions</h3>
-                {% if query_result.prot_pred|length == 0 %}
+                {% if not prot_pred %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
                 <table id="predicted-effect-on-protein" class="table table-sm result-table">
@@ -198,19 +197,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for row in query_result.prot_pred %}
                     <tr>
-                        <td>{{ row.TransactivationClass or '' }}</td>
-                        <td>{{ row.DNEclass or '' }}</td>
-                        <td>{{ row.DNE_LOFclass or '' }}</td>
-                        <td>{{ row.AGVGDClass or '' }}</td>
-                        <td>{{ row.BayesDel or '' }}</td>
-                        <td>{{ row.REVEL or '' }}</td>
-                        <td>{{ row.SIFTClass or '' }}</td>
-                        <td>{{ row.Polyphen2 or '' }}</td>
-                        <td>{{ row.StructureFunctionClass or '' }}</td>
+                        <td>{{ prot_pred.TransactivationClass or '' }}</td>
+                        <td>{{ prot_pred.DNEclass or '' }}</td>
+                        <td>{{ prot_pred.DNE_LOFclass or '' }}</td>
+                        <td>{{ prot_pred.AGVGDClass or '' }}</td>
+                        <td>{{ prot_pred.BayesDel or '' }}</td>
+                        <td>{{ prot_pred.REVEL or '' }}</td>
+                        <td>{{ prot_pred.SIFTClass or '' }}</td>
+                        <td>{{ prot_pred.Polyphen2 or '' }}</td>
+                        <td>{{ prot_pred.StructureFunctionClass or '' }}</td>
                     </tr>
-                    {% endfor %}
                     </tbody>
                 </table>
                 {% endif %}

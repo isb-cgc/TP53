@@ -23,26 +23,26 @@
                data-bs-toggle="collapse" href="#criteria_div" role="button" aria-expanded="false"
                aria-controls="criteria_div"></a>
             <div class="float-end d-inline-block">
-                <div class="btn-group btn-group-sm"><i class="fas fa-shopping-cart"></i><span
+                <div class="btn-group btn-group-sm" title="No of selected rows"><i class="fas fa-shopping-cart"></i><span
                         class="cart-count badge rounded-pill bg-primary">0</span></div>
                 <div class="btn-group btn-group-sm" role="group" aria-label="Additional Search and Tools">
-                    <button type="button" class="btn btn-outline-secondary cell-search-button disabled"><i
+                    <button type="button" class="btn btn-outline-secondary cell-search-button disabled" title="View Cell Lines: Cell Line Count must be larger than 0"><i
                             class="fas fa-search"></i>
                         Cell Lines <span class="cell-line-count-badge badge rounded-pill bg-primary">0</span>
                     </button>
                     <button type="button" class="btn btn-outline-secondary action-button"
-                            value="get_mutation_dist"><i
+                            value="get_mutation_dist" title="View Mutation Distribution"><i
                             class="fas fa-chart-pie"></i>
                         Mutation Distribution
                     </button>
                     <button type="button" class="btn btn-outline-secondary action-button"
-                            value="get_gv_tumor_dist"><i
+                            value="get_gv_tumor_dist" title="View Tumor Distribution"><i
                             class="fas fa-chart-bar"></i>
                         Tumor Distribution
                     </button>
                 </div>
                 <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i>
+                    <button type="button" title="Download Data in .csv" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i>
                         Download
                     </button>
                 </div>
@@ -73,7 +73,9 @@
         <div>
             <table id="gm-result-table" class="table table-striped table-sm result-table" cellspacing="0" width="100%">
                 <thead>
-                <th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Select All">
                     <input name="checkAll" class="form-check-input check-all" type="checkbox"
                            aria-label="Select All">
                 </th>
@@ -181,7 +183,7 @@
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title="View mutation details.">
-                    View
+                    View Mutation Details
                 </th>
                 </tr>
                 </thead>

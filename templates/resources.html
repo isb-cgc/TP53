@@ -300,8 +300,9 @@
             <h2>3D Structures Analysis</h2>
             <hr>
             <div class="p-3">
-                <h3>3D Viewer</h3>
-                <div class="pt-2">
+                <h3 class="pt-3">3D Viewer</h3>
+                <div>
+                    <div class="text-muted">Use the mouse or the control buttons located on the top-right corner to explore.</div>
                     <div id="molstarViewer"></div>
                     <script type="text/javascript">
                         var viewer = new molstar.Viewer('molstarViewer', {
@@ -317,13 +318,10 @@
                             pdbProvider: 'rcsb',
                         });
                         viewer.loadStructureFromUrl("{{ url_for('static', filename='pdb/1tsr_B.pdb') }}", format='pdb');
-                        // MS.struct.generator.atomGroups({
-                        //     'residue-test': MS.core.set.has([MS.set([248, 195]), MS.ammp('auth_seq_id')])
-                        // })
                     </script>
                 </div>
-                <h3>Structural impacts of mutations</h3>
-                <div class="pt-2">
+                <h3 class="pt-3">Structural impacts of mutations</h3>
+                <div>
                     <ul>
                         <li> Analysis by A.C. Martin: <a target="_blank"
                                                          href="https://www.ncbi.nlm.nih.gov/pubmed/11793474">Publication</a>

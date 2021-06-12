@@ -821,10 +821,8 @@ def mut_details():
     mut_id = get_param_val(request, 'mut_id')
 
     simple_queries = {
-        'mut_desc': {
-            'column_filters': ['g_description_GRCh38', 'c_description', 'ProtDescription', 'ExonIntron', 'CpG_site',
-                               'Splice_site', 'Context_coding_3', 'WT_codon', 'Mutant_codon', 'Effect',
-                               'EffectGroup3', 'MUT_ID'],
+        'mutation': {
+            'column_filters': ['*'],
             'criteria': [{'column_name': 'MUT_ID', 'vals': [mut_id]}],
             'table': 'MutationView',
             'ord_column': 'MUT_ID'
@@ -834,28 +832,6 @@ def mut_details():
                                'Source', 'MUT_ID'],
             'criteria': [{'column_name': 'MUT_ID', 'vals': [mut_id]}],
             'table': 'SPLICING_PREDICTION',
-            'ord_column': 'MUT_ID'
-        },
-        'prot_desc': {
-            'column_filters': ['Structural_motif', 'Domain_function', 'Residue_function', 'Hotspot', 'Mut_rate',
-                               'SwissProtLink', 'MUT_ID'],
-            'criteria': [{'column_name': 'MUT_ID', 'vals': [mut_id]}],
-            'table': 'MutationView',
-            'ord_column': 'MUT_ID'
-        },
-        'sys_assess': {
-            'column_filters': ['WAF1nWT', 'MDM2nWT', 'BAXnWT', 'h1433snWT', 'AIP1nWT',
-                               'GADD45nWT', 'NOXAnWT', 'P53R2nWT', 'WAF1nWT_Saos2', 'MDM2nWT_Saos2', 'BAXnWT_Saos2',
-                               'h1433snWT_Saos2', 'AIP1nWT_Saos2', 'PUMAnWT_Saos2', 'MUT_ID'],
-            'criteria': [{'column_name': 'MUT_ID', 'vals': [mut_id]}],
-            'table': 'MutationView',
-            'ord_column': 'MUT_ID'
-        },
-        'prot_pred': {
-            'column_filters': ['TransactivationClass', 'DNEclass', 'DNE_LOFclass', 'AGVGDClass', 'BayesDel', 'REVEL',
-                               'SIFTClass', 'Polyphen2', 'StructureFunctionClass', 'MUT_ID'],
-            'criteria': [{'column_name': 'MUT_ID', 'vals': [mut_id]}],
-            'table': 'MutationView',
             'ord_column': 'MUT_ID'
         },
         'p53_pred': {
@@ -916,27 +892,68 @@ def mut_details():
                 t_id] = "There was a problem with your search input. Please revise your search criteria and search again."
         except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
             error_msg[t_id] = "Sorry, query job has timed out."
-    if query_result['mut_desc'] and query_result['mut_desc'][0] and query_result['mut_desc'][0]['ProtDescription']:
-        p_desc = query_result['mut_desc'][0]['ProtDescription']
-        if p_desc == 'p.?':
-            query_result['sys_assess'] = []
-            query_result['prot_desc'] = []
-            query_result['prot_pred'] = []
-            query_result['p53_pred'] = []
-            query_result['vars_act'] = []
-            query_result['mouse'] = []
-    if query_result['sys_assess'] and query_result['sys_assess'][0] and not query_result['sys_assess'][0]['WAF1nWT']:
-        query_result['sys_assess'] = []
-    if query_result['prot_pred'] and query_result['prot_pred'][0]:
-        data_is_null = True
-        for i in range(len(query_result['prot_pred'][0]) - 1):
-            if query_result['prot_pred'][0][i] and query_result['prot_pred'][0][i].lower() != 'na':
-                data_is_null = False
-                break
-        if data_is_null:
-            query_result['prot_pred'] = []
 
-    return render_template("mut_details.html", query_result=query_result, error_msg=error_msg)
+    mut_desc = {}
+    sys_assess = {}
+    prot_desc={}
+    prot_pred={}
+    tsv_data = None
+    if query_result['mutation'] and query_result['mutation'][0]:
+        mut_desc = query_result['mutation'][0]
+        tsv_data = "data:text/tab-separated-values;charset=utf-8,"
+        tsv_data += "\t".join(f'{k}' for k in list(mut_desc.keys()))
+        tsv_data += "\n"
+        tsv_data += "\t".join(f'{k}' for k in list(mut_desc.values()))
+
+    if mut_desc['ProtDescription'] and mut_desc['ProtDescription'] != 'p.?':
+        if mut_desc['WAF1nWT']:
+            sys_assess = {
+                'WAF1nWT': mut_desc['WAF1nWT'],
+                'MDM2nWT': mut_desc['MDM2nWT'],
+                'BAXnWT': mut_desc['BAXnWT'],
+                'h1433snWT': mut_desc['h1433snWT'],
+                'AIP1nWT': mut_desc['AIP1nWT'],
+                'GADD45nWT': mut_desc['GADD45nWT'],
+                'NOXAnWT': mut_desc['NOXAnWT'],
+                'P53R2nWT': mut_desc['P53R2nWT'],
+                'WAF1nWT_Saos2': mut_desc['WAF1nWT_Saos2'],
+                'MDM2nWT_Saos2': mut_desc['MDM2nWT_Saos2'],
+                'BAXnWT_Saos2': mut_desc['BAXnWT_Saos2'],
+                'h1433snWT_Saos2': mut_desc['h1433snWT_Saos2'],
+                'AIP1nWT_Saos2': mut_desc['AIP1nWT_Saos2'],
+                'PUMAnWT_Saos2': mut_desc['PUMAnWT_Saos2'],
+                'MUT_ID': mut_desc['MUT_ID'],
+            }
+
+        prot_pred = {
+            'TransactivationClass': mut_desc['TransactivationClass'],
+            'DNEclass': mut_desc['DNEclass'],
+            'DNE_LOFclass': mut_desc['DNE_LOFclass'],
+            'AGVGDClass': mut_desc['AGVGDClass'],
+            'BayesDel': mut_desc['BayesDel'],
+            'REVEL': mut_desc['REVEL'],
+            'SIFTClass': mut_desc['SIFTClass'],
+            'Polyphen2': mut_desc['Polyphen2'],
+            'StructureFunctionClass': mut_desc['StructureFunctionClass'],
+            'MUT_ID': mut_desc['MUT_ID']
+        }
+        prot_desc = {
+            'Structural_motif': mut_desc['Structural_motif'],
+            'Domain_function': mut_desc['Domain_function'],
+            'Residue_function': mut_desc['Residue_function'],
+            'Hotspot': mut_desc['Hotspot'],
+            'Mut_rate': mut_desc['Mut_rate'],
+            'SwissProtLink': mut_desc['SwissProtLink'],
+            'MUT_ID': mut_desc['MUT_ID']
+        }
+    return render_template("mut_details.html",
+                           query_result=query_result,
+                           mut_desc=mut_desc,
+                           sys_assess=sys_assess,
+                           prot_desc=prot_desc,
+                           prot_pred=prot_pred,
+                           tsv_data=tsv_data,
+                           error_msg=error_msg)
 
 
 @app.route("/search_gene_by_mut")

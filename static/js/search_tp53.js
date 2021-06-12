@@ -18,6 +18,8 @@ $(document).ready(function () {
     $('.chosen-select').chosen({
         no_results_text: "Oops, nothing found!",
         width: "100%",
+        search_contains: true,
+        // inherit_select_classes: true,
         max_shown_results: 300
     });
 
@@ -32,6 +34,21 @@ $(document).ready(function () {
         var morph_input_selector = $(this).data('morph-toggle');
         $(morph_input_selector).val(morphs);
         $(morph_input_selector).trigger("chosen:updated");
+    });
+
+    $('.paste-support .chosen-container-multi').find('.chosen-search-input').on('paste', function (e) {
+        // implement paste into chosen multi input box
+        // find the parent selector,
+        // split out the separated input
+        // and update the chosen input
+        var select_box = $('#' + $(e.currentTarget).parents('.chosen-container-multi').attr('id').replace('_chosen', ''));
+        var str_in = e.originalEvent.clipboardData.getData('text');
+        var split_arr = str_in.split(/[\s,;]+/);
+        if (split_arr.length > 0) {
+            select_box.val(split_arr);
+            select_box.trigger('chosen:updated');
+        }
+        return false;
     });
 
 });
@@ -53,4 +70,13 @@ var displayGeneVariations = function (type, descrption) {
     form.appendTo($("body"));
     form.submit();
     form.remove();
+};
+
+var trigger_file_download = function(filename, data){
+    var d_link = document.createElement('a');
+    d_link.setAttribute('href', data);
+    d_link.setAttribute('download', filename);
+    document.body.appendChild(d_link); // Required for FF
+    d_link.click();
+    document.body.removeChild(d_link);
 };
