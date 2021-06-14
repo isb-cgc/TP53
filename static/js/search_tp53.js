@@ -43,13 +43,33 @@ $(document).ready(function () {
         // and update the chosen input
         var select_box = $('#' + $(e.currentTarget).parents('.chosen-container-multi').attr('id').replace('_chosen', ''));
         var str_in = e.originalEvent.clipboardData.getData('text');
-        var split_arr = str_in.split(/[\s,;]+/);
+        var split_arr = str_in.split(/[,\n]+/).map(function(item){
+            return item.trim();
+        });
         if (split_arr.length > 0) {
             select_box.val(split_arr);
             select_box.trigger('chosen:updated');
         }
         return false;
     });
+
+   if($('.form-switch input').prop('checked')){
+       var collapsible_class = $('.form-switch input').data('bs-target');
+       var shown_id = $(collapsible_class+'.show').attr('id');
+       var hidden_id = $(collapsible_class +':not(.show)').attr('id');
+       var shown_collapse = document.getElementById(shown_id);
+       var hidden_collapse = document.getElementById(hidden_id);
+       new bootstrap.Collapse(shown_collapse, {
+           show: false,
+           hide: true
+       });
+       new bootstrap.Collapse(hidden_collapse, {
+           show: true,
+           hide: false
+       });
+   }
+
+
 
 });
 

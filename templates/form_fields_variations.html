@@ -11,7 +11,7 @@
 
         <div class="col-sm-8 paste-support">
             <select name="{{ id_prefix }}_cdna_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_cdna_input"
-                    data-placeholder="Choose cDNA Descriptions..." aria-label="cDNA List" multiple>
+                    data-placeholder="Choose or Copy-Paste cDNA Descriptions..." aria-label="cDNA List" multiple>
                 {% for c_desc in c_desc_list %}
                 <option value="{{ c_desc.label }}">{{ c_desc.label }}</option>
                 {% endfor %}
@@ -34,7 +34,7 @@
 
         <div class="col-sm-8 paste-support">
             <select name="{{ id_prefix }}_p_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_p_input"
-                    data-placeholder="Choose Protein Descriptions..." aria-label="Protein List"
+                    data-placeholder="Choose or Copy-Paste Protein Descriptions..." aria-label="Protein List"
                     multiple>
                 {% for p_desc in p_desc_list %}
                 <option value="{{ p_desc.label }}">{{ p_desc.label }}</option>
@@ -58,7 +58,7 @@
 
         <div class="col-sm-8 paste-support">
             <select name="{{ id_prefix }}_hg19_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_hg19_input"
-                    data-placeholder="Choose Genomic Descriptions (hg19)..."
+                    data-placeholder="Choose or Copy-Paste Genomic Descriptions (hg19)..."
                     aria-label="Genomic List (hg19)"
                     multiple>
                 {% for g_desc_hg19 in g_desc_hg19_list %}
@@ -82,7 +82,7 @@
 
         <div class="col-sm-8 paste-support">
             <select name="{{ id_prefix }}_hg38_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_hg38_input"
-                    data-placeholder="Choose Genomic Descriptions (hg38)..."
+                    data-placeholder="Choose or Copy-Paste Genomic Descriptions (hg38)..."
                     aria-label="Genomic List (hg38)"
                     multiple>
                 {% for g_desc_hg38 in g_desc_hg38_list %}

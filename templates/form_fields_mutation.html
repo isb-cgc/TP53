@@ -1,5 +1,5 @@
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="Nature of the mutation. The terms
@@ -18,7 +18,7 @@
         </button>
         Type
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         <select name="{{ id_prefix }}_type_list" class="form-control chosen-select" id="{{ id_prefix }}_type_input"
                 data-placeholder="Choose Types..." aria-label="Type List" multiple>
             {% for type in type_list %}
@@ -28,7 +28,7 @@
     </div>
 </fieldset>
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="Nucleotide change read from the coding sequence. For
@@ -39,7 +39,7 @@
         </button>
         Description
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         <select name="{{ id_prefix }}_description_list" class="form-control chosen-select" id="{{ id_prefix }}_description_input"
                 data-placeholder="Choose Descriptions..." aria-label="Description List" multiple>
             {% for desc in desc_list %}
@@ -50,7 +50,7 @@
 </fieldset>
 
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="2D and 3D motifs where the mutation is located according to structures described in
@@ -61,7 +61,7 @@
         </button>
         Struct-Function Motif
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         <select name="{{ id_prefix }}_motif_list" class="form-control chosen-select" id="{{ id_prefix }}_motif_input"
                 data-placeholder="Choose Struct-Function Motifs..."
                 aria-label="Struct-Function Motif List" multiple>
@@ -73,7 +73,7 @@
 </fieldset>
 
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="Location of the mutation in the introns or exons in TP53 gene for the reference sequence NM_000546.5.
@@ -84,7 +84,7 @@
         </button>
         Exon/Intron
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         <select name="{{ id_prefix }}_exonintron_list" class="form-control chosen-select" id="{{ id_prefix }}_exonintron_input"
                 data-placeholder="Choose Exons or Introns..."
                 aria-label="Exon Intron List" multiple>
@@ -96,7 +96,7 @@
 </fieldset>
 
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="Effect of the mutation. The terms
@@ -108,7 +108,7 @@
         </button>
         Effect
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         <select name="{{ id_prefix }}_effect_list" class="form-control chosen-select" id="{{ id_prefix }}_effect_input"
                 data-placeholder="Choose Effects..." aria-label="Effect List" multiple>
             {% for effect in effect_list %}
@@ -119,7 +119,7 @@
 </fieldset>
 
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="Functional classification based on the overall transcriptional activity (TA) on 8 different promoters as measured in yeast assays by <a href='https://www.ncbi.nlm.nih.gov/pubmed/12826609' target='_blank'>Kato et al</a>.
@@ -129,7 +129,7 @@
         </button>
         Transactivation Class
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         {% for ta_class in ta_class_list %}
         <div class="form-check">
             <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ta_class_list" value="{{ ta_class.label }}"
@@ -143,7 +143,7 @@
 </fieldset>
 
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="Functional classification based on <a href='https://sift.jcvi.org/protein_batch_submit.php?species=human' target='_blank'>SIFT program</a> using default settings.
@@ -152,7 +152,7 @@
         </button>
         SIFT Class
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         {% for sift in sift_list %}
         <div class="form-check">
             <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_sift_list" value="{{ sift.label }}"
@@ -166,7 +166,7 @@
 </fieldset>
 
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="Chromosome coordinate of mutation: start position based on hg19 or hg38 human genome assembly.">
@@ -174,7 +174,7 @@
         </button>
         Chromosome Positioning
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="{{ id_prefix }}_chrpos_type" id="{{ id_prefix }}_chrpos_hg19" value="hg19">
             <label class="form-check-label" for="{{ id_prefix }}_chrpos_hg19">
@@ -196,7 +196,7 @@
 </fieldset>
 
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="Mutant base, described on the coding strand.">
@@ -204,37 +204,45 @@
         </button>
         Mutant Base (coding)
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
 
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="{{ id_prefix }}_mut_base" id="{{ id_prefix }}_mut_base_a" value="A">
-            <label class="form-check-label" for="{{ id_prefix }}_mut_base_a">
-                A
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="{{ id_prefix }}_mut_base" id="{{ id_prefix }}_mut_base_c" value="C">
-            <label class="form-check-label" for="{{ id_prefix }}_mut_base_c">
-                C
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="{{ id_prefix }}_mut_base" id="{{ id_prefix }}_mut_base_g" value="G">
-            <label class="form-check-label" for="{{ id_prefix }}_mut_base_g">
-                G
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="{{ id_prefix }}_mut_base" id="{{ id_prefix }}_mut_base_t" value="T">
-            <label class="form-check-label" for="{{ id_prefix }}_mut_base_t">
-                T
-            </label>
-        </div>
+        <select name="{{ id_prefix }}_mut_base" class="form-select" aria-label="Default select example">
+            <option value="" selected>Any</option>
+            <option id="{{ id_prefix }}_mut_base_a" value="A">A</option>
+            <option id="{{ id_prefix }}_mut_base_c" value="C">C</option>
+            <option id="{{ id_prefix }}_mut_base_g" value="G">G</option>
+            <option id="{{ id_prefix }}_mut_base_t" value="T">T</option>
+        </select>
+
+        <!--<div class="form-check">-->
+            <!--<input class="form-check-input" type="radio" name="{{ id_prefix }}_mut_base" id="{{ id_prefix }}_mut_base_a" value="A">-->
+            <!--<label class="form-check-label" for="{{ id_prefix }}_mut_base_a">-->
+                <!--A-->
+            <!--</label>-->
+        <!--</div>-->
+        <!--<div class="form-check">-->
+            <!--<input class="form-check-input" type="radio" name="{{ id_prefix }}_mut_base" id="{{ id_prefix }}_mut_base_c" value="C">-->
+            <!--<label class="form-check-label" for="{{ id_prefix }}_mut_base_c">-->
+                <!--C-->
+            <!--</label>-->
+        <!--</div>-->
+        <!--<div class="form-check">-->
+            <!--<input class="form-check-input" type="radio" name="{{ id_prefix }}_mut_base" id="{{ id_prefix }}_mut_base_g" value="G">-->
+            <!--<label class="form-check-label" for="{{ id_prefix }}_mut_base_g">-->
+                <!--G-->
+            <!--</label>-->
+        <!--</div>-->
+        <!--<div class="form-check">-->
+            <!--<input class="form-check-input" type="radio" name="{{ id_prefix }}_mut_base" id="{{ id_prefix }}_mut_base_t" value="T">-->
+            <!--<label class="form-check-label" for="{{ id_prefix }}_mut_base_t">-->
+                <!--T-->
+            <!--</label>-->
+        <!--</div>-->
     </div>
 </fieldset>
 
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="For mutations in exons, codon number
@@ -246,45 +254,45 @@
         </button>
         Codon Number
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         <div class="form-check form-switch">
-            <input data-bs-toggle="collapse" data-bs-target=".{{ id_prefix }}-codon-collapse" aria-expanded="true"
-                   aria-controls=".{{ id_prefix }}-codon-collapse" class="form-check-input" type="checkbox"
+            <input data-bs-toggle="collapse" data-bs-target=".{{ id_prefix }}-codon-collapse" aria-expanded="false"
+                   aria-controls="{{ id_prefix }}_collapse_bysingle {{ id_prefix }}_collapse_byrange" class="form-check-input" type="checkbox"
                    id="{{ id_prefix }}_codon_range" name="{{ id_prefix }}_codon_range" value="checked">
             <label class="form-check-label" for="{{ id_prefix }}_codon_range">Enter by Range</label>
         </div>
         <div id="{{ id_prefix }}_codon_div">
             <div id="{{ id_prefix }}_collapse_bysingle" class="{{ id_prefix }}-codon-collapse row collapse show" data-bs-parent="#{{ id_prefix }}_codon_div">
-                <div class="col-lg-3">
+                <div class="col-md-3 col-sm-5">
                     <div class="form-floating">
                         <input type="number" class="form-control" id="{{ id_prefix }}_codon_number"
                                name="{{ id_prefix }}_codon_no"
                                min="1"
-                               max="394">
+                               max="393">
                         <label for="{{ id_prefix }}_codon_end">Codon No.</label>
                     </div>
                 </div>
             </div>
             <div id="{{ id_prefix }}_collapse_byrange" class="{{ id_prefix }}-codon-collapse row collapse" data-bs-parent="#{{ id_prefix }}_codon_div">
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-md-3">
                     <div class="form-floating">
                         <input type="number" class="form-control" id="{{ id_prefix }}_codon_start"
                                name="{{ id_prefix }}_codon_start"
                                min="1"
                                max="393">
-                        <label for="{{ id_prefix }}_codon_start">Start</label>
+                        <label for="{{ id_prefix }}_codon_start">Start (&#8804;)</label>
                     </div>
                 </div>
-                <div class="col-lg-1 text-center">
+                <div class="col-lg-1 col-md-1 text-center">
                     <label class="col-form-label">to</label>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-md-3">
                     <div class="form-floating">
                         <input type="number" class="form-control" id="{{ id_prefix }}_codon_end"
                                name="{{ id_prefix }}_codon_end"
                                min="1"
-                               max="394">
-                        <label for="{{ id_prefix }}_codon_end">End</label>
+                               max="393">
+                        <label for="{{ id_prefix }}_codon_end">(&#8804;) End</label>
                     </div>
                 </div>
             </div>
@@ -292,7 +300,7 @@
     </div>
 </fieldset>
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="For mutations in exons, sequence of the codon in which the mutation occurred in NM_000546.5 transcript.">
@@ -300,12 +308,12 @@
         </button>
         Wild-Type Codon
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         <input type="text" class="form-control" id="{{ id_prefix }}_wild_codon" name="{{ id_prefix }}_wild_codon">
     </div>
 </fieldset>
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="Base sequence of the mutated codon in NM_000546.5 transcript.">
@@ -313,13 +321,13 @@
         </button>
         Mutant Codon
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         <input type="text" class="form-control" id="{{ id_prefix }}_mut_codon" name="{{ id_prefix }}_mut_codon">
     </div>
 </fieldset>
 
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="Wild-type amino acid encoded at the codon in which the mutation occurred (three-letter amino acid
@@ -329,12 +337,12 @@
         </button>
         Wild-Type Amino Acid
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         <input type="text" class="form-control" id="{{ id_prefix }}_wild_aa" name="{{ id_prefix }}_wild_aa">
     </div>
 </fieldset>
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
+    <legend class="col-form-label col-md-3 col-sm-5 pt-0">
         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                 data-bs-placement="left"
                 title="Mutated amino acid encoded at the
@@ -347,7 +355,7 @@
         </button>
         Mutant Amino Acid
     </legend>
-    <div class="col-sm-8">
+    <div class="col-md-8 col-sm-6">
         <input type="text" class="form-control" id="{{ id_prefix }}_mut_aa" name="{{ id_prefix }}_mut_aa">
     </div>
 </fieldset>

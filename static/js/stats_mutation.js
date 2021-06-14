@@ -102,9 +102,8 @@ $(document).ready(function () {
         var graph_id = $(button).parents('.btn-group').data('graph-id');
         if (graph_id === 'struct_3D') {
             $('#expanded-struct3D').parent('div').removeClass('col-5').addClass('col-10');
-            var width = $('#expanded-struct3D').parent('div').width();
+            var width = $('#modal-jsmol-legend').width();
             var height = width * .55;
-            // var height = width * .65;
             var jsmol_Info = $('#struct_3D').data('jmol-info');
             jsmol_Info.width = width;
             jsmol_Info.height = height;
@@ -119,7 +118,6 @@ $(document).ready(function () {
         var expanded_chart = Chart.getChart('expanded-canvas');
         if (expanded_chart)
             expanded_chart.destroy();
-
         if (graph_id === 'struct_3D'){
             $('#expanded-canvas').hide();
             $('.jsmol-content').show();
@@ -183,8 +181,9 @@ var draw_charts = function (graph_config, target_id, is_dimension_static, includ
 
         if (include_3d_graph && Object.keys(graph_config).includes('graph3D_id')) {
             var jmol_legend = $('#jmol-legend');
+            var jmol_info_text = $('#jmol-info-text');
             var width = jmol_legend.width();
-            var height = $('#codon_no_chart').height() - jmol_legend.height();
+            var height = $('#codon_no_chart').height() - jmol_legend.height() - jmol_info_text.height();
             build_3d_graph(graph_config['graph3D_id'], graph_data, width, height);
         }
     }

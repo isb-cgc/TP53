@@ -98,6 +98,9 @@
                                 </button>
                             </div>
                         </div>
+                        <div id="jmol-info-text" class="text-white bg-secondary small-font p-1">
+                            <i class="fab fa-chrome"></i> Chrome: <kbd>R-click</kbd> or <kbd>Ctrl-click</kbd> for menu
+                        </div>
                         <span id="struct_3D">
                         </span>
                         <div id="jmol-legend" class="text-muted text-end small-font">
@@ -193,29 +196,27 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="small-chart col-5 border rounded-2 p-3 my-3 mx-auto">
+                            <div class="jsmol-content text-white bg-secondary small-font p-1">
+                                <i class="fab fa-chrome"></i> Chrome: <kbd>R-click</kbd> or <kbd>Ctrl-click</kbd> for
+                                menu
+                            </div>
                             <span id="expanded-struct3D"></span>
-                            <div class="small-font jsmol-content">
-                                <div id="modal-jsmol-info" class="d-inline text-muted text-start">
-                                    Menu: R-click/Ctr-click
+                            <div id="modal-jsmol-legend" class="jsmol-content small-font text-muted text-end">
+                                Mutation Frequency:
+                                <div class="d-inline my-auto">
+                                    <div class="legend-color legend-color-high"></div>
+                                    High
                                 </div>
-                                <div id="modal-jsmol-legend" class="d-inline text-muted float-end">
-                                    Mutation Frequency:
-                                    <div class="d-inline my-auto">
-                                        <div class="legend-color legend-color-high"></div>
-                                        High
-                                    </div>
-                                    <div class="d-inline my-auto ms-2">
-                                        <div class="legend-color legend-color-mid"></div>
-                                        Medium
-                                    </div>
-                                    <div class="d-inline my-auto ms-2">
-                                        <div class="legend-color legend-color-low"></div>
-                                        Low
-                                    </div>
+                                <div class="d-inline my-auto ms-2">
+                                    <div class="legend-color legend-color-mid"></div>
+                                    Medium
+                                </div>
+                                <div class="d-inline my-auto ms-2">
+                                    <div class="legend-color legend-color-low"></div>
+                                    Low
                                 </div>
                             </div>
                             <canvas id="expanded-canvas"></canvas>
-
                         </div>
                     </div>
                 </div>
