@@ -18,13 +18,20 @@
         </button>
         Type
     </legend>
-    <div class="col-md-8 col-sm-6">
+    <div class="col-sm-6 col-md-7">
         <select name="{{ id_prefix }}_type_list" class="form-control chosen-select" id="{{ id_prefix }}_type_input"
                 data-placeholder="Choose Types..." aria-label="Type List" multiple>
             {% for type in type_list %}
             <option value="{{ type.label }}">{{ type.label }}</option>
             {% endfor %}
         </select>
+    </div>
+    <div class="col-sm-3 col-md-2 text-start">
+        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+            Clear All</a>
+        <br>
+        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
+            Add All</a>
     </div>
 </fieldset>
 <fieldset class="row mb-3">
@@ -39,13 +46,20 @@
         </button>
         Description
     </legend>
-    <div class="col-md-8 col-sm-6">
+    <div class="col-sm-6 col-md-7">
         <select name="{{ id_prefix }}_description_list" class="form-control chosen-select" id="{{ id_prefix }}_description_input"
                 data-placeholder="Choose Descriptions..." aria-label="Description List" multiple>
             {% for desc in desc_list %}
             <option value="{{ desc.label }}">{{ desc.label }}</option>
             {% endfor %}
         </select>
+    </div>
+    <div class="col-sm-3 col-md-2 text-start">
+        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+            Clear All</a>
+        <br>
+        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
+            Add All</a>
     </div>
 </fieldset>
 
@@ -61,7 +75,7 @@
         </button>
         Struct-Function Motif
     </legend>
-    <div class="col-md-8 col-sm-6">
+    <div class="col-sm-6 col-md-7">
         <select name="{{ id_prefix }}_motif_list" class="form-control chosen-select" id="{{ id_prefix }}_motif_input"
                 data-placeholder="Choose Struct-Function Motifs..."
                 aria-label="Struct-Function Motif List" multiple>
@@ -69,6 +83,13 @@
             <option value="{{ motif.label }}">{{ motif.label }}</option>
             {% endfor %}
         </select>
+    </div>
+    <div class="col-sm-3 col-md-2 text-start">
+        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+            Clear All</a>
+        <br>
+        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
+            Add All</a>
     </div>
 </fieldset>
 
@@ -84,7 +105,7 @@
         </button>
         Exon/Intron
     </legend>
-    <div class="col-md-8 col-sm-6">
+    <div class="col-sm-6 col-md-7">
         <select name="{{ id_prefix }}_exonintron_list" class="form-control chosen-select" id="{{ id_prefix }}_exonintron_input"
                 data-placeholder="Choose Exons or Introns..."
                 aria-label="Exon Intron List" multiple>
@@ -92,6 +113,13 @@
             <option value="{{ exon_intron.label }}">{{ exon_intron.label }}</option>
             {% endfor %}
         </select>
+    </div>
+    <div class="col-sm-3 col-md-2 text-start">
+        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+            Clear All</a>
+        <br>
+        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
+            Add All</a>
     </div>
 </fieldset>
 
@@ -108,13 +136,20 @@
         </button>
         Effect
     </legend>
-    <div class="col-md-8 col-sm-6">
+    <div class="col-sm-6 col-md-7">
         <select name="{{ id_prefix }}_effect_list" class="form-control chosen-select" id="{{ id_prefix }}_effect_input"
                 data-placeholder="Choose Effects..." aria-label="Effect List" multiple>
             {% for effect in effect_list %}
             <option value="{{ effect.label }}">{{ effect.label }}</option>
             {% endfor %}
         </select>
+    </div>
+    <div class="col-sm-3 col-md-2 text-start">
+        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+            Clear All</a>
+        <br>
+        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
+            Add All</a>
     </div>
 </fieldset>
 

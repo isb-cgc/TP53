@@ -408,10 +408,15 @@ button[aria-expanded="true"].btn-view-details::before{
     width: 45px;
 }
 .col-7-plus{
-    width: -webkit-calc(67% - 50px);
-    width: -moz-calc(67% - 50px);
+    width: -webkit-calc(58% - 45px);
+    width: -moz-calc(58% - 45px);
 /* WebKit */
-    width: -webkit-calc(67% - 50px);
+    width: -webkit-calc(58% - 45px);
 /* Standard */
-    width: calc(67% - 50px);
+    width: calc(58% - 45px);
 }
+
+/*ul.chosen-choices {*/
+    /*max-height: 500px;*/
+    /*overflow: auto;*/
+/*}*/

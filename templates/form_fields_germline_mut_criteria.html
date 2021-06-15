@@ -123,7 +123,7 @@
                         </button>
                         Family History
                     </legend>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6 col-md-7">
                         <select name="{{ id_prefix }}_family_hist_list" class="form-control chosen-select"
                                 id="{{ id_prefix }}_family_hist_input"
                                 data-placeholder="Choose Family Histories..."
@@ -132,6 +132,13 @@
                             <option value="{{ family_hist.label }}">{{ family_hist.label }}</option>
                             {% endfor %}
                         </select>
+                    </div>
+                    <div class="col-sm-3 col-md-2 text-start">
+                        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                            Clear All</a>
+                        <br>
+                        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                            Add All</a>
                     </div>
                 </fieldset>
                 <fieldset class="row mb-3">
@@ -147,7 +154,7 @@
                         </button>
                         Mode of Inheritance
                     </legend>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6 col-md-7">
                         <select name="{{ id_prefix }}_inh_mode_list" class="form-control chosen-select"
                                 id="{{ id_prefix }}_inh_mode_input"
                                 data-placeholder="Choose Modes of Inheritance..."
@@ -156,6 +163,13 @@
                             <option value="{{ inh_mode.label }}">{{ inh_mode.label }}</option>
                             {% endfor %}
                         </select>
+                    </div>
+                    <div class="col-sm-3 col-md-2 text-start">
+                        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                            Clear All</a>
+                        <br>
+                        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                            Add All</a>
                     </div>
                 </fieldset>
                 <fieldset class="row mb-3">
@@ -167,7 +181,7 @@
                         </button>
                         Family Case
                     </legend>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6 col-md-7">
                         <select name="{{ id_prefix }}_family_case_list" class="form-control chosen-select"
                                 id="{{ id_prefix }}_family_case_input"
                                 data-placeholder="Choose Family Cases..."
@@ -176,6 +190,13 @@
                             <option value="{{ family_case.label }}">{{ family_case.label }}</option>
                             {% endfor %}
                         </select>
+                    </div>
+                    <div class="col-sm-3 col-md-2 text-start">
+                        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                            Clear All</a>
+                        <br>
+                        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                            Add All</a>
                     </div>
                 </fieldset>
                 <fieldset class="row mb-3">
@@ -189,7 +210,7 @@
                         </button>
                         Country/Population
                     </legend>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6 col-md-7">
                         <select name="{{ id_prefix }}_country_list" class="form-control chosen-select"
                                 id="{{ id_prefix }}_country_input"
                                 data-placeholder="Choose Countries..."
@@ -198,6 +219,13 @@
                             <option value="{{ country.label }}">{{ country.label }}</option>
                             {% endfor %}
                         </select>
+                    </div>
+                    <div class="col-sm-3 col-md-2 text-start">
+                        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                            Clear All</a>
+                        <br>
+                        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                            Add All</a>
                     </div>
                 </fieldset>
             </div>

@@ -60,7 +60,7 @@
                         </button>
                         Country/Region
                     </legend>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6 col-md-7">
                         <select name="{{ id_prefix }}_country_list" class="form-control chosen-select"
                                 id="{{ id_prefix }}_country_input"
                                 data-placeholder="Choose Countries..."
@@ -70,6 +70,13 @@
                             {% endfor %}
                         </select>
                     </div>
+                    <div class="col-sm-3 col-md-2 text-start">
+                        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                            Clear All</a>
+                        <br>
+                        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                            Add All</a>
+                    </div>
                 </fieldset>
                 {% endwith %}
                 <div class="form-group row pt-5">
@@ -77,7 +84,7 @@
                         <div class="btn-toolbar float-end" role="toolbar"
                              aria-label="Somatic Mutation Search Button Toolbar">
                             <div class="btn-group me-2" role="group" aria-label="Reset button group">
-                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                <button type="reset" class="btn btn-outline-secondary"><i class="fas fa-redo"></i> Reset</button>
                             </div>
                             <!--<button type="submit" class="btn btn-outline-primary "><i-->
                             <!--class="fas fa-search"-->
@@ -101,7 +108,7 @@
                 <!--<div class="form-group row">-->
                     <!--<div class="col-sm-11">-->
                         <!--<div class="text-end">-->
-                            <!--<button type="reset" class="btn btn-outline-secondary">Reset</button>-->
+                            <!--<button type="reset" class="btn btn-outline-secondary"><i class="fas fa-redo"></i> Reset</button>-->
                             <!--<button type="submit" class="btn btn-outline-primary "><i class="fas fa-search"-->
                                                                                       <!--style="margin-right: 5px;"></i>Search-->
                             <!--</button>-->

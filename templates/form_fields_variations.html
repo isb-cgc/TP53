@@ -8,8 +8,7 @@
             </button>
             cDNA Descriptions
         </legend>
-
-        <div class="col-sm-8 paste-support">
+        <div class="col-sm-6 col-md-7 paste-support">
             <select name="{{ id_prefix }}_cdna_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_cdna_input"
                     data-placeholder="Choose or Copy-Paste cDNA Descriptions..." aria-label="cDNA List" multiple>
                 {% for c_desc in c_desc_list %}
@@ -17,6 +16,9 @@
                 {% endfor %}
             </select>
             <div class="form-text">Reference Sequence: NM_000546.5</div>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i> Clear All</a>
         </div>
 
     </fieldset>
@@ -32,7 +34,7 @@
             Protein Descriptions
         </legend>
 
-        <div class="col-sm-8 paste-support">
+        <div class="col-sm-6 col-md-7 paste-support">
             <select name="{{ id_prefix }}_p_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_p_input"
                     data-placeholder="Choose or Copy-Paste Protein Descriptions..." aria-label="Protein List"
                     multiple>
@@ -41,6 +43,10 @@
                 {% endfor %}
             </select>
             <div class="form-text">Reference Sequence: UniProt P04637</div>
+        </div>
+
+        <div class="col-sm-3  col-md-2 text-start">
+            <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i> Clear All</a>
         </div>
 
     </fieldset>
@@ -56,7 +62,7 @@
             Genomic Descriptions (hg19)
         </legend>
 
-        <div class="col-sm-8 paste-support">
+        <div class="col-sm-6 col-md-7 paste-support">
             <select name="{{ id_prefix }}_hg19_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_hg19_input"
                     data-placeholder="Choose or Copy-Paste Genomic Descriptions (hg19)..."
                     aria-label="Genomic List (hg19)"
@@ -67,6 +73,11 @@
             </select>
             <div class="form-text">Reference Sequence: GenBank NC_000017.10</div>
         </div>
+
+        <div class="col-sm-3 col-md-2 text-start">
+            <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i> Clear All</a>
+        </div>
+
     </fieldset>
 </div>
 <div id="{{ id_prefix }}_hg38_div" class="collapse type-collapse {{'' if id_prefix == 'gv' else 'show'}}" data-bs-parent="#gv_type_collapse">
@@ -80,7 +91,7 @@
             Genomic Descriptions (hg38)
         </legend>
 
-        <div class="col-sm-8 paste-support">
+        <div class="col-sm-6 col-md-7 paste-support">
             <select name="{{ id_prefix }}_hg38_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_hg38_input"
                     data-placeholder="Choose or Copy-Paste Genomic Descriptions (hg38)..."
                     aria-label="Genomic List (hg38)"
@@ -90,6 +101,10 @@
                 {% endfor %}
             </select>
             <div class="form-text">Reference Sequence: GenBank NC_000017.11</div>
+        </div>
+
+        <div class="col-sm-3 col-md-2 text-start">
+            <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i> Clear All</a>
         </div>
     </fieldset>
 </div>

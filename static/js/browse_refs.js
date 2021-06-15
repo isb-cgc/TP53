@@ -15,7 +15,6 @@ $(document).ready(function () {
         $(this).clone(true).appendTo($(this).parents('thead'))
     });
 
-
     ref_tables.each(function () {
         $($(this).find('thead tr')[1]).find('th').each(function (j) {
             if (j === REF_ID_COL_ORD || j === ABSTRACT_COL_ORD) {
@@ -25,7 +24,6 @@ $(document).ready(function () {
                 var title = $(this).text();
                 $(this).html('<input type="text" class="form-control-sm form-control" placeholder="' + title + '" />');
             }
-
             $('input', this).on('keyup change', function () {
                 var table = tables.table($(this).parents('table'));
                 if (table.column(j).search() !== this.value) {
@@ -94,13 +92,19 @@ $(document).ready(function () {
 
     $(".ref-select").on('change', function (evt, params) {
         // if reference selection has been deleted from the chosen.js UI update the modal's checkboxes
-        var deselected_ref_id = params['deselected'];
-        var selected_checkboxes = $(this).parents('fieldset').siblings('.modal').find('table input:checked[value="'+deselected_ref_id+'"]');
-        selected_checkboxes.prop("checked", false);
-        selected_checkboxes.parents('tr').removeClass('selected');
-        $(this).find('option[value="' + deselected_ref_id + '"]').remove();
-        $(this).prop('disabled', !$(this).find('option').length);
-        $(this).trigger('chosen:updated');
+        if (params){
+            var deselected_ref_id = params['deselected'];
+            var selected_checkboxes = $(this).parents('fieldset').siblings('.modal').find('table input:checked[value="'+deselected_ref_id+'"]');
+            selected_checkboxes.prop("checked", false);
+            selected_checkboxes.parents('tr').removeClass('selected');
+            $(this).find('option[value="' + deselected_ref_id + '"]').remove();
+            $(this).prop('disabled', !$(this).find('option').length);
+            $(this).trigger('chosen:updated');
+        }
+        else{
+            // if event is triggered by clicking on 'clear-all'
+            $('.reset-ref').trigger('click');
+        }
     });
 
     $('input.ref-check-all').on('change', function (e) {
@@ -109,15 +113,6 @@ $(document).ready(function () {
         var table = tables.table($(this).parents('table'));
         selectFilteredRows(table, is_checked);
     });
-
-    // ref_tables.on( 'draw.dt', function () {
-    //     console.log('redrawn');
-    //     // deselect/reset the .ref-check-all checkbox whenever the table is redrawn by column searches
-    //     var ref_check_all = $(this).find('input.ref-check-all');
-    //     if(ref_check_all.is(':checked'))
-    //         ref_check_all.prop('checked', false).change();
-    // });
-
 
 });
 

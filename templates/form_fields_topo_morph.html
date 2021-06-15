@@ -14,7 +14,7 @@
         </button>
         Topography
     </legend>
-    <div class="col-sm-8">
+    <div class="col-sm-6 col-md-7 text-start">
         <select name="{{ id_prefix }}_topo_list" class="form-control chosen-select topo-morph-select" id="{{ id_prefix }}_topo_input"
                 data-placeholder="Choose Topographies..."
                 data-topo-morph-assc="{{ topo_morph_assc }}"
@@ -24,6 +24,13 @@
             <option value="{{ topo_item.label }}">{{ topo_item.label }}</option>
             {% endfor %}
         </select>
+    </div>
+    <div class="col-sm-3 col-md-2 text-start">
+        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+            Clear All</a>
+        <br>
+        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
+            Add All</a>
     </div>
 </fieldset>
 <fieldset class="row mb-3">
@@ -38,7 +45,7 @@
         </button>
         Morphology
     </legend>
-    <div class="col-sm-8">
+    <div class="col-sm-6 col-md-7">
         <select name="{{ id_prefix }}_morph_list" class="form-control chosen-select" id="{{ id_prefix }}_morph_input"
                 data-placeholder="Choose Morphologies..."
                 aria-label="Morphology List" multiple>
@@ -46,5 +53,12 @@
             <option value="{{ morph_item.label }}">{{ morph_item.label }}</option>
             {% endfor %}
         </select>
+    </div>
+    <div class="col-sm-3 col-md-2 text-start">
+        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+            Clear All</a>
+        <br>
+        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
+            Add All</a>
     </div>
 </fieldset>

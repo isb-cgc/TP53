@@ -19,7 +19,6 @@ $(document).ready(function () {
         no_results_text: "Oops, nothing found!",
         width: "100%",
         search_contains: true,
-        // inherit_select_classes: true,
         max_shown_results: 300
     });
 
@@ -69,7 +68,24 @@ $(document).ready(function () {
        });
    }
 
+   $('a.clear-all-select').on('click', function (e) {
+       e.preventDefault();
+       $(this).parents('fieldset').find('select.chosen-select')
+           .val('')
+           .trigger('chosen:updated')
+           .trigger('change');
+   });
 
+   $('a.add-all-select').on('click', function (e) {
+       e.preventDefault();
+       var select_box = $(this).parents('fieldset').find('select.chosen-select');
+       select_box
+           .find('option')
+           .prop('selected', true);
+       select_box
+           .trigger('chosen:updated')
+           .trigger('change');
+   });
 
 });
 
