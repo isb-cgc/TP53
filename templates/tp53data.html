@@ -143,5 +143,14 @@
         {% endblock %}
     </main>
 </div>
-
+<div class="spinner">
+        <div class="spinner-group d-flex justify-content-center">
+            {% for n in range(6) %}
+                {% set color_factor = 10 * n %}
+            <div class="spinner-grow" style="color:hsl(200, 40%, {{ color_factor }}%)" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            {% endfor %}
+        </div>
+</div>
 {% endblock %}

@@ -32,7 +32,7 @@
                 {% if not mut_desc %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
-                <table id="mutation-description" class="table table-sm result-table">
+                <table id="mutation-description" class="table table-sm small-font">
                     <thead>
                     <tr>
                         <th class="th-help-g_description_GRCh38">Genomic Description (hg38)</th>
@@ -71,7 +71,7 @@
                 {% if query_result.splice_pred|length == 0 %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
-                <table id="predicted-effect-on-splicing" class="table table-sm result-table">
+                <table id="predicted-effect-on-splicing" class="table table-sm small-font">
                     <thead>
                     <tr>
                         <th class="th-help-SiteType">Site Type</th>
@@ -102,7 +102,7 @@
                 {% if not prot_desc %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
-                <table id="protein-description" class="table table-sm result-table">
+                <table id="protein-description" class="table table-sm small-font">
                     <thead>
                     <tr>
                         <th class="th-help-StructuralMotif">Structural Motif</th>
@@ -137,7 +137,7 @@
                 {% if not sys_assess %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
-                <table id="assessment" class="table table-sm result-table">
+                <table id="assessment" class="table table-sm small-font">
                     <thead>
                     <tr>
                         <th class="th-help-TA_Ishioka_Yeast">WAF1</th>
@@ -182,7 +182,7 @@
                 {% if not prot_pred %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
-                <table id="predicted-effect-on-protein" class="table table-sm result-table">
+                <table id="predicted-effect-on-protein" class="table table-sm small-font">
                     <thead>
                     <tr>
                         <th class="th-help-TA_class">Transactivation Class</th>
@@ -217,7 +217,7 @@
                 {% if query_result.p53_pred|length == 0 %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
-                <table id="predicted-effect-on-p53" class="table table-sm result-table">
+                <table id="predicted-effect-on-p53" class="table table-sm small-font">
                     <thead>
                     <tr>
                         <th class="th-help-MainIsoforms">TAp53 Alpha</th>
@@ -256,7 +256,7 @@
                 {% if query_result.vars_act|length == 0 %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
-                <table id="various-activities" class="table table-sm result-table clientside-processed">
+                <table id="various-activities" class="table table-sm small-font clientside-processed">
                     <thead>
 
                     <tr>
@@ -293,7 +293,7 @@
                 {% if query_result.mouse|length == 0 %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
-                <table id="mouse-models" class="table table-sm  result-table clientside-processed">
+                <table id="mouse-models" class="table table-sm  small-font clientside-processed">
                     <thead>
                     <tr>
                         <th class="th-help-ModelDescriptor">Model descriptor</th>
@@ -324,7 +324,7 @@
                 {% if query_result.induced|length == 0 %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}
-                <table id="induced-mutations" class="table table-sm result-table">
+                <table id="induced-mutations" class="table table-sm small-font">
                     <thead>
                     <tr>
                         <th class="th-help-ExpIndMutExposure">Exposure</th>

@@ -3,7 +3,7 @@
 
 $(document).ready(function () {
     $('.serverside-processed').DataTable({
-        dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+        dom: "<'row'<'col-sm-12 col-md-6'l>>" +
                 "<'row d-none'<'col-sm-12 col-md-4'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -14,7 +14,6 @@ $(document).ready(function () {
                 // orthogonal: 'export'
             }}],
         pageLength: 10,
-        processing: true,
         serverSide: true,
         ajax: {
             url: "/cl_query",
@@ -25,12 +24,16 @@ $(document).ready(function () {
             dataType: "json",
             dataSrc: "data"
         },
+        preDrawCallback: function(){
+            $('.spinner').show();
+        },
+
         drawCallback: function () {
-            enableTooltip();
+            $('.spinner').hide();
             $('a.do-gvsearch').on('click', function(e){
                 e.preventDefault();
                 displayGeneVariations($(this).data('gv-type'), $(this).text());
-            })
+            });
         },
         order: [[1, "asc"]],
         columns: [

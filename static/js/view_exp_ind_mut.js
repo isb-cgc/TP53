@@ -7,8 +7,12 @@ const MUT_ID_COL_ORD = 9;
 
 $(document).ready(function () {
     const selectedRowSet = new Set();
-    var table = $('#eim-result-table').DataTable(
+    var table = $('#eim-result-table')
+        .DataTable(
         {
+            initComplete: function (settings, json) {
+                $('.spinner').hide();
+            },
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
                 "<'row d-none'<'col-sm-12 col-md-4'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
@@ -72,7 +76,6 @@ $(document).ready(function () {
             },
             rowCallback: function (row, data) {
                 if (selectedRowSet.has(data.row_id)) {
-                // if (selectedRowSet.has(data[MUT_ID_COL_ORD])) {
                     selectRow(row);
                     $(row).find('.row-check').prop('checked', true);
                 }

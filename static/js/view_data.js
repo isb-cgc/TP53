@@ -25,6 +25,9 @@ $(document).ready(function () {
         {
             orderCellsTop: true,
             fixedHeader: true,
+            initComplete: function (settings, json) {
+                $('.spinner').hide();
+            },
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
                 "<'row d-none'<'col-sm-12 col-md-4'B>>" +
                 "<'row'<'col-sm-12'tr>>" +

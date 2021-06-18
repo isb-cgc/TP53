@@ -38,7 +38,7 @@
         <div class="container-fluid">
 
             <a class="navbar-brand" href="/">
-                <i class="mx-2 fas fa-database"></i>
+                <i class="fas fa-asterisk"></i>
                 TP53
             </a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
@@ -50,25 +50,25 @@
             <div class="navbar-collapse collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item mx-2">
-                        <a class="nav-link" id="tp53data" href="search_tp53data"><i class="me-2 fas fa-search"></i>Data Exploration</a>
+                        <a class="nav-link" id="tp53data" href="search_tp53data"><i class="fas fa-search"></i> Data Exploration</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" id="help" href="help"><i class="me-2 far fa-question-circle"></i>Help</a>
+                        <a class="nav-link" id="help" href="help"><i class="fas fa-hand-paper"></i> Help</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" id="resources" href="resources"><i class="me-2 fas fa-book-open"></i>Resources</a>
+                        <a class="nav-link" id="resources" href="resources"><i class="fas fa-book-open"></i> Resources</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" id="refs_corner" href="refs_corner"><i class="me-2 fas fa-book"></i>Refs Corner</a>
+                        <a class="nav-link" id="refs_corner" href="refs_corner"><i class="fas fa-book"></i> Refs Corner</a>
                     </li>
                     <!--<li class="nav-item mx-2">-->
                         <!--<a class="nav-link" id="ppl_events" href="ppl_events"><i class="me-2 far fa-newspaper"></i>People & Events</a>-->
                     <!--</li>-->
                     <li class="nav-item mx-2">
-                        <a class="nav-link" id="about" href="about"><i class="me-2 fas fa-dna"></i>About</a>
+                        <a class="nav-link" id="about" href="about"><i class="fas fa-dna"></i> About</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" id="contact" href="contact"><i class="me-2 fas fa-envelope"></i>Contact</a>
+                        <a class="nav-link" id="contact" href="contact"><i class="fas fa-envelope"></i> Contact</a>
                     </li>
                 </ul>
                 <!--<form class="d-flex">-->
@@ -83,17 +83,6 @@
 <div class="container-fluid">
     {% block content %}
     {% endblock %}
-
-    <div class="spinner" style="display: none;">
-        <div class="spinner-group d-flex justify-content-center">
-            {% for n in range(6) %}
-                {% set color_factor = 10 * n %}
-            <div class="spinner-grow" style="color:hsl(200, 40%, {{ color_factor }}%)" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
 </div>
 
 <footer class="text-muted py-5">

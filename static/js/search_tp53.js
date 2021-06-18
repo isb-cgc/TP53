@@ -3,6 +3,8 @@
 
 
 $(document).ready(function () {
+    if ($('table.result-table').length === 0)
+        $('.spinner').hide();
     enableTooltip();
 
     $(":reset").on('click', function () {

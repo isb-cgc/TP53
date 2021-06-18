@@ -1052,7 +1052,7 @@ def prevalence_somatic_stats():
         error_msg = "Sorry, query job has timed out."
     # query_result = {'data': data, 'msg': error_msg}
 
-    return render_template("prevalence_somatic_stats.html", criteria=None, graph_data=graph_data, title='Statistics on Somatic Mutations', subtitle='Somatic Mutation Prevalence by Tumor Site')
+    return render_template("prevalence_somatic_stats.html", criteria=[], graph_data=graph_data, title='Statistics on Somatic Mutations', subtitle='Somatic Mutation Prevalence by Tumor Site')
 
 
 @app.route("/results_somatic_mutation", methods=['GET', 'POST'])
