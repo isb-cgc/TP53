@@ -25,6 +25,7 @@ import requests
 # import datetime
 import sys
 import copy
+import re
 
 # import json
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
@@ -306,7 +307,7 @@ project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
 bq_builder.set_project_dataset(proj_id=project_id, d_set=BQ_DATASET)
 
 bigquery_client = bigquery.Client()
-TP53_DATA_DIR_URL = os.environ.get('TP53_DATA_DIR_URL', 'https://storage.cloud.google.com/tp53-data-files')
+TP53_DATA_DIR_URL = os.environ.get('TP53_DATA_DIR_URL', 'https://storage.googleapis.com/tp53-data-files')
 
 @app.route("/")
 def home():
@@ -803,6 +804,7 @@ def cl_query():
     }
 
     return jsonify(data)
+
 
 
 @app.route("/search_tp53data")
@@ -1478,22 +1480,8 @@ def view_exp_ind_mut():
 @app.route("/view_data", methods = ['GET'])
 def view_data():
     bq_view_name = request.args.get('bq_view_name', None)
-    if bq_view_name:
-        sql_stm = bq_builder.build_simple_query(criteria=[], table=bq_view_name, column_filters=['*'])
-        print(sql_stm)
-        query_job = bigquery_client.query(sql_stm)
-        data = []
-        error_msg = None
-        try:
-            data = query_job.result(timeout=30)
-        except BadRequest:
-            error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
-        except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
-            error_msg = "Sorry, query job has timed out."
-        query_result = {'data': data, 'msg': error_msg}
-
-    print(data)
-    return render_template("view_data.html", bq_view_name=bq_view_name, query_result=query_result)
+    columns, data = load_csv_file('{filename}.csv'.format(filename=bq_view_name))
+    return render_template("view_data.html", bq_view_name=bq_view_name, columns=columns, data=data)
 
 @app.route("/view_mouse")
 def view_mouse():
@@ -1789,6 +1777,24 @@ def load_list(list_file, json=False, limit=None):
         data_list = []
     return data_list
 
+def load_csv_file(list_file):
+    column_list = []
+    data_list = []
+
+    try:
+        file_path = TP53_DATA_DIR_URL + '/' + list_file
+        file_data = requests.get(file_path)
+        lines = file_data.text.splitlines()
+        for col in re.split(r',\s*(?![^"]*\"\,)', lines[0]):
+            column_list.append(col)
+        for line in lines[1:]:
+
+            cols = re.split(r',\s*(?![^"]*\"\,)', line)
+            cols.insert(0, '')
+            data_list.append([col.strip('"') for col in cols])
+    except:
+        data_list = []
+    return column_list, data_list
 
 def setup_app(app):
     global m_c_desc_list

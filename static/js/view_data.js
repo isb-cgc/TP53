@@ -23,6 +23,7 @@ $(document).ready(function () {
 
     var table = $('#view-data-table').DataTable(
         {
+            data: dataSet,
             orderCellsTop: true,
             fixedHeader: true,
             initComplete: function (settings, json) {
@@ -38,9 +39,14 @@ $(document).ready(function () {
                     columns: ':not(:first-child)'
                 }
             }],
-            columnDefs: [
-                {orderable: false, targets: 0}
-            ],
+            columnDefs: [{
+                targets: 0,
+                data: null,
+                render: function() {
+                    return '<input class="form-check-input row-check" type="checkbox" aria-label="Select Row">';
+                },
+                orderable: false,
+            }],
             order: [[1, "asc"]],
             scrollX: true,
             select: {
