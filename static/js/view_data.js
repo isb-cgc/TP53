@@ -26,6 +26,9 @@ $(document).ready(function () {
             data: dataSet,
             orderCellsTop: true,
             fixedHeader: true,
+            deferRender: true,
+            // deferRender: totalRows > 5000,
+            // deferLoading: totalRows,
             initComplete: function (settings, json) {
                 $('.spinner').hide();
             },

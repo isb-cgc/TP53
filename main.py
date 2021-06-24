@@ -26,6 +26,7 @@ import requests
 import sys
 import copy
 import re
+import csv
 
 # import json
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
@@ -1785,13 +1786,11 @@ def load_csv_file(list_file):
         file_path = TP53_DATA_DIR_URL + '/' + list_file
         file_data = requests.get(file_path)
         lines = file_data.text.splitlines()
-        for col in re.split(r',\s*(?![^"]*\"\,)', lines[0]):
-            column_list.append(col)
-        for line in lines[1:]:
-
-            cols = re.split(r',\s*(?![^"]*\"\,)', line)
-            cols.insert(0, '')
-            data_list.append([col.strip('"') for col in cols])
+        reader = csv.reader(lines, delimiter=',')
+        column_list = next(reader)
+        data_list = list(reader)
+        for row in data_list:
+            row.insert(0, '')
     except:
         data_list = []
     return column_list, data_list
