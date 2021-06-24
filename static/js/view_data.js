@@ -27,8 +27,6 @@ $(document).ready(function () {
             orderCellsTop: true,
             fixedHeader: true,
             deferRender: true,
-            // deferRender: totalRows > 5000,
-            // deferLoading: totalRows,
             initComplete: function (settings, json) {
                 $('.spinner').hide();
             },
@@ -69,13 +67,6 @@ $(document).ready(function () {
         $('button.buttons-csv').trigger("click");
     });
 
-    // table.on('draw.dt', function () {
-        // deselect/reset the .ref-check-all checkbox whenever the table is redrawn by column searches
-        // console.log('panda');
-        // var check_all = $(this).find('input.check-all');
-        // if(check_all.is(':checked'))
-        //     check_all.prop('checked', false).change();
-    // });
 
     var selectAllRows = function (bool) {
         var selection = '';
