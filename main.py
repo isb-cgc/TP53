@@ -923,18 +923,29 @@ def mut_details():
                             'PUMAnWT_Saos2': mut_desc['PUMAnWT_Saos2'],
                             'MUT_ID': mut_desc['MUT_ID'],
                         }
-                    prot_pred = {
-                        'TransactivationClass': mut_desc['TransactivationClass'],
-                        'DNEclass': mut_desc['DNEclass'],
-                        'DNE_LOFclass': mut_desc['DNE_LOFclass'],
-                        'AGVGDClass': mut_desc['AGVGDClass'],
-                        'BayesDel': mut_desc['BayesDel'],
-                        'REVEL': mut_desc['REVEL'],
-                        'SIFTClass': mut_desc['SIFTClass'],
-                        'Polyphen2': mut_desc['Polyphen2'],
-                        'StructureFunctionClass': mut_desc['StructureFunctionClass'],
-                        'MUT_ID': mut_desc['MUT_ID']
-                    }
+
+                    if mut_desc['TransactivationClass'] != 'NA' or\
+                        mut_desc['DNEclass'] != 'NA' or\
+                        mut_desc['DNE_LOFclass'] != 'NA' or\
+                        mut_desc['AGVGDClass'] != 'NA' or\
+                        mut_desc['BayesDel'] or\
+                        mut_desc['REVEL'] or\
+                        mut_desc['SIFTClass'] != 'NA' or\
+                        mut_desc['Polyphen2'] != 'NA' or\
+                        mut_desc['StructureFunctionClass'] != 'NA':
+
+                        prot_pred = {
+                            'TransactivationClass': mut_desc['TransactivationClass'],
+                            'DNEclass': mut_desc['DNEclass'],
+                            'DNE_LOFclass': mut_desc['DNE_LOFclass'],
+                            'AGVGDClass': mut_desc['AGVGDClass'],
+                            'BayesDel': mut_desc['BayesDel'],
+                            'REVEL': mut_desc['REVEL'],
+                            'SIFTClass': mut_desc['SIFTClass'],
+                            'Polyphen2': mut_desc['Polyphen2'],
+                            'StructureFunctionClass': mut_desc['StructureFunctionClass'],
+                            'MUT_ID': mut_desc['MUT_ID']
+                        }
                     prot_desc = {
                         'Structural_motif': mut_desc['Structural_motif'],
                         'Domain_function': mut_desc['Domain_function'],
