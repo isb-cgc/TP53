@@ -22,13 +22,10 @@ from google.api_core.exceptions import BadRequest
 import bq_builder
 import concurrent.futures
 import requests
-# import datetime
 import sys
 import copy
-import re
 import csv
 
-# import json
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
 M_C_DESC_FILE = 'M_C_DESC.TXT.LIST'
 M_P_DESC_FILE = 'M_P_DESC.TXT.LIST'
@@ -884,71 +881,77 @@ def mut_details():
                                                                    join_column=join_queries[t_id]['join_column'],
                                                                    ord_column=join_queries[t_id]['ord_column'])
 
-    error_msg = {}
+    error_msg = None
     query_result = {}
-    for t_id in sql_stms:
-        try:
-            query_jobs = bigquery_client.query(sql_stms[t_id])
-            query_result[t_id] = list(query_jobs.result(timeout=30))
-        except BadRequest:
-            error_msg[
-                t_id] = "There was a problem with your search input. Please revise your search criteria and search again."
-        except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
-            error_msg[t_id] = "Sorry, query job has timed out."
-
-    mut_desc = {}
     sys_assess = {}
-    prot_desc={}
-    prot_pred={}
+    prot_desc = {}
+    prot_pred = {}
     tsv_data = None
-    if query_result['mutation'] and query_result['mutation'][0]:
-        mut_desc = query_result['mutation'][0]
-        tsv_data = "data:text/tab-separated-values;charset=utf-8,"
-        tsv_data += "\t".join(f'{k}' for k in list(mut_desc.keys()))
-        tsv_data += "\n"
-        tsv_data += "\t".join(f'{k}' for k in list(mut_desc.values()))
+    try:
+        query_job = bigquery_client.query(sql_stms['mutation'])
+        print(sql_stms['mutation'])
+        query_result['mutation'] = list(query_job.result(timeout=30))
+        del sql_stms['mutation']
+        if query_result['mutation'] and query_result['mutation'][0]:
+            mut_desc = query_result['mutation'][0]
+            tsv_data = "data:text/tab-separated-values;charset=utf-8,"
+            tsv_data += "\t".join(f'{k}' for k in list(mut_desc.keys()))
+            tsv_data += "\n"
+            tsv_data += "\t".join(f'{k}' for k in list(mut_desc.values()))
+            if mut_desc['ProtDescription']:
+                if mut_desc['ProtDescription'] == 'p.?':
+                    del sql_stms['splice_pred']
+                    del sql_stms['p53_pred']
+                    del sql_stms['vars_act']
+                    del sql_stms['mouse']
+                else:
+                    if mut_desc['WAF1nWT'] is not None:
+                        sys_assess = {
+                            'WAF1nWT': mut_desc['WAF1nWT'],
+                            'MDM2nWT': mut_desc['MDM2nWT'],
+                            'BAXnWT': mut_desc['BAXnWT'],
+                            'h1433snWT': mut_desc['h1433snWT'],
+                            'AIP1nWT': mut_desc['AIP1nWT'],
+                            'GADD45nWT': mut_desc['GADD45nWT'],
+                            'NOXAnWT': mut_desc['NOXAnWT'],
+                            'P53R2nWT': mut_desc['P53R2nWT'],
+                            'WAF1nWT_Saos2': mut_desc['WAF1nWT_Saos2'],
+                            'MDM2nWT_Saos2': mut_desc['MDM2nWT_Saos2'],
+                            'BAXnWT_Saos2': mut_desc['BAXnWT_Saos2'],
+                            'h1433snWT_Saos2': mut_desc['h1433snWT_Saos2'],
+                            'AIP1nWT_Saos2': mut_desc['AIP1nWT_Saos2'],
+                            'PUMAnWT_Saos2': mut_desc['PUMAnWT_Saos2'],
+                            'MUT_ID': mut_desc['MUT_ID'],
+                        }
+                    prot_pred = {
+                        'TransactivationClass': mut_desc['TransactivationClass'],
+                        'DNEclass': mut_desc['DNEclass'],
+                        'DNE_LOFclass': mut_desc['DNE_LOFclass'],
+                        'AGVGDClass': mut_desc['AGVGDClass'],
+                        'BayesDel': mut_desc['BayesDel'],
+                        'REVEL': mut_desc['REVEL'],
+                        'SIFTClass': mut_desc['SIFTClass'],
+                        'Polyphen2': mut_desc['Polyphen2'],
+                        'StructureFunctionClass': mut_desc['StructureFunctionClass'],
+                        'MUT_ID': mut_desc['MUT_ID']
+                    }
+                    prot_desc = {
+                        'Structural_motif': mut_desc['Structural_motif'],
+                        'Domain_function': mut_desc['Domain_function'],
+                        'Residue_function': mut_desc['Residue_function'],
+                        'Hotspot': mut_desc['Hotspot'],
+                        'Mut_rate': mut_desc['Mut_rate'],
+                        'SwissProtLink': mut_desc['SwissProtLink'],
+                        'MUT_ID': mut_desc['MUT_ID']
+                    }
+        for t_id in sql_stms:
+            query_job = bigquery_client.query(sql_stms[t_id])
+            query_result[t_id] = list(query_job.result(timeout=30))
+    except BadRequest:
+        error_msg = "There was a problem while running the query: BadRequest"
+    except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
+        error_msg = "Sorry, query job has timed out."
 
-    if mut_desc['ProtDescription'] and mut_desc['ProtDescription'] != 'p.?':
-        if mut_desc['WAF1nWT']:
-            sys_assess = {
-                'WAF1nWT': mut_desc['WAF1nWT'],
-                'MDM2nWT': mut_desc['MDM2nWT'],
-                'BAXnWT': mut_desc['BAXnWT'],
-                'h1433snWT': mut_desc['h1433snWT'],
-                'AIP1nWT': mut_desc['AIP1nWT'],
-                'GADD45nWT': mut_desc['GADD45nWT'],
-                'NOXAnWT': mut_desc['NOXAnWT'],
-                'P53R2nWT': mut_desc['P53R2nWT'],
-                'WAF1nWT_Saos2': mut_desc['WAF1nWT_Saos2'],
-                'MDM2nWT_Saos2': mut_desc['MDM2nWT_Saos2'],
-                'BAXnWT_Saos2': mut_desc['BAXnWT_Saos2'],
-                'h1433snWT_Saos2': mut_desc['h1433snWT_Saos2'],
-                'AIP1nWT_Saos2': mut_desc['AIP1nWT_Saos2'],
-                'PUMAnWT_Saos2': mut_desc['PUMAnWT_Saos2'],
-                'MUT_ID': mut_desc['MUT_ID'],
-            }
-
-        prot_pred = {
-            'TransactivationClass': mut_desc['TransactivationClass'],
-            'DNEclass': mut_desc['DNEclass'],
-            'DNE_LOFclass': mut_desc['DNE_LOFclass'],
-            'AGVGDClass': mut_desc['AGVGDClass'],
-            'BayesDel': mut_desc['BayesDel'],
-            'REVEL': mut_desc['REVEL'],
-            'SIFTClass': mut_desc['SIFTClass'],
-            'Polyphen2': mut_desc['Polyphen2'],
-            'StructureFunctionClass': mut_desc['StructureFunctionClass'],
-            'MUT_ID': mut_desc['MUT_ID']
-        }
-        prot_desc = {
-            'Structural_motif': mut_desc['Structural_motif'],
-            'Domain_function': mut_desc['Domain_function'],
-            'Residue_function': mut_desc['Residue_function'],
-            'Hotspot': mut_desc['Hotspot'],
-            'Mut_rate': mut_desc['Mut_rate'],
-            'SwissProtLink': mut_desc['SwissProtLink'],
-            'MUT_ID': mut_desc['MUT_ID']
-        }
     return render_template("mut_details.html",
                            query_result=query_result,
                            mut_desc=mut_desc,

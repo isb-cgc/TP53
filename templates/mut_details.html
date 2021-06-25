@@ -18,14 +18,39 @@
     <!--</div>-->
     <div class="float-end">
         <button data-download="{{ tsv_data }}" class="text-start btn btn-sm btn-outline-secondary download-btn">
-            <i class="fas fa-download"></i> Download Selected Dataset
+            <i class="fas fa-download"></i> Download
         </button>
     </div>
     <div id="mut_details">
-        <h2>Mutation Details: {{ mut_desc.c_description }}</h2>
+        <h2>Mutation Details: {{ mut_desc.c_description }} ; {{ mut_desc.ProtDescription }}</h2>
 
         <hr>
-
+        {% if mut_desc and mut_desc.Polymorphism == 'validated' %}
+        <div class="pt-3 px-3">
+            <span class="fw-light">
+                This gene is a <strong>validated polymorphism</strong>.
+            </span>
+            {% if mut_desc.SNPlink or mut_desc.CLINVARlink or (mut_desc.PubMedlink and mut_desc.PubMedlink != 'NA') %}
+            <span class="fw-light fst-italic">
+                Check detailed population frequency or disease association in :
+            </span>
+            {% endif %}
+            {% if mut_desc.SNPlink %}
+            <a class="btn-tiny btn btn-outline-secondary"
+               href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs={{mut_desc.SNPlink}}" target="_blank">SNP
+                Database</a>
+            {% endif %}
+            {% if mut_desc.CLINVARlink %}
+            <a class="btn-tiny btn btn-outline-secondary"
+               href="http://p53.bii.a-star.edu.sg/aboutp53/snps/snpdetail.php?geneid=X54156&snppos={{mut_desc.CLINVARlink}}"
+               target="_blank">p53 Knowledgebase</a>
+            {% endif %}
+            {% if mut_desc.PubMedlink and mut_desc.PubMedlink != 'NA' %}
+            <a class="btn-tiny btn btn-outline-secondary"
+               href="https://www.ncbi.nlm.nih.gov/pubmed/{{mut_desc.PubMedlink}}" target="_blank">PubMed</a>
+            {% endif %}
+        </div>
+        {% endif %}
         <div class="p-3">
             <div class="my-2 p-3 bg-light rounded-2">
                 <h3>Mutation Description</h3>
@@ -158,20 +183,20 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>{{ sys_assess.WAF1nWT or '' }}</td>
-                        <td>{{ sys_assess.MDM2nWT or '' }}</td>
-                        <td>{{ sys_assess.BAXnWT or '' }}</td>
-                        <td>{{ sys_assess.h1433snWT or '' }}</td>
-                        <td>{{ sys_assess.AIP1nWT or '' }}</td>
-                        <td>{{ sys_assess.GADD45nWT or '' }}</td>
-                        <td>{{ sys_assess.NOXAnWT or '' }}</td>
-                        <td>{{ sys_assess.P53R2nWT or '' }}</td>
-                        <td>{{ sys_assess.WAF1nWT_Saos2 or '' }}</td>
-                        <td>{{ sys_assess.MDM2nWT_Saos2 or '' }}</td>
-                        <td>{{ sys_assess.BAXnWT_Saos2 or '' }}</td>
-                        <td>{{ sys_assess.h1433snWT_Saos2 or '' }}</td>
-                        <td>{{ sys_assess.AIP1nWT_Saos2 or '' }}</td>
-                        <td>{{ sys_assess.PUMAnWT_Saos2 or '' }}</td>
+                        <td>{{ sys_assess.WAF1nWT if sys_assess.WAF1nWT != None }}</td>
+                        <td>{{ sys_assess.MDM2nWT if sys_assess.MDM2nWT != None }}</td>
+                        <td>{{ sys_assess.BAXnWT if sys_assess.BAXnWT != None }}</td>
+                        <td>{{ sys_assess.h1433snWT if sys_assess.h1433snWT != None }}</td>
+                        <td>{{ sys_assess.AIP1nWT if sys_assess.AIP1nWT != None }}</td>
+                        <td>{{ sys_assess.GADD45nWT if sys_assess.GADD45nWT != None }}</td>
+                        <td>{{ sys_assess.NOXAnWT if sys_assess.NOXAnWT != None }}</td>
+                        <td>{{ sys_assess.P53R2nWT if sys_assess.P53R2nWT != None}}</td>
+                        <td>{{ sys_assess.WAF1nWT_Saos2 if sys_assess.WAF1nWT_Saos2 != None }}</td>
+                        <td>{{ sys_assess.MDM2nWT_Saos2 if sys_assess.MDM2nWT_Saos2 != None }}</td>
+                        <td>{{ sys_assess.BAXnWT_Saos2 if sys_assess.BAXnWT_Saos2 != None }}</td>
+                        <td>{{ sys_assess.h1433snWT_Saos2 if sys_assess.h1433snWT_Saos2 != None }}</td>
+                        <td>{{ sys_assess.AIP1nWT_Saos2 if sys_assess.AIP1nWT_Saos2 != None }}</td>
+                        <td>{{ sys_assess.PUMAnWT_Saos2 if sys_assess.PUMAnWT_Saos2 != None }}</td>
                     </tr>
                     </tbody>
                 </table>

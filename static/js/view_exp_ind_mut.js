@@ -1,10 +1,6 @@
 /* view_exp_ind_mut.js*/
 'use strict';
 
-// const CHECKBOX_COL_ORD = 0;
-const EXPOSURE_COL_ORD = 1;
-const MUT_ID_COL_ORD = 9;
-
 $(document).ready(function () {
     const selectedRowSet = new Set();
     var table = $('#eim-result-table')
@@ -23,7 +19,7 @@ $(document).ready(function () {
                     columns: ':not(:first-child):not(:last-child)'
                 }
             }],
-            order: [[EXPOSURE_COL_ORD, "asc"]],
+            order: [[1, "asc"]],
             columns: [
                 {
                     data: 'mut_id',
@@ -101,7 +97,7 @@ $(document).ready(function () {
         .on('deselect', function (e, dt, type, indexes) {
             var rows_data = table.rows(indexes).data().toArray();
             for (var i = 0; i < rows_data.length; i++) {
-                selectedRowSet.delete(rows_data[i][MUT_ID_COL_ORD]);
+                selectedRowSet.delete(rows_data[i].row_id);
             }
             updateActionButtonGroups(selectedRowSet.size);
         });

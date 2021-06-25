@@ -241,9 +241,9 @@ h1 a {
     position: fixed;
     top: 50vh;
     transform: translateY(-50%);
-    left: -webkit-calc(50% - 96px);
-    left: -moz-calc(50% - 96px);
-    left: calc(50% - 96px);
+    left: -webkit-calc(50% - 72px);
+    left: -moz-calc(50% - 72px);
+    left: calc(50% - 72px);
 }
 
 /*.col-point97{*/
