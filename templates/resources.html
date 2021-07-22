@@ -9,13 +9,13 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/molstar.js') }}"></script>
 <!--<script type="module" src="{{ url_for('static', filename='js/index.js') }}"></script>-->
 <!--<style>-->
-    <!--#app {-->
-        <!--position: absolute;-->
-        <!--left: 100px;-->
-        <!--top: 100px;-->
-        <!--width: 800px;-->
-        <!--height: 600px;-->
-    <!--}-->
+<!--#app {-->
+<!--position: absolute;-->
+<!--left: 100px;-->
+<!--top: 100px;-->
+<!--width: 800px;-->
+<!--height: 600px;-->
+<!--}-->
 <!--</style>-->
 
 {% endblock %}
@@ -26,7 +26,7 @@
         <div class="position-sticky pt-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#sequences">TP53 Sequences</a>
+                    <a class="nav-link active" aria-current="page" href="#sequences"><em>TP53</em> Sequences</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#mutation">Mutation Nomenclatures</a>
@@ -49,6 +49,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#others">Other Databases</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#books">Books</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -57,13 +60,13 @@
     <main class="main-panel">
         <h1>Resources</h1>
         <div id="sequences" class="jump-div">
-            <h2>tp53 Sequences</h2>
+            <h2><em>TP53</em> Sequences</h2>
             <hr>
             <div class="p-3">
-                <h3>Reference sequences used to annotate TP53 gene variations</h3>
+                <h3>Reference sequences used to annotate <em>TP53</em> gene variations</h3>
                 <ul>
                     <li>Graphical view of the <a href="hg38seq">Genomic sequence (hg38)</a>
-                        with exon-intron boundaries for the main p53 isoform.
+                        with exon-intron boundaries for the main <em>p53</em> isoform.
                     </li>
 
                     <li><a href="tp53seq">Coding and protein sequence</a> with residue numbers,
@@ -79,7 +82,7 @@
             <div class="p-3">
                 <h3>Other links to human sequences</h3>
                 <ul>
-                    <li><a href="p53isoforms">p53 isoforms</a>
+                    <li><a href="p53isoforms"><em>p53</em> isoforms</a>
                     </li>
 
                     <li><a target="_blank"
@@ -105,40 +108,40 @@
                     <li><a href="seq_align">Protein sequence alignment</a></li>
                     <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1T4W">Structure
                         of
-                        p53 C.
+                        <em>p53</em> C.
                         Elegans Ortholog Cep-1</a>
                     </li>
                     <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1HU8">Structure
                         of
-                        Mouse p53 core domain</a>
+                        Mouse <em>p53</em> core domain</a>
                     </li>
                 </ul>
             </div>
             <div class="p-3">
                 <h3>3D Sequence Structures</h3>
                 <ul>
-                    <li><a href="{{ url_for('static', filename='download/P53DNA.zip') }}">Download p53 core domain and
+                    <li><a href="{{ url_for('static', filename='download/P53DNA.zip') }}">Download <em>p53</em> core domain and
                         Rasmol viewer</a></li>
                     <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1TSR">
-                        p53 core domains bound to DNA</a>
+                        <em>p53</em> core domains bound to DNA</a>
                     </li>
                     <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1YCS">
-                        p53 core domain bound to the ankyrin and SH3 domains of 53BP2</a>
+                        <em>p53</em> core domain bound to the ankyrin and SH3 domains of 53BP2</a>
                     </li>
                     <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1KZY">
-                        p53 core domain bound to the Brct Region of 53Bp1</a>
+                        <em>p53</em> core domain bound to the Brct Region of 53Bp1</a>
                     </li>
                     <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1GZH">
-                        p53 core domains (2) bound to the Brct Regions (2) of 53Bp1</a>
+                        <em>p53</em> core domains (2) bound to the Brct Regions (2) of 53Bp1</a>
                     </li>
                     <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1AIE">
-                        p53 tetramerization domain (residues 326-356)</a>
+                        <em>p53</em> tetramerization domain (residues 326-356)</a>
                     </li>
                     <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1C26">
-                        p53 tetramerization domain (X-ray)</a>
+                        <em>p53</em> tetramerization domain (X-ray)</a>
                     </li>
                     <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1YCR">
-                        p53 transactivation domain bound to mdm2</a>
+                        <em>p53</em> transactivation domain bound to mdm2</a>
                     </li>
                 </ul>
             </div>
@@ -147,7 +150,7 @@
             <h2>Mutation Nomenclatures</h2>
             <hr>
             <div class="p-3">
-                <div>The genomic reference sequence used for annotating TP53 mutations is <a
+                <div>The genomic reference sequence used for annotating <em>TP53</em> mutations is <a
                         href="hg38seq">NC_000017.11 (hg38 build)</a> from GenBank.
                 </div>
                 <div>
@@ -167,7 +170,7 @@
             <hr>
             <div class="p-3">
                 <div>The database is not accepting data submission anymore.</div>
-                <div>The IARC TP53 database will be transferred to another institution.</div>
+                <div>The IARC <em>TP53</em> database will be transferred to another institution.</div>
                 <div>
                     The current version of the database (R20, July 2019) will remain accessible on IARC website until
                     February 2021 to allow users to download all available data.
@@ -180,9 +183,11 @@
             <div class="p-3">
                 <h3>Protocols</h3>
                 <div class="pt-2">
-                    To assess TP53 mutation status it is recommended to perform gene sequencing of all exons, including
+                    To assess <em>TP53</em> mutation status it is recommended to perform gene sequencing of all exons,
+                    including
                     the splice junctions and completed with MLPA to detect large deletion/duplications.
-                    Immuno-histochemical analysis is not a good method for assessing TP53 mutation status, as it cannot
+                    Immuno-histochemical analysis is not a good method for assessing <em>TP53</em> mutation status, as
+                    it cannot
                     distinguish between the various types of mutations, does not detect truncating mutations
                     (false-negative results), and gives
                     false-positive results (over-expressed WT protein).
@@ -194,7 +199,8 @@
                                target="_blank">Direct sequencing by
                             Sanger</a><br/>
                         </li>
-                        <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/27377626" target="_blank">TP53 sequencing by a
+                        <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/27377626" target="_blank"><em>TP53</em>
+                            sequencing by a
                             next
                             generation sequencing technology (NGS)</a>. The detailed list of primers can be downloaded
                             <a
@@ -203,7 +209,8 @@
                         <li><a href="https://www.mlpa.com/WebForms/WebFormDBData.aspx?FileOID=_P1cP6v1Glh0."
                                target="_blank">MLPA</a>
                         </li>
-                        <li>Some caution regarding TP53 variants detected by multigene panel testing by NGS: a study by
+                        <li>Some caution regarding <em>TP53</em> variants detected by multigene panel testing by NGS: a
+                            study by
                             <a
                                     target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=29189820">Weitzel et
                                 al.,</a>
@@ -215,16 +222,16 @@
                     </ul>
                 </div>
                 <div class="pt-3">
-                    Recent developments on p53 antibodies
+                    Recent developments on <em>p53</em> antibodies
                     <ul>
 
                         <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/29298430" target="_blank">Monoclonal Antibodies
                             against
-                            Specific p53 Hotspot Mutants as Potential Tools for Precision Medicine</a><br/>
+                            Specific <em>p53</em> Hotspot Mutants as Potential Tools for Precision Medicine</a><br/>
                         </li>
-                        <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/30907951" target="_blank">Understanding p53
+                        <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/30907951" target="_blank">Understanding <em>p53</em>
                             functions
-                            through p53 antibodies</a>
+                            through <em>p53</em> antibodies</a>
                         </li>
 
                     </ul>
@@ -242,27 +249,25 @@
                         </li>
                         <li><a target="_blank" href="https://www.niehs.nih.gov/research/resources/databases/p53/">Resources
                             for
-                            the systematic analysis of p53 interactions with DNA and other transcription factors</a>.
+                            the systematic analysis of <em>p53</em> interactions with DNA and other transcription factors</a>.
                         </li>
                         <li><a target="_blank" href="https://tomateba.github.io/p53retriever/">p53retriever</a>, for the
-                            detection and display of p53 putative response elements (REs) on DNA sequences
+                            detection and display of <em>p53</em> putative response elements (REs) on DNA sequences
                         </li>
-                        <li><a target="_blank" href="https://www.targetgenereg.org/">TargetGeneReg</a>, for displaying
+                        <li><a target="_blank" href="http://www.targetgenereg.org/">TargetGeneReg</a>, for displaying
                             gene
                             of
-                            interest in the p53 and cell cycle gene regulatory networks
+                            interest in the <em>p53</em> and cell cycle gene regulatory networks
                         </li>
-                        <li><a target="_blank" href="https://gepia.cancer-pku.cn/detail.php?gene=TP53">TP53 RNA
-                            expression
-                            data
-                            from TCGA at GEPIA</a></li>
+                        <li><a target="_blank" href="http://gepia.cancer-pku.cn/detail.php?gene=TP53"><em>TP53</em> RNA
+                            expression data from TCGA at GEPIA</a></li>
                         <li><a target="_blank"
                                href="https://datamed.org/search.php?query=TP53&searchtype=data">Datamed</a>,
                             a
-                            search engine for TP53 datasets
+                            search engine for <em>TP53</em> datasets
                         </li>
-                        <li><a target="_blank" href="https://www.umd.be/HSF3/">Human Splicing Finder</a></li>
-                        <li><a target="_blank" href="https://agvgd.hci.utah.edu/">Align-AGVGD</a>, for the prediction of
+                        <li><a target="_blank" href="https://www.genomnis.com/access-hsf">Human Splicing Finder</a></li>
+                        <li><a target="_blank" href="http://agvgd.hci.utah.edu/">Align-AGVGD</a>, for the prediction of
                             the
                             functional impact of missense mutations
                         </li>
@@ -279,7 +284,7 @@
                         </li>
                         <li><a target="_blank"
                                href="https://bioinformatics.mdanderson.org/public-software/lfspro/">LFSPRO</a>,
-                            a tool for estimating TP53 Mutation Carrier Probability
+                            a tool for estimating <em>TP53</em> Mutation Carrier Probability
                         </li>
                         <li><a target="_blank"
                                href="https://bioinformatics.mdanderson.org/public-software/famdenovo/">Famdenovo</a>, an
@@ -287,8 +292,8 @@
                             family
                             history data
                         </li>
-                        <li><a href="aa_codes">Amino-acid letter codes and properties</a></li>
-                        <li><a href="genetic_code">Genetic code</a></li>
+                        <li><a target="_blank" href="aa_codes">Amino-acid letter codes and properties</a></li>
+                        <li><a target="_blank" href="genetic_code">Genetic code</a></li>
                         <li><a target="_blank" href="https://www.lovd.nl/2.0/">LOVD, a software to build mutation
                             databases</a>
                         </li>
@@ -302,7 +307,10 @@
             <div class="p-3">
                 <h3 class="pt-3">3D Viewer</h3>
                 <div>
-                    <div class="text-white small-font bg-secondary px-2" style="width:800px;"><i class="fas fa-info-circle"></i> Use mouse or control buttons (located on the right) to explore.</div>
+                    <div class="text-white small-font bg-secondary px-2" style="width:800px;"><i
+                            class="fas fa-info-circle"></i> Use mouse or control buttons (located on the right) to
+                        explore.
+                    </div>
                     <div id="molstarViewer"></div>
                     <script type="text/javascript">
                         var viewer = new molstar.Viewer('molstarViewer', {
@@ -317,7 +325,7 @@
                             viewportShowAnimation: false,
                             pdbProvider: 'rcsb',
                         });
-                        viewer.loadStructureFromUrl("{{ url_for('static', filename='pdb/1tsr_B.pdb') }}", format='pdb');
+                        viewer.loadStructureFromUrl("{{ url_for('static', filename='pdb/1tsr_B.pdb') }}", format = 'pdb');
                     </script>
                 </div>
                 <h3 class="pt-3">Structural impacts of mutations</h3>
@@ -336,7 +344,7 @@
                             information</a>
                         </li>
 
-                        <li>Stability and oligomeric structure of p53 tetramerization domain mutants by <a
+                        <li>Stability and oligomeric structure of <em>p53</em> tetramerization domain mutants by <a
                                 target="_blank"
                                 href="https://www.ncbi.nlm.nih.gov/pubmed/20978130">Kamada
                             et al. (2011)</a></li>
@@ -397,37 +405,39 @@
             <hr>
             <div class="p-3">
                 <ul>
-                    <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/gene/7157">TP53 entry at EntrezGene</a>
+                    <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/gene/7157"><em>TP53</em> entry at
+                        EntrezGene</a>
                     </li>
                     <li><a target="_blank" href="https://omim.org/entry/191170">OMIM review at NCBI</a></li>
-                    <li><a target="_blank" href="https://www.genecards.org/cgi-bin/carddisp.pl?gene=TP53&search=TP53">TP53
+                    <li><a target="_blank"
+                           href="https://www.genecards.org/cgi-bin/carddisp.pl?gene=TP53&search=TP53"><em>TP53</em>
                         GeneCards entry</a></li>
-                    <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/biosystems/84467">The p53 pathway at
+                    <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/biosystems/84467">The <em>p53</em> pathway at
                         BioSystems </a></li>
-                    <li><a href="target_genes">p53 target genes and response-elements</a></li>
+                    <li><a href="target_genes"><em>p53</em> target genes and response-elements</a></li>
                     <li><a target="_blank"
                            href="https://www.ensembl.org/Homo_sapiens/geneview?db=&amp;gene=ENSG00000141510">Gene
                         annotation by Ensembl at EBI</a></li>
-                    <li><a target="_blank" href="https://atlasgeneticsoncology.org/Genes/P53ID88.html">p53 entry at
+                    <li><a target="_blank" href="https://atlasgeneticsoncology.org/Genes/P53ID88.html"><em>p53</em> entry at
                         Atlas of
                         Genetics</a></li>
                     <li><a target="_blank"
-                           href="https://www.hprd.org/interactions?hprd_id=01859&isoform_id=01859_1&isoform_name=">p53
+                           href="https://www.hprd.org/interactions?hprd_id=01859&isoform_id=01859_1&isoform_name="><em>p53</em>
                         protein interactions at Human Protein Reference Database</a></li>
                     <li><a target="_blank"
-                           href="https://www.hprd.org/ptms?hprd_id=01859&isoform_id=01859_1&isoform_name=Isoform_1">p53
+                           href="https://www.hprd.org/ptms?hprd_id=01859&isoform_id=01859_1&isoform_name=Isoform_1"><em>p53</em>
                         post-translational modifications at Human Protein Reference Database</a></li>
-                    <li><a href="p53isoforms">p53 isoforms</a></li>
+                    <li><a href="p53isoforms"><em>p53</em> isoforms</a></li>
                     <li><a target="_blank" href="https://www.uniprot.org/uniprot/P04637">Protein annotation by
                         SwissProt/UniProtKB</a></li>
-                    <li><a target="_blank" href="https://p53.fr/tp53-information/historical-aspects">p53 history and
+                    <li><a target="_blank" href="https://p53.fr/tp53-information/historical-aspects"><em>p53</em> history and
                         info by
                         Thierry Soussi</a></li>
-                    <li>TP53 family memmbers: <a target="_blank" href="https://www.ncbi.nlm.nih.gov/gene/8626">TP63</a>
+                    <li><em>TP53</em> family memmbers: <a target="_blank" href="https://www.ncbi.nlm.nih.gov/gene/8626"><em>TP63</em></a>
                         and
-                        <a target="_blank" href="https://www.ncbi.nlm.nih.gov/gene/7161">TP73</a></li>
+                        <a target="_blank" href="https://www.ncbi.nlm.nih.gov/gene/7161"><em>TP73</em></a></li>
                 </ul>
-                <h3>p53 in the Clinic</h3>
+                <h3><em>p53</em> in the Clinic</h3>
                 <div class="pt-2">
                     <ul>
                         <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/books/NBK1311/">Li-Fraumeni syndrome
@@ -435,21 +445,21 @@
                             GeneReviews</a></li>
                         <li><a target="_blank" href="https://videocast.nih.gov/summary.asp?Live=9741">Videocast of the
                             Li-Fraumeni Syndrome Workshop 2010</a></li>
-                        <li><a target="_blank" href="https://www.clinicaltrials.gov/ct2/results?cond=&term=p53">p53 in
+                        <li><a target="_blank" href="https://www.clinicaltrials.gov/ct2/results?cond=&term=p53"><em>p53</em> in
                             clinical
                             trials at ClinicalTrials.gov</a></li>
-                        <li><a target="_blank" href="https://www.springer.com/biomed/cancer/book/978-1-4614-3675-1">"p53
+                        <li><a target="_blank" href="https://www.springer.com/biomed/cancer/book/978-1-4614-3675-1">"<em>p53</em>
                             in
                             the
                             clinics" book, 2012</a></li>
                         <li><a target="_blank" href="https://bioinformatics.mdanderson.org/main/LFSPRO">LFSPRO</a>, a
                             tool
                             for
-                            estimating TP53 Mutation Carrier Probability
+                            estimating <em>TP53</em> Mutation Carrier Probability
                         </li>
                         <li><a target="_blank"
                                href="https://bioinformatics.mdanderson.org/public-software/famdenovo/">Famdenovo</a>, an
-                            algorithm that calculates the probability of a germline mutation to be de novo, taking TP53
+                            algorithm that calculates the probability of a germline mutation to be de novo, taking <em>TP53</em>
                             as
                             an
                             example application
@@ -463,55 +473,58 @@
             <h2>Slide Show</h2>
             <hr>
             <div class="p-3">
-                <h3>TP53 Variations In Human Cancer</h3>
+                <h3><em>TP53</em> Variations In Human Cancer</h3>
                 <div class="pt-2">
                     This slide-show contains information on:
                     <ul>
-                        <li>TP53 gene and protein properties and activities</li>
-                        <li>The TP53 database structure and contents</li>
+                        <li><em>TP53</em> gene and protein properties and activities</li>
+                        <li>The <em>TP53</em> database structure and contents</li>
                         <li>The biological and clinical impacts of mutations</li>
                         <li>References and links to other related resources</li>
                     </ul>
                 </div>
                 <div>
-                    <a href="{{ url_for('static', filename='download/SlideShow2019.pdf') }}" class="btn btn-outline-primary" target="_blank"
+                    <a href="{{ url_for('static', filename='download/SlideShow2019.pdf') }}"
+                       class="btn btn-outline-primary" target="_blank"
                        title="Click to view/download slides"><i class="far fa-file-pdf"></i> View Slides</a></div>
             </div>
         </div>
-        <div id="others" class="jump-div" style="margin-bottom:10vh;">
+        <div id="others" class="jump-div">
             <h2>Other Databases</h2>
             <hr>
             <div class="p-3">
-                <h3>TP53 databases</h3>
+                <h3><em>TP53</em> databases</h3>
                 <div class="pt-2">
-                    <p>There are several links to different TP53 databases available on the web. Several resources are
+                    <p>There are several links to different <em>TP53</em> databases available on the web. Several
+                        resources are
                         not updated anymore and may contain obsolete data. It is recommended to use up-to-date
                         resources.
                     </p>
                     <ul>
-                        <li><a target="_blank" href="home">The IARC TP53 Database</a>
+                        <li><a target="_blank" href="/">The NCI <em>TP53</em> Database</a>
                             (last updated in July 2019)
                         </li>
-                        <li><a target="_blank" href="https://p53.fr/">The p53 database by Thierry Soussi</a> (last
+                        <li><a target="_blank" href="https://p53.fr/">The <em>p53</em> database by Thierry Soussi</a> (last
                             updated in 2017)
                         </li>
-                        <li><a target="_blank" href="https://databases.lovd.nl/shared/genes/TP53">LOVD TP53</a>, a
+                        <li><a target="_blank" href="https://databases.lovd.nl/shared/genes/TP53">LOVD <em>TP53</em></a>,
+                            a
                             database system for direct data submission
                         </li>
                         <li><a target="_blank" href="https://www.lf2.cuni.cz/projects/germline_mut_p53.htm">The database
-                            of germline TP53 mutations in Prague</a> (not updated anymore)
+                            of germline <em>TP53</em> mutations in Prague</a> (not updated anymore)
                         </li>
-                        <li><a target="_blank" href="https://p53.bii.a-star.edu.sg/index.php">p53 Knowledgebase at
+                        <li><a target="_blank" href="http://p53.bii.a-star.edu.sg/index.php"><em>p53</em> Knowledgebase at
                             Singapore</a> (obsolete)
                         </li>
-                        <li><a target="_blank" href="https://www.ibiblio.org/dnam/des_p53.htm">Human p53 database and
+                        <li><a target="_blank" href="https://www.ibiblio.org/dnam/des_p53.htm">Human <em>p53</em> database and
                             software, N. Cariello (1997)</a> (obsolete)
                         </li>
                     </ul>
                 </div>
 
 
-                <h3>Related databases</h3>
+                <h3>Related Databases</h3>
                 <div class="pt-2">
                     <ul>
                         <li><a href="https://cancer.sanger.ac.uk/cosmic" target="_blank">Catalogue Of Somatic Mutations
@@ -531,6 +544,44 @@
                             pediatric cancer mutations
                         </a></li>
                     </ul>
+                </div>
+            </div>
+        </div>
+        <div id="books" class="jump-div">
+            <h2>Books</h2>
+            <hr>
+            <div class="p-3">
+
+                <div class="pt-2 row">
+                    <div class="col-auto d-none d-lg-block">
+                        <a href="tp53book2013"><img height="150"
+                                                    src="{{ url_for('static', filename='img/p53_2013.jpeg') }}"></a>
+                    </div>
+                    <div class="col px-4">
+                        <h3><em>p53</em> in the Clinics</h3>
+                        With over 60,000 referenced publications, <em>p53</em> has emerged as one of the
+                        most important factors in human cancer. Research on <em>p53</em> has led to a complete overhaul of our
+                        understanding of the molecular basis of human cancer. <a href="tp53book2013">Continue
+                        reading</a></div>
+
+                </div>
+            </div>
+            <div class="p-3">
+
+                <div class="pt-2 row">
+<div class="col-auto d-none d-lg-block">
+                            <a href="tp53book"><img height="150"
+                                                    src="{{ url_for('static', filename='img/25yrs_p53.webp') }}">
+                            </a>
+                        </div>
+                    <div class="col px-4 ">
+<h3>25 Years of <em>p53</em> Research</h3>
+                        The discovery of <em>p53</em> in 1979 marks the beginning of a most fascinating era of modern
+                        cancer research and molecular biology, an era that is still in full swing and does not show any
+                        signs of ending in the foreseeable future.
+                        <a href="tp53book">Continue reading</a>
+
+                    </div>
                 </div>
             </div>
         </div>

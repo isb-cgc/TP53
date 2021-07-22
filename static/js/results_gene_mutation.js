@@ -53,7 +53,7 @@ $(document).ready(function () {
                     else{
                         if (data !== '' && row['Effect'] === 'missense')
                             return '<a data-bs-toggle=\"tooltip\" data-bs-placement=\"right\" title=\"Link to PHenotypic ANnotation of TP53 Mutations\" ' +
-                                'href=\"https://mutantp53.broadinstitute.org/query=\'' + data + '\'\" target=\"_blank\">' + data + '</a>';
+                                'href=\"http://mutantp53.broadinstitute.org/query=\'' + data + '\'\" target=\"_blank\">' + data + '</a>';
                         else
                             return data;
                     }
@@ -62,6 +62,7 @@ $(document).ready(function () {
             {data: "ExonIntron"},
             {data: "Effect"},
             {data: "TransactivationClass"},
+            {data: "DNE_LOFclass"},
             {data: "AGVGDClass"},
             {data: "Somatic_count"},
             {data: "Germline_count"},

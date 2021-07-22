@@ -35,10 +35,9 @@
 
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-
+        <div class="container">
             <a class="navbar-brand" href="/">
-                <i class="fas fa-asterisk"></i>
+                <i class="fas fa-home"></i>
                 TP53
             </a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
@@ -47,34 +46,38 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="navbar-collapse collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item mx-2">
+            <div class="navbar-collapse collapse justify-content-evenly" id="navbarCollapse">
+                <!--<ul class="navbar-nav me-auto mb-2 mb-md-0">-->
+                <ul class="navbar-nav justify-content-evenly" >
+                    <li class="nav-item mx-4">
                         <a class="nav-link" id="tp53data" href="search_tp53data"><i class="fas fa-search"></i> Data Exploration</a>
                     </li>
-                    <li class="nav-item mx-2">
+                    <li class="nav-item mx-4">
                         <a class="nav-link" id="help" href="help"><i class="fas fa-hand-paper"></i> Help</a>
                     </li>
-                    <li class="nav-item mx-2">
+                    <li class="nav-item mx-4">
                         <a class="nav-link" id="resources" href="resources"><i class="fas fa-book-open"></i> Resources</a>
                     </li>
-                    <li class="nav-item mx-2">
+                    <li class="nav-item mx-4">
                         <a class="nav-link" id="refs_corner" href="refs_corner"><i class="fas fa-book"></i> Refs Corner</a>
                     </li>
                     <!--<li class="nav-item mx-2">-->
                         <!--<a class="nav-link" id="ppl_events" href="ppl_events"><i class="me-2 far fa-newspaper"></i>People & Events</a>-->
                     <!--</li>-->
-                    <li class="nav-item mx-2">
+                    <li class="nav-item mx-4">
                         <a class="nav-link" id="about" href="about"><i class="fas fa-dna"></i> About</a>
                     </li>
-                    <li class="nav-item mx-2">
+                    <li class="nav-item mx-4">
                         <a class="nav-link" id="contact" href="contact"><i class="fas fa-envelope"></i> Contact</a>
                     </li>
+                    <li class="nav-item mx-4">
+                        <form action="cse_search" method="get" role="search" class="d-flex">
+                            <input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"
+                                   title="Search this website" aria-label="Search">
+                            <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
+                        </form>
+                    </li>
                 </ul>
-                <!--<form class="d-flex">-->
-                    <!--<input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">-->
-                    <!--<button class="btn btn-outline-light btn-sm" type="submit">Search</button>-->
-                <!--</form>-->
             </div>
         </div>
     </nav>
@@ -88,7 +91,7 @@
 <footer class="text-muted py-5">
     <div class="container">
         <p class="float-end mb-1">
-            <i class="far fa-copyright"></i> ISB 2021 - All Rights Reserved. <a href="#">Back to top</a>
+            <i class="far fa-copyright"></i> ISB-CGC 2021 - All Rights Reserved. <a href="#">Back to top</a>
         </p>
     </div>
 </footer>

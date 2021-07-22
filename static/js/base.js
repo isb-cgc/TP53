@@ -26,7 +26,7 @@ $(document).ready(function () {
             scrollSpy = new bootstrap.ScrollSpy(document.body, {
                 target: '.sidebar',
                 offset: 150
-            })
+            });
         }
         else {
             scrollSpy = null;

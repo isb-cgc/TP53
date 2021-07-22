@@ -15,10 +15,10 @@
 ###
 
 import os
-from flask import Flask, render_template, request, send_from_directory, json, jsonify
+from flask import Flask, render_template, request, send_from_directory, json, jsonify, make_response
 from google.cloud import bigquery
 from google.api_core.exceptions import BadRequest
-# from flask_talisman import Talisman
+from flask_talisman import Talisman
 import bq_builder
 import concurrent.futures
 import requests
@@ -278,16 +278,17 @@ global gm_ref_data
 gm_ref_data = None
 
 
-IS_TEST = True
-# BQ_DATASET = 'P53_data'
+# IS_TEST = True
 BQ_DATASET = os.environ.get('BQ_DATASET', 'P53_data')
 
 # hsts_max_age = 3600 if IS_TEST else 31536000
-#
+
 # Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_policy={
 #     'default-src': [
 #         '\'self\'',
 #         '*.googletagmanager.com',
+#         '*.gstatic.com',
+#         '*.google.com',
 #         '*.google-analytics.com',
 #         '*.googleapis.com',
 #         "*.fontawesome.com",
@@ -296,16 +297,39 @@ BQ_DATASET = os.environ.get('BQ_DATASET', 'P53_data')
 #     ]
 # })
 
-#
+
 # MAX_RESULT_SIZE=50000
+# GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'tp53testBQ.key.json')
 GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'tp53devBQ.key.json')
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
 
 project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
 bq_builder.set_project_dataset(proj_id=project_id, d_set=BQ_DATASET)
+# print(os.environ["GOOGLE_APPLICATION_CREDENTIALS"])
 
 bigquery_client = bigquery.Client()
 TP53_DATA_DIR_URL = os.environ.get('TP53_DATA_DIR_URL', 'https://storage.googleapis.com/tp53-data-files')
+DATA_VERSION = os.environ.get('DATA_VERSION', 'R20')
+
+@app.route("/googlee122c0dbd92c3af2.html")
+def google_site_verf():
+    return render_template("googlee122c0dbd92c3af2.html")
+
+# @app.route("/sitemap.xml")
+# def sitemap():
+#     template = render_template("sitemap.xml")
+#     response = make_response(template)
+#     response.headers['Content-Type'] = 'application/xml'
+#
+#     return response
+
+
+# @app.route('/robots.txt')
+@app.route('/urllist.txt')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
+
+
 
 @app.route("/")
 def home():
@@ -345,7 +369,6 @@ def build_criteria(param_col_name_map):
             or_group = param_name
         else:
             param_name = param_key
-        print(param_name)
         if param_col_name_map[param_key].get('between_op', False):
             between_op = True
             start_param = get_param_val(request, param_col_name_map[param_key]['start_param'])
@@ -711,7 +734,7 @@ def results_gene_dist():
         graph_configs = build_graph_configs(action, table)
         sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
     graph_result = build_graph_data(sql_maps)
-    return render_template(template, criteria_map=criteria_map, title='Statistics on Gene Variations', subtitle=subtitle,
+    return render_template(template, criteria_map=criteria_map, title='Statistics on Functional/Structural Data', subtitle=subtitle,
                            graph_result=graph_result)
 
 
@@ -725,7 +748,7 @@ def gv_query():
     length = int(parameters['length'])
     criteria = json.loads(parameters['criteria'])
     column_filters = ["MUT_ID", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
-                      "TransactivationClass", "AGVGDClass", "Somatic_count", "Germline_count", "Cellline_count",
+                      "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "Somatic_count", "Germline_count", "Cellline_count",
                       "TCGA_ICGC_GENIE_count", "Polymorphism", "CLINVARlink", "COSMIClink",
                        "SNPlink", "gnomADlink"]
     sql_stm = bq_builder.build_simple_query(criteria=criteria, table='MutationView', column_filters=column_filters,
@@ -1737,17 +1760,16 @@ def p53IsoformsPredictions():
 def contact():
     return render_template("contact.html")
 
+@app.route("/cse_search")
+def cse_search():
+    return render_template("cse_search.html")
+
 
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-
-# @app.route('/get_cdesc')
-# def get_cdesc():
-#     return send_from_directory(os.path.join(app.root_path, 'static'),
-#                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/_ah/warmup')
 def warmup():

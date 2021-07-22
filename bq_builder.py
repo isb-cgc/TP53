@@ -218,6 +218,7 @@ def build_simple_query(criteria, table, column_filters, do_counts=False, distinc
                        desc_ord=False, start=0, length=None):
     where_clause = build_where_clause(criteria)
     columns = ', '.join(column_filters)
+    print(columns)
     order_by_clause = ''
     limit_clause = ''
     if do_counts:

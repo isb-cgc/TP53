@@ -15,7 +15,7 @@
 
 {% block subcontent %}
 <div class="pt-4">
-    <h2>Search Results: <span class="ms-2 fw-light">Gene Variations</span></h2>
+    <h2>Search Results: <span class="ms-2 fw-light">Functional / Structural Data</span></h2>
     <hr>
     <div class="p-3">
         <div class="pb-2">
@@ -100,6 +100,28 @@
                     less than or equal to 75, 'functional' if the median is greater than 75 and less than or equal to 140, and 'supertrans' if the median is
                     greater than 140.">
                     TA Class
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Functional classification for loss of growth-suppression and
+                                                                    dominant-negative activities based on Z-scores from
+                                                                    Giacomelli et al., (2018) study:
+                                                                    DNE_LOF = p53WTNutlin3 Z-score >= 0.61 and
+                                                                    Etoposide
+                                                                    Z-score
+                                                                    <=
+                                                                    -0.21;
+                                                                    notDNE_notLOF = p53WTNutlin3 Z-score &lt; 0.61
+                                                                    and
+                                                                    Etoposide
+                                                                    Z-score
+                                                                    &gt; -0.21;
+                                                                    notDNE_LOF if p53WTNutlin3 Z-score &lt; 0.61 and
+                                                                    Etoposide
+                                                                    Z-score
+                                                                    &lt;=
+                                                                    -0.21; unclass = others">
+                    DNE / LOF Class
                 </th>
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"

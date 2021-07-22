@@ -15,6 +15,9 @@ $(document).ready(function () {
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
             buttons: [{
                 extend: 'csv',
+                // filename: function(){
+                //     return 'exp_induced_mutations_'+$('data_version').text();
+                // },
                 exportOptions: {
                     columns: ':not(:first-child):not(:last-child)'
                 }
@@ -134,7 +137,6 @@ var updateActionButtonGroups = function (selectedRowCounts) {
 
 var displayGeneVariations_by_mutids = function (selectedRowSet) {
     var rowIds = Array.from(selectedRowSet);
-    console.log(rowIds);
     var form = $("<form method='POST' action='results_gene_mut_by_mutids'></form>");
     for (var i = 0; i < rowIds.length; i++) {
         var indx = rowIds[i].indexOf(':');

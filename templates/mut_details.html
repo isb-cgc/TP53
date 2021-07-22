@@ -22,7 +22,7 @@
         </button>
     </div>
     <div id="mut_details">
-        <h2>Mutation Details: {{ mut_desc.c_description }} ; {{ mut_desc.ProtDescription }}</h2>
+        <h2>Mutation Selected: {{ mut_desc.c_description }}, {{ mut_desc.ProtDescription }}</h2>
 
         <hr>
         {% if mut_desc and mut_desc.Polymorphism == 'validated' %}
@@ -43,7 +43,7 @@
             {% if mut_desc.CLINVARlink %}
             <a class="btn-tiny btn btn-outline-secondary"
                href="http://p53.bii.a-star.edu.sg/aboutp53/snps/snpdetail.php?geneid=X54156&snppos={{mut_desc.CLINVARlink}}"
-               target="_blank">p53 Knowledgebase</a>
+               target="_blank"><em>p53</em> Knowledgebase</a>
             {% endif %}
             {% if mut_desc.PubMedlink and mut_desc.PubMedlink != 'NA' %}
             <a class="btn-tiny btn btn-outline-secondary"
@@ -238,7 +238,7 @@
                 {% endif %}
             </div>
             <div class="my-2 p-3 bg-light rounded-2">
-                <h3>Predicted Effect on p53 <a href="p53IsoformsPredictions">Protein Isoforms</a></h3>
+                <h3>Predicted Effect on <em>p53</em> <a href="p53IsoformsPredictions">Protein Isoforms</a></h3>
                 {% if query_result.p53_pred|length == 0 %}
                 <div class="fw-light fst-italic">No Data</div>
                 {% else %}

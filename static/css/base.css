@@ -11,16 +11,19 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
 }
+.navbar{
+    font-size: .9rem;
+}
 
 .navbar-brand {
-    width: 240px;
+    /*width: 240px;*/
     margin: 0;
     padding: 0;
 }
 
-.nav-item {
-    font-size: .9rem;
-}
+/*.nav-item {*/
+    /*font-size: .9rem;*/
+/*}*/
 
 .navbar-nav .nav-item.active .nav-link {
     color: white;
