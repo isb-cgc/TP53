@@ -36,6 +36,20 @@ $(document).ready(function () {
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
             buttons: [{
                 extend: 'csv',
+                filename: function () {
+                    // var db_version;// default version;
+                    // $.ajax({
+                    //     method: "GET",
+                    //     async: false,
+                    //     url: "/get_db_version",
+                    //     success: function (data) {
+                    //         db_version = data;
+                    //     }
+                    // });
+                    // return bq_view_name + (db_version ? '_' + db_version : '');
+                    return bq_view_name + '_' + db_version;
+                },
+                fieldBoundary: '',
                 exportOptions: {
                     columns: ':not(:first-child)'
                 }

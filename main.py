@@ -309,7 +309,7 @@ bq_builder.set_project_dataset(proj_id=project_id, d_set=BQ_DATASET)
 
 bigquery_client = bigquery.Client()
 TP53_DATA_DIR_URL = os.environ.get('TP53_DATA_DIR_URL', 'https://storage.googleapis.com/tp53-data-files')
-DATA_VERSION = os.environ.get('DATA_VERSION', 'R20')
+DATA_VERSION = os.environ.get('DATA_VERSION', 'r20')
 
 @app.route("/googlee122c0dbd92c3af2.html")
 def google_site_verf():
@@ -1518,8 +1518,8 @@ def view_exp_ind_mut():
 @app.route("/view_data", methods = ['GET'])
 def view_data():
     bq_view_name = request.args.get('bq_view_name', None)
-    columns, data = load_csv_file('{filename}.csv'.format(filename=bq_view_name))
-    return render_template("view_data.html", bq_view_name=bq_view_name, columns=columns, data=data)
+    columns, data = load_csv_file('{filename}_{version}.csv'.format(filename=bq_view_name, version=DATA_VERSION))
+    return render_template("view_data.html", bq_view_name=bq_view_name, ver=DATA_VERSION, columns=columns, data=data)
 
 @app.route("/view_mouse")
 def view_mouse():
@@ -1643,7 +1643,7 @@ def results_cell_line_mutation():
 @app.route("/get_tp53data")
 def get_tp53data():
 
-    return render_template("get_tp53data.html", TP53_DATA_DIR_URL=TP53_DATA_DIR_URL)
+    return render_template("get_tp53data.html", TP53_DATA_DIR_URL=TP53_DATA_DIR_URL, ver=DATA_VERSION)
 
 
 @app.route("/help")
@@ -1759,6 +1759,10 @@ def p53IsoformsPredictions():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
+@app.route("/get_db_version")
+def get_db_version():
+    return DATA_VERSION
 
 @app.route("/cse_search")
 def cse_search():

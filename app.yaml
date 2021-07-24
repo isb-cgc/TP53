@@ -41,7 +41,7 @@ env_variables:
 #  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-test'
   DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-dev'
   BQ_DATASET: 'P53_data'
-  DATA_VERSION: 'R20'
+  DATA_VERSION: 'r20'
 
 
 handlers:

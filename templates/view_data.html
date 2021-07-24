@@ -4,6 +4,8 @@
 <script type="text/javascript">
     active_submenu = 'get_tp53data';
     dataSet = {{data|tojson|safe}};
+    var bq_view_name = "{{ bq_view_name }}";
+    var db_version = "{{ ver }}";
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.select.min.js') }}"></script>
