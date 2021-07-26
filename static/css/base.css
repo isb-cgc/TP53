@@ -71,7 +71,8 @@ a:hover{
     width: 240px;
     top: 0;
     bottom: 0;
-    left: 0;
+    right: 0;
+    /*left: 0;*/
     z-index: 100;
     /*padding: 100px 0 0;*/
     padding: 53px 0 0;
@@ -151,10 +152,12 @@ a:hover{
     background-color: rgba(179, 219, 230, .5);
 }
 
-.main-panel{
+.main-panel {
     padding-top: 70px;
     min-height: 85vh;
-    padding-left: 280px;
+    padding-right: 280px;
+    padding-left: 60px;
+    /*padding-left: 280px;*/
 }
 
 .jump-div {
@@ -172,6 +175,7 @@ a:hover{
     }
     .main-panel {
         padding-left: 10px;
+        padding-right: 10px;
     }
 }
 
