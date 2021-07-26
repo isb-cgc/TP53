@@ -86,7 +86,7 @@ a:hover{
     left: -200px;
     top: 0;
     bottom: 0;
-    z-index: 100;
+    z-index: 300;
     /*padding: 100px 0 0;*/
     padding: 53px 0 0;
     color: white;
@@ -156,7 +156,7 @@ a:hover{
     padding-top: 70px;
     min-height: 85vh;
     padding-right: 280px;
-    padding-left: 60px;
+    padding-left: 80px;
     /*padding-left: 280px;*/
 }
 
@@ -164,9 +164,13 @@ a:hover{
     padding-top: 70px;
 }
 
-.msp-plugin .msp-layout-expanded .msp-layout-hide-top .msp-layout-main {
+.msp-plugin .msp-layout-expanded {
+/*.msp-plugin .msp-layout-expanded .msp-layout-hide-top .msp-layout-main {*/
     top: 58px;
-    left: 240px;
+    left: 40px;
+    /*right: 240px;*/
+    z-index: 200;
+    /*left: 240px;*/
 }
 
 @media (max-width: 991px) {
@@ -190,7 +194,8 @@ a:hover{
 }
 
 .wide-panel{
-    padding-left: 60px;
+    padding-left: 80px;
+    padding-right: 20px;
 }
 
 
@@ -241,7 +246,7 @@ h1 a {
     top: 0;
     left: 0;
     background: rgba(0, 0, 0, .2);
-    z-index: 10;
+    z-index: 400;
 }
 
 .spinner .spinner-group {
