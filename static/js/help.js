@@ -4,7 +4,7 @@
 
 $(document).ready(function () {
     $("a.jump-link").on('click', function (e) {
-        e.preventDefault();
+        // e.preventDefault();
         var section_id = $(this).attr('href');
         var collapsibles_to_hide = $(this).parents('.collapse');
         var collapsibles_to_show = $(section_id).parents('.collapse');

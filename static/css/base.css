@@ -31,12 +31,12 @@ body {
     border-bottom: 5px solid rgba(179, 219, 230, 1);
 }
 
-.cite-div {
-    background-color: gainsboro;
-    border: 1px solid darkgrey;
-    border-radius: 4px;
-    color: dimgray;
-}
+/*.cite-div {*/
+    /*background-color: gainsboro;*/
+    /*border: 1px solid darkgrey;*/
+    /*border-radius: 4px;*/
+    /*color: dimgray;*/
+/*}*/
 
 h1 {
     font-size: 2rem;
@@ -72,9 +72,7 @@ a:hover{
     top: 0;
     bottom: 0;
     right: 0;
-    /*left: 0;*/
     z-index: 100;
-    /*padding: 100px 0 0;*/
     padding: 53px 0 0;
 }
 
@@ -87,7 +85,6 @@ a:hover{
     top: 0;
     bottom: 0;
     z-index: 300;
-    /*padding: 100px 0 0;*/
     padding: 53px 0 0;
     color: white;
 }
@@ -100,16 +97,54 @@ a:hover{
     color: white;
 }
 
-.sidebar ul > li.nav-item a::before {
-    width: 1.5em;
-    content: " ";
-    display: inline-block;
-}
+/*.sidebar ul > li.nav-item a::before {*/
+    /*width: 1.5em;*/
+    /*content: " ";*/
+    /*display: inline-block;*/
+/*}*/
 
 .sidebar ul > li.nav-item a.active::before {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: "\f138";
+}
+
+.sidebar ul > li.nav-item > nav a {
+    font-size: .8em;
+}
+
+.sidebar ul > li.nav-item a::before {
+    content: " ";
+    width: 1.2em;
+    /*font-family: 'Font Awesome 5 Free';*/
+    font-weight: 900;
+    display: inline-block;
+    /*content: "\f138";*/
+}
+
+.sidebar ul > li.nav-item > nav a::before {
+    /*content: "\f0c8";*/
+    content: " ";
+    width: 1.8em;
+    font-family: 'Font Awesome 5 Free';
+    display: inline-block;
+    /*font-weight: ;*/
+}
+
+.sidebar ul > li.nav-item > nav a.active::before {
+    content: "\f054";
+    width: 1.8em;
+    font-family: 'Font Awesome 5 Free';
+    display: inline-block;
+    /*font-weight: ;*/
+}
+
+.sidebar ul > li.nav-item > nav a.active {
+    background-color: transparent;
+}
+.sidebar ul > li.nav-item > nav a:hover {
+    /*background-color: transparent;*/
+    background-color: rgba(179, 219, 230, .5);
 }
 
 .collapsible-sidebar.has-submenubar ul.nav > li.nav-item a[aria-expanded="false"]::before {
@@ -151,6 +186,9 @@ a:hover{
 .sidebar ul > li.nav-item a:hover{
     background-color: rgba(179, 219, 230, .5);
 }
+/*.sidebar ul > li.nav-item > nav a.active {*/
+    /*background-color: transparent;*/
+/*}*/
 
 .main-panel {
     padding-top: 70px;
