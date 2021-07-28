@@ -11,7 +11,21 @@ $(document).ready(function () {
                 "<'row d-none'<'col-sm-12 col-md-4'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-            buttons: ['csv'],
+            buttons: [{
+                extend: 'csv',
+                filename: function(){
+                    var db_version;// default version;
+                    $.ajax({
+                        method: "GET",
+                        async: false,
+                        url: "/get_db_version",
+                        success: function (data) {
+                            db_version = data;
+                        }
+                    });
+                    return 'tp53db_validated_polymorphisms'+ (db_version ? '_'+db_version: '');
+                }
+            }],
             columns: [
                 {
                     data: 'g_desc'
