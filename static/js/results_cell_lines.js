@@ -61,7 +61,8 @@ $(document).ready(function () {
                 data: "ATCC_ID",
                 render: function (data) {
                     if (data)
-                        return '<a href="http://www.lgcstandards-atcc.org/Products/All/' + data + '.aspx" target="_blank">' + data + '</a>';
+                        return '<a href="https://www.atcc.org/products/' + data +'"  target="_blank">' + data + '</a>';
+                        // return '<a href="http://www.lgcstandards-atcc.org/Products/All/' + data + '.aspx" target="_blank">' + data + '</a>';
                     else
                         return '';
                 }

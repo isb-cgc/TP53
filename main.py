@@ -299,8 +299,8 @@ BQ_DATASET = os.environ.get('BQ_DATASET', 'P53_data')
 
 
 # MAX_RESULT_SIZE=50000
-GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'tp53testBQ.key.json')
-# GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'tp53devBQ.key.json')
+# GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'tp53testBQ.key.json')
+GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'tp53devBQ.key.json')
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
 
 project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')

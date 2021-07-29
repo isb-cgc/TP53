@@ -6,29 +6,61 @@
 @import url("/static/css/select.dataTables.min.css");
 @import url("/static/css/molstar.css");
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: 'Source Sans Pro', sans-serif;
+    /*font-size: 1.1em;*/
     font-size: 15px;
 }
+
 .navbar{
-    font-size: .9rem;
+    background-color: #2F2C55;
+    height: 90px;
+}
+.navbar a {
+    font-size: 1.3rem;
+    color: #ACA8C7;
+}
+
+.navbar a:hover {
+    color: #54B5AB;
+    /*color: rgba(84, 181,171, .5);*/
+}
+
+.landing-tier{
+    color: white;
+    background-color: #404DB4;
+    margin-top: 90px;
+}
+
+.hero-text-1{
+    font-size: 1.8rem;
+}
+
+.hero-text-2{
+    font-size: 1.6rem;
 }
 
 .navbar-brand {
-    /*width: 240px;*/
     margin: 0;
     padding: 0;
 }
 
-/*.nav-item {*/
-    /*font-size: .9rem;*/
+
+/*.navbar-nav .nav-item .nav-link {*/
+    /*color: white;*/
+    /*font-weight: bold;*/
+    /*border-bottom: 5px solid rgba(179, 219, 230, 1);*/
+    /*border-bottom: 5px solid #54B5AB;*/
 /*}*/
 
 .navbar-nav .nav-item.active .nav-link {
     color: white;
-    font-weight: bold;
-    border-bottom: 5px solid rgba(179, 219, 230, 1);
+    /*font-weight: bold;*/
+    /*border-bottom: 5px solid rgba(179, 219, 230, 1);*/
+    border-bottom: 5px solid #54B5AB;
 }
 
 /*.cite-div {*/
@@ -58,22 +90,24 @@ h4 {
 }
 
 a{
-    color: #007bff;
+    /*color: #007bff;*/
+    color: #54B5AB;
     text-decoration: none;
 }
 a:hover{
-    color: #17a2b8;
+    /*color: rgba(84, 181,171, .2);*/
+    color: #6EF0E3;
 }
 
 
 .sidebar {
     position: fixed;
     width: 240px;
-    top: 0;
+    top: 90px;
     bottom: 0;
     right: 0;
     z-index: 100;
-    padding: 53px 0 0;
+    padding: 0;
 }
 
 
@@ -82,10 +116,12 @@ a:hover{
     transition: 0.3s;
     width: 240px;
     left: -200px;
-    top: 0;
+    top: 90px;
+    /*top: 0;*/
     bottom: 0;
     z-index: 300;
-    padding: 53px 0 0;
+    /*padding: 53px 0 0;*/
+    padding: 0;
     color: white;
 }
 
@@ -191,7 +227,7 @@ a:hover{
 /*}*/
 
 .main-panel {
-    padding-top: 70px;
+    padding-top: 110px;
     min-height: 85vh;
     padding-right: 280px;
     padding-left: 80px;
@@ -199,12 +235,12 @@ a:hover{
 }
 
 .jump-div {
-    padding-top: 70px;
+    padding-top: 90px;
 }
 
 .msp-plugin .msp-layout-expanded {
 /*.msp-plugin .msp-layout-expanded .msp-layout-hide-top .msp-layout-main {*/
-    top: 58px;
+    top: 90px;
     left: 40px;
     /*right: 240px;*/
     z-index: 200;
@@ -224,7 +260,7 @@ a:hover{
 
 @media (min-width: 992px) and (max-width: 1143px) {
     .collapsible-sidebar, .sidebar, .main-panel{
-        padding-top: 85px;
+        padding-top: 90px;
     }
     .jump-div{
         padding-top: 90px;
@@ -232,6 +268,7 @@ a:hover{
 }
 
 .wide-panel{
+    /*top: 90px;*/
     padding-left: 80px;
     padding-right: 20px;
 }

@@ -9,18 +9,18 @@ runtime_config:
 
 
 
-instance_class: F4
+#instance_class: F4
 network:
   instance_tag: isb-cgc-tp53
 
 # comment this section out for test-tier: test-tier does not need auto scaling
-automatic_scaling:
-  min_num_instances: 2
-  max_num_instances: 10
-  cpu_utilization:
-    target_utilization: 0.65
-inbound_services:
-- warmup
+#automatic_scaling:
+#  min_num_instances: 2
+#  max_num_instances: 10
+#  cpu_utilization:
+#    target_utilization: 0.65
+#inbound_services:
+#- warmup
 
 
 
@@ -29,12 +29,12 @@ env_variables:
 #  TIER: 'prod'
 #  TIER: 'test'
 #  TIER: 'uat'
-  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-test'
-#  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-dev'
-  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files-test'
-#  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files'
-  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-test'
-#  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-dev'
+#  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-test'
+  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-dev'
+#  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files-test'
+  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files'
+#  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-test'
+  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-dev'
   BQ_DATASET: 'P53_data'
   DATA_VERSION: 'r20'
 
