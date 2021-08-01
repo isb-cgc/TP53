@@ -8,10 +8,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
+html{
+    scroll-padding-top: 110px;
+}
+
 body {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 15px;
 }
+
 table {
     font-family: 'Open Sans', sans-serif;
     /*font-family: 'Source Sans Pro', sans-serif;*/
@@ -277,15 +282,15 @@ a:hover{
 
 .main-panel {
     padding-top: 110px;
+    /*scroll-padding-top: 110px;*/
     min-height: 85vh;
     padding-right: 280px;
     padding-left: 80px;
-    /*padding-left: 280px;*/
 }
 
-.jump-div {
-    padding-top: 100px;
-}
+/*.jump-div {*/
+    /*padding-top: 100px;*/
+/*}*/
 
 .msp-plugin .msp-layout-expanded {
 /*.msp-plugin .msp-layout-expanded .msp-layout-hide-top .msp-layout-main {*/
