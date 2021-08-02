@@ -11,7 +11,7 @@ $(document).ready(function () {
         toggle_collapse_jQSel(collapsibles_to_hide, true);
         toggle_collapse_jQSel(collapsibles_to_show, false);
         $('html, body').animate({
-                scrollTop: ($(section_id).offset().top-70)
+                scrollTop: ($(section_id).offset().top-100)
             },
             300,
             'linear'

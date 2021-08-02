@@ -17,12 +17,13 @@
     <h1>Data Explorer</h1>
     {% block subcontent %}
     {% endblock %}
+
 </main>
 <div class="spinner">
     <div class="spinner-group d-flex justify-content-center">
         {% for n in range(3) %}
         {% set color_factor = 20 * n %}
-        <div class="spinner-grow mx-1" style="color:hsl(200, 40%, {{ color_factor }}%); width:40px; height:40px;"
+        <div class="spinner-grow mx-1" style="color: hsl(233, 48%, {{ color_factor }}%); width:40px; height:40px;"
              role="status">
             <span class="sr-only">Loading...</span>
         </div>
