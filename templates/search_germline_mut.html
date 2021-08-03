@@ -54,20 +54,18 @@
                     <div class="col">
                         <div class="btn-toolbar float-end" role="toolbar"
                              aria-label="Germline Mutation Search Button Toolbar">
-                            <div class="btn-group me-2" role="group" aria-label="Reset button group">
-                                <button type="reset" class="btn btn-outline-secondary"><i class="fas fa-redo"></i> Reset</button>
-                            </div>
-                            <div class="btn-group" role="group"
-                                 aria-label="Distribution button group">
-                                <button type="submit" name="action" value="get_mutation_dist" class="btn btn-outline-primary"><i
-                                        class="fas fa-chart-pie"></i>
-                                    Mutation Distribution
-                                </button>
-                                <button type="submit" name="action" value="get_tumor_dist_view" class="btn btn-outline-primary"><i
-                                        class="fas fa-chart-bar"></i>
-                                    Tumor Distribution
-                                </button>
-                            </div>
+                            <button type="reset" class="btn btn-outline-secondary me-4"><i class="fas fa-redo"></i>
+                                Reset
+                            </button>
+                            <button type="submit" name="action" value="get_mutation_dist"
+                                    class="btn btn-secondary me-2"><i
+                                    class="fas fa-chart-pie"></i>
+                                Mutation Distribution
+                            </button>
+                            <button type="submit" name="action" value="get_tumor_dist_view" class="btn btn-secondary"><i
+                                    class="fas fa-chart-bar"></i>
+                                Tumor Distribution
+                            </button>
                         </div>
                     </div>
                 </div>

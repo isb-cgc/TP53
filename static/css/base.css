@@ -120,14 +120,38 @@ table {
     font-size: 1rem;
 }
 
+
 .raspberry-btn {
     background-color: #B01E70;
     color: white;
 }
+
 .raspberry-btn:hover {
     background-color: #831754;
     color: white;
 }
+
+.turquoise-btn {
+    background-color: #54B5AB;
+    border-color: #54B5AB;
+    color: white;
+}
+
+.turquoise-btn:hover {
+    background-color: #51978D;
+    border-color: #51978D;
+    color: white;
+}
+
+/*.darkblue-btn {*/
+    /*background-color: #404DB5;*/
+    /*color: white;*/
+/*}*/
+
+/*.darkblue-btn:hover {*/
+    /*background-color: #2F2C55;*/
+    /*color: white;*/
+/*}*/
 
 .navbar-brand {
     margin: 0;

@@ -99,7 +99,7 @@ $(document).ready(function () {
                     }
                     else {
                         if (data != null)
-                            return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" title="Go to ClinVar ' + data + '">ClinVar</a>';
+                            return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" title="Go to ClinVar ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
                         else
                             return data;
                     }
@@ -113,7 +113,7 @@ $(document).ready(function () {
                     }
                     else {
                         if (data != null)
-                            return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" title="Go to COSMIC ' + data + '">COSMIC</a>';
+                            return '<a href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" title="Go to COSMIC ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
                         else
                             return data;
                     }
@@ -127,7 +127,7 @@ $(document).ready(function () {
                     }
                     else {
                         if (data !== '')
-                            return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href=\"https://www.ncbi.nlm.nih.gov/snp/rs' + data + '" target="_blank" title="Go to dbSNP ' + data + '">dbSNP</a>';
+                            return '<a href=\"https://www.ncbi.nlm.nih.gov/snp/rs' + data + '" target="_blank" title="Go to dbSNP ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
                         else
                             return data;
                     }
@@ -141,7 +141,7 @@ $(document).ready(function () {
                     }
                     else {
                         if (data !== '')
-                            return '<a type="button" class="btn btn-tiny btn-sm btn-outline-secondary" href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" title="Go to gnomAd ' + data + '">gnomAD</a>';
+                            return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" title="Go to gnomAd ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
                         else
                             return data;
                     }
@@ -151,7 +151,7 @@ $(document).ready(function () {
                 data: "MUT_ID",
                 orderable: false,
                 render: function(data){
-                    return '<a type="button" title="View Mutation Details" class="rounded-circle btn btn-sm btn-tiny-round btn-outline-primary" href="mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
+                    return '<a type="button" title="View Mutation Details" class="rounded-circle btn btn-tiny-round btn-secondary" href="mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
                 }
             }
         ],

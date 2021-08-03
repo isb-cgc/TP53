@@ -51,7 +51,9 @@ $(document).ready(function () {
             select: {
                 style: 'multi',
                 selector: '.ref-check'
-            }
+            },
+            lengthMenu: [5,10,25]
+
         }
     );
 

@@ -20,27 +20,28 @@
     <div class="p-3">
         <div class="pb-2">
             <div class="float-end d-inline-block">
-                <!--<div class="btn-group btn-group-sm" title="No of selected rows"><i class="fas fa-shopping-cart"></i><span-->
-                        <!--class="cart-count badge rounded-pill bg-primary">0</span></div>-->
-                <div class="btn-group" title="No of selected rows"><div class="pb-1 pe-1"><em>Selected Rows</em> <span class="badge rounded-pill bg-primary cart-count">0</span></div></div>
-                <div class="btn-group btn-group-sm" role="group" aria-label="Additional Search and Tools">
-                    <button type="button" class="btn btn-outline-secondary cell-search-button disabled" title="View Cell Lines: Cell Line Count must be larger than 0"><i
-                            class="fas fa-search"></i>
-                        Cell Lines <span class="cell-line-count-badge badge rounded-pill bg-primary">0</span>
-                    </button>
-                    <button type="button" class="btn btn-outline-secondary action-button"
-                            value="get_mutation_dist" title="View Mutation Distribution"><i
-                            class="fas fa-chart-pie"></i>
-                        Mutation Distribution
-                    </button>
-                    <button type="button" class="btn btn-outline-secondary action-button"
-                            value="get_gv_tumor_dist" title="View Tumor Distribution"><i
-                            class="fas fa-chart-bar"></i>
-                        Tumor Distribution
-                    </button>
+                <div class="btn-group" title="No of selected rows">
+                    <div class="pb-1 pe-1"><em>Selected Rows</em> <span
+                            class="badge rounded-pill bg-turquoise cart-count">0</span></div>
                 </div>
+                <button type="button" class="btn btn-sm btn-secondary cell-search-button disabled"
+                        title="View Cell Lines: Cell Line Count must be larger than 0"><i
+                        class="fas fa-search"></i>
+                    Cell Lines <span class="cell-line-count-badge badge rounded-pill bg-turquoise">0</span>
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary action-button"
+                        value="get_mutation_dist" title="View Mutation Distribution"><i
+                        class="fas fa-chart-pie"></i>
+                    Mutation Distribution
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary me-2 action-button"
+                        value="get_gv_tumor_dist" title="View Tumor Distribution"><i
+                        class="fas fa-chart-bar"></i>
+                    Tumor Distribution
+                </button>
                 <div class="btn-group btn-group-sm">
-                    <button type="button" title="Download Data in .csv" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i>
+                    <button type="button" title="Download Data in .csv" class="btn btn-outline-secondary download-btn">
+                        <i class="fas fa-download"></i>
                         Download
                     </button>
                 </div>

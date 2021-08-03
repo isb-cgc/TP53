@@ -13,14 +13,14 @@
     <h2>Selected Statistics on Cell Lines Data</h2>
     <hr>
     <div id="stats_cell_lines" class="p-3">
-        <div class="form-text">Please note that cell-line data are also included in the dataset of somatic mutations.</div>
-        <div class="p-3 rounded-2">
+        <div class="rounded-2 card col-lg-6 col-md-10">
             <ul class="list-group list-group-flush">
                 <a href="cell_lines_mutation_stats?action=get_tumor_dist" class="list-group-item list-group-item-action"><i class="fas fa-chart-bar me-2"></i>Tumor Site Distributions</a>
                 <a href="cell_lines_mutation_stats?action=get_mutation_type" class="list-group-item list-group-item-action"><i class="fas fa-chart-bar me-2"></i>Type of Mutations</a>
                 <a href="cell_lines_mutation_stats?action=get_codon_dist" class="list-group-item list-group-item-action"><i class="fas fa-chart-bar me-2"></i>Codon Distribution of Mutations</a>
             </ul>
         </div>
+        <div class="form-text">Please note that cell-line data are also included in the dataset of somatic mutations.</div>
     </div>
 </div>
 {% endblock %}

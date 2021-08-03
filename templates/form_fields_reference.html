@@ -8,7 +8,7 @@
         Reference
     </legend>
     <div class="col-45px">
-        <button class="btn btn-outline-secondary" type="button" title="Click to look up and add reference"
+        <button class="btn btn-outline-secondary rounded-circle" type="button" title="Click to look up and add reference"
                 data-bs-toggle="modal" data-bs-target="#{{ id_prefix }}_ref_modal"><i class="fas fa-plus"></i>
         </button>
     </div>
@@ -60,10 +60,10 @@
                             {{ row.PubMed if row.PubMed !='NA' }}  </a>
                         </td>
                         <td>
-                            <div class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                            <button class="btn btn-sm rounded-circle btn-outline-secondary" type="button" data-bs-toggle="tooltip"
                                     data-bs-custom-class="wide-tooltip"
                                     data-bs-placement="left" title="{{ row.Abstract }}">
-                                <i class="fas fa-book-open"></i></div>
+                                <i class="fas fa-glasses"></i></button>
                         </td>
                     </tr>
                     {% endfor %}
@@ -71,8 +71,8 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary reset-ref"><i class="fas fa-redo"></i> Reset</button>
-                <button type="button" class="btn btn-primary add-ref" data-bs-dismiss="modal"
+                <button type="button" class="btn btn-outline-secondary reset-ref me-2"><i class="fas fa-redo"></i> Reset</button>
+                <button type="button" class="btn btn-secondary add-ref" data-bs-dismiss="modal"
                         data-ref-dest="#{{ id_prefix }}_refs_input_select">Add/Update
                 </button>
             </div>
