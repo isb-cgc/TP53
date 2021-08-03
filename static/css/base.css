@@ -205,7 +205,6 @@ a:hover{
     top: 100px;
     bottom: 0;
     z-index: 300;
-    /*padding: 53px 0 0;*/
     padding: 0;
     color: white;
 }
@@ -218,11 +217,6 @@ a:hover{
     color: white;
 }
 
-/*.sidebar ul > li.nav-item a::before {*/
-    /*width: 1.5em;*/
-    /*content: " ";*/
-    /*display: inline-block;*/
-/*}*/
 
 .sidebar ul > li.nav-item a.active::before {
     font-family: 'Font Awesome 5 Free';
@@ -232,7 +226,6 @@ a:hover{
 
 .sidebar ul > li.nav-item > nav a {
     font-size: .85rem;
-    /*font-size: .8em;*/
 }
 
 .sidebar ul > li.nav-item a::before {

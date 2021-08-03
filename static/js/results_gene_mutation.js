@@ -56,6 +56,7 @@ $(document).ready(function () {
             $('.spinner').hide();
         },
         order: [[ 1, "asc" ]],
+        scrollX: true,
         columns: [
             {
                 data: "MUT_ID",
@@ -63,6 +64,13 @@ $(document).ready(function () {
                 render: function (data) {
                     return '<input class="form-check-input row-check" type="checkbox" aria-label="Select Row" value="' + data + '"/>';
                 },
+            },
+            {
+                data: "MUT_ID",
+                orderable: false,
+                render: function(data){
+                    return '<a type="button" title="View Mutation Details" class="rounded-circle btn btn-tiny-round turquoise-btn" href="mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
+                }
             },
             {data: "g_description_GRCh38"},
             {data: "c_description"},
@@ -145,13 +153,6 @@ $(document).ready(function () {
                         else
                             return data;
                     }
-                }
-            },
-            {
-                data: "MUT_ID",
-                orderable: false,
-                render: function(data){
-                    return '<a type="button" title="View Mutation Details" class="rounded-circle btn btn-tiny-round btn-secondary" href="mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
                 }
             }
         ],
