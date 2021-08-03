@@ -61,6 +61,11 @@ $(document).ready(function () {
                     return '<input class="form-check-input row-check" type="checkbox" aria-label="Select Row">';
                 },
                 orderable: false,
+            },{
+                targets: 'external_link',
+                render: function (data) {
+                    return '<a href="'+data+'" target="_blank">'+data+'</a>';
+                }
             }],
             order: [[1, "asc"]],
             scrollX: true,

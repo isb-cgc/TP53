@@ -139,18 +139,19 @@ h1 {
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
 
 }
 
 h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
 h4 {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 a{
@@ -206,7 +207,8 @@ a:hover{
 }
 
 .sidebar ul > li.nav-item > nav a {
-    font-size: .8em;
+    font-size: .85rem;
+    /*font-size: .8em;*/
 }
 
 .sidebar ul > li.nav-item a::before {
@@ -295,6 +297,15 @@ a:hover{
 /*.jump-div {*/
     /*padding-top: 100px;*/
 /*}*/
+.three_d_viwer {
+    width: 800px;
+}
+
+#molstarViewer {
+    /*width: 800px;*/
+    height: 400px;
+    position: relative;
+}
 
 .msp-plugin .msp-layout-expanded {
 /*.msp-plugin .msp-layout-expanded .msp-layout-hide-top .msp-layout-main {*/
@@ -307,12 +318,13 @@ a:hover{
 
 
 
+
 @media (max-width: 991px) {
     .sidebar{
         left: -240px;
     }
     .main-panel {
-        padding-left: 10px;
+        padding-left: 60px;
         padding-right: 10px;
     }
 
@@ -323,6 +335,9 @@ a:hover{
     }
     .landing-tray{
         display: none;
+    }
+    .three_d_viwer {
+        width: 400px;
     }
 }
 
@@ -501,12 +516,7 @@ h1 a {
     border-bottom-color: #f8f9fa;
 }
 
-#molstarViewer {
-    width: 800px;
-    /*width: 400px;*/
-    height: 400px;
-    position: relative;
-}
+
 
 .small-font{
     font-size: small;
@@ -554,19 +564,19 @@ th.custom50w{
     width: 1.1rem;
 }
 
-#pubs img{
-    padding: 5px;
-    border-radius: 3px;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 3px 6px 6px 3px rgba(0, 0, 0, 0.1);
-}
+/*#pubs img{*/
+    /*padding: 5px;*/
+    /*border-radius: 3px;*/
+    /*box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 3px 6px 6px 3px rgba(0, 0, 0, 0.1);*/
+/*}*/
 
-#pubs img:hover{
-    box-shadow: 0 2px 4px 0 rgba(29, 57, 84, 0.3), 3px 6px 6px 3px rgba(29, 57, 84, 0.3);
-}
+/*#pubs img:hover{*/
+    /*box-shadow: 0 2px 4px 0 rgba(29, 57, 84, 0.3), 3px 6px 6px 3px rgba(29, 57, 84, 0.3);*/
+/*}*/
 
-#pubs table tr td{
-    padding-right: 10px;
-}
+/*#pubs table tr td{*/
+    /*padding-right: 10px;*/
+/*}*/
 
 .wide-tooltip .tooltip-inner{
     max-width: 800px;
@@ -577,7 +587,7 @@ th.custom50w{
 }
 
 button.btn-view-details{
-    color: #007bff;
+    color: #54B5AB;
     width: 30px;
     height: 30px;
     border: none;
@@ -585,9 +595,11 @@ button.btn-view-details{
     display: inline-block;
     background-color: white;
 }
+
 button.btn-view-details:hover{
     border-radius: 50%;
-    background-color: #e7f1ff;
+    /*background-color: #e7f1ff;*/
+    background-color: rgba(84, 181, 171, .2);
 }
 
 

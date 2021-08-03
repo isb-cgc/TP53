@@ -33,7 +33,7 @@
                     <input class="form-check-input check-all" type="checkbox">
                 </th>
                 {% for col_name in columns %}
-                    <th>{{ col_name }}</th>
+                    <th {% if col_name == 'PubMedLink' %} class="external_link" {% endif %}>{{ col_name }}</th>
                 {% endfor %}
             </tr>
             </thead>

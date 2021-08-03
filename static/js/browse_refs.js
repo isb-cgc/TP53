@@ -96,7 +96,7 @@ $(document).ready(function () {
             var deselected_ref_id = params['deselected'];
             var selected_checkboxes = $(this).parents('fieldset').siblings('.modal').find('table input:checked[value="'+deselected_ref_id+'"]');
             selected_checkboxes.prop("checked", false);
-            selected_checkboxes.parents('tr').removeClass('selected');
+
             $(this).find('option[value="' + deselected_ref_id + '"]').remove();
             $(this).prop('disabled', !$(this).find('option').length);
             $(this).trigger('chosen:updated');

@@ -10,23 +10,33 @@ $(document).ready(function () {
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         buttons: [{
-                extend: 'csv',
-                filename: function () {
-                    var db_version;// default version;
-                    $.ajax({
-                        method: "GET",
-                        async: false,
-                        url: "/get_db_version",
-                        success: function (data) {
-                            db_version = data;
-                        }
-                    });
-                    return 'tp53db_gene_mutations' + (db_version ? '_' + db_version : '');
+            extend: 'csv',
+            filename: function () {
+                var db_version;// default version;
+                $.ajax({
+                    method: "GET",
+                    async: false,
+                    url: "/get_db_version",
+                    success: function (data) {
+                        db_version = data;
+                    }
+                });
+                return 'tp53db_gene_mutations' + (db_version ? '_' + db_version : '');
+            },
+            action:
+                function (e, dt, node, config) {
+                    if (selectedRowSet.size) {
+                        download_selected_dataset(this, selectedRowSet, e, dt, node, config);
+                    }
+                    else {
+                        download_dataset(this, e, dt, node, config);
+                    }
                 },
-                exportOptions: {
-                    columns: ':not(:first-child):not(:last-child)',
-                    orthogonal: 'export'
-                }}],
+            exportOptions: {
+                columns: ':not(:first-child):not(:last-child)',
+                orthogonal: 'export'
+            }
+        }],
         pageLength: 10,
         serverSide: true,
         rowId: 'MUT_ID',
@@ -185,6 +195,9 @@ $(document).ready(function () {
             updateActionButtonGroups(selectedRowSet.size, selectedRowCellLineCount);
         } );
 
+
+
+
     var selectRow = function(r){
         table.row(r).select();
     };
@@ -206,7 +219,42 @@ $(document).ready(function () {
 
 });
 
+var download_selected_dataset = function (self, selectedRowSet, e, dt, button, config) {
+        var old_ajax_criteria = dt.settings()[0].ajax.data.criteria;
+        var oldStart = dt.settings()[0]._iDisplayStart;
 
+        dt.one('preXhr', function (e, s, data) {
+            // Just this once, load all data from the server...
+            data.start = 0;
+            data.length = 2147483647;
+            console.log(data.criteria);
+            var new_criteria = [{
+                "column_name": "MUT_ID",
+                "vals": Array.from(selectedRowSet),
+            }];
+            data.criteria = JSON.stringify(new_criteria);
+
+            dt.one('preDraw', function (e, settings) {
+                $.fn.dataTable.ext.buttons.csvHtml5.available(dt, config) ?
+                    $.fn.dataTable.ext.buttons.csvHtml5.action.call(self, e, dt, button, config) :
+                    dt.one('preXhr', function (e, s, data) {
+                        // DataTables thinks the first item displayed is index 0, but we're not drawing that.
+                        // Set the property to what it was before exporting.
+                        settings._iDisplayStart = oldStart;
+                        settings.ajax.data.criteria = old_ajax_criteria;
+                        data.start = oldStart;
+                        data.criteria = old_ajax_criteria;
+                    });
+
+                // Reload the grid with the original page. Otherwise, API functions like table.cell(this) don't work properly.
+                setTimeout(dt.ajax.reload, 0);
+                // Prevent rendering of the full data to the DOM
+                return false;
+            });
+        });
+        // // Requery the server with the new one-time export settings
+        dt.ajax.reload();
+    };
 
 var selectAllRows = function (t, bool) {
     if (bool) {

@@ -2,6 +2,7 @@
 'use strict';
 
 $(document).ready(function () {
+    console.log('datatables');
     $('.serverside-processed').DataTable({
         dom: "<'row'<'col-sm-12 col-md-6'l>>" +
                 "<'row d-none'<'col-sm-12 col-md-4'B>>" +
@@ -20,6 +21,9 @@ $(document).ready(function () {
                     }
                 });
                 return 'tp53db_cell_lines' + (db_version ? '_' + db_version : '');
+            },
+            action: function (e, dt, node, config) {
+                download_dataset(this, e, dt, node, config);
             },
             exportOptions: {
                 columns: ':visible',
