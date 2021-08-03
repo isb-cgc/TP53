@@ -33,7 +33,7 @@ $(document).ready(function () {
                     }
                 },
             exportOptions: {
-                columns: ':not(:first-child):not(:last-child)',
+                columns: ':not(:first-child):not(:nth-child(2))',
                 orthogonal: 'export'
             }
         }],
@@ -55,7 +55,7 @@ $(document).ready(function () {
         drawCallback: function () {
             $('.spinner').hide();
         },
-        order: [[ 1, "asc" ]],
+        order: [[ 2, "asc" ]],
         scrollX: true,
         columns: [
             {
