@@ -133,13 +133,15 @@ table {
 
 .turquoise-btn {
     background-color: #54B5AB;
-    border-color: #54B5AB;
+    border: none;
+    /*border-color: #54B5AB;*/
     color: white;
 }
 
 .turquoise-btn:hover {
     background-color: #51978D;
-    border-color: #51978D;
+    border: none;
+    /*border-color: #51978D;*/
     color: white;
 }
 
@@ -149,7 +151,7 @@ table {
 }
 
 .darkblue-btn:hover {
-    background-color: #2F2C55;
+    background-color:  rgba(64,77,181, .7);
     color: white;
 }
 
@@ -517,17 +519,24 @@ h1 a {
     background-image: none;
 }
 
-.btn-tiny{
-    font-size: .7rem;
-    padding: 1px 2px;
-}
+/*.btn-tiny{*/
+    /*font-size: .7rem;*/
+    /*!*padding: 1px 2px;*!*/
+/*}*/
 
-.btn-tiny-round{
-    padding: .18rem .36rem;
+/*.btn-tiny-round{*/
+    /*padding: .18rem .36rem;*/
+    /*font-size: .6rem;*/
+/*}*/
+
+/*btn-tiny-round i{*/
+    /*font-size: .6rem;*/
+/*}*/
+.btn-tiny {
+    padding: .2rem .4rem;
     font-size: .6rem;
+    border-radius: .3rem;
 }
-
-
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
     background-color: #f8f9fa;
     border-bottom-color: #f8f9fa;

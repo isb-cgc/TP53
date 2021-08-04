@@ -752,7 +752,7 @@ def gv_query():
                       "TCGA_ICGC_GENIE_count", "Polymorphism", "CLINVARlink", "COSMIClink",
                        "SNPlink", "gnomADlink"]
     sql_stm = bq_builder.build_simple_query(criteria=criteria, table='MutationView', column_filters=column_filters,
-                                            ord_column=column_filters[order_col], desc_ord=(order_dir == 'desc'),
+                                            ord_column=column_filters[order_col-1], desc_ord=(order_dir == 'desc'),
                                             start=start, length=length)
     print(sql_stm)
     sql_cnt_stm = bq_builder.build_simple_query(criteria=criteria, table='MutationView', column_filters=column_filters,
