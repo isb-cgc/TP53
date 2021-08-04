@@ -37,19 +37,57 @@ $(document).ready(function () {
         $(morph_input_selector).trigger("chosen:updated");
     });
 
+    $('.paste-support').on('change', function(e){
+        $(this).find('.warning_invalid_var').html('');
+    });
+
     $('.paste-support .chosen-container-multi').find('.chosen-search-input').on('paste', function (e) {
         // implement paste into chosen multi input box
         // find the parent selector,
         // split out the separated input
         // and update the chosen input
+        var invalid_items = [];
         var select_box = $('#' + $(e.currentTarget).parents('.chosen-container-multi').attr('id').replace('_chosen', ''));
+        var current_val = select_box.val();
         var str_in = e.originalEvent.clipboardData.getData('text');
-        var split_arr = str_in.split(/[,\n]+/).map(function(item){
-            return item.trim();
+        var option_list = $.map(select_box.find('option'), function(item) {
+            return item.value;
         });
+        var lowercase_option_list = $.map(select_box.find('option'), function(item) {
+            return item.value.toLowerCase();
+        });
+
+
+        var prefix = select_box.data('var-prefix');
+        var split_arr = str_in.split(/[,\n]+/).map(function(item){
+            var trimmed_item = item.trim();
+
+            if (!trimmed_item.toLowerCase().startsWith(prefix)){
+                trimmed_item = prefix+trimmed_item;
+            }
+            var list_index = lowercase_option_list.indexOf(trimmed_item.toLowerCase());
+
+            if (list_index < 0){
+            // if (!option_list.includes(trimmed_item.toLowerCase())){
+                invalid_items.push(item);
+            }
+            else{
+                return option_list[list_index];
+                // return trimmed_item;
+            }
+        });
+
         if (split_arr.length > 0) {
-            select_box.val(split_arr);
+            select_box.val(current_val.concat(split_arr));
             select_box.trigger('chosen:updated');
+        }
+
+        var warning_div = select_box.parents('.paste-support').find('.warning_invalid_var');
+        if (invalid_items.length > 0) {
+            warning_div.html('<i class="fas fa-exclamation-triangle"></i> Found ' + invalid_items.length + ' invalid variant(s):<br><span class="badge rounded-pill bg-dark-blue">' + invalid_items.join('</span> <span class="badge rounded-pill bg-dark-blue">') + '</span>')
+        }
+        else {
+            warning_div.html('');
         }
         return false;
     });
@@ -72,10 +110,12 @@ $(document).ready(function () {
 
    $('a.clear-all-select').on('click', function (e) {
        e.preventDefault();
-       $(this).parents('fieldset').find('select.chosen-select')
+       var fieldset = $(this).parents('fieldset')
+       fieldset.find('select.chosen-select')
            .val('')
            .trigger('chosen:updated')
            .trigger('change');
+       fieldset.find('.warning_invalid_var').html('');
    });
 
    $('a.add-all-select').on('click', function (e) {

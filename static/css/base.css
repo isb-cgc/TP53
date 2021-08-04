@@ -143,15 +143,15 @@ table {
     color: white;
 }
 
-/*.darkblue-btn {*/
-    /*background-color: #404DB5;*/
-    /*color: white;*/
-/*}*/
+.darkblue-btn {
+    background-color: #404DB5;
+    color: white;
+}
 
-/*.darkblue-btn:hover {*/
-    /*background-color: #2F2C55;*/
-    /*color: white;*/
-/*}*/
+.darkblue-btn:hover {
+    background-color: #2F2C55;
+    color: white;
+}
 
 .navbar-brand {
     margin: 0;

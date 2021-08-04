@@ -10,12 +10,16 @@
         </legend>
         <div class="col-sm-6 col-md-7 paste-support">
             <select name="{{ id_prefix }}_cdna_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_cdna_input"
-                    data-placeholder="Choose or Copy-Paste cDNA Descriptions..." aria-label="cDNA List" multiple>
+                    data-placeholder="Choose or Copy-Paste cDNA Descriptions..." aria-label="cDNA List" multiple data-var-prefix="c.">
                 {% for c_desc in c_desc_list %}
                 <option value="{{ c_desc.label }}">{{ c_desc.label }}</option>
                 {% endfor %}
             </select>
-            <div class="form-text">Reference Sequence: NM_000546.5</div>
+            <div class="row">
+                <div class="col text-start form-text"><em>i.e.: c.524G>A or 524G>A</em></div>
+                <div class="col text-end form-text">Reference Sequence: NM_000546.5</div>
+            </div>
+            <div class="warning_invalid_var darkblue-text my-2"></div>
         </div>
         <div class="col-sm-3 col-md-2 text-start">
             <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i> Clear All</a>
@@ -37,12 +41,16 @@
         <div class="col-sm-6 col-md-7 paste-support">
             <select name="{{ id_prefix }}_p_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_p_input"
                     data-placeholder="Choose or Copy-Paste Protein Descriptions..." aria-label="Protein List"
-                    multiple>
+                    multiple data-var-prefix="p.">>
                 {% for p_desc in p_desc_list %}
                 <option value="{{ p_desc.label }}">{{ p_desc.label }}</option>
                 {% endfor %}
             </select>
-            <div class="form-text">Reference Sequence: UniProt P04637</div>
+            <div class="row">
+                <div class="col text-start form-text"><em>i.e.: p.R175H or R175H</em></div>
+                <div class="col text-end form-text">Reference Sequence: UniProt P04637</div>
+            </div>
+            <div class="warning_invalid_var darkblue-text my-2"></div>
         </div>
 
         <div class="col-sm-3  col-md-2 text-start">
@@ -66,12 +74,16 @@
             <select name="{{ id_prefix }}_hg19_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_hg19_input"
                     data-placeholder="Choose or Copy-Paste Genomic Descriptions (hg19)..."
                     aria-label="Genomic List (hg19)"
-                    multiple>
+                    multiple data-var-prefix="g.">
                 {% for g_desc_hg19 in g_desc_hg19_list %}
                 <option value="{{ g_desc_hg19.label }}">{{ g_desc_hg19.label }}</option>
                 {% endfor %}
             </select>
-            <div class="form-text">Reference Sequence: GenBank NC_000017.10</div>
+            <div class="row">
+                <div class="col text-start form-text"><em>i.e.: g.7578406C>T or 7578406C>T</em></div>
+                <div class="col text-end form-text">Reference Sequence: GenBank NC_000017.10</div>
+            </div>
+            <div class="warning_invalid_var darkblue-text my-2"></div>
         </div>
 
         <div class="col-sm-3 col-md-2 text-start">
@@ -95,12 +107,16 @@
             <select name="{{ id_prefix }}_hg38_list" class="form-control chosen-select visually-hidden" id="{{ id_prefix }}_hg38_input"
                     data-placeholder="Choose or Copy-Paste Genomic Descriptions (hg38)..."
                     aria-label="Genomic List (hg38)"
-                    multiple>
+                    multiple data-var-prefix="g.">
                 {% for g_desc_hg38 in g_desc_hg38_list %}
                 <option value="{{ g_desc_hg38.label }}">{{ g_desc_hg38.label }}</option>
                 {% endfor %}
             </select>
-            <div class="form-text">Reference Sequence: GenBank NC_000017.11</div>
+            <div class="row">
+                <div class="col text-start form-text"><em>i.e.: g.7675088C>T or 7675088C>T</em></div>
+                <div class="col text-end form-text">Reference Sequence: GenBank NC_000017.11</div>
+            </div>
+            <div class="warning_invalid_var darkblue-text my-2"></div>
         </div>
 
         <div class="col-sm-3 col-md-2 text-start">
