@@ -68,12 +68,10 @@ $(document).ready(function () {
             var list_index = lowercase_option_list.indexOf(trimmed_item.toLowerCase());
 
             if (list_index < 0){
-            // if (!option_list.includes(trimmed_item.toLowerCase())){
                 invalid_items.push(item);
             }
             else{
                 return option_list[list_index];
-                // return trimmed_item;
             }
         });
 
@@ -84,7 +82,7 @@ $(document).ready(function () {
 
         var warning_div = select_box.parents('.paste-support').find('.warning_invalid_var');
         if (invalid_items.length > 0) {
-            warning_div.html('<i class="fas fa-exclamation-triangle"></i> Found ' + invalid_items.length + ' invalid variant(s):<br><span class="badge rounded-pill bg-dark-blue">' + invalid_items.join('</span> <span class="badge rounded-pill bg-dark-blue">') + '</span>')
+            warning_div.html('<i class="fas fa-exclamation-triangle"></i> Found ' + invalid_items.length + ' invalid variant(s):<br><span class="badge rounded-pill bg-dark-purple">' + invalid_items.join('</span> <span class="badge rounded-pill bg-dark-purple">') + '</span>')
         }
         else {
             warning_div.html('');
