@@ -11,1034 +11,1038 @@
 {% endblock %}
 
 {% block content %}
-<!--<div class="row">-->
-    <main class="main-panel">
-        <div class="page-banner landing-tier1 bg-dark-blue">
-            <h1 class="center fw-bold">Resources</h1>
-        </div>
-        <div class="">
-            <div id="sequences" class="mt-5">
-                <!--<div id="sequences" class="mt-5">-->
-                <h2><em>TP53</em> Sequences</h2>
-                <hr>
-                <div class="p-3">
-                    <h3>Reference sequences used to annotate <em>TP53</em> gene variations</h3>
-                    <ul>
-                        <li>Graphical view of the <a href="hg38seq">Genomic sequence (hg38)</a>
-                            with exon-intron boundaries for the main <em>p53</em> isoform.
-                        </li>
+<main>
+    <div class="page-banner text-center">
+        <h1 class="fw-bold py-2 my-0 display-6">Resources</h1>
+    </div>
+    <div class="main-panel">
+        <div id="sequences" class="mt-5">
+            <!--<div id="sequences" class="mt-5">-->
+            <h2><em>TP53</em> Sequences</h2>
+            <hr>
+            <div class="p-3">
+                <h3>Reference sequences used to annotate <em>TP53</em> gene variations</h3>
+                <ul>
+                    <li>Graphical view of the <a href="hg38seq">Genomic sequence (hg38)</a>
+                        with exon-intron boundaries for the main <em>p53</em> isoform.
+                    </li>
 
-                        <li><a href="tp53seq">Coding and protein sequence</a> with residue numbers,
-                            amino-acids, highlighted CpG sites and exon-intron boundaries.
-                        </li>
+                    <li><a href="tp53seq">Coding and protein sequence</a> with residue numbers,
+                        amino-acids, highlighted CpG sites and exon-intron boundaries.
+                    </li>
 
-                        <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/nuccore/NM_000546">
-                            NCBI link to cDNA sequence</a> corresponding to the NM_000546 isoform.
-                        </li>
+                    <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/nuccore/NM_000546">
+                        NCBI link to cDNA sequence</a> corresponding to the NM_000546 isoform.
+                    </li>
 
-                    </ul>
-                </div>
-                <div class="p-3">
-                    <h3>Other links to human sequences</h3>
-                    <ul>
-                        <li><a href="p53isoforms"><em>p53</em> isoforms</a>
-                        </li>
-
-                        <li><a target="_blank"
-                               href="https://www.ncbi.nlm.nih.gov/sites/entrez?db=gene&cmd=search&term=7157">
-                            NCBI EntrezGene</a>
-                        </li>
-
-                        <li><a target="_blank"
-                               href="https://www.ensembl.org/Homo_sapiens/geneview?db=&amp;gene=ENSG00000141510">Gene
-                            view at
-                            ENSEMBL</a>
-                        </li>
-
-                        <li><a target="_blank" href="https://www.uniprot.org/uniprot/P04637">Protein annotations at
-                            UniProtKB</a>
-                        </li>
-
-                    </ul>
-                </div>
-                <div class="p-3">
-                    <h3>Sequences in other species</h3>
-                    <ul>
-                        <li><a href="seq_align">Protein sequence alignment</a></li>
-                        <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1T4W">Structure
-                            of
-                            <em>p53</em> C.
-                            Elegans Ortholog Cep-1</a>
-                        </li>
-                        <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1HU8">Structure
-                            of
-                            Mouse <em>p53</em> core domain</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="p-3">
-                    <h3>3D Sequence Structures</h3>
-                    <ul>
-                        <li><a href="{{ url_for('static', filename='download/P53DNA.zip') }}">Download <em>p53</em> core
-                            domain and
-                            Rasmol viewer</a></li>
-                        <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1TSR">
-                            <em>p53</em> core domains bound to DNA</a>
-                        </li>
-                        <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1YCS">
-                            <em>p53</em> core domain bound to the ankyrin and SH3 domains of 53BP2</a>
-                        </li>
-                        <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1KZY">
-                            <em>p53</em> core domain bound to the Brct Region of 53Bp1</a>
-                        </li>
-                        <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1GZH">
-                            <em>p53</em> core domains (2) bound to the Brct Regions (2) of 53Bp1</a>
-                        </li>
-                        <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1AIE">
-                            <em>p53</em> tetramerization domain (residues 326-356)</a>
-                        </li>
-                        <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1C26">
-                            <em>p53</em> tetramerization domain (X-ray)</a>
-                        </li>
-                        <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1YCR">
-                            <em>p53</em> transactivation domain bound to mdm2</a>
-                        </li>
-                    </ul>
-                </div>
+                </ul>
             </div>
-            <div id="mutation" class="mt-5">
-                <h2>Mutation Nomenclatures</h2>
-                <hr>
-                <div class="p-3">
-                    <div>The genomic reference sequence used for annotating <em>TP53</em> mutations is <a
-                            href="hg38seq">NC_000017.11 (hg38 build)</a> from GenBank.
-                    </div>
-                    <div>
-                        Mutations are reported according to <a
-                            href="https://varnomen.hgvs.org/recommendations/DNA/variant/substitution/"
-                            target="_blank">HGVS</a> nomenclature recommendations.
-                    </div>
-                    <div>
-                        We recommend to use <a target="_blank" href="https://www.mutalyzer.nl/">Mutalyzer</a>, to help
-                        you
-                        format your mutation data according to HGVS guidelines and to convert positions between
-                        different
-                        genome build or isoforms.
-                    </div>
-                </div>
+            <div class="p-3">
+                <h3>Other links to human sequences</h3>
+                <ul>
+                    <li><a href="p53isoforms"><em>p53</em> isoforms</a>
+                    </li>
+
+                    <li><a target="_blank"
+                           href="https://www.ncbi.nlm.nih.gov/sites/entrez?db=gene&cmd=search&term=7157">
+                        NCBI EntrezGene</a>
+                    </li>
+
+                    <li><a target="_blank"
+                           href="https://www.ensembl.org/Homo_sapiens/geneview?db=&amp;gene=ENSG00000141510">Gene
+                        view at
+                        ENSEMBL</a>
+                    </li>
+
+                    <li><a target="_blank" href="https://www.uniprot.org/uniprot/P04637">Protein annotations at
+                        UniProtKB</a>
+                    </li>
+
+                </ul>
             </div>
-            <div id="datasub" class="mt-5">
-                <h2>Data Submission</h2>
-                <hr>
-                <div class="p-3">
-                    <div>The database is not accepting data submission anymore.</div>
-                    <div>The IARC <em>TP53</em> database will be transferred to another institution.</div>
-                    <div>
-                        The current version of the database (R20, July 2019) will remain accessible on IARC website
-                        until
-                        February 2021 to allow users to download all available data.
-                    </div>
-                </div>
-            </div>
-            <div id="tools" class="mt-5">
-                <h2>Protocols and Tools</h2>
-                <hr>
-                <div class="p-3">
-                    <h3>Protocols</h3>
-                    <div class="pt-2">
-                        To assess <em>TP53</em> mutation status it is recommended to perform gene sequencing of all
-                        exons,
-                        including
-                        the splice junctions and completed with MLPA to detect large deletion/duplications.
-                        Immuno-histochemical analysis is not a good method for assessing <em>TP53</em> mutation status,
-                        as
-                        it cannot
-                        distinguish between the various types of mutations, does not detect truncating mutations
-                        (false-negative results), and gives
-                        false-positive results (over-expressed WT protein).
-                    </div>
-                    <div class="pt-3">
-                        Some Example of Sequencing Protocols:
-                        <ul>
-                            <li><a href="{{ url_for('static', filename='download/TP53_SangerSequencing_IARC.pdf') }}"
-                                   target="_blank">Direct sequencing by
-                                Sanger</a><br/>
-                            </li>
-                            <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/27377626" target="_blank"><em>TP53</em>
-                                sequencing by a
-                                next
-                                generation sequencing technology (NGS)</a>. The detailed list of primers can be
-                                downloaded
-                                <a
-                                        href="{{ url_for('static', filename='download/NGS_TP53_Primers.txt') }}">here</a><br/>
-                            </li>
-                            <li><a href="https://www.mrcholland.com/technology/mlpa/technique"
-                                   target="_blank">MLPA</a>
-                            </li>
-                            <li>Some caution regarding <em>TP53</em> variants detected by multigene panel testing by
-                                NGS: a
-                                study by
-                                <a
-                                        target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=29189820">Weitzel
-                                    et
-                                    al.,</a>
-                            </li>
-                            <li><a href="{{ url_for('static', filename='download/TP53_SNP_sequencing.pdf') }}"
-                                   target="_blank">SNP
-                                sequencing and haplotyping</a><br/>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="pt-3">
-                        Recent developments on <em>p53</em> antibodies
-                        <ul>
-
-                            <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/29298430" target="_blank">Monoclonal
-                                Antibodies
-                                against
-                                Specific <em>p53</em> Hotspot Mutants as Potential Tools for Precision Medicine</a><br/>
-                            </li>
-                            <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/30907951" target="_blank">Understanding
-                                <em>p53</em>
-                                functions
-                                through <em>p53</em> antibodies</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="p-3">
-                    <h3>Other tools</h3>
-                    <div class="pt-2">
-                        <ul>
-                            <li><a target="_blank" href="https://www.mutalyzer.nl/">Mutalyzer</a>, a package to support
-                                checks
-                                of
-                                sequence variant nomenclature according to the guidelines of the Human Genome Variation
-                                Society
-                            </li>
-                            <li><a target="_blank" href="https://www.niehs.nih.gov/research/resources/databases/p53/">Resources
-                                for
-                                the systematic analysis of <em>p53</em> interactions with DNA and other transcription
-                                factors</a>.
-                            </li>
-                            <li><a target="_blank" href="https://tomateba.github.io/p53retriever/">p53retriever</a>, for
-                                the
-                                detection and display of <em>p53</em> putative response elements (REs) on DNA sequences
-                            </li>
-                            <li><a target="_blank" href="http://www.targetgenereg.org/">TargetGeneReg</a>, for
-                                displaying
-                                gene
-                                of
-                                interest in the <em>p53</em> and cell cycle gene regulatory networks
-                            </li>
-                            <li><a target="_blank" href="http://gepia.cancer-pku.cn/detail.php?gene=TP53"><em>TP53</em>
-                                RNA
-                                expression data from TCGA at GEPIA</a></li>
-                            <li><a target="_blank"
-                                   href="https://datamed.org/search.php?query=TP53&searchtype=data">Datamed</a>,
-                                a
-                                search engine for <em>TP53</em> datasets
-                            </li>
-                            <!--<li><a target="_blank" href="https://www.genomnis.com/access-hsf">Human Splicing Finder</a></li>-->
-                            <li><a target="_blank" href="http://agvgd.hci.utah.edu/">Align-AGVGD</a>, for the prediction
-                                of
-                                the
-                                functional impact of missense mutations
-                            </li>
-                            <li><a target="_blank" href="https://sift.bii.a-star.edu.sg/">SIFT</a>, for the prediction
-                                of
-                                the
-                                functional impact of missense mutations
-                            </li>
-                            <li><a target="_blank"
-                                   href="https://www.ebi.ac.uk/thornton-srv/databases/cgi-bin/valdar/scorecons_server.pl">Scorecons</a>,
-                                for scoring residue conservation
-                            </li>
-                            <li><a target="_blank" href="https://www.cancergenomeinterpreter.org/home">The Cancer Genome
-                                Interpreter</a>, to identify driver mutations in tumor samples
-                            </li>
-                            <li><a target="_blank"
-                                   href="https://bioinformatics.mdanderson.org/public-software/lfspro/">LFSPRO</a>,
-                                a tool for estimating <em>TP53</em> Mutation Carrier Probability
-                            </li>
-                            <li><a target="_blank"
-                                   href="https://bioinformatics.mdanderson.org/public-software/famdenovo/">Famdenovo</a>,
-                                an
-                                algorithm that calculates the probability of a germline mutation to be de novo based on
-                                family
-                                history data
-                            </li>
-                            <li><a target="_blank" href="aa_codes">Amino-acid letter codes and properties</a></li>
-                            <li><a target="_blank" href="genetic_code">Genetic code</a></li>
-                            <li><a target="_blank" href="https://www.lovd.nl/2.0/">LOVD, a software to build mutation
-                                databases</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="analysis" class="mt-5">
-                <h2>3D Structures Analysis</h2>
-                <hr>
-                <div class="p-3">
-                    <h3 class="pt-3">3D Viewer</h3>
-                    <div>
-                        <div class="text-white small-font bg-secondary px-2 three_d_viwer"><i
-                                class="fas fa-info-circle"></i> Use mouse or control buttons (located on the right) to
-                            explore.
-                        </div>
-                        <div id="molstarViewer" class="three_d_viwer"></div>
-                        <script type="text/javascript">
-                            var viewer = new molstar.Viewer('molstarViewer', {
-                                layoutIsExpanded: false,
-                                layoutShowControls: false,
-                                layoutShowRemoteState: false,
-                                layoutShowSequence: true,
-                                layoutShowLog: false,
-                                layoutShowLeftPanel: true,
-                                viewportShowExpand: true,
-                                viewportShowSelectionMode: false,
-                                viewportShowAnimation: false,
-                                pdbProvider: 'rcsb',
-                            });
-                            viewer.loadStructureFromUrl("{{ url_for('static', filename='pdb/1tsr_B.pdb') }}", format = 'pdb');
-                        </script>
-                    </div>
-                    <h3 class="pt-3">Structural Impacts of Mutations</h3>
-                    <div>
-                        <ul>
-                            <li> Analysis by A.C. Martin: <a target="_blank"
-                                                             href="https://www.ncbi.nlm.nih.gov/pubmed/11793474">Publication</a>
-                            </li>
-
-                            <li> Analysis by <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/16395672">Mathe
-                                (2006)</a>.
-                                Some details <a target="_blank" href="dt_method">here</a>
-                            </li>
-
-                            <li><a target="_blank" href="https://www.uniprot.org/uniprot/P04637#section_features">UniProt
-                                information</a>
-                            </li>
-
-                            <li>Stability and oligomeric structure of <em>p53</em> tetramerization domain mutants by <a
-                                    target="_blank"
-                                    href="https://www.ncbi.nlm.nih.gov/pubmed/20978130">Kamada
-                                et al. (2011)</a></li>
-
-                            <li>Solved crystal structures:</li>
-                            <dt>by <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15703170">Joerger
-                                AC et al. (2005)</a>
-                            </dt>
-
-                            <ul>
-                                <li><a target="_blank"
-                                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1UOL">M133L/V203A/N239Y/N268D</a>
-                                </li>
-                                <li><a target="_blank"
-                                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIM">M133L/V203A/N239Y/N268D/R273H</a>
-                                </li>
-                                <li><a target="_blank"
-                                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIN">M133L/H168R/V203A/N239Y/N268D</a>
-                                </li>
-                                <li><a target="_blank"
-                                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIO">M133L/V203A/N239Y/R249S/N268D</a>
-                                </li>
-                                <li><a target="_blank"
-                                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIP">M133L/H168R/V203A/N239Y/R249S/N268D</a>
-                                </li>
-                                <li><a target="_blank"
-                                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIQ">T123A/M133L/H168R/V203A/N239Y/R249S/N268D</a>
-                                </li>
-                            </ul>
-                            <dt>by <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/17015838">Joerger AC et
-                                al.
-                                (2006)</a></dt>
-                            <ul>
-                                <li><a target="_blank"
-                                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1W">M133L/V143A/V203A/N239Y/N268D</a>
-                                </li>
-                                <li><a target="_blank"
-                                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1X">M133L/V203A/Y220C/N239Y/N268D</a>
-                                </li>
-                                <li><a target="_blank"
-                                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1Y">M133L/V203A/G245S/N239Y/N268D</a>
-                                </li>
-                                <li><a target="_blank"
-                                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1Z">M133L/V203A/N239Y/N268D/F270L</a>
-                                </li>
-                                <li><a target="_blank"
-                                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J20">M133L/V203A/N239Y/N268D/R273C</a>
-                                </li>
-                                <li><a target="_blank"
-                                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J21">M133L/V203A/N239Y/N268D/R282W</a>
-                                </li>
-                            </ul>
-                            <li><a href="stability">Thermodynamic Stability Data</a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="functions" class="mt-5">
-                <h2>Definitions and Functions</h2>
-                <hr>
-                <div class="p-3">
-                    <ul>
-                        <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/gene/7157"><em>TP53</em> entry at
-                            EntrezGene</a>
-                        </li>
-                        <li><a target="_blank" href="https://omim.org/entry/191170">OMIM review at NCBI</a></li>
-                        <li><a target="_blank"
-                               href="https://www.genecards.org/cgi-bin/carddisp.pl?gene=TP53&search=TP53"><em>TP53</em>
-                            GeneCards entry</a></li>
-                        <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/biosystems/84467">The <em>p53</em>
-                            pathway at
-                            BioSystems </a></li>
-                        <li><a href="target_genes"><em>p53</em> target genes and response-elements</a></li>
-                        <li><a target="_blank"
-                               href="https://www.ensembl.org/Homo_sapiens/geneview?db=&amp;gene=ENSG00000141510">Gene
-                            annotation by Ensembl at EBI</a></li>
-                        <li><a target="_blank" href="https://atlasgeneticsoncology.org/Genes/P53ID88.html"><em>p53</em>
-                            entry at
-                            Atlas of
-                            Genetics</a></li>
-                        <li><a target="_blank"
-                               href="https://www.hprd.org/interactions?hprd_id=01859&isoform_id=01859_1&isoform_name="><em>p53</em>
-                            protein interactions at Human Protein Reference Database</a></li>
-                        <li><a target="_blank"
-                               href="https://www.hprd.org/ptms?hprd_id=01859&isoform_id=01859_1&isoform_name=Isoform_1"><em>p53</em>
-                            post-translational modifications at Human Protein Reference Database</a></li>
-                        <li><a href="p53isoforms"><em>p53</em> isoforms</a></li>
-                        <li><a target="_blank" href="https://www.uniprot.org/uniprot/P04637">Protein annotation by
-                            SwissProt/UniProtKB</a></li>
-                        <li><a target="_blank" href="https://p53.fr/tp53-information/historical-aspects"><em>p53</em>
-                            history and
-                            info by
-                            Thierry Soussi</a></li>
-                        <li><em>TP53</em> family memmbers: <a target="_blank"
-                                                              href="https://www.ncbi.nlm.nih.gov/gene/8626"><em>TP63</em></a>
-                            and
-                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/gene/7161"><em>TP73</em></a></li>
-                    </ul>
-                    <h3><em>p53</em> in the Clinic</h3>
-                    <div class="pt-2">
-                        <ul>
-                            <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/books/NBK1311/">Li-Fraumeni
-                                syndrome
-                                at
-                                GeneReviews</a></li>
-                            <li><a target="_blank" href="https://videocast.nih.gov/summary.asp?Live=9741">Videocast of
-                                the
-                                Li-Fraumeni Syndrome Workshop 2010</a></li>
-                            <li><a target="_blank" href="https://www.clinicaltrials.gov/ct2/results?cond=&term=p53"><em>p53</em>
-                                in
-                                clinical
-                                trials at ClinicalTrials.gov</a></li>
-                            <li><a target="_blank" href="https://www.springer.com/biomed/cancer/book/978-1-4614-3675-1">"<em>p53</em>
-                                in
-                                the
-                                clinics" book, 2012</a></li>
-                            <li><a target="_blank" href="https://bioinformatics.mdanderson.org/main/LFSPRO">LFSPRO</a>,
-                                a
-                                tool
-                                for
-                                estimating <em>TP53</em> Mutation Carrier Probability
-                            </li>
-                            <li><a target="_blank"
-                                   href="https://bioinformatics.mdanderson.org/public-software/famdenovo/">Famdenovo</a>,
-                                an
-                                algorithm that calculates the probability of a germline mutation to be de novo, taking
-                                <em>TP53</em>
-                                as
-                                an
-                                example application
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-            <div id="slideshow" class="mt-5">
-                <h2>Slide Show</h2>
-                <hr>
-                <div class="p-3">
-                    <h3><em>TP53</em> Variations In Human Cancer</h3>
-                    <div class="pt-2">
-                        This slide-show contains information on:
-                        <ul>
-                            <li><em>TP53</em> gene and protein properties and activities</li>
-                            <li>The <em>TP53</em> database structure and contents</li>
-                            <li>The biological and clinical impacts of mutations</li>
-                            <li>References and links to other related resources</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <a href="{{ url_for('static', filename='download/SlideShow2019.pdf') }}"
-                           class="btn btn-outline-primary" target="_blank"
-                           title="Click to view/download slides"><i class="far fa-file-pdf"></i> View Slides</a></div>
-                </div>
-            </div>
-            <div id="others" class="mt-5">
-                <h2>Other Databases</h2>
-                <hr>
-                <div class="p-3">
-                    <h3><em>TP53</em> databases</h3>
-                    <div class="pt-2">
-                        <p>There are several links to different <em>TP53</em> databases available on the web. Several
-                            resources are
-                            not updated anymore and may contain obsolete data. It is recommended to use up-to-date
-                            resources.
-                        </p>
-                        <ul>
-                            <li><a target="_blank" href="/">The TP53</em> Database</a>
-                                (last updated in July 2019)
-                            </li>
-                            <li><a target="_blank" href="https://p53.fr/">The <em>p53</em> database by Thierry
-                                Soussi</a> (last
-                                updated in 2017)
-                            </li>
-                            <li><a target="_blank" href="https://databases.lovd.nl/shared/genes/TP53">LOVD <em>TP53</em></a>,
-                                a
-                                database system for direct data submission
-                            </li>
-                            <li><a target="_blank" href="https://www.lf2.cuni.cz/projects/germline_mut_p53.htm">The
-                                database
-                                of germline <em>TP53</em> mutations in Prague</a> (not updated anymore)
-                            </li>
-                            <li><a target="_blank" href="http://p53.bii.a-star.edu.sg/index.php"><em>p53</em>
-                                Knowledgebase at
-                                Singapore</a> (obsolete)
-                            </li>
-                            <li><a target="_blank" href="https://www.ibiblio.org/dnam/des_p53.htm">Human <em>p53</em>
-                                database and
-                                software, N. Cariello (1997)</a> (obsolete)
-                            </li>
-                        </ul>
-                    </div>
-
-
-                    <h3>Related Databases</h3>
-                    <div class="pt-2">
-                        <ul>
-                            <li><a href="https://cancer.sanger.ac.uk/cosmic" target="_blank">Catalogue Of Somatic
-                                Mutations
-                                in
-                                Cancer (COSMIC) at Sanger Institute, UK</a></li>
-                            <li><a href="https://dcc.icgc.org/" target="_blank">International Cancer Genome Consortium
-                                (ICGC)
-                                data portal</a></li>
-                            <li><a href="https://www.cbioportal.org/" target="_blank">cBioPortal for Cancer Genomics</a>
-                            </li>
-                            <li><a href="https://genie.cbioportal.org/" target="_blank">AACR GENIE dataset in
-                                cBioportal</a>
-                            </li>
-                            <li><a href="https://portal.gdc.cancer.gov/" target="_blank">TCGA data portal</a></li>
-                            <li><a href="https://grenada.lumc.nl/LSDB_list/lsdbs" target="_blank">List of locus specific
-                                databases</a></li>
-                            <li><a href="https://pecan.stjude.cloud/home" target="_blank">St. Jude PeCan Data Portal on
-                                pediatric cancer mutations
-                            </a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="books" class="mt-5">
-                <h2>Books</h2>
-                <hr>
-                <div class="p-3">
-
-                    <div class="pt-2 row">
-                        <div class="col-auto d-none d-lg-block">
-                            <a href="tp53book2013"><img height="150"
-                                                        src="{{ url_for('static', filename='img/p53_2013.jpeg') }}"></a>
-                        </div>
-                        <div class="col px-4">
-                            <h3><em>p53</em> in the Clinics</h3>
-                            With over 60,000 referenced publications, <em>p53</em> has emerged as one of the
-                            most important factors in human cancer. Research on <em>p53</em> has led to a complete
-                            overhaul of our
-                            understanding of the molecular basis of human cancer. <a href="tp53book2013">Continue
-                            reading</a></div>
-
-                    </div>
-                </div>
-                <div class="p-3">
-
-                    <div class="pt-2 row">
-                        <div class="col-auto d-none d-lg-block">
-                            <a href="tp53book"><img height="150"
-                                                    src="{{ url_for('static', filename='img/25yrs_p53.webp') }}">
-                            </a>
-                        </div>
-                        <div class="col px-4 ">
-                            <h3>25 Years of <em>p53</em> Research</h3>
-                            The discovery of <em>p53</em> in 1979 marks the beginning of a most fascinating era of
-                            modern
-                            cancer research and molecular biology, an era that is still in full swing and does not show
-                            any
-                            signs of ending in the foreseeable future.
-                            <a href="tp53book">Continue reading</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="lifraumeni" class="mt-5">
-                <h2>Li-Fraumeni Syndrome</h2>
-                <hr>
-                <div class="p-3">
-                    <div>Inherited <em>TP53</em> mutations are associated with a rare autosomal dominant disorder, the
-                        <strong>Li-Fraumeni
-                            syndrome (LFS)</strong>.
-                        LFS is characterized by multiple primary neoplasms in children and young adults, with a
-                        predominance
+            <div class="p-3">
+                <h3>Sequences in other species</h3>
+                <ul>
+                    <li><a href="seq_align">Protein sequence alignment</a></li>
+                    <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1T4W">Structure
                         of
-                        soft-tissue sarcomas, osteosarcomas,
-                        breast cancers, brain tumors and adrenocortical carcinomas.
-                    </div>
-                    <div class="pt-3">Several clinical definitions of LFS have been proposed.
-                    </div>
-                    <div class="p-3">
-                        <div>The <strong>classic Li-Fraumeni syndrome (LFS)</strong> (<a
-                                target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/3409256">Li et al., 1988</a>)
-                            is
-                            defined by presence of all of the following criteria:
-                        </div>
-                        <div class="pt-2">
-                            <ul>
-                                <li>A proband with a sarcoma diagnosed before age 45 years</li>
-                                <li>A first-degree relative with any cancer before age 45 years</li>
-                                <li>A first- or second-degree relative with any cancer before age 45 years or a sarcoma
-                                    at
-                                    any
-                                    age [Li et al 1988]
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div>The <strong>Chompret criteria</strong> (updated in <a target="_blank"
-                                                                                   href="https://www.ncbi.nlm.nih.gov/pubmed/26014290">Bougeard
-                            et al., 2015)</a> should be used to identify potential <em>TP53</em> mutation carriers:
-                        </div>
-                        <div class="pt-2">
-                            <ul>
-                                <li><strong>Familial presentation</strong>: Proband with tumor belonging to LFS tumor
-                                    spectrum
-                                    (eg,
-                                    premenopausal
-                                    breast cancer, soft tissue sarcoma, osteosarcoma, CNS tumor,
-                                    adrenocortical carcinoma) before age 46 years, <strong>AND</strong> at least one
-                                    first
-                                    or
-                                    second-degree
-                                    relative with LFS tumor (except breast cancer if proband has breast cancer) before
-                                    age 56 years or with multiple tumors
-                                </li>
-                                <li><strong>Multiple primary tumors</strong>: Proband with multiple tumors (except
-                                    multiple
-                                    breast
-                                    tumors), two
-                                    of which belong to LFS tumor spectrum and first of which occurred
-                                    before age 46 years
-                                </li>
-                                <li><strong>Rare tumors</strong>: Patient with adrenocortical carcinoma, choroid plexus
-                                    tumor,
-                                    or
-                                    rhabdomyosarcoma of embryonal anaplastic subtype, irrespective of family history
-                                </li>
-                                <li><strong>Early-onset breast cancer</strong>: Breast cancer before age 31 yr</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="pt-3">Data on Li-Fraumeni associated <em>TP53</em> mutations can be searched <a
-                            href="search_germline_mut">here</a>.
-                    </div>
-                    <div class="pt-3">To learn more on LFS and <em>TP53</em> germline mutations, see <a target="_blank"
-                                                                                                        href="https://www.ncbi.nlm.nih.gov/books/NBK1311/">
-                        GeneReviews</a> and the videocast of the <a target="_blank"
-                                                                    href="https://videocast.nih.gov/summary.asp?Live=9741">Li-Fraumeni
-                        Syndrome Workshop 2010</a>.
-                    </div>
+                        <em>p53</em> C.
+                        Elegans Ortholog Cep-1</a>
+                    </li>
+                    <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1HU8">Structure
+                        of
+                        Mouse <em>p53</em> core domain</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="p-3">
+                <h3>3D Sequence Structures</h3>
+                <ul>
+                    <li><a href="{{ url_for('static', filename='download/P53DNA.zip') }}">Download <em>p53</em> core
+                        domain and
+                        Rasmol viewer</a></li>
+                    <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1TSR">
+                        <em>p53</em> core domains bound to DNA</a>
+                    </li>
+                    <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1YCS">
+                        <em>p53</em> core domain bound to the ankyrin and SH3 domains of 53BP2</a>
+                    </li>
+                    <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1KZY">
+                        <em>p53</em> core domain bound to the Brct Region of 53Bp1</a>
+                    </li>
+                    <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1GZH">
+                        <em>p53</em> core domains (2) bound to the Brct Regions (2) of 53Bp1</a>
+                    </li>
+                    <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1AIE">
+                        <em>p53</em> tetramerization domain (residues 326-356)</a>
+                    </li>
+                    <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1C26">
+                        <em>p53</em> tetramerization domain (X-ray)</a>
+                    </li>
+                    <li><a target="_blank" href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1YCR">
+                        <em>p53</em> transactivation domain bound to mdm2</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="mutation" class="mt-5">
+            <h2>Mutation Nomenclatures</h2>
+            <hr>
+            <div class="p-3">
+                <div>The genomic reference sequence used for annotating <em>TP53</em> mutations is <a
+                        href="hg38seq">NC_000017.11 (hg38 build)</a> from GenBank.
                 </div>
-                <div class="p-3">
-                    <h3>Publications of interest:</h3>
-                    <div class="pt-2">
-                        <ul>
-                            <li>
-                                <i>Concern regarding classification of germline <em>TP53</em> variants as likely
-                                    pathogenic.</i>
-                                Evans DG, Turnbull C, Woodward ER. <strong>2019</strong> Jun;40(6):828-831. <a
-                                    href="{{ url_for('static', filename='download/Evans_et_al-2019-Human_Mutation.pdf') }}"
-                                    target="_blank">Article</a>
-                            </li>
-                            <li>
-                                <i>Bayesian estimation of a semiparametric recurrent event model with applications to
-                                    the
-                                    penetrance
-                                    estimation of multiple primary cancers in Li-Fraumeni syndrome.</i>
-                                Shin SJ, Li J, Ning J, Bojadzieva J, Strong LC, Wang W. <strong>2018</strong> Nov 14. <a
-                                    href="{{ url_for('static', filename='download/Evans_et_al-2019-Human_Mutation.pdf') }}"
-                                    target="_blank">Article</a>
-                            </li>
-                            <li>
-                                <i>Baseline Surveillance in Li-Fraumeni Syndrome Using Whole-Body Magnetic Resonance
-                                    Imaging, A
-                                    Meta-analysis.</i>
-                                Ballinger ML, Best A, Mai PL, Khincha PP, Loud JT, Peters JA, Achatz MI, Chojniak R,
-                                Balieiro da
-                                Costa A, Santiago KM, Garber J, O'Neill AF, Eeles RA, Evans DG, Bleiker E, Sonke GS,
-                                Ruijs
-                                M,
-                                Loo C, Schiffman J, Naumer A, Kohlmann W, Strong LC, Bojadzieva J, Malkin D, Rednam SP,
-                                Stoffel
-                                EM,
-                                Koeppe E, Weitzel JN, Slavin TP, Nehoray B, Robson M, Walsh M, Manelli L, Villani A,
-                                Thomas
-                                DM,
-                                Savage
-                                SA. <strong>2017</strong> Dec 1;3(12):1634-1639.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/28772291">PubMed</a>
-                            </li>
-                            <li>
-                                <i>Cancer Screening Recommendations for Individuals with Li-Fraumeni Syndrome.</i> Kratz
-                                CP,
-                                Achatz
-                                MI, Brugières L, Frebourg T, Garber JE, Greer MC, Hansford JR, Janeway KA,
-                                Kohlmann WK, McGee R, Mullighan CG, Onel K, Pajtler KW, Pfister SM, Savage SA, Schiffman
-                                JD,
-                                Schneider KA, Strong LC, Evans DGR, Wasserman JD, Villani A, Malkin D.
-                                <strong>2016</strong>
-                                Jun
-                                1;23(11):e38-e45.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/28572266">PubMed</a>
-                            </li>
-                            <li>
-                                <i>Risks of first and subsequent cancers among TP53 mutation carriers in the National
-                                    Cancer
-                                    Institute Li-Fraumeni syndrome cohort.</i> Mai PL, Best AF, Peters JA, DeCastro RM,
-                                Khincha
-                                PP,
-                                Loud JT, Bremer RC, Rosenberg PS, Savage SA.
-                                <strong>2016</strong> Dec 1;122(23):3673-3681.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/27496084">PubMed</a>
-                            </li>
-                            <li>
-                                <i>Revisiting Li-Fraumeni Syndrome From TP53 Mutation Carriers.</i>
-                                Bougeard G, Renaux-Petel M, Flaman JM, Charbonnier C, Fermey P, Belotti M,
-                                Gauthier-Villars
-                                M,
-                                Stoppa-Lyonnet D, Consolino E, Brugières L, Caron O, Benusiglio PR, Bressac-de
-                                Paillerets B,
-                                Bonadona V, Bonaiti-Pellie C, Tinat J, Baert-Desurmont S, Frebourg T. J Clin Oncol.
-                                <strong>2015</strong> Jul 20;33(21):2345-52.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/26014290">PubMed</a>
-                            </li>
-                            <li>
-                                <i>Breast cancer phenotype in women with TP53 germline mutations: a Li-Fraumeni syndrome
-                                    consortium effort.</i>
-                                Masciari S, Dillon DA, Rath M, Robson M, Weitzel JN, Balmana J, Gruber SB, Ford JM,
-                                Euhus D,
-                                Lebensohn A, Telli M, Pochebit SM, Lypas G, Garber JE. Breast Cancer Res Treat.
-                                <strong>2012</strong> Jun;133(3):1125-30.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/22392042">PubMed</a>
-                            </li>
-                            <li>
-                                <i>Sarcomas in TP53 germline mutation carriers: a review of the IARC TP53 database.</i>
-                                Ognjanovic S, Olivier M, Bergemann TL, Hainaut P. Cancer <strong>2012</strong> Mar
-                                1;118(5):1387-96.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/21837677">PubMed</a>
-                            </li>
-                            <li>
-                                <i>Impact of the MDM2 SNP309 and p53 Arg72Pro polymorphism on age of tumour onset in
-                                    Li-Fraumeni
-                                    syndrome.</i>
-                                Bougeard G, Baert-Desurmont S, Tournier I, Vasseur S, Martin C, Brugieres L, Chompret A,
-                                Bressac-de Paillerets B, Stoppa-Lyonnet D, Bonaiti-Pellie C, Frebourg T. J Med Genet.
-                                <strong>2006</strong>
-                                Jun;43(6):531-3.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/16258005">PubMed</a>
-                            </li>
-                            <li>
-                                <i>Beyond Li Fraumeni Syndrome: clinical characteristics of families with p53 germline
-                                    mutations.</i>
-                                Gonzalez KD, Noltner KA, Buzin CH, Gu D, Wen-Fong CY, Nguyen VQ, Han JH, Lowstuter K,
-                                Longmate
-                                J, Sommer SS, Weitzel JN. J Clin Oncol. <strong>2009</strong> Mar 10;27(8):1250-6.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/19204208">PubMed</a>
-                            </li>
-                            <li>
-                                <i>A single nucleotide polymorphism in the MDM2 promoter attenuates the p53 tumor
-                                    suppressor
-                                    pathway and accelerates tumor formation in humans.</i>
-                                Bond GL, Hu W, Bond EE, Robins H, Lutzker SG, Arva NC, Bargonetti J, Bartel F, Taubert
-                                H,
-                                Wuerl
-                                P, Onel K, Yip L, Hwang SJ, Strong LC, Lozano G, Levine AJ. Cell <strong>2004</strong>
-                                Nov
-                                24;119(5):591-602.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15550242">PubMed</a>
-                            </li>
-                            <li>
-                                <i>Li-Fraumeni and related syndromes: correlation between tumor type, family structure,
-                                    and
-                                    TP53
-                                    genotype.</i>
-                                Olivier M, Goldgar DE, Sodha N, Ohgaki H, Kleihues P, Hainaut P, Eeles RA. Cancer Res.
-                                <strong>2003</strong> Oct 15;63(20):6643-50.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/14583457">PubMed</a>
-                            </li>
-                            <li>
-                                <i>Germline TP53 mutations and Li-Fraumeni syndrome.</i>
-                                Varley JM. Hum Mutat <strong>2003</strong> Mar;21(3):313-20.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/12619118">PubMed</a>
-                            </li>
-                            <li>
-                                <i>Relative frequency and morphology of cancers in carriers of germline TP53
-                                    mutations.</i>
-                                Birch JM, Alston RD, McNally RJ, Evans DG, Kelsey AM, Harris M, Eden OB, Varley JM.
-                                Oncogene
-                                <strong>2001</strong> Aug 2;20(34):4621-8.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11498785">PubMed</a>
-                            </li>
-                            <li>
-                                <i>Cancer phenotype correlates with constitutional TP53 genotype in families with the
-                                    Li-Fraumeni
-                                    syndrome.</i>
-                                Birch JM, Blair V, Kelsey AM, Evans DG, Harris M, Tricker KJ, Varley JM. Oncogene.
-                                <strong>1998</strong> Sep 3;17(9):1061-8.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9764816">PubMed</a>
-                            </li>
-                            <li>
-                                <i>Li-Fraumeni syndrome--a molecular and clinical review.</i>
-                                Varley JM, Evans DG, Birch JM. Br J Cancer. <strong>1997</strong>;76(1):1-14.
-                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9218725">PubMed</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div>
+                    Mutations are reported according to <a
+                        href="https://varnomen.hgvs.org/recommendations/DNA/variant/substitution/"
+                        target="_blank">HGVS</a> nomenclature recommendations.
+                </div>
+                <div>
+                    We recommend to use <a target="_blank" href="https://www.mutalyzer.nl/">Mutalyzer</a>, to help
+                    you
+                    format your mutation data according to HGVS guidelines and to convert positions between
+                    different
+                    genome build or isoforms.
                 </div>
             </div>
-            <div id="polymorph" class="mt-5">
-                <h2><em>TP53</em> Polymorphisms</h2>
-                <hr>
-                <div class="p-3">
-                    <p>For the most systematic review on <em>TP53</em> polymorphisms and their functional and clinical
-                        consequences,
-                        see
-                        <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/19165225">Whibley et al., 2009</a>.
-                        However, please note that this review is not up to date, in particular regarding two variants,
-                        V217M
-                        (rs35163653) and G360A (rs35993958), that are not frequent SNP based on most recent studies and
-                        thus
-                        are not considered as validated polymorphisms in the IARC database.</p>
-                    <p>A recent study based on the analysis of large sets of genomic data showed that commonly inherited
-                        <strong>genetic variants in the p53 pathway </strong> affect the incidence of a broad range of
-                        cancers
-                        more than variants in other pathways
-                        (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/27009395">Stracquadanio et al,
-                            2016)</a>.
-                    </p>
-                    <p>Most of <em>TP53</em> polymorphisms are located in introns, outside consensus splicing sites. The
-                        functional
-                        consequences of most of these SNPs is unknown.
-                        Theoretically, they may affect p53 protein function through enhanced mutability due to altered
-                        DNA
-                        sequence context, increased cryptic splicing events,
-                        altered transcript stability or translation or tissue-specific expression (<a target="_blank"
-                                                                                                      href="https://www.ncbi.nlm.nih.gov/pubmed/1848986">Lozano
-                            1991</a>,
-                        <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7888751">Mattick 1994</a>).
-                        It was shown that the p53 regulatory protein MDM2, that regulate p53 through protein-protein
-                        interactions, also binds to p53 mRNA and facilitate its translation.
-                        Specific silent mutations in <em>TP53</em> abrogated this regulation, suggesting that synonymous
-                        polymorphisms
-                        could affect p53 function through this new mechanism (<a target="_blank"
-                                                                                 href="https://www.ncbi.nlm.nih.gov/pubmed/19160491">Candeias,
-                            2008</a>).
-                    </p>
-
-                    <p>A list of variants frequent in healthy human populations, and thus considered as validated
-                        polymorphisms
-                        in the IARC database, is accessible <a id="displayValidatedPolymorphisms" href="view_val_poly">here</a>.
-                    </p>
-
-                    <p>Among validated polymorphisms, a few have been studied in relation to cancer risk or functional
-                        impact.
-                        Some knowledge on these polymorphisms is provided here.</p>
-
+        </div>
+        <div id="datasub" class="mt-5">
+            <h2>Data Submission</h2>
+            <hr>
+            <div class="p-3">
+                <div>The database is not accepting data submission anymore.</div>
+                <div>The IARC <em>TP53</em> database will be transferred to another institution.</div>
+                <div>
+                    The current version of the database (R20, July 2019) will remain accessible on IARC website
+                    until
+                    February 2021 to allow users to download all available data.
+                </div>
+            </div>
+        </div>
+        <div id="tools" class="mt-5">
+            <h2>Protocols and Tools</h2>
+            <hr>
+            <div class="p-3">
+                <h3>Protocols</h3>
+                <div class="pt-2">
+                    To assess <em>TP53</em> mutation status it is recommended to perform gene sequencing of all
+                    exons,
+                    including
+                    the splice junctions and completed with MLPA to detect large deletion/duplications.
+                    Immuno-histochemical analysis is not a good method for assessing <em>TP53</em> mutation status,
+                    as
+                    it cannot
+                    distinguish between the various types of mutations, does not detect truncating mutations
+                    (false-negative results), and gives
+                    false-positive results (over-expressed WT protein).
+                </div>
+                <div class="pt-3">
+                    Some Example of Sequencing Protocols:
+                    <ul>
+                        <li><a href="{{ url_for('static', filename='download/TP53_SangerSequencing_IARC.pdf') }}"
+                               target="_blank">Direct sequencing by
+                            Sanger</a><br/>
+                        </li>
+                        <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/27377626" target="_blank"><em>TP53</em>
+                            sequencing by a
+                            next
+                            generation sequencing technology (NGS)</a>. The detailed list of primers can be
+                            downloaded
+                            <a
+                                    href="{{ url_for('static', filename='download/NGS_TP53_Primers.txt') }}">here</a><br/>
+                        </li>
+                        <li><a href="https://www.mrcholland.com/technology/mlpa/technique"
+                               target="_blank">MLPA</a>
+                        </li>
+                        <li>Some caution regarding <em>TP53</em> variants detected by multigene panel testing by
+                            NGS: a
+                            study by
+                            <a
+                                    target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=29189820">Weitzel
+                                et
+                                al.,</a>
+                        </li>
+                        <li><a href="{{ url_for('static', filename='download/TP53_SNP_sequencing.pdf') }}"
+                               target="_blank">SNP
+                            sequencing and haplotyping</a><br/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pt-3">
+                    Recent developments on <em>p53</em> antibodies
                     <ul>
 
-                        <li><a href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=17878362" target="_blank">rs17878362:
-                            intron
-                            3 duplication</a></li>
-                        <p>This variant has been found to be associated with increased risk of colorectal cancer in a
-                            case-control study and correlated with a
-                            reduced level of <em>TP53</em> mRNA in lymphoblastoid cell-lines (<a target="_blank"
-                                                                                                 href="https://www.ncbi.nlm.nih.gov/pubmed/14647431">Gemignani
-                                2004</a>).
-                            However, because of a strong linkage disequilibrium between the intron 3 duplication and the
-                            codon
-                            72 variant, it can not been determined from these experiments whether
-                            the intron 3 duplication alone influences mRNA stability or if this effect requires the Pro
-                            codon 72
-                            variant. A meta-analysis by <a target="_blank"
-                                                           href="https://www.ncbi.nlm.nih.gov/pubmed/23412385">Sagne
-                                et al., (2013)</a>
-                            suggests that rs17878362 is associated with cancer risk, with population and tumour-specific
-                            effects. This polymorphism overlaps a G-quadruplex structure that modulate p53 mRNA splicing
-                            and
-                            stability <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/25269805">(Perriaud,
-                                2014)</a>.
-                        </p>
-                        <li><a href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=1800371" target="_blank">rs1800371:
-                            Pro47Ser</a></li>
-                        <p>The <strong> P47S </strong> variant is a rare polymorphism affecting a codon conserved in
-                            evolution.
-                            The serine 47 polymorphic variant, which replaces the proline residue necessary for
-                            recognition
-                            by
-                            proline-directed kinases (p38 MAPK), is a markedly poorer substrate for phosphorylation on
-                            serine 46
-                            by p38 MAPK.
-                            This property correlate with a report that suggested that this polymorphism is functionally
-                            significant and show a decrease ability to transactivate two p53 target-genes, p53AIP1 and
-                            PUMA,
-                            but
-                            not other p53 response genes, and to induce apoptosis
-                            (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15851479">Li et al., 2005</a>).
-                            A
-                            recent study showed that the Pro47Ser variant was not associated with overall breast cancer
-                            risk,
-                            but may increase risk among pre-menopausal women of African ancestry
-                            (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/28649645 ">Murphy et al.,
-                                2017</a>).
-                        </p>
-                        <li><a href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=1042522" target="_blank">rs1042522:
-                            Pro72Arg</a></li>
-                        <p>Residue 72, although not conserved, is located within the proline-rich region and may affect
-                            the
-                            structure of the putative SH3-binding domain.
-                            Wild-type p53 protein with <b>Arg72</b> was reported to be more efficient in inducing
-                            apoptosis
-                            than
-                            its Pro variant (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/12567188">Dumont
-                                2003</a>).
-                            This property correlated with a greater capacity to interact with MDM2, which facilitate
-                            nuclear
-                            export and mitochondrial localization. Other differences between the p53 variants have been
-                            reported:
-                            ability to bind components of the transcriptional machinery, to activate transcription, to
-                            induce
-                            apoptosis, and to repress the transformation of primary cells (<a target="_blank"
-                                                                                              href="https://www.ncbi.nlm.nih.gov/pubmed/9891044">Thomas
-                                1999</a>).
-                            <br/>
-                            The protein with <strong>Arg72</strong> was also found to be more efficiently targeted for
-                            degradation by the E6 protein of HPV16, suggesting that individuals homozygous for Arg72 may
-                            be
-                            at
-                            higher risk of HPV-related cervical cancers (<a target="_blank"
-                                                                            href="https://www.ncbi.nlm.nih.gov/pubmed/9607760">Storey
-                                1998</a>).
-                            However, population-based and meta-analysis studies have failed to confirm this hypothesis (<a
-                                    target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11535556">Klug 2001</a>,
-                            <a
-                                    target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/14744727">Koushik 2004</a>).&nbsp;
-                            <br/>
-                            <br/>
-                            Sharp ethnic differences in <b>codon 72</b> allele frequencies have been observed. In the
-                            Northern
-                            hemisphere, the Pro72 allele shows a North-South gradient, from 0.17 in Swedish Saamis to
-                            0.63
-                            in
-                            African Blacks (Nigerians)
-                            (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7927355">Beckman 1994</a>).
-                            In Western Europe (France, Sweden, Norway), North America (USA), Central and South America
-                            (Mexico,
-                            Costa-Rica, Peru) and Japan, the most common allele is Arg72,
-                            with frequencies ranging from 0.60 to 0.83. However, frequencies of Pro72 superior to 0.40
-                            have
-                            been
-                            observed in African-Americans
-                            (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7554076">Jin 1995</a>,
-                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/1302561">Weston 1992</a>)
-                            and in Chineses (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11146230">Peixoto-Guimaraes
-                                2001</a>,
-                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10468305">Ngan 1999</a>).<br>
-                            A study suggest that these latitude-dependent variations may be due to selection related to
-                            winter
-                            temperature and not to UV radiation as suggested by previous studies.
-                            Indeed, <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/19344876">Shi et al.
-                                (2009)</a>
-                            observed that low average temperature, but not UV radiation, was associated with high
-                            frequency
-                            of
-                            Arg72 in Eastern Asia.
-                            <br/>
-                            <br/>
-                            A recent study in mice reported that the P72R Polymorphism of p53 predisposes to besity and
-                            metabolic dysfunction (<a target="_blank"
-                                                      href="https://www.ncbi.nlm.nih.gov/pubmed/26947067">Kung
-                                2016</a>).
-
-                            <br/>
-                            <br/>
-                            The polymorphic variant at <strong>codon 72</strong> has been shown to be an intragenic
-                            modifier
-                            of
-                            <b>mutant p53</b> behavior
-                            (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10802655">Marin 2000</a>; <a
-                                    target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/29463573">Basu 2018</a>).
-                            Arg72-containing allele was preferentially mutated and retained in squamous cell tumours
-                            arising
-                            in
-                            Arg/Pro germline heterozygotes and was more potent
-                            in neutralizing p73-induced apoptosis and cooperating with EJ-Ras to transfrom cells. Other
-                            studies
-                            in colorectal
-                            (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15548361">Schneider-Stock
-                                2004</a>),
-                            lung (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15905205">Nelson 2005</a>),
-                            and head and neck cancers (<a target="_blank"
-                                                          href="https://www.ncbi.nlm.nih.gov/pubmed/15039212">Schneider-Stock
-                                2004</a>)
-                            cancers have aslo found that in Arg/Pro germline heterozygotes, the Pro allele is
-                            preferentially
-                            lost and the Arg allele is preferentially mutated.
-
-                        </p>
-                        <li><a href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=1794287" target="_blank">rs1794287:
-                            intron4,
-                            g.7675519A>G (hg38)</a></li>
-                        <p>This SNP was shown by <a href="https://www.ncbi.nlm.nih.gov/pubmed/20127977">Bellini et al.,
-                            (2010)</a> to affect the activity of the internal promoter of <em>TP53</em> controlling the
-                            production
-                            of dN133p53 isoform.
-                        </p>
-                        <li><a href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=78378222" target="_blank">rs78378222</a>
-                            and
-                            <a href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=35850753" target="_blank">rs35850753</a>
-                            in
-                            untranslated regions
+                        <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/29298430" target="_blank">Monoclonal
+                            Antibodies
+                            against
+                            Specific <em>p53</em> Hotspot Mutants as Potential Tools for Precision Medicine</a><br/>
                         </li>
-                        <p>These two rare germline variants that are in linkage disequilibrium and map to the 3'-UTR of
-                            <em>TP53</em>
-                            and
-                            the 5'-UTR of the d133 isoform of <em>TP53</em>, respectively, have been shown to robustly
-                            associate with
-                            <strong>neuroblastoma</strong> in various populations (<a target="_blank"
-                                                                                      href="https://www.ncbi.nlm.nih.gov/pubmed/24634504">Diskin
-                                2014</a>).
-                            rs35850753: odds ratio [OR] = 2.7, 95% confidence interval [CI] = 2.0 to 3.6; rs78378222: OR
-                            =
-                            2.3,
-                            95% CI = 1.8 to 2.9.
-                        </p>
+                        <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/30907951" target="_blank">Understanding
+                            <em>p53</em>
+                            functions
+                            through <em>p53</em> antibodies</a>
+                        </li>
 
                     </ul>
                 </div>
             </div>
+            <div class="p-3">
+                <h3>Other tools</h3>
+                <div class="pt-2">
+                    <ul>
+                        <li><a target="_blank" href="https://www.mutalyzer.nl/">Mutalyzer</a>, a package to support
+                            checks
+                            of
+                            sequence variant nomenclature according to the guidelines of the Human Genome Variation
+                            Society
+                        </li>
+                        <li><a target="_blank" href="https://www.niehs.nih.gov/research/resources/databases/p53/">Resources
+                            for
+                            the systematic analysis of <em>p53</em> interactions with DNA and other transcription
+                            factors</a>.
+                        </li>
+                        <li><a target="_blank" href="https://tomateba.github.io/p53retriever/">p53retriever</a>, for
+                            the
+                            detection and display of <em>p53</em> putative response elements (REs) on DNA sequences
+                        </li>
+                        <li><a target="_blank" href="http://www.targetgenereg.org/">TargetGeneReg</a>, for
+                            displaying
+                            gene
+                            of
+                            interest in the <em>p53</em> and cell cycle gene regulatory networks
+                        </li>
+                        <li><a target="_blank" href="http://gepia.cancer-pku.cn/detail.php?gene=TP53"><em>TP53</em>
+                            RNA
+                            expression data from TCGA at GEPIA</a></li>
+                        <li><a target="_blank"
+                               href="https://datamed.org/search.php?query=TP53&searchtype=data">Datamed</a>,
+                            a
+                            search engine for <em>TP53</em> datasets
+                        </li>
+                        <!--<li><a target="_blank" href="https://www.genomnis.com/access-hsf">Human Splicing Finder</a></li>-->
+                        <li><a target="_blank" href="http://agvgd.hci.utah.edu/">Align-AGVGD</a>, for the prediction
+                            of
+                            the
+                            functional impact of missense mutations
+                        </li>
+                        <li><a target="_blank" href="https://sift.bii.a-star.edu.sg/">SIFT</a>, for the prediction
+                            of
+                            the
+                            functional impact of missense mutations
+                        </li>
+                        <li><a target="_blank"
+                               href="https://www.ebi.ac.uk/thornton-srv/databases/cgi-bin/valdar/scorecons_server.pl">Scorecons</a>,
+                            for scoring residue conservation
+                        </li>
+                        <li><a target="_blank" href="https://www.cancergenomeinterpreter.org/home">The Cancer Genome
+                            Interpreter</a>, to identify driver mutations in tumor samples
+                        </li>
+                        <li><a target="_blank"
+                               href="https://bioinformatics.mdanderson.org/public-software/lfspro/">LFSPRO</a>,
+                            a tool for estimating <em>TP53</em> Mutation Carrier Probability
+                        </li>
+                        <li><a target="_blank"
+                               href="https://bioinformatics.mdanderson.org/public-software/famdenovo/">Famdenovo</a>,
+                            an
+                            algorithm that calculates the probability of a germline mutation to be de novo based on
+                            family
+                            history data
+                        </li>
+                        <li><a target="_blank" href="aa_codes">Amino-acid letter codes and properties</a></li>
+                        <li><a target="_blank" href="genetic_code">Genetic code</a></li>
+                        <li><a target="_blank" href="https://www.lovd.nl/2.0/">LOVD, a software to build mutation
+                            databases</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <nav class="bg-secondary sidebar">
+        <div id="analysis" class="mt-5">
+            <h2>3D Structures Analysis</h2>
+            <hr>
+            <div class="p-3">
+                <h3 class="pt-3">3D Viewer</h3>
+                <div>
+                    <div class="text-white small-font bg-secondary px-2 three_d_viwer"><i
+                            class="fas fa-info-circle"></i> Use mouse or control buttons (located on the right) to
+                        explore.
+                    </div>
+                    <div id="molstarViewer" class="three_d_viwer"></div>
+                    <script type="text/javascript">
+                        var viewer = new molstar.Viewer('molstarViewer', {
+                            layoutIsExpanded: false,
+                            layoutShowControls: false,
+                            layoutShowRemoteState: false,
+                            layoutShowSequence: true,
+                            layoutShowLog: false,
+                            layoutShowLeftPanel: true,
+                            viewportShowExpand: true,
+                            viewportShowSelectionMode: false,
+                            viewportShowAnimation: false,
+                            pdbProvider: 'rcsb',
+                        });
+                        viewer.loadStructureFromUrl("{{ url_for('static', filename='pdb/1tsr_B.pdb') }}", format = 'pdb');
+                    </script>
+                </div>
+                <h3 class="pt-3">Structural Impacts of Mutations</h3>
+                <div>
+                    <ul>
+                        <li> Analysis by A.C. Martin: <a target="_blank"
+                                                         href="https://www.ncbi.nlm.nih.gov/pubmed/11793474">Publication</a>
+                        </li>
+
+                        <li> Analysis by <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/16395672">Mathe
+                            (2006)</a>.
+                            Some details <a target="_blank" href="dt_method">here</a>
+                        </li>
+
+                        <li><a target="_blank" href="https://www.uniprot.org/uniprot/P04637#section_features">UniProt
+                            information</a>
+                        </li>
+
+                        <li>Stability and oligomeric structure of <em>p53</em> tetramerization domain mutants by <a
+                                target="_blank"
+                                href="https://www.ncbi.nlm.nih.gov/pubmed/20978130">Kamada
+                            et al. (2011)</a></li>
+
+                        <li>Solved crystal structures:</li>
+                        <dt>by <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15703170">Joerger
+                            AC et al. (2005)</a>
+                        </dt>
+
+                        <ul>
+                            <li><a target="_blank"
+                                   href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1UOL">M133L/V203A/N239Y/N268D</a>
+                            </li>
+                            <li><a target="_blank"
+                                   href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIM">M133L/V203A/N239Y/N268D/R273H</a>
+                            </li>
+                            <li><a target="_blank"
+                                   href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIN">M133L/H168R/V203A/N239Y/N268D</a>
+                            </li>
+                            <li><a target="_blank"
+                                   href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIO">M133L/V203A/N239Y/R249S/N268D</a>
+                            </li>
+                            <li><a target="_blank"
+                                   href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIP">M133L/H168R/V203A/N239Y/R249S/N268D</a>
+                            </li>
+                            <li><a target="_blank"
+                                   href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIQ">T123A/M133L/H168R/V203A/N239Y/R249S/N268D</a>
+                            </li>
+                        </ul>
+                        <dt>by <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/17015838">Joerger AC et
+                            al.
+                            (2006)</a></dt>
+                        <ul>
+                            <li><a target="_blank"
+                                   href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1W">M133L/V143A/V203A/N239Y/N268D</a>
+                            </li>
+                            <li><a target="_blank"
+                                   href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1X">M133L/V203A/Y220C/N239Y/N268D</a>
+                            </li>
+                            <li><a target="_blank"
+                                   href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1Y">M133L/V203A/G245S/N239Y/N268D</a>
+                            </li>
+                            <li><a target="_blank"
+                                   href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1Z">M133L/V203A/N239Y/N268D/F270L</a>
+                            </li>
+                            <li><a target="_blank"
+                                   href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J20">M133L/V203A/N239Y/N268D/R273C</a>
+                            </li>
+                            <li><a target="_blank"
+                                   href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J21">M133L/V203A/N239Y/N268D/R282W</a>
+                            </li>
+                        </ul>
+                        <li><a href="stability">Thermodynamic Stability Data</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="functions" class="mt-5">
+            <h2>Definitions and Functions</h2>
+            <hr>
+            <div class="p-3">
+                <ul>
+                    <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/gene/7157"><em>TP53</em> entry at
+                        EntrezGene</a>
+                    </li>
+                    <li><a target="_blank" href="https://omim.org/entry/191170">OMIM review at NCBI</a></li>
+                    <li><a target="_blank"
+                           href="https://www.genecards.org/cgi-bin/carddisp.pl?gene=TP53&search=TP53"><em>TP53</em>
+                        GeneCards entry</a></li>
+                    <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/biosystems/84467">The <em>p53</em>
+                        pathway at
+                        BioSystems </a></li>
+                    <li><a href="target_genes"><em>p53</em> target genes and response-elements</a></li>
+                    <li><a target="_blank"
+                           href="https://www.ensembl.org/Homo_sapiens/geneview?db=&amp;gene=ENSG00000141510">Gene
+                        annotation by Ensembl at EBI</a></li>
+                    <li><a target="_blank" href="https://atlasgeneticsoncology.org/Genes/P53ID88.html"><em>p53</em>
+                        entry at
+                        Atlas of
+                        Genetics</a></li>
+                    <li><a target="_blank"
+                           href="https://www.hprd.org/interactions?hprd_id=01859&isoform_id=01859_1&isoform_name="><em>p53</em>
+                        protein interactions at Human Protein Reference Database</a></li>
+                    <li><a target="_blank"
+                           href="https://www.hprd.org/ptms?hprd_id=01859&isoform_id=01859_1&isoform_name=Isoform_1"><em>p53</em>
+                        post-translational modifications at Human Protein Reference Database</a></li>
+                    <li><a href="p53isoforms"><em>p53</em> isoforms</a></li>
+                    <li><a target="_blank" href="https://www.uniprot.org/uniprot/P04637">Protein annotation by
+                        SwissProt/UniProtKB</a></li>
+                    <li><a target="_blank" href="https://p53.fr/tp53-information/historical-aspects"><em>p53</em>
+                        history and
+                        info by
+                        Thierry Soussi</a></li>
+                    <li><em>TP53</em> family memmbers: <a target="_blank"
+                                                          href="https://www.ncbi.nlm.nih.gov/gene/8626"><em>TP63</em></a>
+                        and
+                        <a target="_blank" href="https://www.ncbi.nlm.nih.gov/gene/7161"><em>TP73</em></a></li>
+                </ul>
+                <h3><em>p53</em> in the Clinic</h3>
+                <div class="pt-2">
+                    <ul>
+                        <li><a target="_blank" href="https://www.ncbi.nlm.nih.gov/books/NBK1311/">Li-Fraumeni
+                            syndrome
+                            at
+                            GeneReviews</a></li>
+                        <li><a target="_blank" href="https://videocast.nih.gov/summary.asp?Live=9741">Videocast of
+                            the
+                            Li-Fraumeni Syndrome Workshop 2010</a></li>
+                        <li><a target="_blank"
+                               href="https://www.clinicaltrials.gov/ct2/results?cond=&term=p53"><em>p53</em>
+                            in
+                            clinical
+                            trials at ClinicalTrials.gov</a></li>
+                        <li><a target="_blank"
+                               href="https://www.springer.com/biomed/cancer/book/978-1-4614-3675-1">"<em>p53</em>
+                            in
+                            the
+                            clinics" book, 2012</a></li>
+                        <li><a target="_blank" href="https://bioinformatics.mdanderson.org/main/LFSPRO">LFSPRO</a>,
+                            a
+                            tool
+                            for
+                            estimating <em>TP53</em> Mutation Carrier Probability
+                        </li>
+                        <li><a target="_blank"
+                               href="https://bioinformatics.mdanderson.org/public-software/famdenovo/">Famdenovo</a>,
+                            an
+                            algorithm that calculates the probability of a germline mutation to be de novo, taking
+                            <em>TP53</em>
+                            as
+                            an
+                            example application
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div id="slideshow" class="mt-5">
+            <h2>Slide Show</h2>
+            <hr>
+            <div class="p-3">
+                <h3><em>TP53</em> Variations In Human Cancer</h3>
+                <div class="pt-2">
+                    This slide-show contains information on:
+                    <ul>
+                        <li><em>TP53</em> gene and protein properties and activities</li>
+                        <li>The <em>TP53</em> database structure and contents</li>
+                        <li>The biological and clinical impacts of mutations</li>
+                        <li>References and links to other related resources</li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="{{ url_for('static', filename='download/SlideShow2019.pdf') }}"
+                       class="btn btn-outline-primary" target="_blank"
+                       title="Click to view/download slides"><i class="far fa-file-pdf"></i> View Slides</a></div>
+            </div>
+        </div>
+        <div id="others" class="mt-5">
+            <h2>Other Databases</h2>
+            <hr>
+            <div class="p-3">
+                <h3><em>TP53</em> databases</h3>
+                <div class="pt-2">
+                    <p>There are several links to different <em>TP53</em> databases available on the web. Several
+                        resources are
+                        not updated anymore and may contain obsolete data. It is recommended to use up-to-date
+                        resources.
+                    </p>
+                    <ul>
+                        <li><a target="_blank" href="/">The TP53</em> Database</a>
+                            (last updated in July 2019)
+                        </li>
+                        <li><a target="_blank" href="https://p53.fr/">The <em>p53</em> database by Thierry
+                            Soussi</a> (last
+                            updated in 2017)
+                        </li>
+                        <li><a target="_blank" href="https://databases.lovd.nl/shared/genes/TP53">LOVD <em>TP53</em></a>,
+                            a
+                            database system for direct data submission
+                        </li>
+                        <li><a target="_blank" href="https://www.lf2.cuni.cz/projects/germline_mut_p53.htm">The
+                            database
+                            of germline <em>TP53</em> mutations in Prague</a> (not updated anymore)
+                        </li>
+                        <li><a target="_blank" href="http://p53.bii.a-star.edu.sg/index.php"><em>p53</em>
+                            Knowledgebase at
+                            Singapore</a> (obsolete)
+                        </li>
+                        <li><a target="_blank" href="https://www.ibiblio.org/dnam/des_p53.htm">Human <em>p53</em>
+                            database and
+                            software, N. Cariello (1997)</a> (obsolete)
+                        </li>
+                    </ul>
+                </div>
+
+
+                <h3>Related Databases</h3>
+                <div class="pt-2">
+                    <ul>
+                        <li><a href="https://cancer.sanger.ac.uk/cosmic" target="_blank">Catalogue Of Somatic
+                            Mutations
+                            in
+                            Cancer (COSMIC) at Sanger Institute, UK</a></li>
+                        <li><a href="https://dcc.icgc.org/" target="_blank">International Cancer Genome Consortium
+                            (ICGC)
+                            data portal</a></li>
+                        <li><a href="https://www.cbioportal.org/" target="_blank">cBioPortal for Cancer Genomics</a>
+                        </li>
+                        <li><a href="https://genie.cbioportal.org/" target="_blank">AACR GENIE dataset in
+                            cBioportal</a>
+                        </li>
+                        <li><a href="https://portal.gdc.cancer.gov/" target="_blank">TCGA data portal</a></li>
+                        <li><a href="https://grenada.lumc.nl/LSDB_list/lsdbs" target="_blank">List of locus specific
+                            databases</a></li>
+                        <li><a href="https://pecan.stjude.cloud/home" target="_blank">St. Jude PeCan Data Portal on
+                            pediatric cancer mutations
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="books" class="mt-5">
+            <h2>Books</h2>
+            <hr>
+            <div class="p-3">
+
+                <div class="pt-2 row">
+                    <div class="col-auto d-none d-lg-block">
+                        <a href="tp53book2013"><img height="150"
+                                                    src="{{ url_for('static', filename='img/p53_2013.jpeg') }}"></a>
+                    </div>
+                    <div class="col px-4">
+                        <h3><em>p53</em> in the Clinics</h3>
+                        With over 60,000 referenced publications, <em>p53</em> has emerged as one of the
+                        most important factors in human cancer. Research on <em>p53</em> has led to a complete
+                        overhaul of our
+                        understanding of the molecular basis of human cancer. <a href="tp53book2013">Continue
+                        reading</a></div>
+
+                </div>
+            </div>
+            <div class="p-3">
+
+                <div class="pt-2 row">
+                    <div class="col-auto d-none d-lg-block">
+                        <a href="tp53book"><img height="150"
+                                                src="{{ url_for('static', filename='img/25yrs_p53.webp') }}">
+                        </a>
+                    </div>
+                    <div class="col px-4 ">
+                        <h3>25 Years of <em>p53</em> Research</h3>
+                        The discovery of <em>p53</em> in 1979 marks the beginning of a most fascinating era of
+                        modern
+                        cancer research and molecular biology, an era that is still in full swing and does not show
+                        any
+                        signs of ending in the foreseeable future.
+                        <a href="tp53book">Continue reading</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="lifraumeni" class="mt-5">
+            <h2>Li-Fraumeni Syndrome</h2>
+            <hr>
+            <div class="p-3">
+                <div>Inherited <em>TP53</em> mutations are associated with a rare autosomal dominant disorder, the
+                    <strong>Li-Fraumeni
+                        syndrome (LFS)</strong>.
+                    LFS is characterized by multiple primary neoplasms in children and young adults, with a
+                    predominance
+                    of
+                    soft-tissue sarcomas, osteosarcomas,
+                    breast cancers, brain tumors and adrenocortical carcinomas.
+                </div>
+                <div class="pt-3">Several clinical definitions of LFS have been proposed.
+                </div>
+                <div class="p-3">
+                    <div>The <strong>classic Li-Fraumeni syndrome (LFS)</strong> (<a
+                            target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/3409256">Li et al., 1988</a>)
+                        is
+                        defined by presence of all of the following criteria:
+                    </div>
+                    <div class="pt-2">
+                        <ul>
+                            <li>A proband with a sarcoma diagnosed before age 45 years</li>
+                            <li>A first-degree relative with any cancer before age 45 years</li>
+                            <li>A first- or second-degree relative with any cancer before age 45 years or a sarcoma
+                                at
+                                any
+                                age [Li et al 1988]
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>The <strong>Chompret criteria</strong> (updated in <a target="_blank"
+                                                                               href="https://www.ncbi.nlm.nih.gov/pubmed/26014290">Bougeard
+                        et al., 2015)</a> should be used to identify potential <em>TP53</em> mutation carriers:
+                    </div>
+                    <div class="pt-2">
+                        <ul>
+                            <li><strong>Familial presentation</strong>: Proband with tumor belonging to LFS tumor
+                                spectrum
+                                (eg,
+                                premenopausal
+                                breast cancer, soft tissue sarcoma, osteosarcoma, CNS tumor,
+                                adrenocortical carcinoma) before age 46 years, <strong>AND</strong> at least one
+                                first
+                                or
+                                second-degree
+                                relative with LFS tumor (except breast cancer if proband has breast cancer) before
+                                age 56 years or with multiple tumors
+                            </li>
+                            <li><strong>Multiple primary tumors</strong>: Proband with multiple tumors (except
+                                multiple
+                                breast
+                                tumors), two
+                                of which belong to LFS tumor spectrum and first of which occurred
+                                before age 46 years
+                            </li>
+                            <li><strong>Rare tumors</strong>: Patient with adrenocortical carcinoma, choroid plexus
+                                tumor,
+                                or
+                                rhabdomyosarcoma of embryonal anaplastic subtype, irrespective of family history
+                            </li>
+                            <li><strong>Early-onset breast cancer</strong>: Breast cancer before age 31 yr</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pt-3">Data on Li-Fraumeni associated <em>TP53</em> mutations can be searched <a
+                        href="search_germline_mut">here</a>.
+                </div>
+                <div class="pt-3">To learn more on LFS and <em>TP53</em> germline mutations, see <a target="_blank"
+                                                                                                    href="https://www.ncbi.nlm.nih.gov/books/NBK1311/">
+                    GeneReviews</a> and the videocast of the <a target="_blank"
+                                                                href="https://videocast.nih.gov/summary.asp?Live=9741">Li-Fraumeni
+                    Syndrome Workshop 2010</a>.
+                </div>
+            </div>
+            <div class="p-3">
+                <h3>Publications of interest:</h3>
+                <div class="pt-2">
+                    <ul>
+                        <li>
+                            <i>Concern regarding classification of germline <em>TP53</em> variants as likely
+                                pathogenic.</i>
+                            Evans DG, Turnbull C, Woodward ER. <strong>2019</strong> Jun;40(6):828-831. <a
+                                href="{{ url_for('static', filename='download/Evans_et_al-2019-Human_Mutation.pdf') }}"
+                                target="_blank">Article</a>
+                        </li>
+                        <li>
+                            <i>Bayesian estimation of a semiparametric recurrent event model with applications to
+                                the
+                                penetrance
+                                estimation of multiple primary cancers in Li-Fraumeni syndrome.</i>
+                            Shin SJ, Li J, Ning J, Bojadzieva J, Strong LC, Wang W. <strong>2018</strong> Nov 14. <a
+                                href="{{ url_for('static', filename='download/Evans_et_al-2019-Human_Mutation.pdf') }}"
+                                target="_blank">Article</a>
+                        </li>
+                        <li>
+                            <i>Baseline Surveillance in Li-Fraumeni Syndrome Using Whole-Body Magnetic Resonance
+                                Imaging, A
+                                Meta-analysis.</i>
+                            Ballinger ML, Best A, Mai PL, Khincha PP, Loud JT, Peters JA, Achatz MI, Chojniak R,
+                            Balieiro da
+                            Costa A, Santiago KM, Garber J, O'Neill AF, Eeles RA, Evans DG, Bleiker E, Sonke GS,
+                            Ruijs
+                            M,
+                            Loo C, Schiffman J, Naumer A, Kohlmann W, Strong LC, Bojadzieva J, Malkin D, Rednam SP,
+                            Stoffel
+                            EM,
+                            Koeppe E, Weitzel JN, Slavin TP, Nehoray B, Robson M, Walsh M, Manelli L, Villani A,
+                            Thomas
+                            DM,
+                            Savage
+                            SA. <strong>2017</strong> Dec 1;3(12):1634-1639.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/28772291">PubMed</a>
+                        </li>
+                        <li>
+                            <i>Cancer Screening Recommendations for Individuals with Li-Fraumeni Syndrome.</i> Kratz
+                            CP,
+                            Achatz
+                            MI, Brugières L, Frebourg T, Garber JE, Greer MC, Hansford JR, Janeway KA,
+                            Kohlmann WK, McGee R, Mullighan CG, Onel K, Pajtler KW, Pfister SM, Savage SA, Schiffman
+                            JD,
+                            Schneider KA, Strong LC, Evans DGR, Wasserman JD, Villani A, Malkin D.
+                            <strong>2016</strong>
+                            Jun
+                            1;23(11):e38-e45.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/28572266">PubMed</a>
+                        </li>
+                        <li>
+                            <i>Risks of first and subsequent cancers among TP53 mutation carriers in the National
+                                Cancer
+                                Institute Li-Fraumeni syndrome cohort.</i> Mai PL, Best AF, Peters JA, DeCastro RM,
+                            Khincha
+                            PP,
+                            Loud JT, Bremer RC, Rosenberg PS, Savage SA.
+                            <strong>2016</strong> Dec 1;122(23):3673-3681.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/27496084">PubMed</a>
+                        </li>
+                        <li>
+                            <i>Revisiting Li-Fraumeni Syndrome From TP53 Mutation Carriers.</i>
+                            Bougeard G, Renaux-Petel M, Flaman JM, Charbonnier C, Fermey P, Belotti M,
+                            Gauthier-Villars
+                            M,
+                            Stoppa-Lyonnet D, Consolino E, Brugières L, Caron O, Benusiglio PR, Bressac-de
+                            Paillerets B,
+                            Bonadona V, Bonaiti-Pellie C, Tinat J, Baert-Desurmont S, Frebourg T. J Clin Oncol.
+                            <strong>2015</strong> Jul 20;33(21):2345-52.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/26014290">PubMed</a>
+                        </li>
+                        <li>
+                            <i>Breast cancer phenotype in women with TP53 germline mutations: a Li-Fraumeni syndrome
+                                consortium effort.</i>
+                            Masciari S, Dillon DA, Rath M, Robson M, Weitzel JN, Balmana J, Gruber SB, Ford JM,
+                            Euhus D,
+                            Lebensohn A, Telli M, Pochebit SM, Lypas G, Garber JE. Breast Cancer Res Treat.
+                            <strong>2012</strong> Jun;133(3):1125-30.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/22392042">PubMed</a>
+                        </li>
+                        <li>
+                            <i>Sarcomas in TP53 germline mutation carriers: a review of the IARC TP53 database.</i>
+                            Ognjanovic S, Olivier M, Bergemann TL, Hainaut P. Cancer <strong>2012</strong> Mar
+                            1;118(5):1387-96.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/21837677">PubMed</a>
+                        </li>
+                        <li>
+                            <i>Impact of the MDM2 SNP309 and p53 Arg72Pro polymorphism on age of tumour onset in
+                                Li-Fraumeni
+                                syndrome.</i>
+                            Bougeard G, Baert-Desurmont S, Tournier I, Vasseur S, Martin C, Brugieres L, Chompret A,
+                            Bressac-de Paillerets B, Stoppa-Lyonnet D, Bonaiti-Pellie C, Frebourg T. J Med Genet.
+                            <strong>2006</strong>
+                            Jun;43(6):531-3.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/16258005">PubMed</a>
+                        </li>
+                        <li>
+                            <i>Beyond Li Fraumeni Syndrome: clinical characteristics of families with p53 germline
+                                mutations.</i>
+                            Gonzalez KD, Noltner KA, Buzin CH, Gu D, Wen-Fong CY, Nguyen VQ, Han JH, Lowstuter K,
+                            Longmate
+                            J, Sommer SS, Weitzel JN. J Clin Oncol. <strong>2009</strong> Mar 10;27(8):1250-6.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/19204208">PubMed</a>
+                        </li>
+                        <li>
+                            <i>A single nucleotide polymorphism in the MDM2 promoter attenuates the p53 tumor
+                                suppressor
+                                pathway and accelerates tumor formation in humans.</i>
+                            Bond GL, Hu W, Bond EE, Robins H, Lutzker SG, Arva NC, Bargonetti J, Bartel F, Taubert
+                            H,
+                            Wuerl
+                            P, Onel K, Yip L, Hwang SJ, Strong LC, Lozano G, Levine AJ. Cell <strong>2004</strong>
+                            Nov
+                            24;119(5):591-602.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15550242">PubMed</a>
+                        </li>
+                        <li>
+                            <i>Li-Fraumeni and related syndromes: correlation between tumor type, family structure,
+                                and
+                                TP53
+                                genotype.</i>
+                            Olivier M, Goldgar DE, Sodha N, Ohgaki H, Kleihues P, Hainaut P, Eeles RA. Cancer Res.
+                            <strong>2003</strong> Oct 15;63(20):6643-50.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/14583457">PubMed</a>
+                        </li>
+                        <li>
+                            <i>Germline TP53 mutations and Li-Fraumeni syndrome.</i>
+                            Varley JM. Hum Mutat <strong>2003</strong> Mar;21(3):313-20.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/12619118">PubMed</a>
+                        </li>
+                        <li>
+                            <i>Relative frequency and morphology of cancers in carriers of germline TP53
+                                mutations.</i>
+                            Birch JM, Alston RD, McNally RJ, Evans DG, Kelsey AM, Harris M, Eden OB, Varley JM.
+                            Oncogene
+                            <strong>2001</strong> Aug 2;20(34):4621-8.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11498785">PubMed</a>
+                        </li>
+                        <li>
+                            <i>Cancer phenotype correlates with constitutional TP53 genotype in families with the
+                                Li-Fraumeni
+                                syndrome.</i>
+                            Birch JM, Blair V, Kelsey AM, Evans DG, Harris M, Tricker KJ, Varley JM. Oncogene.
+                            <strong>1998</strong> Sep 3;17(9):1061-8.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9764816">PubMed</a>
+                        </li>
+                        <li>
+                            <i>Li-Fraumeni syndrome--a molecular and clinical review.</i>
+                            Varley JM, Evans DG, Birch JM. Br J Cancer. <strong>1997</strong>;76(1):1-14.
+                            <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9218725">PubMed</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="polymorph" class="mt-5">
+            <h2><em>TP53</em> Polymorphisms</h2>
+            <hr>
+            <div class="p-3">
+                <p>For the most systematic review on <em>TP53</em> polymorphisms and their functional and clinical
+                    consequences,
+                    see
+                    <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/19165225">Whibley et al., 2009</a>.
+                    However, please note that this review is not up to date, in particular regarding two variants,
+                    V217M
+                    (rs35163653) and G360A (rs35993958), that are not frequent SNP based on most recent studies and
+                    thus
+                    are not considered as validated polymorphisms in the IARC database.</p>
+                <p>A recent study based on the analysis of large sets of genomic data showed that commonly inherited
+                    <strong>genetic variants in the p53 pathway </strong> affect the incidence of a broad range of
+                    cancers
+                    more than variants in other pathways
+                    (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/27009395">Stracquadanio et al,
+                        2016)</a>.
+                </p>
+                <p>Most of <em>TP53</em> polymorphisms are located in introns, outside consensus splicing sites. The
+                    functional
+                    consequences of most of these SNPs is unknown.
+                    Theoretically, they may affect p53 protein function through enhanced mutability due to altered
+                    DNA
+                    sequence context, increased cryptic splicing events,
+                    altered transcript stability or translation or tissue-specific expression (<a target="_blank"
+                                                                                                  href="https://www.ncbi.nlm.nih.gov/pubmed/1848986">Lozano
+                        1991</a>,
+                    <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7888751">Mattick 1994</a>).
+                    It was shown that the p53 regulatory protein MDM2, that regulate p53 through protein-protein
+                    interactions, also binds to p53 mRNA and facilitate its translation.
+                    Specific silent mutations in <em>TP53</em> abrogated this regulation, suggesting that synonymous
+                    polymorphisms
+                    could affect p53 function through this new mechanism (<a target="_blank"
+                                                                             href="https://www.ncbi.nlm.nih.gov/pubmed/19160491">Candeias,
+                        2008</a>).
+                </p>
+
+                <p>A list of variants frequent in healthy human populations, and thus considered as validated
+                    polymorphisms
+                    in the IARC database, is accessible <a id="displayValidatedPolymorphisms"
+                                                           href="view_val_poly">here</a>.
+                </p>
+
+                <p>Among validated polymorphisms, a few have been studied in relation to cancer risk or functional
+                    impact.
+                    Some knowledge on these polymorphisms is provided here.</p>
+
+                <ul>
+
+                    <li><a href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=17878362" target="_blank">rs17878362:
+                        intron
+                        3 duplication</a></li>
+                    <p>This variant has been found to be associated with increased risk of colorectal cancer in a
+                        case-control study and correlated with a
+                        reduced level of <em>TP53</em> mRNA in lymphoblastoid cell-lines (<a target="_blank"
+                                                                                             href="https://www.ncbi.nlm.nih.gov/pubmed/14647431">Gemignani
+                            2004</a>).
+                        However, because of a strong linkage disequilibrium between the intron 3 duplication and the
+                        codon
+                        72 variant, it can not been determined from these experiments whether
+                        the intron 3 duplication alone influences mRNA stability or if this effect requires the Pro
+                        codon 72
+                        variant. A meta-analysis by <a target="_blank"
+                                                       href="https://www.ncbi.nlm.nih.gov/pubmed/23412385">Sagne
+                            et al., (2013)</a>
+                        suggests that rs17878362 is associated with cancer risk, with population and tumour-specific
+                        effects. This polymorphism overlaps a G-quadruplex structure that modulate p53 mRNA splicing
+                        and
+                        stability <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/25269805">(Perriaud,
+                            2014)</a>.
+                    </p>
+                    <li><a href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=1800371" target="_blank">rs1800371:
+                        Pro47Ser</a></li>
+                    <p>The <strong> P47S </strong> variant is a rare polymorphism affecting a codon conserved in
+                        evolution.
+                        The serine 47 polymorphic variant, which replaces the proline residue necessary for
+                        recognition
+                        by
+                        proline-directed kinases (p38 MAPK), is a markedly poorer substrate for phosphorylation on
+                        serine 46
+                        by p38 MAPK.
+                        This property correlate with a report that suggested that this polymorphism is functionally
+                        significant and show a decrease ability to transactivate two p53 target-genes, p53AIP1 and
+                        PUMA,
+                        but
+                        not other p53 response genes, and to induce apoptosis
+                        (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15851479">Li et al., 2005</a>).
+                        A
+                        recent study showed that the Pro47Ser variant was not associated with overall breast cancer
+                        risk,
+                        but may increase risk among pre-menopausal women of African ancestry
+                        (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/28649645 ">Murphy et al.,
+                            2017</a>).
+                    </p>
+                    <li><a href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=1042522" target="_blank">rs1042522:
+                        Pro72Arg</a></li>
+                    <p>Residue 72, although not conserved, is located within the proline-rich region and may affect
+                        the
+                        structure of the putative SH3-binding domain.
+                        Wild-type p53 protein with <b>Arg72</b> was reported to be more efficient in inducing
+                        apoptosis
+                        than
+                        its Pro variant (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/12567188">Dumont
+                            2003</a>).
+                        This property correlated with a greater capacity to interact with MDM2, which facilitate
+                        nuclear
+                        export and mitochondrial localization. Other differences between the p53 variants have been
+                        reported:
+                        ability to bind components of the transcriptional machinery, to activate transcription, to
+                        induce
+                        apoptosis, and to repress the transformation of primary cells (<a target="_blank"
+                                                                                          href="https://www.ncbi.nlm.nih.gov/pubmed/9891044">Thomas
+                            1999</a>).
+                        <br/>
+                        The protein with <strong>Arg72</strong> was also found to be more efficiently targeted for
+                        degradation by the E6 protein of HPV16, suggesting that individuals homozygous for Arg72 may
+                        be
+                        at
+                        higher risk of HPV-related cervical cancers (<a target="_blank"
+                                                                        href="https://www.ncbi.nlm.nih.gov/pubmed/9607760">Storey
+                            1998</a>).
+                        However, population-based and meta-analysis studies have failed to confirm this hypothesis (<a
+                                target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11535556">Klug 2001</a>,
+                        <a
+                                target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/14744727">Koushik 2004</a>).&nbsp;
+                        <br/>
+                        <br/>
+                        Sharp ethnic differences in <b>codon 72</b> allele frequencies have been observed. In the
+                        Northern
+                        hemisphere, the Pro72 allele shows a North-South gradient, from 0.17 in Swedish Saamis to
+                        0.63
+                        in
+                        African Blacks (Nigerians)
+                        (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7927355">Beckman 1994</a>).
+                        In Western Europe (France, Sweden, Norway), North America (USA), Central and South America
+                        (Mexico,
+                        Costa-Rica, Peru) and Japan, the most common allele is Arg72,
+                        with frequencies ranging from 0.60 to 0.83. However, frequencies of Pro72 superior to 0.40
+                        have
+                        been
+                        observed in African-Americans
+                        (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7554076">Jin 1995</a>,
+                        <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/1302561">Weston 1992</a>)
+                        and in Chineses (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11146230">Peixoto-Guimaraes
+                            2001</a>,
+                        <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10468305">Ngan 1999</a>).<br>
+                        A study suggest that these latitude-dependent variations may be due to selection related to
+                        winter
+                        temperature and not to UV radiation as suggested by previous studies.
+                        Indeed, <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/19344876">Shi et al.
+                            (2009)</a>
+                        observed that low average temperature, but not UV radiation, was associated with high
+                        frequency
+                        of
+                        Arg72 in Eastern Asia.
+                        <br/>
+                        <br/>
+                        A recent study in mice reported that the P72R Polymorphism of p53 predisposes to besity and
+                        metabolic dysfunction (<a target="_blank"
+                                                  href="https://www.ncbi.nlm.nih.gov/pubmed/26947067">Kung
+                            2016</a>).
+
+                        <br/>
+                        <br/>
+                        The polymorphic variant at <strong>codon 72</strong> has been shown to be an intragenic
+                        modifier
+                        of
+                        <b>mutant p53</b> behavior
+                        (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10802655">Marin 2000</a>; <a
+                                target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/29463573">Basu 2018</a>).
+                        Arg72-containing allele was preferentially mutated and retained in squamous cell tumours
+                        arising
+                        in
+                        Arg/Pro germline heterozygotes and was more potent
+                        in neutralizing p73-induced apoptosis and cooperating with EJ-Ras to transfrom cells. Other
+                        studies
+                        in colorectal
+                        (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15548361">Schneider-Stock
+                            2004</a>),
+                        lung (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15905205">Nelson 2005</a>),
+                        and head and neck cancers (<a target="_blank"
+                                                      href="https://www.ncbi.nlm.nih.gov/pubmed/15039212">Schneider-Stock
+                            2004</a>)
+                        cancers have aslo found that in Arg/Pro germline heterozygotes, the Pro allele is
+                        preferentially
+                        lost and the Arg allele is preferentially mutated.
+
+                    </p>
+                    <li><a href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=1794287" target="_blank">rs1794287:
+                        intron4,
+                        g.7675519A>G (hg38)</a></li>
+                    <p>This SNP was shown by <a href="https://www.ncbi.nlm.nih.gov/pubmed/20127977">Bellini et al.,
+                        (2010)</a> to affect the activity of the internal promoter of <em>TP53</em> controlling the
+                        production
+                        of dN133p53 isoform.
+                    </p>
+                    <li><a href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=78378222"
+                           target="_blank">rs78378222</a>
+                        and
+                        <a href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=35850753"
+                           target="_blank">rs35850753</a>
+                        in
+                        untranslated regions
+                    </li>
+                    <p>These two rare germline variants that are in linkage disequilibrium and map to the 3'-UTR of
+                        <em>TP53</em>
+                        and
+                        the 5'-UTR of the d133 isoform of <em>TP53</em>, respectively, have been shown to robustly
+                        associate with
+                        <strong>neuroblastoma</strong> in various populations (<a target="_blank"
+                                                                                  href="https://www.ncbi.nlm.nih.gov/pubmed/24634504">Diskin
+                            2014</a>).
+                        rs35850753: odds ratio [OR] = 2.7, 95% confidence interval [CI] = 2.0 to 3.6; rs78378222: OR
+                        =
+                        2.3,
+                        95% CI = 1.8 to 2.9.
+                    </p>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <nav class="bg-secondary sidebar">
         <div class="position-sticky pt-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
@@ -1077,7 +1081,6 @@
             </ul>
         </div>
     </nav>
-    </main>
+</main>
 
-<!--</div>-->
 {% endblock %}

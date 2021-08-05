@@ -193,7 +193,7 @@ a:hover{
 .sidebar {
     position: fixed;
     width: 240px;
-    top: 100px;
+    top: 164px; /*100px nav bar + 60px banner height*/
     bottom: 0;
     right: 0;
     z-index: 100;
@@ -331,7 +331,7 @@ a:hover{
     /*padding-top: 110px;*/
     min-height: 85vh;
     padding-right: 280px;
-    padding-left: 80px;
+    padding-left: 20px;
 }
 
 /*.jump-div {*/
