@@ -13,13 +13,14 @@
 {% endblock %}
 
 {% block subcontent %}
-<div class="pt-4">
-    <h2>{{ title }}
+<div class="page-banner text-center">
+    <h2 class="pt-1 pb-3 my-0 fw-normal">{{ title }}
         {% if subtitle %}
         :
         {% endif %}
         <span class="ms-2 fw-light">{{ subtitle }}</span></h2>
-    <hr>
+</div>
+<div class="p-3">
     <div class="text-end">
         {% include 'criteria_div.html' %}
     </div>

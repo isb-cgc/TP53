@@ -9,21 +9,30 @@
 {% endblock %}
 
 {% block subcontent %}
-<div class="mt-5">
-    <h2>Selected Statistics on Somatic Mutation Data</h2>
-    <hr>
-    <div id="stats_germline_mut" class="p-3">
-        <div class="rounded-2 card col-lg-6 col-md-10">
-            <ul class="list-group list-group-flush">
-                <a href="results_somatic_mutation?action=get_mutation_dist" class="list-group-item list-group-item-action"><i class="fas fa-chart-bar"></i> Mutation Distributions</a>
-                <a href="results_somatic_mutation?action=get_tumor_dist" class="list-group-item list-group-item-action"><i class="fas fa-chart-bar"></i> Tumors Site Distributions</a>
-                <a href="prevalence_somatic_stats" class="list-group-item list-group-item-action"><i class="fas fa-chart-bar"></i> <em>TP53</em> Somatic Prevalence by Tumor Site</a>
-                <a href="prognosis_somatic_stats" class="list-group-item list-group-item-action"><i class="fas fa-table"></i> Prognostic Value of Somatic Mutations</a>
-                <a href="db_dev_somatic_stats" class="list-group-item list-group-item-action"><i class="fas fa-table"></i> Statistics on Dataset Development</a>
-            </ul>
+<div class="page-banner text-center">
+    <h2 class="pt-1 pb-3 my-0 fw-normal">Selected Statistics on Somatic Mutation Data</h2>
+</div>
+<div id="stats_germline_mut" class="py-5">
+    <div class="mx-auto col-lg-6 col-md-10">
+        <div class="text-secondary">This dataset includes <em>TP53</em> somatic mutations reported in primary tissues,
+            body
+            fluids and cell-lines.<br>For more details on dataset contents and annotations, see the <a href="help">user's
+                manual</a>.
         </div>
-        <div class="form-text">This dataset includes <em>TP53</em> somatic mutations reported in primary tissues, body fluids and cell-lines.<br>For more details on dataset contents and annotations, see the <a href="help">user's manual</a>.</div>
-
+        <ul class="list-group list-group-flush pt-3">
+            <a href="results_somatic_mutation?action=get_mutation_dist"
+               class="list-group-item list-group-item-action"><i class="fas fa-chart-bar"></i> Mutation
+                Distributions</a>
+            <a href="results_somatic_mutation?action=get_tumor_dist" class="list-group-item list-group-item-action"><i
+                    class="fas fa-chart-bar"></i> Tumors Site Distributions</a>
+            <a href="prevalence_somatic_stats" class="list-group-item list-group-item-action"><i
+                    class="fas fa-chart-bar"></i> <em>TP53</em> Somatic Prevalence by Tumor Site</a>
+            <a href="prognosis_somatic_stats" class="list-group-item list-group-item-action"><i
+                    class="fas fa-table"></i> Prognostic Value of Somatic Mutations</a>
+            <a href="db_dev_somatic_stats" class="list-group-item list-group-item-action"><i
+                    class="fas fa-table"></i>
+                Statistics on Dataset Development</a>
+        </ul>
     </div>
 </div>
 {% endblock %}

@@ -9,176 +9,176 @@
 {% endblock %}
 
 {% block subcontent %}
-<div class="mt-5">
-    <h2>Search Cell-Line Data</h2>
-    <hr>
-    <div id="search_cell_lines" class="p-3">
-        <div class="text-muted">
-            <div>
-                Be aware that many cell lines may have different TP53 status according to different studies. This may be
-                due to cell-line misidentification, cross-contamination or sequencing techniques
-                (see <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/28127703">PMID28127703</a>, <a
-                    target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/24700732">PMID24700732</a> for discussions
-                on these issues).
-            </div>
-            <div>We recommend also checking other available resources:
-                <ul>
-                    <li><a target="_blank" href="https://portals.broadinstitute.org/ccle">Cancer Cell Line Encyclopedia
-                        (CCLE)</a></li>
-                    <li><a target="_blank" href="https://depmap.org/portal/">DepMap Project</a></li>
-                    <li><a target="_blank" href="https://web.expasy.org/cellosaurus/">Cellosaurus Resource</a></li>
-                    <li><a target="_blank" href="https://cancer.sanger.ac.uk/cell_lines">COSMIC Cell-Line Project</a>
-                    </li>
-                </ul>
-            </div>
+<div class="page-banner text-center">
+    <h2 class="pt-1 pb-3 my-0 fw-normal">Search Cell-Line Data</h2>
+</div>
+<div id="search_cell_lines" class="p-3">
+    <div class="text-muted">
+        <div>
+            Be aware that many cell lines may have different TP53 status according to different studies. This may be
+            due to cell-line misidentification, cross-contamination or sequencing techniques
+            (see <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/28127703">PMID28127703</a>, <a
+                target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/24700732">PMID24700732</a> for discussions
+            on these issues).
         </div>
-        <div class="p-3 bg-light rounded-2">
-            <form action="{{ url_for('results_cell_line_mutation') }}" method="POST">
-                <div class="accordion" id="cl_form_accordion">
-                    {% with id_prefix='cl' %}
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingCL">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseCL" aria-expanded="true" aria-controls="collapseCL">
-                                Cell-Line Name and Tissue
-                            </button>
-                        </h3>
-                        <div id="collapseCL" class="accordion-collapse collapse show" aria-labelledby="headingCL"
-                             data-bs-parent="#cl_form_accordion">
-                            <div class="accordion-body bg-light">
-                                <fieldset class="row mb-3">
-                                    <legend class="col-form-label col-sm-3 pt-0">
-                                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                                data-bs-placement="top"
-                                                title="Name of the cell-line.">
-                                            <i class="far fa-question-circle"></i>
-                                        </button>
-                                        Cell-Line Name
-                                    </legend>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="cl_name" name="cl_name">
-                                    </div>
-                                </fieldset>
-                                <fieldset class="row mb-3">
-                                    <legend class="col-form-label col-sm-3 pt-0">
-                                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                                data-bs-html="true"
-                                                data-bs-placement="top"
-                                                title="Identification number of the ATCC database.">
-                                            <i class="far fa-question-circle"></i>
-                                        </button>
-                                        ATCC ID
-                                    </legend>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="atcc_id" name="atcc_id">
-                                    </div>
-                                </fieldset>
-                                <fieldset class="row mb-3">
-                                    <legend class="col-form-label col-sm-3 pt-0">
-                                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                                data-bs-placement="top"
-                                                data-bs-html="true"
-                                                title="Link to sample cell-line data in the
+        <div>We recommend also checking other available resources:
+            <ul>
+                <li><a target="_blank" href="https://portals.broadinstitute.org/ccle">Cancer Cell Line Encyclopedia
+                    (CCLE)</a></li>
+                <li><a target="_blank" href="https://depmap.org/portal/">DepMap Project</a></li>
+                <li><a target="_blank" href="https://web.expasy.org/cellosaurus/">Cellosaurus Resource</a></li>
+                <li><a target="_blank" href="https://cancer.sanger.ac.uk/cell_lines">COSMIC Cell-Line Project</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="p-3 bg-light rounded-2">
+        <form action="{{ url_for('results_cell_line_mutation') }}" method="POST">
+            <div class="accordion" id="cl_form_accordion">
+                {% with id_prefix='cl' %}
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingCL">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseCL" aria-expanded="true" aria-controls="collapseCL">
+                            Cell-Line Name and Tissue
+                        </button>
+                    </h3>
+                    <div id="collapseCL" class="accordion-collapse collapse show" aria-labelledby="headingCL"
+                         data-bs-parent="#cl_form_accordion">
+                        <div class="accordion-body bg-light">
+                            <fieldset class="row mb-3">
+                                <legend class="col-form-label col-sm-3 pt-0">
+                                    <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="Name of the cell-line.">
+                                        <i class="far fa-question-circle"></i>
+                                    </button>
+                                    Cell-Line Name
+                                </legend>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="cl_name" name="cl_name">
+                                </div>
+                            </fieldset>
+                            <fieldset class="row mb-3">
+                                <legend class="col-form-label col-sm-3 pt-0">
+                                    <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                            data-bs-html="true"
+                                            data-bs-placement="top"
+                                            title="Identification number of the ATCC database.">
+                                        <i class="far fa-question-circle"></i>
+                                    </button>
+                                    ATCC ID
+                                </legend>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="atcc_id" name="atcc_id">
+                                </div>
+                            </fieldset>
+                            <fieldset class="row mb-3">
+                                <legend class="col-form-label col-sm-3 pt-0">
+                                    <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            data-bs-html="true"
+                                            title="Link to sample cell-line data in the
                                                 <a href='https://www.sanger.ac.uk/genetics/CGP/CellLines/' target='_blank'>
                                                 Cancer Cell Line Project</a> of <a href='https://www.sanger.ac.uk/genetics/CGP/cosmic/'
                                                 target='_blank'>COSMIC</a> databases of the Sanger Institute.">
-                                            <i class="far fa-question-circle"></i>
-                                        </button>
-                                        COSMIC ID
-                                    </legend>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="cosmic_id" name="cosmic_id">
-                                    </div>
-                                </fieldset>
-                                <fieldset class="row mb-3">
-                                    <legend class="col-form-label col-sm-3 pt-0">
-                                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                                data-bs-placement="top"
-                                                title="Status of TP53 gene. WT= wild-type gene sequence;
+                                        <i class="far fa-question-circle"></i>
+                                    </button>
+                                    COSMIC ID
+                                </legend>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="cosmic_id" name="cosmic_id">
+                                </div>
+                            </fieldset>
+                            <fieldset class="row mb-3">
+                                <legend class="col-form-label col-sm-3 pt-0">
+                                    <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="Status of TP53 gene. WT= wild-type gene sequence;
                                                                 MUT= mutated gene sequence;
                                                                 NULL= entire gene deletion;
                                                                 LOE= loss of gene expression without gene mutation.">
-                                            <i class="far fa-question-circle"></i>
-                                        </button>
-                                        TP53 Status
-                                    </legend>
-                                    <div class="col-sm-8">
-                                        {% for stat_item in cl_tp53stat_list%}
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="tp53_status"
-                                                   value="{{ stat_item.label }}"
-                                                   id="status_{{ stat_item.label|lower }}">
-                                            <label class="form-check-label"
-                                                   for="status_{{ stat_item.label|lower }}">
-                                                {{ stat_item.label }}
-                                            </label>
-                                        </div>
-                                        {% endfor %}
+                                        <i class="far fa-question-circle"></i>
+                                    </button>
+                                    TP53 Status
+                                </legend>
+                                <div class="col-sm-8">
+                                    {% for stat_item in cl_tp53stat_list%}
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="tp53_status"
+                                               value="{{ stat_item.label }}"
+                                               id="status_{{ stat_item.label|lower }}">
+                                        <label class="form-check-label"
+                                               for="status_{{ stat_item.label|lower }}">
+                                            {{ stat_item.label }}
+                                        </label>
                                     </div>
-                                </fieldset>
-                                {% include 'form_fields_tumor_origin.html' %}
-                                {% include 'form_fields_topo_morph.html' %}
-                            </div>
+                                    {% endfor %}
+                                </div>
+                            </fieldset>
+                            {% include 'form_fields_tumor_origin.html' %}
+                            {% include 'form_fields_topo_morph.html' %}
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingMDM">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseMDM" aria-expanded="false" aria-controls="collapseMDM">
-                                Mutation Detection Method
-                            </button>
-                        </h3>
-                        <div id="collapseMDM" class="accordion-collapse collapse" aria-labelledby="headingMDM"
-                             data-bs-parent="#cl_form_accordion">
-                            <div class="accordion-body bg-light">
-                                {% include 'form_fields_method.html' %}
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingMDM">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseMDM" aria-expanded="false" aria-controls="collapseMDM">
+                            Mutation Detection Method
+                        </button>
+                    </h3>
+                    <div id="collapseMDM" class="accordion-collapse collapse" aria-labelledby="headingMDM"
+                         data-bs-parent="#cl_form_accordion">
+                        <div class="accordion-body bg-light">
+                            {% include 'form_fields_method.html' %}
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingMD">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseMD" aria-expanded="false" aria-controls="collapseMD">
-                                Mutation Description
-                            </button>
-                        </h3>
-                        <div id="collapseMD" class="accordion-collapse collapse" aria-labelledby="headingMD"
-                             data-bs-parent="#cl_form_accordion">
-                            <div class="accordion-body bg-light">
-                                {% include 'form_fields_variations.html' %}
-                                {% include 'form_fields_mutation.html' %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingPI">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapsePI" aria-expanded="false" aria-controls="collapsePI">
-                                Patient-Derived Information
-                            </button>
-                        </h3>
-                        <div id="collapsePI" class="accordion-collapse collapse" aria-labelledby="headingPI"
-                             data-bs-parent="#cl_form_accordion">
-                            <div class="accordion-body bg-light">
-                                {% include 'form_fields_patient_info.html' %}
-                            </div>
-                        </div>
-                    </div>
-                    {% endwith %}
-                </div>
-                <div class="form-group row pt-5">
-                    <div class="col">
-                        <div class="text-end">
-                            <button type="reset" class="btn btn-outline-secondary me-2"><i class="fas fa-redo"></i> Reset</button>
-                            <button type="submit" class="btn darkblue-btn">
-                                <i class="fas fa-search"></i> Search
-                            </button>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingMD">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseMD" aria-expanded="false" aria-controls="collapseMD">
+                            Mutation Description
+                        </button>
+                    </h3>
+                    <div id="collapseMD" class="accordion-collapse collapse" aria-labelledby="headingMD"
+                         data-bs-parent="#cl_form_accordion">
+                        <div class="accordion-body bg-light">
+                            {% include 'form_fields_variations.html' %}
+                            {% include 'form_fields_mutation.html' %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingPI">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapsePI" aria-expanded="false" aria-controls="collapsePI">
+                            Patient-Derived Information
+                        </button>
+                    </h3>
+                    <div id="collapsePI" class="accordion-collapse collapse" aria-labelledby="headingPI"
+                         data-bs-parent="#cl_form_accordion">
+                        <div class="accordion-body bg-light">
+                            {% include 'form_fields_patient_info.html' %}
+                        </div>
+                    </div>
+                </div>
+                {% endwith %}
+            </div>
+            <div class="form-group row pt-5">
+                <div class="col">
+                    <div class="text-end">
+                        <button type="reset" class="btn btn-outline-secondary me-2"><i class="fas fa-redo"></i> Reset
+                        </button>
+                        <button type="submit" class="btn darkblue-btn">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}

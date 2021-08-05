@@ -49,183 +49,203 @@
              aria-labelledby="{{ id_prefix }}_heading_ind"
              data-bs-parent="#{{ id_prefix }}_form_accordion">
             <div class="accordion-body bg-light">
-                <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-3 pt-0">
-                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title="Age of the patient at the time of diagnosis.">
-                            <i class="far fa-question-circle"></i>
-                        </button>
-                        Age at Diagnosis
-                    </legend>
-                    <div class="col-sm-8">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control" id="{{ id_prefix }}_age_start"
-                                           name="{{ id_prefix }}_age_start"
-                                           min="0"
-                                           max="120">
-                                    <label for="{{ id_prefix }}_age_start">Start</label>
+                <fieldset class="mb-3">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-3 pt-0">
+                            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Age of the patient at the time of diagnosis.">
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                            Age at Diagnosis
+                        </legend>
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="{{ id_prefix }}_age_start"
+                                               name="{{ id_prefix }}_age_start"
+                                               min="0"
+                                               max="120">
+                                        <label for="{{ id_prefix }}_age_start">Start</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 text-center">
+                                    <label class="col-form-label">to</label>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="{{ id_prefix }}_age_end"
+                                               name="{{ id_prefix }}_age_end"
+                                               min="0"
+                                               max="120">
+                                        <label for="{{ id_prefix }}_age_end">End</label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-1 text-center">
-                                <label class="col-form-label">to</label>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="mb-3">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-3 pt-0">
+                            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Sex of the patient (M for male, F for female).">
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                            Sex
+                        </legend>
+                        <div class="col-sm-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_gender"
+                                       value="F"
+                                       id="{{ id_prefix }}_gender_f">
+                                <label class="form-check-label"
+                                       for="{{ id_prefix }}_gender_f">
+                                    Female
+                                </label>
                             </div>
-                            <div class="col-lg-2">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control" id="{{ id_prefix }}_age_end"
-                                           name="{{ id_prefix }}_age_end"
-                                           min="0"
-                                           max="120">
-                                    <label for="{{ id_prefix }}_age_end">End</label>
-                                </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_gender"
+                                       value="M"
+                                       id="{{ id_prefix }}_gender_m">
+                                <label class="form-check-label"
+                                       for="{{ id_prefix }}_gender_m">
+                                    Male
+                                </label>
                             </div>
                         </div>
                     </div>
                 </fieldset>
-                <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-3 pt-0">
-                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title="Sex of the patient (M for male, F for female).">
-                            <i class="far fa-question-circle"></i>
-                        </button>
-                        Sex
-                    </legend>
-                    <div class="col-sm-8">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_gender"
-                                   value="F"
-                                   id="{{ id_prefix }}_gender_f">
-                            <label class="form-check-label"
-                                   for="{{ id_prefix }}_gender_f">
-                                Female
-                            </label>
+                <fieldset class="mb-3">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-3 pt-0">
+                            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Information on the presence or absence of cancers in the family of the patient.">
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                            Family History
+                        </legend>
+                        <div class="col-sm-6 col-md-7">
+                            <select name="{{ id_prefix }}_family_hist_list" class="form-control chosen-select"
+                                    id="{{ id_prefix }}_family_hist_input"
+                                    data-placeholder="Choose Family Histories..."
+                                    aria-label="Family History List" multiple>
+                                {% for family_hist in family_hist_list %}
+                                <option value="{{ family_hist.label }}">{{ family_hist.label }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_gender"
-                                   value="M"
-                                   id="{{ id_prefix }}_gender_m">
-                            <label class="form-check-label"
-                                   for="{{ id_prefix }}_gender_m">
-                                Male
-                            </label>
+                        <div class="col-sm-3 col-md-2 text-start">
+                            <a href="javascript:void(0);" class="clear-all-select small-font"><i
+                                    class="far fa-times-circle"></i>
+                                Clear All</a>
+                            <br>
+                            <a href="javascript:void(0);" class="add-all-select small-font"><i
+                                    class="far fa-check-circle"></i>
+                                Add All</a>
                         </div>
                     </div>
                 </fieldset>
-                <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-3 pt-0">
-                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title="Information on the presence or absence of cancers in the family of the patient.">
-                            <i class="far fa-question-circle"></i>
-                        </button>
-                        Family History
-                    </legend>
-                    <div class="col-sm-6 col-md-7">
-                        <select name="{{ id_prefix }}_family_hist_list" class="form-control chosen-select"
-                                id="{{ id_prefix }}_family_hist_input"
-                                data-placeholder="Choose Family Histories..."
-                                aria-label="Family History List" multiple>
-                            {% for family_hist in family_hist_list %}
-                            <option value="{{ family_hist.label }}">{{ family_hist.label }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col-sm-3 col-md-2 text-start">
-                        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
-                            Clear All</a>
-                        <br>
-                        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
-                            Add All</a>
-                    </div>
-                </fieldset>
-                <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-3 pt-0">
-                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title="Mode of mutation inheritance: P=paternal, M=maternal, M&P=maternal
+                <fieldset class="mb-3">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-3 pt-0">
+                            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Mode of mutation inheritance: P=paternal, M=maternal, M&P=maternal
                                                                 and paternal, de novo= mutation that has not been
                                                                 inherited, 'de novo, mosaic'= mutation that has not been
                                                                 inherited and is present in a subpopulation of cells,
                                                                 'na'=not known.">
-                            <i class="far fa-question-circle"></i>
-                        </button>
-                        Mode of Inheritance
-                    </legend>
-                    <div class="col-sm-6 col-md-7">
-                        <select name="{{ id_prefix }}_inh_mode_list" class="form-control chosen-select"
-                                id="{{ id_prefix }}_inh_mode_input"
-                                data-placeholder="Choose Modes of Inheritance..."
-                                aria-label="Mode of Inheritance" multiple>
-                            {% for inh_mode in inh_mode_list %}
-                            <option value="{{ inh_mode.label }}">{{ inh_mode.label }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col-sm-3 col-md-2 text-start">
-                        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
-                            Clear All</a>
-                        <br>
-                        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
-                            Add All</a>
-                    </div>
-                </fieldset>
-                <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-3 pt-0">
-                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title="Family case in the pedigree, such as proband (index case), mother, father...">
-                            <i class="far fa-question-circle"></i>
-                        </button>
-                        Family Case
-                    </legend>
-                    <div class="col-sm-6 col-md-7">
-                        <select name="{{ id_prefix }}_family_case_list" class="form-control chosen-select"
-                                id="{{ id_prefix }}_family_case_input"
-                                data-placeholder="Choose Family Cases..."
-                                aria-label="Family Case" multiple>
-                            {% for family_case in family_case_list %}
-                            <option value="{{ family_case.label }}">{{ family_case.label }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col-sm-3 col-md-2 text-start">
-                        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
-                            Clear All</a>
-                        <br>
-                        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
-                            Add All</a>
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                            Mode of Inheritance
+                        </legend>
+                        <div class="col-sm-6 col-md-7">
+                            <select name="{{ id_prefix }}_inh_mode_list" class="form-control chosen-select"
+                                    id="{{ id_prefix }}_inh_mode_input"
+                                    data-placeholder="Choose Modes of Inheritance..."
+                                    aria-label="Mode of Inheritance" multiple>
+                                {% for inh_mode in inh_mode_list %}
+                                <option value="{{ inh_mode.label }}">{{ inh_mode.label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-sm-3 col-md-2 text-start">
+                            <a href="javascript:void(0);" class="clear-all-select small-font"><i
+                                    class="far fa-times-circle"></i>
+                                Clear All</a>
+                            <br>
+                            <a href="javascript:void(0);" class="add-all-select small-font"><i
+                                    class="far fa-check-circle"></i>
+                                Add All</a>
+                        </div>
                     </div>
                 </fieldset>
-                <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-3 pt-0">
-                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                data-bs-placement="left"
-                                title="Country/Region in which the patient was living at the time of surgery. When not otherwise
+                <fieldset class="mb-3">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-3 pt-0">
+                            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Family case in the pedigree, such as proband (index case), mother, father...">
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                            Family Case
+                        </legend>
+                        <div class="col-sm-6 col-md-7">
+                            <select name="{{ id_prefix }}_family_case_list" class="form-control chosen-select"
+                                    id="{{ id_prefix }}_family_case_input"
+                                    data-placeholder="Choose Family Cases..."
+                                    aria-label="Family Case" multiple>
+                                {% for family_case in family_case_list %}
+                                <option value="{{ family_case.label }}">{{ family_case.label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-sm-3 col-md-2 text-start">
+                            <a href="javascript:void(0);" class="clear-all-select small-font"><i
+                                    class="far fa-times-circle"></i>
+                                Clear All</a>
+                            <br>
+                            <a href="javascript:void(0);" class="add-all-select small-font"><i
+                                    class="far fa-check-circle"></i>
+                                Add All</a>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="mb-3">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-3 pt-0">
+                            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-placement="left"
+                                    title="Country/Region in which the patient was living at the time of surgery. When not otherwise
                                 specified in the original publication, the country corresponding to the address of the hospital
                                 is entered.">
-                            <i class="far fa-question-circle"></i>
-                        </button>
-                        Country/Population
-                    </legend>
-                    <div class="col-sm-6 col-md-7">
-                        <select name="{{ id_prefix }}_country_list" class="form-control chosen-select"
-                                id="{{ id_prefix }}_country_input"
-                                data-placeholder="Choose Countries..."
-                                aria-label="Country or Population List" multiple>
-                            {% for country in country_list %}
-                            <option value="{{ country.label }}">{{ country.label }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col-sm-3 col-md-2 text-start">
-                        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i>
-                            Clear All</a>
-                        <br>
-                        <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
-                            Add All</a>
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                            Country/Population
+                        </legend>
+                        <div class="col-sm-6 col-md-7">
+                            <select name="{{ id_prefix }}_country_list" class="form-control chosen-select"
+                                    id="{{ id_prefix }}_country_input"
+                                    data-placeholder="Choose Countries..."
+                                    aria-label="Country or Population List" multiple>
+                                {% for country in country_list %}
+                                <option value="{{ country.label }}">{{ country.label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-sm-3 col-md-2 text-start">
+                            <a href="javascript:void(0);" class="clear-all-select small-font"><i
+                                    class="far fa-times-circle"></i>
+                                Clear All</a>
+                            <br>
+                            <a href="javascript:void(0);" class="add-all-select small-font"><i
+                                    class="far fa-check-circle"></i>
+                                Add All</a>
+                        </div>
                     </div>
                 </fieldset>
             </div>

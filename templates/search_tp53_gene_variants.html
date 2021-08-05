@@ -8,30 +8,32 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/search_gv.js') }}"></script>
 
 
-
 {% endblock %}
 
 {% block subcontent %}
-<div class="mt-5">
-    <h2>Search <em>TP53</em> Functional / Structural Data</h2>
-    <hr>
-    <div id="search_tp53_gv" class="p-3">
-        <div class="p-3 bg-light rounded-2">
-            <h3>Enter List of Variants</h3>
-            <form class="search-form" action="{{ url_for('results_gene_mut_by_gv') }}" method="POST">
-                {% with id_prefix='gv' %}
-                <fieldset class="row mb-3">
+<div class="page-banner text-center">
+    <h2 class="pt-1 pb-3 my-0 fw-normal">Search <em>TP53</em> Functional / Structural Data</h2>
+</div>
+<div id="search_tp53_gv" class="p-3">
+    <div class="p-3 bg-light rounded-2">
+        <h3>Enter List of Variants</h3>
+        <form class="search-form" action="{{ url_for('results_gene_mut_by_gv') }}" method="POST">
+            {% with id_prefix='gv' %}
+            <fieldset class="mb-3">
+                <div class="row">
                     <legend class="col-form-label col-sm-3 pt-0">Search by</legend>
                     <div class="col-sm-8">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="type_input" id="type_cdna"
                                    value="type_cdna"
-                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_cdna_div" aria-expanded="false"
+                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_cdna_div"
+                                   aria-expanded="false"
                                    aria-controls="{{ id_prefix }}_cdna_div">
                             <label class="form-check-label" for="type_cdna">
                                 cDNA Description
                             </label>
-                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-html="true"
                                     data-bs-placement="right"
                                     title="Mutation nomenclature according to <a href='https://www.genomic.unimelb.edu.au/mdi/mutnomen/' target='_blank'>HGVS</a> standards and using the NM_000546.5 coding sequence as reference. (i.e.: c.524G>A)">
                                 <i class="far fa-question-circle"></i>
@@ -41,12 +43,14 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="type_input" id="type_p"
                                    value="type_p"
-                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_p_div" aria-expanded="false"
+                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_p_div"
+                                   aria-expanded="false"
                                    aria-controls="{{ id_prefix }}_p_div">
                             <label class="form-check-label" for="type_p">
                                 Protein Description
                             </label>
-                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-html="true"
                                     data-bs-placement="right"
                                     title="Mutation description at the protein level as recommended by <a href='resources#mutation'>HGVS</a> and using the Uniprot reference sequence P04637. (i.e.: p.R175H)">
                                 <i class="far fa-question-circle"></i>
@@ -55,13 +59,15 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="type_input" id="type_hg19"
                                    value="type_hg19"
-                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_hg19_div" aria-expanded="false"
+                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_hg19_div"
+                                   aria-expanded="false"
                                    aria-controls="{{ id_prefix }}_hg19_div">
                             <label class="form-check-label" for="type_hg19">
                                 Genomic Description (hg19)
                             </label>
 
-                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-html="true"
                                     data-bs-placement="right"
                                     title="Mutation nomenclature according to <a href='https://www.genomic.unimelb.edu.au/mdi/mutnomen/' target='_blank'>HGVS</a> standards and using the GenBank NC_000017.10 (hg19 assembly) genomic sequence as reference. (i.e.: g.7578406C>T)">
                                 <i class="far fa-question-circle"></i>
@@ -70,55 +76,57 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="type_input" id="type_hg38"
                                    value="type_hg38"
-                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_hg38_div" aria-expanded="false"
+                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_hg38_div"
+                                   aria-expanded="false"
                                    aria-controls="{{ id_prefix }}_hg38_div">
                             <label class="form-check-label" for="type_hg38">
                                 Genomic Description (hg38)
                             </label>
-                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-html="true"
                                     data-bs-placement="right"
                                     title="Mutation nomenclature according to <a href='https://www.genomic.unimelb.edu.au/mdi/mutnomen/' target='_blank'>HGVS</a> standards and using the GenBank NC_000017.11 (hg38 assembly) genomic sequence as reference. (i.e.: g.7675088C>T)">
                                 <i class="far fa-question-circle"></i>
                             </button>
                         </div>
                     </div>
-                </fieldset>
-                <div id="gv_type_collapse">
-                    {% include 'form_fields_variations.html' %}
                 </div>
-                {% endwith %}
+            </fieldset>
+            <div id="gv_type_collapse">
+                {% include 'form_fields_variations.html' %}
+            </div>
+            {% endwith %}
 
-                <div class="form-group row">
-                    <div class="col-sm-11">
-
-                        <div class="text-end">
-                            <button type="reset" class="btn btn-outline-secondary me-2"><i class="fas fa-redo"></i> Reset</button>
-                            <button type="submit" class="btn darkblue-btn"><i class="fas fa-search"
-                                                                                      style="margin-right: 5px;"></i>Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="row">
+            <div class="form-group row">
                 <div class="col-sm-11">
-                    <div class="text-muted pt-2">For format conversions, we recommend to use <a
-                            href="https://mutalyzer.nl/"
-                            target="_blank">Mutalyzer</a>.
+                    <div class="text-end">
+                        <button type="reset" class="btn btn-outline-secondary me-2"><i class="fas fa-redo"></i> Reset
+                        </button>
+                        <button type="submit" class="btn darkblue-btn"><i class="fas fa-search"
+                                                                          style="margin-right: 5px;"></i>Search
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="p-3 mt-3 bg-light rounded-2">
-            <h3>PHANTM Classifier</h3>
+        </form>
+        <div class="row">
             <div class="col-sm-11">
-                <div>Explore the origin and phenotype of <em>TP53</em> mutations with the PHANTM classifier</div>
-                <div class="text-end">
-                    <a type="button" class="btn btn-outline-secondary"
-                       href="http://mutantp53.broadinstitute.org" target="_blank"><i
-                            class="fas fa-external-link-alt"></i> <strong>PH</strong>enotypic
-                        <strong>AN</strong>notation of <strong>T</strong>P53 <strong>M</strong>utations</a>
+                <div class="text-muted pt-2">For format conversions, we recommend to use <a
+                        href="https://mutalyzer.nl/"
+                        target="_blank">Mutalyzer</a>.
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-3 mt-3 bg-light rounded-2">
+        <h3>PHANTM Classifier</h3>
+        <div class="col-sm-11">
+            <div>Explore the origin and phenotype of <em>TP53</em> mutations with the PHANTM classifier</div>
+            <div class="text-end">
+                <a class="btn btn-outline-secondary"
+                   href="http://mutantp53.broadinstitute.org" target="_blank"><i
+                        class="fas fa-external-link-alt"></i> <strong>PH</strong>enotypic
+                    <strong>AN</strong>notation of <strong>T</strong>P53 <strong>M</strong>utations</a>
             </div>
         </div>
     </div>

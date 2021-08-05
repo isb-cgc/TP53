@@ -1,7 +1,7 @@
 
 {% if criteria_map.items()|length > 0 %}
 <div>
-    <a type="button" class="btn btn-sm btn-outline-secondary criteria-btn collapsed"
+    <a class="btn btn-sm btn-outline-secondary criteria-btn collapsed"
        data-bs-toggle="collapse" href="#criteria_div" role="button" aria-expanded="false"
        aria-controls="criteria_div"></a>
 </div>
@@ -24,8 +24,7 @@
                     {% elif criterion.vals|length > 1 %}
                     </span> IN (
         {% for val in criterion.vals %}
-        <span class="badge rounded-pill bg-info">{{ val }}
-                            </span>
+        <span class="badge rounded-pill bg-secondary">{{ val }}</span>
         {% endfor %}
         )<br>
         {% else %}

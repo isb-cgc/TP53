@@ -1,26 +1,30 @@
-<fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3 pt-0">
-        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Reference used for the data sets">
-            <i class="far fa-question-circle"></i>
-        </button>
-        Reference
-    </legend>
-    <div class="col-45px">
-        <button class="btn btn-outline-secondary rounded-circle" type="button" title="Click to look up and add reference"
-                data-bs-toggle="modal" data-bs-target="#{{ id_prefix }}_ref_modal"><i class="fas fa-plus"></i>
-        </button>
-    </div>
-    <div class="col-7-plus text-start">
-        <select data-placeholder="Click + button to look up and add reference" multiple
-                class="form-select form-control-sm ref-select chosen-select" id="{{ id_prefix }}_refs_input_select"
-                name="{{ id_prefix }}_refs_list" disabled
-                aria-label="Example select with button addon">
-        </select>
-    </div>
-    <div class="col-sm-3 col-md-2 text-start">
-        <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i> Clear All</a>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="col-form-label col-sm-3 pt-0">
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Reference used for the data sets">
+                <i class="far fa-question-circle"></i>
+            </button>
+            Reference
+        </legend>
+        <div class="col-45px">
+            <button class="btn darkblue-btn rounded-circle" type="button"
+                    title="Click to look up and add reference"
+                    data-bs-toggle="modal" data-bs-target="#{{ id_prefix }}_ref_modal"><i class="fas fa-plus"></i>
+            </button>
+        </div>
+        <div class="col-7-plus text-start">
+            <select data-placeholder="Click + button to look up and add reference" multiple
+                    class="form-select form-control-sm ref-select chosen-select" id="{{ id_prefix }}_refs_input_select"
+                    name="{{ id_prefix }}_refs_list" disabled
+                    aria-label="Example select with button addon">
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a href="javascript:void(0);" class="clear-all-select small-font"><i class="far fa-times-circle"></i> Clear
+                All</a>
+        </div>
     </div>
 </fieldset>
 
@@ -57,10 +61,11 @@
                         <td style="min-width:95px;">{{ row.Journal }}</td>
                         <td style="min-width:90px;"><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}"
                                                        target="_blank">
-                            {{ row.PubMed if row.PubMed !='NA' }}  </a>
+                            {{ row.PubMed if row.PubMed !='NA' }} </a>
                         </td>
                         <td>
-                            <button class="btn btn-sm rounded-circle btn-outline-secondary" type="button" data-bs-toggle="tooltip"
+                            <button class="btn btn-sm rounded-circle btn-outline-secondary" type="button"
+                                    data-bs-toggle="tooltip"
                                     data-bs-custom-class="wide-tooltip"
                                     data-bs-placement="left" title="{{ row.Abstract }}">
                                 <i class="fas fa-glasses"></i></button>
@@ -71,7 +76,8 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary reset-ref me-2"><i class="fas fa-redo"></i> Reset</button>
+                <button type="button" class="btn btn-outline-secondary reset-ref me-2"><i class="fas fa-redo"></i> Reset
+                </button>
                 <button type="button" class="btn darkblue-btn add-ref" data-bs-dismiss="modal"
                         data-ref-dest="#{{ id_prefix }}_refs_input_select">Add/Update
                 </button>

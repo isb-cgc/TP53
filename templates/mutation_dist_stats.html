@@ -14,14 +14,14 @@
 {% endblock %}
 
 {% block subcontent %}
-
-<div class="pt-4">
-    <h2>{{ title }}
+<div class="page-banner text-center">
+    <h2 class="pt-1 pb-3 my-0 fw-normal">{{ title }}
         {% if subtitle %}
         :
         {% endif %}
         <span class="ms-2 fw-light">{{ subtitle }}</span></h2>
-    <hr>
+</div>
+<div class="p-3">
     <div class="py-2 text-end">
         {% include 'criteria_map_div.html' %}
     </div>
@@ -37,7 +37,8 @@
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane bg-light fade show active border border-top-0" id="nav-mut-type-tab" role="tabpanel" aria-labelledby="nav-mut-type-tab">
+        <div class="tab-pane bg-light fade show active border border-top-0" id="nav-mut-type-tab" role="tabpanel"
+             aria-labelledby="nav-mut-type-tab">
             <div class="p-3">
                 <div class="row mt-2">
                     <div class="col-1"></div>
@@ -90,8 +91,9 @@
                     <div class="col-4 border rounded-2 p-3 bg-white m-1">
                         <div class="text-end pb-1">
                             <div data-graph-id="struct_3D" class="btn-group btn-group-sm">
-                                <button type="button" class="btn btn-outline-secondary expand-btn" data-bs-toggle="modal"
-                                    data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                                <button type="button" class="btn btn-outline-secondary expand-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
                                 </button>
                                 <button type="button" class="btn btn-outline-secondary d-jsmoldata-btn"><i
                                         class="fas fa-download"></i> Data
@@ -105,16 +107,26 @@
                         </span>
                         <div id="jmol-legend" class="text-muted text-end small-font">
                             Mutation Frequency:
-                            <div class="d-inline my-auto"><div class="legend-color legend-color-high"></div> High</div>
-                            <div class="d-inline my-auto ms-2"><div class="legend-color legend-color-mid"></div> Medium</div>
-                            <div class="d-inline my-auto ms-2"><div class="legend-color legend-color-low"></div> Low</div>
+                            <div class="d-inline my-auto">
+                                <div class="legend-color legend-color-high"></div>
+                                High
+                            </div>
+                            <div class="d-inline my-auto ms-2">
+                                <div class="legend-color legend-color-mid"></div>
+                                Medium
+                            </div>
+                            <div class="d-inline my-auto ms-2">
+                                <div class="legend-color legend-color-low"></div>
+                                Low
+                            </div>
                         </div>
                     </div>
                     <div class="col-1"></div>
                 </div>
             </div>
         </div>
-        <div class="tab-pane bg-light fade border border-top-0" id="nav-mut-effect-tab" role="tabpanel" aria-labelledby="nav-mut-effect-tab">
+        <div class="tab-pane bg-light fade border border-top-0" id="nav-mut-effect-tab" role="tabpanel"
+             aria-labelledby="nav-mut-effect-tab">
             <div class="p-3">
                 <div class="row mt-2">
                     <div class="col-2"></div>
@@ -184,7 +196,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="expand-modal" tabindex="-1"
      aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">

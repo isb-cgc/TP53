@@ -13,41 +13,42 @@
             <div class="accordion-body bg-light">
                 {% include 'form_fields_reference.html' %}
                 {% include 'form_fields_method.html' %}
-                <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-3 pt-0">
-                        <button class="btn btn-sm pe-0" type="button"
-                                data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title="Whole genome or whole exome sequencing study.">
-                            <i class="far fa-question-circle"></i>
-                        </button>
-                        NGS Study
-                    </legend>
-                    <div class="col-sm-8">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"
-                                   value="Yes"
-                                   id="{{ id_prefix }}_ngs_yes">
-                            <label class="form-check-label"
-                                   for="{{ id_prefix }}_ngs_yes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"
-                                   value="No"
-                                   id="{{ id_prefix }}_ngs_no">
-                            <label class="form-check-label"
-                                   for="{{ id_prefix }}_ngs_no">
-                                No
-                            </label>
+                <fieldset class="mb-3">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-3 pt-0">
+                            <button class="btn btn-sm pe-0" type="button"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Whole genome or whole exome sequencing study.">
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                            NGS Study
+                        </legend>
+                        <div class="col-sm-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"
+                                       value="Yes"
+                                       id="{{ id_prefix }}_ngs_yes">
+                                <label class="form-check-label"
+                                       for="{{ id_prefix }}_ngs_yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"
+                                       value="No"
+                                       id="{{ id_prefix }}_ngs_no">
+                                <label class="form-check-label"
+                                       for="{{ id_prefix }}_ngs_no">
+                                    No
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </fieldset>
             </div>
         </div>
     </div>
-
     <div class="accordion-item">
         <h3 class="accordion-header" id="{{ id_prefix }}_heading_mut">
             <button class="accordion-button collapsed" type="button"
@@ -81,29 +82,31 @@
             <div class="accordion-body bg-light">
                 {% include 'form_fields_topo_morph.html' %}
                 {% include 'form_fields_tumor_origin.html' %}
-                <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-3 pt-0">
-                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title="Nature of the sample from which the mutation has been identified: cell-line,
+                <fieldset class="mb-3">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-3 pt-0">
+                            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Nature of the sample from which the mutation has been identified: cell-line,
                                 surgery (surgical or autopsy specimen, including fresh samples and archival, pathology
                                 specimen), biopsy, xenograft, body fluid (blood, saliva, urine...).">
-                            <i class="far fa-question-circle"></i>
-                        </button>
-                        Sample Source
-                    </legend>
-                    <div class="col-sm-8">
-                        {% for ss_item in sample_source_list%}
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_sample_source"
-                                   value="{{ ss_item.label }}"
-                                   id="{{ id_prefix }}_ss_{{ ss_item.label|lower }}">
-                            <label class="form-check-label"
-                                   for="{{ id_prefix }}_ss_{{ ss_item.label|lower }}">
-                                {{ ss_item.label|title }}
-                            </label>
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                            Sample Source
+                        </legend>
+                        <div class="col-sm-8">
+                            {% for ss_item in sample_source_list%}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_sample_source"
+                                       value="{{ ss_item.label }}"
+                                       id="{{ id_prefix }}_ss_{{ ss_item.label|lower }}">
+                                <label class="form-check-label"
+                                       for="{{ id_prefix }}_ss_{{ ss_item.label|lower }}">
+                                    {{ ss_item.label|title }}
+                                </label>
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     </div>
                 </fieldset>
             </div>

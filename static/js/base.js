@@ -109,3 +109,7 @@ var copy_to_clipboard = function (el) {
     document.execCommand("copy");
     $temp.remove();
 };
+
+var open_sidebar = function(){
+    $('div.collapsible-sidebar').addClass('hover');
+};

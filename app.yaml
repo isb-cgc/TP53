@@ -13,7 +13,7 @@ runtime_config:
 network:
   instance_tag: isb-cgc-tp53
 
-# comment this section out for test-tier: test-tier does not need auto scaling
+## comment this section out for test-tier: test-tier does not need auto scaling
 #automatic_scaling:
 #  min_num_instances: 2
 #  max_num_instances: 10
@@ -26,9 +26,6 @@ network:
 
 #BQ_DATASET to set from prod, test or uat
 env_variables:
-#  TIER: 'prod'
-#  TIER: 'test'
-#  TIER: 'uat'
 #  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-test'
   TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-dev'
 #  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files-test'
