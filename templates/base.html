@@ -36,18 +36,13 @@
 <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark-purple py-4">
         <div class="container-fluid">
-            <!--<a class="navbar-brand" href="/">-->
-            <!--<i class="fas fa-home"></i>-->
-            <!--TP53-->
-            <!--</a>-->
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler collapsed " type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                     aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="navbar-collapse collapse justify-content-evenly" id="navbarCollapse">
-                <!--<ul class="navbar-nav me-auto mb-2 mb-md-0">-->
                 <ul class="navbar-nav justify-content-evenly">
                     <li class="nav-item mx-xl-1 mx-xxl-2">
                         <a class="nav-link" id="home_menu" href="/"><i class="fas fa-home"></i> TP53</a>
@@ -64,7 +59,7 @@
                             Resources</a>
                     </li>
                     <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
-                        <!--<a class="nav-link" id="refs_corner" href="refs_corner"><i class="fas fa-book"></i> Refs Corner</a>-->
+                    <!--<a class="nav-link" id="refs_corner" href="refs_corner"><i class="fas fa-book"></i> Refs Corner</a>-->
                     <!--</li>-->
                     <!--<li class="nav-item mx-2">-->
                     <!--<a class="nav-link" id="ppl_events" href="ppl_events"><i class="me-2 far fa-newspaper"></i>People & Events</a>-->
@@ -72,157 +67,145 @@
                     <li class="nav-item mx-xl-2 mx-xxl-3">
                         <a class="nav-link" id="about" href="about"><i class="fas fa-dna"></i> About</a>
                     </li>
-                    <li class="nav-item ms-xl-2 ms-xxl-3">
+                    <li class="nav-item mx-xl-2 mx-xxl-3">
                         <a class="nav-link" id="contact" href="contact"><i class="fas fa-envelope"></i> Contact</a>
                     </li>
-                    <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
-                        <!--<form action="cse_search" method="get" role="search" class="d-flex">-->
-                            <!--<input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"-->
-                                   <!--title="Search this website" aria-label="Search">-->
-                            <!--<button class="btn btn-outline-light btn-sm" type="submit">Search</button>-->
-                        <!--</form>-->
-                    <!--</li>-->
-                </ul>
-                <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
+
+                    <li class="nav-item ms-5 mt-2">
                         <form action="cse_search" method="get" role="search" class="d-flex">
                             <input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"
                                    title="Search this website" aria-label="Search">
                             <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
                         </form>
-                    <!--</li>-->
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 </header>
-<!--<div class="container-fluid">-->
-    <!--<div class="row">-->
-        <div class="bg-secondary collapsible-sidebar has-submenubar">
-            <div class="position-sticky pt-2">
-                <div class="p-2 fw-bold"><i class="fas fa-search"></i> Data Explorer<i
-                        class="fas fa-search float-end pe-1 sidebar-icon"></i></div>
-                <hr>
-                <ul id="expl-ul" class="nav flex-column">
-                    <li class="ps-3 fw-bold nav-item">
-                        Search
-                    </li>
-                    <li class="nav-item">
-                        <a data-bs-toggle="collapse" role="button" aria-expanded="false"
-                           aria-controls="gv-collapse" class="nav-link" aria-current="page"
-                           href="#gv-collapse">Functional / Structural Data</a>
-                    </li>
-                    <div id="gv-collapse" class="ps-3 pb-3 collapse" data-bs-parent="#expl-ul">
-                        <li id="search_gene_by_var" class="nav-item sub-navitem">
-                            <a class="nav-link" href="search_gene_by_var">Search by Gene Variations</a>
-                        </li>
-                        <li id="search_gene_by_mut" class="nav-item sub-navitem">
-                            <a class="nav-link" href="search_gene_by_mut">Search by Mutation Features</a>
-                        </li>
-                        <li id="view_val_poly" class="nav-item sub-navitem">
-                            <a class="nav-link" href="view_val_poly">View Validated Polymorphism</a>
-                        </li>
-                        <li class="nav-item sub-navitem">
-                            <a class="nav-link" href="get_tp53data#get_annot">Downloads</a>
-                        </li>
-                    </div>
-                    <li class="nav-item">
-                        <a id="" data-bs-toggle="collapse" role="button" aria-expanded="false"
-                           aria-controls="som-collapse" class="nav-link"
-                           href="#som-collapse" data-bs-parent="#expl-ul">Somatic Mutations</a>
-                    </li>
-                    <div id="som-collapse" class="ps-3 pb-3 collapse" data-bs-parent="#expl-ul">
-                        <li id="search_somatic_mut" class="nav-item sub-navitem">
-                            <a class="nav-link" href="search_somatic_mut">Search Somatic Mutation Data</a>
-                        </li>
-                        <li id="search_somatic_prevalence" class="nav-item sub-navitem">
-                            <a class="nav-link" href="search_somatic_prevalence">Search Mutation Prevalence</a>
-                        </li>
-                        <li id="stats_somatic_mut" class="nav-item sub-navitem">
-                            <a class="nav-link" href="stats_somatic_mut">Selected Statistics</a>
-                        </li>
-                        <li class="nav-item sub-navitem">
-                            <a class="nav-link" href="get_tp53data#get_som_mut">Downloads</a>
-                        </li>
-                    </div>
-
-                    <li class="nav-item">
-                        <a data-bs-toggle="collapse" role="button" aria-expanded="false"
-                           aria-controls="germ-collapse" class="nav-link"
-                           href="#germ-collapse">Germline Mutations</a>
-                    </li>
-                    <div id="germ-collapse" class="ps-3 pb-3 collapse" data-bs-parent="#expl-ul">
-                        <li id="search_germline_mut" class="nav-item sub-navitem">
-                            <a class="nav-link" href="search_germline_mut">Search Germline Mutation Data</a>
-                        </li>
-                        <li id="stats_germline_mut" class="nav-item sub-navitem">
-                            <a class="nav-link" href="stats_germline_mut">Selected Statistics</a>
-                        </li>
-                        <li class="nav-item sub-navitem">
-                            <a class="nav-link" href="get_tp53data#get_germ_mut">Downloads</a>
-                        </li>
-                    </div>
-
-                    <li class="nav-item">
-                        <a data-bs-toggle="collapse" role="button" aria-expanded="false"
-                           aria-controls="cell-collapse" class="nav-link"
-                           href="#cell-collapse">Cell Lines</a>
-                    </li>
-                    <div id="cell-collapse" class="ps-3 pb-3 collapse" data-bs-parent="#expl-ul">
-                        <li id="search_cell_lines" class="nav-item sub-navitem">
-                            <a class="nav-link" href="search_cell_lines">Search Cell-Line Data</a>
-                        </li>
-                        <li id="stats_cell_lines" class="nav-item sub-navitem">
-                            <a class="nav-link" href="stats_cell_lines">Selected Statistics</a>
-                        </li>
-                        <li class="nav-item sub-navitem">
-                            <a class="nav-link" href="get_tp53data#get_cell">Downloads</a>
-                        </li>
-                    </div>
-
-                    <li class="nav-item">
-                        <a data-bs-toggle="collapse" role="button" aria-expanded="false"
-                           aria-controls="mouse-collapse" class="nav-link"
-                           href="#mouse-collapse">Mouse Models</a>
-                    </li>
-                    <div id="mouse-collapse" class="ps-3 pb-3 collapse" data-bs-parent="#expl-ul">
-                        <li id="view_mouse" class="nav-item sub-navitem">
-                            <a class="nav-link" href="view_mouse">View Data</a>
-                        </li>
-                        <li class="nav-item sub-navitem">
-                            <a class="nav-link" href="get_tp53data#get_mouse">Downloads</a>
-                        </li>
-                    </div>
-
-                    <li class="nav-item">
-                        <a data-bs-toggle="collapse" role="button" aria-expanded="false"
-                           aria-controls="eim-collapse" class="nav-link"
-                           href="#eim-collapse">Exp Induced Models</a>
-                    </li>
-                    <div id="eim-collapse" class="ps-3 pb-3 collapse" data-bs-parent="#expl-ul">
-                        <li id="view_exp_ind_mut" class="nav-item sub-navitem">
-                            <a class="nav-link" href="view_exp_ind_mut">View Data</a>
-                        </li>
-                        <li class="nav-item sub-navitem">
-                            <a class="nav-link" href="get_tp53data#get_eim">Downloads</a>
-                        </li>
-                    </div>
-
-                </ul>
-                <hr>
-                <ul id="dd-ul" class="nav flex-column">
-                    <li id="get_tp53data" class="nav-item">
-                        <a class="nav-link"
-                           href="get_tp53data"><i class="fas fa-download"></i> Dataset Downloads
-                        </a>
-                    </li>
-                </ul>
+<div class="bg-secondary collapsible-sidebar has-submenubar">
+    <div class="position-sticky pt-2">
+        <div class="p-2 fw-bold"><i class="fas fa-search"></i> Data Explorer<i
+                class="fas fa-search float-end pe-1 sidebar-icon"></i></div>
+        <hr>
+        <ul id="expl-ul" class="nav flex-column">
+            <li class="pb-3 ps-3 fw-bold">
+                Search
+            </li>
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" role="button" aria-expanded="false"
+                   aria-controls="gv-collapse" class="nav-link" aria-current="page"
+                   href="#gv-collapse">Functional / Structural Data</a>
+            </li>
+            <div id="gv-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
+                <li id="search_gene_by_var" class="nav-item sub-navitem">
+                    <a class="nav-link" href="search_gene_by_var">Search by Gene Variations</a>
+                </li>
+                <li id="search_gene_by_mut" class="nav-item sub-navitem">
+                    <a class="nav-link" href="search_gene_by_mut">Search by Mutation Features</a>
+                </li>
+                <li id="view_val_poly" class="nav-item sub-navitem">
+                    <a class="nav-link" href="view_val_poly">View Validated Polymorphism</a>
+                </li>
+                <li class="nav-item sub-navitem">
+                    <a class="nav-link" href="get_tp53data#get_annot">Downloads</a>
+                </li>
             </div>
-        </div>
-        {% block content %}
-        {% endblock %}
-    <!--</div>-->
+            <li class="nav-item">
+                <a id="" data-bs-toggle="collapse" role="button" aria-expanded="false"
+                   aria-controls="som-collapse" class="nav-link"
+                   href="#som-collapse" data-bs-parent="#expl-ul">Somatic Mutations</a>
+            </li>
+            <div id="som-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
+                <li id="search_somatic_mut" class="nav-item sub-navitem">
+                    <a class="nav-link" href="search_somatic_mut">Search Somatic Mutation</a>
+                </li>
+                <li id="search_somatic_prevalence" class="nav-item sub-navitem">
+                    <a class="nav-link" href="search_somatic_prevalence">Search Mutation Prevalence</a>
+                </li>
+                <li id="stats_somatic_mut" class="nav-item sub-navitem">
+                    <a class="nav-link" href="stats_somatic_mut">Selected Statistics</a>
+                </li>
+                <li class="nav-item sub-navitem">
+                    <a class="nav-link" href="get_tp53data#get_som_mut">Downloads</a>
+                </li>
+            </div>
 
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" role="button" aria-expanded="false"
+                   aria-controls="germ-collapse" class="nav-link"
+                   href="#germ-collapse">Germline Mutations</a>
+            </li>
+            <div id="germ-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
+                <li id="search_germline_mut" class="nav-item sub-navitem">
+                    <a class="nav-link" href="search_germline_mut">Search Germline Mutation</a>
+                </li>
+                <li id="stats_germline_mut" class="nav-item sub-navitem">
+                    <a class="nav-link" href="stats_germline_mut">Selected Statistics</a>
+                </li>
+                <li class="nav-item sub-navitem">
+                    <a class="nav-link" href="get_tp53data#get_germ_mut">Downloads</a>
+                </li>
+            </div>
 
-<!--</div>-->
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" role="button" aria-expanded="false"
+                   aria-controls="cell-collapse" class="nav-link"
+                   href="#cell-collapse">Cell Lines</a>
+            </li>
+            <div id="cell-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
+                <li id="search_cell_lines" class="nav-item sub-navitem">
+                    <a class="nav-link" href="search_cell_lines">Search Cell-Line Data</a>
+                </li>
+                <li id="stats_cell_lines" class="nav-item sub-navitem">
+                    <a class="nav-link" href="stats_cell_lines">Selected Statistics</a>
+                </li>
+                <li class="nav-item sub-navitem">
+                    <a class="nav-link" href="get_tp53data#get_cell">Downloads</a>
+                </li>
+            </div>
+
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" role="button" aria-expanded="false"
+                   aria-controls="mouse-collapse" class="nav-link"
+                   href="#mouse-collapse">Mouse Models</a>
+            </li>
+            <div id="mouse-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
+                <li id="view_mouse" class="nav-item sub-navitem">
+                    <a class="nav-link" href="view_mouse">View Data</a>
+                </li>
+                <li class="nav-item sub-navitem">
+                    <a class="nav-link" href="get_tp53data#get_mouse">Downloads</a>
+                </li>
+            </div>
+
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" role="button" aria-expanded="false"
+                   aria-controls="eim-collapse" class="nav-link"
+                   href="#eim-collapse">Exp Induced Models</a>
+            </li>
+            <div id="eim-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
+                <li id="view_exp_ind_mut" class="nav-item sub-navitem">
+                    <a class="nav-link" href="view_exp_ind_mut">View Data</a>
+                </li>
+                <li class="nav-item sub-navitem">
+                    <a class="nav-link" href="get_tp53data#get_eim">Downloads</a>
+                </li>
+            </div>
+
+        </ul>
+        <hr>
+        <ul id="dd-ul" class="nav flex-column">
+            <li id="get_tp53data" class="nav-item">
+                <a class="nav-link"
+                   href="get_tp53data"><i class="fas fa-download"></i> Dataset Downloads
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% block content %}
+{% endblock %}
 <footer class="mt-auto">
     <div class="container">
         <!--<p class="float-start mb-1">-->
