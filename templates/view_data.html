@@ -15,33 +15,30 @@
 {% endblock %}
 
 {% block subcontent %}
-<div class="mt-5">
-    <h2>View Data: {{ bq_view_name }}</h2>
-    <hr>
-
-    <div id="view_data" class="p-3" data-view-name="{{ bq_view_name }}">
-        <div class="float-end">
-            <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i> Download
-                </button>
-            </div>
-        </div>
-        <table id="view-data-table" class="table table-striped table-sm result-table small-font" cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th>
-                    <input class="form-check-input check-all" type="checkbox">
-                </th>
-                {% for col_name in columns %}
-                    <th {% if col_name == 'PubMedLink' %} class="external_link" {% endif %}>{{ col_name }}</th>
-                {% endfor %}
-            </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
+<div class="page-banner text-center">
+    <h2 class="pb-3 my-0 fw-normal">View Data: {{ bq_view_name }}</h2>
+</div>
+<div id="view_data" class="p-4" data-view-name="{{ bq_view_name }}">
+    <div class="text-end pb-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary download-btn"><i class="fas fa-download"></i>
+                Download
+            </button>
     </div>
+    <table id="view-data-table" class="table table-striped table-sm result-table small-font" cellspacing="0"
+           width="100%">
+        <thead>
+        <tr>
+            <th>
+                <input class="form-check-input check-all" type="checkbox">
+            </th>
+            {% for col_name in columns %}
+            <th {% if col_name=='PubMedLink' %} class="external_link" {% endif %}>{{ col_name }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
 
+        </tbody>
+    </table>
 </div>
 {% endblock %}

@@ -8,63 +8,63 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    <nav class="bg-secondary sidebar">
-    </nav>
-    <main class="main-panel">
-        <h1><em>p53</em> in the Clinics</h1>
+<main>
+    <div class="page-banner text-center">
+        <h1 class="py-2 my-0"><em>p53</em> in the Clinics</h1>
+    </div>
+    <div class="p-5">
+        <table>
+            <tr>
+                <td class="align-top pe-5">
+                    <img width="150px" src="{{ url_for('static', filename='img/p53_2013.jpeg') }}"/>
+                    <div class="pt-3">2013, VII, 544 p.45 illus.<br/>
+                        Hardcover ISBN:<br/>
+                        978-1-4614-3675-1<br/>
+                        <a href="#toc">Table of Contents</a><br/>
+                        <a href="https://www.springer.com/gp/book/9781461436751"
+                           target="_blank">Ordering information</a>
+                    </div>
+                </td>
+                <td>
+                    <p>Edited by<br>
+                        <strong>Pierre Hainaut</strong><br>
+                        <i class="text-dark">International Agency for Research on Cancer (IARC), World Health
+                            Organization, Lyon, France</i><br>
+                        <br>
+                        <strong>Magali Olivier</strong><br>
+                        <i class="text-dark">International Agency for Research on Cancer (IARC), World Health
+                            Organization, Lyon, France</i><br>
+                        <br>
+                        <strong>Klas G. Wiman</strong><br>
+                        <i class="text-dark">Karolinska Institute, Dept. of Oncology-Pathology, Cancer Center
+                            Karolinska (CCK), Stockholm, Sweden</i><br>
+                        <br>
+                        With over 60,000 referenced publications, <em>p53</em> has emerged as one of the most important
+                        factors in human cancer.
+                        Research on <em>p53</em> has led to a complete overhaul of our understanding of the molecular
+                        basis
+                        of human cancer.
+                        In recent years, these major advances in knowledge are starting to impact on cancer
+                        management and therapy.
+                        This book thus captures a critical turning point in <em>p53</em> research, from basic to
+                        translational research and clinical application.<br>
+                        <br>
+                        <em>p53</em> in the Clinics follows the success of 25 Years of <em>p53</em> Research and
+                        condensates in a
+                        series of authoritative chapters the considerable
+                        progress on the applications of <em>p53</em> into the clinics and the substantial advances on
+                        diseases caused by inheritance of <em>p53</em> defects,
+                        on somatic <em>p53</em> mutations as biomarkers in molecular pathology, on progress in gene
+                        therapy
+                        and on developments of innovative drugs and clinical trials.
+                        This volume will appeal to a wide audience of students and professionals in basic and
+                        clinical cancer research and treatment,
+                        and will highlight the exciting “next steps” in <em>p53</em> research and applications.
+                    </p>
 
-        <div class="pt-3">
-            <table>
-                <tr>
-                    <td class="align-top pe-5">
-                        <img width="150px" src="{{ url_for('static', filename='img/p53_2013.jpeg') }}"/>
-                        <div class="pt-3">2013, VII, 544 p.45 illus.<br/>
-                            Hardcover ISBN:<br/>
-                            978-1-4614-3675-1<br/>
-                            <a href="#toc">Table of Contents</a><br/>
-                            <a href="https://www.springer.com/gp/book/9781461436751"
-                               target="_blank">Ordering information</a>
-                        </div>
-                    </td>
-                    <td>
-                        <p>Edited by<br>
-                            <strong>Pierre Hainaut</strong><br>
-                            <i class="text-dark">International Agency for Research on Cancer (IARC), World Health
-                                Organization, Lyon, France</i><br>
-                            <br>
-                            <strong>Magali Olivier</strong><br>
-                            <i class="text-dark">International Agency for Research on Cancer (IARC), World Health
-                                Organization, Lyon, France</i><br>
-                            <br>
-                            <strong>Klas G. Wiman</strong><br>
-                            <i class="text-dark">Karolinska Institute, Dept. of Oncology-Pathology, Cancer Center
-                                Karolinska (CCK), Stockholm, Sweden</i><br>
-                            <br>
-                            With over 60,000 referenced publications, <em>p53</em> has emerged as one of the most important
-                            factors in human cancer.
-                            Research on <em>p53</em> has led to a complete overhaul of our understanding of the molecular basis
-                            of human cancer.
-                            In recent years, these major advances in knowledge are starting to impact on cancer
-                            management and therapy.
-                            This book thus captures a critical turning point in <em>p53</em> research, from basic to
-                            translational research and clinical application.<br>
-                            <br>
-                            <em>p53</em> in the Clinics follows the success of 25 Years of <em>p53</em> Research and condensates in a
-                            series of authoritative chapters the considerable
-                            progress on the applications of <em>p53</em> into the clinics and the substantial advances on
-                            diseases caused by inheritance of <em>p53</em> defects,
-                            on somatic <em>p53</em> mutations as biomarkers in molecular pathology, on progress in gene therapy
-                            and on developments of innovative drugs and clinical trials.
-                            This volume will appeal to a wide audience of students and professionals in basic and
-                            clinical cancer research and treatment,
-                            and will highlight the exciting “next steps” in <em>p53</em> research and applications.
-                        </p>
-
-                    </td>
-                </tr>
-            </table>
-        </div>
+                </td>
+            </tr>
+        </table>
         <div id="toc" class="mt-5">
             <h2>Table of contents</h2>
             <hr>
@@ -136,7 +136,7 @@
                 </div>
             </div>
         </div>
-
-    </main>
+    </div>
+</main>
 </div>
 {% endblock %}

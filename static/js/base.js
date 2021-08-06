@@ -38,7 +38,8 @@ $(document).ready(function () {
     set_active_menu(active_menu);
     set_active_submenu(active_submenu);
 
-    set_data_bs_target(['help', 'resources', 'refs_corner', 'ppl_events', 'about'].indexOf(active_menu) >= 0);
+    set_data_bs_target(['help', 'resources', 'about'].indexOf(active_menu) >= 0);
+    // set_data_bs_target(['help', 'resources', 'refs_corner', 'ppl_events', 'about'].indexOf(active_menu) >= 0);
 
     $(".back-button").click(function () {
         window.history.back();

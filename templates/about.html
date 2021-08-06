@@ -4,29 +4,15 @@
 <script type="text/javascript">
     active_menu = 'about';
     active_submenu = '';
-    // active_data_bs_target = '#about-nav';
 </script>
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    <nav id="about-nav" class="bg-secondary sidebar">
-        <div class="position-sticky pt-3">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#aim-n-scope-div">Aim & Scope</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#database-dev-div">Database Developments</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#credits-div">Credits</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <main class="main-panel">
-        <h1>About</h1>
+<main class="narrow-panel">
+    <div class="page-banner text-center">
+        <h1 class="fw-bold py-2 my-0 display-6">About</h1>
+    </div>
+    <div class="p-4">
         <div id="aim-n-scope-div" class="mt-5">
             <h2>Aim & Scope</strong></h2>
             <hr>
@@ -39,13 +25,15 @@
                     data
                     are available:
                     <ul>
-                        <li> <em>TP53</em> <strong>somatic mutations</strong> in sporadic cancers</li>
-                        <li> <em>TP53</em> <strong>germline mutations</strong><b> </b>in cancer patients, families with
+                        <li><em>TP53</em> <strong>somatic mutations</strong> in sporadic cancers</li>
+                        <li><em>TP53</em> <strong>germline mutations</strong><b> </b>in cancer patients, families
+                            with
                             cancers, control populations
                         </li>
-                        <li> Common <em>TP53</em> <strong>polymorphisms</strong> identified in human populations</li>
+                        <li> Common <em>TP53</em> <strong>polymorphisms</strong> identified in human populations
+                        </li>
                         <li><strong>Functional assessment</strong> of p53 mutant proteins</li>
-                        <li> <em>TP53</em> gene status in human <strong>cell-lines</strong></li>
+                        <li><em>TP53</em> gene status in human <strong>cell-lines</strong></li>
                         <li><strong>Mouse-models</strong> with engineered <em>TP53</em></li>
                         <li><strong>Experimentally-induced mutations</strong></li>
                     </ul>
@@ -59,7 +47,8 @@
                         <li> Performing regular review of the literature on <em>TP53</em> mutations</li>
                         <li> Extracting <em>TP53</em> data from genetic and genomic databases</li>
                         <li> Developing standard annotations of <em>TP53</em> variants</li>
-                        <li> Performing research on <em>TP53</em> mutation patterns and the origin and clinical impacts
+                        <li> Performing research on <em>TP53</em> mutation patterns and the origin and clinical
+                            impacts
                             of <em>TP53</em> variants.
                         </li>
                     </ul>
@@ -69,7 +58,8 @@
                     <b>clinicopathologic</b> characteristics of tumors and <b>demographic and life-style
                         information</b> on patients.
                 </div>
-                <div>The database is meant to be a source of information on <em>TP53</em> mutations for a broad range
+                <div>The database is meant to be a source of information on <em>TP53</em> mutations for a broad
+                    range
                     of scientists and clinicians who work in different research areas:
                     <ul>
                         <li><strong>Basic research</strong>, to study the structural and functional aspects of
@@ -111,22 +101,29 @@
                                         mutations,
                                         9200 variants reported in SNP databases, 1530 cancer families/individual
                                         carriers of
-                                        a germline mutation, 2700 cell-lines, 900 experimentally induced mutations, and
-                                        functional data on over 9000 mutant proteins. Variant descriptions are provided
+                                        a germline mutation, 2700 cell-lines, 900 experimentally induced mutations,
+                                        and
+                                        functional data on over 9000 mutant proteins. Variant descriptions are
+                                        provided
                                         on
                                         both <strong>hg19 and hg38</strong> genome builds.
                                     </li>
-                                    <li>Mutation descriptions have been revised to better comply with <a target="_blank"
-                                                                                                         href="https://varnomen.hgvs.org/">HGVS
+                                    <li>Mutation descriptions have been revised to better comply with <a
+                                            target="_blank"
+                                            href="https://varnomen.hgvs.org/">HGVS
                                         nomenclature</a>.
                                     </li>
-                                    <li>The dataset of <strong>germline mutations </strong> (germline variants in cancer
-                                        patients/families) has been updated with data published between June 2018 and
+                                    <li>The dataset of <strong>germline mutations </strong> (germline variants in
+                                        cancer
+                                        patients/families) has been updated with data published between June 2018
+                                        and
                                         June
                                         2019.
                                     </li>
-                                    <li>A <strong>new dataset</strong> including NGS studies reporting the frequency of
-                                        individual <em>TP53</em> germline mutations in case-control series is provided.
+                                    <li>A <strong>new dataset</strong> including NGS studies reporting the frequency
+                                        of
+                                        individual <em>TP53</em> germline mutations in case-control series is
+                                        provided.
                                     </li>
                                     <li>A large dataset on the <strong> functional impact </strong>of over 8200 p53
                                         mutant
@@ -134,11 +131,13 @@
                                                      href="https://www.ncbi.nlm.nih.gov/pubmed/30224644">Giacomelli
                                             et al., 2018</a>) has been curated to add a
                                         new classification reflecting loss of function and dominant-negative effects
-                                        (DNE_LOF class). A link to a website providing interactive access to these data
+                                        (DNE_LOF class). A link to a website providing interactive access to these
+                                        data
                                         is
                                         provided.
                                     </li>
-                                    <li>Four papers on funtional activities of mutant proteins have been curated.</li>
+                                    <li>Four papers on funtional activities of mutant proteins have been curated.
+                                    </li>
                                     <li>Data on <strong> polymorphisms</strong> (variants frequent in healthy human
                                         populations) have been curated to include most recent data from
                                         <a target="_blank"
@@ -149,7 +148,8 @@
                                         variants as
                                         "validated polymorphisms" if they are found at MAF>=0.001.
                                     </li>
-                                    <li>The dataset of <strong>somatic mutations</strong> is no longer updated as most
+                                    <li>The dataset of <strong>somatic mutations</strong> is no longer updated as
+                                        most
                                         new
                                         data are available in several other data portals (<a target="_blank"
                                                                                              href="http://www.cbioportal.org/">cBioportal</a>,
@@ -160,8 +160,10 @@
                                         Instead, somatic mutation counts from TCGA, ICGC and GENIE datasets for each
                                         individual mutation is provided.
                                     </li>
-                                    <li>For data on <strong> <em>TP53</em> status in cell-lines</strong>, a new link to the <a
-                                            target="_blank" href="https://depmap.org/portal/">depmap</a> resource has
+                                    <li>For data on <strong> <em>TP53</em> status in cell-lines</strong>, a new link
+                                        to the <a
+                                                target="_blank" href="https://depmap.org/portal/">depmap</a>
+                                        resource has
                                         been
                                         created.
                                     </li>
@@ -170,7 +172,8 @@
                                         June 2019 release, were curated.
                                     </li>
                                     <li>Links to COSMIC, ClinVar, gnomAD and dbSNP have been updated.</li>
-                                    <li>The dataset of <strong>induced mutations</strong> is unchanged as no new data
+                                    <li>The dataset of <strong>induced mutations</strong> is unchanged as no new
+                                        data
                                         were
                                         found.
                                     </li>
@@ -193,7 +196,8 @@
                                     <li>This <strong>R19 release </strong> compiles data on over 29000 somatic
                                         mutations,
                                         8000 variants reported in SNP databases, 1200 germline mutations related to
-                                        Li-Fraumeni syndrome, 2700 cell-lines, 900 experimentally induced mutations, and
+                                        Li-Fraumeni syndrome, 2700 cell-lines, 900 experimentally induced mutations,
+                                        and
                                         functional data on over 4400 mutant proteins.
                                     </li>
                                     <li>Variant descriptions are now provided on both <strong>hg19 and hg38</strong>
@@ -206,30 +210,37 @@
                                         dataset
                                         has increased by 30%!
                                     </li>
-                                    <li>The dataset of <strong> functional impact </strong>of p53 mutant proteins has
+                                    <li>The dataset of <strong> functional impact </strong>of p53 mutant proteins
+                                        has
                                         been
                                         updated with 12 studies, including one major study that analyzed over 9500
                                         DNA-binding domain variants for their growth suppression activity (see
-                                        <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/29979965">Kotler et
+                                        <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/29979965">Kotler
+                                            et
                                             al.,</a>).
                                     </li>
                                     <li>Data on <strong> polymorphisms</strong> (variants frequent in healthy human
                                         population) have been curated to include most recent data from
                                         <a target="_blank"
                                            href="https://www.ncbi.nlm.nih.gov/projects/SNP/">dbSNP151</a>,
-                                        <a target="_blank" href="https://whi.color.com/">Flossie</a>, <a target="_blank"
-                                                                                                         href="http://gnomad.broadinstitute.org/">gnomAD</a>,
-                                        <a target="_blank" href="http://www.internationalgenome.org/">1000G</a> and <a
+                                        <a target="_blank" href="https://whi.color.com/">Flossie</a>, <a
+                                                target="_blank"
+                                                href="http://gnomad.broadinstitute.org/">gnomAD</a>,
+                                        <a target="_blank" href="http://www.internationalgenome.org/">1000G</a> and
+                                        <a
                                                 target="_blank" href="http://evs.gs.washington.edu/EVS/">ESP6500</a>
                                         databases
-                                        for the full <em>TP53</em> gene sequence, including 5'UTR and 3'UTR regions (hg38,
+                                        for the full <em>TP53</em> gene sequence, including 5'UTR and 3'UTR regions
+                                        (hg38,
                                         chr17:7661725-7689853). Allelic frequencies have been retrieved from these
                                         databases
-                                        to classify variants as "validated polymorphisms" (MAF > 0.001 in at least one
+                                        to classify variants as "validated polymorphisms" (MAF > 0.001 in at least
+                                        one
                                         of
                                         these databases).
                                     </li>
-                                    <li>New <strong> annotations</strong> have been added on the predicted functional
+                                    <li>New <strong> annotations</strong> have been added on the predicted
+                                        functional
                                         impact
                                         of variants by REVEL, BayesDel and an optimized Align-GVGD algorithm (see <a
                                                 target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/29775997">Fortuno
@@ -238,21 +249,26 @@
                                     <li>Direct links to individual mutations in other databases have been added:
                                         ClinVar, COSMIC, gnomAD.
                                     </li>
-                                    <li>The dataset of <strong>somatic mutations</strong> has not been updated as most
+                                    <li>The dataset of <strong>somatic mutations</strong> has not been updated as
+                                        most
                                         new
                                         data are captured in other databases (<a target="_blank"
                                                                                  href="http://www.cbioportal.org/">cBioportal</a>,
-                                        <a target="_blank" href="https://cancer.sanger.ac.uk/cosmic">COSMIC</a>, TCGA
+                                        <a target="_blank" href="https://cancer.sanger.ac.uk/cosmic">COSMIC</a>,
+                                        TCGA
                                         and
                                         ICGC data portals).
                                         Instead we added somatic mutation counts from cBioportal for each individual
                                         mutation.
                                     </li>
-                                    <li>The dataset of <strong>induced mutations</strong> has not been changed because
+                                    <li>The dataset of <strong>induced mutations</strong> has not been changed
+                                        because
                                         no
                                         new data were found.
                                     </li>
-                                    <li>Data on <strong> <em>TP53</em> status in cell-lines</strong> have not been updated.</li>
+                                    <li>Data on <strong> <em>TP53</em> status in cell-lines</strong> have not been
+                                        updated.
+                                    </li>
 
                                 </ul>
                             </div>
@@ -280,27 +296,33 @@
                                         variants)
                                         has been updated with data published between 2013 and 2015.
                                     </li>
-                                    <li>The dataset of <strong>somatic mutations</strong> has been updated with one TCGA
+                                    <li>The dataset of <strong>somatic mutations</strong> has been updated with one
+                                        TCGA
                                         study on glioblastoma.
                                     </li>
                                     <li>The dataset of <strong>induced mutations</strong> has been updated with 6
                                         studies.
                                     </li>
-                                    <li>Data on <strong> polymorphisms</strong> (neutral variants frequent in healthy
+                                    <li>Data on <strong> polymorphisms</strong> (neutral variants frequent in
+                                        healthy
                                         human
                                         population) in dbSNP, ESP and 1000G have been reviewed to update variant
                                         classification.
                                     </li>
-                                    <li>Data on <strong> <em>TP53</em> status in cell-lines</strong> have been updated with
+                                    <li>Data on <strong> <em>TP53</em> status in cell-lines</strong> have been
+                                        updated with
                                         recent <a
                                                 href="https://www.broadinstitute.org/software/cprg/?q=node/11">CCLE</a>
                                         data.
                                     </li>
-                                    <li>Variant descriptions are based on <strong>hg19</strong> reference sequence but
-                                        chromosome coordinates for genome builds <strong>hg18 and hg38</strong> are also
+                                    <li>Variant descriptions are based on <strong>hg19</strong> reference sequence
+                                        but
+                                        chromosome coordinates for genome builds <strong>hg18 and hg38</strong> are
+                                        also
                                         provided in downloaded files.
                                     </li>
-                                    <li>New <strong> annotations</strong> have been added: functional impact of variant
+                                    <li>New <strong> annotations</strong> have been added: functional impact of
+                                        variant
                                         predicted by Polyphen2, trinucleotide sequence context of variants.
                                     </li>
                                     <li>The web interface has been updated to fix some issues with Jmol (Jmol was
@@ -336,26 +358,32 @@
                                         It compiles mutations obtained in mutagenicity assays
                                         using the human <em>TP53</em> gene (Hupki MEF and yeast assays).
                                     </li>
-                                    <li>The dataset of <strong>germline mutations </strong> has been updated with data
+                                    <li>The dataset of <strong>germline mutations </strong> has been updated with
+                                        data
                                         published between November
-                                        July 2012 and July 2013. Data on the prevalence of germline mutations have been
+                                        July 2012 and July 2013. Data on the prevalence of germline mutations have
+                                        been
                                         fully integrated in the database scheme and
                                         made searchable on the web interactive search.
                                     </li>
-                                    <li>The dataset of <strong>somatic mutations</strong> has been updated with selected
+                                    <li>The dataset of <strong>somatic mutations</strong> has been updated with
+                                        selected
                                         studies (ovarian cancer and adrenocortical carcinoma).
                                     </li>
-                                    <li>The dataset of <strong> functional impact </strong>of p53 mutant proteins has
+                                    <li>The dataset of <strong> functional impact </strong>of p53 mutant proteins
+                                        has
                                         been
                                         updated with one study reporting DNE activity of 100 different mutants
                                         in a yeast assay (<a target="_blank"
-                                                             href="http://www.ncbi.nlm.nih.gov/pubmed/21343334">Monti et
+                                                             href="http://www.ncbi.nlm.nih.gov/pubmed/21343334">Monti
+                                            et
                                             al., 2011</a>).
                                     </li>
                                     <li>The genome build <strong>hg19</strong> is now used as default for describing
                                         mutations at the genome level.
                                     </li>
-                                    <li>The web interface has been updated to reflects the changes in database contents
+                                    <li>The web interface has been updated to reflects the changes in database
+                                        contents
                                         and
                                         annotations described above.
                                     </li>
@@ -375,12 +403,15 @@
                              data-bs-parent="#accordionHist">
                             <div class="accordion-body">
                                 <ul class="a">
-                                    <li>This <strong>R16 release compiles the occurence of 29575 somatic mutations, 635
+                                    <li>This <strong>R16 release compiles the occurence of 29575 somatic mutations,
+                                        635
                                         germline mutations,
-                                        functional data on 2314 mutant proteins and <em>TP53</em> gene status of 2708
+                                        functional data on 2314 mutant proteins and <em>TP53</em> gene status of
+                                        2708
                                         cell-lines</strong>.
                                     </li>
-                                    <li>The dataset of germline mutations has been updated with data published between
+                                    <li>The dataset of germline mutations has been updated with data published
+                                        between
                                         November
                                         2010 and July 2012.
                                     </li>
@@ -392,8 +423,10 @@
                                     </li>
                                     <li>The datasets of functional impact of p53 mutant proteins and of somatic
                                         mutations
-                                        (and associated Prognosis and Prevalence datasets) have been partially updated.
-                                        For somatic mutations, data from recent large scale or whole genome sequencing
+                                        (and associated Prognosis and Prevalence datasets) have been partially
+                                        updated.
+                                        For somatic mutations, data from recent large scale or whole genome
+                                        sequencing
                                         studies have been curated (with the collaboration of COSMIC),
                                         as well as studies from IARC and data on rare cancers or cancers for which
                                         mutation
@@ -402,13 +435,15 @@
                                         published
                                         between 2008 and 2011 have been included.
                                     </li>
-                                    <li>The web interface has been upgraded to ASP.NET for better functionalities and
+                                    <li>The web interface has been upgraded to ASP.NET for better functionalities
+                                        and
                                         interactivities.
                                         New search options are available, including the full analysis of germline
                                         mutation
                                         dataset, the possibility to input a list of mutations, and to retrieve full
                                         annotations
-                                        on functional/structural impacts of mutations and their frequency of occurence.
+                                        on functional/structural impacts of mutations and their frequency of
+                                        occurence.
                                     </li>
                                 </ul>
                             </div>
@@ -428,17 +463,20 @@
                                 <ul>
                                     <li>This <strong>R15 release contains 27580 somatic mutations, 597 germline
                                         mutations,
-                                        functional data on 2314 mutant proteins and <em>TP53</em> gene status of 2263
+                                        functional data on 2314 mutant proteins and <em>TP53</em> gene status of
+                                        2263
                                         cell-lines</strong>.
                                     </li>
                                     <li>The dataset of Somatic mutations (and associated Prognosis and Prevalence
                                         datasets)
                                         has been partially updated. Data from recent large scale or whole genome
                                         sequencing
-                                        studies have been curated (with the collaboration of COSMIC) as well as data on
+                                        studies have been curated (with the collaboration of COSMIC) as well as data
+                                        on
                                         liver and breast cancers published in 2008 and 2009.
                                     </li>
-                                    <li>The dataset of germline mutations has been updated with data published between
+                                    <li>The dataset of germline mutations has been updated with data published
+                                        between
                                         September
                                         2009 and October 2010.
                                     </li>
@@ -446,25 +484,34 @@
                                         2009
                                         and with data from <a target="_blank"
                                                               href="http://www.sanger.ac.uk/genetics/CGP/CellLines/">
-                                            COSMIC Cell-line</a> database. An extensive review of COSMIC data has been
+                                            COSMIC Cell-line</a> database. An extensive review of COSMIC data has
+                                        been
                                         performed
-                                        as we noticed that several cell_lines linked to Ref_ID 2056 (COSMIC database)
+                                        as we noticed that several cell_lines linked to Ref_ID 2056 (COSMIC
+                                        database)
                                         were
-                                        wrongly annotated as WT in previous releases. These entries were in fact cells
+                                        wrongly annotated as WT in previous releases. These entries were in fact
+                                        cells
                                         not
-                                        yet analyzed for <em>TP53</em>. This mistake has been corrected in the current version.
+                                        yet analyzed for <em>TP53</em>. This mistake has been corrected in the
+                                        current version.
                                     </li>
-                                    <li>The datasets of functional activities of p53 mutant proteins and of mouse-models
+                                    <li>The datasets of functional activities of p53 mutant proteins and of
+                                        mouse-models
                                         have not been updated.
                                     </li>
-                                    <li>A new set of data is available, the TP53_R249S dataset, that provides data on
+                                    <li>A new set of data is available, the TP53_R249S dataset, that provides data
+                                        on
                                         the
                                         <strong>prevalence of the p.R249S mutation in liver cancers</strong>. It
                                         includes
-                                        studies that have screened exon 7 of <em>TP53</em> by sequencing as well as studies that
-                                        have searched for this specific mutation by RFLP. These data are also included
+                                        studies that have screened exon 7 of <em>TP53</em> by sequencing as well as
+                                        studies that
+                                        have searched for this specific mutation by RFLP. These data are also
+                                        included
                                         in
-                                        the Prevalence dataset. Data from studies that have anaylzed only codon 249 are
+                                        the Prevalence dataset. Data from studies that have anaylzed only codon 249
+                                        are
                                         no included in the Somatic dataset. The presence of this mutation in
                                         hepatocellular
                                         carcinomas has been linked to exposure to aflatoxins and HBV, and may thus
@@ -476,9 +523,11 @@
                                 </ul>
                                 <br/>
                                 <ul>
-                                    <li><a name="PoorData"></a>Up to now, the IARC <em>TP53</em> Database policy was to include
+                                    <li><a name="PoorData"></a>Up to now, the IARC <em>TP53</em> Database policy was
+                                        to include
                                         all
-                                        published papers reporting data on <em>TP53</em> mutations, even if <strong>poor quality
+                                        published papers reporting data on <em>TP53</em> mutations, even if <strong>poor
+                                            quality
                                             or
                                             artefactual
                                             data</strong> were suspected. The idea was to reflect literature data.
@@ -487,20 +536,24 @@
                                         users),
                                         we decided to change the database policy.
                                         <br/>
-                                        Thus, <strong>starting with this R15 release of the database (November 2010),
+                                        Thus, <strong>starting with this R15 release of the database (November
+                                            2010),
                                             the
                                             following
                                             apply to the dataset of somatic mutations:</strong>
                                         <br/>
                                         <br/>
                                         <ul>
-                                            <li><strong>New papers of poor quality have not been curated;</strong></li>
-                                            <li><strong>Papers of poor quality previously included in the database are
+                                            <li><strong>New papers of poor quality have not been curated;</strong>
+                                            </li>
+                                            <li><strong>Papers of poor quality previously included in the database
+                                                are
                                                 excluded
                                                 from the online search results. </strong>These papers will remain
                                                 available
                                                 through
-                                                the "Dataset Downloads" option and will be identified by an annotation field
+                                                the "Dataset Downloads" option and will be identified by an
+                                                annotation field
                                                 called
                                                 "Exclude analysis". Twenty one papers (accounting for 972 mutations)
                                                 have
@@ -509,7 +562,8 @@
                                             </li>
                                         </ul>
                                         <br/>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Poor data quality is suspected when:
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Poor data quality is suspected
+                                        when:
                                         <br/>
                                         <br/>
                                         <ul>
@@ -549,24 +603,30 @@
                                 <ul>
                                     <li>The dataset of somatic mutations has been updated with data reported in
                                         publications
-                                        edited in PubMed in 2007 and the dataset of germline mutations has been updated
-                                        with data reported in publications edited between August 2008 and August 2009.
+                                        edited in PubMed in 2007 and the dataset of germline mutations has been
+                                        updated
+                                        with data reported in publications edited between August 2008 and August
+                                        2009.
                                         The
                                         datasets of functional activities of p53 mutant proteins and of mouse-models
                                         have
                                         not been updated. This <strong>R14 release </strong>contains 26597 somatic
                                         mutations,
-                                        535 germline mutations, functional data on 2314 mutant proteins and <em>TP53</em> gene
+                                        535 germline mutations, functional data on 2314 mutant proteins and
+                                        <em>TP53</em> gene
                                         status
                                         of 1993 cell-lines.
                                     </li>
-                                    <li>New annotations have been generated on the predicted impact of mutations on the
+                                    <li>New annotations have been generated on the predicted impact of mutations on
+                                        the
                                         status of <strong>p53 protein isoforms </strong>(see details <a
                                                 href="p53IsoformsPredictions">
-                                            here</a>). These annotations can be retrieved from the 'Mutation Validation'
+                                            here</a>). These annotations can be retrieved from the 'Mutation
+                                        Validation'
                                         search option.
                                     </li>
-                                    <li>Statistics on the <strong>prevalence of <em>TP53</em> germline mutations </strong>in
+                                    <li>Statistics on the <strong>prevalence of <em>TP53</em> germline mutations
+                                    </strong>in
                                         selected
                                         cohorts has been added <a href="Statistics.html">here</a>.
                                     </li>
@@ -586,25 +646,32 @@
                              data-bs-parent="#accordionHist">
                             <div class="accordion-body">
                                 <ul>
-                                    <li>A <strong>new reference sequence</strong> is used for <em>TP53</em> gene. This sequence
+                                    <li>A <strong>new reference sequence</strong> is used for <em>TP53</em> gene.
+                                        This sequence
                                         is
-                                        based on the most recent version of the genome assembly. Its GenBank reference
+                                        based on the most recent version of the genome assembly. Its GenBank
+                                        reference
                                         is
                                         <a target="_blank"
                                            href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?val=NC_000017.9&from=7512445&to=7531642&strand=2&dopt=gb">
-                                            NC_000017 (7512445..7531642)</a>. Sequences of the introns are more complete
+                                            NC_000017 (7512445..7531642)</a>. Sequences of the introns are more
+                                        complete
                                         and acurate than in refseq X54156. The only change in exons is at the
                                         polymorphic
-                                        site in codon 72, where a C is present in the new refseq, while a G was present
-                                        in refseq X54156. Note that some mutations have been reannotated in light of the
+                                        site in codon 72, where a C is present in the new refseq, while a G was
+                                        present
+                                        in refseq X54156. Note that some mutations have been reannotated in light of
+                                        the
                                         new sequence.
                                     </li>
                                     <li>The database has been updated with data reported in publications edited in
                                         PubMed
-                                        in 2007. All datasets have been updated except the dataset of somatic mutations.
+                                        in 2007. All datasets have been updated except the dataset of somatic
+                                        mutations.
                                         This <b>R13 release </b>contains 24785 somatic mutations, 423 germline
                                         mutations,
-                                        functional data on 2314 mutant proteins and <em>TP53</em> gene status of 1894 cell-lines.
+                                        functional data on 2314 mutant proteins and <em>TP53</em> gene status of
+                                        1894 cell-lines.
                                     </li>
                                     <li>New annotations on the predicted impact of mutations on
                                         <strong>splicing</strong>
@@ -615,11 +682,13 @@
                                         dataset
                                         of polymorphisms.
                                     </li>
-                                    <li>New annotations were introduced for the description of mutations to comply with
+                                    <li>New annotations were introduced for the description of mutations to comply
+                                        with
                                         <a target="_blank" href="http://www.genomic.unimelb.edu.au/mdi/mutnomen/">HGVS
                                             standards</a>.
                                     </li>
-                                    <li>All missense mutations reported in the IARC <em>TP53</em> database have been submitted to
+                                    <li>All missense mutations reported in the IARC <em>TP53</em> database have been
+                                        submitted to
                                         <strong>SwissProt</strong>. Links between the two databases are thus now
                                         available.
                                     </li>
@@ -641,20 +710,25 @@
                                 <ul>
                                     <li>The database has been updated with data reported in publications edited in
                                         PubMed
-                                        in 2006. This <b>R12</b> release contains 24810 somatic mutations, 399 germline
-                                        mutations, functional data on 2314 mutant proteins and <em>TP53</em> gene status of 1886
+                                        in 2006. This <b>R12</b> release contains 24810 somatic mutations, 399
+                                        germline
+                                        mutations, functional data on 2314 mutant proteins and <em>TP53</em> gene
+                                        status of 1886
                                         cell-lines.
                                     </li>
-                                    <li>A new dataset on <b>mouse-models</b> with engineered p53 has been added. There
+                                    <li>A new dataset on <b>mouse-models</b> with engineered p53 has been added.
+                                        There
                                         are
                                         545 models listed in R12.
                                     </li>
-                                    <li>In the Function dataset 1, data on <strong>endogenous mutants</strong> have been
+                                    <li>In the Function dataset 1, data on <strong>endogenous mutants</strong> have
+                                        been
                                         added and an <b>"assay design"</b> has been assigned to each experiment to
                                         emphasize
                                         the quality of the data.
                                     </li>
-                                    <li>Data on <strong>protein stability</strong> of some mutants have been added.</li>
+                                    <li>Data on <strong>protein stability</strong> of some mutants have been added.
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -673,15 +747,19 @@
                                 <ul>
                                     <li>The database has been updated with data reported in publications edited in
                                         PubMed
-                                        in 2005. This <b>R11</b> release contains 23544 somatic mutations, 376 germline
-                                        mutations, functional data on 2314 mutant proteins and <em>TP53</em> gene status of 1569
+                                        in 2005. This <b>R11</b> release contains 23544 somatic mutations, 376
+                                        germline
+                                        mutations, functional data on 2314 mutant proteins and <em>TP53</em> gene
+                                        status of 1569
                                         cell-lines.
                                     </li>
-                                    <li>The dataset on <b><em>TP53</em> gene status in cell-lines</b> has been greetly extended
+                                    <li>The dataset on <b><em>TP53</em> gene status in cell-lines</b> has been
+                                        greetly extended
                                         and
                                         a <b>search tool</b> has been developed to easily retrieve data.
                                     </li>
-                                    <li>The list of <b>polymorphisms</b> has been extended and updated with data from
+                                    <li>The list of <b>polymorphisms</b> has been extended and updated with data
+                                        from
                                         SNP
                                         databases, and links to other databases providing additional information on
                                         population
@@ -691,11 +769,14 @@
                                         been
                                         generated from the original data by Kato et al. (2003)
                                     </li>
-                                    <li>New tools and information have been addded in the "<em>TP53</em> resources" section,
+                                    <li>New tools and information have been addded in the "<em>TP53</em> resources"
+                                        section,
                                         including
-                                        a viewer of the genomic sequence of <em>TP53</em> with exon-intron boundaries and
+                                        a viewer of the genomic sequence of <em>TP53</em> with exon-intron
+                                        boundaries and
                                         highlighted
-                                        polymorphic sites, and a list of p53 response-elements with their sequence and
+                                        polymorphic sites, and a list of p53 response-elements with their sequence
+                                        and
                                         location.
                                     </li>
                                 </ul>
@@ -714,23 +795,28 @@
                              data-bs-parent="#accordionHist">
                             <div class="accordion-body">
                                 <ul>
-                                    <li><strong>Annotations on the functional impact</strong> (predicted or observed in
+                                    <li><strong>Annotations on the functional impact</strong> (predicted or observed
+                                        in
                                         experimental assays) of mutations have been added, as well as nucleotide
                                         substitution
                                         rates for each specific mutation. New interactive <strong>scatter plot
                                             graphs</strong>
                                         can be drawn to display this information.
                                     </li>
-                                    <li>The dataset on the <b>transactivation activities of 2314 missense mutants on 8
+                                    <li>The dataset on the <b>transactivation activities of 2314 missense mutants on
+                                        8
                                         p53-target
-                                        genes</b> generated by Kato et al. (2003) has been integrated in the database
+                                        genes</b> generated by Kato et al. (2003) has been integrated in the
+                                        database
                                         and
                                         can be downloaded with the mutation dataset.
                                     </li>
-                                    <li>A <b>mutation validation tool</b> has been implemented to check if a mutation is
+                                    <li>A <b>mutation validation tool</b> has been implemented to check if a
+                                        mutation is
                                         listed in the database and what is its functional impact.
                                     </li>
-                                    <li>A summary view of the properties of specific mutations can be obtained from the
+                                    <li>A summary view of the properties of specific mutations can be obtained from
+                                        the
                                         scatter plot graphs or from the mutation validation tool.
                                     </li>
                                     <li>A search option has been added to analyze tumor spectrum associated with
@@ -745,7 +831,8 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="r10_a">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseR10_a" aria-expanded="false" aria-controls="collapseR10_a">
+                                    data-bs-target="#collapseR10_a" aria-expanded="false"
+                                    aria-controls="collapseR10_a">
                                 R10 - Jul, 2005
                             </button>
                         </h2>
@@ -755,10 +842,12 @@
                                 <ul>
                                     <li>The database has been updated with data reported in publications edited in
                                         PubMed
-                                        in 2004. This <b>R10</b> release contains 21,587 somatic mutations, 283 germline
+                                        in 2004. This <b>R10</b> release contains 21,587 somatic mutations, 283
+                                        germline
                                         mutations and functional data on 426 mutant proteins.
                                     </li>
-                                    <li>All datasets can now be searched through <b>SRS</b>, a search system that allows
+                                    <li>All datasets can now be searched through <b>SRS</b>, a search system that
+                                        allows
                                         to perform multiple user-defined queries and data retrieval in table or html
                                         formats.
                                     </li>
@@ -782,7 +871,8 @@
                                         PubMed
                                         between March 2003 and December 2003. This <b>R9</b> release contains 19,809
                                         somatic
-                                        mutations, 264 germline mutations and functional data on 423 mutant proteins.
+                                        mutations, 264 germline mutations and functional data on 423 mutant
+                                        proteins.
                                     </li>
                                     <li>A tool has been developed to search and display data and annotations on the
                                         functional
@@ -792,18 +882,22 @@
                                         domain
                                         of p53 and color specific codons.
                                     </li>
-                                    <li>A list of <b>cell-lines </b>for which the <em>TP53</em> gene status is known can be
+                                    <li>A list of <b>cell-lines </b>for which the <em>TP53</em> gene status is known
+                                        can be
                                         downloaded
                                         as a tab-delimited text file.
                                     </li>
-                                    <li>The different datasets previously maintained separately in different MS Access
+                                    <li>The different datasets previously maintained separately in different MS
+                                        Access
                                         databases
                                         have been integrated in one single relational database maintained in MS SQL
                                         server
-                                        centered on the the gene variation module, allowing a better consistency in the
+                                        centered on the the gene variation module, allowing a better consistency in
+                                        the
                                         description of mutations across datasets.
                                     </li>
-                                    <li>Duplicates/errors have been identified and removed from the somatic dataset (40
+                                    <li>Duplicates/errors have been identified and removed from the somatic dataset
+                                        (40
                                         mutations).
                                     </li>
                                 </ul>
@@ -826,15 +920,19 @@
                                         PubMed
                                         between July 2002 and February 2003. This <b>R8</b> release contains 18,585
                                         somatic
-                                        mutations, 225 germline mutations and functional data on 206 mutant proteins.
+                                        mutations, 225 germline mutations and functional data on 206 mutant
+                                        proteins.
                                     </li>
                                     <li>A new dataset has been created that provide annotations on the <b>functional
                                         impact</b>
-                                        of mutations. It includes p53 mutants that have been tested in functional assays
-                                        in yeast or human cells. This dataset can be downloaded as a tab-delimited text
+                                        of mutations. It includes p53 mutants that have been tested in functional
+                                        assays
+                                        in yeast or human cells. This dataset can be downloaded as a tab-delimited
+                                        text
                                         file.
                                     </li>
-                                    <li>Duplicates/errors have been identified and removed from the somatic dataset (28
+                                    <li>Duplicates/errors have been identified and removed from the somatic dataset
+                                        (28
                                         mutations).
                                     </li>
                                 </ul>
@@ -855,23 +953,28 @@
                                 <ul>
                                     <li>The database has been updated with data reported in publications edited in
                                         PubMed
-                                        between July 2001 and June 2002. This <b>R7</b> release contains 17,689 somatic
+                                        between July 2001 and June 2002. This <b>R7</b> release contains 17,689
+                                        somatic
                                         mutations and 225 germline mutations.
                                     </li>
                                     <li>A new dataset has been created that provides information on the
                                         <b>prognostic</b>
-                                        value of <em>TP53</em> gene mutations. It includes a list of studies that have
+                                        value of <em>TP53</em> gene mutations. It includes a list of studies that
+                                        have
                                         investigated
-                                        the prognostic value of <em>TP53</em> gene mutation status in specific cancers. Study
+                                        the prognostic value of <em>TP53</em> gene mutation status in specific
+                                        cancers. Study
                                         design
                                         and main findings are indicated. This dataset can be downloaded as a
                                         tab-delimited
                                         text file.
                                     </li>
-                                    <li>The dataset on the prevalence of <em>TP53</em> gene mutations has been extended and made
+                                    <li>The dataset on the prevalence of <em>TP53</em> gene mutations has been
+                                        extended and made
                                         available as an Access file.
                                     </li>
-                                    <li>Duplicates/errors have been identified and removed from the somatic dataset (73
+                                    <li>Duplicates/errors have been identified and removed from the somatic dataset
+                                        (73
                                         mutations).
                                     </li>
                                 </ul>
@@ -896,7 +999,8 @@
                                         somatic
                                         mutations, 213 germline mutations.
                                     </li>
-                                    <li>New annotations have been added to search individuals by population group, and
+                                    <li>New annotations have been added to search individuals by population group,
+                                        and
                                         mutations
                                         by genomic nucleotide position.
                                     </li>
@@ -904,7 +1008,8 @@
                                         mutations).
                                         Constant efforts are made to check for errors and track these duplicates.
                                         Despite
-                                        these efforts, some may remain in the database and their identification is an
+                                        these efforts, some may remain in the database and their identification is
+                                        an
                                         ongoing
                                         task.
                                     </li>
@@ -926,20 +1031,25 @@
                                 <ul>
                                     <li>The database has been updated with data reported in publications edited in
                                         PubMed
-                                        between May and December 2000. This <b>R5</b> release contains 15,121 somatic
+                                        between May and December 2000. This <b>R5</b> release contains 15,121
+                                        somatic
                                         mutations
                                         and 196 germline mutations.
                                     </li>
-                                    <li>A <b>web application</b> has been created to search and analyze the dataset of
+                                    <li>A <b>web application</b> has been created to search and analyze the dataset
+                                        of
                                         somatic
                                         mutations.
                                     </li>
-                                    <li>A new dataset has been created that provides data on the <b>prevalence</b> of
+                                    <li>A new dataset has been created that provides data on the <b>prevalence</b>
+                                        of
                                         <em>TP53</em>
-                                        gene mutations. Tumor site and sample numbers are indicated. This dataset can be
+                                        gene mutations. Tumor site and sample numbers are indicated. This dataset
+                                        can be
                                         downloaded as a tab-delimited text file.
                                     </li>
-                                    <li>A slide-show on <em>TP53</em> mutations in human cancer is freely available as a
+                                    <li>A slide-show on <em>TP53</em> mutations in human cancer is freely available
+                                        as a
                                         downloadable
                                         ppt file.
                                     </li>
@@ -947,7 +1057,8 @@
                                         mutations).
                                         Constant efforts are made to check for errors and track these duplicates.
                                         Despite
-                                        these efforts, some may remain in the database and their identification is an
+                                        these efforts, some may remain in the database and their identification is
+                                        an
                                         ongoing
                                         task.
                                     </li>
@@ -979,7 +1090,8 @@
                                     </li>
                                     <li>A new database has been created in MS Access with a relational scheme to
                                         maintain
-                                        data on <b>germline <em>TP53</em> mutations</b> and Li-Fraumeni and Li-Fraumeni-Like
+                                        data on <b>germline <em>TP53</em> mutations</b> and Li-Fraumeni and
+                                        Li-Fraumeni-Like
                                         syndromes.
                                     </li>
                                 </ul>
@@ -995,10 +1107,13 @@
             <div class="p-3">
                 <p>
                     This current website and database are being maintained and hosted by
-                    <a href="https://dceg.cancer.gov/" target="_blank">Division of Cancer Epidemiology and Genetics</a>
-                    at the NCI and the <a href="https://isb-cgc.org" target="_blank">ISB-CGC</a>, which is a component of the
+                    <a href="https://dceg.cancer.gov/" target="_blank">Division of Cancer Epidemiology and
+                        Genetics</a>
+                    at the NCI and the <a href="https://isb-cgc.org" target="_blank">ISB-CGC</a>, which is a
+                    component of the
                     <a href="https://datacommons.cancer.gov" target="_blank">NCI Cancer Research Data Commons</a>.
-                    This project has been funded in whole or in part with Federal funds from the National Cancer Institute,
+                    This project has been funded in whole or in part with Federal funds from the National Cancer
+                    Institute,
                     National Institutes of Health, Department of Health and Human Services, under Contract No.
                     HHSN261201400008C and ID/IQ Agreement No. 17X146 under Contract No. HHSN261201500003I.
                 </p>
@@ -1014,11 +1129,11 @@
                         Olivier</a>.</p>
                 <p>Curators: Magali Olivier (2000-2020), Caroline Gaud (2018), Audrey Petitjean (2007-2012).</p>
                 <!--<p>Web developments over the years have been done by the IT companies Lambda+ and Micropole, and-->
-                    <!--with-->
-                    <!--the help of Ewy Mathe, Thierry Menard, Jose-Luis Gonzalez-Pisa and Lucile Alteyrac.</p>-->
+                <!--with-->
+                <!--the help of Ewy Mathe, Thierry Menard, Jose-Luis Gonzalez-Pisa and Lucile Alteyrac.</p>-->
                 <!--<p>The project has been funded by IARC and supported by the European Community (contracts:-->
-                    <!--QLG1-1999-00273, FP6, MUTp53 project) and the National Institute of Environmental Health-->
-                    <!--Science.</p>-->
+                <!--QLG1-1999-00273, FP6, MUTp53 project) and the National Institute of Environmental Health-->
+                <!--Science.</p>-->
                 <h6>Current and past collaborators to the database project:</h6>
                 <ul>
                     <li>
@@ -1047,6 +1162,21 @@
                 </ul>
             </div>
         </div>
-    </main>
-</div>
+    </div>
+    <nav id="about-nav" class="bg-secondary sidebar">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#aim-n-scope-div">Aim & Scope</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#database-dev-div">Database Developments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#credits-div">Credits</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</main>
 {% endblock %}

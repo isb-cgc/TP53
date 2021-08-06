@@ -8,108 +8,106 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    <nav class="bg-secondary sidebar"></nav>
-    <main class="main-panel">
-        <h1>Temperature Sensitivity Annotations</h1>
-        <div class="pt-5">
-            <h2>Example in Yeast</h2>
-            <hr>
-            <table class="table table-sm table-striped text-center">
-                <caption>+ = active<br>- = inactive</caption>
-                <thead>
-                <tr>
-                    <th>25&#8451;</th>
-                    <th>30&#8451; (Reference)</th>
-                    <th>37&#8451;</th>
-                    <th>Thermo Sensitivity</th>
-                </tr>
+<main>
+    <div class="page-banner text-center">
+        <h1 class="py-2 my-0">Temperature Sensitivity Annotations</h1>
+    </div>
+    <div class="p-5">
+        <h2>Example in Yeast</h2>
+        <hr>
+        <table class="table table-sm table-striped text-center">
+            <caption>+ = active<br>- = inactive</caption>
+            <thead>
+            <tr>
+                <th>25&#8451;</th>
+                <th>30&#8451; (Reference)</th>
+                <th>37&#8451;</th>
+                <th>Thermo Sensitivity</th>
+            </tr>
 
-                </thead>
-                <tbody>
-                <tr>
-                    <td>+</td>
-                    <td>+</td>
-                    <td>+</td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td>+</td>
-                    <td>+</td>
-                    <td>-</td>
-                    <td>Yes mut_H</td>
-                </tr>
-                <tr>
-                    <td>+</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>Yes mut_H</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>+</td>
-                    <td>+</td>
-                    <td>Yes mut_L</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>+</td>
-                    <td>Yes mut_L</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>+</td>
-                    <td>-</td>
-                    <td>Yes mut_L & H</td>
-                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>+</td>
+                <td>+</td>
+                <td>+</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td>+</td>
+                <td>-</td>
+                <td>Yes mut_H</td>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td>-</td>
+                <td>-</td>
+                <td>Yes mut_H</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>+</td>
+                <td>+</td>
+                <td>Yes mut_L</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>+</td>
+                <td>Yes mut_L</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>+</td>
+                <td>-</td>
+                <td>Yes mut_L & H</td>
+            </tr>
 
-                </tbody>
-            </table>
-        </div>
-        <div class="pt-3">
-            <h2>Example in Human Cells</h2>
-            <hr>
-            <table class="table table-sm table-striped text-center">
-                <caption>+ = active<br>- = inactive</caption>
-                <thead>
-                <tr>
-                    <th>32&#8451;</th>
-                    <th>37&#8451; (Reference)</th>
-                    <th>Thermo Sensitivity</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>+</td>
-                    <td>+</td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td>+</td>
-                    <td>-</td>
-                    <td>Yes mut_H</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>+</td>
-                    <td>Yes mut_L</td>
-                </tr>
-                </tbody>
-            </table>
-            <!--<img src="{{ url_for('static', filename='img/TSannotations.gif') }}" alt="TSannotations"/>-->
-        </div>
-    </main>
-</div>
+            </tbody>
+        </table>
+    </div>
+    <div class="p-5">
+        <h2>Example in Human Cells</h2>
+        <hr>
+        <table class="table table-sm table-striped text-center">
+            <caption>+ = active<br>- = inactive</caption>
+            <thead>
+            <tr>
+                <th>32&#8451;</th>
+                <th>37&#8451; (Reference)</th>
+                <th>Thermo Sensitivity</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>+</td>
+                <td>+</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td>-</td>
+                <td>Yes mut_H</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>+</td>
+                <td>Yes mut_L</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
 {% endblock %}

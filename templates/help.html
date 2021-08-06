@@ -9,37 +9,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    <nav class="bg-secondary sidebar">
-        <div class="position-sticky pt-3">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#manual">User's Manual</a>
-                    <nav class="nav flex-column">
-                        <a class="nav-link jump-link" aria-current="page" href="#headingDS">Datasets and Their
-                            Annotations</a>
-                        <a class="nav-link jump-link" aria-current="page" href="#headingSA">Standardized
-                            Annotations</a>
-                        <a class="nav-link jump-link" aria-current="page" href="#headingLA">List of
-                            Abbreviations</a>
-                        <a class="nav-link jump-link" aria-current="page" href="#headingGraphs">Graphs and
-                            Search Options</a>
-                    </nav>
-                </li>
-                <li class="nav-item mt-2">
-                    <a class="nav-link" href="#faq">FAQ</a>
-                    <nav class="nav subnav flex-column">
-                        <a class="nav-link jump-link" aria-current="page" href="#headingAnnotations">Annotations</a>
-                        <a class="nav-link jump-link" aria-current="page" href="#headingDA">Data Analysis</a>
-                        <a class="nav-link jump-link" aria-current="page" href="#headingDBC">Database Contents</a>
-                    </nav>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
-    <main class="main-panel">
-        <h1>Help</h1>
+
+<main class="narrow-panel">
+    <div class="page-banner text-center">
+        <h1 class="fw-bold py-2 my-0 display-6">Help</h1>
+    </div>
+    <div class="p-4">
         <div id="manual" class="mt-5">
             <h2>User's Manual</h2>
             <hr>
@@ -4278,8 +4254,35 @@
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+    <nav class="bg-secondary sidebar">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#manual">User's Manual</a>
+                    <nav class="nav flex-column">
+                        <a class="nav-link jump-link" aria-current="page" href="#headingDS">Datasets and Their
+                            Annotations</a>
+                        <a class="nav-link jump-link" aria-current="page" href="#headingSA">Standardized
+                            Annotations</a>
+                        <a class="nav-link jump-link" aria-current="page" href="#headingLA">List of
+                            Abbreviations</a>
+                        <a class="nav-link jump-link" aria-current="page" href="#headingGraphs">Graphs and
+                            Search Options</a>
+                    </nav>
+                </li>
+                <li class="nav-item mt-2">
+                    <a class="nav-link" href="#faq">FAQ</a>
+                    <nav class="nav subnav flex-column">
+                        <a class="nav-link jump-link" aria-current="page" href="#headingAnnotations">Annotations</a>
+                        <a class="nav-link jump-link" aria-current="page" href="#headingDA">Data Analysis</a>
+                        <a class="nav-link jump-link" aria-current="page" href="#headingDBC">Database Contents</a>
+                    </nav>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</main>
 
-</div>
 
 {% endblock %}

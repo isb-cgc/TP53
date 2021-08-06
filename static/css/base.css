@@ -193,7 +193,8 @@ a:hover{
 .sidebar {
     position: fixed;
     width: 240px;
-    top: 164px; /*100px nav bar + 60px banner height*/
+    top: 100px;
+    /*top: 164px; !*100px nav bar + 60px banner height*!*/
     bottom: 0;
     right: 0;
     z-index: 100;
@@ -418,6 +419,10 @@ a:hover{
 .wide-panel{
     padding-left: 80px;
     padding-right: 20px;
+}
+.narrow-panel{
+    /*padding-left: 80px;*/
+    padding-right: 240px;
 }
 
 
@@ -676,4 +681,8 @@ footer{
     font-size: 1.2rem;
     background-color: #2F2C55;
     z-index: 200;
+}
+
+#contact{
+    font-size: 1.2rem;
 }

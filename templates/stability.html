@@ -8,1050 +8,1047 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    <nav class="bg-secondary sidebar"></nav>
-    <main class="main-panel">
-        <h1>p53 Thermodynamic Stability</h1>
+<main>
+    <div class="page-banner text-center">
+        <h1 class="py-2 my-0"><em>p53</em> Thermodynamic Stability</h1>
+    </div>
+    <div class="p-5">
+        <p>Download this list in tab-delimited text format <a target="_blank"
+                                                              href="{{ url_for('static', filename='download/p53Stability.txt') }}">here</a>.
+        </p>
 
-        <div class="pt-5 px-3">
-            <p>Download this list in tab-delimited text format <a target="_blank"
-                                                                  href="{{ url_for('static', filename='download/p53Stability.txt') }}">here</a>.
-            </p>
-
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>Mutant</th>
-                    <th>ddG*</th>
-                    <th>dG Ref*</th>
-                    <th>Stability*</th>
-                    <th>Reference Stability</th>
-                    <th>PDB structure</th>
-                    <th>Reference structure</th>
-                    <th>Crystallography</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Q104H</td>
-                    <td>-0.24</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https:..www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>Q104P</td>
-                    <td>-0.11</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>T123A</td>
-                    <td>0.13</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
-                        PV, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>
-                        <div align=justify>Thr-123 is located at the end of the flexible L1
-                            loop that makes contacts with the DNA major groove via Lys-120. The Thr-123 side chain is
-                            solvent exposed.
-                            Its hydroxyl group makes no direct but water-mediated intramolecular contacts. Apart from
-                            the truncated side
-                            chain (threonine to alanine), no significant T123A-induced structural changes are observed
-                            in the DNA-free
-                            crystal structure of the heptamutant T123A/M133L/H168R/<br>V203A/N239Y/R249S/N268D (PDB
-                            2BIQ) when compared
-                            with the structure of the corresponding hexamutant without T123A (PDB 2BIP).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>A129D</td>
-                    <td>0.7</td>
-                    <td>WT</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>A129E</td>
-                    <td>0.38</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>A129S</td>
-                    <td>0.19</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>M133L</td>
-                    <td>-0.3</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>
-                        <div align=justify>Met-133 is located on &beta;-strand S2’
-                            of the loop-sheet-helix motif. Via its side-chain it contributes to the central hydrophobic
-                            core of the protein. The M133L mutation induces only minor structural changes in the
-                            immediate
-                            environment of the mutation and leaves the overall structure of the hydrophobic core intact
-                            (PDB 1UOL).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>F134L</td>
-                    <td>4.78</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>V143A</td>
-                    <td>3.7</td>
-                    <td>T</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
-                        AC, 2006</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1W">2J1W</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
-                        AC, 2006</a></td>
-                    <td rowspan="2">
-                        <div align=justify>Val-143 is located on &beta;-strand S3.
-                            Its side chain is part of the central hydrophobic core of the &beta;-sandwich. The V143A
-                            mutation
-                            creates an internal cavity in the hydrophobic core of the &beta;-sandwich without collapse
-                            of the surrounding
-                            structure. The mutant is highly destabilized as a result of lost hydrophobic interactions
-                            due to the
-                            two truncated methyl groups (PDB 2J1W).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>V143A</td>
-                    <td>3.5</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>L145Q</td>
-                    <td>2.98</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>D148E</td>
-                    <td>0.43</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>D148S</td>
-                    <td>-0.22</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>T150P</td>
-                    <td>0.08</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>P151S</td>
-                    <td>4.49</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>V157F</td>
-                    <td>3.88</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>Q165K</td>
-                    <td>1.27</td>
-                    <td>WT</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>Q167E</td>
-                    <td>0.43</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>H168R</td>
-                    <td>2.75</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
-                        PV, 2000</a></td>
-                    <td
-                    </td>
-                    <td>&nbsp;</td>
-                    <td rowspan="2">
-                        <div align=justify>The highly destabilizing H168R mutation induces
-                            substantial structural distortion around the mutation site in the L2 loop at the periphery
-                            of the
-                            DNA-binding surface. Several residues including the mutation site are disordered in the
-                            crystal structure;
-                            i.e. no defined conformation is observed for residues 166-170 and the side chain of Glu-171
-                            (PDB 2BIN).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>H168R</td>
-                    <td>3.07</td>
-                    <td>T</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
-                        AC, 2005</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIN">2BIN</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
-                        AC, 2005</a></td>
-                </tr>
-                <tr>
-                    <td>R174K</td>
-                    <td>0.22</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>R175A</td>
-                    <td>0.73</td>
-                    <td>WT</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>R175H</td>
-                    <td>2.5</td>
-                    <td>T</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=16754663">Ang
-                        HC, 2006</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>R175H</td>
-                    <td>3.52</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>C182S</td>
-                    <td>-0.16</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>I195T</td>
-                    <td>4.12</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>L201P</td>
-                    <td>-0.35</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>V203A</td>
-                    <td>-0.49</td>
-                    <td>WT</td>
-                    <td>stabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>
-                        <div align=justify>Val-203 is located in the turn connecting the &beta;-strands
-                            S5 and S6. Mutation to alanine has no effect on the overall structure of the protein apart
-                            from conformational changes of adjacent side chains (PDB 1UOL).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>L206S</td>
-                    <td>0.1</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>Y220C</td>
-                    <td>4.2</td>
-                    <td>T</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
-                        AC, 2006</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1X">2J1X</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=16793544">Kitayner
-                        M, 2006</a></td>
-                    <td rowspan="2">
-                        <div align=justify>The Y220C mutation is located at the far end of
-                            the &beta;-sandwich, at the start of the loop connecting &beta;-strands S7 and S8. This
-                            highly
-                            destabilizing mutation creates an extended surface crevice but retains the structural
-                            features of the
-                            wild type in functionally important surface regions (PDB 2J1X).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Y220C</td>
-                    <td>3.98</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>D228E</td>
-                    <td>-0.05</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>I232T</td>
-                    <td>3.19</td>
-
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>Y236F</td>
-                    <td>-0.27</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>M237I</td>
-                    <td>3.18</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>N239Y</td>
-                    <td>-1.49</td>
-                    <td>WT</td>
-                    <td>stabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2AC0">2AC0</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
-                        AC, 2006</a></td>
-                    <td>
-                        <div align=justify>Asn-239 is located at the beginning of the L3 loop in the
-                            immediate vicinity of the zinc-binding site. Its side chain is solvent exposed and makes
-                            water-mediated
-                            contacts with the DNA backbone upon binding of specific p53 response elements (e.g. PDB
-                            2AC0). The N239Y
-                            mutation stabilizes the protein and rigidifies the local structure without perturbing it. It
-                            creates novel
-                            hydrophobic packing interactions between the zinc-binding region and Leu-137 at the edge of
-                            the
-                            loop-sheet-helix motif (S2’/S3 loop) (PDB 1UOL).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>C242S</td>
-                    <td>3.07</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>G245S</td>
-                    <td>0.8</td>
-                    <td>T</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=16754663">Ang
-                        HC, 2006</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1Y">2J1Y</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
-                        AC, 2006</a></td>
-                    <td rowspan="2">
-                        <div align=justify>Gly-245 is located in the L3 loop, close to the
-                            zinc-binding site. It adopts a main-chain conformation that is not favored in non-glycine
-                            residues. Upon
-                            G245S mutation, the serine side chain is accommodated by displacing a structural water
-                            molecule that is
-                            conserved in the wild type and other mutant structures. The mutation is accompanied by small
-                            but significant
-                            changes in the backbone conformation of the L3 loop. The structural changes affect residues
-                            that form part
-                            of the self-complementary core domain-core domain dimerization interface in the p53-DNA
-                            complex. Presumably
-                            G245S impairs DNA binding by reducing binding cooperativity (PDB 2J1Y).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>G245S</td>
-                    <td>1.21</td>
-                    <td>WT</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>G248Q</td>
-                    <td>1.87</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>R249S</td>
-                    <td>1.92</td>
-                    <td>WT</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td rowspan="2">
-                        <div align=justify>The guanidinium group of Arg-249 makes crucial
-                            interactions that stabilize the hairpin conformation of the L3 loop, which docks the core
-                            domain to the
-                            minor groove of DNA-response elements via Arg-248. It forms a salt bridge with Glu-171 and
-                            hydrogen bonds
-                            with the backbone oxygens of Gly-245 and Met-246. Upon mutation to serine, these
-                            interactions are lost.
-                            The L3 loop becomes highly flexible and undergoes a large conformational change, favoring a
-                            non-native
-                            conformation. Both DNA contacts (Arg-248) and residues that form the self-complementary core
-                            domain-core
-                            domain interface upon DNA binding (e.g. Met-243 and Gly-244) are affected. Most notable is a
-                            switch of
-                            methionines 243 and 246. Met-243 is located on the surface of the core domain in the wild
-                            type.
-                            In the R249S mutant, this region adopts a helical conformation, and the side chain of
-                            Met-243 is
-                            buried in the interior of the protein by displacing the side chain of Met-246 from this
-                            buried position
-                            (PDB 2BIO).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>R249S</td>
-                    <td>1.98</td>
-                    <td>T</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
-                        AC, 2005</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIO">2BIO</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
-                        AC, 2005</a></td>
-                </tr>
-                <tr>
-                    <td>I255F</td>
-                    <td>3.29</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td align=center>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>S260P</td>
-                    <td>0.32</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td width="270">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>N268D</td>
-                    <td>-1.21</td>
-                    <td>WT</td>
-                    <td>stabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
-                        PV, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>Asn-268 is located in &beta;-strand S10. The stabilizing
-                        N268D mutation results in an altered hydrogen bond pattern, linking the two sheets of the &beta;-sandwich
-                        in an energetically more favorable way than in the wild type. In the mutant, the side chain of
-                        Asp-268 has
-                        flipped relative to the position of the asparagine in the wild type, and its carboxylate group
-                        is
-                        hydrogen-bonded to the main-chain amides of Leu-111 and Ser-269, thus stabilizing the protein
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Mutant</th>
+                <th>ddG*</th>
+                <th>dG Ref*</th>
+                <th>Stability*</th>
+                <th>Reference Stability</th>
+                <th>PDB structure</th>
+                <th>Reference structure</th>
+                <th>Crystallography</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Q104H</td>
+                <td>-0.24</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https:..www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Q104P</td>
+                <td>-0.11</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>T123A</td>
+                <td>0.13</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
+                    PV, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>
+                    <div align=justify>Thr-123 is located at the end of the flexible L1
+                        loop that makes contacts with the DNA major groove via Lys-120. The Thr-123 side chain is
+                        solvent exposed.
+                        Its hydroxyl group makes no direct but water-mediated intramolecular contacts. Apart from
+                        the truncated side
+                        chain (threonine to alanine), no significant T123A-induced structural changes are observed
+                        in the DNA-free
+                        crystal structure of the heptamutant T123A/M133L/H168R/<br>V203A/N239Y/R249S/N268D (PDB
+                        2BIQ) when compared
+                        with the structure of the corresponding hexamutant without T123A (PDB 2BIP).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>A129D</td>
+                <td>0.7</td>
+                <td>WT</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>A129E</td>
+                <td>0.38</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>A129S</td>
+                <td>0.19</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>M133L</td>
+                <td>-0.3</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>
+                    <div align=justify>Met-133 is located on &beta;-strand S2’
+                        of the loop-sheet-helix motif. Via its side-chain it contributes to the central hydrophobic
+                        core of the protein. The M133L mutation induces only minor structural changes in the
+                        immediate
+                        environment of the mutation and leaves the overall structure of the hydrophobic core intact
                         (PDB 1UOL).
-                    </td>
-                </tr>
-                <tr>
-                    <td>F270C</td>
-                    <td>4.54</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>F270L</td>
-                    <td>4.1</td>
-                    <td>T</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
-                        AC, 2006</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1Z">2J1Z</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
-                        AC, 2006</a></td>
-                    <td>
-                        <div align=justify>Phe-270 is located on &beta;-strand S10. Its side
-                            chain is an integral part of the central hydrophobic core of the &beta;-sandwich. The F270L
-                            mutation
-                            creates an internal cavity in this hydrophobic core without collapse of the surrounding
-                            structure. The
-                            mutant is highly destabilized as a result of the truncated hydrocarbon moiety (PDB 2J1Z).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>R273C</td>
-                    <td>-0.4</td>
-                    <td>T</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
-                        AC, 2006</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J20">2J20</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
-                        AC, 2006</a></td>
-                    <td>
-                        <div align=justify>R273C removes the essential DNA-contact residue Arg-273 that
-                            contacts the phosphate backbones at the center of a DNA half-site. The conformation of
-                            neighboring side
-                            chains (e.g. Phe-134, Ser-240 or Asp-281) has not significantly changed in the mutant
-                            crystal structure,
-                            i.e. the overall architecture of the DNA-binding surface is preserved (PDB 2J20).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>R273H</td>
-                    <td>0.45</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td rowspan="2">
-                        <div align=justify>R273H removes the essential DNA-contact residue
-                            Arg-273 that contacts the phosphate backbone at the center of a DNA half-site. The
-                            conformation of
-                            neighbouring side chains (e.g. Phe-134, Ser-240 or Asp-281) has not significantly changed in
-                            the mutant
-                            crystal structure, i.e. the overall architecture of the DNA-binding surface is preserved
-                            (PDB 2BIM).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>R273H</td>
-                    <td>0.09</td>
-                    <td>T</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
-                        AC, 2005</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIM">2BIM</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
-                        AC, 2005</a></td>
-                </tr>
-                <tr>
-                    <td>R282W</td>
-                    <td>3.3</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td rowspan="2">
-                        <div align=justify>In the wild-type protein, Arg-282 stabilizes the
-                            loop-sheet-helix motif via a network of hydrogen bonds and hydrophobic interactions (e.g.
-                            hydrogen
-                            bonds with the hydroxyl group of Thr-125 and the backbone oxygen of Tyr-126, and a salt
-                            bridge with Glu-286).
-                            These interactions are lost in the R282W mutant, which is substantially destabilized as a
-                            result. The
-                            tryptophan side chain causes steric hindrance and perturbs the L1 loop, which includes the
-                            DNA-contact
-                            residue Lys-120. The overall architecture of the remainder of the DNA-binding region is
-                            conserved,
-                            consistent with the observation that the R282W mutant binds to several promoters at
-                            sub-physiological
-                            temperature at which the mutant is folded (PDB 2J21).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>R282W</td>
-                    <td>3</td>
-                    <td>T</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=16754663">Ang
-                        HC, 2006</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J21">2J21</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
-                        AC, 2006</a></td>
-                </tr>
-                <tr>
-                    <td>Removal of zinc with EDTA</td>
-                    <td>3.03</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
-                        AN, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>T123A/H168R</td>
-                    <td>3.12</td>
-                    <td>WT</td>
-                    <td>highly destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
-                        PV, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>T123A/H168R/R249S</td>
-                    <td>1.91</td>
-                    <td>WT</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
-                        PV, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>T123A/M133L/H168R/V203A/<br>N239Y/R249S/N268D</td>
-                    <td>2.18</td>
-                    <td>T</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
-                        AC, 2005</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIQ">2BIQ</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
-                        AC, 2005</a></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>T123A/R249S</td>
-                    <td>2.09</td>
-                    <td>WT</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
-                        PV, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>M133L/H168R/V203A/N239Y/<br>R249S/N268D</td>
-                    <td>1.88</td>
-                    <td>T</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
-                        AC, 2005</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIP">2BIP</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
-                        AC, 2005</a></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>M133L/N239Y/N268D</td>
-                    <td>-2.23</td>
-                    <td>WT</td>
-                    <td>highly stabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>M133L/V203A</td>
-                    <td>-0.65</td>
-                    <td>WT</td>
-                    <td>stabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>M133L/V203A/N239Y/N268D</td>
-                    <td>-2.65</td>
-                    <td>WT</td>
-                    <td>highly stabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td><a target="_blank"
-                           href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1UOL">1UOL</a>
-                    </td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=14534297">Joerger
-                        AC, 2004</a></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>V143A/N268D</td>
-                    <td>2.25</td>
-                    <td>WT</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
-                        PV, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>H168R/R249S</td>
-                    <td>1.72</td>
-                    <td>WT</td>
-                    <td>destabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
-                        PV, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>
-                        <div align=justify>The H168R/R249S double mutation largely reverses the structural
-                            perturbations caused by the single point mutations H168R and R249S. The guanidinium group of
-                            Arg-168 in the
-                            double mutant mimics the structural role of Arg-249 in the wild type that is key to
-                            stabilizing the hairpin
-                            conformation of the L3 loop required for sequence-specific DNA binding. As a result, the
-                            wild type
-                            conformation of the L2/L3 loop region is largely restored, and wild-type like DNA-binding
-                            properties are
-                            observed in the folded state (PDB 2BIP and 2BIQ).
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>V203A/N239Y/N268D</td>
-                    <td>-2.41</td>
-                    <td>WT</td>
-                    <td>highly stabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>Y236F/T253I</td>
-                    <td>-1.6</td>
-                    <td>WT</td>
-                    <td>stabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=16461916">Canadillas
-                        JM, 2006</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>N239Y/G245S</td>
-                    <td>0</td>
-                    <td>WT</td>
-                    <td>wild-type like</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
-                        PV, 2000</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>N239Y/N268D</td>
-                    <td>-2.04</td>
-                    <td>WT</td>
-                    <td>highly stabilizing</td>
-                    <td><a target="_blank"
-                           href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
-                        PV, 1998</a></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td width="200">&nbsp;</td>
-                </tr>
-                </tbody>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>F134L</td>
+                <td>4.78</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>V143A</td>
+                <td>3.7</td>
+                <td>T</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
+                    AC, 2006</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1W">2J1W</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
+                    AC, 2006</a></td>
+                <td rowspan="2">
+                    <div align=justify>Val-143 is located on &beta;-strand S3.
+                        Its side chain is part of the central hydrophobic core of the &beta;-sandwich. The V143A
+                        mutation
+                        creates an internal cavity in the hydrophobic core of the &beta;-sandwich without collapse
+                        of the surrounding
+                        structure. The mutant is highly destabilized as a result of lost hydrophobic interactions
+                        due to the
+                        two truncated methyl groups (PDB 2J1W).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>V143A</td>
+                <td>3.5</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>L145Q</td>
+                <td>2.98</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>D148E</td>
+                <td>0.43</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>D148S</td>
+                <td>-0.22</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>T150P</td>
+                <td>0.08</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>P151S</td>
+                <td>4.49</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>V157F</td>
+                <td>3.88</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Q165K</td>
+                <td>1.27</td>
+                <td>WT</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Q167E</td>
+                <td>0.43</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>H168R</td>
+                <td>2.75</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
+                    PV, 2000</a></td>
+                <td
+                </td>
+                <td>&nbsp;</td>
+                <td rowspan="2">
+                    <div align=justify>The highly destabilizing H168R mutation induces
+                        substantial structural distortion around the mutation site in the L2 loop at the periphery
+                        of the
+                        DNA-binding surface. Several residues including the mutation site are disordered in the
+                        crystal structure;
+                        i.e. no defined conformation is observed for residues 166-170 and the side chain of Glu-171
+                        (PDB 2BIN).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>H168R</td>
+                <td>3.07</td>
+                <td>T</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
+                    AC, 2005</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIN">2BIN</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
+                    AC, 2005</a></td>
+            </tr>
+            <tr>
+                <td>R174K</td>
+                <td>0.22</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>R175A</td>
+                <td>0.73</td>
+                <td>WT</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>R175H</td>
+                <td>2.5</td>
+                <td>T</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=16754663">Ang
+                    HC, 2006</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>R175H</td>
+                <td>3.52</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>C182S</td>
+                <td>-0.16</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>I195T</td>
+                <td>4.12</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>L201P</td>
+                <td>-0.35</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>V203A</td>
+                <td>-0.49</td>
+                <td>WT</td>
+                <td>stabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>
+                    <div align=justify>Val-203 is located in the turn connecting the &beta;-strands
+                        S5 and S6. Mutation to alanine has no effect on the overall structure of the protein apart
+                        from conformational changes of adjacent side chains (PDB 1UOL).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>L206S</td>
+                <td>0.1</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Y220C</td>
+                <td>4.2</td>
+                <td>T</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
+                    AC, 2006</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1X">2J1X</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=16793544">Kitayner
+                    M, 2006</a></td>
+                <td rowspan="2">
+                    <div align=justify>The Y220C mutation is located at the far end of
+                        the &beta;-sandwich, at the start of the loop connecting &beta;-strands S7 and S8. This
+                        highly
+                        destabilizing mutation creates an extended surface crevice but retains the structural
+                        features of the
+                        wild type in functionally important surface regions (PDB 2J1X).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Y220C</td>
+                <td>3.98</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>D228E</td>
+                <td>-0.05</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>I232T</td>
+                <td>3.19</td>
 
-            </table>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Y236F</td>
+                <td>-0.27</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>M237I</td>
+                <td>3.18</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>N239Y</td>
+                <td>-1.49</td>
+                <td>WT</td>
+                <td>stabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2AC0">2AC0</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
+                    AC, 2006</a></td>
+                <td>
+                    <div align=justify>Asn-239 is located at the beginning of the L3 loop in the
+                        immediate vicinity of the zinc-binding site. Its side chain is solvent exposed and makes
+                        water-mediated
+                        contacts with the DNA backbone upon binding of specific p53 response elements (e.g. PDB
+                        2AC0). The N239Y
+                        mutation stabilizes the protein and rigidifies the local structure without perturbing it. It
+                        creates novel
+                        hydrophobic packing interactions between the zinc-binding region and Leu-137 at the edge of
+                        the
+                        loop-sheet-helix motif (S2’/S3 loop) (PDB 1UOL).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>C242S</td>
+                <td>3.07</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>G245S</td>
+                <td>0.8</td>
+                <td>T</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=16754663">Ang
+                    HC, 2006</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1Y">2J1Y</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
+                    AC, 2006</a></td>
+                <td rowspan="2">
+                    <div align=justify>Gly-245 is located in the L3 loop, close to the
+                        zinc-binding site. It adopts a main-chain conformation that is not favored in non-glycine
+                        residues. Upon
+                        G245S mutation, the serine side chain is accommodated by displacing a structural water
+                        molecule that is
+                        conserved in the wild type and other mutant structures. The mutation is accompanied by small
+                        but significant
+                        changes in the backbone conformation of the L3 loop. The structural changes affect residues
+                        that form part
+                        of the self-complementary core domain-core domain dimerization interface in the p53-DNA
+                        complex. Presumably
+                        G245S impairs DNA binding by reducing binding cooperativity (PDB 2J1Y).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>G245S</td>
+                <td>1.21</td>
+                <td>WT</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>G248Q</td>
+                <td>1.87</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>R249S</td>
+                <td>1.92</td>
+                <td>WT</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td rowspan="2">
+                    <div align=justify>The guanidinium group of Arg-249 makes crucial
+                        interactions that stabilize the hairpin conformation of the L3 loop, which docks the core
+                        domain to the
+                        minor groove of DNA-response elements via Arg-248. It forms a salt bridge with Glu-171 and
+                        hydrogen bonds
+                        with the backbone oxygens of Gly-245 and Met-246. Upon mutation to serine, these
+                        interactions are lost.
+                        The L3 loop becomes highly flexible and undergoes a large conformational change, favoring a
+                        non-native
+                        conformation. Both DNA contacts (Arg-248) and residues that form the self-complementary core
+                        domain-core
+                        domain interface upon DNA binding (e.g. Met-243 and Gly-244) are affected. Most notable is a
+                        switch of
+                        methionines 243 and 246. Met-243 is located on the surface of the core domain in the wild
+                        type.
+                        In the R249S mutant, this region adopts a helical conformation, and the side chain of
+                        Met-243 is
+                        buried in the interior of the protein by displacing the side chain of Met-246 from this
+                        buried position
+                        (PDB 2BIO).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>R249S</td>
+                <td>1.98</td>
+                <td>T</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
+                    AC, 2005</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIO">2BIO</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
+                    AC, 2005</a></td>
+            </tr>
+            <tr>
+                <td>I255F</td>
+                <td>3.29</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td align=center>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>S260P</td>
+                <td>0.32</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td width="270">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>N268D</td>
+                <td>-1.21</td>
+                <td>WT</td>
+                <td>stabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
+                    PV, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>Asn-268 is located in &beta;-strand S10. The stabilizing
+                    N268D mutation results in an altered hydrogen bond pattern, linking the two sheets of the &beta;-sandwich
+                    in an energetically more favorable way than in the wild type. In the mutant, the side chain of
+                    Asp-268 has
+                    flipped relative to the position of the asparagine in the wild type, and its carboxylate group
+                    is
+                    hydrogen-bonded to the main-chain amides of Leu-111 and Ser-269, thus stabilizing the protein
+                    (PDB 1UOL).
+                </td>
+            </tr>
+            <tr>
+                <td>F270C</td>
+                <td>4.54</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>F270L</td>
+                <td>4.1</td>
+                <td>T</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
+                    AC, 2006</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J1Z">2J1Z</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
+                    AC, 2006</a></td>
+                <td>
+                    <div align=justify>Phe-270 is located on &beta;-strand S10. Its side
+                        chain is an integral part of the central hydrophobic core of the &beta;-sandwich. The F270L
+                        mutation
+                        creates an internal cavity in this hydrophobic core without collapse of the surrounding
+                        structure. The
+                        mutant is highly destabilized as a result of the truncated hydrocarbon moiety (PDB 2J1Z).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>R273C</td>
+                <td>-0.4</td>
+                <td>T</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
+                    AC, 2006</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J20">2J20</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
+                    AC, 2006</a></td>
+                <td>
+                    <div align=justify>R273C removes the essential DNA-contact residue Arg-273 that
+                        contacts the phosphate backbones at the center of a DNA half-site. The conformation of
+                        neighboring side
+                        chains (e.g. Phe-134, Ser-240 or Asp-281) has not significantly changed in the mutant
+                        crystal structure,
+                        i.e. the overall architecture of the DNA-binding surface is preserved (PDB 2J20).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>R273H</td>
+                <td>0.45</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td rowspan="2">
+                    <div align=justify>R273H removes the essential DNA-contact residue
+                        Arg-273 that contacts the phosphate backbone at the center of a DNA half-site. The
+                        conformation of
+                        neighbouring side chains (e.g. Phe-134, Ser-240 or Asp-281) has not significantly changed in
+                        the mutant
+                        crystal structure, i.e. the overall architecture of the DNA-binding surface is preserved
+                        (PDB 2BIM).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>R273H</td>
+                <td>0.09</td>
+                <td>T</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
+                    AC, 2005</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIM">2BIM</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
+                    AC, 2005</a></td>
+            </tr>
+            <tr>
+                <td>R282W</td>
+                <td>3.3</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td rowspan="2">
+                    <div align=justify>In the wild-type protein, Arg-282 stabilizes the
+                        loop-sheet-helix motif via a network of hydrogen bonds and hydrophobic interactions (e.g.
+                        hydrogen
+                        bonds with the hydroxyl group of Thr-125 and the backbone oxygen of Tyr-126, and a salt
+                        bridge with Glu-286).
+                        These interactions are lost in the R282W mutant, which is substantially destabilized as a
+                        result. The
+                        tryptophan side chain causes steric hindrance and perturbs the L1 loop, which includes the
+                        DNA-contact
+                        residue Lys-120. The overall architecture of the remainder of the DNA-binding region is
+                        conserved,
+                        consistent with the observation that the R282W mutant binds to several promoters at
+                        sub-physiological
+                        temperature at which the mutant is folded (PDB 2J21).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>R282W</td>
+                <td>3</td>
+                <td>T</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=16754663">Ang
+                    HC, 2006</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J21">2J21</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=17015838">Joerger
+                    AC, 2006</a></td>
+            </tr>
+            <tr>
+                <td>Removal of zinc with EDTA</td>
+                <td>3.03</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10713666">Bullock
+                    AN, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>T123A/H168R</td>
+                <td>3.12</td>
+                <td>WT</td>
+                <td>highly destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
+                    PV, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>T123A/H168R/R249S</td>
+                <td>1.91</td>
+                <td>WT</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
+                    PV, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>T123A/M133L/H168R/V203A/<br>N239Y/R249S/N268D</td>
+                <td>2.18</td>
+                <td>T</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
+                    AC, 2005</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIQ">2BIQ</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
+                    AC, 2005</a></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>T123A/R249S</td>
+                <td>2.09</td>
+                <td>WT</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
+                    PV, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>M133L/H168R/V203A/N239Y/<br>R249S/N268D</td>
+                <td>1.88</td>
+                <td>T</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
+                    AC, 2005</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2BIP">2BIP</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15703170">Joerger
+                    AC, 2005</a></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>M133L/N239Y/N268D</td>
+                <td>-2.23</td>
+                <td>WT</td>
+                <td>highly stabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>M133L/V203A</td>
+                <td>-0.65</td>
+                <td>WT</td>
+                <td>stabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>M133L/V203A/N239Y/N268D</td>
+                <td>-2.65</td>
+                <td>WT</td>
+                <td>highly stabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td><a target="_blank"
+                       href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1UOL">1UOL</a>
+                </td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=14534297">Joerger
+                    AC, 2004</a></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>V143A/N268D</td>
+                <td>2.25</td>
+                <td>WT</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
+                    PV, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>H168R/R249S</td>
+                <td>1.72</td>
+                <td>WT</td>
+                <td>destabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
+                    PV, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>
+                    <div align=justify>The H168R/R249S double mutation largely reverses the structural
+                        perturbations caused by the single point mutations H168R and R249S. The guanidinium group of
+                        Arg-168 in the
+                        double mutant mimics the structural role of Arg-249 in the wild type that is key to
+                        stabilizing the hairpin
+                        conformation of the L3 loop required for sequence-specific DNA binding. As a result, the
+                        wild type
+                        conformation of the L2/L3 loop region is largely restored, and wild-type like DNA-binding
+                        properties are
+                        observed in the folded state (PDB 2BIP and 2BIQ).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>V203A/N239Y/N268D</td>
+                <td>-2.41</td>
+                <td>WT</td>
+                <td>highly stabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Y236F/T253I</td>
+                <td>-1.6</td>
+                <td>WT</td>
+                <td>stabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=16461916">Canadillas
+                    JM, 2006</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>N239Y/G245S</td>
+                <td>0</td>
+                <td>WT</td>
+                <td>wild-type like</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=10654936">Nikolova
+                    PV, 2000</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>N239Y/N268D</td>
+                <td>-2.04</td>
+                <td>WT</td>
+                <td>highly stabilizing</td>
+                <td><a target="_blank"
+                       href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=9843948">Nikolova
+                    PV, 1998</a></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td width="200">&nbsp;</td>
+            </tr>
+            </tbody>
 
-            <div>
-                <img width="700px" src="{{ url_for('static', filename='img/StabilityLegend.gif') }}">
-            </div>
+        </table>
 
+        <div>
+            <img width="700px" src="{{ url_for('static', filename='img/StabilityLegend.gif') }}">
         </div>
-    </main>
-</div>
+    </div>
+</main>
 {% endblock %}

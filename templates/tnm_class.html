@@ -8,14 +8,12 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    <nav class="bg-secondary sidebar"></nav>
-    <main class="main-panel">
-        <h1>TNM Classification</h1>
-        <div class="pt-5">
-            <img src="{{ url_for('static', filename='img/tnm.gif') }}"/>
-            <!--<img src="images/tnm.gif" alt="tnm.GIF (48285 bytes)" style="width:567" height="379"/>-->
-        </div>
-    </main>
-</div>
+<main>
+    <div class="page-banner text-center">
+        <h1 class="py-2 my-0">TNM Classification</h1>
+    </div>
+    <div class="p-5">
+        <img class="mx-auto" src="{{ url_for('static', filename='img/tnm.gif') }}"/>
+    </div>
+</main>
 {% endblock %}
