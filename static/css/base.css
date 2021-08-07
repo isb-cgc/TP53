@@ -326,7 +326,8 @@ a:hover{
     /*font-family: 'Font Awesome 5 Free';*/
     /*font-weight: 900;*/
     /*content: "\f068";*/
-    background-color: #599E97;
+    background-color: #6A9F9A;
+    /*background-color: #599E97;*/
 }
 
 /*.center {*/
@@ -484,6 +485,7 @@ h1 a {
     background-color: #54B5AB;
     color: white;
     padding: 10px 32px;
+    font-weight: bold;
 }
 /*.card-header:first-child{*/
     /*border-top-left-radius: .8rem;*/
@@ -493,20 +495,28 @@ h1 a {
 /*.card-header a{*/
     /*color: white;*/
 /*}*/
-
+.card-header[aria-expanded="true"],
 .card-header:hover{
-    background-color: #51978D;
+    /*background-color: white;*/
+    background-color: rgba(84,181,171, .2);
+    color: #54B5AB;
+    /*background-color: #51978D;*/
     /*color: white;*/
 }
 
-.card-header .card-header-text::after{
-    /*display: block;*/
-    /*width: 90%;*/
+
+.card-header[aria-expanded="false"] .card-header-text::after{
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
-    content: "\f077";
+    content: "\f067";
     float: right;
-    /*width: 1.1rem;*/
+}
+
+.card-header[aria-expanded="true"] .card-header-text::after{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: "\f068";
+    float: right;
 }
 
 .sm_include_bg, .gm_include_bg {
@@ -667,7 +677,7 @@ button[aria-expanded="true"].btn-view-details::before{
 /* WebKit */
     width: -webkit-calc(58% - 45px);
 /* Standard */
-    width: calc(58% - 45px);
+    width: calc(58% - 45px)tp;
 }
 
 /*#landing a{*/
@@ -691,6 +701,11 @@ footer{
     z-index: 200;
 }
 
-/*#contact{*/
-    /*font-size: 1.2rem;*/
-/*}*/
+.page-item.active .page-link {
+    background-color: #404DB5 !important;
+    border-color: #404DB5 !important;
+    color: white !important;
+}
+.page-link {
+    color: #4F5EDF !important;
+}
