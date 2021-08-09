@@ -45,7 +45,7 @@ $(document).ready(function () {
         window.history.back();
     });
     if (navigator.userAgent.search("Chrome") < 0 && navigator.userAgent.search("Firefox") < 0 || navigator.userAgent.search("Edge") > 0) {
-        $('.browser-alert').show();
+        $('#browser-alert').show();
     }
 
 });

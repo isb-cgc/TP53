@@ -4,7 +4,6 @@
 <script type="text/javascript">
     active_submenu = 'get_tp53data';
 </script>
-<!--popper.min.js-->
 {% endblock %}
 
 {% block subcontent %}
@@ -88,8 +87,9 @@
             </tr>
             <tr>
                 <td>Frequency of individual mutations in case-controls series (new dataset under development)</td>
-                <td></td>
-                <td><a href="{{ url_for('static', filename='download/germlineFrequency_IARCTP53Database_R20.txt') }}"><i
+
+                <td><a href="view_data?bq_view_name=GermlineFrequencyDownload"><i class="fas fa-table"></i></a></td>
+                <td><a href="{{ TP53_DATA_DIR_URL }}/GermlineFrequencyDownload_{{ ver }}.csv"><i
                         class="fas fa-download"></i></a></td>
             </tr>
 

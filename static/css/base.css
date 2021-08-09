@@ -18,7 +18,8 @@ body {
 }
 
 main{
-    padding: 100px 0 0 40px;
+    padding: 99px 0 0 40px;
+    /*padding: 100px 0 0 40px;*/
 }
 
 main#landing{
@@ -71,6 +72,13 @@ table {
 
 .bg-turquoise{
     background-color: #54B5AB;
+}
+
+#browser-alert{
+    background-color: #D7D8F1;
+    /*color: white;*/
+    border-radius: 0;
+    padding: 5px 30px;
 }
 
 .landing-text-1{
@@ -191,7 +199,8 @@ a:hover{
     transition: 0.3s;
     width: 240px;
     left: -200px;
-    top: 100px;
+    top: 99px;
+    /*top: 100px;*/
     bottom: 0;
     z-index: 300;
     padding: 0;
@@ -581,11 +590,11 @@ footer{
         left: 0;
     }
 
-    .collapsible-sidebar.hover .nav, .collapsible-sidebar.hover hr {
+    .collapsible-sidebar.hover .nav, .collapsible-sidebar.hover hr, .collapsible-sidebar.hover:hover .sidebar-icon {
         display: none;
     }
 
-    .collapsible-sidebar.hover:hover .nav, .collapsible-sidebar.hover:hover hr {
+    .collapsible-sidebar.hover:hover .nav, .collapsible-sidebar.hover:hover hr, .collapsible-sidebar.hover .sidebar-icon {
         display: block;
     }
 
