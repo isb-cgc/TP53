@@ -75,7 +75,7 @@ $(document).ready(function () {
                 {
                     data: 'pubmed',
                     render: function (data) {
-                        if (data)
+                        if (data && data.toLowerCase() != 'none')
                             return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank">' + data + '</a>';
                         else return '';
                     }
