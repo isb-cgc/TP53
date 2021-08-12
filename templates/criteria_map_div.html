@@ -5,7 +5,8 @@
        data-bs-toggle="collapse" href="#criteria_div" role="button" aria-expanded="false"
        aria-controls="criteria_div"></a>
 </div>
-<div id="criteria_div" class="my-2 collapse bg-light rounded-2 border border-1">
+<div id="criteria_div" class="my-2 collapse bg-light rounded-2 border border-1"
+    data-criteria='{{ criteria_map|tojson }}'>
     {% for type in ['include', 'exclude'] %}
     <div class="border-secondary p-2">
         <div class="fw-bold">{{ type|title }}d Criteria</div>
@@ -24,11 +25,11 @@
                     {% elif criterion.vals|length > 1 %}
                     </span> IN (
         {% for val in criterion.vals %}
-        <span class="badge rounded-pill bg-secondary">{{ val }}</span>
+        <span class="badge rounded-pill bg-secondary">{{ criterion.wrap_with }}{{ val }}{{ criterion.wrap_with }}</span>
         {% endfor %}
         )<br>
         {% else %}
-        = {{ criterion.vals[0] }}
+        = {{ criterion.wrap_with }}{{ criterion.vals[0] }}{{ criterion.wrap_with }}
         </span><br>
         {% endif %}
 

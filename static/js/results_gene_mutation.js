@@ -6,37 +6,37 @@ $(document).ready(function () {
     var selectedRowCellLineCount = 0;
     var table = $('#gm-result-table').DataTable({
         dom: "<'row'<'col-sm-12 col-md-6'l>>" +
-                "<'row d-none'<'col-sm-12 col-md-4'B>>" +
+                // "<'row d-none'<'col-sm-12 col-md-4'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-        buttons: [{
-            extend: 'csv',
-            filename: function () {
-                var db_version;// default version;
-                $.ajax({
-                    method: "GET",
-                    async: false,
-                    url: "/get_db_version",
-                    success: function (data) {
-                        db_version = data;
-                    }
-                });
-                return 'tp53db_gene_mutations' + (db_version ? '_' + db_version : '');
-            },
-            action:
-                function (e, dt, node, config) {
-                    if (selectedRowSet.size) {
-                        download_selected_dataset(this, selectedRowSet, e, dt, node, config);
-                    }
-                    else {
-                        download_dataset(this, e, dt, node, config);
-                    }
-                },
-            exportOptions: {
-                columns: ':not(:first-child):not(:nth-child(2))',
-                orthogonal: 'export'
-            }
-        }],
+        // buttons: [{
+        //     extend: 'csv',
+        //     filename: function () {
+        //         var db_version;// default version;
+        //         $.ajax({
+        //             method: "GET",
+        //             async: false,
+        //             url: "/get_db_version",
+        //             success: function (data) {
+        //                 db_version = data;
+        //             }
+        //         });
+        //         return 'tp53db_gene_mutations' + (db_version ? '_' + db_version : '');
+        //     },
+        //     action:
+        //         function (e, dt, node, config) {
+        //             if (selectedRowSet.size) {
+        //                 download_selected_dataset(this, selectedRowSet, e, dt, node, config);
+        //             }
+        //             else {
+        //                 download_dataset(this, e, dt, node, config);
+        //             }
+        //         },
+        //     exportOptions: {
+        //         columns: ':not(:first-child):not(:nth-child(2))',
+        //         orthogonal: 'export'
+        //     }
+        // }],
         pageLength: 10,
         serverSide: true,
         rowId: 'MUT_ID',
@@ -213,50 +213,69 @@ $(document).ready(function () {
         displayCellLines(selectedRowSet);
     });
 
+    // $('.download-btn').on('click', function () {
+    //     $('button.buttons-csv').trigger("click");
+    // });
+
     $('.download-btn').on('click', function () {
-        $('button.buttons-csv').trigger("click");
+        var criteria_map = {};
+        var include_criteria = $('#criteria_div').data('criteria');
+        if (selectedRowSet.size) {
+            var mutIds = Array.from(selectedRowSet);
+            include_criteria = [{'column_name': 'MUT_ID', 'vals': mutIds}];
+
+        }
+        if(include_criteria){
+            criteria_map = {
+                include: include_criteria,
+                exclude: []
+            }
+        }
+
+
+        download_csv('tp53db_gene_mutations', 'MutationView', criteria_map);
     });
 
 
 
 });
 
-var download_selected_dataset = function (self, selectedRowSet, e, dt, button, config) {
-        var old_ajax_criteria = dt.settings()[0].ajax.data.criteria;
-        var oldStart = dt.settings()[0]._iDisplayStart;
-
-        dt.one('preXhr', function (e, s, data) {
-            // Just this once, load all data from the server...
-            data.start = 0;
-            data.length = 2147483647;
-            console.log(data.criteria);
-            var new_criteria = [{
-                "column_name": "MUT_ID",
-                "vals": Array.from(selectedRowSet),
-            }];
-            data.criteria = JSON.stringify(new_criteria);
-
-            dt.one('preDraw', function (e, settings) {
-                $.fn.dataTable.ext.buttons.csvHtml5.available(dt, config) ?
-                    $.fn.dataTable.ext.buttons.csvHtml5.action.call(self, e, dt, button, config) :
-                    dt.one('preXhr', function (e, s, data) {
-                        // DataTables thinks the first item displayed is index 0, but we're not drawing that.
-                        // Set the property to what it was before exporting.
-                        settings._iDisplayStart = oldStart;
-                        settings.ajax.data.criteria = old_ajax_criteria;
-                        data.start = oldStart;
-                        data.criteria = old_ajax_criteria;
-                    });
-
-                // Reload the grid with the original page. Otherwise, API functions like table.cell(this) don't work properly.
-                setTimeout(dt.ajax.reload, 0);
-                // Prevent rendering of the full data to the DOM
-                return false;
-            });
-        });
-        // // Requery the server with the new one-time export settings
-        dt.ajax.reload();
-    };
+// var download_selected_dataset = function (self, selectedRowSet, e, dt, button, config) {
+//         var old_ajax_criteria = dt.settings()[0].ajax.data.criteria;
+//         var oldStart = dt.settings()[0]._iDisplayStart;
+//
+//         dt.one('preXhr', function (e, s, data) {
+//             // Just this once, load all data from the server...
+//             data.start = 0;
+//             data.length = 2147483647;
+//             console.log(data.criteria);
+//             var new_criteria = [{
+//                 "column_name": "MUT_ID",
+//                 "vals": Array.from(selectedRowSet),
+//             }];
+//             data.criteria = JSON.stringify(new_criteria);
+//
+//             dt.one('preDraw', function (e, settings) {
+//                 $.fn.dataTable.ext.buttons.csvHtml5.available(dt, config) ?
+//                     $.fn.dataTable.ext.buttons.csvHtml5.action.call(self, e, dt, button, config) :
+//                     dt.one('preXhr', function (e, s, data) {
+//                         // DataTables thinks the first item displayed is index 0, but we're not drawing that.
+//                         // Set the property to what it was before exporting.
+//                         settings._iDisplayStart = oldStart;
+//                         settings.ajax.data.criteria = old_ajax_criteria;
+//                         data.start = oldStart;
+//                         data.criteria = old_ajax_criteria;
+//                     });
+//
+//                 // Reload the grid with the original page. Otherwise, API functions like table.cell(this) don't work properly.
+//                 setTimeout(dt.ajax.reload, 0);
+//                 // Prevent rendering of the full data to the DOM
+//                 return false;
+//             });
+//         });
+//         // // Requery the server with the new one-time export settings
+//         dt.ajax.reload();
+//     };
 
 var selectAllRows = function (t, bool) {
     if (bool) {
@@ -280,16 +299,18 @@ var updateActionButtonGroups = function (selectedRowCounts, selectedRowCellLineC
 
 var displayGeneVariationDistributions = function (action, selectedRowSet) {
     var form = $("<form method='POST' action='results_gene_dist'></form>");
+    var input;
     if (selectedRowSet.size){
         var mutIds = Array.from(selectedRowSet);
         for (var i = 0; i < mutIds.length; i++) {
-            var input = $("<input type='hidden' name='mut_id_list' value='" + mutIds[i] + "'/>");
+            input = $("<input type='hidden' name='mut_id_list' value='" + mutIds[i] + "'/>");
             input.appendTo(form);
         }
     }
     else{
-        var input = $("<input type='hidden' name='criteria' value='" + JSON.stringify($('#criteria_div').data('criteria')) + "'/>");
-        input.appendTo(form);
+        // input = $("<input type='hidden' name='criteria' value='" + JSON.stringify($('#criteria_div').data('criteria')) + "'/>");
+        // input.appendTo(form);
+        $("<input>", { value: JSON.stringify($('#criteria_div').data('criteria')), name: 'criteria', type: 'hidden' }).appendTo(form);
         // console.log($('#criteria_div').data('criteria'));
     }
 

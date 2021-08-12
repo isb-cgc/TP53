@@ -10,10 +10,10 @@ runtime_config:
 
 
 #instance_class: F4
-network:
-  instance_tag: isb-cgc-tp53
-
-## comment this section out for test-tier: test-tier does not need auto scaling
+#network:
+#  instance_tag: isb-cgc-tp53
+#
+### comment this section out for test-tier: test-tier does not need auto scaling
 #automatic_scaling:
 #  min_num_instances: 2
 #  max_num_instances: 10

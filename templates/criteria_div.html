@@ -10,18 +10,17 @@
     <div class="fw-light fst-italic">None Selected</div>
     {% endif %}
     {% for criterion in criteria %}
-        <span class="badge rounded-pill bg-secondary">{{ criterion.column_name }}
-        {% if criterion.between_op %}
-            BETWEEN [{{ criterion.vals[0] }} AND {{ criterion.vals[1] }}]
-        {% elif criterion.vals|length > 1 %}
-            IN (
+        <span class="badge rounded-pill bg-secondary">
+            {{ criterion.column_name }}
+            {% if criterion.between_op %}BETWEEN [{{ criterion.vals[0] }} AND {{ criterion.vals[1] }}]</span><br>
+            {% elif criterion.vals|length > 1 %}
+                </span> IN (
                 {% for val in criterion.vals %}
-                    {% if loop.index0 > 0 %},{% endif %} {{ criterion.wrap_with }}{{ val }}{{ criterion.wrap_with }}
+                <span class="badge rounded-pill bg-secondary">{{ criterion.wrap_with }}{{ val }}{{ criterion.wrap_with }}</span>
                 {% endfor %}
-            )
-        {% else %}
-            = {{ criterion.wrap_with }}{{  criterion.vals[0] }}{{ criterion.wrap_with }}
-        {% endif %}
-        </span>
+                )<br>
+            {% else %}
+                = {{ criterion.wrap_with }}{{ criterion.vals[0] }}{{ criterion.wrap_with }}</span><br>
+            {% endif %}
     {% endfor %}
 </div>

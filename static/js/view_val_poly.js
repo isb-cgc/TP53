@@ -8,24 +8,24 @@ $(document).ready(function () {
                 $('.spinner').hide();
             },
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
-                "<'row d-none'<'col-sm-12 col-md-4'B>>" +
+                // "<'row d-none'<'col-sm-12 col-md-4'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-            buttons: [{
-                extend: 'csv',
-                filename: function(){
-                    var db_version;// default version;
-                    $.ajax({
-                        method: "GET",
-                        async: false,
-                        url: "/get_db_version",
-                        success: function (data) {
-                            db_version = data;
-                        }
-                    });
-                    return 'tp53db_validated_polymorphisms'+ (db_version ? '_'+db_version: '');
-                }
-            }],
+            // buttons: [{
+            //     extend: 'csv',
+            //     filename: function(){
+            //         var db_version;// default version;
+            //         $.ajax({
+            //             method: "GET",
+            //             async: false,
+            //             url: "/get_db_version",
+            //             success: function (data) {
+            //                 db_version = data;
+            //             }
+            //         });
+            //         return 'tp53db_validated_polymorphisms'+ (db_version ? '_'+db_version: '');
+            //     }
+            // }],
             columns: [
                 {
                     data: 'g_desc'
@@ -94,7 +94,15 @@ $(document).ready(function () {
     );
 
     $('.download-btn').on('click', function () {
-        $('button.buttons-csv').trigger("click");
+        var criteria_map = {};
+        var include_criteria = $('#criteria_div').data('criteria');
+        if (include_criteria){
+            criteria_map = {
+                include: include_criteria,
+                exclude: []
+            }
+        }
+        download_csv('tp53db_validated_polymorphisms', 'MutationView', criteria_map);
     });
 
 });

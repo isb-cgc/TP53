@@ -26,6 +26,10 @@ import sys
 import copy
 import csv
 
+
+from io import StringIO
+
+
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
 M_C_DESC_FILE = 'M_C_DESC.TXT.LIST'
 M_P_DESC_FILE = 'M_P_DESC.TXT.LIST'
@@ -305,7 +309,6 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
 
 project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
 bq_builder.set_project_dataset(proj_id=project_id, d_set=BQ_DATASET)
-# print(os.environ["GOOGLE_APPLICATION_CREDENTIALS"])
 
 bigquery_client = bigquery.Client()
 TP53_DATA_DIR_URL = os.environ.get('TP53_DATA_DIR_URL', 'https://storage.googleapis.com/tp53-data-files')
@@ -384,7 +387,6 @@ def build_criteria(param_col_name_map):
         else:
             val = get_param_val(request, param_name)
             vals = [val] if val else []
-        print(vals)
         if vals and len(vals):
             wrap_with = '"' if param_col_name_map[param_key].get('wrap', True) else ''
             criteria.append(
@@ -703,6 +705,7 @@ def results_gene_mut_by_mut():
     criteria = get_mutation_criteria(prefix)
     return render_template("results_gene_mutation.html", criteria=criteria, submenu = 'search_gene_by_mut')
 
+
 @app.route("/results_gene_dist", methods=['GET', 'POST'])
 def results_gene_dist():
     criteria = get_param_val(request, 'criteria')
@@ -738,6 +741,151 @@ def results_gene_dist():
                            graph_result=graph_result)
 
 
+@app.route("/get_distribution", methods=['GET', 'POST'])
+def get_distribution():
+    criteria_map = {}
+    if request.method == 'POST':
+        criteria = get_param_val(request, 'criteria')
+        if criteria:
+            criteria_map = json.loads(get_param_val(request, 'criteria'))
+    action = get_param_val(request, 'action')
+    query_dataset = get_param_val(request, 'query_dataset')
+    template = 'mutation_stats.html'
+
+    if query_dataset == 'sm':
+        table = 'SomaticTumorStats' if action == 'get_tumor_dist' else 'SomaticView'
+        submenu = 'search_somatic_mut'
+        dataset_type = 'Somatic'
+    else: #'gm'
+        table = 'GermlineTumorStats' if action == 'get_tumor_dist' else 'GermlineView'
+        submenu = 'search_germline_mut'
+        dataset_type = 'Germline'
+
+    if action == 'get_mutation_dist':
+        template = 'mutation_dist_stats.html'
+        subtitle = 'Mutation Distributions'
+    elif action == 'get_codon_dist':
+        table = 'GermlineMutationStats'
+        subtitle = 'Codon Distribution of Point Mutations'
+    else:
+        subtitle = 'Tumor Site Distribution of Mutations'
+
+    title = 'Search Results on {dataset_type} Mutations'.format(dataset_type=dataset_type)
+    graph_configs = build_graph_configs(action, table)
+    sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
+    graph_result = build_graph_data(sql_maps)
+
+    return render_template(template, criteria_map=criteria_map, title=title,
+                           subtitle=subtitle, submenu=submenu,
+                           graph_result=graph_result)
+
+
+# graph_configs = build_graph_configs(action, table)
+#     sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
+#     graph_result = build_graph_data(sql_maps)
+#     return render_template(template, criteria_map=criteria_map, title=title, subtitle=subtitle, submenu=submenu,
+#                            graph_result=graph_result)
+
+# @app.route("/sm_query", methods=['GET', 'POST'])
+# def sm_query():
+#     parameters = dict(request.form)
+#     draw = parameters['draw']
+#     order_col = int(parameters['order[0][column]'])
+#     order_dir = parameters['order[0][dir]']
+#     start = int(parameters['start'])
+#     length = int(parameters['length'])
+#     criteria_map = json.loads(parameters['criteria'])
+#     column_filters = ["MUT_ID", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
+#                       "TransactivationClass", "DNE_LOFclass", "AGVGDClass","TCGA_ICGC_GENIE_count","CLINVARlink", "COSMIClink"]
+#     sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table='SomaticView',
+#                                             ord_column=column_filters[order_col-1], desc_ord=(order_dir == 'desc'),
+#                                             start=start, length=length)
+#     sql_cnt_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table='SomaticView',
+#                                                 do_counts=True, distinct_col='Mutation_ID')
+#
+#     query_page_job = bigquery_client.query(sql_stm)
+#     query_count_job = bigquery_client.query(sql_cnt_stm)
+#     page_result_list = []
+#     recordsTotal = 0
+#     try:
+#         page_result = query_page_job.result(timeout=30)
+#
+#         count_result = query_count_job.result(timeout=30)
+#         page_result_list = [dict(row) for row in page_result]
+#         recordsTotal = list(count_result)[0].CNT
+#     except BadRequest:
+#         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
+#     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
+#         error_msg = "Sorry, query job has timed out."
+#
+#     data = {
+#         "draw": draw,
+#         "recordsTotal": recordsTotal,
+#         "recordsFiltered": recordsTotal,
+#         "data": page_result_list
+#     }
+#
+#     return jsonify(data)
+
+@app.route("/mutation_query", methods=['GET', 'POST'])
+def mutation_query( ):
+    parameters = dict(request.form)
+    draw = parameters['draw']
+    order_col = int(parameters['order[0][column]'])
+    order_dir = parameters['order[0][dir]']
+    start = int(parameters['start'])
+    length = int(parameters['length'])
+    criteria_map = json.loads(parameters['criteria'])
+    query_dataset = parameters['query_dataset']
+    if query_dataset == 'sm':
+        table= 'SomaticView'
+        distinct_col = 'SomaticView_ID'
+        column_filters = ["Start_material", "WGS_WXS", "Topography", "Morphology", "Tumor_origin_group",
+                          "Sample_source_group", "Age", "Sex", "Germline_mutation", "Tobacco", "Infectious_agent",
+                          "Country", "Exposure", "MUT_ID", "g_description_GRCh38", "c_description", "ProtDescription",
+                          "ExonIntron", "Effect",
+                          "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "TCGA_ICGC_GENIE_count", "CLINVARlink",
+                          "COSMIClink", distinct_col]
+
+    else:
+        table = 'GermlineView'
+        distinct_col = 'GermlineView_ID'
+        column_filters = ["Topography", "Morphology", "Age", "Sex", "Class", "Mode_of_inheritance", "FamilyCase_group",
+                          "Country", "MUT_ID", "g_description_GRCh38", "c_description", "ProtDescription",
+                          "ExonIntron", "Effect",
+                          "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "TCGA_ICGC_GENIE_count", "CLINVARlink",
+                          "COSMIClink", distinct_col]
+
+    sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
+                                            ord_column_list=[column_filters[order_col-1], distinct_col], desc_ord=(order_dir == 'desc'),
+                                            start=start, length=length)
+    sql_cnt_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
+                                                do_counts=True, distinc_col=distinct_col)
+
+    query_page_job = bigquery_client.query(sql_stm)
+    query_count_job = bigquery_client.query(sql_cnt_stm)
+    page_result_list = []
+    recordsTotal = 0
+    try:
+        page_result = query_page_job.result(timeout=30)
+
+        count_result = query_count_job.result(timeout=30)
+        page_result_list = [dict(row) for row in page_result]
+        recordsTotal = list(count_result)[0].CNT
+    except BadRequest:
+        error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
+    except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
+        error_msg = "Sorry, query job has timed out."
+
+    data = {
+        "draw": draw,
+        "recordsTotal": recordsTotal,
+        "recordsFiltered": recordsTotal,
+        "data": page_result_list
+    }
+
+    return jsonify(data)
+
 @app.route("/gv_query", methods=['GET', 'POST'])
 def gv_query():
     parameters = dict(request.form)
@@ -754,7 +902,6 @@ def gv_query():
     sql_stm = bq_builder.build_simple_query(criteria=criteria, table='MutationView', column_filters=column_filters,
                                             ord_column=column_filters[order_col-1], desc_ord=(order_dir == 'desc'),
                                             start=start, length=length)
-    print(sql_stm)
     sql_cnt_stm = bq_builder.build_simple_query(criteria=criteria, table='MutationView', column_filters=column_filters,
                                                 do_counts=True, distinct_col='MUT_ID')
 
@@ -799,7 +946,7 @@ def cl_query():
     sql_stm = bq_builder.build_simple_query(criteria=criteria, table='CellLineView', column_filters=column_filters,
                                             ord_column=column_filters[order_col], desc_ord=(order_dir == 'desc'),
                                             start=start, length=length)
-    print(sql_stm)
+    # print(sql_stm)
     sql_cnt_stm = bq_builder.build_simple_query(criteria=criteria, table='CellLineView', column_filters=column_filters,
                                                 do_counts=True, distinct_col='CellLineView_ID')
 
@@ -854,7 +1001,7 @@ def mut_details():
             'column_filters': ['Splice_Site_Type', 'p53SpliceSite', 'WT_score', 'Mutant_score', 'Variation',
                                'Source', 'MUT_ID'],
             'criteria': [{'column_name': 'MUT_ID', 'vals': [mut_id]}],
-            'table': 'SPLICING_PREDICTION',
+            'table': 'SPLICING_PREDICTION_VIEW',
             'ord_column': 'MUT_ID'
         },
         'p53_pred': {
@@ -912,7 +1059,6 @@ def mut_details():
     tsv_data = None
     try:
         query_job = bigquery_client.query(sql_stms['mutation'])
-        print(sql_stms['mutation'])
         query_result['mutation'] = list(query_job.result(timeout=30))
         del sql_stms['mutation']
         if query_result['mutation'] and query_result['mutation'][0]:
@@ -1095,26 +1241,10 @@ def prevalence_somatic_stats():
     return render_template("prevalence_somatic_stats.html", criteria=[], graph_data=graph_data, title='Statistics on Somatic Mutations', subtitle='Somatic Mutation Prevalence by Tumor Site')
 
 
-@app.route("/results_somatic_mutation", methods=['GET', 'POST'])
-def results_somatic_mutation():
-    action = get_param_val(request, 'action')
-    title = 'Statistics on Somatic Mutations'
-    template = 'mutation_stats.html'
-    table = 'SomaticView'
-    submenu = 'stats_somatic_mut'
-    subtitle = 'Tumor Site Distribution of Mutations'
-    if action == 'get_mutation_dist':
-        subtitle = 'Mutation Distributions'
-        template = 'mutation_dist_stats.html'
-    elif action == 'get_tumor_dist':
-        # subtitle = 'Tumor Site Distribution of Mutations'
-        table = 'SomaticTumorStats'
-
-
+@app.route("/results_somatic_mutation_list", methods=['GET', 'POST'])
+def results_somatic_mutation_list():
     criteria_map = {}
     if request.method == 'POST':
-        submenu = 'search_somatic_mut'
-        title = 'Search Results on Somatic Mutations'
         criteria_type = ['include', 'exclude']
         for type in criteria_type:
             prefix = 'sm_{type}'.format(type=type)
@@ -1128,11 +1258,86 @@ def results_somatic_mutation():
             criteria_map[type] += get_patient_criteria(prefix)
             criteria_map[type] += get_country_criteria(prefix)
             criteria_map[type] += get_sample_source_criteria(prefix)
-    graph_configs = build_graph_configs(action, table)
-    sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
-    graph_result = build_graph_data(sql_maps)
-    return render_template(template, criteria_map=criteria_map, title=title, subtitle=subtitle, submenu=submenu,
-                           graph_result=graph_result)
+
+    return render_template("results_somatic_mutation.html", criteria_map=criteria_map)
+
+
+
+@app.route("/download_dataset", methods=['GET', 'POST'])
+def download_dataset():
+    filename = get_param_val(request, 'filename')
+    criteria_param = get_param_val(request, 'criteria_map')
+    criteria_map = {}
+    if criteria_param:
+        criteria_map = json.loads(criteria_param)
+
+    query_datatable=get_param_val(request, 'query_datatable')
+    if not len(criteria_map.get('exclude', [])):
+        sql_stm = bq_builder.build_simple_query(criteria=criteria_map.get('include', []), table=query_datatable, column_filters=['*'])
+    else:
+        sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=query_datatable, column_filters=['*'])
+
+    query_job = bigquery_client.query(sql_stm)
+    error_msg = None
+    query_result=[]
+    table_header = []
+    try:
+        result = query_job.result(timeout=30)
+        query_result = list(result)
+        table_header = [sf.name for sf in result.schema]
+    except BadRequest:
+        error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
+    except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
+        error_msg = "Sorry, query job has timed out."
+    # query_result = {'data': data, 'msg': error_msg}
+    filename_full='{filename}{version}.csv'.format(filename=filename, version=('_'+DATA_VERSION if DATA_VERSION else ''))
+    si = StringIO()
+    cw = csv.writer(si)
+    cw.writerow(table_header)
+    cw.writerows(query_result)
+    output = make_response(si.getvalue())
+    output.headers["Content-Disposition"] = "attachment; filename={filename_full}".format(filename_full=filename_full)
+    output.headers["Content-type"] = "text/csv"
+    return output
+
+# @app.route("/results_somatic_mutation", methods=['GET', 'POST'])
+# def results_somatic_mutation():
+#     action = get_param_val(request, 'action')
+#     title = 'Statistics on Somatic Mutations'
+#     template = 'mutation_stats.html'
+#     table = 'SomaticView'
+#     submenu = 'stats_somatic_mut'
+#     subtitle = 'Tumor Site Distribution of Mutations'
+#     if action == 'get_mutation_dist':
+#         subtitle = 'Mutation Distributions'
+#         template = 'mutation_dist_stats.html'
+#     elif action == 'get_tumor_dist':
+#         # subtitle = 'Tumor Site Distribution of Mutations'
+#         table = 'SomaticTumorStats'
+#
+#
+#     criteria_map = {}
+#     if request.method == 'POST':
+#         submenu = 'search_somatic_mut'
+#         title = 'Search Results on Somatic Mutations'
+#         criteria_type = ['include', 'exclude']
+#         for type in criteria_type:
+#             prefix = 'sm_{type}'.format(type=type)
+#             criteria_map[type] = get_ref_criteria(prefix)
+#             criteria_map[type] += get_method_criteria(prefix)
+#             criteria_map[type] += get_ngs_criteria(prefix)
+#             criteria_map[type] += get_variation_criteria(prefix)
+#             criteria_map[type] += get_mutation_criteria(prefix)
+#             criteria_map[type] += get_topo_morph_criteria(prefix)
+#             criteria_map[type] += get_tumor_origin_criteria(prefix)
+#             criteria_map[type] += get_patient_criteria(prefix)
+#             criteria_map[type] += get_country_criteria(prefix)
+#             criteria_map[type] += get_sample_source_criteria(prefix)
+#     graph_configs = build_graph_configs(action, table)
+#     sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
+#     graph_result = build_graph_data(sql_maps)
+#     return render_template(template, criteria_map=criteria_map, title=title, subtitle=subtitle, submenu=submenu,
+#                            graph_result=graph_result)
 
 
 @app.route("/results_somatic_prevalence", methods=['GET', 'POST'])
@@ -1156,7 +1361,6 @@ def results_somatic_prevalence():
         subtitle = 'Somatic Mutation Prevalence by Morphography'
     sql_stm = bq_builder.build_group_sum_graph_query(criteria=criteria, view='PrevalenceView', group_by=group_by)
 
-    # print(sql_stm)
     query_job = bigquery_client.query(sql_stm)
     data = []
     error_msg = None
@@ -1225,7 +1429,6 @@ def view_germline_prevalence():
     criteria = []
     sql_stm = bq_builder.build_simple_query(criteria=criteria, table='GermlinePrevalenceView',
                                             column_filters=column_filters)
-    print(sql_stm)
     query_job = bigquery_client.query(sql_stm)
     data = []
     error_msg = None
@@ -1279,31 +1482,10 @@ def get_germline_patient_criteria(prefix):
     criteria = build_criteria(param_col_name_map)
     return criteria
 
-
-@app.route("/results_germline_mutation", methods=['GET', 'POST'])
-def results_germline_mutation():
-    action = get_param_val(request, 'action')
-    template = "mutation_dist_stats.html" if action == 'get_mutation_dist' else "mutation_stats.html"
-    submenu = 'stats_germline_mut'
-    title = 'Statistics on Germline Mutations'
-
-    if action == 'get_mutation_dist':
-        table = 'GermlineView'
-        subtitle = 'Mutation Distributions'
-    elif action == 'get_codon_dist':
-        table = 'GermlineMutationStats'
-        subtitle = 'Codon Distribution of Point Mutations'
-    elif action == 'get_tumor_dist':
-        table = 'GermlineTumorStats'
-        subtitle = 'Tumor Site Distribution of Mutations'
-    else: # action == 'get_tumor_dist_view':
-        table = 'GermlineView'
-        subtitle = 'Tumor Site Distribution of Mutations'
-
+@app.route("/results_germline_mutation_list", methods=['GET', 'POST'])
+def results_germline_mutation_list():
     criteria_map = {}
     if request.method == 'POST':
-        submenu = 'search_germline_mut'
-        title = 'Search Results on Germline Mutations'
         criteria_type = ['include', 'exclude']
         for type in criteria_type:
             prefix = 'gm_{type}'.format(type=type)
@@ -1313,13 +1495,48 @@ def results_germline_mutation():
             criteria_map[type] += get_mutation_criteria(prefix)
             criteria_map[type] += get_germline_patient_criteria(prefix)
             criteria_map[type] += get_country_criteria(prefix)
-    graph_configs = build_graph_configs(action, table)
-    sql_maps = build_graph_sqls(graph_configs, criteria_map, table)
-    graph_result = build_graph_data(sql_maps)
-    # print(graph_result)
-    return render_template(template, criteria_map=criteria_map, title=title, subtitle=subtitle,
-                           submenu=submenu,
-                           graph_result=graph_result)
+    return render_template("results_germline_mutation.html", criteria_map=criteria_map)
+
+# @app.route("/results_germline_mutation", methods=['GET', 'POST'])
+# def results_germline_mutation():
+#     action = get_param_val(request, 'action')
+#     template = "mutation_dist_stats.html" if action == 'get_mutation_dist' else "mutation_stats.html"
+#     submenu = 'stats_germline_mut'
+#     title = 'Statistics on Germline Mutations'
+#
+#     if action == 'get_mutation_dist':
+#         table = 'GermlineView'
+#         subtitle = 'Mutation Distributions'
+#     elif action == 'get_codon_dist':
+#         table = 'GermlineMutationStats'
+#         subtitle = 'Codon Distribution of Point Mutations'
+#     elif action == 'get_tumor_dist':
+#         table = 'GermlineTumorStats'
+#         subtitle = 'Tumor Site Distribution of Mutations'
+#     else: # action == 'get_tumor_dist_view':
+#         table = 'GermlineView'
+#         subtitle = 'Tumor Site Distribution of Mutations'
+#
+#     criteria_map = {}
+#     if request.method == 'POST':
+#         submenu = 'search_germline_mut'
+#         title = 'Search Results on Germline Mutations'
+#         criteria_type = ['include', 'exclude']
+#         for type in criteria_type:
+#             prefix = 'gm_{type}'.format(type=type)
+#             criteria_map[type] = get_ref_criteria(prefix)
+#             criteria_map[type] += get_topo_morph_criteria(prefix)
+#             criteria_map[type] += get_variation_criteria(prefix)
+#             criteria_map[type] += get_mutation_criteria(prefix)
+#             criteria_map[type] += get_germline_patient_criteria(prefix)
+#             criteria_map[type] += get_country_criteria(prefix)
+#     graph_configs = build_graph_configs(action, table)
+#     sql_maps = build_graph_sqls(graph_configs, criteria_map, table)
+#     graph_result = build_graph_data(sql_maps)
+#     # print(graph_result)
+#     return render_template(template, criteria_map=criteria_map, title=title, subtitle=subtitle,
+#                            submenu=submenu,
+#                            graph_result=graph_result)
 
     # return render_template("results_germline_mutation.html", criteria_map=criteria_map, query_result=query_result)
 
@@ -1460,8 +1677,6 @@ def build_graph_sqls(graph_configs, criteria_map, table):
 def build_graph_data(sql_maps):
     query_jobs = {}
     for graph_id in sql_maps:
-        # print(graph_id)
-        # print(sql_maps[graph_id])
         job = bigquery_client.query(sql_maps[graph_id])
         query_jobs[graph_id] = job
     graph_data = {}
@@ -1497,7 +1712,7 @@ def build_graph_data(sql_maps):
 @app.route("/view_exp_ind_mut")
 def view_exp_ind_mut():
     column_filters = ['Exposure', 'g_description_GRCh38', 'c_description', 'ProtDescription', 'Model', 'Clone_ID',
-                      'Add_Info', 'PubMed', 'MUT_ID']
+                      'Add_Info', 'PubMed', 'MUT_ID', 'Induced_ID']
     criteria = []
     sql_stm = bq_builder.build_simple_query(criteria=criteria, table='InducedMutationView',
                                             column_filters=column_filters)
@@ -1820,7 +2035,7 @@ def load_list(list_file, json=False, limit=None):
 
 def load_csv_file(list_file):
     column_list = []
-    data_list = []
+    # data_list = []
 
     try:
         file_path = TP53_DATA_DIR_URL + '/' + list_file

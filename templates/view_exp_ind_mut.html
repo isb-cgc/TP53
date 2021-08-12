@@ -79,7 +79,7 @@
                 title="PubMed reference number provided by NCBI.">
                 PubMed
             </th>
-            <th>MUT_ID:Clone_ID</th>
+            <th>MUT_ID:Induced_ID</th>
         </tr>
         </thead>
         <tbody>
@@ -94,7 +94,7 @@
             <td>{{ row.Clone_ID }}</td>
             <td>{{ row.Add_Info }}</td>
             <td>{{ row.PubMed }}</td>
-            <td>{{ row.MUT_ID }}:{{ row.Clone_ID }}</td>
+            <td>{{ row.MUT_ID }}:{{ row.Induced_ID }}</td>
         </tr>
         {% endfor %}
         </tbody>

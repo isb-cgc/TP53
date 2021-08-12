@@ -15,7 +15,7 @@
 </div>
 <div id="search_germline_mut" class="p-3">
     <div class="p-3 rounded-2 bg-light">
-        <form action="{{ url_for('results_germline_mutation') }}" method="POST">
+        <form action="{{ url_for('results_germline_mutation_list') }}" method="POST">
             <div class="accordion" id="gm_form_accordion">
                 <div class="accordion-item">
                     <h3 class="accordion-header" id="headingCI">
@@ -50,24 +50,33 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group row pt-5">
-                <div class="col">
-                    <div class="btn-toolbar float-end" role="toolbar"
-                         aria-label="Germline Mutation Search Button Toolbar">
-                        <button type="reset" class="btn btn-outline-secondary me-4"><i class="fas fa-redo"></i>
-                            Reset
+            <div class="row">
+                <div class="pt-5">
+                    <div class="text-end">
+                        <button type="reset" class="btn btn-outline-secondary me-2">
+                            <i class="fas fa-redo"></i> Reset
                         </button>
-                        <button type="submit" name="action" value="get_mutation_dist"
-                                class="btn darkblue-btn me-2"><i
-                                class="fas fa-chart-pie"></i>
-                            Mutation Distribution
-                        </button>
-                        <button type="submit" name="action" value="get_tumor_dist_view" class="btn darkblue-btn"><i
-                                class="fas fa-chart-bar"></i>
-                            Tumor Distribution
+                        <button type="submit" class="btn darkblue-btn"><i class="fas fa-search"></i> Search
                         </button>
                     </div>
                 </div>
+                <!--<div class="col">-->
+                    <!--<div class="btn-toolbar float-end" role="toolbar"-->
+                         <!--aria-label="Germline Mutation Search Button Toolbar">-->
+                        <!--<button type="reset" class="btn btn-outline-secondary me-4"><i class="fas fa-redo"></i>-->
+                            <!--Reset-->
+                        <!--</button>-->
+                        <!--<button type="submit" name="action" value="get_mutation_dist"-->
+                                <!--class="btn darkblue-btn me-2"><i-->
+                                <!--class="fas fa-chart-pie"></i>-->
+                            <!--Mutation Distribution-->
+                        <!--</button>-->
+                        <!--<button type="submit" name="action" value="get_tumor_dist_view" class="btn darkblue-btn"><i-->
+                                <!--class="fas fa-chart-bar"></i>-->
+                            <!--Tumor Distribution-->
+                        <!--</button>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </form>
     </div>

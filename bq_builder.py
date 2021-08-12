@@ -82,6 +82,50 @@ def build_mutation_query(criteria_map, table, group_by):
     return query
 
 
+def build_query_w_exclusion(criteria_map, table, column_filters=None, do_counts=False, distinc_col=None, ord_column_list=None, desc_ord=False, start=0, length=None):
+    filtered_select_sql = ''
+    query_module = """
+                SELECT {select_clause}
+                FROM `{bq_proj_dataset}.{table}`	
+                WHERE {where_clause}
+            """
+
+    if column_filters:
+        select_clause = ', '.join(column_filters)
+    elif distinc_col:
+        select_clause = distinc_col
+    else:
+        select_clause = '*'
+
+    # select_clause = distinc_col if distinc_col else '*'
+    for type in ['include', 'exclude']:
+        if type == 'include':
+            filtered_select_sql += query_module
+            where_clause = build_where_clause(criteria_map[type], include=True)
+        elif len(criteria_map[type]):
+            filtered_select_sql += "\nEXCEPT DISTINCT ("
+            filtered_select_sql += query_module
+            filtered_select_sql += "\n)"
+            where_clause = build_where_clause(criteria_map[type], include=False)
+        else:
+            where_clause = 'TRUE'
+
+        filtered_select_sql = filtered_select_sql.format(select_clause=select_clause, bq_proj_dataset=bq_proj_dataset, table=table, where_clause=where_clause)
+    if do_counts:
+        filtered_select_sql = "SELECT COUNT(*) as CNT FROM (\n" + filtered_select_sql
+        filtered_select_sql += "\n)"
+    else:
+        if ord_column_list:
+            ord_columns = ', '.join(ord_column_list)
+            ord_dir = "DESC" if desc_ord else ""
+            filtered_select_sql += " ORDER BY {ord_columns} {ord_dir}"\
+                .format(ord_columns=ord_columns, ord_dir=ord_dir)
+        if length:
+            filtered_select_sql += " LIMIT {limit_cnt} OFFSET {skip_rows}".format(limit_cnt=length, skip_rows=start)
+    print(filtered_select_sql)
+
+    return filtered_select_sql
+
 def build_codon_dist_query(column, table):
     query_temp = """
         (
@@ -218,7 +262,6 @@ def build_simple_query(criteria, table, column_filters, do_counts=False, distinc
                        desc_ord=False, start=0, length=None):
     where_clause = build_where_clause(criteria)
     columns = ', '.join(column_filters)
-    print(columns)
     order_by_clause = ''
     limit_clause = ''
     if do_counts:

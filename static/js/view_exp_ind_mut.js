@@ -3,13 +3,6 @@
 
 $(document).ready(function () {
     const selectedRowSet = new Set();
-    // $.ajax({
-    //     method: "GET",
-    //     url: "/get_db_version",
-    //     success: function(data){
-    //         console.log(data);
-    //     }
-    // });
     var table = $('#eim-result-table')
         .DataTable(
         {
@@ -17,27 +10,8 @@ $(document).ready(function () {
                 $('.spinner').hide();
             },
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
-                "<'row d-none'<'col-sm-12 col-md-4'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-            buttons: [{
-                extend: 'csv',
-                filename: function(){
-                    var db_version;// default version;
-                    $.ajax({
-                        method: "GET",
-                        async: false,
-                        url: "/get_db_version",
-                        success: function (data) {
-                            db_version = data;
-                        }
-                    });
-                    return 'tp53db_exp_induced_mutations'+ (db_version ? '_'+db_version: '');
-                },
-                exportOptions: {
-                    columns: ':not(:first-child):not(:last-child)'
-                }
-            }],
             order: [[1, "asc"]],
             columns: [
                 {
@@ -130,15 +104,27 @@ $(document).ready(function () {
     });
 
     $('.download-btn').on('click', function () {
+        var criteria_map = {};
+        if (selectedRowSet.size) {
+            var rowIds = Array.from(selectedRowSet);
+            var mutIds = $.map(rowIds, function(item) {
+                var indx = item.indexOf(':');
+                return item.substring(indx+1);
+            });
+            criteria_map = {
+                include: [{'column_name': 'Induced_ID', 'vals': mutIds}],
+                exclude: []
+            };
 
-        $('button.buttons-csv').trigger("click");
+        }
+        download_csv('tp53db_exp_induced_mutations', 'InducedMutationView', criteria_map);
     });
 
 });
 
 var selectAllRows = function (t, bool) {
     if (bool) {
-        t.rows().select();
+        t.rows({ search: 'applied' }).select();
     }
     else {
         t.rows().deselect();
