@@ -225,6 +225,12 @@ var build_scatter_plot = function (chart_id, chart_title, data) {
                         text: 'Mutation Rate (%)',
                         // display: true,
                     },
+                    ticks: {
+                        // Include a dollar sign in the ticks
+                        callback: function (value, index, values) {
+                            return value+'%';
+                        }
+                    }
                 },
                 y: {
                     title:{
@@ -312,34 +318,48 @@ var formatNumbersByCommas = function(num){
 };
 
 var convert_chartdata = function(chartjs_data){
-
-    var chart_datasets =chartjs_data.datasets;
     var tsv_data = '';
-    var datasets = Object.keys(chart_datasets);
     var total_count = chartjs_data.total;
-    if (datasets.length){
-        tsv_data += "label\tAAchange\tlog(Mut_rateAA)\tCount (N="+formatNumbersByCommas(total_count)+")\t%\n";
-        for(var i=0; i < datasets.length; i++){
-            var ds = datasets[i];
-            for(var j=0; j<chart_datasets[ds].length;j++){
-                tsv_data += ds+'\t';
+    var chart_type = chartjs_data.chart_type; //'scatter', 'ratio' or 'count'
+    if (chart_type === 'scatter' && 'datasets' in chartjs_data){
+        var chart_datasets =chartjs_data.datasets;
+        var datasets = Object.keys(chart_datasets);
+        if (datasets.length) {
+            tsv_data += "Label\tAAchange\tlog(Mut_rateAA)\tCount (N=" + formatNumbersByCommas(total_count) + ")\t%\n";
+            for (var i = 0; i < datasets.length; i++) {
+                var ds = datasets[i];
+                for (var j = 0; j < chart_datasets[ds].length; j++) {
+                    tsv_data += ds + '\t';
+                    tsv_data += chart_datasets[ds][j].name + '\t';
+                    tsv_data += chart_datasets[ds][j].rate.toFixed(3) + '\t';
+                    tsv_data += chart_datasets[ds][j].count + '\t';
+                    tsv_data += (chart_datasets[ds][j].count * 100 / total_count).toFixed(3) + '\n';
+                }
 
-                tsv_data += chart_datasets[ds][j].name+'\t';
-                tsv_data += chart_datasets[ds][j].rate.toFixed(3)+'\t';
-                tsv_data += chart_datasets[ds][j].count+'\t';
-                tsv_data += (chart_datasets[ds][j].count*100/total_count).toFixed(3)+'\n';
             }
+        }
+    }
 
+    if (tsv_data === '' && chartjs_data.data.length) {
+        if (chart_type === 'ratio'){
+            tsv_data += 'Label\t% (N=' + formatNumbersByCommas(total_count) + ')\n';
+        }
+        else{
+            tsv_data += 'Label\tCount (N=' + formatNumbersByCommas(total_count) + ')\t%\n';
+        }
+        for (var k = 0; k < chartjs_data.data.length; k++) {
+            var label = chartjs_data.labels[k];
+            var val = chartjs_data.data[k];
+            tsv_data += label + '\t';
+            if (chart_type === 'ratio'){
+                tsv_data+= val.toFixed(2)+'\n';
+            }
+            else{
+                tsv_data+= val+'\t'+ (val*100/total_count).toFixed(2)+'\n';
+            }
         }
     }
-    else if (chartjs_data.data.length) {
-        tsv_data += 'Label\tCount (N=' + formatNumbersByCommas(total_count) + ')\t%\n';
-        for (var i = 0; i < chartjs_data.data.length; i++) {
-            var label = chartjs_data.labels[i];
-            var count = chartjs_data.data[i];
-            tsv_data += label + '\t' + count + '\t'+ (count*100/total_count).toFixed(2)+'\n';
-        }
-    }
+
     if(tsv_data.length){
         tsv_data = 'data:text/tab-separated-values;charset=utf-8,' + tsv_data;
     }

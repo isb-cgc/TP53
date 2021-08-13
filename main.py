@@ -1210,7 +1210,7 @@ def prevalence_somatic_stats():
     sql_stm = bq_builder.build_mutation_prevalence()
     query_job = bigquery_client.query(sql_stm)
     data = []
-    error_msg = None
+    # error_msg = None
     graph_data = {}
     try:
         result = query_job.result(timeout=30)
@@ -1227,6 +1227,7 @@ def prevalence_somatic_stats():
             data.append(ratio)
             total_cnt += mut_cnt
         graph_data = {
+            'chart_type': 'ratio',
             'labels': labels,
             'data': data,
             'total': total_cnt
@@ -1379,6 +1380,7 @@ def results_somatic_prevalence():
             data.append(ratio)
             total_cnt += mut_cnt
         graph_data = {
+            'chart_type': 'ratio',
             'labels': labels,
             'data': data,
             'total': total_cnt
@@ -1707,6 +1709,7 @@ def build_graph_data(sql_maps):
             rows = list(result)
             labels = []
             datasets = {}
+            is_scatter_chart = False
             for row in rows:
                 label = row.get('LABEL')
                 labels.append(label)
@@ -1714,6 +1717,7 @@ def build_graph_data(sql_maps):
                 mut_rate = row.get('RATE', None)
                 cnt = row.get('CNT')
                 if mut_rate:
+                    is_scatter_chart = True
                     name = row.get('NAME', None)
                     if not datasets.get(label):
                         datasets[label] = []
@@ -1729,11 +1733,13 @@ def build_graph_data(sql_maps):
                     data.append(cnt)
                 total += cnt
             graph_data[graph_id] = {
+                'chart_type': 'scatter' if is_scatter_chart else 'count',
                 'labels': labels,
                 'data': data,
                 'datasets': datasets,
                 'total': total
             }
+            # print(graph_data[graph_id])
 
         # print(graph_data['sift_class_s'])
     except BadRequest:
