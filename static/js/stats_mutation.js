@@ -13,7 +13,7 @@ $(document).ready(function () {
         },
         'somatic_tumor_dist': {
             id: 'somatic_tumor_dist',
-            title: 'Somatic Mutations: Tumor Distributions',
+            title: 'Somatic Variants: Tumor Distributions',
             type: 'bar',
             horizontal: true,
             x_scale: null,
@@ -21,7 +21,7 @@ $(document).ready(function () {
         },
         'germline_tumor_dist': {
             id: 'germline_tumor_dist',
-            title: 'Germline Mutations: Tumor Distribution',
+            title: 'Germline Variants: Tumor Distribution',
             type: 'bar',
             horizontal: true,
             x_scale: null,
@@ -29,13 +29,13 @@ $(document).ready(function () {
         },
         'type': {
             id: 'type',
-            title: 'Mutation Pattern',
+            title: 'Variant Pattern',
             type: 'pie'
         },
         'effect': {
 
             id: 'effect',
-            title: 'Mutation Effect',
+            title: 'Variant Effect',
             type: 'pie'
         },
         'codon_dist': {
@@ -66,12 +66,12 @@ $(document).ready(function () {
         },
         'mut_pt': {
             id: 'mut_pt',
-            title: 'Point Mutation',
+            title: 'Point Variant',
             type: 'pie'
         },
         'mut_pt_s': {
             id: 'mut_pt_s',
-            title: 'Point Mutation',
+            title: 'Point Variant',
             type: 'scatter'
         },
         'sift_class': {

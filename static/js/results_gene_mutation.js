@@ -69,7 +69,7 @@ $(document).ready(function () {
                 data: "MUT_ID",
                 orderable: false,
                 render: function(data){
-                    return '<a title="View Mutation Details" class="rounded-circle btn btn-tiny turquoise-btn" href="mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
+                    return '<a title="View Variant Details" class="rounded-circle btn btn-tiny turquoise-btn" href="mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
                     // return '<a type="button" title="View Mutation Details" class="rounded-circle btn btn-tiny-round turquoise-btn" href="mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
                 }
             },

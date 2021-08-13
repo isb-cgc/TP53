@@ -10,13 +10,13 @@
 
 {% block subcontent %}
 <div class="page-banner text-center">
-    <h2 class="pb-3 my-0 fw-normal">Mutation Details</h2>
+    <h2 class="pb-3 my-0 fw-normal">Variant Details</h2>
 </div>
 
 <div id="mut_details" class="p-3">
     <div class="row">
         <div class="col">
-            <h2>Mutation Selected: {{ mut_desc.c_description }}; {{ mut_desc.ProtDescription }}</h2>
+            <h2>Variant Selected: {{ mut_desc.c_description }}; {{ mut_desc.ProtDescription }}</h2>
         </div>
         <div class="col">
             <div class="text-end">
@@ -55,7 +55,7 @@
     {% endif %}
     <div class="p-3">
         <div class="my-2 p-3 bg-light rounded-2">
-            <h3>Mutation Description</h3>
+            <h3>Variant Description</h3>
             {% if not mut_desc %}
             <div class="fw-light fst-italic">No Data</div>
             {% else %}
@@ -64,38 +64,38 @@
                 <tr>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Mutation nomenclature according to HGVS standards and using the GenBank NC_000017.11 (hg38 assembly) genomic sequence as reference.">
+                        title="Variant nomenclature according to HGVS standards and using the GenBank NC_000017.11 (hg38 assembly) genomic sequence as reference.">
                         Genomic Description (hg38)
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Mutation nomenclature according to HGVS standards and using the NM_000546.5 coding sequence as reference.">
+                        title="Variant nomenclature according to HGVS standards and using the NM_000546.5 coding sequence as reference.">
                         cDNA Description
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Mutation description at the protein level as recommended by HGVS and using the Uniprot reference sequence P04637.">
+                        title="Variant description at the protein level as recommended by HGVS and using the Uniprot reference sequence P04637.">
                         Protein Description
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Location of the mutation in the introns or exons in TP53 gene for the reference sequence NM_000546.5.
+                        title="Location of the variant in the introns or exons in TP53 gene for the reference sequence NM_000546.5.
                                         Terms occurring in this column are &quot;1-intron&quot;' to &quot;11-intron&quot; and &quot;2-exon&quot;
-                                        to &quot;11-exon&quot;. An &quot;i'&quot; or &quot;e&quot; in front mean that the mutation is located within the indicated intron
+                                        to &quot;11-exon&quot;. An &quot;i'&quot; or &quot;e&quot; in front mean that the variant is located within the indicated intron
                                         or exon with no information on the precise location.">
                         Exon nb
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Yes or No indicate if the position of the mutation falls within a CpG
+                        title="Yes or No indicate if the position of the variant falls within a CpG
                                         site or not.">CpG Site
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Annotation on the position of the mutation within conserved nucleotides of p53 consensus, criptic or alternative splice sites:
-                                        consensus SD or SA: the mutation is located at conserved dinucleotides involved in p53 consensus splice sites
+                        title="Annotation on the position of the variant within conserved nucleotides of p53 consensus, criptic or alternative splice sites:
+                                        consensus SD or SA: the variant is located at conserved dinucleotides involved in p53 consensus splice sites
                                         (SD for splice donor site, SA for splice acceptor site) producing the full-lenght p53 protein (TA isoform);
-										criptic SD or SA: the mutation is located at conserved dinucleotides involved in splice sites (gt or ag)
+										criptic SD or SA: the variant is located at conserved dinucleotides involved in splice sites (gt or ag)
                                         that have been observed experimentally in p53 sequences carrying mutated consensus splice sites;
 										alternative SD or SA: conserved dinucleotides involved in splice sites (gt or ag)
                                         responsible for producing p53 isoforms beta and gamma;
@@ -111,7 +111,7 @@
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="For mutations in exons, sequence of the codon in which the mutation occurred in NM_000546.5 transcript.">
+                        title="For variants in exons, sequence of the codon in which the variant occurred in NM_000546.5 transcript.">
                         WT Codon
                     </th>
                     <th data-bs-toggle="tooltip"
@@ -121,17 +121,17 @@
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Effect of the mutation. The terms
+                        title="Effect of the variant. The terms
                                         occurring in this column are: missense (change of one amino-acid), nonsense (introduction of a stop codon), FS
                                         (frameshift), silent (no change in the protein sequence),
-                                        splice (mutations located in the two first and two last conserved nucleotides of the introns and are thus predicted to alter splicing,
-                                        or mutations that have been shown to alter splicing experimentally), other (inframe deletions or insertions), intronic (mutations in introns outside splicing sites), NA (mutations upstream in 5' or 3' UTR).">
+                                        splice (variants located in the two first and two last conserved nucleotides of the introns and are thus predicted to alter splicing,
+                                        or variants that have been shown to alter splicing experimentally), other (inframe deletions or insertions), intronic (variants in introns outside splicing sites), NA (variants upstream in 5' or 3' UTR).">
                         Effect
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
                         data-bs-html="true"
-                        title="Mutation classification based on protein 3D structure and mutation type.
+                        title="Variant classification based on protein 3D structure and variant type.
                                         This classification has been used to derive gentoype-phenotype correlations
                                         in sporadic breast cancers (Olivier et al., 2006).
                                         <br/>
@@ -196,7 +196,7 @@
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Predicted effect of the mutation on the predicted splice site.">
+                        title="Predicted effect of the variant on the predicted splice site.">
                         Variation
                     </th>
                     <th data-bs-toggle="tooltip"
@@ -231,7 +231,7 @@
                 <tr>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="2D and 3D motifs where the mutation is located according to structures described in
+                        title="2D and 3D motifs where the variant is located according to structures described in
                                         Cho et al. (1994) and May and May (1999)">
                         Structural Motif
                     </th>
@@ -258,10 +258,10 @@
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Mutation rate of amino-acid substitution calculated by summing up the nucleotide substitution
+                        title="Variant rate of amino-acid substitution calculated by summing up the nucleotide substitution
                                         rates. This value is only valid for amino-acid substitutions
                                         resulting from single nucleotide substitutions.">
-                        Mutation Rate
+                        Variant Rate
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
@@ -415,7 +415,7 @@
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
                         title="Functional classification based on the overall transcriptional activity (TA) on 8 different promoters as measured in yeast assays by Kato et al.
-							            For each mutant, the median of the 8 promoter-specific activities (expressed as percent of the wild-type protein) is calculated and missense mutations are classified as &quot;non-functional&quot; if the median is <=20,
+							            For each mutant, the median of the 8 promoter-specific activities (expressed as percent of the wild-type protein) is calculated and missense variants are classified as &quot;non-functional&quot; if the median is <=20,
 							            &quot;partially functional&quot; if the median is >20 and <=75, &quot;functional&quot; if the median is >75 and <=140, and &quot;supertrans&quot; if the median is >140.">
                         Transactivation Class
                     </th>
@@ -447,7 +447,7 @@
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
                         data-bs-html="true"
-                        title="Missense variant functional predictions by an optimized Align-GVGD tool. Mutations classified as &quot;C0&quot; are considered tolerated while other classes are considered damaging.">
+                        title="Missense variant functional predictions by an optimized Align-GVGD tool. Variants classified as &quot;C0&quot; are considered tolerated while other classes are considered damaging.">
                         Align-GVGD
                     </th>
 
@@ -474,7 +474,7 @@
                         data-bs-placement="top"
                         data-bs-html="true"
                         title="Functional classification based on SIFT program using default settings.
-                                        Missense mutations are classified as &quot;damaging&quot; or &quot;tolerated&quot;.">
+                                        Missense variants are classified as &quot;damaging&quot; or &quot;tolerated&quot;.">
                         SIFT
                     </th>
                     <th data-bs-toggle="tooltip"
@@ -490,7 +490,7 @@
                         data-bs-placement="top"
                         title="Functional predictions derived from a computer model that takes into account
                                         the 3D structure of WT and mutant proteins and is trained on the transactivaton dataset from
-                                        Kato et al. Mutations are classified as &quot;functional&quot; or &quot;non-functional&quot;.">
+                                        Kato et al. Variants are classified as &quot;functional&quot; or &quot;non-functional&quot;.">
                         Structure Function
                     </th>
                 </tr>
@@ -521,52 +521,52 @@
                 <tr>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Indicate if the mutation fall within the canonical isoform coding for the full length p53 protein.">
+                        title="Indicate if the variant fall within the canonical isoform coding for the full length p53 protein.">
                         TAp53 Alpha
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Indicate if the mutation fall within the specified isoform.">
+                        title="Indicate if the variant fall within the specified isoform.">
                         TAp53 Beta
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Indicate if the mutation fall within the specified isoform.">
+                        title="Indicate if the variant fall within the specified isoform.">
                         TAp53 Gamma
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Indicate if the mutation fall within the specified isoform.">
+                        title="Indicate if the variant fall within the specified isoform.">
                         Delta40p53 Alpha
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Indicate if the mutation fall within the specified isoform.">
+                        title="Indicate if the variant fall within the specified isoform.">
                         Delta40p53 Beta
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Indicate if the mutation fall within the specified isoform.">
+                        title="Indicate if the variant fall within the specified isoform.">
                         Delta40p53 Gamma
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Indicate if the mutation fall within the specified isoform.">
+                        title="Indicate if the variant fall within the specified isoform.">
                         Delta133p53 Alpha
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Indicate if the mutation fall within the specified isoform.">
+                        title="Indicate if the variant fall within the specified isoform.">
                         Delta133p53 Beta
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Indicate if the mutation fall within the specified isoform.">
+                        title="Indicate if the variant fall within the specified isoform.">
                         Delta133p53 Gamma
                     </th>
                     <th data-bs-toggle="tooltip"
                         data-bs-placement="top"
-                        title="Indicate if the mutation fall within the specified isoform.">
+                        title="Indicate if the variant fall within the specified isoform.">
                         Deltap53 Alpha
                     </th>
                 </tr>
@@ -756,7 +756,7 @@
             {% endif %}
         </div>
         <div class="my-2 p-3 bg-light rounded-2">
-            <h3>Experimentally Induced Mutations</h3>
+            <h3>Experimentally Induced Variants</h3>
             {% if query_result.induced|length == 0 %}
             <div class="fw-light fst-italic">No Data</div>
             {% else %}

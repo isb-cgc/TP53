@@ -4,7 +4,7 @@
     {% block head %}
     <meta charset="utf-8">
     <meta name="description"
-          content="TP53 Database: knowledgebase and statistical tools for the analysis of TP53 gene mutations in human cancers">
+          content="TP53 Database: knowledgebase and statistical tools for the analysis of TP53 gene variants in human cancers">
     <title>TP53 Database</title>
     <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data: fonts.gstatic.com;">-->
     <!--<title>Mitelman Database Chromosome Aberrations and Gene Fusions in Cancer</title>-->
@@ -102,7 +102,7 @@
                     <a class="nav-link" href="search_gene_by_var">Search by Gene Variations</a>
                 </li>
                 <li id="search_gene_by_mut" class="nav-item sub-navitem">
-                    <a class="nav-link" href="search_gene_by_mut">Search by Mutation Features</a>
+                    <a class="nav-link" href="search_gene_by_mut">Search by Variant Features</a>
                 </li>
                 <li id="view_val_poly" class="nav-item sub-navitem">
                     <a class="nav-link" href="view_val_poly">View Validated Polymorphism</a>
@@ -114,14 +114,14 @@
             <li class="nav-item">
                 <a id="" data-bs-toggle="collapse" role="button" aria-expanded="false"
                    aria-controls="som-collapse" class="nav-link"
-                   href="#som-collapse" data-bs-parent="#expl-ul">Somatic Mutations</a>
+                   href="#som-collapse" data-bs-parent="#expl-ul">Somatic Variants</a>
             </li>
             <div id="som-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
                 <li id="search_somatic_mut" class="nav-item sub-navitem">
-                    <a class="nav-link" href="search_somatic_mut">Search Somatic Mutation</a>
+                    <a class="nav-link" href="search_somatic_mut">Search Somatic Variant</a>
                 </li>
                 <li id="search_somatic_prevalence" class="nav-item sub-navitem">
-                    <a class="nav-link" href="search_somatic_prevalence">Search Mutation Prevalence</a>
+                    <a class="nav-link" href="search_somatic_prevalence">Search Variant Prevalence</a>
                 </li>
                 <li id="stats_somatic_mut" class="nav-item sub-navitem">
                     <a class="nav-link" href="stats_somatic_mut">Selected Statistics</a>
@@ -134,11 +134,11 @@
             <li class="nav-item">
                 <a data-bs-toggle="collapse" role="button" aria-expanded="false"
                    aria-controls="germ-collapse" class="nav-link"
-                   href="#germ-collapse">Germline Mutations</a>
+                   href="#germ-collapse">Germline Variations</a>
             </li>
             <div id="germ-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
                 <li id="search_germline_mut" class="nav-item sub-navitem">
-                    <a class="nav-link" href="search_germline_mut">Search Germline Mutation</a>
+                    <a class="nav-link" href="search_germline_mut">Search Germline Variation</a>
                 </li>
                 <li id="stats_germline_mut" class="nav-item sub-navitem">
                     <a class="nav-link" href="stats_germline_mut">Selected Statistics</a>

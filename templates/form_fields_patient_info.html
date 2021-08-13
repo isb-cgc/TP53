@@ -72,17 +72,17 @@
         <legend class="col-form-label col-sm-3 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                     data-bs-placement="top"
-                    title="Germline mutation detected in any gene in the patient.">
+                    title="Germline variant detected in any gene in the patient.">
                 <i class="far fa-question-circle"></i>
             </button>
-            Germline Mutation
+            Germline Variation
         </legend>
         <div class="col-sm-6 col-md-7">
             {% if germ_mut_list|length >3 %}
             <select name="{{ id_prefix }}_germ_mut" class="form-control chosen-select"
                     id="{{ id_prefix }}_germ_mut"
-                    data-placeholder="Choose Germline Mutations..."
-                    aria-label="Germline Mutation List" multiple>
+                    data-placeholder="Choose Germline Variations..."
+                    aria-label="Germline Variation List" multiple>
                 {% for germ_mut in germ_mut_list %}
                 <option value="{{ germ_mut.label }}">{{ germ_mut.label }}</option>
                 {% endfor %}

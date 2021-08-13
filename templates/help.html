@@ -20,7 +20,7 @@
                 <h2>User's Manual</h2>
                 <hr>
                 <div class="p-3">
-                    <p>The <em>TP53</em> database contains exclusively <em>TP53</em> mutations associated with human
+                    <p>The <em>TP53</em> database contains exclusively <em>TP53</em> variants associated with human
                         cancers
                         that have
                         been identified by sequencing and published in the peer-reviewed literature or curated from
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="collapse" id="collapseGV">
                                         <div class="bg-light p-3 my-3">
-                                            <h4>geneVariationIARC <em>TP53</em> Database,R20.txt</h4>
+                                            <h4>geneMutationIARC <em>TP53</em> Database,R20.txt</h4>
                                             <div class="pb-5">
                                                 <table class="table">
                                                     <thead>
@@ -70,7 +70,7 @@
                                                     <tr>
                                                         <td><a id="hg19_Chr17_coordinates"></a>hg19_Chr17_coordinates
                                                         </td>
-                                                        <td>Chromosome coordinate of mutation: start position
+                                                        <td>Chromosome coordinate of variation: start position
                                                             based
                                                             on
                                                             hg19
@@ -82,7 +82,7 @@
                                                     <tr>
                                                         <td><a id="hg38_Chr17_coordinates"></a>hg38_Chr17_coordinates
                                                         </td>
-                                                        <td>Chromosome coordinate of mutation: start position
+                                                        <td>Chromosome coordinate of variation: start position
                                                             based
                                                             on
                                                             hg38
@@ -94,7 +94,7 @@
 
                                                     <tr>
                                                         <td><a id="ExonIntron"></a>ExonIntron</td>
-                                                        <td>Location of the mutation in the introns or exons in
+                                                        <td>Location of the variant in the introns or exons in
                                                             <em>TP53</em>
                                                             gene for
                                                             the
@@ -103,7 +103,7 @@
                                                             "11-intron" and
                                                             "2-exon"
                                                             to "11-exon". An "i" or "e" in front mean that the
-                                                            mutation
+                                                            variant
                                                             is
                                                             located
                                                             within the indicated intron
@@ -112,14 +112,14 @@
                                                     </tr>
                                                     <tr>
                                                         <td><a id="Codon_number"></a>Codon_number</td>
-                                                        <td>For mutations in exons, codon number
-                                                            at which the mutation is located (1-393). If a
-                                                            mutation
+                                                        <td>For variants in exons, codon number
+                                                            at which the variant is located (1-393). If a
+                                                            variant
                                                             spans more
-                                                            than one codon, (e.g. tandem mutation or deletion of
+                                                            than one codon, (e.g. tandem variant or deletion of
                                                             several
                                                             bases) only the first (5') codon is entered. For
-                                                            mutations
+                                                            variants
                                                             in
                                                             introns, 0 is entered.
                                                         </td>
@@ -129,7 +129,7 @@
                                                         <td><a id="WT_nucleotide"></a>WT_nucleotide</td>
                                                         <td>Base in the reference sequence at the position of
                                                             the
-                                                            mutation on
+                                                            variant on
                                                             the
                                                             coding
                                                             sequence.
@@ -149,7 +149,7 @@
                                                             deleted
                                                             (del)
                                                             or
-                                                            inserted (ins) is given. For more complex mutation
+                                                            inserted (ins) is given. For more complex variant
                                                             events, a
                                                             full
                                                             description is given as indicated in the original
@@ -159,7 +159,7 @@
                                                     <tr>
 
                                                         <td><a id="c_description"></a>c_description</td>
-                                                        <td>Mutation nomenclature according to <a
+                                                        <td>Variant nomenclature according to <a
                                                                 href="https://www.genomic.unimelb.edu.au/mdi/mutnomen/"
                                                                 target="_blank">HGVS</a>
                                                             standards and using the NM_000546.5 coding sequence
@@ -171,7 +171,7 @@
                                                     <tr>
 
                                                         <td><a id="g_description"></a>g_description</td>
-                                                        <td>Mutation nomenclature according to <a
+                                                        <td>Variant nomenclature according to <a
                                                                 href="https://www.genomic.unimelb.edu.au/mdi/mutnomen/"
                                                                 target="_blank">HGVS</a>
                                                             standards and using the GenBank NC_000017.10 (hg19
@@ -186,7 +186,7 @@
 
                                                         <td><a id="g_description_GRCh38"></a>g_description_GRCh38
                                                         </td>
-                                                        <td>Mutation nomenclature according to <a
+                                                        <td>Variant nomenclature according to <a
                                                                 href="https://www.genomic.unimelb.edu.au/mdi/mutnomen/"
                                                                 target="_blank">HGVS</a>
                                                             standards and using the GenBank NC_000017.11 (hg38
@@ -199,7 +199,7 @@
 
                                                     <tr>
                                                         <td><a id="Type"></a>Type</td>
-                                                        <td>Nature of the mutation. The terms
+                                                        <td>Nature of the variant. The terms
                                                             occurring in this column are "A:T&gt;C:G" (A to C or
                                                             T
                                                             to G base change), "A:T&gt;G:C" (A to G or T to C
@@ -221,14 +221,14 @@
                                                     <tr>
                                                         <td><a id="Splice_site"></a>Splice_site</td>
                                                         <td>
-                                                            Annotation on the position of the mutation within
+                                                            Annotation on the position of the variant within
                                                             conserved
                                                             nucleotides
                                                             of
                                                             <em>p53</em> consensus, criptic or alternative
                                                             splice sites:
                                                             <br>
-                                                            <b>consensus SD or SA</b>= the mutation is located
+                                                            <b>consensus SD or SA</b>= the variant is located
                                                             at
                                                             conserved
                                                             dinucleotides involved in <em>p53</em> consensus
@@ -239,7 +239,7 @@
                                                             the
                                                             full-lenght <em>p53</em> protein (TA isoform);
                                                             <br>
-                                                            <b>criptic SD or SA</b>= the mutation is located at
+                                                            <b>criptic SD or SA</b>= the variant is located at
                                                             conserved
                                                             dinucleotides
                                                             involved in splice sites (gt or ag)
@@ -275,7 +275,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td><a id="CpG_site"></a>CpG_site</td>
-                                                        <td>Yes or No indicate if the position of the mutation
+                                                        <td>Yes or No indicate if the position of the variant
                                                             falls
                                                             within a
                                                             CpG
@@ -320,7 +320,7 @@
                                                             (<a href="https://www.ncbi.nlm.nih.gov/pubmed/15262802"
                                                                 target="_blank">Lunter
                                                                 and Hein 2004</a>).
-                                                            The mutation probabilities for a given single
+                                                            The variant probabilities for a given single
                                                             nucleotide
                                                             substitution
                                                             are
@@ -334,10 +334,10 @@
                                                     <tr>
 
                                                         <td><a id="WT_codon"></a>WT_codon</td>
-                                                        <td>For mutations in exons, sequence of the codon in
+                                                        <td>For variants in exons, sequence of the codon in
                                                             which
                                                             the
-                                                            mutation
+                                                            variant
                                                             occurred
                                                             in NM_000546.5 transcript.
                                                         </td>
@@ -354,7 +354,7 @@
                                                     <tr>
                                                         <td><a id="WT_AA"></a>WT_AA</td>
                                                         <td>Wild-type amino acid encoded at the codon in which
-                                                            the mutation occurred (three-letter amino acid
+                                                            the variant occurred (three-letter amino acid
                                                             abbreviation). Check <a target="_blank"
                                                                                     href="aa_codes">AA letter
                                                                 code</a> and
@@ -365,9 +365,9 @@
                                                     <tr>
                                                         <td><a id="Mutant_AA"></a>Mutant_AA</td>
                                                         <td>Mutated amino acid encoded at the
-                                                            codon in which the mutation occurred (three-letter
+                                                            codon in which the variant occurred (three-letter
                                                             amino acid abbreviation). The chain terminating
-                                                            mutations due
+                                                            variants due
                                                             to single base substitutions are designated by
                                                             "stop". &nbsp;&nbsp;
                                                             Check <a target="_blank" href="aa_codes">AA letter
@@ -379,11 +379,11 @@
                                                     </tr>
                                                     <tr>
                                                         <td><a id="ProtDescription"></a>ProtDescription</td>
-                                                        <td>Mutation description at the protein level as
+                                                        <td>Variant description at the protein level as
                                                             recommended
                                                             by
                                                             <a
-                                                                    href="resources#mutation">HGVS</a> and using
+                                                                    href="resources#variant">HGVS</a> and using
                                                             the
                                                             Uniprot
                                                             reference
@@ -392,7 +392,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td><a id="Mut_rateAA"></a>Mut_rateAA</td>
-                                                        <td>Mutation rate of amino-acid substitution calculated
+                                                        <td>Variant rate of amino-acid substitution calculated
                                                             by
                                                             summing up
                                                             the
@@ -404,7 +404,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td><a id="Effect"></a>Effect</td>
-                                                        <td>Effect of the mutation. The terms
+                                                        <td>Effect of the variant. The terms
                                                             occurring in this column are: missense (change of
                                                             one
                                                             amino-acid),
@@ -412,21 +412,21 @@
                                                             (introduction of a stop codon), FS
                                                             (frameshift), silent (no change in the protein
                                                             sequence),
-                                                            splice (mutations located in the two first and two
+                                                            splice (variants located in the two first and two
                                                             last
                                                             conserved
                                                             nucleotides of the introns and are thus predicted to
                                                             alter
                                                             splicing,
-                                                            or mutations that have been shown to alter splicing
+                                                            or variants that have been shown to alter splicing
                                                             experimentally),
                                                             other
                                                             (inframe deletions or insertions), intronic
-                                                            (mutations
+                                                            (variants
                                                             in
                                                             introns
                                                             outside
-                                                            splicing sites), NA (mutations upstream in 5' or 3'
+                                                            splicing sites), NA (variants upstream in 5' or 3'
                                                             UTR).
 
                                                         </td>
@@ -527,7 +527,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td><a id="StructuralMotif"></a>Structural_motif</td>
-                                                        <td>2D and 3D motifs where the mutation is located
+                                                        <td>2D and 3D motifs where the variant is located
                                                             according
                                                             to
                                                             structures
@@ -555,7 +555,7 @@
                                                             optimized
                                                             Align-GVGD
                                                             tool.
-                                                            Mutations classified as "C0" are considered
+                                                            Variants classified as "C0" are considered
                                                             tolerated
                                                             while
                                                             other
@@ -602,7 +602,7 @@
                                                                 href="https://sift.jcvi.org/protein_batch_submit.php?species=human"
                                                                 target="_blank">SIFT program</a> using default
                                                             settings.
-                                                            Missense mutations are classified as "damaging" or
+                                                            Missense variants are classified as "damaging" or
                                                             "tolerated".
                                                         </td>
                                                     </tr>
@@ -650,7 +650,7 @@
                                                             as percent of the wild-type protein) is calculated
                                                             and
                                                             missense
-                                                            mutations
+                                                            variants
                                                             are classified as "non-functional" if the median is
                                                             &lt;=20,
                                                             "partially functional" if the median is &gt;20 and
@@ -752,7 +752,7 @@
                                                             <a target="_blank"
                                                                href="https://www.ncbi.nlm.nih.gov/pubmed/12826609">
                                                                 Kato et al.
-                                                            </a> Mutations are classified as
+                                                            </a> Variants are classified as
                                                             "functional" or "non-functional". More details
                                                             <a target="_blank" href="dt_method">here</a>.
                                                         </td>
@@ -760,10 +760,10 @@
                                                     <tr>
                                                         <td><a id="EffectGroup3"></a>EffectGroup3</td>
                                                         <td>
-                                                            Mutation classification based on protein 3D
+                                                            Variant classification based on protein 3D
                                                             structure
                                                             and
-                                                            mutation
+                                                            variant
                                                             type.
                                                             This classification has been used to derive
                                                             gentoype-phenotype
@@ -803,7 +803,7 @@
                                                             of
                                                             tumors
                                                             reported
-                                                            to carry this somatic mutation). Total count is
+                                                            to carry this somatic variant). Total count is
                                                             29891 in
                                                             R20.
                                                         </td>
@@ -816,7 +816,7 @@
                                                             (number
                                                             of
                                                             pedigree/individual carriers of this germline
-                                                            mutation).
+                                                            variant).
                                                             Total count
                                                             is
                                                             1532
@@ -830,7 +830,7 @@
                                                         <td>Number of occurence in the IARC cell-line dataset
                                                             (number of
                                                             cell-lines
-                                                            reported to carry this mutation). Total cell-line
+                                                            reported to carry this variant). Total cell-line
                                                             count
                                                             is
                                                             2766 in
@@ -841,7 +841,7 @@
                                                     <tr>
 
                                                         <td><a id="COSMIClink"></a>COSMIClink</td>
-                                                        <td>Link to mutation ID in COSMIC database.</td>
+                                                        <td>Link to variant ID in COSMIC database.</td>
 
                                                     </tr>
                                                     <tr>
@@ -854,7 +854,7 @@
 
                                                         <td><a id="tcga_icgc_genie_count"></a>TCGA_ICGC_GENIE_count
                                                         </td>
-                                                        <td>Sum of mutation occurence from TCGA (MC3), ICGC
+                                                        <td>Sum of variation occurence from TCGA (MC3), ICGC
                                                             (v28)
                                                             and
                                                             GENIE (V5)
@@ -908,7 +908,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td><a id="SpliceVariation"></a>Variation</td>
-                                                        <td>Predicted effect of the mutation on the predicted
+                                                        <td>Predicted effect of the variant on the predicted
                                                             splice site.
                                                         </td>
                                                     </tr>
@@ -925,7 +925,7 @@
                                             <h4>Predicted effect on <em>p53</em> protein isoforms:</h4>
 
                                             <br>
-                                            <p>The predictions provided are based on whether the mutation falls
+                                            <p>The predictions provided are based on whether the variant falls
                                                 within the specific
                                                 isoform. For a description of <em>p53</em> isoforms, see <a
                                                         href="p53isoforms"
@@ -942,7 +942,7 @@
                                                     <tbody>
                                                     <tr>
                                                         <td><a id="MainIsoforms"></a>TAp53alpha</td>
-                                                        <td>Indicate if the mutation fall within the canonical
+                                                        <td>Indicate if the variant fall within the canonical
                                                             isoform coding for the full length <em>p53</em>
                                                             protein.
                                                         </td>
@@ -950,7 +950,7 @@
                                                     <tr>
                                                         <td><a id="OtherIsoforms"></a>TAp53beta....deltap53alpha
                                                         </td>
-                                                        <td>Indicate if the mutation fall within the specified
+                                                        <td>Indicate if the variant fall within the specified
                                                             isoform.
                                                         </td>
                                                     </tr>
@@ -967,23 +967,23 @@
                                                 data-bs-target="#collapseSM" aria-expanded="false"
                                                 aria-controls="collapseSM">
                                         </button>
-                                        Somatic Mutations Found in Human Tumor Samples
+                                        Somatic Variants Found in Human Tumor Samples
                                     </div>
                                     <div class="collapse" id="collapseSM">
                                         <div class="bg-light p-3 my-3">
                                             <h4>somaticMutationDataIARC <em>TP53</em> Database, R20.txt</h4>
 
-                                            <p> This dataset contains <em>TP53</em> somatic mutations identified
+                                            <p> This dataset contains <em>TP53</em> somatic variants identified
                                                 in
                                                 human tumor samples (including metastasis and cell-lines).
-                                                It includes data on the type and position of mutations,
-                                                detailed information on the tumor in which the mutations
+                                                It includes data on the type and position of variations,
+                                                detailed information on the tumor in which the variants
                                                 have been found,
                                                 and on various characteristics of the patients in which the
                                                 tumor developed. </p>
 
                                             <p> Each row in the downloaded tab-delimited text file
-                                                represents a single mutation reported in a tumor sample with
+                                                represents a single variant reported in a tumor sample with
                                                 an arbitrarily assigned unique identification number.
                                                 A unique identification number is also attributed to the
                                                 tumor sample and to the patient. Table content is as
@@ -998,28 +998,28 @@
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2" align="left"><i>The first set of columns
-                                                        describe the mutation.</i></td>
+                                                        describe the variant.</i></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Mutation_ID</td>
-                                                    <td>Unique identification number for a Sample/Mutation
+                                                    <td>Unique identification number for a Sample/Variant
                                                         association.<br>
-                                                        Tandem mutations (two adjacent base substitutions)
-                                                        are considered as one mutation event;
-                                                        therefore tandem mutations have only one
+                                                        Tandem variants (two adjacent base substitutions)
+                                                        are considered as one variant event;
+                                                        therefore tandem variants have only one
                                                         identification number and are a single record.
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>MUT_ID....SwissProtLink</td>
-                                                    <td><a class="jump-link" href="#MUT_id">see mutation
+                                                    <td><a class="jump-link" href="#MUT_id">see variant
                                                         annotations</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2" align="left"><i>The second set of
                                                         columns are assigned to the description of the organ
                                                         site, tissue and type of
-                                                        lesion in which the mutation has been identified.
+                                                        lesion in which the variant has been identified.
                                                         The descriptions given in the publication are
                                                         translated into the standards
                                                         of the International Classification of Diseases for
@@ -1046,7 +1046,7 @@
                                                         publication (2 digit), followed by the ID number
                                                         indicated in the publication.
                                                         The same name or number can occur several times as
-                                                        in some samples more than one mutation has been
+                                                        in some samples more than one variant has been
                                                         reported.
                                                     </td>
                                                 </tr>
@@ -1054,7 +1054,7 @@
                                                     <td>Sample_ID</td>
                                                     <td>Unique sample identification number. This number
                                                         allows the automatic retrieval of samples with
-                                                        multiple mutations.
+                                                        multiple variants.
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -1083,18 +1083,18 @@
                                                             life-style.
                                                             They contain heterogeneous notes, usually
                                                             comments emphasized by authors reporting the
-                                                            mutations.
+                                                            variants.
                                                             It should be noted that this information is
                                                             generally qualitative. No quantitative
                                                             information on exposure of risk
                                                             factors is included in the database. This
                                                             information does not presuppose that a formal,
                                                             causal link has been established between
-                                                            such factors and the mutation described.
+                                                            such factors and the variant described.
                                                             Moreover, for most exogenous risk factors,
                                                             individual exposure has not been
                                                             monitored. <b> This information is given solely
-                                                                to (i) permit the retrieval of mutations
+                                                                to (i) permit the retrieval of variations
                                                                 found in patients
                                                                 belonging to defined groups or having
                                                                 specific risk factors, and (ii) facilitate
@@ -1129,7 +1129,7 @@
                                                 <tr>
                                                     <td><a id="Germline_mutation"></a>Germline_mutation
                                                     </td>
-                                                    <td>Germline mutation detected in any gene in the
+                                                    <td>Germline variant detected in any gene in the
                                                         patient.
                                                     </td>
                                                 </tr>
@@ -1172,7 +1172,7 @@
                                                 <tr>
                                                     <td>Ref_ID</td>
                                                     <td>Unique identification number for the reference in
-                                                        which the mutation is described.
+                                                        which the variant is described.
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -1185,7 +1185,7 @@
                                                         analysis because of dubious quality.
                                                         Such studies are identified based on the following
                                                         criteria: they report several samples with
-                                                        multiple mutations, and/or a high proportion of rare
+                                                        multiple variants, and/or a high proportion of rare
                                                         variants or variants classified as functional.
 
                                                     </td>
@@ -1200,8 +1200,8 @@
                                             </h4>
 
                                             <p>This file lists the publications in which are described the
-                                                mutations
-                                                and gives the method used to detect the mutations. Each row
+                                                variants
+                                                and gives the method used to detect the variants. Each row
                                                 (record) represents a
                                                 citation with an arbitrarily assigned unique identification
                                                 number
@@ -1223,7 +1223,7 @@
                                                 data-bs-target="#collapsePrev" aria-expanded="false"
                                                 aria-controls="collapsePrev">
                                         </button>
-                                        Prevalence of <em>TP53</em> Somatic Mutations by Tumor Site
+                                        Prevalence of <em>TP53</em> Somatic Variants by Tumor Site
                                     </div>
                                     <div class="collapse" id="collapsePrev">
                                         <div class="bg-light p-3 my-3">
@@ -1231,23 +1231,23 @@
 
                                             <p> This dataset contains information on the proportion of
                                                 tumors that carry a somatic <em>TP53</em>
-                                                mutation extracted from publications contained in the
+                                                variant extracted from publications contained in the
                                                 Somatic dataset, and in additional publications that do not
                                                 give a
-                                                detailed description of the mutations (many studies do not
-                                                provide detailed information on each mutation detected
+                                                detailed description of the variants (many studies do not
+                                                provide detailed information on each variant detected
                                                 but rather report their results in the form of summary
                                                 tables, preventing their inclusion in the somaticMutation
                                                 dataset), or publications reporting negative results (no
-                                                mutation found, thus not included in the somaticMutation
+                                                variant found, thus not included in the somaticMutation
                                                 dataset).
                                             </p>
 
                                             <p>For each study, the total number of tumors or tissue samples
                                                 analyzed, and the number of these samples which were found
                                                 to contain
-                                                a mutation is provided.The reference paper, method of
-                                                mutation detection and country of origin of the patients are
+                                                a variant is provided.The reference paper, method of
+                                                variant detection and country of origin of the patients are
                                                 also indicated.
                                                 When the same research team published several papers that
                                                 describe the same set of samples, data from the most recent
@@ -1277,12 +1277,12 @@
                                                 <tr>
                                                     <td>Sample_analyzed</td>
                                                     <td>Number of tumor samples analyzed for <em>TP53</em>
-                                                        mutations.
+                                                        variants.
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Sample_mutated</td>
-                                                    <td>Number of tumor samples with a mutation in <em>TP53</em>.
+                                                    <td>Number of tumor samples with a variant in <em>TP53</em>.
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -1311,18 +1311,18 @@
                                                     <td>Studies that we recommend to exclude from any
                                                         analysis because of data quality issues.
                                                         Studies are labeled as 'exclude' if: they report
-                                                        several samples with multiple mutations
+                                                        several samples with multiple variants
                                                         in patients with no specific genetic background or
                                                         exposure to mutagen;
                                                         they report more variants that are classified as
                                                         functional or partially functional (based on TA
                                                         class) than variants classified as non-functional;
-                                                        mutations are not precisely described and can not be
+                                                        variants are not precisely described and can not be
                                                         fully annotated in the database;
-                                                        several mutations in the series are reported with
+                                                        several variants in the series are reported with
                                                         errors (such as position and base that do not fit,
                                                         or report of neutral polymorphisms as somatic
-                                                        mutations).
+                                                        variants).
 
                                                     </td>
                                                 </tr>
@@ -1341,7 +1341,7 @@
                                                 data-bs-target="#collapsePrevLiver" aria-expanded="false"
                                                 aria-controls="collapsePrevLiver">
                                         </button>
-                                        Prevalence of the R249S <em>TP53</em> Mutations in Liver Cancer
+                                        Prevalence of the R249S <em>TP53</em> Variants in Liver Cancer
                                     </div>
 
                                     <div class="collapse" id="collapsePrevLiver">
@@ -1349,11 +1349,11 @@
 
 
                                             <p> This dataset contains data on the prevalence of the c.747G&gt;T
-                                                (p.R249S) mutation in liver cancers.
+                                                (p.R249S) variant in liver cancers.
                                                 It includes studies that have screened at least exon 7 of <em>TP53</em>
                                                 by sequencing, and studies that have searched for this specific
-                                                mutation by RFLP.
-                                                The presence of this mutation in hepatocellular carcinomas has
+                                                variant by RFLP.
+                                                The presence of this variant in hepatocellular carcinomas has
                                                 been linked to exposure to aflatoxins and HBV, and may thus
                                                 constitutes a
                                                 biomarker of exposure. This dataset has been released with the
@@ -1389,13 +1389,13 @@
                                                 <tr>
                                                     <td>Sample_analyzed</td>
                                                     <td>Number of tumor samples analyzed for the c.747G&gt;T
-                                                        (p.R249S) <em>TP53</em> mutation.
+                                                        (p.R249S) <em>TP53</em> variant.
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Count_R249S</td>
                                                     <td>Number of tumor samples containing the c.747G&gt;T
-                                                        (p.R249S) <em>TP53</em> mutation.
+                                                        (p.R249S) <em>TP53</em> variant.
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -1421,7 +1421,7 @@
                                                 data-bs-target="#collapsePV" aria-expanded="false"
                                                 aria-controls="collapsePV">
                                         </button>
-                                        Prognostic Value of <em>TP53</em> Somatic Mutations
+                                        Prognostic Value of <em>TP53</em> Somatic Variants
                                     </div>
                                     <div class="collapse" id="collapsePV">
                                         <div class="bg-light p-3 my-3">
@@ -1431,7 +1431,7 @@
 
                                             <p>This dataset includes information on all studies that have
                                                 analyzed the
-                                                relationship between <em>p53</em> mutations and cancer
+                                                relationship between <em>p53</em> variants and cancer
                                                 prognosis. For
                                                 each study,
                                                 the patient cohort, study settings and a summary of the results
@@ -1444,11 +1444,11 @@
                                             </p>
 
                                             <p>Many of these studies do not provide detailed information on each
-                                                mutation detected but rather report their results in the form of
+                                                variant detected but rather report their results in the form of
                                                 summary
                                                 tables. Such publications have been included in the prognosis
                                                 dataset but not in the somaticMutation dataset.
-                                                For some of them, the mutations have been published in a
+                                                For some of them, the variants have been published in a
                                                 previous paper and can be retrieved with the
                                                 Cross_Ref_ID study identifier (see below).
                                             </p>
@@ -1526,12 +1526,12 @@
                                                 <tr>
                                                     <td>Cohort</td>
                                                     <td>Number of patients/tumors analyzed for <em>TP53</em>
-                                                        mutations.
+                                                        variants.
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><em>p53</em> mutations</td>
-                                                    <td>Number of patients/tumors with a mutation in
+                                                    <td><em>p53</em> variants</td>
+                                                    <td>Number of patients/tumors with a variant in
                                                         <em>TP53</em>.
                                                     </td>
                                                 </tr>
@@ -1548,7 +1548,7 @@
                                                 <tr>
                                                     <td>Association</td>
                                                     <td>Summary result: association with the presence of a <em>TP53</em>
-                                                        mutation.
+                                                        variant.
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -1566,7 +1566,7 @@
                                                     <td>Exclude_analysis</td>
                                                     <td>Papers that we recommend to exclude from analysis
                                                         because of dubious data quality (report several samples
-                                                        with multiple mutations, and/or a high proportion of
+                                                        with multiple variants, and/or a high proportion of
                                                         rare variants or variants classified as neutral or
                                                         functional).
                                                     </td>
@@ -1584,7 +1584,7 @@
                                                 data-bs-target="#collapseGM" aria-expanded="false"
                                                 aria-controls="collapseGM">
                                         </button>
-                                        Germline Mutations in LFS/LFL Families
+                                        Germline Variations in LFS/LFL Families
                                     </div>
                                     <div class="collapse" id="collapseGM">
                                         <div class="bg-light p-3 my-3">
@@ -1592,7 +1592,7 @@
 
                                             <h4>germlineMutationData-IARC <em>TP53</em> Database,R20</h4>
 
-                                            <p>Inherited <em>TP53</em> mutations are associated with a rare
+                                            <p>Inherited <em>TP53</em> variants are associated with a rare
                                                 autosomal
                                                 dominant disorder,
                                                 the <a target="_blank" href="refs_corner#lifraumeni">Li-Fraumeni
@@ -1600,24 +1600,24 @@
                                             </p>
 
                                             <p>This dataset contains information on individuals that are
-                                                carriers of a <em>TP53</em> germline mutation and families in
+                                                carriers of a <em>TP53</em> germline variant and families in
                                                 which at
                                                 least one family member
-                                                has been identied as a carrier of a germline mutation in the
+                                                has been identied as a carrier of a germline variant in the
                                                 <em>TP53</em> gene. <strong>Criteria for inclusion are the
                                                     following:
                                                     a) individuals carrying a sequenced <em>TP53</em> germline
-                                                    mutation,
+                                                    variant,
                                                     affected or not by a cancer, b) individuals affected by a
                                                     cancer and
                                                     belonging to a family in which at least one family member
-                                                    has been identified as a carrier of a germline mutation in
+                                                    has been identified as a carrier of a germline variant in
                                                     the <em>TP53</em> gene.</strong>
                                             </p>
 
                                             <p> Each row (record) in the downloaded file represents a tumor
                                                 found in an individual having a <em>TP53</em>
-                                                germline mutation. The file contains the following information:
+                                                germline variant. The file contains the following information:
                                             </p>
 
                                             <table class="table">
@@ -1713,13 +1713,13 @@
                                                 <tr>
                                                     <td><a id="Germline_mutation_g"></a>Germline_mutation
                                                     </td>
-                                                    <td>A <em>TP53</em> germline mutation has been identified.
+                                                    <td>A <em>TP53</em> germline variant has been identified.
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>MUT_ID...TAclass</td>
                                                     <td><a class="jump-link"
-                                                           href="#ExonIntron">see mutation annotations</a></td>
+                                                           href="#ExonIntron">see variant annotations</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Individual_ID</td>
@@ -1756,29 +1756,29 @@
                                                     <td><a id="Germline_carrier"></a>Germline_carrier
                                                     </td>
                                                     <td>
-                                                        <em>TP53</em> mutation status of the individual:
+                                                        <em>TP53</em> variant status of the individual:
                                                         <b>confirmed</b>=
                                                         the individual has been tested for the presence of the
-                                                        mutation and the
-                                                        mutation has been found; <b>obligatory</b>= the
+                                                        variant and the
+                                                        variant has been found; <b>obligatory</b>= the
                                                         individual has not been tested for the presence of the
-                                                        mutation but must be carrier based on
-                                                        the mutation status of the other individuals in the
+                                                        variant but must be carrier based on
+                                                        the variant status of the other individuals in the
                                                         pedigree; <b>50%prob.</b>= there is a chance of 50% that
-                                                        the individual is a mutation carrier;
+                                                        the individual is a variant carrier;
                                                         <b>negative</b>= the individual has been tested for the
-                                                        presence of the mutation and the mutation has not been
+                                                        presence of the variant and the variant has not been
                                                         found; <b>NA</b>=
                                                         the individual has not been tested for the presence of
-                                                        the mutation.
+                                                        the variant.
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><a id="Mode_of_inheritance"></a>Mode_of_inheritance
                                                     </td>
-                                                    <td>Mode of mutation inheritance: P=paternal, M=maternal, M&amp;P=maternal
-                                                        and paternal, de novo= mutation that has not been
-                                                        inherited, "de novo, mosaic"= mutation that has not been
+                                                    <td>Mode of variation inheritance: P=paternal, M=maternal, M&amp;P=maternal
+                                                        and paternal, de novo= variant that has not been
+                                                        inherited, "de novo, mosaic"= variant that has not been
                                                         inherited and is present in a subpopulation of cells,
                                                         na=not known.
                                                     </td>
@@ -1819,7 +1819,7 @@
                                                 <tr>
                                                     <td>Ref_ID</td>
                                                     <td>Reference number indicating the
-                                                        publication in which the mutation is described. This
+                                                        publication in which the variant is described. This
                                                         number
                                                         corresponds to the Ref_ID number in the GermlineRefR20
                                                         file.
@@ -1844,13 +1844,13 @@
                                             <h4>germlinePrevalenceIARC <em>TP53</em> Database, R20</h4>
 
                                             <p> This dataset includes studies reporting <em>TP53</em> germline
-                                                mutation
+                                                variant
                                                 screening in large cohorts of patients selected based on various
                                                 criteria (family history of cancer, specific cancer diagnosis,
                                                 ...)
                                                 Each row represents the result of the analysis of <em>TP53</em>
                                                 germline
-                                                mutation status in a selected cohort.
+                                                variant status in a selected cohort.
                                             </p>
 
                                             <table class="p53table">
@@ -1873,21 +1873,21 @@
                                                 <tr>
                                                     <td><a id="Cases_analyzed"></a>Cases analyzed
                                                     </td>
-                                                    <td>Number of patients included in the mutation screen.</td>
+                                                    <td>Number of patients included in the variant screen.</td>
                                                 </tr>
                                                 <tr>
                                                     <td><a id="Cases_mutated"></a>Cases mutated
                                                     </td>
                                                     <td>Number of patients found to carry a <em>TP53</em>
-                                                        mutation.
-                                                        Details on mutations can be found in the dataset of
-                                                        germline mutations when the information was provided,
+                                                        variant.
+                                                        Details on variants can be found in the dataset of
+                                                        germline variants when the information was provided,
                                                         but many studies
-                                                        do not provide a detailed list of mutations.
+                                                        do not provide a detailed list of variations.
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><a id="MutationPrevalence"></a>Mutation
+                                                    <td><a id="MutationPrevalence"></a>Variant
                                                         prevalence
                                                     </td>
                                                     <td>Percent of mutated cases.</td>
@@ -1908,7 +1908,7 @@
                                             <h4>germlineFrequency_IARCTP53Database_R20</h4>
 
                                             <p> This new dataset includes studies reporting the frequency of
-                                                individual <em>TP53</em> germline mutations in case-control
+                                                individual <em>TP53</em> germline variants in case-control
                                                 series using
                                                 NGS for the screening of the entire coding regions of
                                                 <em>TP53</em>.
@@ -1925,7 +1925,7 @@
                                                     <td>MUT_ID....DNEclass</td>
                                                     <td><a class="jump-link"
                                                            href="#MUT_id">see
-                                                        mutation annotations</a></td>
+                                                        variant annotations</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td><a id="Freq_cases"></a>Freq_cases</td>
@@ -1945,8 +1945,8 @@
                                                     <td>Number of cases found to carry the specific
                                                         <em>TP53</em>
                                                         variant.
-                                                        Details on mutation phenotype may be found in the
-                                                        dataset of germline mutations if enough details is
+                                                        Details on variant phenotype may be found in the
+                                                        dataset of germline variants if enough details is
                                                         provided on patients and tumor type.
                                                     </td>
                                                 </tr>
@@ -1987,7 +1987,7 @@
                                                 data-bs-target="#collapseMM" aria-expanded="false"
                                                 aria-controls="collapseMM">
                                         </button>
-                                        Functional Activities of Missense Mutations
+                                        Functional Activities of Missense Variants
                                     </div>
                                     <div class="collapse" id="collapseMM">
                                         <div class="bg-light p-3 my-3">
@@ -2080,7 +2080,7 @@
                                                 <tr>
                                                     <td>ProtDescription...Structural_motif</td>
                                                     <td><a class="jump-link" href="#ProtDescription">see
-                                                        mutation
+                                                        variant
                                                         annotations</a></td>
                                                 </tr>
                                                 <tr>
@@ -2320,7 +2320,7 @@
                                                 <tr>
                                                     <td>ProtDescription...codon number</td>
                                                     <td><a class="jump-link" href="#ProtDescription">see
-                                                        mutation
+                                                        variant
                                                         annotations</a></td>
                                                 </tr>
                                                 <tr>
@@ -2380,7 +2380,7 @@
                                             <h4>CellLinesMutationStatus-IARC <em>TP53</em> Database,R20</h4>
 
                                             <p>This dataset includes cell-lines that have been screened for
-                                                <em>TP53</em> mutation and have been
+                                                <em>TP53</em> variant and have been
                                                 published in the scientific literature, or in the
                                                 <a href="https://www.sanger.ac.uk/genetics/CGP/CellLines/"
                                                    target="_blank">Sanger cell-line database</a> or the
@@ -2461,7 +2461,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Germline_mutation</td>
-                                                    <td>Germline mutation in <em>TP53</em> or any other gene
+                                                    <td>Germline variant in <em>TP53</em> or any other gene
                                                         carried
                                                         by the individual from which the cell-line has been
                                                         isolated.
@@ -2501,7 +2501,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Other_mutations</td>
-                                                    <td>Name of other genes in which a mutation has been
+                                                    <td>Name of other genes in which a variant has been
                                                         identified.
                                                     </td>
                                                 </tr>
@@ -2512,7 +2512,7 @@
                                                         sequence;
                                                         MUT= mutated gene sequence;
                                                         NULL= entire gene deletion;
-                                                        LOE= loss of gene expression without gene mutation.
+                                                        LOE= loss of gene expression without gene variant.
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2529,11 +2529,11 @@
                                                 <tr>
                                                     <td>MUT_ID...</td>
                                                     <td>
-                                                        <em>TP53</em> mutation description and functional
+                                                        <em>TP53</em> variant description and functional
                                                         properties,
                                                         <a class="jump-link"
                                                            href="#Mutationdescription">see
-                                                            mutation and function annotations</a>.
+                                                            variant and function annotations</a>.
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2563,7 +2563,7 @@
                                                 data-bs-target="#collapseMouse" aria-expanded="false"
                                                 aria-controls="collapseMouse">
                                         </button>
-                                        Mouse Models with Engineered TP3
+                                        Mouse Models with Engineered <em>TP53</em>
                                     </div>
                                     <div class="collapse" id="collapseMouse">
                                         <div class="bg-light p-3 my-3">
@@ -2633,12 +2633,12 @@
                                                 data-bs-target="#collapseEIM" aria-expanded="false"
                                                 aria-controls="collapseEIM">
                                         </button>
-                                        Experimentally Induced Mutations
+                                        Experimentally Induced Variants
                                     </div>
                                     <div class="collapse" id="collapseEIM">
                                         <div class="bg-light p-3 my-3">
 
-                                            <p>This dataset contains list of mutations in the human
+                                            <p>This dataset contains list of variations in the human
                                                 <em>TP53</em> gene
                                                 obtained from
                                                 mutagenicity assays in the <a
@@ -2661,7 +2661,7 @@
                                                 <tbody>
                                                 <tr>
                                                     <td>MUT_ID</td>
-                                                    <td>Unique ID for the mutation, used across datasets.</td>
+                                                    <td>Unique ID for the variant, used across datasets.</td>
                                                 </tr>
                                                 <tr>
                                                     <td><a id="ExpIndMutExposure"></a>Exposure</td>
@@ -2669,17 +2669,17 @@
                                                 </tr>
                                                 <tr>
                                                     <td>c_description</td>
-                                                    <td>Mutation described on the cDNA sequence. <a
+                                                    <td>Variant described on the cDNA sequence. <a
                                                             class="jump-link"
                                                             href="#MUT_id">See
-                                                        mutation annotations</a></td>
+                                                        variant annotations</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>g_description</td>
-                                                    <td>Mutation described at the genome level. <a
+                                                    <td>Variant described at the genome level. <a
                                                             class="jump-link"
                                                             href="#MUT_id">See
-                                                        mutation annotations</a></td>
+                                                        variant annotations</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td><a id="ExpIndMutModel"></a>Model</td>
@@ -2766,7 +2766,7 @@
                                                 <tr>
                                                     <td><a id="Sample_source"></a>Sample_source</td>
                                                     <td>Nature of the sample from which the
-                                                        mutation has been identified: cell-line, surgery
+                                                        variant has been identified: cell-line, surgery
                                                         (surgical or
                                                         autopsy specimen, including fresh samples and
                                                         archival, pathology
@@ -3071,7 +3071,7 @@
                                                     </td>
                                                     <td>Papers that we recommend to exclude from analysis
                                                         because of dubious data quality (report several
-                                                        samples with multiple mutations, and/or a high
+                                                        samples with multiple variants, and/or a high
                                                         proportion of rare variants or variants classified
                                                         as neutral or functional).
                                                     </td>
@@ -3098,7 +3098,7 @@
                                                 data-bs-target="#collapseMDM" aria-expanded="false"
                                                 aria-controls="collapseMDM">
                                         </button>
-                                        Mutation Detection Method
+                                        Variant Detection Method
                                     </div>
                                     <div class="collapse" id="collapseMDM">
                                         <div class="bg-light p-3 my-3">
@@ -3120,7 +3120,7 @@
                                                 <tr>
                                                     <td><a id="Start_material"></a>Start_material
                                                     </td>
-                                                    <td>Indicates if DNA or RNA was screened for mutations.
+                                                    <td>Indicates if DNA or RNA was screened for variants.
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -3142,7 +3142,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td><a id="Exons_analyzed"></a>Exon2-11</td>
-                                                    <td>Exons that have been screened for mutation. In the
+                                                    <td>Exons that have been screened for variant. In the
                                                         downloaded file,
                                                         "-1" or "TRUE" indicate that the exon has been screened
                                                         and "0" or "FALSE" indicate that it has not been
@@ -3246,7 +3246,7 @@
                                 <tr>
 
                                     <td>COSMIC</td>
-                                    <td>Catalog Of Somatic Mutations in Cancer</td>
+                                    <td>Catalog Of Somatic Variants in Cancer</td>
 
                                 </tr>
                                 <tr>
@@ -3452,7 +3452,7 @@
                                 <tr>
 
                                     <td align="left">MDE</td>
-                                    <td align="left">Hydrolink mutation detection enhancement</td>
+                                    <td align="left">Hydrolink variant detection enhancement</td>
 
                                 </tr>
                                 <tr>
@@ -3758,7 +3758,7 @@
                                                     possible single nucleotide substitutions in <em>TP53</em>
                                                     exonic sequences (including those that have never been
                                                     reported
-                                                    in cancer). In addition, all other types of mutations that
+                                                    in cancer). In addition, all other types of variations that
                                                     have
                                                     been reported in human samples and validated polymorphisms
                                                     are
@@ -3768,48 +3768,48 @@
                                                     can be retrieved with this search option.
                                                     Each dataset entry corresponds to a unique gene variation.
                                                 </li>
-                                                <li><b>Somatic mutations</b>.
+                                                <li><b>Somatic variants</b>.
                                                     This option allows the retrieval and analysis of <em>TP53</em>
-                                                    mutations
+                                                    variants
                                                     reported as somatic events in tumor samples and cell-lines.
-                                                    Each dataset entry corresponds to a mutation identified in a
+                                                    Each dataset entry corresponds to a variant identified in a
                                                     human sample.
                                                 </li>
-                                                <li><b>Somatic mutation prevalence</b>.
+                                                <li><b>Somatic variant prevalence</b>.
                                                     This option allows the analysis of the prevalence of
                                                     <em>TP53</em>
-                                                    somatic mutations by cancer type and population groups.
+                                                    somatic variants by cancer type and population groups.
                                                     Each dataset entry corresponds to the prevalence of
                                                     <em>TP53</em>
-                                                    mutation for a specific type of cancer in a defined human
+                                                    variant for a specific type of cancer in a defined human
                                                     population.
                                                 </li>
-                                                <li><b>Germline mutations</b>.
+                                                <li><b>Germline variants</b>.
                                                     This option allows the retrieval and analysis of <em>TP53</em>
-                                                    mutations
+                                                    variants
                                                     reported as germline events in human individuals.
                                                     Each dataset entry corresponds to a tumor identified in an
-                                                    individual carrier of a <em>TP53</em> germline mutation.
+                                                    individual carrier of a <em>TP53</em> germline variant.
                                                     The searchable dataset only includes cancer-affected
                                                     individuals
                                                     who are confirmed or obligatory carrier of a <em>TP53</em>
-                                                    mutation
+                                                    variant
                                                     (data on non-affected carriers or non-confirmed carrier can
                                                     be
                                                     retrieved by downloading the full dataset with the 'data
                                                     downloads' option).
                                                 </li>
-                                                <li><b>Germline mutations prevalence</b>.
+                                                <li><b>Germline variants prevalence</b>.
                                                     This table lists diferent studies reporting the prevalence
                                                     of
-                                                    <em>TP53</em> germline mutation in selected groups of
+                                                    <em>TP53</em> germline variant in selected groups of
                                                     individuals.
                                                 </li>
                                                 <li><b>Cell-lines</b>.
                                                     This option allows the retrieval and analysis of <em>TP53</em>
-                                                    mutations
+                                                    variants
                                                     reported in human cell-lines.
-                                                    Each dataset entry corresponds to a mutation identified in a
+                                                    Each dataset entry corresponds to a variant identified in a
                                                     cell-line.
                                                 </li>
                                                 <li><b>Mouse models</b>.
@@ -3833,118 +3833,118 @@
                                                 data-bs-target="#collapseMDG" aria-expanded="false"
                                                 aria-controls="collapseMDG">
                                         </button>
-                                        Mutation Distribution Graphs
+                                        Variant Distribution Graphs
                                     </div>
                                     <div class="collapse" id="collapseMDG">
                                         <div class="bg-light p-3 my-3">
                                             <ul>
-                                                <li><b>Mutation type</b>. Proportion of mutations classified by
+                                                <li><b>Variant type</b>. Proportion of variations classified by
                                                     their
                                                     nature (base change, insertions, deletions....):
-                                                    number of mutations of each class divided by the total
+                                                    number of variations of each class divided by the total
                                                     number of
-                                                    mutations selected (% is shown).
+                                                    variants selected (% is shown).
                                                 </li>
                                                 <li><b>Codon distribution</b>. Proportion of exonic point
-                                                    mutations
+                                                    variants
                                                     at
                                                     each codon position:
-                                                    number of mutations at each codon position divided by the
+                                                    number of variations at each codon position divided by the
                                                     total
-                                                    number of exonic mutations selected (% is shown).
+                                                    number of exonic variants selected (% is shown).
                                                 </li>
-                                                <li><b>Exon/intron distribution</b>. Proportion of mutations in
+                                                <li><b>Exon/intron distribution</b>. Proportion of variations in
                                                     each
                                                     exon/intron:
-                                                    number of mutations within each Exon/intron divided by the
+                                                    number of variations within each Exon/intron divided by the
                                                     total
-                                                    number of mutations selected (% is shown).
+                                                    number of variations selected (% is shown).
                                                 </li>
                                                 <li><b>3D JMOL graph</b>. Residues (within the central domain of
                                                     <em>p53</em>
                                                     protein -codons 96 to 289) are highlighted according to the
-                                                    proportion of exonic mutations at this position (start site
+                                                    proportion of exonic variants at this position (start site
                                                     of
-                                                    mutation) among all selected mutations:
-                                                    number of mutations at each codon position divided by the
+                                                    variant) among all selected variants:
+                                                    number of variations at each codon position divided by the
                                                     total
-                                                    number of exonic mutations selected: red colored are the
+                                                    number of exonic variants selected: red colored are the
                                                     most
                                                     frequently mutated, yellow colored the less frequently
                                                     mutated,
                                                     orange are intermediate.
                                                 </li>
-                                                <li><b>Mutation effect</b>. Proportion of mutations classified
+                                                <li><b>Variant effect</b>. Proportion of variations classified
                                                     according
                                                     to their predicted effect on protein sequence (missense,
                                                     nonsense,
                                                     frameshift ins/del, …):
-                                                    number of mutations of each class divided by the total
+                                                    number of variations of each class divided by the total
                                                     number of
-                                                    mutations selected (% is shown).
+                                                    variants selected (% is shown).
                                                 </li>
-                                                <li><b>Point mutation</b>. Proportion of single amino-acid
+                                                <li><b>Point variant</b>. Proportion of single amino-acid
                                                     substitutions
                                                     classified according to their predicted effect on protein
                                                     sequence
                                                     (missense, nonsense, silent):
-                                                    number of mutations of each class divided by the total
+                                                    number of variations of each class divided by the total
                                                     number of
-                                                    point mutations selected (% is shown).
+                                                    point variants selected (% is shown).
                                                 </li>
-                                                <li><b>Point mutation dot-plot</b>. Each dot represent a
+                                                <li><b>Point variant dot-plot</b>. Each dot represent a
                                                     specific
                                                     point
-                                                    mutation, colored according to their predicted effect on
+                                                    variant, colored according to their predicted effect on
                                                     protein
                                                     sequence (missense in blue, nonsense in red and silent in
                                                     green);
-                                                    the x axis shows the proportion of the specific mutation in
+                                                    the x axis shows the proportion of the specific variant in
                                                     the
-                                                    selected dataset (% of total point mutations in the selected
-                                                    dataset); the Y axis shows the predicted mutation rate for
+                                                    selected dataset (% of total point variants in the selected
+                                                    dataset); the Y axis shows the predicted variant rate for
                                                     the
-                                                    particular point mutation (see mutation annotations).
+                                                    particular point variant (see variant annotations).
                                                 </li>
-                                                <li><b>SIFT</b>. Proportion of missense mutations classified
+                                                <li><b>SIFT</b>. Proportion of missense variants classified
                                                     according
                                                     to their predicted deleterious/damaging or neutral/tolerated
                                                     effect
                                                     based on SIFT algorithm:
-                                                    number of mutations of each class divided by the total
+                                                    number of variations of each class divided by the total
                                                     number of
-                                                    missense mutations selected (% is shown).
+                                                    missense variants selected (% is shown).
                                                 </li>
                                                 <li><b>SIFT dot-plot</b>. Each dot represent a specific point
-                                                    mutation,
+                                                    variant,
                                                     colored according to their predicted deleterious/damaging or
                                                     neutral/tolerated effect based on SIFT algorithm;
-                                                    the x axis shows the proportion of the specific mutation in
+                                                    the x axis shows the proportion of the specific variant in
                                                     the
-                                                    selected dataset (% of total point mutations in the selected
-                                                    dataset); the Y axis shows the predicted mutation rate for
+                                                    selected dataset (% of total point variants in the selected
+                                                    dataset); the Y axis shows the predicted variant rate for
                                                     the
-                                                    particular point mutation (see mutation annotations).
+                                                    particular point variant (see variant annotations).
                                                 </li>
-                                                <li><b>Transactivation</b>. Proportion of missense mutations
+                                                <li><b>Transactivation</b>. Proportion of missense variants
                                                     classified
                                                     according to their experimentally measured transactivation
                                                     activities (based on FASAY):
-                                                    number of mutations of each class divided by the total
+                                                    number of variations of each class divided by the total
                                                     number of
-                                                    missense mutations selected (% is shown).
+                                                    missense variants selected (% is shown).
                                                 </li>
                                                 <li><b>Transactivation dot-plot</b>. Each dot represent a
                                                     specific
                                                     point
-                                                    mutation, colored according to their experimentally measured
+                                                    variant, colored according to their experimentally measured
                                                     transactivation activities;
-                                                    the x axis shows the proportion of the specific mutation in
+                                                    the x axis shows the proportion of the specific variant in
                                                     the
-                                                    selected dataset (% of total point mutations in the selected
-                                                    dataset); the Y axis shows the predicted mutation rate for
+                                                    selected dataset (% of total point variants in the selected
+                                                    dataset); the Y axis shows the predicted variant rate for
                                                     the
-                                                    particular point mutation (see mutation annotations).
+                                                    particular point variant (see variant annotations).
                                                 </li>
                                             </ul>
                                         </div>
@@ -3963,36 +3963,36 @@
                                         <div class="bg-light p-3 my-3">
                                             <ul>
                                                 <li><b>Germline data</b>. Distribution of tumor sites associated
-                                                    with the selected mutations;
+                                                    with the selected variants;
                                                     number of tumors classified by tumor site divided by total
                                                     number of tumors observed in individuals carriers of the
-                                                    selected mutations (% is shown).
+                                                    selected variants (% is shown).
                                                 </li>
                                                 <li><b>Somatic data</b>. Distribution of tumor sites associated
                                                     with
-                                                    the selected mutations;
-                                                    number of mutations classified by tumor site divided by
+                                                    the selected variants;
+                                                    number of variations classified by tumor site divided by
                                                     total
-                                                    number of mutations observed in tumors carrying the selected
-                                                    mutations (% is shown).
+                                                    number of variations observed in tumors carrying the selected
+                                                    variants (% is shown).
                                                 </li>
                                                 <li><b>Gene variation data, somatic graph</b>. Proportion of the
-                                                    selected mutations among all mutations reported in the
+                                                    selected variants among all variants reported in the
                                                     database
                                                     by tumor sites;
-                                                    number of selected mutations classified by tumor site
+                                                    number of selected variants classified by tumor site
                                                     divided by
-                                                    total number of mutations in the database for each tumor
+                                                    total number of variations in the database for each tumor
                                                     sites
                                                     (% is shown).
                                                 </li>
                                                 <li><b>Gene variation data, germline graph</b>. Distribution of
-                                                    tumor sites associated with the selected mutations;
+                                                    tumor sites associated with the selected variants;
                                                     number of tumors classified by tumor site divided by total
                                                     number of tumors observed in individuals carriers of the
-                                                    selected mutations (% is shown).
+                                                    selected variants (% is shown).
                                                 </li>
-                                                <li><b>Mutation prevalence</b>. Proportion of mutated samples by
+                                                <li><b>Variant prevalence</b>. Proportion of mutated samples by
                                                     cancer site (topography graph), cancer type (morphology
                                                     graph),
                                                     or by country of origin of the patients (country graph);
@@ -4035,12 +4035,12 @@
                             </div>
                         </div>
                         <div class="p-3">
-                            <h4>Mutations screened from RNA </h4>
+                            <h4>Variants screened from RNA </h4>
                             <hr>
-                            <div>All mutations are annotated in the database at the genomic level.
-                                For mutations identified from RNA screening, annotations may not be accurate.
-                                For example, a mutation described as a deletion of exon 5 at RNA level might in
-                                fact be a point mutation located in a splice site at the genomic level
+                            <div>All variants are annotated in the database at the genomic level.
+                                For variants identified from RNA screening, annotations may not be accurate.
+                                For example, a variant described as a deletion of exon 5 at RNA level might in
+                                fact be a point variant located in a splice site at the genomic level
                                 (inducing skiping of an exon). It is of note that this concerns only a small
                                 fraction of the data included in the database. You may exclude studies that
                                 have screened RNA by using the 'Start material' control.
@@ -4051,8 +4051,8 @@
                             <hr>
                             <div> The exact location of deletions, insertions and complex variations are often
                                 poorly described in original reports (often reported at the codon but not
-                                genomic level). Annotations for these mutations are thus not precise since we
-                                annotate mutations at the genomic level. For example, if a deletion is described
+                                genomic level). Annotations for these variants are thus not precise since we
+                                annotate variants at the genomic level. For example, if a deletion is described
                                 as a
                                 deletion of one nucleotide at codon 158, it is entered in the database as
                                 deletion of the
@@ -4078,11 +4078,11 @@
                             </div>
                         </div>
                         <div class="p-3">
-                            <h4>How to retrieve a specific <em>p53</em> mutation frequency and residual
+                            <h4>How to retrieve a specific <em>p53</em> variant frequency and residual
                                 activity?</h4>
                             <hr>
                             <div>Select the <a href="search_gene_by_mut">Gene variation</a> option;
-                                select a specific mutation with available criteria and click on "Search"
+                                select a specific variant with available criteria and click on "Search"
                             </div>
                         </div>
 
@@ -4097,15 +4097,15 @@
                         <!--</div>-->
 
                         <div class="p-3">
-                            <h4>How to retrieve the type of somatic mutations found in a specific type of
+                            <h4>How to retrieve the type of somatic variants found in a specific type of
                                 cancer?</h4>
                             <hr>
-                            <div>Select the <a href="search_somatic_mut">Somatic mutation</a> option and
+                            <div>Select the <a href="search_somatic_mut">Somatic variant</a> option and
                                 select a specific type of tumor with available criteria (ICD-O 3rd
                                 <a href="topo">Topography</a> and <a href="morph">Morphology</a>
                                 classification systems are used for describing tumor types) is used for tumor
-                                classification). The 'Mutation distribution' button leads to a results page with
-                                different types of graphics showing mutation spectra for the selected tumor
+                                classification). The 'Variant Distribution' button leads to a results page with
+                                different types of graphics showing variant spectra for the selected tumor
                                 type.
                             </div>
                         </div>
@@ -4128,11 +4128,11 @@
                         </div>
                         <div class="p-3">
                             <h4>How to retrieve the summary of annotations contained in the database for a
-                                specific mutation?</h4>
+                                specific variant?</h4>
                             <hr>
 
                             <div>Select the <a href="search_gene_by_var">Gene variation</a> option; select
-                                a specific mutation with available criteria and click on "Search".
+                                a specific variant with available criteria and click on "Search".
                                 On the result page, click on 'View' button.
                             </div>
                         </div>
@@ -4141,35 +4141,35 @@
                                 mutants?</h4>
                             <hr>
                             <div>Select the <a href="search_gene_by_var">Gene variation</a> option; select
-                                a specific mutation with available criteria and click on "Search". On the result
+                                a specific variant with available criteria and click on "Search". On the result
                                 panel, click on 'View' button.
                             </div>
                         </div>
                         <div class="p-3">
-                            <h4>How to retrieve the type of tumors in which a specific somatic mutation
+                            <h4>How to retrieve the type of tumors in which a specific somatic variant
                                 occurs?</h4>
                             <hr>
                             <div>Select the <a href="search_gene_by_var">Gene variation</a> option; select
-                                a specific mutation with available criteria and click on "Search".
+                                a specific variant with available criteria and click on "Search".
                                 On the result page, click on 'Tumor distribution'
                             </div>
                         </div>
                         <div class="p-3">
                             <h4>How to retrieve the type of tumors associated with a specific germline
-                                mutation?</h4>
+                                variant?</h4>
                             <hr>
-                            <div>Select the <a href="search_germline_mut">Germline mutations</a> option;
-                                select a specific mutation with available criteria and click on "Tumor
+                            <div>Select the <a href="search_germline_mut">Germline variants</a> option;
+                                select a specific variant with available criteria and click on "Tumor
                                 distribution".
                             </div>
 
                         </div>
                         <div class="p-3">
-                            <h4>How to retrieve the frequency of somatically mutated samples (mutation
+                            <h4>How to retrieve the frequency of somatically mutated samples (variant
                                 prevalence) for (a) specific type(s) of cancer?</h4>
                             <hr>
-                            <div>Select the <a href="search_somatic_mut">Somatic mutation</a> option;
-                                select a specific type of cancer (and optionally a population and mutation
+                            <div>Select the <a href="search_somatic_mut">Somatic variant</a> option;
+                                select a specific type of cancer (and optionally a population and variant
                                 detection method) and click on the "Search" button.
                             </div>
                         </div>
@@ -4180,31 +4180,31 @@
                         Database Contents
                     </h3>
                     <div class="p-3">
-                        <h4>Why some mutations present in the somatic dataset are not retrieved with the
+                        <h4>Why some variants present in the somatic dataset are not retrieved with the
                             'Gene variation' search option?</h4>
                         <hr>
                         <div>There may be two reasons for this:</div>
                         <ol>
-                            <li>Mutations retrieved with this option only include gene variation that are
-                                fully described, while in the dataset of somatic mutations some mutations
+                            <li>Variants retrieved with this option only include gene variation that are
+                                fully described, while in the dataset of somatic variants some variants
                                 are not fully described.
                             </li>
-                            <li>Somatic mutations may be reported in individuals with different SNP status.
-                                If a mutation is close to a SNP, it may have a different impact on the
-                                protein sequence depending on the SNP status. For example, the mutation
+                            <li>Somatic variants may be reported in individuals with different SNP status.
+                                If a variant is close to a SNP, it may have a different impact on the
+                                protein sequence depending on the SNP status. For example, the variant
                                 c.637C&gt;T on the first base of codon 213, will
                                 result in a p.R213X change in the protein
                                 sequence if the SNP present on the third base of the codon is a A (CGA&gt;TGA),
                                 while it will result in a
                                 p.R213W change if the SNP present on the third base of the codon is a G (CGG&gt;TGG).
-                                Mutations not described from the reference
+                                Variants not described from the reference
                                 sequence are included in the somatic dataset, but not in the Gene variation
                                 dataset.
                             </li>
                         </ol>
                     </div>
                     <div class="p-3">
-                        <h4>Why mutation numbers retrieved from the mutation prevalence and mutation
+                        <h4>Why variant numbers retrieved from the variant prevalence and variant
                             spectrum datasets are different?</h4>
                         <hr>
 
@@ -4216,18 +4216,18 @@
                             <li>Because we retrieve data from papers, and in many papers the only
                                 information that can be
                                 extracted is the total number of samples analyzed and total number of
-                                samples mutated (mutations
-                                are not described in details), mutations can not be included in the somatic
+                                samples mutated (variants
+                                are not described in details), variants can not be included in the somatic
                                 dataset. Thus, numbers
                                 in the prevalence table do not match numbers in the somatic dataset
-                                (mutation spectrum).
+                                (variant spectrum).
                             </li>
 
                             <li>Numbers by histologies may also differ, as for example, a paper may contain
-                                mutation details for lung
+                                variant details for lung
                                 ADC, SCC, LCC (which are all non-small cell lung cancers), but total numbers
                                 of samples analyzed for each
-                                histology is not available. In this case, mutations corresponding to ADC,
+                                histology is not available. In this case, variants corresponding to ADC,
                                 SCC and LCC will be entered in
                                 the somatic dataset but in the prevalence table the prevalence will be
                                 indicated only for non-small cell
@@ -4236,19 +4236,19 @@
 
                             <li> Cell-lines are not included in the prevalence count.</li>
 
-                            <li> Samples with more than one mutations are counted once in the prevalence
+                            <li> Samples with more than one variants are counted once in the prevalence
                                 table
-                                while all mutations are entered in the somatic dataset.
+                                while all variants are entered in the somatic dataset.
                             </li>
 
-                            <li> The prevalence may be missing for some papers that describe mutations
+                            <li> The prevalence may be missing for some papers that describe variants
                                 included in
                                 the somatic dataset. The prevalence dataset has been added in a recent
                                 version of the database
                                 (2001 while the database started in 1994) and not all papers have been
                                 reviewed. The non-reviewed
                                 papers correspond mainly to publications that describe less than 10
-                                mutations (about 400 papers).
+                                variants (about 400 papers).
                                 For some papers, the prevalence could not be retrieved from the information
                                 provided in the
                                 publication (about 100 papers).

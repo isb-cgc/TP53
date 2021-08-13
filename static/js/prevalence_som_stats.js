@@ -12,7 +12,7 @@ $(document).ready(function () {
         display: true
     };
 
-    build_bar_config('som_prev_chart', 'Mutation Prevalence', graph_data, true, null, y_scale, false);
+    build_bar_config('som_prev_chart', 'Variant Prevalence', graph_data, true, null, y_scale, false);
 
     $('button.d-data-btn').on('click', function () {
         var graph_id = $(this).parents('.btn-group').data('graph-id');

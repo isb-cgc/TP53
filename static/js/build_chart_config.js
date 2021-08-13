@@ -224,7 +224,7 @@ var build_scatter_plot = function (chart_id, chart_title, data) {
             scales: {
                 x: {
                     title: {
-                        text: 'Mutation Rate (%)',
+                        text: 'Variant Rate (%)',
                         // display: true,
                     },
                     ticks: {

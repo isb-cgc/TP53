@@ -724,7 +724,7 @@ def results_gene_dist():
             'germline_tumor_dist': 'GermlineView'
         }
         template = 'mutation_stats.html'
-        subtitle = 'Tumor Site Distribution of Mutations'
+        subtitle = 'Tumor Site Distribution of Variants'
         graph_configs = {}
         sql_maps = {}
         graph_configs[action] = build_graph_configs(action)['tumor_dist']
@@ -733,7 +733,7 @@ def results_gene_dist():
     else:
         table = 'MutationView'
         template = 'mutation_dist_stats.html'
-        subtitle = 'Mutation Distributions'
+        subtitle = 'Variant Distributions'
         graph_configs = build_graph_configs(action, table)
         sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
     graph_result = build_graph_data(sql_maps)
@@ -763,14 +763,14 @@ def get_distribution():
 
     if action == 'get_mutation_dist':
         template = 'mutation_dist_stats.html'
-        subtitle = 'Mutation Distributions'
+        subtitle = 'Variant Distributions'
     elif action == 'get_codon_dist':
         table = 'GermlineMutationStats'
-        subtitle = 'Codon Distribution of Point Mutations'
+        subtitle = 'Codon Distribution of Point Variants'
     else:
-        subtitle = 'Tumor Site Distribution of Mutations'
+        subtitle = 'Tumor Site Distribution of Variants'
 
-    title = 'Search Results on {dataset_type} Mutations'.format(dataset_type=dataset_type)
+    title = 'Search Results on {dataset_type} Variants'.format(dataset_type=dataset_type)
     graph_configs = build_graph_configs(action, table)
     sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
     graph_result = build_graph_data(sql_maps)
@@ -1239,7 +1239,7 @@ def prevalence_somatic_stats():
         error_msg = "Sorry, query job has timed out."
     # query_result = {'data': data, 'msg': error_msg}
 
-    return render_template("prevalence_somatic_stats.html", criteria=[], graph_data=graph_data, title='Statistics on Somatic Mutations', subtitle='Somatic Mutation Prevalence by Tumor Site')
+    return render_template("prevalence_somatic_stats.html", criteria=[], graph_data=graph_data, title='Statistics on Somatic Variants', subtitle='Somatic Variant Prevalence by Tumor Site')
 
 
 @app.route("/results_somatic_mutation_list", methods=['GET', 'POST'])
@@ -1304,23 +1304,23 @@ def download_dataset():
 # @app.route("/results_somatic_mutation", methods=['GET', 'POST'])
 # def results_somatic_mutation():
 #     action = get_param_val(request, 'action')
-#     title = 'Statistics on Somatic Mutations'
+#     title = 'Statistics on Somatic Variants'
 #     template = 'mutation_stats.html'
 #     table = 'SomaticView'
 #     submenu = 'stats_somatic_mut'
-#     subtitle = 'Tumor Site Distribution of Mutations'
+#     subtitle = 'Tumor Site Distribution of Variations'
 #     if action == 'get_mutation_dist':
-#         subtitle = 'Mutation Distributions'
+#         subtitle = 'Variant Distributions'
 #         template = 'mutation_dist_stats.html'
 #     elif action == 'get_tumor_dist':
-#         # subtitle = 'Tumor Site Distribution of Mutations'
+#         # subtitle = 'Tumor Site Distribution of Variations'
 #         table = 'SomaticTumorStats'
 #
 #
 #     criteria_map = {}
 #     if request.method == 'POST':
 #         submenu = 'search_somatic_mut'
-#         title = 'Search Results on Somatic Mutations'
+#         title = 'Search Results on Somatic Variants'
 #         criteria_type = ['include', 'exclude']
 #         for type in criteria_type:
 #             prefix = 'sm_{type}'.format(type=type)
@@ -1352,14 +1352,14 @@ def results_somatic_prevalence():
     title = 'Search Results'
     if action == 'get_country_graph':
         group_by = 'Country'
-        subtitle = 'Somatic Mutation Prevalence by Country'
+        subtitle = 'Somatic Variant Prevalence by Country'
     elif action == 'get_topo_graph':
         group_by = 'Short_topo'
-        subtitle = 'Somatic Mutation Prevalence by Topography'
+        subtitle = 'Somatic Variant Prevalence by Topography'
     else:
         # get_morph_graph
         group_by = 'Morphogroup'
-        subtitle = 'Somatic Mutation Prevalence by Morphography'
+        subtitle = 'Somatic Variant Prevalence by Morphography'
     sql_stm = bq_builder.build_group_sum_graph_query(criteria=criteria, view='PrevalenceView', group_by=group_by)
 
     query_job = bigquery_client.query(sql_stm)
@@ -1504,25 +1504,25 @@ def results_germline_mutation_list():
 #     action = get_param_val(request, 'action')
 #     template = "mutation_dist_stats.html" if action == 'get_mutation_dist' else "mutation_stats.html"
 #     submenu = 'stats_germline_mut'
-#     title = 'Statistics on Germline Mutations'
+#     title = 'Statistics on Germline Variations'
 #
 #     if action == 'get_mutation_dist':
 #         table = 'GermlineView'
-#         subtitle = 'Mutation Distributions'
+#         subtitle = 'Variant Distributions'
 #     elif action == 'get_codon_dist':
 #         table = 'GermlineMutationStats'
-#         subtitle = 'Codon Distribution of Point Mutations'
+#         subtitle = 'Codon Distribution of Point Variants'
 #     elif action == 'get_tumor_dist':
 #         table = 'GermlineTumorStats'
-#         subtitle = 'Tumor Site Distribution of Mutations'
+#         subtitle = 'Tumor Site Distribution of Variations'
 #     else: # action == 'get_tumor_dist_view':
 #         table = 'GermlineView'
-#         subtitle = 'Tumor Site Distribution of Mutations'
+#         subtitle = 'Tumor Site Distribution of Variations'
 #
 #     criteria_map = {}
 #     if request.method == 'POST':
 #         submenu = 'search_germline_mut'
-#         title = 'Search Results on Germline Mutations'
+#         title = 'Search Results on Germline Variations'
 #         criteria_type = ['include', 'exclude']
 #         for type in criteria_type:
 #             prefix = 'gm_{type}'.format(type=type)
@@ -1861,18 +1861,18 @@ def cell_lines_mutation_stats():
     action = get_param_val(request, 'action')
     if action == 'get_mutation_type':
         table = 'CellLineView'
-        subtitle='Type of Mutations'
+        subtitle='Type of Variants'
     elif action == 'get_tumor_dist':
         table = 'CellLineSiteStats'
-        subtitle = 'Tumor Site Distribution of Mutations'
+        subtitle = 'Tumor Site Distribution of Variants'
     else: # action == 'get_codon_dist'
         table = 'CellLineMutationStats'
-        subtitle = 'Codon Distribution of Point Mutations'
+        subtitle = 'Codon Distribution of Point Variants'
     graph_configs = build_graph_configs(action, table)
     sql_maps = build_graph_sqls(graph_configs, {}, table)
     # print(build_graph_sqls)
     graph_result = build_graph_data(sql_maps)
-    return render_template("mutation_stats.html", criteria_map={}, title='Statistics on Cell Line Mutations',
+    return render_template("mutation_stats.html", criteria_map={}, title='Statistics on Cell Line Variants',
                            subtitle=subtitle,
                            submenu='stats_cell_lines',
                            graph_result=graph_result)
