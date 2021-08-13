@@ -48,6 +48,58 @@ def build_group_sum_graph_query(criteria, view, group_by):
     query = query_temp.format(bq_proj_dataset=bq_proj_dataset, view=view, group_by=group_by, where_clause=where_clause)
     return query
 
+def build_mutation_rate_query(criteria_map, table, label_by='Effect'):
+    label_alias = 'AS LABEL'
+    query_module = """
+            SELECT *
+            FROM `{bq_proj_dataset}.{table}`	
+            WHERE {where_clause}
+        """
+
+    count_query = """
+            SELECT AAchange AS NAME, LOG(Mut_rateAA) AS RATE, Effect {effect}, SIFTClass {sift}, TransactivationClass {taclass}, COUNT(AAchange) AS CNT
+            FROM ({filtered_select_sql})
+            GROUP BY AAchange, Mut_rateAA, Effect, SIFTClass, TransactivationClass
+            ORDER BY CNT DESC
+    """
+
+    # query_module = """
+    #             SELECT AAchange AS NAME, LOG(Mut_rateAA) AS RATE, Effect AS LABEL, SIFTClass, TransactivationClass, COUNT(AAchange) AS CNT
+    #             FROM `{bq_proj_dataset}.{table}`
+    #             WHERE {where_clause}
+    #             GROUP BY AAchange, Mut_rateAA, Effect, SIFTClass, TransactivationClass
+    #     """
+    filtered_select_sql = ''
+    for type in ['include', 'exclude']:
+        if type == 'include':
+            filtered_select_sql += query_module
+            where_clause = build_where_clause(criteria_map[type], include=True)
+        elif len(criteria_map[type]):
+            filtered_select_sql += "\nEXCEPT DISTINCT ("
+            filtered_select_sql += query_module
+            filtered_select_sql += "\n)"
+            where_clause = build_where_clause(criteria_map[type], include=False)
+        else:
+            where_clause = ''
+
+        if where_clause:
+            filtered_select_sql = filtered_select_sql.format(bq_proj_dataset=bq_proj_dataset, table=table, where_clause=where_clause)
+    effect = ''
+    sift = ''
+    taclass = ''
+
+    if label_by == 'TransactivationClass':
+        taclass = label_alias
+    elif label_by == 'SIFTClass':
+        sift = label_alias
+    else:
+        effect = label_alias
+
+    query = count_query.format(effect=effect, sift=sift, taclass=taclass, filtered_select_sql=filtered_select_sql)
+
+    return query
+
+
 def build_mutation_query(criteria_map, table, group_by):
 
     query_module = """
@@ -78,7 +130,7 @@ def build_mutation_query(criteria_map, table, group_by):
         if where_clause:
             filtered_select_sql = filtered_select_sql.format(bq_proj_dataset=bq_proj_dataset, table=table, where_clause=where_clause)
     query = count_query.format(group_by=group_by, filtered_select_sql=filtered_select_sql)
-    print(query)
+    # print(query)
     return query
 
 
@@ -122,7 +174,7 @@ def build_query_w_exclusion(criteria_map, table, column_filters=None, do_counts=
                 .format(ord_columns=ord_columns, ord_dir=ord_dir)
         if length:
             filtered_select_sql += " LIMIT {limit_cnt} OFFSET {skip_rows}".format(limit_cnt=length, skip_rows=start)
-    print(filtered_select_sql)
+    # print(filtered_select_sql)
 
     return filtered_select_sql
 
@@ -152,14 +204,14 @@ def build_codon_dist_query(column, table):
         ORDER BY LABEL
     """
     query = query_temp.format(bq_proj_dataset=bq_proj_dataset, column=column, table=table)
-    print(query)
+    # print(query)
     return query
 
 
 
 def build_mutation_dist_sum_query(criteria_map, table, group_by, sum_col):
 
-    print(criteria_map)
+    # print(criteria_map)
     query_module = """
             SELECT *
             FROM `{bq_proj_dataset}.{table}`	
@@ -188,7 +240,7 @@ def build_mutation_dist_sum_query(criteria_map, table, group_by, sum_col):
         if where_clause:
             filtered_select_sql = filtered_select_sql.format(bq_proj_dataset=bq_proj_dataset, table=table, where_clause=where_clause)
     query = sum_query.format(group_by=group_by, sum_col=sum_col, filtered_select_sql=filtered_select_sql)
-    print(query)
+    # print(query)
     return query
 
 # def build_tumor_graph_query(criteria, view):

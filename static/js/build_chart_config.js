@@ -170,6 +170,80 @@ var build_pie_config = function (chart_id, chart_title, data) {
     );
 };
 
+var build_scatter_plot = function (chart_id, chart_title, data) {
+    var total_cnt = data['total'];
+    var datasets = [];
+    var labels = Object.keys(data.datasets);
+    for (var i=0; i< labels.length; i++) {
+        var d_set = {
+            label: labels[i],
+            data: data.datasets[labels[i]].map(function(d){
+                return {
+                    x: d['count'] / total_cnt * 100,
+                    y: d['rate'],
+                    name: d['name'],
+                    label: labels[i]
+                };
+            }),
+            borderColor: color_scheme[i],
+        };
+        datasets.push(d_set);
+    }
+    var chart_data = {
+        datasets: datasets,
+    };
+
+    var config = {
+        type: 'scatter',
+        data: chart_data,
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    align: 'start',
+                    text: chart_title + ' ( N = ' + formatNumbersByCommas(total_cnt) + ' )'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (tooltipItem) {
+                            var mut_rate = tooltipItem.formattedValue; //y
+                            var percent = tooltipItem.label; //x
+                            var name = tooltipItem.raw.name; //aa_change
+                            var d_set = tooltipItem.raw.label;  //
+                            return name + ': ' + d_set + ' ('+ percent + '%, ' + mut_rate +')'
+                        }
+                    }
+                },
+                legend: {
+                    position: 'bottom',
+                    align: 'start'
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        text: 'Mutation Rate (%)',
+                        // display: true,
+                    },
+                },
+                y: {
+                    title:{
+                        text: 'log(Nucleotide Substitute Rate)',
+                        display: true,
+                    }
+                },
+            },
+            aspectRatio: 1
+
+        }
+    };
+
+    new Chart(
+        document.getElementById(chart_id),
+        config
+    );
+};
+
 var build_3d_graph = function (chart_id, data, width, height){
     var total_cnt = data['total'];
     var y_data = data['data'];
@@ -238,14 +312,36 @@ var formatNumbersByCommas = function(num){
 };
 
 var convert_chartdata = function(chartjs_data){
+
+    var chart_datasets =chartjs_data.datasets;
     var tsv_data = '';
-    if (chartjs_data.data.length) {
+    var datasets = Object.keys(chart_datasets);
+    if (datasets.length){
+        var total_count = chartjs_data.total;
+
+        tsv_data += "label\tAAchange\tlog(Mut_rateAA)\tCount (N="+formatNumbersByCommas(total_count)+")\t%\n";
+        for(var i=0; i < datasets.length; i++){
+            var ds = datasets[i];
+            for(var j=0; j<chart_datasets[ds].length;j++){
+                tsv_data += ds+'\t';
+
+                tsv_data += chart_datasets[ds][j].name+'\t';
+                tsv_data += chart_datasets[ds][j].rate.toFixed(3)+'\t';
+                tsv_data += chart_datasets[ds][j].count+'\t';
+                tsv_data += (chart_datasets[ds][j].count*100/total_count).toFixed(3)+'\n';
+            }
+
+        }
+    }
+    else if (chartjs_data.data.length) {
         tsv_data += "x\ty\n";
         for (var i = 0; i < chartjs_data.data.length; i++) {
             var x = chartjs_data.labels[i];
             var y = chartjs_data.data[i];
             tsv_data += (x + '\t' + y + '\n');
         }
+    }
+    if(tsv_data.length){
         tsv_data = 'data:text/tab-separated-values;charset=utf-8,' + tsv_data;
     }
     return encodeURI(tsv_data);

@@ -69,15 +69,30 @@ $(document).ready(function () {
             title: 'Point Mutation',
             type: 'pie'
         },
+        'mut_pt_s': {
+            id: 'mut_pt_s',
+            title: 'Point Mutation',
+            type: 'scatter'
+        },
         'sift_class': {
             id: 'sift_class',
             title: 'SIFT',
             type: 'pie'
         },
+        'sift_class_s': {
+            id: 'sift_class_s',
+            title: 'SIFT',
+            type: 'scatter'
+        },
         'ta_class': {
             id: 'ta_class',
             title: 'Transactivation',
             type: 'pie'
+        },
+        'ta_class_s': {
+            id: 'ta_class_s',
+            title: 'Transactivation',
+            type: 'scatter'
         }
     };
 
@@ -171,6 +186,9 @@ var draw_charts = function (graph_config, target_id, is_dimension_static, includ
             }
             $('#' + canvas_id).parent('div').filter('.small-chart').removeClass('col-5').addClass('col-10');
             build_bar_config(canvas_id, graph_title, graph_data, horizontal, x_scale, y_scale, true);
+        }
+        else if (graph_type === 'scatter') {
+            build_scatter_plot(canvas_id, graph_title, graph_data);
         }
         else { // pi chart
             if (!is_dimension_static)

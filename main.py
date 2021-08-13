@@ -1570,16 +1570,30 @@ def build_graph_configs(action, table=None):
                 'group_by': 'Effect',
                 'exclude_vals': ['']
             },
+            'mut_pt_s': {
+                'query_type': 'mutation_rate',
+                'exclude_vals': [''],
+                'label_by': 'Effect'
+            },
             'sift_class': {
                 'query_type': 'group_counts',
                 'group_by': 'SIFTClass',
+                'exclude_vals': ['']
+            },
+            'sift_class_s': {
+                'query_type': 'mutation_rate',
+                'label_by': 'SIFTClass',
                 'exclude_vals': ['']
             },
             'ta_class': {
                 'query_type': 'group_counts',
                 'group_by': 'TransactivationClass',
                 'exclude_vals': ['']
-                # 'exclude_vals': ['NA', '']
+            },
+            'ta_class_s': {
+                'query_type': 'mutation_rate',
+                'label_by': 'TransactivationClass',
+                'exclude_vals': ['']
             }
         }
     elif action == 'get_mutation_type':
@@ -1656,10 +1670,10 @@ def build_graph_sqls(graph_configs, criteria_map, table):
                     exclude_cri['wrap_with'] = '"'
             cri['exclude'].append(exclude_cri)
 
-        if graph_id == 'mut_pt':
+        if graph_id == 'mut_pt' or graph_id == 'mut_pt_s':
             cri['include'].append(
                 {'column_name': 'Effect', 'vals': ["missense", "nonsense", "silent"], 'wrap_with': '"'})
-        elif graph_id == 'sift_class' or graph_id == 'ta_class':
+        elif graph_id == 'sift_class' or graph_id == 'sift_class_s' or graph_id == 'ta_class' or graph_id == 'ta_class_s':
             cri['include'].append({'column_name': 'Effect', 'vals': ["missense"], 'wrap_with': '"'})
 
         query_type = graph_configs[graph_id]['query_type']
@@ -1669,6 +1683,10 @@ def build_graph_sqls(graph_configs, criteria_map, table):
                                                            sum_col=graph_configs[graph_id]['sum_col'])
         elif query_type == 'codon_counts':
             stm = bq_builder.build_codon_dist_query(column=graph_configs[graph_id]['codon_col'], table=table)
+        elif query_type == 'mutation_rate':
+            label_by=graph_configs[graph_id].get('label_by', 'effect')
+            stm = bq_builder.build_mutation_rate_query(criteria_map=cri, table=table, label_by=label_by)
+            print(stm)
         else:
             stm = bq_builder.build_mutation_query(criteria_map=cri, table=table, group_by=graph_configs[graph_id]['group_by'])
         sql_maps[graph_id] = stm
@@ -1688,18 +1706,36 @@ def build_graph_data(sql_maps):
             total = 0
             rows = list(result)
             labels = []
+            datasets = {}
             for row in rows:
                 label = row.get('LABEL')
                 labels.append(label)
+
+                mut_rate = row.get('RATE', None)
                 cnt = row.get('CNT')
-                data.append(cnt)
+                if mut_rate:
+                    name = row.get('NAME', None)
+                    if not datasets.get(label):
+                        datasets[label] = []
+                    datasets[label].append(
+                        {
+                            'name': name,
+                            'rate': mut_rate,
+                            'count': cnt
+                        }
+                    )
+
+                else:
+                    data.append(cnt)
                 total += cnt
             graph_data[graph_id] = {
                 'labels': labels,
                 'data': data,
+                'datasets': datasets,
                 'total': total
             }
 
+        # print(graph_data['sift_class_s'])
     except BadRequest:
         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
@@ -1825,6 +1861,7 @@ def cell_lines_mutation_stats():
         subtitle = 'Codon Distribution of Point Mutations'
     graph_configs = build_graph_configs(action, table)
     sql_maps = build_graph_sqls(graph_configs, {}, table)
+    # print(build_graph_sqls)
     graph_result = build_graph_data(sql_maps)
     return render_template("mutation_stats.html", criteria_map={}, title='Statistics on Cell Line Mutations',
                            subtitle=subtitle,

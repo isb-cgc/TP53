@@ -144,51 +144,154 @@
                         </div>
                         <canvas id="effect_chart"></canvas>
                     </div>
-                    <div class="col-4 border rounded-2 p-3 bg-white m-1">
-                        <div data-graph-id="mut_pt" class="btn-group btn-group-sm float-end">
-                            <button type="button" class="btn btn-outline-secondary expand-btn" data-bs-toggle="modal"
-                                    data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
-                            </button>
-                            <button type="button" class="btn btn-outline-secondary d-img-btn"><i
-                                    class="fas fa-download"></i> Image
-                            </button>
-                            <button type="button" class="btn btn-outline-secondary d-data-btn"><i
-                                    class="fas fa-download"></i> Data
-                            </button>
+                    <div id="mutation_div" class="col-4 border rounded-2 p-3 bg-white m-1">
+                        <div id="mut_pt_pie" class="collapse mut_pt_graph" >
+                            <div data-graph-id="mut_pt_s" class="btn-group btn-group-sm float-end">
+                                <button type="button" class="btn btn-outline-secondary p-chart-btn"
+                                        title="Switch to Pie Chart"
+                                        data-bs-toggle="collapse" data-bs-target=".mut_pt_graph" aria-expanded="true"
+                                        data-bs-parent="#mutation_div"
+                                        aria-controls="mut_pt_scatterplot mut_pt_pie">
+                                    <i class="fas fa-random"></i>
+                                    Pie Chart
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary expand-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                        class="fas fa-download"></i> Image
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                        class="fas fa-download"></i> Data
+                                </button>
+                            </div>
+                            <canvas id="mut_pt_s_chart" class="collapse"></canvas>
                         </div>
-                        <canvas id="mut_pt_chart"></canvas>
+                        <div id="mut_pt_scatterplot" class="collapse show mut_pt_graph">
+                            <div data-graph-id="mut_pt" class="btn-group btn-group-sm float-end">
+                                <button type="button" class="btn btn-outline-secondary s-plot-btn"
+                                        title="Switch to Scatter Plot"
+                                        data-bs-toggle="collapse" data-bs-target=".mut_pt_graph" aria-expanded="false"
+                                        data-bs-parent="#mutation_div"
+                                        aria-controls="mut_pt_scatterplot mut_pt_pie">
+                                    <i class="fas fa-random"></i>
+                                    Scatter Plot
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary expand-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                        class="fas fa-download"></i> Image
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                        class="fas fa-download"></i> Data
+                                </button>
+                            </div>
+                            <canvas id="mut_pt_chart"></canvas>
+                        </div>
                     </div>
-                    <div class="col-2"></div>
                 </div>
                 <div class="row">
                     <div class="col-2"></div>
-                    <div class="col-4 border rounded-2 p-3 bg-white m-1">
-                        <div data-graph-id="sift_class" class="btn-group btn-group-sm float-end">
-                            <button type="button" class="btn btn-outline-secondary expand-btn" data-bs-toggle="modal"
-                                    data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
-                            </button>
-                            <button type="button" class="btn btn-outline-secondary d-img-btn"><i
-                                    class="fas fa-download"></i> Image
-                            </button>
-                            <button type="button" class="btn btn-outline-secondary d-data-btn"><i
-                                    class="fas fa-download"></i> Data
-                            </button>
+                    <div id="sift_class_div" class="col-4 border rounded-2 p-3 bg-white m-1">
+                        <div id="sift_scatter" class="collapse sift_class_graph">
+                            <div data-graph-id="sift_class_s" class="btn-group btn-group-sm float-end">
+                                <button type="button" class="btn btn-outline-secondary p-chart-btn"
+                                        title="Switch to Pie Chart"
+                                        data-bs-toggle="collapse" data-bs-target=".sift_class_graph" aria-expanded="true"
+                                        data-bs-parent="#sift_class_div"
+                                        aria-controls="sift_scatter sift_pie">
+                                    <i class="fas fa-random"></i>
+                                    Pie Chart
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary expand-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                        class="fas fa-download"></i> Image
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                        class="fas fa-download"></i> Data
+                                </button>
+                            </div>
+                            <canvas id="sift_class_s_chart"></canvas>
                         </div>
-                        <canvas id="sift_class_chart"></canvas>
+                        <div id="sift_pie" class="collapse sift_class_graph show">
+                            <div data-graph-id="sift_class" class="btn-group btn-group-sm float-end">
+                                <button type="button" class="btn btn-outline-secondary p-chart-btn"
+                                        title="Switch to Scatter Plot"
+                                        data-bs-toggle="collapse" data-bs-target=".sift_class_graph" aria-expanded="true"
+                                        data-bs-parent="#sift_class_div"
+                                        aria-controls="sift_scatter sift_pie">
+                                    <i class="fas fa-random"></i>
+                                    Scatter Plot
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary expand-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                        class="fas fa-download"></i> Image
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                        class="fas fa-download"></i> Data
+                                </button>
+                            </div>
+                            <canvas id="sift_class_chart"></canvas>
+                        </div>
                     </div>
-                    <div class="col-4 border rounded-2 p-3 bg-white m-1">
-                        <div data-graph-id="ta_class" class="btn-group btn-group-sm float-end">
-                            <button type="button" class="btn btn-outline-secondary expand-btn" data-bs-toggle="modal"
-                                    data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
-                            </button>
-                            <button type="button" class="btn btn-outline-secondary d-img-btn"><i
-                                    class="fas fa-download"></i> Image
-                            </button>
-                            <button type="button" class="btn btn-outline-secondary d-data-btn"><i
-                                    class="fas fa-download"></i> Data
-                            </button>
+                    <div id="ta_class_div" class="col-4 border rounded-2 p-3 bg-white m-1">
+                        <div id="ta_scatter" class="collapse ta_class_graph">
+                            <div data-graph-id="ta_class_s" class="btn-group btn-group-sm float-end">
+                                <button type="button" class="btn btn-outline-secondary p-chart-btn"
+                                        title="Switch to Pie Chart"
+                                        data-bs-toggle="collapse" data-bs-target=".ta_class_graph"
+                                        aria-expanded="false"
+                                        data-bs-parent="#ta_class_div"
+                                        aria-controls="ta_scatter ta_pie">
+                                    <i class="fas fa-random"></i>
+                                    Pie Chart
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary expand-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                        class="fas fa-download"></i> Image
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                        class="fas fa-download"></i> Data
+                                </button>
+                            </div>
+                            <canvas id="ta_class_s_chart"></canvas>
                         </div>
-                        <canvas id="ta_class_chart"></canvas>
+                        <div id="ta_pie" class="collapse ta_class_graph show">
+                            <div data-graph-id="ta_class" class="btn-group btn-group-sm float-end">
+                                <button type="button" class="btn btn-outline-secondary p-chart-btn"
+                                        title="Switch to Scatter Plot"
+                                        data-bs-toggle="collapse" data-bs-target=".ta_class_graph"
+                                        aria-expanded="true"
+                                        data-bs-parent="#ta_class_div"
+                                        aria-controls="ta_scatter ta_pie">
+                                    <i class="fas fa-random"></i>
+                                    Scatter Plot
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary expand-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#expand-modal"><i class="fas fa-expand"></i> Expand
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-img-btn"><i
+                                        class="fas fa-download"></i> Image
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary d-data-btn"><i
+                                        class="fas fa-download"></i> Data
+                                </button>
+                            </div>
+                            <canvas id="ta_class_chart"></canvas>
+                        </div>
                     </div>
                     <div class="col-2"></div>
                 </div>
