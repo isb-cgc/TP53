@@ -63,12 +63,6 @@ def build_mutation_rate_query(criteria_map, table, label_by='Effect'):
             ORDER BY CNT DESC
     """
 
-    # query_module = """
-    #             SELECT AAchange AS NAME, LOG(Mut_rateAA) AS RATE, Effect AS LABEL, SIFTClass, TransactivationClass, COUNT(AAchange) AS CNT
-    #             FROM `{bq_proj_dataset}.{table}`
-    #             WHERE {where_clause}
-    #             GROUP BY AAchange, Mut_rateAA, Effect, SIFTClass, TransactivationClass
-    #     """
     filtered_select_sql = ''
     for type in ['include', 'exclude']:
         if type == 'include':

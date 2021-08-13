@@ -316,9 +316,8 @@ var convert_chartdata = function(chartjs_data){
     var chart_datasets =chartjs_data.datasets;
     var tsv_data = '';
     var datasets = Object.keys(chart_datasets);
+    var total_count = chartjs_data.total;
     if (datasets.length){
-        var total_count = chartjs_data.total;
-
         tsv_data += "label\tAAchange\tlog(Mut_rateAA)\tCount (N="+formatNumbersByCommas(total_count)+")\t%\n";
         for(var i=0; i < datasets.length; i++){
             var ds = datasets[i];
@@ -334,11 +333,11 @@ var convert_chartdata = function(chartjs_data){
         }
     }
     else if (chartjs_data.data.length) {
-        tsv_data += "x\ty\n";
+        tsv_data += 'Label\tCount (N=' + formatNumbersByCommas(total_count) + ')\t%\n';
         for (var i = 0; i < chartjs_data.data.length; i++) {
-            var x = chartjs_data.labels[i];
-            var y = chartjs_data.data[i];
-            tsv_data += (x + '\t' + y + '\n');
+            var label = chartjs_data.labels[i];
+            var count = chartjs_data.data[i];
+            tsv_data += label + '\t' + count + '\t'+ (count*100/total_count).toFixed(2)+'\n';
         }
     }
     if(tsv_data.length){
