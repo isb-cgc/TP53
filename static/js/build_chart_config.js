@@ -178,12 +178,14 @@ var build_scatter_plot = function (chart_id, chart_title, data) {
         var d_set = {
             label: labels[i],
             data: data.datasets[labels[i]].map(function(d){
-                return {
-                    x: d['count'] / total_cnt * 100,
-                    y: d['rate'],
-                    name: d['name'],
-                    label: labels[i]
-                };
+                if (d['rate']!= null) {
+                    return {
+                        x: d['count'] / total_cnt * 100,
+                        y: d['rate'],
+                        name: d['name'],
+                        label: labels[i]
+                    };
+                }
             }),
             borderColor: color_scheme[i],
         };
@@ -331,7 +333,8 @@ var convert_chartdata = function(chartjs_data){
                 for (var j = 0; j < chart_datasets[ds].length; j++) {
                     tsv_data += ds + '\t';
                     tsv_data += chart_datasets[ds][j].name + '\t';
-                    tsv_data += chart_datasets[ds][j].rate.toFixed(3) + '\t';
+                    var rate = (chart_datasets[ds][j].rate ? chart_datasets[ds][j].rate.toFixed(3):'');
+                    tsv_data += rate + '\t';
                     tsv_data += chart_datasets[ds][j].count + '\t';
                     tsv_data += (chart_datasets[ds][j].count * 100 / total_count).toFixed(3) + '\n';
                 }

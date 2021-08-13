@@ -1706,18 +1706,21 @@ def build_graph_data(sql_maps):
             result = query_jobs[graph_id].result(timeout=30)
             data = []
             total = 0
+            is_scatter_chart = False
+            for sf in result.schema:
+                if sf.name == 'RATE':
+                    is_scatter_chart = True
+                    break
             rows = list(result)
             labels = []
             datasets = {}
-            is_scatter_chart = False
             for row in rows:
                 label = row.get('LABEL')
                 labels.append(label)
 
                 mut_rate = row.get('RATE', None)
                 cnt = row.get('CNT')
-                if mut_rate:
-                    is_scatter_chart = True
+                if is_scatter_chart:
                     name = row.get('NAME', None)
                     if not datasets.get(label):
                         datasets[label] = []
