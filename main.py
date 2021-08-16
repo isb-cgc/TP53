@@ -740,7 +740,6 @@ def results_gene_dist():
     return render_template(template, criteria_map=criteria_map, title='Statistics on Functional/Structural Data', subtitle=subtitle,
                            graph_result=graph_result)
 
-
 @app.route("/get_distribution", methods=['GET', 'POST'])
 def get_distribution():
     criteria_map = {}
@@ -751,8 +750,7 @@ def get_distribution():
     action = get_param_val(request, 'action')
     query_dataset = get_param_val(request, 'query_dataset')
     template = 'mutation_stats.html'
-
-    if query_dataset == 'sm':
+    if query_dataset == 'SomaticView':
         table = 'SomaticTumorStats' if action == 'get_tumor_dist' else 'SomaticView'
         submenu = 'search_somatic_mut'
         dataset_type = 'Somatic'
@@ -837,7 +835,7 @@ def mutation_query( ):
     length = int(parameters['length'])
     criteria_map = json.loads(parameters['criteria'])
     query_dataset = parameters['query_dataset']
-    if query_dataset == 'sm':
+    if query_dataset == 'SomaticView':
         table= 'SomaticView'
         distinct_col = 'SomaticView_ID'
         column_filters =[
@@ -860,9 +858,10 @@ def mutation_query( ):
         "Morphology",
         "Sex",
         "Age",
-        "Germline_mutation",distinct_col]
+        "Germline_mutation"
+        ]
 
-    else:
+    elif query_dataset == 'GermlineView':
         table = 'GermlineView'
         distinct_col = 'GermlineView_ID'
         column_filters = [
@@ -884,8 +883,48 @@ def mutation_query( ):
             "Age_at_diagnosis",
             "Topography",
             "Morphology",
-            "Ref_ID",
-            distinct_col]
+            "Ref_ID"]
+    else: #query_dataset == 'PrevalenceView'
+        criteria_map = {
+            'include': criteria_map,
+            'exclude': []
+        }
+        print(criteria_map)
+        table = 'PrevalenceView'
+        distinct_col = 'Prevalence_ID'
+        column_filters = [
+            "Topography",
+            "Morphology",
+            "Sample_analyzed",
+            "Sample_mutated",
+            "Prevalence",
+            "Country",
+            "Class",
+            "Country",
+            "Population",
+            "Region",
+            "Development",
+            # "Comment",
+            # "Ref_ID",
+            # "Cross_Ref_ID",
+            # "Title",
+            # "Authors",
+            # "S_Ref_Year",
+            # "Journal",
+            # "Volume",
+            # "Start_page",
+            # "End_page",
+            "PubMed",
+            # "Ref_comment",
+            "Tissue_processing",
+            "Start_material",
+            "Prescreening",
+            "Material_sequenced",
+            # "Short_topo",
+            # "Morphogroup",
+            # "Country_ID",
+            "Exclude_analysis",
+            "WGS_WXS"]
 
     sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
                                             ord_column_list=[column_filters[order_col-1], distinct_col], desc_ord=(order_dir == 'desc'),
@@ -1372,16 +1411,24 @@ def download_dataset():
 #     return render_template(template, criteria_map=criteria_map, title=title, subtitle=subtitle, submenu=submenu,
 #                            graph_result=graph_result)
 
-
-@app.route("/results_somatic_prevalence", methods=['GET', 'POST'])
-def results_somatic_prevalence():
+@app.route("/results_somatic_prevalence_list", methods=['POST'])
+def results_somatic_prevalence_list():
     prefix = 'mut_prev'
     criteria = get_topo_morph_criteria(prefix)
     criteria += get_method_criteria(prefix)
     criteria += get_ngs_criteria(prefix)
     criteria += get_country_criteria(prefix)
+    return render_template("results_somatic_prevalence.html", criteria=criteria)
+
+@app.route("/get_prevalence_distribution", methods=['GET', 'POST'])
+def get_prevalence_distribution():
+    criteria = []
     action = get_param_val(request, 'action')
-    title = 'Search Results'
+    if request.method == 'POST':
+        criteria = get_param_val(request, 'criteria')
+        if criteria:
+            criteria = json.loads(get_param_val(request, 'criteria'))
+        title = 'Search Results'
     if action == 'get_country_graph':
         group_by = 'Country'
         subtitle = 'Somatic Variant Prevalence by Country'
@@ -1391,7 +1438,7 @@ def results_somatic_prevalence():
     else:
         # get_morph_graph
         group_by = 'Morphogroup'
-        subtitle = 'Somatic Variant Prevalence by Morphography'
+        subtitle = 'Somatic Variant Prevalence by Morphology'
     sql_stm = bq_builder.build_group_sum_graph_query(criteria=criteria, view='PrevalenceView', group_by=group_by)
 
     query_job = bigquery_client.query(sql_stm)
@@ -1421,9 +1468,7 @@ def results_somatic_prevalence():
         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
-    # query_result = {'data': data, 'msg': error_msg}
     return render_template("prevalence_somatic_stats.html", graph_data=graph_data, criteria=criteria, title=title, subtitle=subtitle)
-    # return render_template("results_somatic_prevalence.html", query_result=query_result)
 
 
 @app.route("/search_germline_mut")

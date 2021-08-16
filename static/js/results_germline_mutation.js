@@ -44,7 +44,7 @@ $(document).ready(function () {
             type: "POST",
             data: {
                 criteria: JSON.stringify($('#criteria_div').data('criteria')),
-                query_dataset: 'gm' //germline
+                query_dataset: 'GermlineView' //germline
             },
             dataType: "json",
             dataSrc: "data"
@@ -225,7 +225,7 @@ var displayGeneVariationDistributions = function (action, selectedRowSet) {
     input = $("<input type='hidden' name='action' value='" + action + "'/>");
     input.appendTo(form);
 
-    input = $("<input type='hidden' name='query_dataset' value='gm'/>");
+    input = $("<input type='hidden' name='query_dataset' value='GermlineView'/>");
     input.appendTo(form);
 
     form.appendTo($("body"));

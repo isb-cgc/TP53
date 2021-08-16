@@ -1,0 +1,222 @@
+{% extends "tp53data.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = "search_somatic_prevalence";
+</script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.select.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/results_somatic_prevalence.js') }}"></script>
+
+{% endblock %}
+
+{% block subcontent %}
+<div class="page-banner text-center">
+    <h2 class="pb-3 my-0 fw-normal">Search Results: <span class="ms-2 fw-light">Somatic Variant Prevalence Data</span>
+    </h2>
+</div>
+<div class="p-3">
+    <div class="pb-2">
+        <div class="float-end d-inline-block">
+            <div class="btn-group" title="No of selected rows">
+                <div class="pb-1 pe-1"><em>Selected Rows</em> <span
+                        class="badge rounded-pill bg-turquoise cart-count">0</span></div>
+            </div>
+            <button type="button" class="btn btn-sm darkblue-btn action-button"
+                    value="get_country_graph" title="View Somatic Variant Prevalence by Country"><i
+                    class="fas fa-chart-bar"></i>
+                Country Graph
+            </button>
+            <button type="button" class="btn btn-sm darkblue-btn action-button"
+                    value="get_topo_graph" title="View Somatic Variant Prevalence by Topography"><i
+                    class="fas fa-chart-bar"></i>
+                Topography Graph
+            </button>
+            <button type="button" class="btn btn-sm darkblue-btn me-2 action-button"
+                    value="get_morph_graph" title="View Somatic Variant Prevalence by Morphology"><i
+                    class="fas fa-chart-bar"></i>
+                Morphology Graph
+            </button>
+            <div class="btn-group btn-group-sm">
+                <button type="button" title="Download Data in .csv" class="btn btn-outline-secondary download-btn">
+                    <i class="fas fa-download"></i>
+                    Download
+                </button>
+            </div>
+        </div>
+        {% include 'criteria_div.html' %}
+    </div>
+
+    <div>
+        <table id="sm-result-table" class="table table-striped table-sm result-table small-font" cellspacing="0"
+               width="100%">
+            <thead>
+            <tr>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Select All">
+                    <input name="checkAll" class="form-check-input check-all" type="checkbox"
+                           aria-label="Select All">
+                </th>
+                <th>Topography</th>
+                <th>Morphology</th>
+                <th>Sample Analyzed</th>
+                <th>Sample Mutated</th>
+                <th>Prevalence (%)</th>
+                <th>Country</th>
+                <th>Population</th>
+                <th>Region</th>
+                <th>Development</th>
+                <!--<th>Comment</th>-->
+                <!--<th>Ref ID</th>-->
+                <!--<th>Cross Ref ID</th>-->
+                <!--<th>Title</th>-->
+                <!--<th>Authors</th>-->
+                <!--<th>Journal</th>-->
+                <!--<th>Volume</th>-->
+                <!--<th>Start_page</th>-->
+                <!--<th>End_page</th>-->
+                <th>PubMed</th>
+                <!--<th>Ref Comment</th>-->
+                <th>Tissue Processing</th>
+                <th>Start Material</th>
+                <th>Prescreening</th>
+                <th>Material Sequenced</th>
+                <!--<th>Short Topo</th>-->
+                <!--<th>Morphogroup</th>-->
+                <th>Exclude Analysis</th>
+
+                <th>NGS Study</th>
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="Mutation nomenclature according to HGVS-->
+                    <!--standards and using the GenBank NC_000017.11 (hg38 assembly) genomic sequence as reference.">-->
+                    <!--Genomic Description (hg38)-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="Mutation nomenclature according to HGVS standards and using the NM_000546.5 coding sequence as reference.">-->
+                    <!--cDNA Description-->
+                <!--</th>-->
+
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="Mutation description at the protein level as recommended by HGVS and using the Uniprot reference sequence P04637.">-->
+                    <!--Protein Description-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="Chromosome coordinate of variation: start position based on hg18 human genome assembly.">-->
+                    <!--Chr 17 (hg18)-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="Chromosome coordinate of variation: start position based on hg38 human genome assembly.">-->
+                    <!--Chr 17 (hg38)-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="For variants in exons, codon number at which the variant is located (1-393). If a-->
+                        <!--variant spans more than one codon, (e.g. tandem variant or deletion of several bases) only the-->
+                        <!--first (5') codon is entered. For variants in introns, 0 is entered.">-->
+                    <!--Codon No-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="Link to mutation ID in COSMIC database.">-->
+                    <!--View COSMIC-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="Link to ClinVar database.">-->
+                    <!--View ClinVar-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="Sum of variation occurence from TCGA (MC3), ICGC (v28) and GENIE (V5) datasets. Total count is 23,570.">-->
+                    <!--TCGA ICGC GENIE Count-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="Sum of variation occurence from cBioportal">-->
+                    <!--cBioportal Count</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="For variants in exons, sequence of the codon in which the variant occurred in NM_000546.5 transcript.">-->
+                    <!--WT Codon-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="Base sequence of the mutated codon in NM_000546.5 transcript.">-->
+                    <!--Mutant Codon-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="Functional classification based on the overall transcriptional activity (TA) on 8 different promoters as measured in yeast assays by Kato et al.-->
+							            <!--For each mutant, the median of the 8 promoter-specific activities (expressed as percent of the wild-type protein) is calculated and missense variants are classified as &quot;non-functional&quot; if the median is <=20,-->
+							            <!--&quot;partially functional&quot; if the median is >20 and <=75, &quot;functional&quot; if the median is >75 and <=140, and &quot;supertrans&quot; if the median is >140.">-->
+                    <!--TA Class-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--data-bs-html="true"-->
+                    <!--title="Dominant-negative (DN) Effect on transactivation by wild-type p53.-->
+                                        <!--Classification established for  mutants for which available DN activity on more than-->
+                                        <!--2 p53-response elements is available. Data are based on WAF1 and RGC promoters in various studies-->
+                                        <!--(these promoters were the most frequently used in different studies to assess DNE status), and on-->
+                                        <!--two large systematic study (Dearth et al that includes 76 mutants;-->
+                                        <!--Monti et al that includes 104 mutants).-->
+                                        <!--Mutants were classified as <b>&quot;Yes&quot;</b> if they had dominant-negative activity on both WAF1 and-->
+                                        <!--RGC promoters, or on all promoters in the large studies, <b>&quot;Moderate&quot;</b> if they had dominant-negative-->
+                                        <!--activity on some but not all promoters, and <b>&quot;No&quot;</b> if they had no dominant-negative-->
+                                        <!--activity on both WAF1 and RGC promoters, or none of the promoters in the large studies.">-->
+                    <!--DNE-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="&quot;Yes&quot; indicate the a variant is located in a codon defined as a cancer hotspot by Chang (2017).">-->
+                    <!--Cancer Hotspot-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-html="true"-->
+                    <!--data-bs-placement="top"-->
+                    <!--title="Site of the tumor defined by organ or-->
+                                                        <!--group of organs, according to the ICD-O-->
+                                                        <!--nomenclature. (examples:-->
+                                                        <!--&quot;colon&quot;, &quot;brain&quot;, &quot;bronchus and-->
+                                                        <!--lung&quot;). Note that some tumors are annoted-->
+                                                        <!--&quot;Head&amp;Neck,NOS&quot; or &quot;Colorectum, NOS&quot;-->
+                                                        <!--because no detail is given in the original-->
+                                                        <!--publication (NOS= not-->
+                                                        <!--otherwise specified).-->
+                                                        <!--For the database search tool, a short name is used-->
+                                                        <!--in place of the ICD-O name (example: &quot;Lung&quot; for &quot;bronchus and-->
+                                                        <!--lung&quot;).-->
+                                                        <!--<strong>For metastasis, the topography corresponds-->
+                                                            <!--to the primary-->
+                                                            <!--site of the tumor and the site of metastasis is-->
+                                                            <!--indicated in-->
+                                                            <!--brackets in the tumor_origin field.</strong>">Topography-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top" title="Tumor type, including morphology and/or histologic type.-->
+                                                        <!--The terminology used is based on ICD-O (2nd and 3rd-->
+                                                        <!--editions) and SNOMED classifications. Terms have been-->
+                                                        <!--added, such as 'normal tissue' or 'na'.">Morphology-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top" title="Sex of the patient (M for male, F for female).">Sex-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top" title="Age of the patient at the time of diagnosis.">Age-->
+                <!--</th>-->
+                <!--<th data-bs-toggle="tooltip"-->
+                    <!--data-bs-placement="top" title="Germline variant detected in any gene in the patient.">Germline Mutation</th>-->
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+{% endblock %}

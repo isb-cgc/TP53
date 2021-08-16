@@ -14,7 +14,7 @@ $(document).ready(function () {
             type: "POST",
             data: {
                 criteria: JSON.stringify($('#criteria_div').data('criteria')),
-                query_dataset: 'sm' //somatic
+                query_dataset: 'SomaticView' //somatic
             },
             dataType: "json",
             dataSrc: "data"
@@ -211,7 +211,7 @@ var displayDistributions = function (action, selectedRowSet) {
     input = $("<input type='hidden' name='action' value='" + action + "'/>");
     input.appendTo(form);
 
-    input = $("<input type='hidden' name='query_dataset' value='sm'/>");
+    input = $("<input type='hidden' name='query_dataset' value='SomaticView'/>");
     input.appendTo(form);
 
     form.appendTo($("body"));

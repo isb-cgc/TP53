@@ -14,7 +14,7 @@
 </div>
 <div id="search_somatic_prev" class="p-3">
     <div class="p-3 bg-light rounded-2">
-        <form action="{{ url_for('results_somatic_prevalence') }}" method="POST" id="mutationSearchFormForm">
+        <form action="{{ url_for('results_somatic_prevalence_list') }}" method="POST" id="mutationSearchFormForm">
             {% with id_prefix='mut_prev' %}
             {% include 'form_fields_topo_morph.html' %}
             {% include 'form_fields_method.html' %}
@@ -118,27 +118,38 @@
                 </div>
             </fieldset>
             {% endwith %}
-            <div class="form-group row pt-5">
-                <div class="col">
-                    <div class="btn-toolbar float-end" role="toolbar"
-                         aria-label="Somatic Variant Search Button Toolbar">
-                        <button type="reset" class="btn btn-outline-secondary me-4"><i class="fas fa-redo"></i> Reset
+            <div class="row">
+                <div class="pt-5">
+                    <div class="text-end">
+                        <button type="reset" class="btn btn-outline-secondary me-2">
+                            <i class="fas fa-redo"></i> Reset
                         </button>
-                        <button type="submit" name="action" value="get_country_graph" class="btn darkblue-btn me-1"><i
-                                class="fas fa-chart-bar"></i>
-                            Country Graph
-                        </button>
-                        <button type="submit" name="action" value="get_topo_graph" class="btn darkblue-btn me-1"><i
-                                class="fas fa-chart-bar"></i>
-                            Topography Graph
-                        </button>
-                        <button type="submit" name="action" value="get_morph_graph" class="btn darkblue-btn me-1"><i
-                                class="fas fa-chart-bar"></i>
-                            Morphology Graph
+                        <button type="submit" class="btn darkblue-btn"><i class="fas fa-search"></i> Search
                         </button>
                     </div>
                 </div>
             </div>
+            <!--<div class="form-group row pt-5">-->
+                <!--<div class="col">-->
+                    <!--<div class="btn-toolbar float-end" role="toolbar"-->
+                         <!--aria-label="Somatic Variant Search Button Toolbar">-->
+                        <!--<button type="reset" class="btn btn-outline-secondary me-4"><i class="fas fa-redo"></i> Reset-->
+                        <!--</button>-->
+                        <!--<button type="submit" name="action" value="get_country_graph" class="btn darkblue-btn me-1"><i-->
+                                <!--class="fas fa-chart-bar"></i>-->
+                            <!--Country Graph-->
+                        <!--</button>-->
+                        <!--<button type="submit" name="action" value="get_topo_graph" class="btn darkblue-btn me-1"><i-->
+                                <!--class="fas fa-chart-bar"></i>-->
+                            <!--Topography Graph-->
+                        <!--</button>-->
+                        <!--<button type="submit" name="action" value="get_morph_graph" class="btn darkblue-btn me-1"><i-->
+                                <!--class="fas fa-chart-bar"></i>-->
+                            <!--Morphology Graph-->
+                        <!--</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         </form>
     </div>
 </div>
