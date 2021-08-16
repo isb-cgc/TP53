@@ -162,10 +162,11 @@ def build_query_w_exclusion(criteria_map, table, column_filters=None, do_counts=
         filtered_select_sql += "\n)"
     else:
         if ord_column_list:
-            ord_columns = ', '.join(ord_column_list)
+            ord_columns = ' {ord_dir}, '.join(ord_column_list)
             ord_dir = "DESC" if desc_ord else ""
+
             filtered_select_sql += " ORDER BY {ord_columns} {ord_dir}"\
-                .format(ord_columns=ord_columns, ord_dir=ord_dir)
+                .format(ord_columns=ord_columns.format(ord_dir=ord_dir), ord_dir=ord_dir)
         if length:
             filtered_select_sql += " LIMIT {limit_cnt} OFFSET {skip_rows}".format(limit_cnt=length, skip_rows=start)
     # print(filtered_select_sql)

@@ -27,6 +27,7 @@ $(document).ready(function () {
         },
         order: [[ 1, "asc" ]],
         scrollX: true,
+
         columns: [
             {
                 data: "MUT_ID",
@@ -35,21 +36,6 @@ $(document).ready(function () {
                     return '<input class="form-check-input row-check" type="checkbox" aria-label="Select Row" value="' + data+":"+ row.SomaticView_ID + '"/>';
                 },
             },
-
-            {data: "Start_material"},
-            {data: "WGS_WXS"},
-            {data: "Topography"},
-            {data: "Morphology"},
-            {data: "Tumor_origin_group"},
-            {data: "Sample_source_group"},
-            {data: "Age"},
-            {data: "Sex"},
-            {data: "Germline_mutation"},
-            {data: "Tobacco"},
-            {data: "Alcohol"},
-            {data: "Country"},
-            {data: "Infectious_agent"},
-            {data: "Exposure"},
             {data: "g_description_GRCh38"},
             {data: "c_description"},
             {
@@ -67,26 +53,9 @@ $(document).ready(function () {
                     }
                 }
             },
-            {data: "ExonIntron"},
-            {data: "Effect"},
-            {data: "TransactivationClass"},
-            {data: "DNE_LOFclass"},
-            {data: "AGVGDClass"},
-            {data: "TCGA_ICGC_GENIE_count"},
-            {
-                data: "CLINVARlink",
-                render: function (data, type) {
-                    if (type == 'export'){
-                        return data;
-                    }
-                    else {
-                        if (data != null)
-                            return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" title="Go to ClinVar ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
-                        else
-                            return data;
-                    }
-                }
-            },
+            {data: "hg18_Chr17_coordinates"},
+            {data: "hg38_Chr17_coordinates"},
+            {data: "Codon_number"},
             {
                 data: "COSMIClink",
                 render: function (data, type) {
@@ -102,20 +71,31 @@ $(document).ready(function () {
                 }
             },
             {
-                data: 'PubMed',
-                render: function (data, type, row, meta) {
+                data: "CLINVARlink",
+                render: function (data, type) {
                     if (type == 'export'){
                         return data;
                     }
                     else {
                         if (data != null)
-                            return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank"><i class="far fa-arrow-alt-circle-right"></i></a>';
+                            return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" title="Go to ClinVar ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
                         else
                             return data;
                     }
                 }
             },
-
+            {data: "TCGA_ICGC_GENIE_count"},
+            {data: "cBioportalCount"},
+            {data: "WT_codon"},
+            {data: "Mutant_codon"},
+            {data: "TransactivationClass"},
+            {data: "DNEclass"},
+            {data: "Hotspot"},
+            {data: "Topography"},
+            {data: "Morphology"},
+            {data: "Sex"},
+            {data: "Age"},
+            {data: "Germline_mutation"},
         ],
         select: {
             style: 'multi',

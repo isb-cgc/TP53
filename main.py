@@ -840,25 +840,57 @@ def mutation_query( ):
     if query_dataset == 'sm':
         table= 'SomaticView'
         distinct_col = 'SomaticView_ID'
-        column_filters = ["Start_material", "WGS_WXS", "Topography", "Morphology", "Tumor_origin_group",
-                          "Sample_source_group", "Age", "Sex", "Germline_mutation", "Tobacco", "Infectious_agent",
-                          "Country", "Exposure", "MUT_ID", "g_description_GRCh38", "c_description", "ProtDescription",
-                          "ExonIntron", "Effect",
-                          "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "TCGA_ICGC_GENIE_count", "CLINVARlink",
-                          "COSMIClink", distinct_col]
+        column_filters =[
+        "g_description_GRCh38",
+        "c_description",
+        "ProtDescription",
+        "hg18_Chr17_coordinates",
+        "hg38_Chr17_coordinates",
+        "Codon_number",
+        "COSMIClink",
+        "CLINVARlink",
+        "TCGA_ICGC_GENIE_count",
+        "cBioportalCount",
+        "WT_codon",
+        "Mutant_codon",
+        "TransactivationClass",
+        "DNEclass",
+        "Hotspot",
+        "Topography",
+        "Morphology",
+        "Sex",
+        "Age",
+        "Germline_mutation",distinct_col]
 
     else:
         table = 'GermlineView'
         distinct_col = 'GermlineView_ID'
-        column_filters = ["Topography", "Morphology", "Age", "Sex", "Class", "Mode_of_inheritance", "FamilyCase_group",
-                          "Country", "MUT_ID", "g_description_GRCh38", "c_description", "ProtDescription",
-                          "ExonIntron", "Effect",
-                          "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "TCGA_ICGC_GENIE_count", "CLINVARlink",
-                          "COSMIClink", distinct_col]
+        column_filters = [
+            "g_description_GRCh38",
+            "c_description",
+            "ProtDescription",
+            "hg18_Chr17_coordinates",
+            "hg38_Chr17_coordinates",
+            "Class",
+            "Country",
+            "WT_codon",
+            "Mutant_codon",
+            "TransactivationClass",
+            "DNE_LOFclass",
+            "CLINVARlink",
+            "Hotspot",
+            "Individual_code",
+            "Sex",
+            "Age_at_diagnosis",
+            "Topography",
+            "Morphology",
+            "Ref_ID",
+            distinct_col]
 
     sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
                                             ord_column_list=[column_filters[order_col-1], distinct_col], desc_ord=(order_dir == 'desc'),
                                             start=start, length=length)
+    print(sql_stm)
     sql_cnt_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
                                                 do_counts=True, distinc_col=distinct_col)
 

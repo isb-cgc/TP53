@@ -66,14 +66,6 @@ $(document).ready(function () {
                 },
             },
 
-            {data: "Topography"},
-            {data: "Morphology"},
-            {data: "Age"},
-            {data: "Sex"},
-            {data: "Class"},
-            {data: "Mode_of_inheritance"},
-            {data: "FamilyCase_group"},
-            {data: "Country"},
             {data: "g_description_GRCh38"},
             {data: "c_description"},
             {
@@ -91,12 +83,14 @@ $(document).ready(function () {
                     }
                 }
             },
-            {data: "ExonIntron"},
-            {data: "Effect"},
+            {data: "hg18_Chr17_coordinates"},
+            {data: "hg38_Chr17_coordinates"},
+            {data: "Class"},
+            {data: "Country"},
+            {data: "WT_codon"},
+            {data: "Mutant_codon"},
             {data: "TransactivationClass"},
             {data: "DNE_LOFclass"},
-            {data: "AGVGDClass"},
-            {data: "TCGA_ICGC_GENIE_count"},
             {
                 data: "CLINVARlink",
                 render: function (data, type) {
@@ -111,21 +105,13 @@ $(document).ready(function () {
                     }
                 }
             },
-            {
-                data: "COSMIClink",
-                render: function (data, type) {
-                    if (type == 'export'){
-                        return data;
-                    }
-                    else {
-                        if (data != null)
-                            return '<a href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" title="Go to COSMIC ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
-                        else
-                            return data;
-                    }
-                }
-            },
-
+            {data: "Hotspot"},
+            {data: "Individual_code"},
+            {data: "Sex"},
+            {data: "Age"},
+            {data: "Topography"},
+            {data: "Morphology"},
+            {data: "Ref_ID"},
         ],
         select: {
             style: 'multi',

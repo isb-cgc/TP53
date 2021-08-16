@@ -2,7 +2,7 @@
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
-    active_submenu = "{{ submenu }}";
+    active_submenu = "search_somatic_mut";
 </script>
 
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.select.min.js') }}"></script>
@@ -55,20 +55,7 @@
                     <input name="checkAll" class="form-check-input check-all" type="checkbox"
                            aria-label="Select All">
                 </th>
-                <th>Start Material</th>
-                <th>NGS Study</th>
-                <th>Topography</th>
-                <th>Morphology</th>
-                <th>Tumor Origin</th>
-                <th>Sample Source</th>
-                <th>Age</th>
-                <th>Sex</th>
-                <th>Germline Variation</th>
-                <th>Tobacco</th>
-                <th>Alcohol</th>
-                <th>Country</th>
-                <th>Infectious Agent</th>
-                <th>Exposure</th>
+
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title="Mutation nomenclature according to HGVS
@@ -80,6 +67,7 @@
                     title="Mutation nomenclature according to HGVS standards and using the NM_000546.5 coding sequence as reference.">
                     cDNA Description
                 </th>
+
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title="Mutation description at the protein level as recommended by HGVS and using the Uniprot reference sequence P04637.">
@@ -87,72 +75,20 @@
                 </th>
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
-                    title="Location of the mutation in the introns or exons in TP53 gene for the reference
-                    sequence NM_000546.5. Terms occurring in this column are '1-intron' to '11-intron' and
-                    '2-exon' to '11-exon'. An 'i' or 'e' in front mean that the mutation is located
-                    within the indicated intron or exon with no information on the precise location.">
-                    Exon No
+                    title="Chromosome coordinate of variation: start position based on hg18 human genome assembly.">
+                    Chr 17 (hg18)
                 </th>
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
-                    title="Effect of the mutation. The terms occurring in this column are: missense (change of
-                    one amino-acid), nonsense (introduction of a stop codon), FS (frameshift), silent (no
-                    change in the protein sequence), splice (mutations located in the two first and two
-                    last conserved nucleotides of the introns and are thus predicted to alter splicing,
-                    or mutations that have been shown to alter splicing experimentally), other (inframe
-                    deletions or insertions), intronic (mutations in introns outside splicing sites), NA
-                    (mutations upstream in 5' or 3' UTR).">
-                    Effect
+                    title="Chromosome coordinate of variation: start position based on hg38 human genome assembly.">
+                    Chr 17 (hg38)
                 </th>
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
-                    title="Functional classification based on the overall transcriptional activity (TA) on 8
-                    different promoters as measured in yeast assays by Kato et al. For each mutant, the median of the 8 promoter-specific activities
-                    (expressed as percent of the wild-type protein) is calculated and missense mutations are classified
-                    as 'non-functional' if the median is less or equal to 20, 'partially functional' if the median is greater than 20 and
-                    less than or equal to 75, 'functional' if the median is greater than 75 and less than or equal to 140, and 'supertrans' if the median is
-                    greater than 140.">
-                    TA Class
-                </th>
-                <th data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="Functional classification for loss of growth-suppression and
-                                                                        dominant-negative activities based on Z-scores from
-                                                                        Giacomelli et al., (2018) study:
-                                                                        DNE_LOF = p53WTNutlin3 Z-score >= 0.61 and
-                                                                        Etoposide
-                                                                        Z-score
-                                                                        <=
-                                                                         -0.21;
-                                                                        notDNE_notLOF = p53WTNutlin3 Z-score &lt; 0.61
-                                                                        and
-                                                                        Etoposide
-                                                                        Z-score
-                                                                        > -0.21;
-                                                                        notDNE_LOF if p53WTNutlin3 Z-score &lt; 0.61 and
-                                                                        Etoposide
-                                                                        Z-score
-                                                                        &lt;=
-                                                                         -0.21; unclass = others">
-                    DNE / LOF Class
-                </th>
-                <th data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="Missense variant functional predictions by an optimized Align-GVGD tool. Mutations
-                    classified as 'C0' are considered tolerated while other classes are considered damaging.
-                    Further details in
-                    Fortuno (2018).">
-                    Align-GVGD Class
-                </th>
-                <th data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="Sum of variation occurence from TCGA (MC3), ICGC (v28) and GENIE (V5) datasets. Total count is 23570.">
-                    TCGA ICGC GENIE Count
-                </th>
-                <th data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="Link to ClinVar database.">
-                    View ClinVar
+                    title="For variants in exons, codon number at which the variant is located (1-393). If a
+                        variant spans more than one codon, (e.g. tandem variant or deletion of several bases) only the
+                        first (5') codon is entered. For variants in introns, 0 is entered.">
+                    Codon No
                 </th>
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
@@ -161,9 +97,90 @@
                 </th>
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
-                    title="PubMed reference number provided by NCBI.">
-                    PubMed
+                    title="Link to ClinVar database.">
+                    View ClinVar
                 </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Sum of variation occurence from TCGA (MC3), ICGC (v28) and GENIE (V5) datasets. Total count is 23,570.">
+                    TCGA ICGC GENIE Count
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Sum of variation occurence from cBioportal">
+                    cBioportal Count</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="For variants in exons, sequence of the codon in which the variant occurred in NM_000546.5 transcript.">
+                    WT Codon
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Base sequence of the mutated codon in NM_000546.5 transcript.">
+                    Mutant Codon
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Functional classification based on the overall transcriptional activity (TA) on 8 different promoters as measured in yeast assays by Kato et al.
+							            For each mutant, the median of the 8 promoter-specific activities (expressed as percent of the wild-type protein) is calculated and missense variants are classified as &quot;non-functional&quot; if the median is <=20,
+							            &quot;partially functional&quot; if the median is >20 and <=75, &quot;functional&quot; if the median is >75 and <=140, and &quot;supertrans&quot; if the median is >140.">
+                    TA Class
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="Dominant-negative (DN) Effect on transactivation by wild-type p53.
+                                        Classification established for  mutants for which available DN activity on more than
+                                        2 p53-response elements is available. Data are based on WAF1 and RGC promoters in various studies
+                                        (these promoters were the most frequently used in different studies to assess DNE status), and on
+                                        two large systematic study (Dearth et al that includes 76 mutants;
+                                        Monti et al that includes 104 mutants).
+                                        Mutants were classified as <b>&quot;Yes&quot;</b> if they had dominant-negative activity on both WAF1 and
+                                        RGC promoters, or on all promoters in the large studies, <b>&quot;Moderate&quot;</b> if they had dominant-negative
+                                        activity on some but not all promoters, and <b>&quot;No&quot;</b> if they had no dominant-negative
+                                        activity on both WAF1 and RGC promoters, or none of the promoters in the large studies.">
+                    DNE
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="&quot;Yes&quot; indicate the a variant is located in a codon defined as a cancer hotspot by Chang (2017).">
+                    Cancer Hotspot
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="Site of the tumor defined by organ or
+                                                        group of organs, according to the ICD-O
+                                                        nomenclature. (examples:
+                                                        &quot;colon&quot;, &quot;brain&quot;, &quot;bronchus and
+                                                        lung&quot;). Note that some tumors are annoted
+                                                        &quot;Head&amp;Neck,NOS&quot; or &quot;Colorectum, NOS&quot;
+                                                        because no detail is given in the original
+                                                        publication (NOS= not
+                                                        otherwise specified).
+                                                        For the database search tool, a short name is used
+                                                        in place of the ICD-O name (example: &quot;Lung&quot; for &quot;bronchus and
+                                                        lung&quot;).
+                                                        <strong>For metastasis, the topography corresponds
+                                                            to the primary
+                                                            site of the tumor and the site of metastasis is
+                                                            indicated in
+                                                            brackets in the tumor_origin field.</strong>">Topography
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Tumor type, including morphology and/or histologic type.
+                                                        The terminology used is based on ICD-O (2nd and 3rd
+                                                        editions) and SNOMED classifications. Terms have been
+                                                        added, such as 'normal tissue' or 'na'.">Morphology
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Sex of the patient (M for male, F for female).">Sex
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Age of the patient at the time of diagnosis.">Age
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Germline variant detected in any gene in the patient.">Germline Mutation</th>
             </tr>
             </thead>
         </table>

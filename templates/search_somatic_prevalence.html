@@ -13,7 +13,7 @@
     <h2 class="pb-3 my-0 fw-normal">Search Somatic Variant Prevalence Data</h2>
 </div>
 <div id="search_somatic_prev" class="p-3">
-    <fieldset class="p-3 bg-light rounded-2">
+    <div class="p-3 bg-light rounded-2">
         <form action="{{ url_for('results_somatic_prevalence') }}" method="POST" id="mutationSearchFormForm">
             {% with id_prefix='mut_prev' %}
             {% include 'form_fields_topo_morph.html' %}
@@ -83,35 +83,39 @@
                         </div>
                     </div>
                 </div>
-            </fieldset><fieldset class="mb-3"><div class="row">
-                <legend class="col-form-label col-sm-3 pt-0">
-                    <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                            data-bs-placement="top"
-                            title="Country/Region in which the patient was living at the time of surgery. When not otherwise
+            </fieldset>
+            <fieldset class="mb-3">
+                <div class="row">
+                    <legend class="col-form-label col-sm-3 pt-0">
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Country/Region in which the patient was living at the time of surgery. When not otherwise
                                 specified in the original publication, the country corresponding to the address of the hospital
                                 is entered.">
-                        <i class="far fa-question-circle"></i>
-                    </button>
-                    Country/Region
-                </legend>
-                <div class="col-sm-6 col-md-7">
-                    <select name="{{ id_prefix }}_country_list" class="form-control chosen-select"
-                            id="{{ id_prefix }}_country_input"
-                            data-placeholder="Choose Countries..."
-                            aria-label="Country or Population List" multiple>
-                        {% for country in country_list %}
-                        <option value="{{ country.label }}">{{ country.label }}</option>
-                        {% endfor %}
-                    </select>
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                        Country/Region
+                    </legend>
+                    <div class="col-sm-6 col-md-7">
+                        <select name="{{ id_prefix }}_country_list" class="form-control chosen-select"
+                                id="{{ id_prefix }}_country_input"
+                                data-placeholder="Choose Countries..."
+                                aria-label="Country or Population List" multiple>
+                            {% for country in country_list %}
+                            <option value="{{ country.label }}">{{ country.label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-sm-3 col-md-2 text-start">
+                        <a href="javascript:void(0);" class="clear-all-select small-font"><i
+                                class="far fa-times-circle"></i>
+                            Clear All</a>
+                        <br>
+                        <a href="javascript:void(0);" class="add-all-select small-font"><i
+                                class="far fa-check-circle"></i>
+                            Add All</a>
+                    </div>
                 </div>
-                <div class="col-sm-3 col-md-2 text-start">
-                    <a href="javascript:void(0);" class="clear-all-select small-font"><i
-                            class="far fa-times-circle"></i>
-                        Clear All</a>
-                    <br>
-                    <a href="javascript:void(0);" class="add-all-select small-font"><i class="far fa-check-circle"></i>
-                        Add All</a>
-                </div></div>
             </fieldset>
             {% endwith %}
             <div class="form-group row pt-5">
@@ -138,5 +142,4 @@
         </form>
     </div>
 </div>
-<!--</div>-->
 {% endblock %}
