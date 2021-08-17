@@ -18,39 +18,39 @@
             {% with id_prefix='mut_prev' %}
             {% include 'form_fields_topo_morph.html' %}
             {% include 'form_fields_method.html' %}
-            <fieldset class="mb-3">
-                <div class="row">
-                    <legend class="col-form-label col-sm-3 pt-0">
-                        <button class="btn btn-sm pe-0" type="button"
-                                data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title="Whole genome or whole exome sequencing study.">
-                            <i class="far fa-question-circle"></i>
-                        </button>
-                        NGS Study
-                    </legend>
-                    <div class="col-sm-8">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"
-                                   value="Yes"
-                                   id="{{ id_prefix }}_ngs_yes">
-                            <label class="form-check-label"
-                                   for="{{ id_prefix }}_ngs_yes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"
-                                   value="No"
-                                   id="{{ id_prefix }}_ngs_no">
-                            <label class="form-check-label"
-                                   for="{{ id_prefix }}_ngs_no">
-                                No
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
+            <!--<fieldset class="mb-3">-->
+                <!--<div class="row">-->
+                    <!--<legend class="col-form-label col-sm-3 pt-0">-->
+                        <!--<button class="btn btn-sm pe-0" type="button"-->
+                                <!--data-bs-toggle="tooltip"-->
+                                <!--data-bs-placement="top"-->
+                                <!--title="Whole genome or whole exome sequencing study.">-->
+                            <!--<i class="far fa-question-circle"></i>-->
+                        <!--</button>-->
+                        <!--NGS Study-->
+                    <!--</legend>-->
+                    <!--<div class="col-sm-8">-->
+                        <!--<div class="form-check">-->
+                            <!--<input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"-->
+                                   <!--value="Yes"-->
+                                   <!--id="{{ id_prefix }}_ngs_yes">-->
+                            <!--<label class="form-check-label"-->
+                                   <!--for="{{ id_prefix }}_ngs_yes">-->
+                                <!--Yes-->
+                            <!--</label>-->
+                        <!--</div>-->
+                        <!--<div class="form-check">-->
+                            <!--<input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"-->
+                                   <!--value="No"-->
+                                   <!--id="{{ id_prefix }}_ngs_no">-->
+                            <!--<label class="form-check-label"-->
+                                   <!--for="{{ id_prefix }}_ngs_no">-->
+                                <!--No-->
+                            <!--</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</fieldset>-->
             <fieldset class="mb-3">
                 <div class="row">
                     <legend class="col-form-label col-sm-3 pt-0">
