@@ -1273,7 +1273,7 @@ def search_somatic_prevalence():
 
 @app.route("/stats_somatic_mut")
 def stats_somatic_mut():
-    return render_template("stats_somatic_mut.html")
+    return render_template("stats_somatic_mut.html", submenu="stats_somatic_mut")
 
 
 @app.route("/prevalence_somatic_stats")
@@ -1418,7 +1418,8 @@ def results_somatic_prevalence_list():
     criteria += get_method_criteria(prefix)
     criteria += get_ngs_criteria(prefix)
     criteria += get_country_criteria(prefix)
-    return render_template("results_somatic_prevalence.html", criteria=criteria)
+
+    return render_template("results_somatic_prevalence.html", criteria=criteria, submenu = "search_somatic_prevalence")
 
 @app.route("/get_prevalence_distribution", methods=['GET', 'POST'])
 def get_prevalence_distribution():
@@ -1468,7 +1469,7 @@ def get_prevalence_distribution():
         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
-    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, criteria=criteria, title=title, subtitle=subtitle)
+    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, criteria=criteria, title=title, subtitle=subtitle, submenu='search_somatic_prevalence')
 
 
 @app.route("/search_germline_mut")
