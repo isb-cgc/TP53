@@ -37,19 +37,8 @@ $(document).ready(function () {
             buttons: [{
                 extend: 'csv',
                 filename: function () {
-                    // var db_version;// default version;
-                    // $.ajax({
-                    //     method: "GET",
-                    //     async: false,
-                    //     url: "/get_db_version",
-                    //     success: function (data) {
-                    //         db_version = data;
-                    //     }
-                    // });
-                    // return bq_view_name + (db_version ? '_' + db_version : '');
                     return bq_view_name + '_' + db_version;
                 },
-                fieldBoundary: '',
                 exportOptions: {
                     columns: ':not(:first-child)'
                 }
@@ -58,7 +47,7 @@ $(document).ready(function () {
                 targets: 0,
                 data: null,
                 render: function() {
-                    return '<input class="form-check-input row-check" type="checkbox" aria-label="Select Row">';
+                    return '<input class="form-check-input row-check" type="checkbox" aria-label="Select Rows">';
                 },
                 orderable: false,
             },{
@@ -67,6 +56,9 @@ $(document).ready(function () {
                     return '<a href="'+data+'" target="_blank">'+data+'</a>';
                 }
             }],
+            rowCallback: function (row) {
+                $(row).find('.row-check').prop('checked', $(row).hasClass('selected'));
+            },
             order: [[1, "asc"]],
             scrollX: true,
             select: {

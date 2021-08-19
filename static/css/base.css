@@ -38,7 +38,8 @@ table {
     background-color: #2F2C55;
 }
 
-.navbar a {
+
+.navbar a{
     font-size: 1.3rem;
     color: #D7D8F1;
 }
@@ -174,7 +175,7 @@ h4 {
     font-weight: bold;
 }
 
-a{
+a, .nav-link{
     color: #4F5EDF;
     text-decoration: none;
 }
@@ -182,6 +183,11 @@ a:hover{
     color: #8796DF;
 }
 
+a.hover-arrow-link:hover::after{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: "\f30b";
+}
 .sidebar {
     position: fixed;
     width: 240px;
@@ -236,22 +242,21 @@ a:hover{
 .sidebar ul > li.nav-item > nav a::before {
     content: " ";
     width: 2em;
-    font-family: 'Font Awesome 5 Free';
     display: inline-block;
+    text-align: center;
 }
 
 .sidebar ul > li.nav-item > nav a.active::before {
     content: "\f054";
-    width: 1.8em;
     font-family: 'Font Awesome 5 Free';
-    display: inline-block;
 }
 
-.sidebar ul > li.nav-item a.active {
+
+.sidebar li.nav-item a.active {
     background-color: #9A9BC6;
     color: white;
 }
-.sidebar ul > li.nav-item > nav a.active {
+.sidebar li.nav-item > nav a.active {
     background-color: transparent;
     color: #4F5EDF
 }
@@ -448,9 +453,20 @@ h1 a {
     font-size: .6rem;
     border-radius: .3rem;
 }
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+
+.nav-tabs .nav-link{
+    border-color: #dee2e6;
+
+    margin-right: 3px;
+    color: #495057;
+    /*background-color: #eccccf;*/
+    /*border-bottom-color: #f8f9fa;*/
+}
+.nav-tabs .nav-link.active{
+/*.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{*/
     background-color: #f8f9fa;
     border-bottom-color: #f8f9fa;
+    font-weight: bold;
 }
 
 
@@ -646,4 +662,8 @@ footer{
         font-size: 2rem;
     }
 
+}
+
+table .form-control{
+    font-size: xx-small;
 }

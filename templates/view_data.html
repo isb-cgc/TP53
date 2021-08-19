@@ -8,7 +8,7 @@
     var db_version = "{{ ver }}";
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.select.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/select.dataTables.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/view_data.js') }}"></script>
 
@@ -28,7 +28,9 @@
            width="100%">
         <thead>
         <tr>
-            <th>
+            <th data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="Select all rows on this page">
                 <input class="form-check-input check-all" type="checkbox">
             </th>
             {% for col_name in columns %}

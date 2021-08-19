@@ -59,6 +59,7 @@ $(document).ready(function () {
             {data: "Codon_number"},
             {
                 data: "COSMIClink",
+                className: "text-center",
                 render: function (data, type) {
                     if (type == 'export'){
                         return data;
@@ -73,6 +74,7 @@ $(document).ready(function () {
             },
             {
                 data: "CLINVARlink",
+                className: "text-center",
                 render: function (data, type) {
                     if (type == 'export'){
                         return data;

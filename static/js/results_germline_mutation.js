@@ -64,6 +64,7 @@ $(document).ready(function () {
             {data: "DNE_LOFclass"},
             {
                 data: "CLINVARlink",
+                className: "text-center",
                 render: function (data, type) {
                     if (type == 'export'){
                         return data;

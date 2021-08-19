@@ -40,9 +40,9 @@ $(document).ready(function () {
             {
                 data: "MUT_ID",
                 orderable: false,
+                className: "text-center",
                 render: function(data){
                     return '<a title="View Variant Details" class="rounded-circle btn btn-tiny turquoise-btn" href="mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
-                    // return '<a type="button" title="View Mutation Details" class="rounded-circle btn btn-tiny-round turquoise-btn" href="mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
                 }
             },
             {data: "g_description_GRCh38"},
@@ -74,6 +74,7 @@ $(document).ready(function () {
             {data: "Polymorphism"},
             {
                 data: "CLINVARlink",
+                className: "text-center",
                 render: function (data, type) {
                     if (type == 'export'){
                         return data;
@@ -88,6 +89,7 @@ $(document).ready(function () {
             },
             {
                 data: "COSMIClink",
+                className: "text-center",
                 render: function (data, type) {
                     if (type == 'export'){
                         return data;
@@ -102,6 +104,7 @@ $(document).ready(function () {
             },
             {
                 data: "SNPlink",
+                className: "text-center",
                 render: function (data, type) {
                     if (type == 'export'){
                         return data;
@@ -116,6 +119,7 @@ $(document).ready(function () {
             },
             {
                 data: "gnomADlink",
+                className: "text-center",
                 render: function (data, type) {
                     if (type == 'export'){
                         return data;
@@ -185,10 +189,6 @@ $(document).ready(function () {
         displayCellLines(selectedRowSet);
     });
 
-    // $('.download-btn').on('click', function () {
-    //     $('button.buttons-csv').trigger("click");
-    // });
-
     $('.download-btn').on('click', function () {
         var criteria_map = {};
         var include_criteria = $('#criteria_div').data('criteria');
@@ -212,42 +212,6 @@ $(document).ready(function () {
 
 });
 
-// var download_selected_dataset = function (self, selectedRowSet, e, dt, button, config) {
-//         var old_ajax_criteria = dt.settings()[0].ajax.data.criteria;
-//         var oldStart = dt.settings()[0]._iDisplayStart;
-//
-//         dt.one('preXhr', function (e, s, data) {
-//             // Just this once, load all data from the server...
-//             data.start = 0;
-//             data.length = 2147483647;
-//             console.log(data.criteria);
-//             var new_criteria = [{
-//                 "column_name": "MUT_ID",
-//                 "vals": Array.from(selectedRowSet),
-//             }];
-//             data.criteria = JSON.stringify(new_criteria);
-//
-//             dt.one('preDraw', function (e, settings) {
-//                 $.fn.dataTable.ext.buttons.csvHtml5.available(dt, config) ?
-//                     $.fn.dataTable.ext.buttons.csvHtml5.action.call(self, e, dt, button, config) :
-//                     dt.one('preXhr', function (e, s, data) {
-//                         // DataTables thinks the first item displayed is index 0, but we're not drawing that.
-//                         // Set the property to what it was before exporting.
-//                         settings._iDisplayStart = oldStart;
-//                         settings.ajax.data.criteria = old_ajax_criteria;
-//                         data.start = oldStart;
-//                         data.criteria = old_ajax_criteria;
-//                     });
-//
-//                 // Reload the grid with the original page. Otherwise, API functions like table.cell(this) don't work properly.
-//                 setTimeout(dt.ajax.reload, 0);
-//                 // Prevent rendering of the full data to the DOM
-//                 return false;
-//             });
-//         });
-//         // // Requery the server with the new one-time export settings
-//         dt.ajax.reload();
-//     };
 
 var selectAllRows = function (t, bool) {
     if (bool) {
@@ -264,7 +228,6 @@ var selectAllRows = function (t, bool) {
 var updateActionButtonGroups = function (selectedRowCounts, selectedRowCellLineCounts) {
     $('.cart-count').html(selectedRowCounts);
     $('.cell-line-count-badge').html(selectedRowCellLineCounts);
-    // $('.action-button').toggleClass('disabled', selectedRowCounts == 0);
     $('button.cell-search-button').toggleClass('disabled', selectedRowCellLineCounts == 0);
 };
 
@@ -280,10 +243,7 @@ var displayGeneVariationDistributions = function (action, selectedRowSet) {
         }
     }
     else{
-        // input = $("<input type='hidden' name='criteria' value='" + JSON.stringify($('#criteria_div').data('criteria')) + "'/>");
-        // input.appendTo(form);
         $("<input>", { value: JSON.stringify($('#criteria_div').data('criteria')), name: 'criteria', type: 'hidden' }).appendTo(form);
-        // console.log($('#criteria_div').data('criteria'));
     }
 
     input = $("<input type='hidden' name='action' value='" + action + "'/>");
