@@ -323,6 +323,8 @@ def build_simple_query(criteria, table, column_filters, do_counts=False, distinc
         if ord_column:
             ord_dir = "DESC" if desc_ord else ""
             order_by_clause = "ORDER BY {ord_column} {ord_dir}".format(ord_column=ord_column, ord_dir=ord_dir)
+            if distinct_col:
+                order_by_clause += ", {distinct_col} {ord_dir}\n".format(distinct_col=distinct_col, ord_dir=ord_dir)
         if length:
             limit_clause = "LIMIT {limit_cnt} OFFSET {skip_rows}".format(limit_cnt=length, skip_rows=start)
 

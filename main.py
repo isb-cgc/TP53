@@ -961,20 +961,24 @@ def mutation_query( ):
 def gv_query():
     parameters = dict(request.form)
     draw = parameters['draw']
+    distinct_col = 'MUT_ID'
     order_col = int(parameters['order[0][column]'])
     order_dir = parameters['order[0][dir]']
     start = int(parameters['start'])
     length = int(parameters['length'])
     criteria = json.loads(parameters['criteria'])
+
     column_filters = ["MUT_ID", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
                       "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "Somatic_count", "Germline_count", "Cellline_count",
                       "TCGA_ICGC_GENIE_count", "Polymorphism", "CLINVARlink", "COSMIClink",
                        "SNPlink", "gnomADlink"]
     sql_stm = bq_builder.build_simple_query(criteria=criteria, table='MutationView', column_filters=column_filters,
+                                            distinct_col=distinct_col,
                                             ord_column=column_filters[order_col-1], desc_ord=(order_dir == 'desc'),
                                             start=start, length=length)
+    print(sql_stm)
     sql_cnt_stm = bq_builder.build_simple_query(criteria=criteria, table='MutationView', column_filters=column_filters,
-                                                do_counts=True, distinct_col='MUT_ID')
+                                                do_counts=True, distinct_col=distinct_col)
 
     query_page_job = bigquery_client.query(sql_stm)
     query_count_job = bigquery_client.query(sql_cnt_stm)

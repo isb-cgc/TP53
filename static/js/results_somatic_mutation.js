@@ -24,6 +24,7 @@ $(document).ready(function () {
         },
         drawCallback: function () {
             $('.spinner').hide();
+            $('input.check-all').prop( "checked", false ); //reset 'Select All' checkbox
         },
         order: [[ 1, "asc" ]],
         scrollX: true,
@@ -197,14 +198,10 @@ var displayDistributions = function (action, selectedRowSet) {
         });
 
         var criteria = { include: [{'column_name': 'MUT_ID', 'vals': mutIds}], exclude:[]};
-        // input = $("<input type='hidden' name='criteria' value='" + JSON.stringify(criteria) + "'/>");
         $("<input>", { value: JSON.stringify(criteria), name: 'criteria', type: 'hidden' }).appendTo(form);
-        // input.appendTo(form);
 
     }
     else{
-        // input = $("<input type='hidden' name='criteria' value='" + JSON.stringify($('#criteria_div').data('criteria')) + "'/>");
-        // input.appendTo(form);
         $("<input>", { value: JSON.stringify($('#criteria_div').data('criteria')), name: 'criteria', type: 'hidden' }).appendTo(form);
     }
 

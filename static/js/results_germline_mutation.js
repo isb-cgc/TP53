@@ -5,40 +5,10 @@ $(document).ready(function () {
     const selectedRowSet = new Set();
     var table = $('#gm-result-table').DataTable({
         dom: "<'row'<'col-sm-12 col-md-6'l>>" +
-                // "<'row d-none'<'col-sm-12 col-md-4'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-        // buttons: [{
-        //     extend: 'csv',
-        //     filename: function () {
-        //         var db_version;// default version;
-        //         $.ajax({
-        //             method: "GET",
-        //             async: false,
-        //             url: "/get_db_version",
-        //             success: function (data) {
-        //                 db_version = data;
-        //             }
-        //         });
-        //         return 'tp53db_germline_mutations' + (db_version ? '_' + db_version : '');
-        //     },
-        //     action:
-        //         function (e, dt, node, config) {
-        //             if (selectedRowSet.size) {
-        //                 download_selected_dataset(this, selectedRowSet, e, dt, node, config);
-        //             }
-        //             else {
-        //                 download_dataset(this, e, dt, node, config);
-        //             }
-        //         },
-        //     exportOptions: {
-        //         columns: ':not(:first-child):not(:nth-child(2))',
-        //         orthogonal: 'export'
-        //     }
-        // }],
         pageLength: 10,
         serverSide: true,
-        // rowId: 'MUT_ID',
         ajax: {
             url: "/mutation_query",
             type: "POST",
@@ -54,6 +24,7 @@ $(document).ready(function () {
         },
         drawCallback: function () {
             $('.spinner').hide();
+            $('input.check-all').prop( "checked", false ); //reset 'Select All' checkbox
         },
         order: [[ 1, "asc" ]],
         scrollX: true,
@@ -213,13 +184,9 @@ var displayGeneVariationDistributions = function (action, selectedRowSet) {
         });
         var criteria = { include: [{'column_name': 'MUT_ID', 'vals': mutIds}], exclude:[]};
         $("<input>", { value: JSON.stringify(criteria), name: 'criteria', type: 'hidden' }).appendTo(form);
-        // input = $("<input type='hidden' name='criteria' value='" + JSON.stringify(criteria) + "'/>");
-        // input.appendTo(form);
     }
     else{
         $("<input>", { value: JSON.stringify($('#criteria_div').data('criteria')), name: 'criteria', type: 'hidden' }).appendTo(form);
-        // input = $("<input type='hidden' name='criteria' value='" + JSON.stringify($('#criteria_div').data('criteria')) + "'/>");
-        // input.appendTo(form);
     }
 
     input = $("<input type='hidden' name='action' value='" + action + "'/>");

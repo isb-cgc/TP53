@@ -24,6 +24,7 @@ $(document).ready(function () {
         },
         drawCallback: function () {
             $('.spinner').hide();
+            $('input.check-all').prop( "checked", false ); //reset 'Select All' checkbox
         },
         order: [[ 1, "asc" ]],
         scrollX: true,

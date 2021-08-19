@@ -68,6 +68,9 @@ $(document).ready(function () {
                     selectRow(row);
                     $(row).find('.row-check').prop('checked', true);
                 }
+                else{
+                    $(row).find('.row-check').prop('checked', false);
+                }
             }
         }
     );
@@ -130,6 +133,7 @@ var selectAllRows = function (t, bool) {
         t.rows().deselect();
     }
     $('.row-check').prop('checked', bool);
+
 };
 
 var updateActionButtonGroups = function (selectedRowCounts) {
