@@ -284,6 +284,7 @@ gm_ref_data = None
 
 # IS_TEST = True
 BQ_DATASET = os.environ.get('BQ_DATASET', 'P53_data')
+GOOGLE_SE_ID = os.environ.get('GOOGLE_SE_ID', 'dab1bee9d7d88fe88')
 
 # hsts_max_age = 3600 if IS_TEST else 31536000
 
@@ -317,6 +318,10 @@ DATA_VERSION = os.environ.get('DATA_VERSION', 'r20')
 @app.route("/googlee122c0dbd92c3af2.html")
 def google_site_verf():
     return render_template("googlee122c0dbd92c3af2.html")
+
+# @app.route("/googlee6c70a3643842b1d6.html")
+# def google_site_verf():
+#     return render_template("googlee6c70a3643842b1d6.html")
 
 # @app.route("/sitemap.xml")
 # def sitemap():
@@ -2109,7 +2114,7 @@ def get_db_version():
 
 @app.route("/cse_search")
 def cse_search():
-    return render_template("cse_search.html")
+    return render_template("cse_search.html", google_se_id=GOOGLE_SE_ID)
 
 
 @app.route('/favicon.ico')

@@ -32,6 +32,8 @@ env_variables:
   TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files'
 #  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-test'
   DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-dev'
+#  GOOGLE_SE_ID: 'e6c70a3643842b1d6' #TEST
+  GOOGLE_SE_ID: 'dab1bee9d7d88fe88' #DEV
   BQ_DATASET: 'P53_data'
   DATA_VERSION: 'r20'
 

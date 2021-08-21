@@ -529,8 +529,8 @@ th.custom50w{
 
 button.btn-view-details{
     color: #54B5AB;
-    width: 30px;
-    height: 30px;
+    width: 1.5rem;
+    height: 1.5rem;
     border: none;
     text-align: center;
     display: inline-block;
@@ -564,7 +564,7 @@ button[aria-expanded="true"].btn-view-details::before{
 /* WebKit */
     width: -webkit-calc(58% - 45px);
 /* Standard */
-    width: calc(58% - 45px)tp;
+    width: calc(58% - 45px);
 }
 
 .raspberry-text{
@@ -666,4 +666,8 @@ footer{
 
 table .form-control{
     font-size: x-small;
+}
+
+.gsc-adBlock{
+    display: none!important;
 }

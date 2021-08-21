@@ -1,7 +1,10 @@
 {% extends "base.html" %}
+{% block title %}The TP53 Database: Keyword Search Results{% endblock %}
 {% block head %}
 {{ super() }}
-<script async src="https://cse.google.com/cse.js?cx=dab1bee9d7d88fe88"></script>
+<script async src="https://cse.google.com/cse.js?cx={{google_se_id}}"></script>
+
+<!--<script async src="https://cse.google.com/cse.js?cx=dab1bee9d7d88fe88"></script>-->
 {% endblock %}
 {% block content %}
 <main>
