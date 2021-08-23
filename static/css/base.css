@@ -57,6 +57,7 @@ table {
 
 .navbar-nav .nav-item.active .nav-link {
     color: white;
+    /*border-bottom: 5px solid #51978D;*/
     border-bottom: 5px solid #54B5AB;
 }
 
@@ -110,7 +111,8 @@ table {
 .landing-header{
     font-size: 1.4rem;
     font-weight: bold;
-    color: #54B5AB;
+    color: #51978D;
+    /*color: #54B5AB;*/
 }
 
 .landing-disclaimer{
@@ -253,7 +255,7 @@ a.hover-arrow-link:hover::after{
 
 
 .sidebar li.nav-item a.active {
-    background-color: #9A9BC6;
+    background-color: #686986;
     color: white;
 }
 .sidebar li.nav-item > nav a.active {
@@ -571,7 +573,11 @@ button[aria-expanded="true"].btn-view-details::before{
     color: #B01E70;
 }
 .turquoise-text{
-    color: #54B5AB;
+    /*color: #54B5AB;*/
+    color: #51978D;
+}
+.turquoise-light-text{
+    color: #6ce8db;
 }
 .darkblue-text{
     color: #404DB5
