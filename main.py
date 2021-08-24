@@ -334,7 +334,8 @@ def google_site_verf():
 
 # @app.route('/robots.txt')
 @app.route('/urllist.txt')
-def static_from_root():
+def urllist():
+    URL_LIST_FILENAME = os.environ.get('URL_LIST_FILENAME', 'dev_urllist.txt')
     return send_from_directory(app.static_folder, request.path[1:])
 
 

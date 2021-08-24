@@ -30,6 +30,8 @@ env_variables:
   TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-dev'
 #  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files-test'
   TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files'
+  URL_LIST_FILENAME: 'dev_urllist.txt'
+#  URL_LIST_FILENAME: 'test_urllist.txt'
 #  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-test'
   DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-dev'
 #  GOOGLE_SE_ID: 'e6c70a3643842b1d6' #TEST
