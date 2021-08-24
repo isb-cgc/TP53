@@ -3,6 +3,7 @@
         <legend class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                     data-bs-placement="left"
+                    aria-label="help button"
                     title="Nature of the variant. The terms
                                     occurring in this column are 'A:T&gt;C:G' (A to C or T
                                     to G base change), 'A:T&gt;G:C' (A to G or T to C base
@@ -41,6 +42,7 @@
         <legend class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                     data-bs-placement="left"
+                    aria-label="help button"
                     title="Nucleotide change read from the coding sequence. For
                                         deletions and insertions, the number of bases deleted (del) or
                                         inserted (ins) is given. For more complex variant events, a full
@@ -72,7 +74,7 @@
     <div class="row">
         <legend class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
-                    data-bs-placement="left"
+                    data-bs-placement="left" aria-label="help button"
                     title="2D and 3D motifs where the variant is located according to structures described in
                                         <a href='http://www.ncbi.nlm.nih.gov/pubmed/8023157' target='_blank'>Cho
                                         et al. (1994)</a> and <a href='https://www.ncbi.nlm.nih.gov/pubmed/10618702' target='_blank'>
@@ -106,6 +108,7 @@
         <legend class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                     data-bs-placement="left"
+                    aria-label="help button"
                     title="Location of the variant in the introns or exons in TP53 gene for the reference sequence NM_000546.5.
                                         Terms occurring in this column are '1-intron' to '11-intron' and '2-exon'
                                         to '11-exon'. An 'i' or 'e' in front mean that the variant is located within the indicated intron
@@ -138,7 +141,7 @@
     <div class="row">
         <legend class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
-                    data-bs-placement="left"
+                    data-bs-placement="left" aria-label="help button"
                     title="Effect of the variant. The terms
                                         occurring in this column are: missense (change of one amino-acid), nonsense (introduction of a stop codon), FS
                                         (frameshift), silent (no change in the protein sequence),
@@ -171,7 +174,7 @@
     <div class="row">
         <legend class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
-                    data-bs-placement="left"
+                    data-bs-placement="left" aria-label="help button"
                     title="Functional classification based on the overall transcriptional activity (TA) on 8 different promoters as measured in yeast assays by <a href='https://www.ncbi.nlm.nih.gov/pubmed/12826609' target='_blank'>Kato et al</a>.
 							            For each mutant, the median of the 8 promoter-specific activities (expressed as percent of the wild-type protein) is calculated and missense variants are classified as 'non-functional' if the median is &lt;=20,
 							            partially functional' if the median is &gt;20 and &lt;=75, 'functional' if the median is &gt;75 and &lt;=140, and 'supertrans' if the median is &gt;140.">
@@ -200,6 +203,7 @@
         <legend class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                     data-bs-placement="left"
+                    aria-label="help button"
                     title="Functional classification based on <a href='https://sift.jcvi.org/protein_batch_submit.php?species=human' target='_blank'>SIFT program</a> using default settings.
                                         Missense variants are classified as 'damaging' or tolerated'.">
                 <i class="far fa-question-circle"></i>
@@ -223,9 +227,10 @@
 
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-md-3 col-sm-5 pt-0">
+        <legend id="{{ id_prefix }}_chrpos_legend" class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                     data-bs-placement="left"
+                    aria-label="help button"
                     title="Chromosome coordinate of variant: start position based on hg19 or hg38 human genome assembly.">
                 <i class="far fa-question-circle"></i>
             </button>
@@ -248,7 +253,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-3">
-                    <input type="number" class="form-control" id="{{ id_prefix }}_chrpos" name="{{ id_prefix }}_chrpos">
+                    <input type="number" class="form-control" id="{{ id_prefix }}_chrpos" name="{{ id_prefix }}_chrpos" aria-labelledby="{{ id_prefix }}_chrpos_legend">
                 </div>
             </div>
         </div>
@@ -260,6 +265,7 @@
         <legend class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
                     data-bs-placement="left"
+                    aria-label="help button"
                     title="Mutant base, described on the coding strand.">
                 <i class="far fa-question-circle"></i>
             </button>
@@ -307,7 +313,7 @@
     <div class="row">
         <legend class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
-                    data-bs-placement="left"
+                    data-bs-placement="left" aria-label="help button"
                     title="For variants in exons, codon number
                                         at which the variant is located (1-393). If a variant spans more
                                         than one codon, (e.g. tandem variant or deletion of several
@@ -330,11 +336,11 @@
                      data-bs-parent="#{{ id_prefix }}_codon_div">
                     <div class="col-md-3 col-sm-5">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="{{ id_prefix }}_codon_number"
+                            <input type="number" class="form-control" id="{{ id_prefix }}_codon_no"
                                    name="{{ id_prefix }}_codon_no"
                                    min="1"
                                    max="393">
-                            <label for="{{ id_prefix }}_codon_end">Codon No.</label>
+                            <label for="{{ id_prefix }}_codon_no">Codon No.</label>
                         </div>
                     </div>
                 </div>
@@ -368,40 +374,40 @@
 </fieldset>
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-md-3 col-sm-5 pt-0">
+        <legend id="{{ id_prefix }}_wild_codon_legend" class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
-                    data-bs-placement="left"
+                    data-bs-placement="left" aria-label="help button"
                     title="For variants in exons, sequence of the codon in which the variant occurred in NM_000546.5 transcript.">
                 <i class="far fa-question-circle"></i>
             </button>
             Wild-Type Codon
         </legend>
         <div class="col-md-8 col-sm-6">
-            <input type="text" class="form-control" id="{{ id_prefix }}_wild_codon" name="{{ id_prefix }}_wild_codon">
+            <input type="text" class="form-control" id="{{ id_prefix }}_wild_codon" name="{{ id_prefix }}_wild_codon" aria-labelledby="{{ id_prefix }}_wild_codon_legend">
         </div>
     </div>
 </fieldset>
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-md-3 col-sm-5 pt-0">
+        <legend id="{{ id_prefix }}_mut_codon_legend" class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
-                    data-bs-placement="left"
+                    data-bs-placement="left" aria-label="help button"
                     title="Base sequence of the mutated codon in NM_000546.5 transcript.">
                 <i class="far fa-question-circle"></i>
             </button>
             Mutant Codon
         </legend>
         <div class="col-md-8 col-sm-6">
-            <input type="text" class="form-control" id="{{ id_prefix }}_mut_codon" name="{{ id_prefix }}_mut_codon">
+            <input type="text" class="form-control" id="{{ id_prefix }}_mut_codon" name="{{ id_prefix }}_mut_codon" aria-labelledby="{{ id_prefix }}_mut_codon_legend">
         </div>
     </div>
 </fieldset>
 
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-md-3 col-sm-5 pt-0">
+        <legend id="{{ id_prefix }}_wild_aa_legend" class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
-                    data-bs-placement="left"
+                    data-bs-placement="left" aria-label="help button"
                     title="Wild-type amino acid encoded at the codon in which the variant occurred (three-letter amino acid
                                         abbreviation). Check <a href='aa_codes' target='_blank'>AA letter code</a> and
                                         <a href='genetic_code' target='_blank'>Genetic code</a>">
@@ -410,15 +416,15 @@
             Wild-Type Amino Acid
         </legend>
         <div class="col-md-8 col-sm-6">
-            <input type="text" class="form-control" id="{{ id_prefix }}_wild_aa" name="{{ id_prefix }}_wild_aa">
+            <input type="text" class="form-control" id="{{ id_prefix }}_wild_aa" name="{{ id_prefix }}_wild_aa" aria-labelledby="{{ id_prefix }}_wild_aa_legend">
         </div>
     </div>
 </fieldset>
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-md-3 col-sm-5 pt-0">
+        <legend id="{{ id_prefix }}_mut_aa_legend" class="col-form-label col-md-3 col-sm-5 pt-0">
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
-                    data-bs-placement="left"
+                    data-bs-placement="left" aria-label="help button"
                     title="Mutated amino acid encoded at the
                                         codon in which the variant occurred (three-letter amino acid
                                         abbreviation). The chain terminating variants due to single base
@@ -430,11 +436,11 @@
             Mutant Amino Acid
         </legend>
         <div class="col-md-8 col-sm-6">
-            <input type="text" class="form-control" id="{{ id_prefix }}_mut_aa" name="{{ id_prefix }}_mut_aa">
+            <input type="text" class="form-control" id="{{ id_prefix }}_mut_aa" name="{{ id_prefix }}_mut_aa" aria-labelledby="{{ id_prefix }}_mut_aa_legend">
         </div>
     </div>
 </fieldset>
-<fieldset class="mb-3 text-end">
+<div class="mb-3 text-end">
     <div class="row">
         <div class="col-11">
             <div class="form-text">
@@ -448,5 +454,5 @@
             </div>
         </div>
     </div>
-</fieldset>
+</div>
 

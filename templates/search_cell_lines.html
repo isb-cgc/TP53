@@ -33,7 +33,7 @@
             </ul>
         </div>
     </div>
-    <div class="p-3 bg-light rounded-2">
+    <div class="p-3 rounded-2">
         <form action="{{ url_for('results_cell_line_mutation') }}" method="POST">
             <div class="accordion" id="cl_form_accordion">
                 {% with id_prefix='cl' %}
@@ -46,39 +46,40 @@
                     </h3>
                     <div id="collapseCL" class="accordion-collapse collapse show" aria-labelledby="headingCL"
                          data-bs-parent="#cl_form_accordion">
-                        <div class="accordion-body bg-light">
+                        <div class="accordion-body">
                             <fieldset class="row mb-3">
-                                <legend class="col-form-label col-sm-3 pt-0">
+                                <legend id="cell_line_name" class="col-form-label col-sm-3 pt-0">
                                     <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                                             data-bs-placement="top"
-                                            title="Name of the cell-line.">
+                                            title="Name of the cell-line" aria-label="help button">
                                         <i class="far fa-question-circle"></i>
                                     </button>
                                     Cell-Line Name
                                 </legend>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="cl_name" name="cl_name">
+                                    <input type="text" class="form-control" aria-labelledby="cell_line_name" id="cl_name" name="cl_name">
                                 </div>
                             </fieldset>
                             <fieldset class="row mb-3">
-                                <legend class="col-form-label col-sm-3 pt-0">
+                                <legend id="atcc_id_legend" class="col-form-label col-sm-3 pt-0">
                                     <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                                             data-bs-html="true"
                                             data-bs-placement="top"
-                                            title="Identification number of the ATCC database.">
+                                            title="Identification number of the ATCC database." aria-label="help button">
                                         <i class="far fa-question-circle"></i>
                                     </button>
                                     ATCC ID
                                 </legend>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="atcc_id" name="atcc_id">
+                                    <input aria-labelledby="atcc_id_legend" type="text" class="form-control" id="atcc_id" name="atcc_id">
                                 </div>
                             </fieldset>
                             <fieldset class="row mb-3">
-                                <legend class="col-form-label col-sm-3 pt-0">
+                                <legend id="cosmic_id_legend" class="col-form-label col-sm-3 pt-0">
                                     <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                                             data-bs-placement="top"
                                             data-bs-html="true"
+                                            aria-label="help button"
                                             title="Link to sample cell-line data in the
                                                 <a href='https://www.sanger.ac.uk/genetics/CGP/CellLines/' target='_blank'>
                                                 Cancer Cell Line Project</a> of <a href='https://www.sanger.ac.uk/genetics/CGP/cosmic/'
@@ -88,13 +89,14 @@
                                     COSMIC ID
                                 </legend>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="cosmic_id" name="cosmic_id">
+                                    <input aria-labelledby="cosmic_id_legend" type="text" class="form-control" id="cosmic_id" name="cosmic_id">
                                 </div>
                             </fieldset>
-                            <fieldset class="row mb-3">
+                            <fieldset id="tp53_status_legend" class="row mb-3">
                                 <legend class="col-form-label col-sm-3 pt-0">
                                     <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                                             data-bs-placement="top"
+                                            aria-label="help button"
                                             title="Status of TP53 gene. WT= wild-type gene sequence;
                                                                 MUT= mutated gene sequence;
                                                                 NULL= entire gene deletion;
@@ -106,7 +108,7 @@
                                 <div class="col-sm-8">
                                     {% for stat_item in cl_tp53stat_list%}
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="tp53_status"
+                                        <input aria-labelledby="tp53_status_legend" class="form-check-input" type="checkbox" name="tp53_status"
                                                value="{{ stat_item.label }}"
                                                id="status_{{ stat_item.label|lower }}">
                                         <label class="form-check-label"
@@ -131,7 +133,7 @@
                     </h3>
                     <div id="collapseMDM" class="accordion-collapse collapse" aria-labelledby="headingMDM"
                          data-bs-parent="#cl_form_accordion">
-                        <div class="accordion-body bg-light">
+                        <div class="accordion-body">
                             {% include 'form_fields_method.html' %}
 
                         </div>
@@ -146,7 +148,7 @@
                     </h3>
                     <div id="collapseMD" class="accordion-collapse collapse" aria-labelledby="headingMD"
                          data-bs-parent="#cl_form_accordion">
-                        <div class="accordion-body bg-light">
+                        <div class="accordion-body">
                             {% include 'form_fields_variations.html' %}
                             {% include 'form_fields_mutation.html' %}
                         </div>
@@ -161,7 +163,7 @@
                     </h3>
                     <div id="collapsePI" class="accordion-collapse collapse" aria-labelledby="headingPI"
                          data-bs-parent="#cl_form_accordion">
-                        <div class="accordion-body bg-light">
+                        <div class="accordion-body">
                             {% include 'form_fields_patient_info.html' %}
                         </div>
                     </div>

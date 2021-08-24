@@ -1342,7 +1342,10 @@ def results_somatic_mutation_list():
 
     return render_template("results_somatic_mutation.html", criteria_map=criteria_map)
 
-
+@app.route('/pdf/<filename>') #the url you'll send the user to when he wants the pdf
+def pdf_viewer(filename):
+    return send_from_directory(os.path.join(app.root_path, 'static/download'),
+                               filename+'.pdf')
 
 @app.route("/download_dataset", methods=['GET', 'POST'])
 def download_dataset():

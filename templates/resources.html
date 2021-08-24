@@ -160,17 +160,15 @@
                     <div class="pt-3">
                         Some Example of Sequencing Protocols:
                         <ul>
-                            <li><a href="{{ url_for('static', filename='download/TP53_SangerSequencing_IARC.pdf') }}"
-                                   target="_blank">Direct sequencing by
-                                Sanger</a><br/>
+                            <li>Direct Sequencing by Sanger: <a href="/pdf/TP53_SangerSequencing_IARC" class="ps-2"
+                                   target="_blank"><i class="far fa-file-pdf"></i> TP53_SangerSequencing_IARC.pdf</a>
                             </li>
                             <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/27377626" target="_blank"><em>TP53</em>
-                                sequencing by a
-                                next
-                                generation sequencing technology (NGS)</a>. The detailed list of primers can be
-                                downloaded
-                                <a
-                                        href="{{ url_for('static', filename='download/NGS_TP53_Primers.txt') }}">here</a><br/>
+                                sequencing by a next generation sequencing technology (NGS)</a>. The detailed list of primers can be
+                                downloaded here:
+                                <a class="ps-2" href="{{ url_for('static', filename='download/NGS_TP53_Primers.txt') }}" target="_blank">
+                                    <i class="far fa-file-alt"></i> NGS_TP53_Primers.txt
+                                </a>
                             </li>
                             <li><a href="https://www.mrcholland.com/technology/mlpa/technique"
                                    target="_blank">MLPA</a>
@@ -178,14 +176,11 @@
                             <li>Some caution regarding <em>TP53</em> variants detected by multigene panel testing by
                                 NGS: a
                                 study by
-                                <a
-                                        target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=29189820">Weitzel
-                                    et
-                                    al.,</a>
+                                <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=29189820">
+                                    Weitzel et al.</a>
                             </li>
-                            <li><a href="{{ url_for('static', filename='download/TP53_SNP_sequencing.pdf') }}"
-                                   target="_blank">SNP
-                                sequencing and haplotyping</a><br/>
+                            <li>Sequencing and Haplotyping: <a href="/pdf/TP53_SNP_sequencing" class="ps-2"
+                                   target="_blank"><i class="far fa-file-pdf"></i> TP53_SNP_sequencing.pdf</a>
                             </li>
                         </ul>
                     </div>
@@ -314,7 +309,8 @@
 
                             <li> Analysis by <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/16395672">Mathe
                                 (2006)</a>.
-                                Some details <a target="_blank" href="dt_method">here</a>
+                                See details here:
+                                <a target="_blank" href="dt_method">Structure-Function Predictions Based on Scores Derived from Delaunay Tessellations</a>
                             </li>
 
                             <li><a target="_blank" href="https://www.uniprot.org/uniprot/P04637#section_features">UniProt
@@ -475,9 +471,11 @@
                         </ul>
                     </div>
                     <div>
-                        <a href="{{ url_for('static', filename='download/SlideShow2019.pdf') }}"
-                           class="btn btn-outline-primary" target="_blank"
-                           title="Click to view/download slides"><i class="far fa-file-pdf"></i> View Slides</a></div>
+                        <a href="/pdf/SlideShow2019"
+                           class="btn darkblue-btn" target="_blank"
+                           title="Click to view/download slides"><i class="far fa-file-pdf"></i> View Slides</a>
+                    </div>
+
                 </div>
             </div>
             <div id="others" class="mt-5">
@@ -552,15 +550,14 @@
                     <div class="pt-2 row">
                         <div class="col-auto d-none d-lg-block">
                             <a href="tp53book2013"><img height="150"
-                                                        src="{{ url_for('static', filename='img/p53_2013.jpeg') }}"></a>
+                                                        src="{{ url_for('static', filename='img/p53_2013.jpeg') }}" alt="p53 in the Clinics: Book Cover"></a>
                         </div>
                         <div class="col px-4">
                             <h3><em>p53</em> in the Clinics</h3>
                             With over 60,000 referenced publications, <em>p53</em> has emerged as one of the
                             most important factors in human cancer. Research on <em>p53</em> has led to a complete
-                            overhaul of our
-                            understanding of the molecular basis of human cancer. <a href="tp53book2013">Continue
-                            reading</a></div>
+                            overhaul of our understanding of the molecular basis of human cancer.
+                        </div>
 
                     </div>
                 </div>
@@ -568,7 +565,7 @@
 
                     <div class="pt-2 row">
                         <div class="col-auto d-none d-lg-block">
-                            <a href="tp53book"><img height="150"
+                            <a href="tp53book"><img height="150" alt="25 Years of p53 Research: Book Cover"
                                                     src="{{ url_for('static', filename='img/25yrs_p53.webp') }}">
                             </a>
                         </div>
@@ -579,7 +576,7 @@
                             cancer research and molecular biology, an era that is still in full swing and does not show
                             any
                             signs of ending in the foreseeable future.
-                            <a href="tp53book">Continue reading</a>
+                            <!--<a class="hover-arrow-link" target="_blank" href="tp53book">25 Years of <em>p53</em> Research</a>-->
 
                         </div>
                     </div>
@@ -652,8 +649,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="pt-3">Data on Li-Fraumeni associated <em>TP53</em> variants can be searched <a
-                            href="search_germline_mut">here</a>.
+                    <div class="pt-3">Learn more about <a href="search_germline_mut">Data on Li-Fraumeni associated <em>TP53</em> variants</a>.
                     </div>
                     <div class="pt-3">To learn more on LFS and <em>TP53</em> germline variants, see <a target="_blank"
                                                                                                         href="https://www.ncbi.nlm.nih.gov/books/NBK1311/">
@@ -670,8 +666,8 @@
                                 <i>Concern regarding classification of germline <em>TP53</em> variants as likely
                                     pathogenic.</i>
                                 Evans DG, Turnbull C, Woodward ER. <strong>2019</strong> Jun;40(6):828-831. <a
-                                    href="{{ url_for('static', filename='download/Evans_et_al-2019-Human_Mutation.pdf') }}"
-                                    target="_blank">Article</a>
+                                    href="pdf/Evans_et_al-2019-Human_Mutation" class="ps-2"
+                                    target="_blank"><i class="far fa-file-pdf"></i> View Article</a>
                             </li>
                             <li>
                                 <i>Bayesian estimation of a semiparametric recurrent event model with applications to
@@ -679,8 +675,8 @@
                                     penetrance
                                     estimation of multiple primary cancers in Li-Fraumeni syndrome.</i>
                                 Shin SJ, Li J, Ning J, Bojadzieva J, Strong LC, Wang W. <strong>2018</strong> Nov 14. <a
-                                    href="{{ url_for('static', filename='download/Evans_et_al-2019-Human_Mutation.pdf') }}"
-                                    target="_blank">Article</a>
+                                    href="/pdf/Evans_et_al-2019-Human_Mutation" class="ps-2"
+                                    target="_blank"><i class="far fa-file-pdf"></i> View Article</a>
                             </li>
                             <li>
                                 <i>Baseline Surveillance in Li-Fraumeni Syndrome Using Whole-Body Magnetic Resonance
@@ -860,8 +856,8 @@
 
                     <p>A list of variants frequent in healthy human populations, and thus considered as validated
                         polymorphisms
-                        in the IARC database, is accessible <a id="displayValidatedPolymorphisms"
-                                                               href="view_val_poly">here</a>.
+                        in the database, is accessible here:  <a id="displayValidatedPolymorphisms" class="hover-arrow-link"
+                                                               href="view_val_poly">Validated Polymorphisms</a>
                     </p>
 
                     <p>Among validated polymorphisms, a few have been studied in relation to cancer risk or functional

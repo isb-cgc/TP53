@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="collapse" id="collapseGV">
                                         <div class="bg-light p-3 my-3">
-                                            <h4>geneMutationIARC <em>TP53</em> Database,R20.txt</h4>
+                                            <h4 id="Mutationdescription">geneMutationIARC <em>TP53</em> Database,R20.txt</h4>
                                             <div class="pb-5">
                                                 <table class="table">
                                                     <thead>
@@ -270,9 +270,9 @@
                                                             mentioned
                                                             nucleotides.
                                                             <br>
-                                                            Information on splice site can be found <a
+                                                            <a class="hover-arrow-link"
                                                                 target="_blank"
-                                                                href="https://www.web-books.com/MoBio/Free/Ch5A4.htm">here</a>.
+                                                                href="https://www.web-books.com/MoBio/Free/Ch5A4.htm">Information on splice site</a>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -755,8 +755,8 @@
                                                                href="https://www.ncbi.nlm.nih.gov/pubmed/12826609">
                                                                 Kato et al.
                                                             </a> Variants are classified as
-                                                            "functional" or "non-functional". More details
-                                                            <a target="_blank" href="dt_method">here</a>.
+                                                            "functional" or "non-functional". (Read more details on
+                                                            <a target="_blank" href="dt_method">Structure-Function Predictions Based on Scores Derived from Delaunay Tessellations</a>.)
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -926,9 +926,9 @@
                                             <br>
                                             <p>The predictions provided are based on whether the variant falls
                                                 within the specific
-                                                isoform. For a description of <em>p53</em> isoforms, see <a
+                                                isoform. <a class="hover-arrow-link"
                                                         href="p53isoforms"
-                                                        target="_blank">here</a>.
+                                                        target="_blank">Read more on <em>p53</em> Isoforms</a>
                                             </p>
                                             <div class="pb-5">
                                                 <table class="table">
@@ -1816,7 +1816,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Ref_ID</td>
+                                                    <td id="Referencedescription">Ref_ID</td>
                                                     <td>Reference number indicating the
                                                         publication in which the variant is described. This
                                                         number
@@ -1996,14 +1996,9 @@
                                                 provided in two datasets.</p>
 
                                             <h4>functionalAssessment-IARC <em>TP53</em> Database, R20</h4>
-                                            <a id="FunctionalAssessment"></a>
-
-                                            <table class="table" style="border-top: 1px solid #dee2e6;">
-                                                <tbody>
-                                                <tr>
-                                                    <td><i class="fas fa-exclamation-triangle"></i></td>
-                                                    <td>
-                                                        In this dataset, data were extracted from publications
+                                            <div id="FunctionalAssessment" class="row border-top border-bottom mx-1 my-3 p-2">
+                                                <div class="col-1 text-end"><i class="fas fa-exclamation-triangle"></i></div>
+                                                <div class="col-10">In this dataset, data were extracted from publications
                                                         that report functional assessment of <em>p53</em> mutant
                                                         proteins
                                                         in human or yeast cells, assessed either by transfection
@@ -2018,11 +2013,8 @@
                                                         sequence
                                                         versus gene-specific
                                                         response elements from WAF1, BAX or PIG3), and the
-                                                        recipient cells that have been used.
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                                        recipient cells that have been used.</div>
+                                            </div>
                                             <div class="py-3">
                                                 <p>The functional properties of mutant proteins that are
                                                     included in
@@ -2102,8 +2094,8 @@
                                                         or ChIP assay;<br>
                                                         <b>TA</b> = transactivation of a reporter gene under the
                                                         control of a <em>p53</em>-response element
-                                                        (indicated in brakets, see list <a
-                                                            target="_blank" href="target_genes">here</a>);<br>
+                                                        (indicated in brakets, see a list of <a
+                                                            target="_blank" href="target_genes">p53 Target Genes</a>);<br>
                                                         <b>TR</b> = transrepression of a reporter gene under the
                                                         control of a gene-specific response-element
                                                         (name of gene indicated in brakets)<br>
@@ -2236,9 +2228,8 @@
                                                         test.<br>
                                                         <br>
                                                         Note that functional tests are performed at different
-                                                        temperature in yeast (30ÝC) and human (37ÝC) cells.
-                                                        Detailed annotation rules are available <a
-                                                                target="_blank" href="ts_annotations">here</a>.
+                                                        temperature in yeast (30ÝC) and human (37ÝC) cells. (Read more on
+                                                        <a target="_blank" href="ts_annotations">Temperature Sensitivity Annotations</a> to learn about its detailed annotation rules.)
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2543,7 +2534,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Tissue_processing...</td>
+                                                    <td id="TissueProcessing">Tissue_processing...</td>
                                                     <td><a class="jump-link"
                                                            href="#Detectionmethod">see method
                                                         annotations</a>.
@@ -2868,10 +2859,8 @@
                                                 </tr>
                                                 <tr>
                                                     <td><a id="TNM"></a>TNM</td>
-                                                    <td>TNM classification (Tumor size, Node status, Metastasis
-                                                        status) for staging. For information on this
-                                                        classification system, click <a target="_blank"
-                                                                                        href="tnm_class">here</a>.
+                                                    <td><a target="_blank" href="tnm_class">TNM classification</a> (Tumor size, Node status, Metastasis
+                                                        status) for staging.
                                                     </td>
                                                 </tr>
                                                 </tbody>
@@ -2930,26 +2919,24 @@
                                                 </tr>
                                                 <tr>
                                                     <td><a id="Population"></a>Population</td>
-                                                    <td>Grouping by population. To see the country/population
-                                                        classification <a
-                                                                href="country">click
-                                                            here</a>.
+                                                    <td>Grouping by population. See the <a class="hover-arrow-link"
+                                                                                           target="_blank" href="country">
+                                                        Country/Population Classification</a>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><a id="Region"></a>Region</td>
-                                                    <td>Grouping by region. To see the country/region
-                                                        classification <a
-                                                                href="country">click
-                                                            here</a>.
+                                                    <td>Grouping by region. See the <a class="hover-arrow-link" target="_blank"
+                                                                href="country">Country/Region
+                                                        Classification</a>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><a id="Development"></a>Development</td>
-                                                    <td>Grouping by development status. To see the
-                                                        country/development classification <a
-                                                                href="country">click
-                                                            here</a>.
+                                                    <td>Grouping by development status. See
+                                                         <a class="hover-arrow-link" target="_blank" href="country">
+                                                             Country/Development Classification
+                                                         </a>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -3051,7 +3038,7 @@
                                                 </tr>
                                                 <tr>
 
-                                                    <td><a id="PubMed"></a>PubMed_entry</td>
+                                                    <td><a id="PubMed_entry"></a>PubMed_entry</td>
                                                     <td>PubMed identification number from <a
                                                             href="https://www.ncbi.nlm.nih.gov/pubmed/"
                                                             target="_blank">NCBI</a>.
@@ -3091,7 +3078,7 @@
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    <div>
+                                    <div id="Detectionmethod">
                                         <button aria-label="Show/Hide" class="btn-view-details"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#collapseMDM" aria-expanded="false"
@@ -3160,9 +3147,14 @@
                         <h3 id="headingLA">
                             List of Abbreviations
                         </h3>
-                        <div class="p-3">
+                        <div class="p-3" id="List_of_abbreviations">
                             <table class="table table-sm table-striped">
-
+                                <thead>
+                                    <tr>
+                                        <th>Abbreviation</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                 <tr>
 
@@ -4022,8 +4014,7 @@
                             <h4><em>TP53</em> reference sequences used in the database</h4>
                             <hr>
                             <div>Reference sequences for <em>TP53</em> gene and <em>p53</em> protein can be
-                                found <a
-                                        target="_blank" href="resources#sequences">here</a>.
+                                found here: <a target="_blank" class="hover-arrow-link" href="resources#sequences"><em>TP53</em> Sequences</a>
                             </div>
                         </div>
                         <div class="p-3">

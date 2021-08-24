@@ -22,14 +22,15 @@
             {% with id_prefix='gv' %}
             <fieldset class="mb-3">
                 <div class="row">
-                    <legend class="col-form-label col-sm-3 pt-0">Search by</legend>
+                    <legend id="{{ id_prefix }}_search_by" class="col-form-label col-sm-3 pt-0">Search by</legend>
                     <div class="col-sm-8">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="type_input" id="type_cdna"
                                    value="type_cdna"
                                    data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_cdna_div"
                                    aria-expanded="false"
-                                   aria-controls="{{ id_prefix }}_cdna_div">
+                                   aria-controls="{{ id_prefix }}_cdna_div"
+                                    aria-labelledby="{{ id_prefix }}_search_by">
                             <label class="form-check-label" for="type_cdna">
                                 cDNA Description
                             </label>
@@ -46,7 +47,8 @@
                                    value="type_p"
                                    data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_p_div"
                                    aria-expanded="false"
-                                   aria-controls="{{ id_prefix }}_p_div">
+                                   aria-controls="{{ id_prefix }}_p_div"
+                                   aria-labelledby="{{ id_prefix }}_search_by">
                             <label class="form-check-label" for="type_p">
                                 Protein Description
                             </label>
@@ -62,7 +64,8 @@
                                    value="type_hg19"
                                    data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_hg19_div"
                                    aria-expanded="false"
-                                   aria-controls="{{ id_prefix }}_hg19_div">
+                                   aria-controls="{{ id_prefix }}_hg19_div"
+                                   aria-labelledby="{{ id_prefix }}_search_by">
                             <label class="form-check-label" for="type_hg19">
                                 Genomic Description (hg19)
                             </label>
@@ -79,7 +82,8 @@
                                    value="type_hg38"
                                    data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_hg38_div"
                                    aria-expanded="false"
-                                   aria-controls="{{ id_prefix }}_hg38_div">
+                                   aria-controls="{{ id_prefix }}_hg38_div"
+                                   aria-labelledby="{{ id_prefix }}_search_by">
                             <label class="form-check-label" for="type_hg38">
                                 Genomic Description (hg38)
                             </label>

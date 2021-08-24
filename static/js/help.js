@@ -9,12 +9,12 @@ $(document).ready(function () {
         // $(this).parent('nav.sidebar').removeClass('active');
         // $(this).parents('.nav-item').find('a.nav-link').addClass('active');
         // $(this).addClass('active');
-        var collapsibles_to_hide = $(this).parents('.collapse');
+        // var collapsibles_to_hide = $(this).parents('.collapse');
         var collapsibles_to_show = $(section_id).parents('.collapse');
-        toggle_collapse_jQSel(collapsibles_to_hide, true);
+        // toggle_collapse_jQSel(collapsibles_to_hide, true);
         toggle_collapse_jQSel(collapsibles_to_show, false);
         collapsibles_to_show.on('shown.bs.collapse', function () {
-            console.log(section_id);
+            // console.log(section_id);
             window.location = section_id;
         });
         // $('html, body').animate({

@@ -5,30 +5,8 @@ $(document).ready(function () {
     console.log('datatables');
     $('.serverside-processed').DataTable({
         dom: "<'row'<'col-sm-12 col-md-6'l>>" +
-                // "<'row d-none'<'col-sm-12 col-md-4'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-        // buttons: [{
-        //     extend: 'csv',
-        //     filename: function () {
-        //         var db_version;// default version;
-        //         $.ajax({
-        //             method: "GET",
-        //             async: false,
-        //             url: "/get_db_version",
-        //             success: function (data) {
-        //                 db_version = data;
-        //             }
-        //         });
-        //         return 'tp53db_cell_lines' + (db_version ? '_' + db_version : '');
-        //     },
-        //     action: function (e, dt, node, config) {
-        //         download_dataset(this, e, dt, node, config);
-        //     },
-        //     exportOptions: {
-        //         columns: ':visible',
-        //         // orthogonal: 'export'
-        //     }}],
         pageLength: 10,
         serverSide: true,
         ajax: {
@@ -66,7 +44,6 @@ $(document).ready(function () {
                 render: function (data) {
                     if (data)
                         return '<a href="https://www.atcc.org/products/' + data +'"  target="_blank">' + data + '</a>';
-                        // return '<a href="http://www.lgcstandards-atcc.org/Products/All/' + data + '.aspx" target="_blank">' + data + '</a>';
                     else
                         return '';
                 }
@@ -98,7 +75,7 @@ $(document).ready(function () {
                 data: "c_description",
                 render: function(data){
                     if (data)
-                        return '<a href="javascript:void(0);" class="do-gvsearch" data-gv-type="cdna">' + data + '</a>';
+                        return '<a class="do-gvsearch" data-gv-type="cdna">' + data + '</a>';
                     else
                         return data;
                 }
@@ -109,7 +86,7 @@ $(document).ready(function () {
                 data: "ProtDescription",
                 render: function(data){
                     if (data)
-                        return '<a href="javascript:void(0);" class="do-gvsearch" data-gv-type="p">' + data + '</a>';
+                        return '<a class="do-gvsearch" data-gv-type="p">' + data + '</a>';
                     else
                         return data;
                 }
