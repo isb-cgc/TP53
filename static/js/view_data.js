@@ -9,7 +9,7 @@ $(document).ready(function () {
         }
         else {
             var title = $(this).text();
-            $(this).html('<input class="form-control-sm form-control" type="text" placeholder="' + title + '" />');
+            $(this).html('<input aria-label="' + title + '" class="form-control-sm form-control" type="text" placeholder="' + title + '" />');
             $('input', this).on('keyup change', function () {
                 if (table.column(i).search() !== this.value) {
                     table

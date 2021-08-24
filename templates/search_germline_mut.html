@@ -14,8 +14,8 @@
 <div class="page-banner text-center">
     <h2 class="pb-3 my-0 fw-normal">Search Germline Variant Data</h2>
 </div>
-<div id="search_germline_mut" class="p-3">
-    <div class="p-3 rounded-2 bg-light">
+<div id="search_germline_mut" class="p-3 rounded-2 bg-light">
+    <div class="p-3">
         <form action="{{ url_for('results_germline_mutation_list') }}" method="POST">
             <div class="accordion" id="gm_form_accordion">
                 <div class="accordion-item">
@@ -54,30 +54,13 @@
             <div class="row">
                 <div class="pt-5">
                     <div class="text-end">
-                        <button type="reset" class="btn btn-outline-secondary me-2">
+                        <button type="reset" class="btn btn-outline-dark me-2">
                             <i class="fas fa-redo"></i> Reset
                         </button>
                         <button type="submit" class="btn darkblue-btn"><i class="fas fa-search"></i> Search
                         </button>
                     </div>
                 </div>
-                <!--<div class="col">-->
-                    <!--<div class="btn-toolbar float-end" role="toolbar"-->
-                         <!--aria-label="Germline Variant Search Button Toolbar">-->
-                        <!--<button type="reset" class="btn btn-outline-secondary me-4"><i class="fas fa-redo"></i>-->
-                            <!--Reset-->
-                        <!--</button>-->
-                        <!--<button type="submit" name="action" value="get_mutation_dist"-->
-                                <!--class="btn darkblue-btn me-2"><i-->
-                                <!--class="fas fa-chart-pie"></i>-->
-                            <!--Variant Distribution-->
-                        <!--</button>-->
-                        <!--<button type="submit" name="action" value="get_tumor_dist_view" class="btn darkblue-btn"><i-->
-                                <!--class="fas fa-chart-bar"></i>-->
-                            <!--Tumor Distribution-->
-                        <!--</button>-->
-                    <!--</div>-->
-                <!--</div>-->
             </div>
         </form>
     </div>

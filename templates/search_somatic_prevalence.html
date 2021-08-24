@@ -13,8 +13,8 @@
 <div class="page-banner text-center">
     <h2 class="pb-3 my-0 fw-normal">Search Somatic Variant Prevalence Data</h2>
 </div>
-<div id="search_somatic_prev" class="p-3">
-    <div class="p-3 bg-light rounded-2">
+<div id="search_somatic_prev" class="p-3 bg-light">
+    <div class="p-3">
         <form action="{{ url_for('results_somatic_prevalence_list') }}" method="POST" id="mutationSearchFormForm">
             {% with id_prefix='mut_prev' %}
             {% include 'form_fields_topo_morph.html' %}
@@ -57,7 +57,7 @@
                     <legend class="col-form-label col-sm-3 pt-0">
                         <button class="btn btn-sm pe-0" type="button"
                                 data-bs-toggle="tooltip"
-                                data-bs-placement="top"
+                                data-bs-placement="top" aria-label="help button"
                                 title="Whole genome or whole exome sequencing study.">
                             <i class="far fa-question-circle"></i>
                         </button>
@@ -89,7 +89,7 @@
                 <div class="row">
                     <legend class="col-form-label col-sm-3 pt-0">
                         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                data-bs-placement="top"
+                                data-bs-placement="top" aria-label="help button"
                                 title="Country/Region in which the patient was living at the time of surgery. When not otherwise
                                 specified in the original publication, the country corresponding to the address of the hospital
                                 is entered.">
@@ -108,11 +108,11 @@
                         </select>
                     </div>
                     <div class="col-sm-3 col-md-2 text-start">
-                        <a href="javascript:void(0);" class="clear-all-select small-font"><i
+                        <a class="clear-all-select small-font"><i
                                 class="far fa-times-circle"></i>
                             Clear All</a>
                         <br>
-                        <a href="javascript:void(0);" class="add-all-select small-font"><i
+                        <a class="add-all-select small-font"><i
                                 class="far fa-check-circle"></i>
                             Add All</a>
                     </div>
@@ -122,7 +122,7 @@
             <div class="row">
                 <div class="pt-5">
                     <div class="text-end">
-                        <button type="reset" class="btn btn-outline-secondary me-2">
+                        <button type="reset" class="btn btn-outline-dark me-2">
                             <i class="fas fa-redo"></i> Reset
                         </button>
                         <button type="submit" class="btn darkblue-btn"><i class="fas fa-search"></i> Search
@@ -130,27 +130,6 @@
                     </div>
                 </div>
             </div>
-            <!--<div class="form-group row pt-5">-->
-                <!--<div class="col">-->
-                    <!--<div class="btn-toolbar float-end" role="toolbar"-->
-                         <!--aria-label="Somatic Variant Search Button Toolbar">-->
-                        <!--<button type="reset" class="btn btn-outline-secondary me-4"><i class="fas fa-redo"></i> Reset-->
-                        <!--</button>-->
-                        <!--<button type="submit" name="action" value="get_country_graph" class="btn darkblue-btn me-1"><i-->
-                                <!--class="fas fa-chart-bar"></i>-->
-                            <!--Country Graph-->
-                        <!--</button>-->
-                        <!--<button type="submit" name="action" value="get_topo_graph" class="btn darkblue-btn me-1"><i-->
-                                <!--class="fas fa-chart-bar"></i>-->
-                            <!--Topography Graph-->
-                        <!--</button>-->
-                        <!--<button type="submit" name="action" value="get_morph_graph" class="btn darkblue-btn me-1"><i-->
-                                <!--class="fas fa-chart-bar"></i>-->
-                            <!--Morphology Graph-->
-                        <!--</button>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
         </form>
     </div>
 </div>

@@ -13,11 +13,11 @@
 <div class="page-banner text-center">
     <h2 class="pb-3 my-0 fw-normal">Search Cell-Line Data</h2>
 </div>
-<div id="search_cell_lines" class="p-3">
-    <div class="text-muted">
+<div id="search_cell_lines" class="p-3 bg-light">
+    <div class="p-3">
         <div>
-            Be aware that many cell lines may have different TP53 status according to different studies. This may be
-            due to cell-line misidentification, cross-contamination or sequencing techniques
+            Be aware that many cell lines may have different TP53 status according to different studies.<br>
+            This may be due to cell-line misidentification, cross-contamination or sequencing techniques
             (see <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/28127703">PMID28127703</a>, <a
                 target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/24700732">PMID24700732</a> for discussions
             on these issues).
@@ -33,7 +33,7 @@
             </ul>
         </div>
     </div>
-    <div class="p-3 rounded-2">
+    <div class="p-3">
         <form action="{{ url_for('results_cell_line_mutation') }}" method="POST">
             <div class="accordion" id="cl_form_accordion">
                 {% with id_prefix='cl' %}
@@ -46,7 +46,7 @@
                     </h3>
                     <div id="collapseCL" class="accordion-collapse collapse show" aria-labelledby="headingCL"
                          data-bs-parent="#cl_form_accordion">
-                        <div class="accordion-body">
+                        <div class="accordion-body bg-light">
                             <fieldset class="row mb-3">
                                 <legend id="cell_line_name" class="col-form-label col-sm-3 pt-0">
                                     <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
@@ -133,7 +133,7 @@
                     </h3>
                     <div id="collapseMDM" class="accordion-collapse collapse" aria-labelledby="headingMDM"
                          data-bs-parent="#cl_form_accordion">
-                        <div class="accordion-body">
+                        <div class="accordion-body bg-light">
                             {% include 'form_fields_method.html' %}
 
                         </div>
@@ -148,7 +148,7 @@
                     </h3>
                     <div id="collapseMD" class="accordion-collapse collapse" aria-labelledby="headingMD"
                          data-bs-parent="#cl_form_accordion">
-                        <div class="accordion-body">
+                        <div class="accordion-body bg-light">
                             {% include 'form_fields_variations.html' %}
                             {% include 'form_fields_mutation.html' %}
                         </div>
@@ -163,7 +163,7 @@
                     </h3>
                     <div id="collapsePI" class="accordion-collapse collapse" aria-labelledby="headingPI"
                          data-bs-parent="#cl_form_accordion">
-                        <div class="accordion-body">
+                        <div class="accordion-body bg-light">
                             {% include 'form_fields_patient_info.html' %}
                         </div>
                     </div>
@@ -173,7 +173,7 @@
             <div class="form-group row pt-5">
                 <div class="col">
                     <div class="text-end">
-                        <button type="reset" class="btn btn-outline-secondary me-2"><i class="fas fa-redo"></i> Reset
+                        <button type="reset" class="btn btn-outline-dark me-2"><i class="fas fa-redo"></i> Reset
                         </button>
                         <button type="submit" class="btn darkblue-btn">
                             <i class="fas fa-search"></i> Search

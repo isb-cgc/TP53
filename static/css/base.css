@@ -65,6 +65,10 @@ table {
     color: #8796DF;
 }
 
+/*.bg-grey-purple{*/
+    /*background-color: #2e635d;*/
+/*}*/
+
 .bg-dark-blue{
     background-color: #404DB5;
 }
@@ -379,16 +383,16 @@ h1 a {
 }
 
 .card-header{
-    background-color: #54B5AB;
-    color: white;
+    background-color: rgba(84,181,171, .2);
+    color: #54B5AB;
     padding: 10px 32px;
     font-weight: bold;
 }
 
 .card-header[aria-expanded="true"],
 .card-header:hover{
-    background-color: rgba(84,181,171, .2);
-    color: #54B5AB;
+    background-color: #54B5AB;
+    color: white;
 }
 
 
@@ -536,6 +540,10 @@ th.custom50w{
 
 .tooltip-inner{
     text-align: left;
+}
+
+.tooltip-inner a{
+    color: #54B5AB;
 }
 
 
@@ -700,4 +708,20 @@ table .form-control{
 
 .gs-promotion .gs-visibleUrl, .gs-webResult .gs-visibleUrl {
     color: rgba(58, 124, 117, 0.9) !important;
+}
+.grey-text{
+    color: #495057;
+}
+
+.btn-outline-dark{
+    border-color: #495057;
+    color: #495057;
+}
+
+.btn-outline-dark:hover{
+    background-color: #495057;
+}
+
+.chosen-container-multi .chosen-choices li.search-field input[type=text]{
+    color: #666F79;
 }

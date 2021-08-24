@@ -16,13 +16,13 @@ $(document).ready(function () {
     });
 
     ref_tables.each(function () {
-        $($(this).find('thead tr')[1]).find('th').each(function (j) {
+        $($(this).find('thead tr')[1]).find('th, td').each(function (j) {
             if (j === REF_ID_COL_ORD || j === ABSTRACT_COL_ORD) {
                 $(this).html('');
             }
             else {
                 var title = $(this).text();
-                $(this).html('<input type="text" class="form-control-sm form-control" placeholder="' + title + '" />');
+                $(this).html('<input type="text" aria-label="'+title+'" class="form-control-sm form-control" placeholder="' + title + '" />');
             }
             $('input', this).on('keyup change', function () {
                 var table = tables.table($(this).parents('table'));

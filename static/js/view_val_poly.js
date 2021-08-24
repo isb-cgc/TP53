@@ -34,7 +34,8 @@ $(document).ready(function () {
                     data: 'c_desc',
                     render: function(data){
                         if (data)
-                            return '<a href="javascript:void(0);" class="do-gvsearch" data-gv-type="cdna">' + data + '</a>';
+                            return '<a class="do-gvsearch" data-gv-type="cdna">' + data + '</a>';
+                            // return '<a href="javascript:void(0);" class="do-gvsearch" data-gv-type="cdna">' + data + '</a>';
                         else return '';
 
                     }

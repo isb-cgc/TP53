@@ -23,12 +23,12 @@
         <div class="text-end">
             <div class="btn-group" title="No of selected rows">
                 <div class="pb-1 pe-1"><em>Selected Rows</em> <span
-                        class="badge rounded-pill bg-turquoise cart-count">0</span></div>
+                        class="badge rounded-pill bg-secondary cart-count">0</span></div>
             </div>
             <button type="button" class="btn btn-sm darkblue-btn cell-search-button disabled"
-                    title="View Cell Lines: Cell Line Count must be larger than 0"><i
+                    title="View Cell Lines"><i
                     class="fas fa-search"></i>
-                Cell Lines <span class="cell-line-count-badge badge rounded-pill bg-turquoise">0</span>
+                Cell Lines <span class="cell-line-count-badge badge rounded-pill bg-secondary bg-light darkblue-text" style="font-size: .75rem;">0</span>
             </button>
             <button type="button" class="btn btn-sm darkblue-btn action-button"
                     value="get_mutation_dist" title="View Variant Distribution"><i
@@ -52,12 +52,12 @@
         <table id="gm-result-table" class="table table-striped table-sm result-table small-font" cellspacing="0"
                width="100%">
             <thead>
-            <th data-bs-toggle="tooltip"
+            <td data-bs-toggle="tooltip"
                 data-bs-placement="top"
                 title="Select all rows on this page">
-                <input name="checkAll" class="form-check-input check-all" type="checkbox"
+                <input class="form-check-input check-all" type="checkbox"
                        aria-label="Select All">
-            </th>
+            </td>
             <th data-bs-toggle="tooltip"
                 data-bs-placement="top"
                 title="View variant details">
