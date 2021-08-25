@@ -40,17 +40,17 @@
         {% endif %}
         {% if mut_desc.SNPlink %}
         <a class="btn-tiny btn btn-outline-secondary"
-           href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs={{mut_desc.SNPlink}}" target="_blank">SNP
+           href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs={{mut_desc.SNPlink}}" target="_blank" rel="noopener noreferrer">SNP
             Database</a>
         {% endif %}
         {% if mut_desc.CLINVARlink %}
         <a class="btn-tiny btn btn-outline-secondary"
            href="http://p53.bii.a-star.edu.sg/aboutp53/snps/snpdetail.php?geneid=X54156&snppos={{mut_desc.CLINVARlink}}"
-           target="_blank"><em>p53</em> Knowledgebase</a>
+           target="_blank" rel="noopener noreferrer"><em>p53</em> Knowledgebase</a>
         {% endif %}
         {% if mut_desc.PubMedlink and mut_desc.PubMedlink != 'NA' %}
         <a class="btn-tiny btn btn-outline-secondary"
-           href="https://www.ncbi.nlm.nih.gov/pubmed/{{mut_desc.PubMedlink}}" target="_blank">PubMed</a>
+           href="https://www.ncbi.nlm.nih.gov/pubmed/{{mut_desc.PubMedlink}}" target="_blank" rel="noopener noreferrer">PubMed</a>
         {% endif %}
     </div>
     {% endif %}
@@ -278,7 +278,7 @@
                     <td>{{ prot_desc.Residue_function or '' }}</td>
                     <td>{{ prot_desc.Hotspot or '' }}</td>
                     <td>{{ prot_desc.Mut_rate or '' }}</td>
-                    <td><a target="_blank"
+                    <td><a target="_blank" rel="noopener noreferrer"
                            href="https://web.expasy.org/variant_pages/VAR_{{prot_desc.SwissProtLink}}.html">
                         {{ prot_desc.SwissProtLink or '' }}</a></td>
                 </tr>
@@ -287,9 +287,9 @@
             {% endif %}
         </div>
         <div class="my-2 p-3 bg-light rounded-2">
-            <h3>Systematic Assessment of Transactivation Capacities in Yeast and Saos2 Assays by <a target="_blank"
+            <h3>Systematic Assessment of Transactivation Capacities in Yeast and Saos2 Assays by <a target="_blank" rel="noopener noreferrer"
                                                                                                     href="https://www.ncbi.nlm.nih.gov/pubmed/12826609">Kato
-                (2003)</a> and <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15781620">Kakudo
+                (2003)</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.ncbi.nlm.nih.gov/pubmed/15781620">Kakudo
                 (2005)</a>
             </h3>
             {% if not sys_assess %}
@@ -703,7 +703,7 @@
                     <td>{{ row.Dominant_Negative_Activity or '' }}</td>
                     <td>{{ row.Temperature_Sensitivity or '' }}</td>
                     <td>{{ row.Cell_lines or '' }}</td>
-                    <td><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank">{{ row.PubMed
+                    <td><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank" rel="noopener noreferrer">{{ row.PubMed
                         }}</a></td>
                 </tr>
                 {% endfor %}
@@ -746,9 +746,9 @@
                     <td>{{ row.TumorSites or '' }}</td>
                     <td>
                         {{ row.caMOD_ID }}
-                        <!--<a href="https://cancermodels.nci.nih.gov/camod/ViewModelAction.do?aModelID={{ row.caMOD_ID }}&unprotected_method=populateModelCharacteristics" target="_blank">{{ row.caMOD_ID or '' }}</a>-->
+                        <!--<a href="https://cancermodels.nci.nih.gov/camod/ViewModelAction.do?aModelID={{ row.caMOD_ID }}&unprotected_method=populateModelCharacteristics" target="_blank" rel="noopener noreferrer">{{ row.caMOD_ID or '' }}</a>-->
                     </td>
-                    <td><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank">{{ row.PubMed
+                    <td><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank" rel="noopener noreferrer">{{ row.PubMed
                         }}</a></td>
                 </tr>
                 {% endfor %}
@@ -783,7 +783,7 @@
                 <tr>
                     <td>{{ row.Exposure }}</td>
                     <td>{{ row.Model }}</td>
-                    <td><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank">{{ row.PubMed
+                    <td><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank" rel="noopener noreferrer">{{ row.PubMed
                         }}</a></td>
                 </tr>
                 {% endfor %}

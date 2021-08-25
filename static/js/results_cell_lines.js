@@ -43,7 +43,7 @@ $(document).ready(function () {
                 data: "ATCC_ID",
                 render: function (data) {
                     if (data)
-                        return '<a href="https://www.atcc.org/products/' + data +'"  target="_blank">' + data + '</a>';
+                        return '<a href="https://www.atcc.org/products/' + data +'"  target="_blank" rel="noopener noreferrer">' + data + '</a>';
                     else
                         return '';
                 }
@@ -52,7 +52,7 @@ $(document).ready(function () {
                 data: "Cosmic_ID",
                 render: function (data) {
                     if (data)
-                        return '<a href="http://cancer.sanger.ac.uk/cell_lines/sample/overview?id=' + data + '" target="_blank">' + data + '</a>';
+                        return '<a href="http://cancer.sanger.ac.uk/cell_lines/sample/overview?id=' + data + '" target="_blank" rel="noopener noreferrer">' + data + '</a>';
                     else
                         return '';
                 }
@@ -62,7 +62,7 @@ $(document).ready(function () {
                 data: "depmap_ID",
                 render: function (data) {
                     if (data)
-                        return '<a href="https://depmap.org/portal/cell_line/' + data + '" target="_blank">' + data + '</a>';
+                        return '<a href="https://depmap.org/portal/cell_line/' + data + '" target="_blank" rel="noopener noreferrer">' + data + '</a>';
                     else
                         return '';
                 }
@@ -94,7 +94,7 @@ $(document).ready(function () {
             {
                 data: "Pubmed",
                 render: function (data) {
-                    return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank">' + data + '</a>';
+                    return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank" rel="noopener noreferrer">' + data + '</a>';
                 }
             }
         ]

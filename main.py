@@ -344,7 +344,10 @@ def urllist():
     URL_LIST_FILENAME = os.environ.get('URL_LIST_FILENAME', 'dev_urllist.txt')
     return send_from_directory(app.root_path, URL_LIST_FILENAME)
 
-
+@app.route('/sitemap.xml')
+def sitemap():
+    SITEMAP_FILENAME = os.environ.get('SITEMAP_FILENAME', 'dev_sitemap.xml')
+    return send_from_directory(app.root_path, SITEMAP_FILENAME)
 
 @app.route("/")
 def home():

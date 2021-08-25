@@ -62,7 +62,7 @@
                         <td style="min-width:90px;">
                             {% if row.PubMed !='NA' %}
                             <a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}"
-                                                       target="_blank">
+                                                       target='_blank' rel='noopener noreferrer'>
                             {{ row.PubMed }} </a>
                             {% endif %}
                         </td>

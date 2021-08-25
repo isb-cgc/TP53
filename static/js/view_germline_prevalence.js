@@ -32,7 +32,7 @@ $(document).ready(function () {
                 {
                     data: 'pubmed',
                     render: function (data, type, row, meta) {
-                        return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank">' + data + '</a>';
+                        return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank" rel="noopener noreferrer">' + data + '</a>';
                     }
                 }
             ]

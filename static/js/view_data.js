@@ -53,7 +53,7 @@ $(document).ready(function () {
             },{
                 targets: 'external_link',
                 render: function (data) {
-                    return '<a href="'+data+'" target="_blank">'+data+'</a>';
+                    return '<a href="'+data+'" target="_blank" rel="noopener noreferrer">'+data+'</a>';
                 }
             }],
             rowCallback: function (row) {

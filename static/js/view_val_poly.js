@@ -8,24 +8,8 @@ $(document).ready(function () {
                 $('.spinner').hide();
             },
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
-                // "<'row d-none'<'col-sm-12 col-md-4'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-            // buttons: [{
-            //     extend: 'csv',
-            //     filename: function(){
-            //         var db_version;// default version;
-            //         $.ajax({
-            //             method: "GET",
-            //             async: false,
-            //             url: "/get_db_version",
-            //             success: function (data) {
-            //                 db_version = data;
-            //             }
-            //         });
-            //         return 'tp53db_validated_polymorphisms'+ (db_version ? '_'+db_version: '');
-            //     }
-            // }],
             columns: [
                 {
                     data: 'g_desc'
@@ -35,7 +19,6 @@ $(document).ready(function () {
                     render: function(data){
                         if (data)
                             return '<a class="do-gvsearch" data-gv-type="cdna">' + data + '</a>';
-                            // return '<a href="javascript:void(0);" class="do-gvsearch" data-gv-type="cdna">' + data + '</a>';
                         else return '';
 
                     }
@@ -53,7 +36,7 @@ $(document).ready(function () {
                     data: 'snp',
                     render: function(data) {
                         if (data)
-                            return '<a href = "https://www.ncbi.nlm.nih.gov/snp/rs'+data+'" target = "_blank" >'+data+'</a>';
+                            return '<a href = "https://www.ncbi.nlm.nih.gov/snp/rs'+data+'" target = "_blank" rel="noopener noreferrer" >'+data+'</a>';
                         else return '';
                     }
                 },
@@ -61,7 +44,7 @@ $(document).ready(function () {
                     data: 'gnomAd',
                     render: function(data) {
                         if (data)
-                            return ' <a href="http://gnomad.broadinstitute.org/variant/' + data + '" target = "_blank" >' + data + '</a>';
+                            return ' <a href="http://gnomad.broadinstitute.org/variant/' + data + '" target = "_blank" rel="noopener noreferrer" >' + data + '</a>';
                         else return '';
                     }
                 },
@@ -69,7 +52,7 @@ $(document).ready(function () {
                     data: 'clinvar',
                     render: function(data) {
                         if (data && data != 'None')
-                            return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/'+data+'" target="_blank">' + data + '</a>';
+                            return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/'+data+'" target="_blank" rel="noopener noreferrer">' + data + '</a>';
                         else return '';
                     }
                 },
@@ -77,7 +60,7 @@ $(document).ready(function () {
                     data: 'pubmed',
                     render: function (data) {
                         if (data && data.toLowerCase() != 'none')
-                            return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank">' + data + '</a>';
+                            return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank" rel="noopener noreferrer">' + data + '</a>';
                         else return '';
                     }
                 },

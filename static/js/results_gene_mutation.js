@@ -55,8 +55,8 @@ $(document).ready(function () {
                     }
                     else{
                         if (data !== '' && row['Effect'] === 'missense')
-                            return '<a data-bs-toggle=\"tooltip\" data-bs-placement=\"right\" title=\"Link to PHenotypic ANnotation of TP53 Mutations\" ' +
-                                'href=\"http://mutantp53.broadinstitute.org/query=\'' + data + '\'\" target=\"_blank\">' + data + '</a>';
+                            return '<a data-bs-toggle="tooltip" data-bs-placement="right" title="Link to PHenotypic ANnotation of TP53 Mutations" ' +
+                                'href="http://mutantp53.broadinstitute.org/query=\'' + data + '\'" target="_blank" rel="noopener noreferrer">' + data + '</a>';
                         else
                             return data;
                     }
@@ -81,7 +81,7 @@ $(document).ready(function () {
                     }
                     else {
                         if (data != null)
-                            return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" title="Go to ClinVar ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
+                            return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to ClinVar ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
                         else
                             return data;
                     }
@@ -96,7 +96,7 @@ $(document).ready(function () {
                     }
                     else {
                         if (data != null)
-                            return '<a href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" title="Go to COSMIC ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
+                            return '<a href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" rel="noopener noreferrer" title="Go to COSMIC ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
                         else
                             return data;
                     }
@@ -111,7 +111,7 @@ $(document).ready(function () {
                     }
                     else {
                         if (data !== '')
-                            return '<a href=\"https://www.ncbi.nlm.nih.gov/snp/rs' + data + '" target="_blank" title="Go to dbSNP ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
+                            return '<a href=\"https://www.ncbi.nlm.nih.gov/snp/rs' + data + '" target="_blank" rel="noopener noreferrer" title="Go to dbSNP ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
                         else
                             return data;
                     }
@@ -126,7 +126,7 @@ $(document).ready(function () {
                     }
                     else {
                         if (data !== '')
-                            return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" title="Go to gnomAd ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
+                            return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
                         else
                             return data;
                     }

@@ -12,11 +12,6 @@ $(document).ready(function () {
         toggle_collapse_jQSel($("form.search-form .collapse.show"), true);
     });
 
-    // $(":submit").on('click', function () {
-    //     console.log('submit clicked');
-    //     display_spinner(true);
-    // });
-
     $('.chosen-select').chosen({
         no_results_text: "Oops, nothing found!",
         width: "100%",
@@ -138,7 +133,7 @@ var enableTooltip = function () {
 
 //type can be cdna, p, hg19 or hg38
 var displayGeneVariations = function (type, descrption) {
-    var form = $("<form method='POST' action='results_gene_mut_by_gv' target='_blank'></form>");
+    var form = $("<form method='POST' action='results_gene_mut_by_gv' target='_blank' rel='noopener noreferrer'></form>");
     var input = $("<input type='hidden' name='type_input' value='type_"+type+"'/>");
     input.appendTo(form);
     input = $("<input type='hidden' name='gv_"+type+"_list' value='"+descrption+"'/>");
