@@ -305,7 +305,9 @@ GOOGLE_SE_ID = os.environ.get('GOOGLE_SE_ID', 'dab1bee9d7d88fe88')
 
 # MAX_RESULT_SIZE=50000
 # GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'tp53testBQ.key.json')
-GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'tp53devBQ.key.json')
+KEY_FILE_NAME = os.environ.get('KEY_FILE_NAME', 'tp53devBQ.key.json')
+
+GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, KEY_FILE_NAME)
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
 
 project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
@@ -315,9 +317,13 @@ bigquery_client = bigquery.Client()
 TP53_DATA_DIR_URL = os.environ.get('TP53_DATA_DIR_URL', 'https://storage.googleapis.com/tp53-data-files')
 DATA_VERSION = os.environ.get('DATA_VERSION', 'r20')
 
-@app.route("/googlee122c0dbd92c3af2.html")
-def google_site_verf():
-    return render_template("googlee122c0dbd92c3af2.html")
+# @app.route("/googlee122c0dbd92c3af2.html")
+# def google_site_verf():
+#     return render_template("googlee122c0dbd92c3af2.html")
+#
+# @app.route("/googlee122c0dbd92c3af2.html")
+# def google_site_verf():
+#     return render_template("googlee122c0dbd92c3af2.html")
 
 # @app.route("/googlee6c70a3643842b1d6.html")
 # def google_site_verf():
@@ -336,7 +342,7 @@ def google_site_verf():
 @app.route('/urllist.txt')
 def urllist():
     URL_LIST_FILENAME = os.environ.get('URL_LIST_FILENAME', 'dev_urllist.txt')
-    return send_from_directory(app.static_folder, request.path[1:])
+    return send_from_directory(app.root_path, URL_LIST_FILENAME)
 
 
 
