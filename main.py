@@ -470,8 +470,8 @@ def get_mutation_criteria(prefix):
         },
         '{prefix}_codon_range'.format(prefix=prefix): {
             'between_op': True,
-            'max_val': 394,
-            'min_val': 1,
+            'max_val': 393,
+            'min_val': 0,
             'start_param': '{prefix}_codon_start'.format(prefix=prefix),
             'end_param': '{prefix}_codon_end'.format(prefix=prefix),
             'col_name': 'Codon_number',

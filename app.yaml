@@ -34,12 +34,11 @@ env_variables:
   URL_LIST_FILENAME: 'dev_urllist.txt' # DEV
 #  URL_LIST_FILENAME: 'test_urllist.txt'
   SITEMAP_FILENAME: 'dev_sitemap.xml' # DEV
-#  SITEMAP_FILENAME: 'test_sitemap.xml' # TEST
 #  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-test'
   DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-dev'
 #  GOOGLE_SE_ID: 'e6c70a3643842b1d6' #TEST
   GOOGLE_SE_ID: 'dab1bee9d7d88fe88' #DEV
-#  KEY_FILE_NAME": 'tp53testBQ.key.json' # TEST
+#  KEY_FILE_NAME: 'tp53testBQ.key.json' # TEST
   KEY_FILE_NAME: 'tp53devBQ.key.json' # DEV
   BQ_DATASET: 'P53_data'
   DATA_VERSION: 'r20'
