@@ -25,12 +25,12 @@ import requests
 import sys
 import copy
 import csv
-
-
 from io import StringIO
 
 
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
+# IS_TEST = os.environ.get('IS_TEST', True)
+
 M_C_DESC_FILE = 'M_C_DESC.TXT.LIST'
 M_P_DESC_FILE = 'M_P_DESC.TXT.LIST'
 M_G_DESC_HG19_FILE = 'M_G_DESC_HG19.TXT.LIST'
@@ -287,7 +287,7 @@ BQ_DATASET = os.environ.get('BQ_DATASET', 'P53_data')
 GOOGLE_SE_ID = os.environ.get('GOOGLE_SE_ID', 'dab1bee9d7d88fe88')
 
 # hsts_max_age = 3600 if IS_TEST else 31536000
-
+#
 # Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_policy={
 #     'default-src': [
 #         '\'self\'',
@@ -857,7 +857,7 @@ def mutation_query( ):
         "g_description_GRCh38",
         "c_description",
         "ProtDescription",
-        "hg18_Chr17_coordinates",
+        "hg19_Chr17_coordinates",
         "hg38_Chr17_coordinates",
         "Codon_number",
         "COSMIClink",
@@ -883,7 +883,7 @@ def mutation_query( ):
             "g_description_GRCh38",
             "c_description",
             "ProtDescription",
-            "hg18_Chr17_coordinates",
+            "hg19_Chr17_coordinates",
             "hg38_Chr17_coordinates",
             "Class",
             "Country",
@@ -909,37 +909,31 @@ def mutation_query( ):
         distinct_col = 'Prevalence_ID'
         column_filters = [
             "Topography",
+            "Short_topo",
+            "Topo_code",
             "Morphology",
+            "Morpho_code",
             "Sample_analyzed",
             "Sample_mutated",
             "Prevalence",
             "Country",
-            "Class",
-            "Country",
-            "Population",
             "Region",
-            "Development",
-            # "Comment",
-            # "Ref_ID",
-            # "Cross_Ref_ID",
-            # "Title",
-            # "Authors",
-            # "S_Ref_Year",
-            # "Journal",
-            # "Volume",
-            # "Start_page",
-            # "End_page",
+            "Comment",
             "PubMed",
-            # "Ref_comment",
             "Tissue_processing",
             "Start_material",
             "Prescreening",
-            "Material_sequenced",
-            # "Short_topo",
-            # "Morphogroup",
-            # "Country_ID",
-            "Exclude_analysis",
-            "WGS_WXS"]
+            "exon2",
+            "exon3",
+            "exon4",
+            "exon5",
+            "exon6",
+            "exon7",
+            "exon8",
+            "exon9",
+            "exon10",
+            "exon11"
+        ]
 
     sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
                                             ord_column_list=[column_filters[order_col-1], distinct_col], desc_ord=(order_dir == 'desc'),

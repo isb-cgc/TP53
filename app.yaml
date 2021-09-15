@@ -9,39 +9,40 @@ runtime_config:
 
 
 
-#instance_class: F4
-#network:
-#  instance_tag: isb-cgc-tp53
-#
-### comment this section out for test-tier: test-tier does not need auto scaling
-#automatic_scaling:
-#  min_num_instances: 2
-#  max_num_instances: 10
-#  cpu_utilization:
-#    target_utilization: 0.65
-#inbound_services:
-#- warmup
+instance_class: F4
+network:
+  instance_tag: isb-cgc-tp53
+
+## comment this section out for test-tier: test-tier does not need auto scaling
+automatic_scaling:
+  min_num_instances: 2
+  max_num_instances: 10
+  cpu_utilization:
+    target_utilization: 0.65
+inbound_services:
+- warmup
 
 
 
 #BQ_DATASET to set from prod, test or uat
 env_variables:
-#  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-test'
-  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-dev'
-#  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files-test'
-  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files'
-#  SITEMAP_FILENAME: 'test_sitemap.xml' # TEST
-  URL_LIST_FILENAME: 'dev_urllist.txt' # DEV
-#  URL_LIST_FILENAME: 'test_urllist.txt'
-  SITEMAP_FILENAME: 'dev_sitemap.xml' # DEV
-#  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-test'
-  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-dev'
-#  GOOGLE_SE_ID: 'e6c70a3643842b1d6' #TEST
-  GOOGLE_SE_ID: 'dab1bee9d7d88fe88' #DEV
-#  KEY_FILE_NAME: 'tp53testBQ.key.json' # TEST
-  KEY_FILE_NAME: 'tp53devBQ.key.json' # DEV
+  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-test'
+#  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-dev'
+  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files-test'
+#  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files'
+  SITEMAP_FILENAME: 'test_sitemap.xml' # TEST
+#  URL_LIST_FILENAME: 'dev_urllist.txt' # DEV
+  URL_LIST_FILENAME: 'test_urllist.txt'
+#  SITEMAP_FILENAME: 'dev_sitemap.xml' # DEV
+  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-test'
+#  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-dev'
+  GOOGLE_SE_ID: 'e6c70a3643842b1d6' #TEST
+#  GOOGLE_SE_ID: 'dab1bee9d7d88fe88' #DEV
+  KEY_FILE_NAME: 'tp53testBQ.key.json' # TEST
+#  KEY_FILE_NAME: 'tp53devBQ.key.json' # DEV
   BQ_DATASET: 'P53_data'
   DATA_VERSION: 'r20'
+  IS_TEST: True
 
 
 handlers:

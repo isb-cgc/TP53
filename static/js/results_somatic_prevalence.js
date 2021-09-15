@@ -25,6 +25,7 @@ $(document).ready(function () {
         drawCallback: function () {
             $('.spinner').hide();
             $('input.check-all').prop( "checked", false ); //reset 'Select All' checkbox
+            enableTooltip();
         },
         order: [[ 1, "asc" ]],
         scrollX: true,
@@ -38,34 +39,28 @@ $(document).ready(function () {
                 },
             },
             {data: "Topography"},
+            {data: "Short_topo"},
+            {data: "Topo_code"},
             {data: "Morphology"},
-            {data: "Sample_analyzed"},
-            {data: "Sample_mutated"},
+            {data: "Morpho_code"},
+            {
+                data: "Sample_analyzed",
+                class: 'text-end pe-3'
+            },
+            {
+                data: "Sample_mutated",
+                class: 'text-end pe-3'
+            },
             {
                 data: 'Prevalence',
                 render: function (data) {
-                    if (data){
-                        return data.toFixed(2);
-                    }
-                    else{
-                        return '';
-                    }
-
-                }
+                    return data.toFixed(2);
+                },
+                class: 'text-end pe-3'
             },
             {data: "Country"},
-            {data: "Population"},
             {data: "Region"},
-            {data: "Development"},
-            // {data: "Comment"},
-            // {data: "Ref_ID"},
-            // {data: "Cross_Ref_ID"},
-            // {data: "Title"},
-            // {data: "Authors"},
-            // {data: "Journal"},
-            // {data: "Volume"},
-            // {data: "Start_page"},
-            // {data: "End_page"},
+            {data: "Comment"},
             {
                 data: 'PubMed',
                 render: function (data) {
@@ -75,56 +70,92 @@ $(document).ready(function () {
                         return ''
                 }
             },
-            // {data: "Ref_comment"},
             {data: "Tissue_processing"},
             {data: "Start_material"},
             {data: "Prescreening"},
-            {data: "Material_sequenced"},
-            // {data: "Short_topo"},
-            // {data: "Morphogroup"},
-            {data: "Exclude_analysis"},
-            {data: "WGS_WXS"},
-            //
-            // {
-            //     data: "COSMIClink",
-            //     render: function (data, type) {
-            //         if (type == 'export'){
-            //             return data;
-            //         }
-            //         else {
-            //             if (data != null)
-            //                 return '<a href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" rel="noopener noreferrer" title="Go to COSMIC ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
-            //             else
-            //                 return data;
-            //         }
-            //     }
-            // },
-            // {
-            //     data: "CLINVARlink",
-            //     render: function (data, type) {
-            //         if (type == 'export'){
-            //             return data;
-            //         }
-            //         else {
-            //             if (data != null)
-            //                 return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to ClinVar ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
-            //             else
-            //                 return data;
-            //         }
-            //     }
-            // },
-            // {data: "TCGA_ICGC_GENIE_count"},
-            // {data: "cBioportalCount"},
-            // {data: "WT_codon"},
-            // {data: "Mutant_codon"},
-            // {data: "TransactivationClass"},
-            // {data: "DNEclass"},
-            // {data: "Hotspot"},
-            // {data: "Topography"},
-            // {data: "Morphology"},
-            // {data: "Sex"},
-            // {data: "Age"},
-            // {data: "Germline_mutation"},
+            {
+
+                data: "exon2",
+                render: function (data) {
+                    var checkbox_class = data ? "fas fa-check-circle text-success":"fas fa-circle text-light";
+
+                    return '<i data-bs-toggle="tooltip" data-bs-placement="right" title="'+data+'" class="'+checkbox_class+'"></i>';
+                },
+                class: 'text-center'
+
+            },
+            {
+                data: "exon3",
+                render: function (data) {
+                    var checkbox_class = data ? "fas fa-check-circle text-success":"fas fa-circle text-light";
+                    return '<i data-bs-toggle="tooltip" data-bs-placement="right" title="'+data+'" class="'+checkbox_class+'"></i>';
+                },
+                class: 'text-center'
+            },
+            {
+                data: "exon4",
+                render: function (data) {
+                    var checkbox_class = data ? "fas fa-check-circle text-success":"fas fa-circle text-light";
+                    return '<i data-bs-toggle="tooltip" data-bs-placement="right" title="'+data+'" class="'+checkbox_class+'"></i>';
+                },
+                class: 'text-center'
+            },
+            {
+                data: "exon5",
+                render: function (data) {
+                    var checkbox_class = data ? "fas fa-check-circle text-success":"fas fa-circle text-light";
+                    return '<i data-bs-toggle="tooltip" data-bs-placement="right" title="'+data+'" class="'+checkbox_class+'"></i>';
+                },
+                class: 'text-center'
+            },
+            {
+                data: "exon6",
+                render: function (data) {
+                    var checkbox_class = data ? "fas fa-check-circle text-success":"fas fa-circle text-light";
+                    return '<i data-bs-toggle="tooltip" data-bs-placement="right" title="'+data+'" class="'+checkbox_class+'"></i>';
+                },
+                class: 'text-center'
+            },
+            {
+                data: "exon7",
+                render: function (data) {
+                    var checkbox_class = data ? "fas fa-check-circle text-success":"fas fa-circle text-light";
+                    return '<i data-bs-toggle="tooltip" data-bs-placement="right" title="'+data+'" class="'+checkbox_class+'"></i>';
+                },
+                class: 'text-center'
+            },
+            {
+                data: "exon8",
+                render: function (data) {
+                    var checkbox_class = data ? "fas fa-check-circle text-success":"fas fa-circle text-light";
+                    return '<i data-bs-toggle="tooltip" data-bs-placement="right" title="'+data+'" class="'+checkbox_class+'"></i>';
+                },
+                class: 'text-center'
+            },
+            {
+                data: "exon9",
+                render: function (data) {
+                    var checkbox_class = data ? "fas fa-check-circle text-success":"fas fa-circle text-light";
+                    return '<i data-bs-toggle="tooltip" data-bs-placement="right" title="'+data+'" class="'+checkbox_class+'"></i>';
+                },
+                class: 'text-center'
+            },
+            {
+                data: "exon10",
+                render: function (data) {
+                    var checkbox_class = data ? "fas fa-check-circle text-success":"fas fa-circle text-light";
+                    return '<i data-bs-toggle="tooltip" data-bs-placement="right" title="'+data+'" class="'+checkbox_class+'"></i>';
+                },
+                class: 'text-center'
+            },
+            {
+                data: "exon11",
+                render: function (data) {
+                    var checkbox_class = data ? "fas fa-check-circle text-success":"fas fa-circle text-light";
+                    return '<i data-bs-toggle="tooltip" data-bs-placement="right" title="'+data+'" class="'+checkbox_class+'"></i>';
+                },
+                class: 'text-center'
+            },
         ],
         select: {
             style: 'multi',

@@ -2,7 +2,6 @@
 'use strict';
 
 $(document).ready(function () {
-    console.log('datatables');
     $('.serverside-processed').DataTable({
         dom: "<'row'<'col-sm-12 col-md-6'l>>" +
                 "<'row'<'col-sm-12'tr>>" +

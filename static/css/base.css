@@ -214,6 +214,9 @@ a.hover-arrow-link:hover::after{
     z-index: 100;
     padding: 0;
     background-color: #F2F2F3;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+
+
 }
 
 

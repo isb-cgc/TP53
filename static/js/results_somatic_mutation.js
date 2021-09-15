@@ -48,7 +48,7 @@ $(document).ready(function () {
                     else{
                         if (data !== '' && row['Effect'] === 'missense')
                             return '<a data-bs-toggle="tooltip" data-bs-placement="right" title="Link to PHenotypic ANnotation of TP53 Mutations" ' +
-                                'href="http://mutantp53.broadinstitute.org/query=\'' + data + '\'" target="_blank" rel="noopener noreferrer">' + data + '</a>';
+                                'href="http://mutantp53.broadinstitute.org/?query=' + data + '" target="_blank" rel="noopener noreferrer">' + data + '</a>';
                         else
                             return data;
                     }
