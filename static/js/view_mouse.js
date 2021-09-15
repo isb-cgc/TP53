@@ -38,7 +38,15 @@ $(document).ready(function () {
                     data: 'aa_change',
                     render: function (data, type, row, meta) {
                         if (data !== 'NA'){
-                            return '<a href="javascript:displayGeneVariations(\'p\',\'p.' + data + '\');">' + data + '</a>';
+                            var render_str = '';
+                            // var p_list = 'p.'+ (data.split('/').join(', p.'));
+                            var p_list = data.split('/');
+                            for(var p=0; p< p_list.length; p++){
+                                if(p > 0)
+                                    render_str += '/'
+                                render_str += '<a href="javascript:displayGeneVariations(\'p\',\'p.' + p_list[p] + '\');">' + p_list[p] + '</a>';
+                            }
+                            return render_str;
                         }
                         else return data;
                     }
