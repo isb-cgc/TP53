@@ -38,7 +38,7 @@ $(document).ready(function () {
                     data: 'aa_change',
                     render: function (data, type, row, meta) {
                         if (data !== 'NA'){
-                            return '<a href="javascript:displayGeneVariations(\'p\',\'' + data + '\');">' + data + '</a>';
+                            return '<a href="javascript:displayGeneVariations(\'p\',\'p.' + data + '\');">' + data + '</a>';
                         }
                         else return data;
                     }
