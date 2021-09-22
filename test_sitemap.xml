@@ -8,167 +8,187 @@
 
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/search_tp53data</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <loc>https://isb-cgc-tp53-test.appspot.com/about</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/help</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/resources</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/about</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/contact</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <loc>https://isb-cgc-tp53-test.appspot.com/explore_gv</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/search_gene_by_var</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/search_gene_by_mut</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/view_val_poly</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/get_tp53data</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/explore_sm</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/search_somatic_mut</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/search_somatic_prevalence</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/stats_somatic_mut</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/explore_gm</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/search_germline_mut</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/stats_germline_mut</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/explore_cl</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/search_cell_lines</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/stats_cell_lines</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/explore_mm</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/view_mouse</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/explore_eim</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/view_exp_ind_mut</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/p53IsoformsPredictions</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://isb-cgc-tp53-test.appspot.com/aa_codes</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/genetic_code</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/dt_method</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/p53isoforms</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/refs_corner</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/target_genes</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/ts_annotations</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/topo</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/morph</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/tnm_class</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/country</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/hg38seq</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/tp53seq</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/seq_align</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
@@ -182,177 +202,157 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/stability</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
   <loc>https://isb-cgc-tp53-test.appspot.com/tp53book2013</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/tp53book</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/p53IsoformsPredictions</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=SomaticDownload</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=SomaticRefDownload</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=PrevalenceDownload</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=PrevalenceDownloadR249S</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=PrognosisDownload</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=GermlineDownload</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=GermlineRefDownload</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=GermlinePrevalenceView</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=GermlineFrequencyDownload</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=CellLineDownload</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=MutationView</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=FunctionDownload</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=FunctionIshiokaDownload</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=SomaticDownload</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=SomaticRefDownload</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=PrevalenceDownload</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=PrevalenceDownloadR249S</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=PrognosisDownload</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=GermlineDownload</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=GermlineRefDownload</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=GermlinePrevalenceView</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=GermlineFrequencyDownload</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=CellLineDownload</loc>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=MouseModelView</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/view_data?bq_view_name=InducedMutationView</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/get_distribution?action=get_mutation_dist&amp;query_dataset=SomaticView</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/get_distribution?action=get_tumor_dist&amp;query_dataset=SomaticView</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/prevalence_somatic_stats</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/prognosis_somatic_stats</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/db_dev_somatic_stats</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/get_distribution?action=get_codon_dist&amp;query_dataset=GermlineView</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/get_distribution?action=get_mutation_dist&amp;query_dataset=GermlineView</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/get_distribution?action=get_tumor_dist&amp;query_dataset=GermlineView</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/view_germline_prevalence</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/db_dev_germline_stats</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/cell_lines_mutation_stats?action=get_tumor_dist</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/cell_lines_mutation_stats?action=get_mutation_type</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://isb-cgc-tp53-test.appspot.com/cell_lines_mutation_stats?action=get_codon_dist</loc>
-  <lastmod>2021-08-25T15:03:32+00:00</lastmod>
+  <lastmod>2021-09-22T21:01:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/static/download/Evans_et_al-2019-Human_Mutation.pdf</loc>
-  <lastmod>2020-08-28T20:58:38+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
   <loc>https://isb-cgc-tp53-test.appspot.com/static/download/Tebaldi_Inga_SupplementaryFile2.txt</loc>
-  <lastmod>2020-08-28T20:58:38+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://isb-cgc-tp53-test.appspot.com/static/download/p53Stability.txt</loc>
   <lastmod>2020-08-28T20:58:38+00:00</lastmod>
   <priority>0.51</priority>
 </url>
