@@ -371,7 +371,7 @@ a.hover-arrow-link:hover::after{
 
 .msp-plugin .msp-layout-expanded {
     top: 100px;
-    left: 40px;
+    left: 0;
     z-index: 200;
 }
 
