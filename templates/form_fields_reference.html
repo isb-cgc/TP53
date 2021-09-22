@@ -1,12 +1,13 @@
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Reference
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="top" aria-label="help button"
+                    data-bs-placement="right" aria-label="help button"
                     title="Reference used for the data sets">
                 <i class="far fa-question-circle"></i>
             </button>
-            Reference
+
         </legend>
         <div class="col-45px">
             <button class="btn darkblue-btn rounded-circle" type="button"
@@ -80,10 +81,11 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary reset-ref me-2"><i class="fas fa-redo"></i> Reset
+                <button type="button" class="btn btn-wide darkblue-btn add-ref" data-bs-dismiss="modal"
+                        data-ref-dest="#{{ id_prefix }}_refs_input_select">
+                    Add/Update
                 </button>
-                <button type="button" class="btn darkblue-btn add-ref" data-bs-dismiss="modal"
-                        data-ref-dest="#{{ id_prefix }}_refs_input_select">Add/Update
+                <button type="button" class="btn btn-wide btn-outline-secondary reset-ref ms-2"><i class="fas fa-redo"></i> Reset
                 </button>
             </div>
         </div>

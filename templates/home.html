@@ -1,156 +1,283 @@
 {% extends "base.html" %}
+
 {% block title %}The TP53 Database | ISB-CGC{% endblock %}
 {% block content %}
 <main id="landing">
     <div id="browser-alert" class="m-0 alert alert-dismissible collapse" role="alert">
         <span class="darkpurple-text"><i class="fas fa-exclamation-circle"></i> <strong>This web site is optimized for use
-        with the Google Chrome or Mozilla Firefox desktop web browsers.</strong></span> If you find an issue and you are not using
+        with the Google Chrome or Mozilla Firefox desktop web browsers.</strong></span> If you find an issue and you are
+        not using
         Google Chrome or Mozilla Firefox, please try using Google Chrome or Mozilla Firefox to
         see if the issue appears to be browser specific.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    <div class="text-center page-banner">
-        <div class="col-8 mx-auto py-4 px-2">
-            <h1 class="display-6 fw-bold">The TP53 Database</h1>
-            <div class="landing-text-1 p-2">The <em>TP53</em> Database compiles various types of data and information on
-                human <em>TP53</em>
-                gene variations related to cancer. Data are compiled from the peer-reviewed literature and from
-                generalist
-                databases.
-            </div>
-            <div class="landing-text-2 p-2">See detailed information on database contents in the <a
-                    class="fw-bold turquoise-light-text"
-                    href="help">user's
-                manual</a>.
-            </div>
-        </div>
-    </div>
-    <div class="text-center bg-light-gray">
-        <div class="landing-text-2 col-10 mx-auto p-4">
-            The database is now hosted by the National Cancer Institute (NCI). You are viewing the newly supported
-            database.
-            The content here continues to reflect the <a class="fw-bold" href="about#r20"
-                                                         target="_blank" rel="noopener noreferrer">R20, July 2019
+    <div class="page-banner">
+        <div class="landing-text-1 py-2 px-3 container">
+            The <em>TP53</em> Database compiles various types of data and information from the literature and generalist
+            databases on human <em>TP53</em> gene variations related to cancer. The database is hosted by the National
+            Cancer Institute (NCI). The content reflects the <a class="fw-bold turquoise-light-text" href="about#r20"
+                                                                target="_blank" rel="noopener noreferrer">R20, July 2019
             version</a>
         </div>
     </div>
-    <div class="text-center bg-light-gray landing-tray">
-        <div class="landing-text-2 col-10 mx-auto p-3"></div>
-    </div>
-    <div class="text-center py-2 bg-turquoise">
-        <div class="container landing-text-2 col-10 mx-auto py-lg-5">
-            <div class="row mx-auto">
-                <div class="col stat-card py-2">
-                    <div class="landing-count darkblue-text">28,866</div>
-                    <div>Somatic Variant Data</div>
+    <div id="search_tp53" class="p-5">
+        <div class="container">
+            <div class="row py-0">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-header-text" href="explore_gv" title="Click to go to variant search options">
+                                Variant Data
+                            </a>
+                            <button class="btn-view-details card-expand-btn float-end" title="Click to view search options"
+                                  data-bs-toggle="collapse" href="#abtGV" role="button" aria-expanded="false"
+                                  aria-controls="abtGV">
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="abtGV" class="card-text collapse p-3 rounded bg-light">
+                                <div class="list-group list-group-flush">
+                                    <a href="search_gene_by_var"
+                                       class="list-group-item list-group-item-action">
+                                        Search by Gene Variants
+                                    </a>
+                                    <a href="search_gene_by_mut"
+                                       class="list-group-item list-group-item-action">
+                                        Search by Variant Features
+                                    </a>
+                                    <a href="view_val_poly"
+                                       class="list-group-item list-group-item-action">
+                                        View Validated Polymorphisms
+                                    </a>
+                                    <a href="get_tp53data#get_annot"
+                                       class="list-group-item list-group-item-action">
+                                        Downloads
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="search-submenu">
+                                <div class="card-text p-3 rounded bg-light">
+                                    Explore functional and structural data and frequency statistics of all possible
+                                    single
+                                    nucleotide substitutions in <em>TP53</em> exonic sequences, other variants reported
+                                    in human
+                                    samples, and validated polymorphisms.
+                                </div>
+                                <!--<div class="text-end"><a href="explore_gv">View Options <i class="fas fa-long-arrow-alt-right"></i></a></div>-->
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col stat-card py-2">
-                    <div class="landing-count turquoise-text">9,157</div>
-                    <div>Variants from dbSNP</div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-header-text" href="explore_sm" title="Click to go to variant search options">
+                                Somatic Variants
+                            </a>
+                            <button class="btn-view-details card-expand-btn float-end" title="Click to view search options"
+                                  data-bs-toggle="collapse" href="#abtSM" role="button" aria-expanded="false"
+                                  aria-controls="abtSM">
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="abtSM" class="card-text collapse p-3 rounded bg-light">
+                                <div class="list-group list-group-flush">
+                                    <a href="search_somatic_mut"
+                                       class="list-group-item list-group-item-action">
+                                        Search Somatic Variant Data
+                                    </a>
+                                    <a href="search_somatic_prevalence"
+                                       class="list-group-item list-group-item-action">
+                                        Search Variant Prevalence Data
+                                    </a>
+                                    <a href="stats_somatic_mut"
+                                       class="list-group-item list-group-item-action">
+                                        Selected Statistics
+                                    </a>
+                                    <a href="get_tp53data#get_som_mut"
+                                       class="list-group-item list-group-item-action">
+                                        Downloads
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="search-submenu">
+                                <div class="card-text p-3 rounded bg-light">
+                                    Explore data for <em>TP53</em> somatic variants identified in human tumor samples.
+                                    Includes data on the type and position of variants, detailed information on the
+                                    tumor in which the variants have been found, and on various characteristics of the
+                                    patients in which the tumor developed.
+                                </div>
+                                <!--<div class="text-end"><a href="explore_sm">View Options <i class="fas fa-long-arrow-alt-right"></i></a></div>-->
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col stat-card py-2">
-                    <div class="landing-count raspberry-text">1,743</div>
-                    <div>Germline Variant Carriers' Data</div>
-                </div>
-                <div class="col stat-card py-2">
-                    <div class="landing-count darkblue-text">2,766</div>
-                    <div>Cell-Line Samples</div>
-                </div>
-                <div class="col stat-card py-2">
-                    <div class="landing-count turquoise-text">913</div>
-                    <div>Experimentally Induced Variant Data</div>
-                </div>
-            </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-header-text" href="explore_gm" title="Click to go to variant search options">
+                                Germline Variants
+                            </a>
+                            <button class="btn-view-details card-expand-btn float-end" title="Click to view search options"
+                                  data-bs-toggle="collapse" href="#abtGM" role="button" aria-expanded="false"
+                                  aria-controls="abtGM">
+                            </button>
+                        </div>
 
-        </div>
-    </div>
-    <div class="text-center bg-light-gray">
-        <div class="col-8 mx-auto py-4">
-            <div class="landing-text-2">
-                When using the database, authors should cite the following publication:
-            </div>
-            <div class="landing-text-3 pt-3">
-                Bouaoun L, Sonkin D, Ardin M, Hollstein M, Byrnes G, Zavadil J, Olivier M.<br>
-                <em>TP53 Variations in Human Cancers: New Lessons from the IARC TP53 Database and Genomics
-                    Data.</em><br>
-                Hum Mutat. 2016 Sep;37(9):865-76. doi: 10.1002/humu.23035. Epub 2016 Jul 8.
-            </div>
-            <div class="fst-italic pt-2 pb-3">The version of the database should be identified (R20, July 2019 is the
-                latest)
-            </div>
-            <div id="citation-text" class="d-none">Bouaoun L, Sonkin D, Ardin M, Hollstein M, Byrnes G, Zavadil J, Olivier M. TP53 Variations in Human Cancers: New Lessons from the IARC TP53 Database and Genomics Data. Hum Mutat. 2016 Sep;37(9):865-76. doi: 10.1002/humu.23035. Epub 2016 Jul 8.</div>
-            <div>
-                <button onclick="copy_to_clipboard('#citation-text')" class="raspberry-btn btn"><i class="far fa-copy"></i> COPY TO CLIPBOARD
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="py-3 bg-white">
-        <div class="col-10 my-2 mx-auto landing-header">
-            Meetings & Events
-        </div>
-        <div class="col-10 pb-2 mx-auto landing-text-3">
-            18th International p53 Workshop: <em>Weizmann Institute of Science, Rehovot, Israel</em> May
-            22-25, 2022
-            <a class="ms-3 hover-arrow-link" target="_blank" rel="noopener noreferrer"
-               href="https://www.weizmann.ac.il/conferences/P53W2020/18th-international-p53-workshop">
-                Read More
-            </a>
+                        <div class="card-body">
+                            <div id="abtGM" class="card-text collapse p-3 rounded bg-light">
+                                <div class="list-group list-group-flush">
+                                    <a href="search_germline_mut"
+                                       class="list-group-item list-group-item-action">
+                                        Search Germline Variant Data
+                                    </a>
+                                    <a href="stats_germline_mut"
+                                       class="list-group-item list-group-item-action">
+                                        Selected Statistics
+                                    </a>
+                                    <a href="get_tp53data#get_germ_mut"
+                                       class="list-group-item list-group-item-action">
+                                        Downloads
+                                    </a>
 
-        </div>
-    </div>
-    <div class="py-4 bg-light-gray">
-        <div class="col-10 py-2 mx-auto landing-header">
-            Disclaimer
-        </div>
-        <div class="col-10 mx-auto py-2">
-            <div>
-                The IARC <em>TP53</em> database is now being maintained and hosted by the
-                <a href="https://isb-cgc.org" target="_blank" rel="noopener noreferrer">ISB-CGC</a>, which is a component of the
-                <a href="https://datacommons.cancer.gov" target="_blank" rel="noopener noreferrer">NCI Cancer Research Data Commons</a>, and has
-                been
-                funded in whole or in part with Federal funds from the National Cancer Institute, National Institutes of
-                Health, Department of Health and Human Services, under Contract No. HHSN261201400008C and ID/IQ
-                Agreement
-                No. 17X146 under Contract No. HHSN261201500003I. The original IARC <em>TP53</em>
-                Database contained the following disclaimers:
+                                </div>
+                            </div>
+                            <div class="search-submenu">
+                                <div class="card-text p-3 rounded bg-light">
+                                    Explore data for individuals that are carriers of a <em>TP53</em> germline variant
+                                    and families in which at least one family member has been identified as a carrier of
+                                    a germline variant in the <em>TP53</em> gene.
+                                </div>
+                                <!--<div class="text-end"><a href="explore_gm">View Options <i class="fas fa-long-arrow-alt-right"></i></a></div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="py-3 lh-sm landing-disclaimer">
-                <p class="my-1">The IARC <em>TP53</em> Database is a free service offered to the scientific community.
-                </p>
-                <p class="my-1">
-                    The database copyright is vested in WHO's International Agency for Research on Cancer, Lyon, France
-                    [2019]
-                    and National Cancer Institute.
-                    The data contained herein may be freely used, downloaded and reproduced, but are not for sale or for
-                    use
-                    in
-                    conjunction with commercial or promotional purposes, and provided any use shall be subject to an
-                    appropriate
-                    acknowledgement of the source.</p>
-                <p class="my-1">
-                    The data and information contained herein are provided "as is" and IARC makes no representations or
-                    warranties, either expressed or implied, as to their accuracy, completeness or suitability for a
-                    particular
-                    purpose. Similarly, IARC makes no representations or warranties with regard to the non-infringement
-                    of
-                    third party proprietary rights. Thus, IARC does not accept any responsibility or liability with
-                    regard
-                    to the reliance on, and/or use of, such data and information.</p>
-                <p class="my-1">
-                    Assertions about the phenotypic effects of variants are provided by multiple sources, have different
-                    levels
-                    of experimental support, and may conflict. IARC does not independently verify assertions and cannot
-                    endorse
-                    their accuracy. Information obtained through this resource is not a substitute for professional
-                    genetic
-                    counseling
-                    and is not intended for use as the basis of medical decision making.</p>
+            <div class="row short-ht-row py-0">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-header-text" href="explore_cl" title="Click to go to variant search options">
+                                Cell Lines
+                            </a>
+                            <button class="btn-view-details card-expand-btn float-end" title="Click to view search options"
+                                  data-bs-toggle="collapse" href="#abtCL" role="button" aria-expanded="false"
+                                  aria-controls="abtCL">
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="abtCL" class="card-text collapse p-3 rounded bg-light">
+                                <div class="list-group list-group-flush">
+                                    <a href="search_cell_lines"
+                                       class="list-group-item list-group-item-action">
+                                        Search Cell-Line Data
+                                    </a>
+                                    <a href="stats_cell_lines"
+                                       class="list-group-item list-group-item-action">
+                                        Selected Statistics
+                                    </a>
+                                    <a href="get_tp53data#get_cell"
+                                       class="list-group-item list-group-item-action">
+                                        Downloads
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="search-submenu">
+                                <div class="card-text p-3 rounded bg-light">
+                                    Explore data for cell-lines that have been screened for <em>TP53</em> variant and
+                                    have been published in the scientific literature, in the <a
+                                        href="https://www.sanger.ac.uk/genetics/CGP/CellLines/" target="_blank"
+                                        rel="noopener noreferrer">
+                                    Sanger cell-line database</a>, or the <a href="https://www.broadinstitute.org/ccle/home" target="_blank"
+                                                rel="noopener noreferrer">Broad Cancer cell-line Encyclopedia</a>.
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-header-text" href="explore_mm" title="Click to go to variant search options">
+                                Mouse Models
+                            </a>
+                            <button class="btn-view-details card-expand-btn float-end" title="Click to view search options"
+                                  data-bs-toggle="collapse" href="#abtMM" role="button" aria-expanded="false"
+                                  aria-controls="abtMM">
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="abtMM" class="card-text collapse p-3 rounded bg-light">
+                                <div class="list-group list-group-flush">
+                                    <a href="view_mouse" class="list-group-item list-group-item-action">
+                                        View Data
+                                    </a>
+                                    <a href="get_tp53data#get_mouse"
+                                       class="list-group-item list-group-item-action">
+                                        Downloads
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="search-submenu">
+                                <div class="card-text p-3 rounded bg-light">
+                                    Explore data for mouse models with engineered <em>p53</em> that are compiled in the
+                                    caMOD database or reported in the scientific literature.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-header-text" href="explore_eim" title="Click to go to variant search options">
+                                Experimentally Induced Models
+                            </a>
+                            <button class="btn-view-details card-expand-btn float-end" title="Click to view search options"
+                                  data-bs-toggle="collapse" href="#abtEIM" role="button" aria-expanded="false"
+                                  aria-controls="abtEIM">
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="abtEIM" class="card-text collapse p-3 rounded bg-light">
+                                <div class="list-group list-group-flush">
+                                    <a href="view_exp_ind_mut"
+                                       class="list-group-item list-group-item-action">
+                                        View Data
+                                    </a>
+                                    <a href="get_tp53data#get_eim"
+                                       class="list-group-item list-group-item-action">
+                                        Downloads
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="search-submenu">
+                                <div class="card-text p-3 rounded bg-light">
+                                    Explore data for variants in the human <em>TP53</em> gene obtained from mutagenicity
+                                    assays in the <a href="https://www.ncbi.nlm.nih.gov/pubmed/16777987" target="_blank"
+                                                     rel="noopener noreferrer">Hupki mouse model</a> (MEF cells treated
+                                    with the indicated carcinogen agent) or in a yeast assay.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row short-ht-row py-0">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header" title="Click to go to view downloadable data" role="button">
+                            <a class="card-header-text" href="get_tp53data">Data Downloads</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </main>
-<script type="text/javascript">
-    open_sidebar();
-</script>
+<!--<script type="text/javascript">-->
+    <!--open_sidebar();-->
+<!--// </script>-->
 {% endblock %}

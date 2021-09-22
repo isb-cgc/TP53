@@ -51,14 +51,15 @@
             <div class="accordion-body bg-light">
                 <fieldset class="mb-3">
                     <div class="row">
-                        <legend class="col-form-label col-sm-3 pt-0">
+                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                            Age at Diagnosis
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="top"
+                                    data-bs-placement="right"
                                     aria-label="help button"
                                     title="Age of the patient at the time of diagnosis.">
                                 <i class="far fa-question-circle"></i>
                             </button>
-                            Age at Diagnosis
+
                         </legend>
                         <div class="col-sm-8">
                             <div class="row">
@@ -89,13 +90,14 @@
                 </fieldset>
                 <fieldset class="mb-3">
                     <div class="row">
-                        <legend class="col-form-label col-sm-3 pt-0">
+                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                            Sex
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" aria-label="help button"
+                                    data-bs-placement="right" aria-label="help button"
                                     title="Sex of the patient (M for male, F for female).">
                                 <i class="far fa-question-circle"></i>
                             </button>
-                            Sex
+
                         </legend>
                         <div class="col-sm-8">
                             <div class="form-check">
@@ -121,13 +123,14 @@
                 </fieldset>
                 <fieldset class="mb-3">
                     <div class="row">
-                        <legend class="col-form-label col-sm-3 pt-0">
+                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                            Family History
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" aria-label="help button"
+                                    data-bs-placement="right" aria-label="help button"
                                     title="Information on the presence or absence of cancers in the family of the patient.">
                                 <i class="far fa-question-circle"></i>
                             </button>
-                            Family History
+
                         </legend>
                         <div class="col-sm-6 col-md-7">
                             <select name="{{ id_prefix }}_family_hist_list" class="form-control chosen-select"
@@ -152,9 +155,10 @@
                 </fieldset>
                 <fieldset class="mb-3">
                     <div class="row">
-                        <legend class="col-form-label col-sm-3 pt-0">
+                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                            Mode of Inheritance
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" aria-label="help button"
+                                    data-bs-placement="right" aria-label="help button"
                                     title="Mode of variation inheritance: P=paternal, M=maternal, M&P=maternal
                                                                 and paternal, de novo= mutation that has not been
                                                                 inherited, 'de novo, mosaic'= mutation that has not been
@@ -162,7 +166,7 @@
                                                                 'na'=not known.">
                                 <i class="far fa-question-circle"></i>
                             </button>
-                            Mode of Inheritance
+
                         </legend>
                         <div class="col-sm-6 col-md-7">
                             <select name="{{ id_prefix }}_inh_mode_list" class="form-control chosen-select"
@@ -187,13 +191,14 @@
                 </fieldset>
                 <fieldset class="mb-3">
                     <div class="row">
-                        <legend class="col-form-label col-sm-3 pt-0">
+                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                            Family Case
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" aria-label="help button"
+                                    data-bs-placement="right" aria-label="help button"
                                     title="Family case in the pedigree, such as proband (index case), mother, father...">
                                 <i class="far fa-question-circle"></i>
                             </button>
-                            Family Case
+
                         </legend>
                         <div class="col-sm-6 col-md-7">
                             <select name="{{ id_prefix }}_family_case_list" class="form-control chosen-select"
@@ -218,15 +223,16 @@
                 </fieldset>
                 <fieldset class="mb-3">
                     <div class="row">
-                        <legend class="col-form-label col-sm-3 pt-0">
+                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                            Country/Population
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="left" aria-label="help button"
+                                    data-bs-placement="right" aria-label="help button"
                                     title="Country/Region in which the patient was living at the time of surgery. When not otherwise
                                 specified in the original publication, the country corresponding to the address of the hospital
                                 is entered.">
                                 <i class="far fa-question-circle"></i>
                             </button>
-                            Country/Population
+
                         </legend>
                         <div class="col-sm-6 col-md-7">
                             <select name="{{ id_prefix }}_country_list" class="form-control chosen-select"

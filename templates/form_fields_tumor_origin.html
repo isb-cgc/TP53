@@ -1,14 +1,15 @@
 <fieldset class="mb-3">
     <div class="row">
-        <legend id="{{ id_prefix }}_tumor_origin_legend" class="col-form-label col-sm-3 pt-0">
+        <legend id="{{ id_prefix }}_tumor_origin_legend" class="text-end col-form-label col-sm-3 pt-0">
+            Tumor Origin
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="left"  aria-label="help button"
+                    data-bs-placement="right"  aria-label="help button"
                     title="Origin of the tumor sample. Terms occurring in this column are: primary, secondary (second primary
                 tumor in the same patient), metastasis (with the localisation of the metastasis in brackets), recurrent
                 (tumor recurrence).">
                 <i class="far fa-question-circle"></i>
             </button>
-            Tumor Origin
+
         </legend>
         <div class="col-sm-8">
             {% for to_item in tumor_org_group_list%}

@@ -59,32 +59,21 @@ $(document).ready(function () {
             {data: "Codon_number"},
             {
                 data: "COSMIClink",
-                className: "text-center",
+                className: "text-end pe-2",
                 render: function (data, type) {
-                    if (type === 'export'){
-                        return data;
-                    }
-                    else {
-                        if (data != null)
-                            return '<a href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" rel="noopener noreferrer" title="Go to COSMIC ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
-                        else
-                            return data;
-                    }
+                    if (data != null)
+                        return '<a href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" rel="noopener noreferrer" title="Go to COSMIC ' + data + '">' + data + '</a>';
+                    return data;
                 }
             },
             {
                 data: "CLINVARlink",
-                className: "text-center",
+                className: "text-end pe-2",
                 render: function (data, type) {
-                    if (type == 'export'){
+                    if (data != null)
+                        return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to ClinVar ' + data + '">' + data + '</a>';
+                    else
                         return data;
-                    }
-                    else {
-                        if (data != null)
-                            return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to ClinVar ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
-                        else
-                            return data;
-                    }
                 }
             },
             {data: "TCGA_ICGC_GENIE_count"},

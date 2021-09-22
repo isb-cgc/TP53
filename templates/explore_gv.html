@@ -1,0 +1,78 @@
+{% extends "tp53data_submenu.html" %}
+{% block title %}Variant Data{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'search_tp53data';
+</script>
+{% endblock %}
+
+{% block subcontent %}
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">Variant Data</h1>
+        <h2 class="p-2 my-0 fw-light">
+            Explore functional and structural data and frequency statistics of all possible single nucleotide
+            substitutions in TP53 exonic sequences, other variants reported in human samples, and validated
+            polymorphisms
+        </h2>
+    </div>
+</div>
+
+<div id="search_tp53" class="p-5">
+    <div class="container">
+        <div class="row py-0">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header" title="Click to go to view downloadable data" role="button">
+                        <a class="card-header-text" href="search_gene_by_var">Search by Gene Variants</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text p-3 rounded bg-light">
+                            This option allows the functional and structural analysis of all possible single nucleotide
+                            substitutions in TP53 exonic sequences (including those that have never been reported in
+                            cancer). In addition, all other types of mutations that have been reported in human samples
+                            and validated polymorphisms are included in this dataset. Functional and structural
+                            annotations and frequency statistics for these gene variations can be retrieved with this
+                            search option. Each dataset entry corresponds to a unique gene variation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header" title="Click to go to view downloadable data" role="button">
+                        <a class="card-header-text" href="search_gene_by_mut">Search by Variant Features</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text p-3 rounded bg-light">
+                            Short Description Here
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header" title="Click to go to view downloadable data" role="button">
+                        <a class="card-header-text" href="view_val_poly">View Validated Polymorphisms</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text p-3 rounded bg-light">
+                            Short Description Here
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row short-ht-row py-0">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header" title="Click to go to view downloadable data" role="button">
+                        <a class="card-header-text" href="get_tp53data#get_annot">Data Downloads</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

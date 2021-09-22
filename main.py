@@ -591,6 +591,10 @@ def get_method_criteria(prefix):
 
 
 def get_variation_criteria(prefix):
+    type_input = get_param_val(request, 'type_input')
+
+
+    print(type_input)
     param_col_name_map = {
         '{prefix}_cdna_list'.format(prefix=prefix): {
             'multi_val': True,
@@ -613,7 +617,15 @@ def get_variation_criteria(prefix):
             'col_name': 'g_description_GRCh38'
         }
     }
-    return build_criteria(param_col_name_map)
+    gv_input_name = '{prefix}_{type_input}_list'.format(prefix=prefix, type_input=(type_input[5:])) if type_input else ''
+
+
+    if param_col_name_map.get(gv_input_name, None):
+        trimmed_map = {gv_input_name: param_col_name_map.get(gv_input_name, None)}
+    else:
+        trimmed_map = param_col_name_map
+
+    return build_criteria(trimmed_map)
 
 
 def get_ngs_criteria(prefix):
@@ -706,6 +718,7 @@ def get_patient_criteria(prefix):
 @app.route("/results_gene_mut_by_gv", methods=['GET', 'POST'])
 def results_gene_mut_by_gv():
     prefix = 'gv'
+
     criteria = get_variation_criteria(prefix)
     return render_template("results_gene_mutation.html", criteria=criteria, submenu = 'search_gene_by_var')
 
@@ -752,7 +765,7 @@ def results_gene_dist():
         graph_configs = build_graph_configs(action, table)
         sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
     graph_result = build_graph_data(sql_maps)
-    return render_template(template, criteria_map=criteria_map, title='Statistics on Functional/Structural Data', subtitle=subtitle,
+    return render_template(template, criteria_map=criteria_map, title='Statistics on Variant Data', subtitle=subtitle,
                            graph_result=graph_result)
 
 @app.route("/get_distribution", methods=['GET', 'POST'])
@@ -977,7 +990,7 @@ def gv_query():
     length = int(parameters['length'])
     criteria = json.loads(parameters['criteria'])
 
-    column_filters = ["MUT_ID", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
+    column_filters = ["MUT_ID", "g_description", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
                       "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "Somatic_count", "Germline_count", "Cellline_count",
                       "TCGA_ICGC_GENIE_count", "Polymorphism", "CLINVARlink", "COSMIClink",
                        "SNPlink", "gnomADlink"]
@@ -1059,9 +1072,33 @@ def cl_query():
 
 
 
-@app.route("/search_tp53data")
-def search_tp53data():
-    return render_template("search_tp53data.html")
+# @app.route("/search_tp53data")
+# def search_tp53data():
+#     return render_template("search_tp53data.html")
+
+@app.route("/explore_gv")
+def explore_gv():
+    return render_template("explore_gv.html")
+
+@app.route("/explore_sm")
+def explore_sm():
+    return render_template("explore_sm.html")
+
+@app.route("/explore_gm")
+def explore_gm():
+    return render_template("explore_gm.html")
+
+@app.route("/explore_cl")
+def explore_cl():
+    return render_template("explore_cl.html")
+
+@app.route("/explore_mm")
+def explore_mm():
+    return render_template("explore_mm.html")
+
+@app.route("/explore_eim")
+def explore_eim():
+    return render_template("explore_eim.html")
 
 
 @app.route("/search_gene_by_var")
@@ -2081,14 +2118,14 @@ def resources():
     return render_template("resources.html")
 
 
-@app.route("/refs_corner")
-def refs_corner():
-    return render_template("refs_corner.html")
+# @app.route("/refs_corner")
+# def refs_corner():
+#     return render_template("refs_corner.html")
 
 
-@app.route("/ppl_events")
-def ppl_events():
-    return render_template("ppl_events.html")
+# @app.route("/ppl_events")
+# def ppl_events():
+#     return render_template("ppl_events.html")
 
 
 @app.route("/about")
@@ -2111,9 +2148,9 @@ def p53IsoformsPredictions():
     return render_template("p53IsoformsPredictions.html")
 
 
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
+# @app.route("/contact")
+# def contact():
+#     return render_template("contact.html")
 
 @app.route("/get_db_version")
 def get_db_version():

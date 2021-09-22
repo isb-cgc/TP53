@@ -10,145 +10,152 @@
 {% endblock %}
 
 {% block subcontent %}
-<div class="page-banner text-center">
-    <h2 class="pb-3 my-0 fw-normal">Prognostic Value of Somatic Variants</h2>
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">
+            Prognostic Value of Somatic Variants
+        </h1>
+    </div>
 </div>
-<div class="p-5">
-    <div>Summary results may be found in the reviews and table below:</div>
-    <ul>
-        <li>
-            <em>TP53 somatic variants: prognostic and predicitve value in human cancers.</em>
-            Olivier M. Chapter 8 in <a href="tp53book2013"> <em>p53</em> in the Clinics</a>.<br/>
-            Hainaut, Pierre; Olivier, Magali; Wiman, Klas (Eds.) <strong>2013</strong>, VII, 544 p. 45 illus.,
-            Hardcover ISBN 978-1-4614-3675-1 Jan;2(1):a001008.
-        </li>
-        <li>
-            <em>TP53 mutations in human cancers: origins, consequences, and clinical use.</em>
-            Olivier M, Hollstein M, Hainaut P. Cold Spring Harb Perspect Biol <strong>2010</strong>
-            Jan;2(1):a001008. <a target="_blank" rel="noopener noreferrer" href="https://www.ncbi.nlm.nih.gov/pubmed/20182602">PubMed</a>
-        </li>
-    </ul>
-    <table class="table table-bordered table-sm text-center">
-        <thead class="table-light">
-        <tr>
-            <th rowspan="2">Tumor Site</th>
-            <th colspan="3">Number of studies<sup>*</sup> reporting that TP53 mutations are:</th>
+<div class="container">
+    <div class="my-4">
+        <div>Summary results may be found in the reviews and table below:</div>
+        <ul>
+            <li>
+                <em>TP53 somatic variants: prognostic and predicitve value in human cancers.</em>
+                Olivier M. Chapter 8 in <a href="tp53book2013"> <em>p53</em> in the Clinics</a>.<br/>
+                Hainaut, Pierre; Olivier, Magali; Wiman, Klas (Eds.) <strong>2013</strong>, VII, 544 p. 45 illus.,
+                Hardcover ISBN 978-1-4614-3675-1 Jan;2(1):a001008.
+            </li>
+            <li>
+                <em>TP53 mutations in human cancers: origins, consequences, and clinical use.</em>
+                Olivier M, Hollstein M, Hainaut P. Cold Spring Harb Perspect Biol <strong>2010</strong>
+                Jan;2(1):a001008. <a target="_blank" rel="noopener noreferrer"
+                                     href="https://www.ncbi.nlm.nih.gov/pubmed/20182602">PubMed</a>
+            </li>
+        </ul>
+        <table class="table table-bordered table-sm text-center">
+            <thead class="table-light">
+            <tr>
+                <th rowspan="2">Tumor Site</th>
+                <th colspan="3">Number of studies<sup>*</sup> reporting that TP53 mutations are:</th>
 
-        </tr>
-        <tr>
-            <th>Related to Bad Prognosis</th>
-            <th>Related to Good Prognosis</th>
-            <th>Not Related to Prognosis</th>
-        </tr>
-        </thead>
+            </tr>
+            <tr>
+                <th>Related to Bad Prognosis</th>
+                <th>Related to Good Prognosis</th>
+                <th>Not Related to Prognosis</th>
+            </tr>
+            </thead>
 
-        <tbody>
-        <tr>
-            <th>Bladder</th>
-            <td>4</td>
-            <td>-</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <th>Bones</th>
-            <td>1</td>
-            <td>-</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <th>Brain</th>
-            <td>3</td>
-            <td>2</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <th>Breast</th>
-            <td>28</td>
-            <td>1</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <th>Colorectum</th>
-            <td>16</td>
-            <td>-</td>
-            <td>8</td>
-        </tr>
-        <tr>
-            <th>Esophagus</th>
-            <td>2</td>
-            <td>-</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <th>Head & Neck</th>
-            <td>7</td>
-            <td>-</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <th>Hematol.</th>
-            <td>12</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <th>Larynx</th>
-            <td>-</td>
-            <td>-</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <th>Liver</th>
-            <td>3</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <th>Lung</th>
-            <td>8</td>
-            <td>-</td>
-            <td>6</td>
-        </tr>
-        <tr>
-            <th>Ovary</th>
-            <td>7</td>
-            <td>1</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <th>Pancreas</th>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <th>Prostate</th>
-            <td>1</td>
-            <td>-</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <th>Soft Tissues</th>
-            <td>2</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <th>Stomach</th>
-            <td>1</td>
-            <td>-</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <th>Renal Pelvis</th>
-            <td>1</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        </tbody>
-    </table>
-    <div class="form-text">
-        * Only studies with >50 cases were included.
+            <tbody>
+            <tr>
+                <th>Bladder</th>
+                <td>4</td>
+                <td>-</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <th>Bones</th>
+                <td>1</td>
+                <td>-</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>Brain</th>
+                <td>3</td>
+                <td>2</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <th>Breast</th>
+                <td>28</td>
+                <td>1</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <th>Colorectum</th>
+                <td>16</td>
+                <td>-</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <th>Esophagus</th>
+                <td>2</td>
+                <td>-</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <th>Head & Neck</th>
+                <td>7</td>
+                <td>-</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <th>Hematol.</th>
+                <td>12</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <th>Larynx</th>
+                <td>-</td>
+                <td>-</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>Liver</th>
+                <td>3</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <th>Lung</th>
+                <td>8</td>
+                <td>-</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <th>Ovary</th>
+                <td>7</td>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <th>Pancreas</th>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>Prostate</th>
+                <td>1</td>
+                <td>-</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>Soft Tissues</th>
+                <td>2</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <th>Stomach</th>
+                <td>1</td>
+                <td>-</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <th>Renal Pelvis</th>
+                <td>1</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="fw-light fst-italic">
+            * Only studies with >50 cases were included.
+        </div>
     </div>
 </div>
 {% endblock %}

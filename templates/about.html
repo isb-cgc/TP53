@@ -10,13 +10,40 @@
 
 {% block content %}
 <main>
-    <div class="page-banner text-center">
-        <h1 class="fw-bold py-2 my-0 display-6">About</h1>
+    <div class="page-banner">
+        <div class="container">
+            <h1 class="fw-bold p-2 my-0">About</h1>
+        </div>
     </div>
-    <div class="narrow-panel">
-        <div class="p-4">
-            <div id="aim-n-scope-div" class="mt-5">
-                <h2>Aim & Scope</strong></h2>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="py-2 ">
+                <div class="px-3 fw-bold">On this page:</div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="#aim-n-scope-div">Aim & Scope</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#database-dev-div">Database Developments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#cite-div">How to Cite</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#credits-div">Credits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#disclaimer-div">Disclaimer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact-div">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="py-4">
+            <div id="aim-n-scope-div">
+                <h2>Aim & Scope</h2>
                 <hr>
                 <div class="p-3">
                     <div>The <em>TP53</em> Database compiles <em>TP53</em> variant data that have been reported in the
@@ -27,17 +54,16 @@
                         data
                         are available:
                         <ul>
-                            <li><em>TP53</em> <strong>somatic variants</strong> in sporadic cancers</li>
-                            <li><em>TP53</em> <strong>germline variants</strong><b> </b>in cancer patients, families
-                                with
-                                cancers, control populations
+                            <li><a href="explore_sm"><em>TP53</em> somatic variants</a> in sporadic cancers</li>
+                            <li><a href="explore_gm"><em>TP53</em> germline variants</a> in cancer patients, families
+                                with cancers, control populations
                             </li>
-                            <li> Common <em>TP53</em> <strong>polymorphisms</strong> identified in human populations
+                            <li><a href="view_val_poly">Common <em>TP53</em> polymorphisms</a> identified in human populations
                             </li>
-                            <li><strong>Functional assessment</strong> of <em>p53</em> mutant proteins</li>
-                            <li><em>TP53</em> gene status in human <strong>cell-lines</strong></li>
-                            <li><strong>Mouse-models</strong> with engineered <em>TP53</em></li>
-                            <li><strong>Experimentally-induced variants</strong></li>
+                            <li><a href="explore_gv">Functional assessment of <em>p53</em> mutant proteins</a></li>
+                            <li><a href="explore_cl"><em>TP53</em> gene status in human cell-lines</a></li>
+                            <li><a href="explore_mm">Mouse-models</a> with engineered <em>TP53</em></li>
+                            <li><a href="explore_eim">Experimentally-induced variants</a></li>
                         </ul>
                     </div>
                     <div>This information is useful to compile tumor-specific variant patterns and to draw
@@ -79,7 +105,7 @@
                         </ul>
                     </div>
                     <div>Detailed information on data and annotations available is provided in the <a
-                            href="help">user's manual</a>.
+                            href="help">user manual</a>.
                     </div>
                 </div>
             </div>
@@ -89,12 +115,12 @@
                 <div class="p-3">
                     <div class="accordion" id="accordionHist">
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r20">
+                            <h3 class="accordion-header" id="r20">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR20" aria-expanded="true" aria-controls="collapseR20">
                                     R20 - Jul, 2019
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR20" class="accordion-collapse collapse show" aria-labelledby="r20"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -185,12 +211,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r19">
+                            <h3 class="accordion-header" id="r19">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR19" aria-expanded="false" aria-controls="collapseR19">
                                     R19 - Aug, 2018
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR19" class="accordion-collapse collapse" aria-labelledby="r19"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -278,12 +304,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r18">
+                            <h3 class="accordion-header" id="r18">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR18" aria-expanded="false" aria-controls="collapseR18">
                                     R18 - Apr, 2016
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR18" class="accordion-collapse collapse" aria-labelledby="r18"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -340,12 +366,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r17">
+                            <h3 class="accordion-header" id="r17">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR17" aria-expanded="false" aria-controls="collapseR17">
                                     R17 - Nov, 2013
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR17" class="accordion-collapse collapse" aria-labelledby="r17"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -395,12 +421,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r16">
+                            <h3 class="accordion-header" id="r16">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR16" aria-expanded="false" aria-controls="collapseR16">
                                     R16 - Nov, 2012
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR16" class="accordion-collapse collapse" aria-labelledby="r16"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -453,12 +479,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r15">
+                            <h3 class="accordion-header" id="r15">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR15" aria-expanded="false" aria-controls="collapseR15">
                                     R15 - Nov, 2010
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR15" class="accordion-collapse collapse" aria-labelledby="r15"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -593,12 +619,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r14">
+                            <h3 class="accordion-header" id="r14">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR14" aria-expanded="false" aria-controls="collapseR14">
                                     R14 - Nov, 2009
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR14" class="accordion-collapse collapse" aria-labelledby="r14"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -636,12 +662,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r13">
+                            <h3 class="accordion-header" id="r13">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR13" aria-expanded="false" aria-controls="collapseR13">
                                     R13 - Nov, 2008
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR13" class="accordion-collapse collapse" aria-labelledby="r13"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -698,12 +724,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r12">
+                            <h3 class="accordion-header" id="r12">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR12" aria-expanded="false" aria-controls="collapseR12">
                                     R12 - Nov, 2007
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR12" class="accordion-collapse collapse" aria-labelledby="r12"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -735,12 +761,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r11">
+                            <h3 class="accordion-header" id="r11">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR11" aria-expanded="false" aria-controls="collapseR11">
                                     R11 - Nov, 2006
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR11" class="accordion-collapse collapse" aria-labelledby="r11"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -785,12 +811,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r10">
+                            <h3 class="accordion-header" id="r10">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR10" aria-expanded="false" aria-controls="collapseR10">
                                     R10 - Nov, 2005
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR10" class="accordion-collapse collapse" aria-labelledby="r10"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -829,13 +855,13 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r10_a">
+                            <h3 class="accordion-header" id="r10_a">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR10_a" aria-expanded="false"
                                         aria-controls="collapseR10_a">
                                     R10 - Jul, 2005
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR10_a" class="accordion-collapse collapse" aria-labelledby="r10_a"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -857,12 +883,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r9">
+                            <h3 class="accordion-header" id="r9">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR9" aria-expanded="false" aria-controls="collapseR9">
                                     R9 - Jul, 2004
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR9" class="accordion-collapse collapse" aria-labelledby="r9"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -906,12 +932,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r8">
+                            <h3 class="accordion-header" id="r8">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR8" aria-expanded="false" aria-controls="collapseR8">
                                     R8 - Jun, 2003
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR8" class="accordion-collapse collapse" aria-labelledby="r8"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -941,12 +967,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r7">
+                            <h3 class="accordion-header" id="r7">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR7" aria-expanded="false" aria-controls="collapseR7">
                                     R7 - Sep, 2002
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR7" class="accordion-collapse collapse" aria-labelledby="r7"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -983,12 +1009,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r6">
+                            <h3 class="accordion-header" id="r6">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR6" aria-expanded="false" aria-controls="collapseR6">
                                     R6 - Jan, 2002
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR6" class="accordion-collapse collapse" aria-labelledby="r6"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -1019,12 +1045,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r5">
+                            <h3 class="accordion-header" id="r5">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR5" aria-expanded="false" aria-controls="collapseR5">
                                     R5 - Jun, 2001
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR5" class="accordion-collapse collapse" aria-labelledby="r5"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -1068,12 +1094,12 @@
                         </div>
 
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="r4">
+                            <h3 class="accordion-header" id="r4">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseR4" aria-expanded="false" aria-controls="collapseR4">
                                     R4 - Jul, 2000
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="collapseR4" class="accordion-collapse collapse" aria-labelledby="r4"
                                  data-bs-parent="#accordionHist">
                                 <div class="accordion-body">
@@ -1099,6 +1125,20 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div id="cite-div" class="mt-5">
+                <h2>How to Cite</h2>
+                <hr>
+                <div class="p-3">
+                    When using the database, authors should cite the following publication:
+                    <div class="bg-white rounded-2 p-3 my-2">
+                        Bouaoun L, Sonkin D, Ardin M, Hollstein M, Byrnes G, Zavadil J, Olivier M.
+                        <span class="fst-italic">TP53 Variations in Human Cancers: New Lessons from the IARC TP53 Database and Genomics Data.</span>
+                        Hum Mutat. 2016 Sep;37(9):865-76. doi: 10.1002/humu.23035. Epub 2016 Jul 8.
+                    </div>
+                    <div class="fw-light fst-italic">The version of the database should be identified (R20, July 2019 is the latest)</div>
+
                 </div>
             </div>
             <div id="credits-div" class="mt-5">
@@ -1165,22 +1205,92 @@
                     </div>
                 </div>
             </div>
+            <div id="disclaimer-div" class="mt-5">
+                <h2>Disclaimer</h2>
+                <hr>
+                <div class="p-3">
+                    <div>
+                        The IARC <em>TP53</em> database is now being maintained and hosted by the
+                        <a href="https://isb-cgc.org" target="_blank" rel="noopener noreferrer">ISB-CGC</a>, which is a
+                        component of the
+                        <a href="https://datacommons.cancer.gov" target="_blank" rel="noopener noreferrer">NCI Cancer
+                            Research Data Commons</a>, and has
+                        been
+                        funded in whole or in part with Federal funds from the National Cancer Institute, National
+                        Institutes of
+                        Health, Department of Health and Human Services, under Contract No. HHSN261201400008C and ID/IQ
+                        Agreement
+                        No. 17X146 under Contract No. HHSN261201500003I. The original IARC <em>TP53</em>
+                        Database contained the following disclaimers:
+                    </div>
+                    <div class="py-3 fw-light">
+                        <p class="my-1">The IARC <em>TP53</em> Database is a free service offered to the scientific
+                            community.
+                        </p>
+                        <p class="my-1">
+                            The database copyright is vested in WHO's International Agency for Research on Cancer, Lyon,
+                            France
+                            [2019]
+                            and National Cancer Institute.
+                            The data contained herein may be freely used, downloaded and reproduced, but are not for
+                            sale or for
+                            use
+                            in
+                            conjunction with commercial or promotional purposes, and provided any use shall be subject
+                            to an
+                            appropriate
+                            acknowledgement of the source.</p>
+                        <p class="my-1">
+                            The data and information contained herein are provided "as is" and IARC makes no
+                            representations or
+                            warranties, either expressed or implied, as to their accuracy, completeness or suitability
+                            for a
+                            particular
+                            purpose. Similarly, IARC makes no representations or warranties with regard to the
+                            non-infringement
+                            of
+                            third party proprietary rights. Thus, IARC does not accept any responsibility or liability
+                            with
+                            regard
+                            to the reliance on, and/or use of, such data and information.</p>
+                        <p class="my-1">
+                            Assertions about the phenotypic effects of variants are provided by multiple sources, have
+                            different
+                            levels
+                            of experimental support, and may conflict. IARC does not independently verify assertions and
+                            cannot
+                            endorse
+                            their accuracy. Information obtained through this resource is not a substitute for
+                            professional
+                            genetic
+                            counseling
+                            and is not intended for use as the basis of medical decision making.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="contact-div" class="mt-5">
+                <h2>Contact</h2>
+                <hr>
+                <div class="p-3">
+                    <ul>
+                        <li>
+                            For questions on the web site, please email at:<br><a href="mailto:feedback@isb-cgc.org"
+                                                                                  target="_top" class="ms-2">feedback@isb-cgc.org</a>
+                        </li>
+                        <li>For questions on interpretation of search results, please email at:<br><a
+                                href="mailto:tp53-infok@isb-cgc.org" target="_top"
+                                class="ms-2">tp53-info@isb-cgc.org</a>
+                        </li>
+
+                    </ul>
+                    <div class="mt-3">When addressing an issue, it is important that you supply us with detailed
+                        information: Provide the type of browser you are using and the steps to recreate the issue.
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-    <nav id="about-nav" class="sidebar">
-        <div class="position-sticky py-2">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#aim-n-scope-div">Aim & Scope</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#database-dev-div">Database Developments</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#credits-div">Credits</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+
 </main>
 {% endblock %}

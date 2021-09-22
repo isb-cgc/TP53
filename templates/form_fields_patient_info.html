@@ -1,13 +1,14 @@
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Age at Diagnosis
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="top"
+                    data-bs-placement="right"
                     aria-label="help button"
                     title="Age of the patient at the time of diagnosis.">
                 <i class="far fa-question-circle"></i>
             </button>
-            Age at Diagnosis
+
         </legend>
         <div class="col-sm-8">
             <div class="row">
@@ -38,13 +39,14 @@
 </fieldset>
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Sex
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="top" aria-label="help button"
+                    data-bs-placement="right" aria-label="help button"
                     title="Sex of the patient (M for male, F for female).">
                 <i class="far fa-question-circle"></i>
             </button>
-            Sex
+
         </legend>
         <div class="col-sm-8">
             <div class="form-check">
@@ -70,14 +72,15 @@
 </fieldset>
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Germline Variation
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="top"
+                    data-bs-placement="right"
                     aria-label="help button"
                     title="Germline variant detected in any gene in the patient.">
                 <i class="far fa-question-circle"></i>
             </button>
-            Germline Variation
+
         </legend>
         <div class="col-sm-6 col-md-7">
             {% if germ_mut_list|length >3 %}
@@ -116,15 +119,16 @@
 </fieldset>
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Tobacco
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="top"
+                    data-bs-placement="right"
                     aria-label="help button"
                     title="Information on the smoking status of the patient. Terms occurring in this column are 'smoker' (with
                   qualitative amount in brackets), 'non-smoker', 'passive-smoker' and 'chewer'.">
                 <i class="far fa-question-circle"></i>
             </button>
-            Tobacco
+
         </legend>
         <div class="col-sm-8">
             {% for tobacco_opt in tobacco_list %}
@@ -143,14 +147,15 @@
 </fieldset>
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Alcohol
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="top" aria-label="help button"
+                    data-bs-placement="right" aria-label="help button"
                     title="Information on the drinking status of the patient. Terms occurring in this column are ‘drinker’,
                  and 'non-drinker'.">
                 <i class="far fa-question-circle"></i>
             </button>
-            Alcohol
+
         </legend>
         <div class="col-sm-8">
             <div class="form-check">
@@ -176,17 +181,18 @@
 </fieldset>
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Country/Population
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                     data-bs-html="true"
-                    data-bs-placement="top"
+                    data-bs-placement="right"
                     aria-label="help button"
                     title="Country/Region in which the patient was living at the time of surgery. When not otherwise
                 specified in the original publication, the country corresponding to the address of the hospital
                 is entered.">
                 <i class="far fa-question-circle"></i>
             </button>
-            Country/Population
+
         </legend>
         <div class="col-sm-6 col-md-7">
             <select name="{{ id_prefix }}_country_list" class="form-control chosen-select"
@@ -209,13 +215,14 @@
 </fieldset>
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Infectious Agent
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="top" aria-label="help button"
+                    data-bs-placement="right" aria-label="help button"
                     title="Pathogen (virus or bacteria) detected in the patient.">
                 <i class="far fa-question-circle"></i>
             </button>
-            Infectious Agent
+
         </legend>
         <div class="col-sm-6 col-md-7">
             <select name="{{ id_prefix }}_inf_agnt_list" class="form-control chosen-select"
@@ -238,13 +245,14 @@
 </fieldset>
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Exposure
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="top" aria-label="help button"
+                    data-bs-placement="right" aria-label="help button"
                     title="Risk factors to which the patient has been exposed to, such as aflatoxins, radon, thorotrast, etc...">
                 <i class="far fa-question-circle"></i>
             </button>
-            Exposure
+
         </legend>
         <div class="col-sm-6 col-md-7">
             <select name="{{ id_prefix }}_exposure_list" class="form-control chosen-select"

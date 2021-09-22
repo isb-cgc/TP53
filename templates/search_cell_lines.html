@@ -10,30 +10,40 @@
 {% endblock %}
 
 {% block subcontent %}
-<div class="page-banner text-center">
-    <h2 class="pb-3 my-0 fw-normal">Search Cell-Line Data</h2>
+
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">
+            Search Cell-Line Data
+        </h1>
+    </div>
 </div>
-<div id="search_cell_lines" class="p-3 bg-light">
-    <div class="p-3">
+<div id="search_cell_lines" class="container">
+    <div class="my-3 p-2">
         <div>
             Be aware that many cell lines may have different TP53 status according to different studies.<br>
             This may be due to cell-line misidentification, cross-contamination or sequencing techniques
-            (see <a target="_blank" rel="noopener noreferrer" href="https://www.ncbi.nlm.nih.gov/pubmed/28127703">PMID28127703</a>, <a
-                target="_blank" rel="noopener noreferrer" href="https://www.ncbi.nlm.nih.gov/pubmed/24700732">PMID24700732</a> for discussions
+            (see <a target="_blank" rel="noopener noreferrer" href="https://www.ncbi.nlm.nih.gov/pubmed/28127703">PMID28127703</a>,
+            <a target="_blank" rel="noopener noreferrer" href="https://www.ncbi.nlm.nih.gov/pubmed/24700732">PMID24700732</a>
+            for discussions
             on these issues).
         </div>
         <div>We recommend also checking other available resources:
             <ul>
-                <li><a target="_blank" rel="noopener noreferrer" href="https://portals.broadinstitute.org/ccle">Cancer Cell Line Encyclopedia
+                <li><a target="_blank" rel="noopener noreferrer" href="https://portals.broadinstitute.org/ccle">Cancer
+                    Cell Line Encyclopedia
                     (CCLE)</a></li>
-                <li><a target="_blank" rel="noopener noreferrer" href="https://depmap.org/portal/">DepMap Project</a></li>
-                <li><a target="_blank" rel="noopener noreferrer" href="https://web.expasy.org/cellosaurus/">Cellosaurus Resource</a></li>
-                <li><a target="_blank" rel="noopener noreferrer" href="https://cancer.sanger.ac.uk/cell_lines">COSMIC Cell-Line Project</a>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://depmap.org/portal/">DepMap
+                    Project</a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://web.expasy.org/cellosaurus/">Cellosaurus
+                    Resource</a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://cancer.sanger.ac.uk/cell_lines">COSMIC
+                    Cell-Line Project</a>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="p-3">
+    <div class="my-3 p-2">
         <form action="{{ url_for('results_cell_line_mutation') }}" method="POST">
             <div class="accordion" id="cl_form_accordion">
                 {% with id_prefix='cl' %}
@@ -47,76 +57,91 @@
                     <div id="collapseCL" class="accordion-collapse collapse show" aria-labelledby="headingCL"
                          data-bs-parent="#cl_form_accordion">
                         <div class="accordion-body bg-light">
-                            <fieldset class="row mb-3">
-                                <legend id="cell_line_name" class="col-form-label col-sm-3 pt-0">
-                                    <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top"
-                                            title="Name of the cell-line" aria-label="help button">
-                                        <i class="far fa-question-circle"></i>
-                                    </button>
-                                    Cell-Line Name
-                                </legend>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" aria-labelledby="cell_line_name" id="cl_name" name="cl_name">
+                            <fieldset class="mb-3">
+                                <div class="row">
+                                    <legend id="cell_line_name" class="text-end col-form-label text-end col-sm-3 pt-0">
+                                        Cell-Line Name
+                                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                                data-bs-placement="right"
+                                                title="Name of the cell-line" aria-label="help button">
+                                            <i class="far fa-question-circle"></i>
+                                        </button>
+                                    </legend>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" aria-labelledby="cell_line_name"
+                                               id="cl_name" name="cl_name">
+                                    </div>
                                 </div>
                             </fieldset>
-                            <fieldset class="row mb-3">
-                                <legend id="atcc_id_legend" class="col-form-label col-sm-3 pt-0">
-                                    <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                            data-bs-html="true"
-                                            data-bs-placement="top"
-                                            title="Identification number of the ATCC database." aria-label="help button">
-                                        <i class="far fa-question-circle"></i>
-                                    </button>
-                                    ATCC ID
-                                </legend>
-                                <div class="col-sm-8">
-                                    <input aria-labelledby="atcc_id_legend" type="text" class="form-control" id="atcc_id" name="atcc_id">
+                            <fieldset class="mb-3">
+                                <div class="row">
+                                    <legend id="atcc_id_legend"
+                                            class="text-end col-form-label text-end col-sm-3 pt-0 text-end">
+                                        ATCC ID
+                                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                                data-bs-html="true"
+                                                data-bs-placement="right"
+                                                title="Identification number of the ATCC database."
+                                                aria-label="help button">
+                                            <i class="far fa-question-circle"></i>
+                                        </button>
+
+                                    </legend>
+                                    <div class="col-sm-8">
+                                        <input aria-labelledby="atcc_id_legend" type="text" class="form-control"
+                                               id="atcc_id" name="atcc_id">
+                                    </div>
                                 </div>
                             </fieldset>
-                            <fieldset class="row mb-3">
-                                <legend id="cosmic_id_legend" class="col-form-label col-sm-3 pt-0">
-                                    <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top"
-                                            data-bs-html="true"
-                                            aria-label="help button"
-                                            title="Link to sample cell-line data in the
+                            <fieldset class="mb-3">
+                                <div class="row">
+                                    <legend id="cosmic_id_legend" class="text-end col-form-label col-sm-3 pt-0">
+                                        COSMIC ID
+                                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                                data-bs-placement="right"
+                                                data-bs-html="true"
+                                                aria-label="help button"
+                                                title="Link to sample cell-line data in the
                                                 <a href='https://www.sanger.ac.uk/genetics/CGP/CellLines/' target='_blank' rel='noopener noreferrer'>
                                                 Cancer Cell Line Project</a> of <a href='https://www.sanger.ac.uk/genetics/CGP/cosmic/'
                                                 target='_blank' rel='noopener noreferrer'>COSMIC</a> databases of the Sanger Institute.">
-                                        <i class="far fa-question-circle"></i>
-                                    </button>
-                                    COSMIC ID
-                                </legend>
-                                <div class="col-sm-8">
-                                    <input aria-labelledby="cosmic_id_legend" type="text" class="form-control" id="cosmic_id" name="cosmic_id">
+                                            <i class="far fa-question-circle"></i>
+                                        </button>
+                                    </legend>
+                                    <div class="col-sm-8">
+                                        <input aria-labelledby="cosmic_id_legend" type="text" class="form-control"
+                                               id="cosmic_id" name="cosmic_id">
+                                    </div>
                                 </div>
                             </fieldset>
-                            <fieldset id="tp53_status_legend" class="row mb-3">
-                                <legend class="col-form-label col-sm-3 pt-0">
-                                    <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top"
-                                            aria-label="help button"
-                                            title="Status of TP53 gene. WT= wild-type gene sequence;
+                            <fieldset id="tp53_status_legend" class="mb-3">
+                                <div class="row">
+                                    <legend class="text-end col-form-label col-sm-3 pt-0 text-end ">
+                                        TP53 Status
+                                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                                data-bs-placement="right"
+                                                aria-label="help button"
+                                                title="Status of TP53 gene. WT= wild-type gene sequence;
                                                                 MUT= mutated gene sequence;
                                                                 NULL= entire gene deletion;
                                                                 LOE= loss of gene expression without gene mutation.">
-                                        <i class="far fa-question-circle"></i>
-                                    </button>
-                                    TP53 Status
-                                </legend>
-                                <div class="col-sm-8">
-                                    {% for stat_item in cl_tp53stat_list%}
-                                    <div class="form-check">
-                                        <input aria-labelledby="tp53_status_legend" class="form-check-input" type="checkbox" name="tp53_status"
-                                               value="{{ stat_item.label }}"
-                                               id="status_{{ stat_item.label|lower }}">
-                                        <label class="form-check-label"
-                                               for="status_{{ stat_item.label|lower }}">
-                                            {{ stat_item.label }}
-                                        </label>
+                                            <i class="far fa-question-circle"></i>
+                                        </button>
+                                    </legend>
+                                    <div class="col-sm-8">
+                                        {% for stat_item in cl_tp53stat_list%}
+                                        <div class="form-check">
+                                            <input aria-labelledby="tp53_status_legend" class="form-check-input"
+                                                   type="checkbox" name="tp53_status"
+                                                   value="{{ stat_item.label }}"
+                                                   id="status_{{ stat_item.label|lower }}">
+                                            <label class="form-check-label"
+                                                   for="status_{{ stat_item.label|lower }}">
+                                                {{ stat_item.label }}
+                                            </label>
+                                        </div>
+                                        {% endfor %}
                                     </div>
-                                    {% endfor %}
                                 </div>
                             </fieldset>
                             {% include 'form_fields_tumor_origin.html' %}
@@ -170,15 +195,14 @@
                 </div>
                 {% endwith %}
             </div>
-            <div class="form-group row pt-5">
-                <div class="col">
-                    <div class="text-end">
-                        <button type="reset" class="btn btn-outline-dark me-2"><i class="fas fa-redo"></i> Reset
-                        </button>
-                        <button type="submit" class="btn darkblue-btn">
-                            <i class="fas fa-search"></i> Search
-                        </button>
-                    </div>
+            <div class="form-group row py-3">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-wide darkblue-btn me-2">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                    <button type="reset" class="btn btn-wide btn-outline-dark ">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
                 </div>
             </div>
         </form>

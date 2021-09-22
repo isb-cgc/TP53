@@ -10,27 +10,34 @@
 {% endblock %}
 
 {% block subcontent %}
-<div class="page-banner text-center">
-    <h2 class="pb-3 my-0 fw-normal">Selected Statistics on Germline Variant Data</h2>
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">Selected Statistics on Germline Variant Data</h1>
+    </div>
 </div>
-<div id="stats_germline_mut" class="py-5">
-    <div class="mx-auto col-lg-6 col-md-10">
-        <div class="text-secondary">For details on dataset contents and annotations, see the <a href="help">user's
+<div class="container">
+    <div id="stats_germline_mut" class="p-2 my-3">
+        <div>For details on dataset contents and annotations, see the <a href="help">user
             manual</a>.
         </div>
-        <ul class="list-group list-group-flush pt-3">
-            <a href="get_distribution?action=get_codon_dist&query_dataset=GermlineView" class="list-group-item list-group-item-action">
-                <i class="fas fa-chart-bar me-2"></i>Codon Distribution of Variants</a>
-            <a href="get_distribution?action=get_mutation_dist&query_dataset=GermlineView" class="list-group-item list-group-item-action"><i
-                    class="fas fa-chart-bar me-2"></i>Variant Distributions</a>
-            <a href="get_distribution?action=get_tumor_dist&query_dataset=GermlineView" class="list-group-item list-group-item-action"><i
-                    class="fas fa-chart-bar me-2"></i>Tumor Site Distributions</a>
-            <a href="view_germline_prevalence" class="list-group-item list-group-item-action"><i
-                    class="fas fa-table me-2"></i>Prevalence of <em>TP53</em> Germline Variants in Selected Cohorts</a>
-            <a href="db_dev_germline_stats" class="list-group-item list-group-item-action"><i
-                    class="fas fa-database me-2"></i>Statistics on Dataset Development</a>
-        </ul>
-    </div>
+        <div class="col-lg-5 col-md-10">
+            <ul class="list-group list-group-flush pt-3">
+                <a href="get_distribution?action=get_codon_dist&query_dataset=GermlineView"
+                   class="list-group-item list-group-item-action">
+                    Codon Distribution of Variants</a>
+                <a href="get_distribution?action=get_mutation_dist&query_dataset=GermlineView"
+                   class="list-group-item list-group-item-action">
+                    Variant Distributions</a>
+                <a href="get_distribution?action=get_tumor_dist&query_dataset=GermlineView"
+                   class="list-group-item list-group-item-action">
+                    Tumor Site Distributions</a>
+                <a href="view_germline_prevalence" class="list-group-item list-group-item-action">
+                    Prevalence of <em>TP53</em> Germline Variants in Selected Cohorts</a>
+                <a href="db_dev_germline_stats" class="list-group-item list-group-item-action">
+                    Statistics on Dataset Development</a>
+            </ul>
+        </div>
 
+    </div>
 </div>
 {% endblock %}

@@ -1,0 +1,64 @@
+{% extends "tp53data_submenu.html" %}
+{% block title %}Cell Lines{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'search_tp53data';
+</script>
+{% endblock %}
+
+{% block subcontent %}
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">Cell Lines</h1>
+        <h2 class="p-2 my-0 fw-light">
+            Explore data for cell-lines that have been screened for <em>TP53</em> variant and have been published in the
+            scientific literature, in the <a href="https://www.sanger.ac.uk/genetics/CGP/CellLines/" target="_blank"
+                                             class="turquoise-light-text" rel="noopener noreferrer">Sanger cell-line
+            database</a>, or the <a href="https://www.broadinstitute.org/ccle/home" target="_blank"
+                                    rel="noopener noreferrer" class="turquoise-light-text">Broad Cancer
+            cell-line Encyclopedia</a>.
+        </h2>
+    </div>
+</div>
+
+<div id="search_tp53" class="p-5">
+    <div class="container">
+        <div class="row py-0">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header" title="Click to go to view downloadable data" role="button">
+                        <a class="card-header-text" href="search_cell_lines">Search Cell-Line Data</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text p-3 rounded bg-light">
+                            This option allows the retrieval and analysis of TP53 mutations reported in human cell-lines. Each dataset entry corresponds to a mutation identified in a cell-line.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header" title="Click to go to view downloadable data" role="button">
+                        <a class="card-header-text" href="stats_cell_lines">Selected Statistics</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text p-3 rounded bg-light">
+                            Short Description Here
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row short-ht-row py-0">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header" title="Click to go to view downloadable data" role="button">
+                        <a class="card-header-text" href="get_tp53data#get_cell">Data Downloads</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

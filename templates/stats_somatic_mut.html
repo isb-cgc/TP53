@@ -10,28 +10,33 @@
 {% endblock %}
 
 {% block subcontent %}
-<div class="page-banner text-center">
-    <h2 class="pb-3 my-0 fw-normal">Selected Statistics on Somatic Variant Data</h2>
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">Selected Statistics on Somatic Variant Data</h1>
+    </div>
 </div>
-<div id="stats_germline_mut" class="py-5">
-    <div class="mx-auto col-lg-6 col-md-10">
-        <div class="text-secondary">This dataset includes <em>TP53</em> somatic variants reported in primary tissues,
-            body
-            fluids and cell-lines.<br>For more details on dataset contents and annotations, see the <a href="help">user's
-                manual</a>.
+<div class="container">
+    <div id="stats_germline_mut" class="p-2 my-3">
+        <div>This dataset includes <em>TP53</em> somatic variants reported in primary
+            tissues, body fluids and cell-lines.<br>For more details on dataset contents and annotations, see the <a
+                    href="help">user manual</a>.
         </div>
-        <ul class="list-group list-group-flush pt-3">
-            <a href="get_distribution?action=get_mutation_dist&query_dataset=SomaticView" class="list-group-item list-group-item-action">
-                <i class="fas fa-chart-bar"></i> Variant Distributions</a>
-            <a href="get_distribution?action=get_tumor_dist&query_dataset=SomaticView" class="list-group-item list-group-item-action">
-                <i class="fas fa-chart-bar"></i> Tumors Site Distributions</a>
-            <a href="prevalence_somatic_stats" class="list-group-item list-group-item-action">
-                <i class="fas fa-chart-bar"></i> <em>TP53</em> Somatic Prevalence by Tumor Site</a>
-            <a href="prognosis_somatic_stats" class="list-group-item list-group-item-action">
-                <i class="fas fa-table"></i> Prognostic Value of Somatic Variants</a>
-            <a href="db_dev_somatic_stats" class="list-group-item list-group-item-action">
-                <i class="fas fa-table"></i> Statistics on Dataset Development</a>
-        </ul>
+        <div class="col-lg-4 col-md-10">
+            <ul class="list-group list-group-flush pt-3">
+                <a href="get_distribution?action=get_mutation_dist&query_dataset=SomaticView"
+                   class="list-group-item list-group-item-action">
+                    Variant Distributions</a>
+                <a href="get_distribution?action=get_tumor_dist&query_dataset=SomaticView"
+                   class="list-group-item list-group-item-action">
+                    Tumors Site Distributions</a>
+                <a href="prevalence_somatic_stats" class="list-group-item list-group-item-action">
+                    <em>TP53</em> Somatic Prevalence by Tumor Site</a>
+                <a href="prognosis_somatic_stats" class="list-group-item list-group-item-action">
+                    Prognostic Value of Somatic Variants</a>
+                <a href="db_dev_somatic_stats" class="list-group-item list-group-item-action">
+                    Statistics on Dataset Development</a>
+            </ul>
+        </div>
     </div>
 </div>
 {% endblock %}

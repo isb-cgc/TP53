@@ -1,13 +1,13 @@
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Start Material
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="top"
+                    data-bs-placement="right"
                     aria-label="help button"
                     title="Indicates if DNA or RNA was screened for variants.">
                 <i class="far fa-question-circle"></i>
             </button>
-            Start Material
         </legend>
         <div class="col-sm-8">
             {% for sm_item in cl_start_material_list %}
@@ -27,16 +27,16 @@
 </fieldset>
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Exon Analyzed
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                     data-bs-html="true"
-                    data-bs-placement="top"
+                    data-bs-placement="right"
                     aria-label="help button"
                     title="Exons that have been screened for variant. In the downloaded file, '-1' or 'TRUE' indicate that
                  the exon has been screened and '0' or 'FALSE' indicate that it has not been screened.">
                 <i class="far fa-question-circle"></i>
             </button>
-            Exon Analyzed
         </legend>
         <div class="col-sm-6 col-md-7">
             <select name="{{ id_prefix }}_exon_analyzed" class="form-control chosen-select"

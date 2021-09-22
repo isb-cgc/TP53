@@ -10,58 +10,30 @@
 {% endblock %}
 
 {% block subcontent %}
-<div class="page-banner text-center">
-    <h2 class="pb-3 my-0 fw-normal">Search Somatic Variant Prevalence Data</h2>
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">
+            Search Somatic Variant Prevalence Data
+        </h1>
+    </div>
 </div>
-<div id="search_somatic_prev" class="p-3 bg-light">
-    <div class="p-3">
+<div id="search_somatic_prev" class="container">
+    <div class="p-2 my-3">
         <form action="{{ url_for('results_somatic_prevalence_list') }}" method="POST" id="mutationSearchFormForm">
             {% with id_prefix='mut_prev' %}
             {% include 'form_fields_topo_morph.html' %}
             {% include 'form_fields_method.html' %}
-            <!--<fieldset class="mb-3">-->
-                <!--<div class="row">-->
-                    <!--<legend class="col-form-label col-sm-3 pt-0">-->
-                        <!--<button class="btn btn-sm pe-0" type="button"-->
-                                <!--data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Whole genome or whole exome sequencing study.">-->
-                            <!--<i class="far fa-question-circle"></i>-->
-                        <!--</button>-->
-                        <!--NGS Study-->
-                    <!--</legend>-->
-                    <!--<div class="col-sm-8">-->
-                        <!--<div class="form-check">-->
-                            <!--<input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"-->
-                                   <!--value="Yes"-->
-                                   <!--id="{{ id_prefix }}_ngs_yes">-->
-                            <!--<label class="form-check-label"-->
-                                   <!--for="{{ id_prefix }}_ngs_yes">-->
-                                <!--Yes-->
-                            <!--</label>-->
-                        <!--</div>-->
-                        <!--<div class="form-check">-->
-                            <!--<input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"-->
-                                   <!--value="No"-->
-                                   <!--id="{{ id_prefix }}_ngs_no">-->
-                            <!--<label class="form-check-label"-->
-                                   <!--for="{{ id_prefix }}_ngs_no">-->
-                                <!--No-->
-                            <!--</label>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</fieldset>-->
             <fieldset class="mb-3">
                 <div class="row">
-                    <legend class="col-form-label col-sm-3 pt-0">
+                    <legend class="text-end col-form-label col-sm-3 pt-0">
+                        NGS Study
                         <button class="btn btn-sm pe-0" type="button"
                                 data-bs-toggle="tooltip"
-                                data-bs-placement="top" aria-label="help button"
+                                data-bs-placement="right" aria-label="help button"
                                 title="Whole genome or whole exome sequencing study.">
                             <i class="far fa-question-circle"></i>
                         </button>
-                        NGS Study
+
                     </legend>
                     <div class="col-sm-8">
                         <div class="form-check">
@@ -87,15 +59,16 @@
             </fieldset>
             <fieldset class="mb-3">
                 <div class="row">
-                    <legend class="col-form-label col-sm-3 pt-0">
+                    <legend class="text-end col-form-label col-sm-3 pt-0">
+                        Country/Region
                         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                data-bs-placement="top" aria-label="help button"
+                                data-bs-placement="right" aria-label="help button"
                                 title="Country/Region in which the patient was living at the time of surgery. When not otherwise
                                 specified in the original publication, the country corresponding to the address of the hospital
                                 is entered.">
                             <i class="far fa-question-circle"></i>
                         </button>
-                        Country/Region
+
                     </legend>
                     <div class="col-sm-6 col-md-7">
                         <select name="{{ id_prefix }}_country_list" class="form-control chosen-select"
@@ -119,15 +92,14 @@
                 </div>
             </fieldset>
             {% endwith %}
-            <div class="row">
-                <div class="pt-5">
-                    <div class="text-end">
-                        <button type="reset" class="btn btn-outline-dark me-2">
-                            <i class="fas fa-redo"></i> Reset
-                        </button>
-                        <button type="submit" class="btn darkblue-btn"><i class="fas fa-search"></i> Search
-                        </button>
-                    </div>
+            <div class="form-group row py-3">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-wide darkblue-btn me-2">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                    <button type="reset" class="btn btn-wide btn-outline-dark ">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
                 </div>
             </div>
         </form>

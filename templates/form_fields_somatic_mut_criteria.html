@@ -15,14 +15,14 @@
                 {% include 'form_fields_method.html' %}
                 <fieldset class="mb-3">
                     <div class="row">
-                        <legend class="col-form-label col-sm-3 pt-0">
+                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                            NGS Study
                             <button class="btn btn-sm pe-0" type="button"
                                     data-bs-toggle="tooltip"
-                                    data-bs-placement="top" aria-label="help button"
+                                    data-bs-placement="right" aria-label="help button"
                                     title="Whole genome or whole exome sequencing study.">
                                 <i class="far fa-question-circle"></i>
                             </button>
-                            NGS Study
                         </legend>
                         <div class="col-sm-8">
                             <div class="form-check">
@@ -84,15 +84,15 @@
                 {% include 'form_fields_tumor_origin.html' %}
                 <fieldset class="mb-3">
                     <div class="row">
-                        <legend class="col-form-label col-sm-3 pt-0">
+                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                            Sample Source
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" aria-label="help button"
+                                    data-bs-placement="right" aria-label="help button"
                                     title="Nature of the sample from which the variant has been identified: cell-line,
                                 surgery (surgical or autopsy specimen, including fresh samples and archival, pathology
                                 specimen), biopsy, xenograft, body fluid (blood, saliva, urine...).">
                                 <i class="far fa-question-circle"></i>
                             </button>
-                            Sample Source
                         </legend>
                         <div class="col-sm-8">
                             {% for ss_item in sample_source_list%}

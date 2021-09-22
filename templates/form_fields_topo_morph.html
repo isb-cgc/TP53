@@ -1,9 +1,10 @@
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Topography
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                     data-bs-html="true"
-                    data-bs-placement="top"
+                    data-bs-placement="right"
                     aria-label="help button"
                     title="Site of the tumor defined by organ or group of organs, according to the ICD-O nomenclature.
                  (examples: 'colon', 'brain', 'bronchus and lung'). Note that some tumors are annoted 'Head & Neck, NOS'
@@ -14,7 +15,6 @@
                     of metastasis is indicated in brackets in the tumor_origin field.</strong>">
                 <i class="far fa-question-circle"></i>
             </button>
-            Topography
         </legend>
         <div class="col-sm-6 col-md-7 text-start">
             <select name="{{ id_prefix }}_topo_list" class="form-control chosen-select topo-morph-select"
@@ -39,17 +39,17 @@
 </fieldset>
 <fieldset class="mb-3">
     <div class="row">
-        <legend class="col-form-label col-sm-3 pt-0">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Morphology
             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                     data-bs-html="true"
-                    data-bs-placement="top"
+                    data-bs-placement="right"
                     aria-label="help button"
                     title="Tumor type, including morphology and/or histologic type. The terminology used is based on ICD-O
                 (2nd and 3rd editions) and SNOMED classifications. Terms have been added, such as 'normal tissue' or
                 'na'. <a target='_blank' rel='noopener noreferrer' href='morph'> See alphabetical list of morphologies.">
                 <i class="far fa-question-circle"></i>
             </button>
-            Morphology
         </legend>
         <div class="col-sm-6 col-md-7">
             <select name="{{ id_prefix }}_morph_list" class="form-control chosen-select"

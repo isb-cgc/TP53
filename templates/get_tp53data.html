@@ -8,189 +8,240 @@
 {% endblock %}
 
 {% block subcontent %}
-<div class="page-banner text-center">
-    <h2 class="pb-3 my-0 fw-normal">Dataset Downloads</h2>
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">Dataset Downloads</h1>
+    </div>
 </div>
-<div class="p-5">
-    <div id="get_som_mut" class="pb-5">
-        <h3>Somatic Variants</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th class="custom50w">Dataset</th>
-                <th class="text-center">Preview</th>
-                <th class="text-center">Download</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Somatic variants in human tumor samples (data file)</td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=SomaticDownload"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/SomaticDownload_{{ ver }}.csv"><i class="fas fa-download"></i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>Somatic variants in human tumor samples (references file)</td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=SomaticRefDownload"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/SomaticRefDownload_{{ ver }}.csv"><i
-                        class="fas fa-download"></i></a></td>
-            </tr>
-            <tr>
-                <td>Prevalence of somatic variants by tumor site</td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=PrevalenceDownload"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/PrevalenceDownload_{{ ver }}.csv"><i
-                        class="fas fa-download"></i></a></td>
-            </tr>
-            <tr>
-                <td>Prevalence of the R249S <em>TP53</em> variants in liver cancer</td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=PrevalenceDownloadR249S"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/PrevalenceDownloadR249S_{{ ver }}.csv"><i
-                        class="fas fa-download"></i></a></td>
-            </tr>
-            <tr>
-                <td>Prognostic value of somatic variants</td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=PrognosisDownload"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/PrognosisDownload_{{ ver }}.csv"><i
-                        class="fas fa-download"></i></a></td>
-            </tr>
+<div class="container">
+    <!--<div class="page-banner text-center">-->
+    <!--<h2 class="pb-3 my-0 fw-normal">Dataset Downloads</h2>-->
+    <!--</div>-->
+    <div class="my-5">
+        <div id="get_annot" class="pb-5">
+            <h3>Variant Annotations and Phenotypes</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="custom50w">Dataset</th>
+                    <th class="text-center">Preview</th>
+                    <th class="text-center">Download</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Functional/structural data in <em>TP53</em> with their annotations (includes validated
+                        polymorphisms)
+                    </td>
+                    <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=MutationView"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/MutationView_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a>
+                    </td>
 
-            </tbody>
-        </table>
-    </div>
-    <div id="get_germ_mut" class="pb-5">
-        <h3>Germline Variations</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th class="custom50w">Dataset</th>
-                <th class="text-center">Preview</th>
-                <th class="text-center">Download</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><em>TP53</em> germline variants and family history (data file)</td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=GermlineDownload"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/GermlineDownload_{{ ver }}.csv"><i class="fas fa-download"></i></a>
-                </td>
-            </tr>
-            <tr>
-                <td><em>TP53</em> germline variants and family history (references file)</td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=GermlineRefDownload"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/GermlineRefDownload_{{ ver }}.csv"><i class="fas fa-download"></i></a>
-                </td>
-            </tr>
-            <tr>
-                <td><em>TP53</em> germline variants prevalence in selected cohorts</td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=GermlinePrevalenceView"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/GermlinePrevalenceView_{{ ver }}.csv"><i
-                        class="fas fa-download"></i></a></td>
-            </tr>
-            <tr>
-                <td>Frequency of individual variants in case-controls series (new dataset under development)</td>
+                </tr>
+                <tr>
+                    <td>Functional assessment of p53 mutant proteins in various experimental assays</td>
+                    <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=FunctionDownload"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/FunctionDownload_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Systematic functional assessment of p53 mutant proteins in yeast assays</td>
+                    <td class="text-center"><a aria-label="View Data"
+                                               href="view_data?bq_view_name=FunctionIshiokaDownload"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/FunctionIshiokaDownload_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="get_som_mut" class="pb-5">
+            <h3>Somatic Variants</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="custom50w">Dataset</th>
+                    <th class="text-center">Preview</th>
+                    <th class="text-center">Download</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Somatic variants in human tumor samples (data file)</td>
+                    <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=SomaticDownload"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/SomaticDownload_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Somatic variants in human tumor samples (references file)</td>
+                    <td class="text-center"><a aria-label="View Data"
+                                               href="view_data?bq_view_name=SomaticRefDownload"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/SomaticRefDownload_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Prevalence of somatic variants by tumor site</td>
+                    <td class="text-center"><a aria-label="View Data"
+                                               href="view_data?bq_view_name=PrevalenceDownload"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/PrevalenceDownload_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Prevalence of the R249S <em>TP53</em> variants in liver cancer</td>
+                    <td class="text-center"><a aria-label="View Data"
+                                               href="view_data?bq_view_name=PrevalenceDownloadR249S"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/PrevalenceDownloadR249S_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Prognostic value of somatic variants</td>
+                    <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=PrognosisDownload"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/PrognosisDownload_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a></td>
+                </tr>
 
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=GermlineFrequencyDownload"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/GermlineFrequencyDownload_{{ ver }}.csv"><i
-                        class="fas fa-download"></i></a></td>
-            </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="get_germ_mut" class="pb-5">
+            <h3>Germline Variations</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="custom50w">Dataset</th>
+                    <th class="text-center">Preview</th>
+                    <th class="text-center">Download</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><em>TP53</em> germline variants and family history (data file)</td>
+                    <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=GermlineDownload"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/GermlineDownload_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><em>TP53</em> germline variants and family history (references file)</td>
+                    <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=GermlineRefDownload"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/GermlineRefDownload_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><em>TP53</em> germline variants prevalence in selected cohorts</td>
+                    <td class="text-center"><a aria-label="View Data"
+                                               href="view_data?bq_view_name=GermlinePrevalenceView"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/GermlinePrevalenceView_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Frequency of individual variants in case-controls series (new dataset under development)</td>
 
-            </tbody>
-        </table>
-    </div>
-    <div id="get_cell" class="pb-5">
-        <h3>Cell Lines</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th class="custom50w">Dataset</th>
-                <th class="text-center">Preview</th>
-                <th class="text-center">Download</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><em>TP53</em> variant status of human cell-lines</td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=CellLineDownload"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/CellLineDownload_{{ ver }}.csv"><i class="fas fa-download"></i></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div id="get_annot" class="pb-5">
-        <h3>Variant Annotations and Phenotypes</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th class="custom50w">Dataset</th>
-                <th class="text-center">Preview</th>
-                <th class="text-center">Download</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Functional/structural data in <em>TP53</em> with their annotations (includes validated
-                    polymorphisms)
-                </td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=MutationView"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/MutationView_{{ ver }}.csv"><i class="fas fa-download"></i></a>
-                </td>
+                    <td class="text-center"><a aria-label="View Data"
+                                               href="view_data?bq_view_name=GermlineFrequencyDownload"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/GermlineFrequencyDownload_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a></td>
+                </tr>
 
-            </tr>
-            <tr>
-                <td>Functional assessment of p53 mutant proteins in various experimental assays</td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=FunctionDownload"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/FunctionDownload_{{ ver }}.csv"><i class="fas fa-download"></i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>Systematic functional assessment of p53 mutant proteins in yeast assays</td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=FunctionIshiokaDownload"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/FunctionIshiokaDownload_{{ ver }}.csv"><i
-                        class="fas fa-download"></i></a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div id="get_mouse" class="pb-5">
-        <h3>Mouse-Models</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th class="custom50w">Dataset</th>
-                <th class="text-center">Preview</th>
-                <th class="text-center">Download</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Mouse models with engineered <em>TP53</em></td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=MouseModelView"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/MouseModelView_{{ ver }}.csv"><i class="fas fa-download"></i></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div id="get_eim" class="pb-5" style="margin-bottom:45vh;">
-        <h3>Experimentally Induced Variants</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th class="custom50w">Dataset</th>
-                <th class="text-center">Preview</th>
-                <th class="text-center">Download</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Variants induced in experimental models of mutagenesis</td>
-                <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=InducedMutationView"><i class="fas fa-table"></i></a></td>
-                <td class="text-center"><a aria-label="Download Data" href="{{ TP53_DATA_DIR_URL }}/InducedMutationView_{{ ver }}.csv"><i class="fas fa-download"></i></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+        <div id="get_cell" class="pb-5">
+            <h3>Cell Lines</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="custom50w">Dataset</th>
+                    <th class="text-center">Preview</th>
+                    <th class="text-center">Download</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><em>TP53</em> variant status of human cell-lines</td>
+                    <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=CellLineDownload"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/CellLineDownload_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="get_mouse" class="pb-5">
+            <h3>Mouse-Models</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="custom50w">Dataset</th>
+                    <th class="text-center">Preview</th>
+                    <th class="text-center">Download</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Mouse models with engineered <em>TP53</em></td>
+                    <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=MouseModelView"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/MouseModelView_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="get_eim" class="pb-5">
+            <h3>Experimentally Induced Variants</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="custom50w">Dataset</th>
+                    <th class="text-center">Preview</th>
+                    <th class="text-center">Download</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Variants induced in experimental models of mutagenesis</td>
+                    <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=InducedMutationView"><i
+                            class="fas fa-table"></i></a></td>
+                    <td class="text-center"><a aria-label="Download Data"
+                                               href="{{ TP53_DATA_DIR_URL }}/InducedMutationView_{{ ver }}.csv"><i
+                            class="fas fa-download"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 {% endblock %}

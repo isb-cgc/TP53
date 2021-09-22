@@ -14,16 +14,26 @@
 {% endblock %}
 
 {% block subcontent %}
-<div class="page-banner text-center">
-    <h2 class="pb-3 my-0 fw-normal">{{ title }}
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">{{ title }}
         {% if subtitle %}
         :
         {% endif %}
-        <span class="ms-2 fw-light">{{ subtitle }}</span></h2>
+        <span class="ms-2 fw-light">{{ subtitle }}</span></h1>
+    </div>
 </div>
-<div class="p-3">
-    <div class="text-end">
-        {% include 'criteria_div.html' %}
+<div class="container">
+    <div class="my-3">
+        <div class="py-2">
+            <div>
+                <a class="text-start btn btn-sm btn-outline-dark criteria-btn collapsed"
+                   data-bs-toggle="collapse" href="#criteria_div" role="button" aria-label="View/Hide Criteria"
+                   aria-expanded="false"
+                   aria-controls="criteria_div"></a>
+            </div>
+            {% include 'criteria_div.html' %}
+        </div>
     </div>
     <div class="p-2">
         <div class="col-10 border rounded-2 p-3 my-3 mx-auto">
