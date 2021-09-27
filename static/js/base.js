@@ -48,6 +48,8 @@ $(document).ready(function () {
         $('#browser-alert').show();
     }
 
+    console.log(navigator.userAgent);
+
 });
 
 

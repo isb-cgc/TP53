@@ -2,6 +2,7 @@
 'use strict';
 
 $(document).ready(function () {
+
     $('#view-data-table thead tr').clone(true).appendTo( '#view-data-table thead' );
     $('#view-data-table thead tr:eq(1) th').each(function(i) {
         if (i === 0) {
@@ -29,6 +30,7 @@ $(document).ready(function () {
             deferRender: true,
             initComplete: function (settings, json) {
                 $('.spinner').hide();
+
             },
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
                 "<'row d-none'<'col-sm-12 col-md-4'B>>" +
@@ -49,13 +51,18 @@ $(document).ready(function () {
                 render: function() {
                     return '<input class="form-check-input row-check" type="checkbox" aria-label="Select Rows">';
                 },
-                orderable: false,
+                orderable: false
             },{
                 targets: 'external_link',
                 render: function (data) {
                     return '<a href="'+data+'" target="_blank" rel="noopener noreferrer">'+data+'</a>';
                 }
-            }],
+            }
+            ,{
+                targets: '_all',
+                className: 'pe-5 text-nowrap'
+            }
+            ],
             rowCallback: function (row) {
                 $(row).find('.row-check').prop('checked', $(row).hasClass('selected'));
             },

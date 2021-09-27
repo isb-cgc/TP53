@@ -1,5 +1,5 @@
 {% extends "tp53data.html" %}
-{% block title %}Data Explorer: View {{ bq_view_name }} Data{% endblock %}
+{% block title %}TP53 Database: View {{ bq_view_name }} Data{% endblock %}
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
@@ -22,7 +22,7 @@
         <h1 class="fw-bold p-2 my-0">View Data: {{ bq_view_name }}</h1>
     </div>
 </div>
-<div id="view_data" class="m-3" data-view-name="{{ bq_view_name }}">
+<div id="view_data" class="py-3 mx-5" data-view-name="{{ bq_view_name }}">
     <div class="pb-2">
         <button type="button" class="btn btn-sm darkblue-btn download-btn"><i class="fas fa-download"></i>
             Download

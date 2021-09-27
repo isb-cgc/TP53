@@ -1,5 +1,5 @@
 {% extends "tp53data.html" %}
-{% block title %}Data Explorer: Dataset Downloads{% endblock %}
+{% block title %}TP53 Database: Dataset Downloads{% endblock %}
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
@@ -14,12 +14,9 @@
     </div>
 </div>
 <div class="container">
-    <!--<div class="page-banner text-center">-->
-    <!--<h2 class="pb-3 my-0 fw-normal">Dataset Downloads</h2>-->
-    <!--</div>-->
-    <div class="my-5">
+    <div class="p-2 my-5">
         <div id="get_annot" class="pb-5">
-            <h3>Variant Annotations and Phenotypes</h3>
+            <h3>Functional / Structural Data: <span class="fw-light">Variant Annotations and Phenotypes</span></h3>
             <table class="table">
                 <thead>
                 <tr>
@@ -42,7 +39,7 @@
 
                 </tr>
                 <tr>
-                    <td>Functional assessment of p53 mutant proteins in various experimental assays</td>
+                    <td>Functional assessment of <em>p53</em> mutant proteins in various experimental assays</td>
                     <td class="text-center"><a aria-label="View Data" href="view_data?bq_view_name=FunctionDownload"><i
                             class="fas fa-table"></i></a></td>
                     <td class="text-center"><a aria-label="Download Data"
@@ -51,7 +48,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Systematic functional assessment of p53 mutant proteins in yeast assays</td>
+                    <td>Systematic functional assessment of <em>p53</em> mutant proteins in yeast assays</td>
                     <td class="text-center"><a aria-label="View Data"
                                                href="view_data?bq_view_name=FunctionIshiokaDownload"><i
                             class="fas fa-table"></i></a></td>
@@ -122,7 +119,7 @@
             </table>
         </div>
         <div id="get_germ_mut" class="pb-5">
-            <h3>Germline Variations</h3>
+            <h3>Germline Variants</h3>
             <table class="table">
                 <thead>
                 <tr>

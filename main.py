@@ -765,7 +765,7 @@ def results_gene_dist():
         graph_configs = build_graph_configs(action, table)
         sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
     graph_result = build_graph_data(sql_maps)
-    return render_template(template, criteria_map=criteria_map, title='Statistics on Variant Data', subtitle=subtitle,
+    return render_template(template, criteria_map=criteria_map, title='Statistics on Functional/Structural Data', subtitle=subtitle,
                            graph_result=graph_result)
 
 @app.route("/get_distribution", methods=['GET', 'POST'])

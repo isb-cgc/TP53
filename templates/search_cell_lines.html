@@ -1,5 +1,5 @@
 {% extends "tp53data.html" %}
-{% block title %}Data Explorer: Search Cell-Line Data{% endblock %}
+{% block title %}TP53 Database: Search Cell-Line Data{% endblock %}
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
@@ -19,30 +19,6 @@
     </div>
 </div>
 <div id="search_cell_lines" class="container">
-    <div class="my-3 p-2">
-        <div>
-            Be aware that many cell lines may have different TP53 status according to different studies.<br>
-            This may be due to cell-line misidentification, cross-contamination or sequencing techniques
-            (see <a target="_blank" rel="noopener noreferrer" href="https://www.ncbi.nlm.nih.gov/pubmed/28127703">PMID28127703</a>,
-            <a target="_blank" rel="noopener noreferrer" href="https://www.ncbi.nlm.nih.gov/pubmed/24700732">PMID24700732</a>
-            for discussions
-            on these issues).
-        </div>
-        <div>We recommend also checking other available resources:
-            <ul>
-                <li><a target="_blank" rel="noopener noreferrer" href="https://portals.broadinstitute.org/ccle">Cancer
-                    Cell Line Encyclopedia
-                    (CCLE)</a></li>
-                <li><a target="_blank" rel="noopener noreferrer" href="https://depmap.org/portal/">DepMap
-                    Project</a></li>
-                <li><a target="_blank" rel="noopener noreferrer" href="https://web.expasy.org/cellosaurus/">Cellosaurus
-                    Resource</a></li>
-                <li><a target="_blank" rel="noopener noreferrer" href="https://cancer.sanger.ac.uk/cell_lines">COSMIC
-                    Cell-Line Project</a>
-                </li>
-            </ul>
-        </div>
-    </div>
     <div class="my-3 p-2">
         <form action="{{ url_for('results_cell_line_mutation') }}" method="POST">
             <div class="accordion" id="cl_form_accordion">
@@ -117,11 +93,12 @@
                             <fieldset id="tp53_status_legend" class="mb-3">
                                 <div class="row">
                                     <legend class="text-end col-form-label col-sm-3 pt-0 text-end ">
-                                        TP53 Status
+                                        <em>TP53</em> Status
                                         <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                                data-bs-html="true"
                                                 data-bs-placement="right"
                                                 aria-label="help button"
-                                                title="Status of TP53 gene. WT= wild-type gene sequence;
+                                                title="Status of <em>TP53</em> gene. WT= wild-type gene sequence;
                                                                 MUT= mutated gene sequence;
                                                                 NULL= entire gene deletion;
                                                                 LOE= loss of gene expression without gene mutation.">
@@ -206,6 +183,35 @@
                 </div>
             </div>
         </form>
+    </div>
+    <div class="my-3 p-2">
+        <div>
+            Be aware that many cell lines may have different <em>TP53</em> status according to different studies.
+        </div>
+        <div class="fw-light">
+            <div>
+                This may be due to cell-line misidentification, cross-contamination or sequencing techniques
+                (see <a target="_blank" rel="noopener noreferrer" href="https://www.ncbi.nlm.nih.gov/pubmed/28127703">PMID28127703</a>,
+                <a target="_blank" rel="noopener noreferrer" href="https://www.ncbi.nlm.nih.gov/pubmed/24700732">PMID24700732</a>
+                for discussions
+                on these issues).
+            </div>
+            <div>
+                We recommend also checking other available resources:
+                <ul>
+                    <li><a target="_blank" rel="noopener noreferrer" href="https://portals.broadinstitute.org/ccle">Cancer
+                        Cell Line Encyclopedia
+                        (CCLE)</a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="https://depmap.org/portal/">DepMap
+                        Project</a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="https://web.expasy.org/cellosaurus/">Cellosaurus
+                        Resource</a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="https://cancer.sanger.ac.uk/cell_lines">COSMIC
+                        Cell-Line Project</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

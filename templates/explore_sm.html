@@ -1,5 +1,5 @@
 {% extends "tp53data_submenu.html" %}
-{% block title %}Somatic Variants{% endblock %}
+{% block title %}Explore Datasets: Somatic Variants{% endblock %}
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<div id="search_tp53" class="p-5">
+<div class="tile-cards p-5">
     <div class="container">
         <div class="row py-0">
             <div class="col-lg-4">
@@ -29,7 +29,9 @@
                     </div>
                     <div class="card-body">
                         <div class="card-text p-3 rounded bg-light">
-                            This option allows the retrieval and analysis of <em>TP53</em> variations reported as somatic events in tumor samples and cell-lines. Each dataset entry corresponds to a variation identified in a human sample.
+                            This option allows the retrieval and analysis of <strong><em>TP53</em> variations reported as
+                            somatic events in tumor samples and cell-lines</strong>. Each dataset entry corresponds to a
+                            variation identified in a human sample.
                         </div>
                     </div>
                 </div>
@@ -41,7 +43,9 @@
                     </div>
                     <div class="card-body">
                         <div class="card-text p-3 rounded bg-light">
-                            This option allows the analysis of the prevalence of <em>TP53</em> somatic variations by cancer type and population groups. Each dataset entry corresponds to the prevalence of <em>TP53</em> variation for a specific type of cancer in a defined human population.
+                            Retrieve the analysis of the <strong>prevalence of <em>TP53</em> somatic variations by
+                            cancer type and population groups</strong>. Each dataset entry corresponds to the prevalence of <em>TP53</em>
+                            variation for a specific type of cancer in a defined human population.
                         </div>
                     </div>
                 </div>
@@ -53,19 +57,22 @@
                     </div>
                     <div class="card-body">
                         <div class="card-text p-3 rounded bg-light">
-                            Short Description Here
+                            This dataset includes <em>TP53</em> somatic variants reported in primary tissues, body
+                            fluids and cell-lines.
+                            Statistics on <strong>variant</strong>  or <strong>tumor site distributions</strong>, <strong>prognostic value of somatic variants</strong> and
+                            <strong>dataset development</strong> can be viewed.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row short-ht-row py-0">
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-header" title="Click to go to view downloadable data" role="button">
-                        <a class="card-header-text" href="get_tp53data#get_som_mut">Data Downloads</a>
-                    </div>
-                </div>
+        <div class="row mt-4 py-0">
+            <div class="col-lg-4 d-grid">
+                <a href="get_tp53data#get_som_mut" class="btn btn-secondary grid-button"
+                   title="Click to go to view downloadable datasets"
+                   role="button">
+                    Data Downloads<br><span class="fw-light"><i class="fas fa-chevron-right"></i> Somatic Variants</span>
+                </a>
             </div>
         </div>
     </div>

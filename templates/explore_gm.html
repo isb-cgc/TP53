@@ -1,5 +1,5 @@
 {% extends "tp53data_submenu.html" %}
-{% block title %}Germline Variants{% endblock %}
+{% block title %}Explore Datasets: Germline Variants{% endblock %}
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
@@ -12,55 +12,54 @@
     <div class="container">
         <h1 class="fw-bold p-2 my-0">Germline Variants</h1>
         <h2 class="p-2 my-0 fw-light">
-            Explore data for individuals that are carriers of a <em>TP53</em> germline variant and families in which at least one
+            Explore data for individuals that are carriers of a <em>TP53</em> germline variant and families in which at
+            least one
             family member has been identified as a carrier of a germline variant in the <em>TP53</em> gene.
 
         </h2>
     </div>
 </div>
 
-<div id="search_tp53" class="p-5">
+<div class="p-5 tile-cards">
     <div class="container">
-        <div class="row py-0">
-            <div class="col-lg-6">
+        <div class="row tall-ht-row py-0">
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="card-header" title="Click to go to view downloadable data" role="button">
                         <a class="card-header-text" href="search_germline_mut">Search Germline Variant Data</a>
                     </div>
                     <div class="card-body">
                         <div class="card-text p-3 rounded bg-light">
-                            This option allows the retrieval and analysis of <em>TP53</em> variants reported as germline
-                            events in human individuals. Each dataset entry corresponds to a tumor identified in an
-                            individual carrier of a <em>TP53</em> germline variation. The searchable dataset only
-                            includes cancer-affected individuals who are confirmed or obligatory carrier of a <em>TP53</em>
-                            mutation (data on non-affected carriers or non-confirmed carrier can be retrieved by
-                            downloading the full dataset with the 'data downloads' option).
+                            Allows the retrieval and analysis of <strong><em>TP53</em> variants reported as germline
+                            events in human individuals</strong>. Each dataset entry corresponds to a tumor identified in an
+                            individual carrier of a <em>TP53</em> germline variation.
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="card-header" title="Click to go to view downloadable data" role="button">
                         <a class="card-header-text" href="stats_germline_mut">Selected Statistics</a>
                     </div>
                     <div class="card-body">
                         <div class="card-text p-3 rounded bg-light">
-                            Short Description Here
+                            Statistics are available on <strong>distribution of codon variants</strong>, <strong><em>TP53</em> variant distributions</strong>, <strong>tumor site distributions</strong>, and <strong>prevalence of <em>TP53</em>
+                            germline variants</strong> in selected cohorts and dataset development.
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
             </div>
         </div>
-        <div class="row short-ht-row py-0">
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header" title="Click to go to view downloadable data" role="button">
-                        <a class="card-header-text" href="get_tp53data#get_germ_mut">Data Downloads</a>
-                    </div>
-                </div>
+        <div class="row mt-4 py-0">
+            <div class="col-lg-4 d-grid">
+                <a href="get_tp53data#get_germ_mut" class="btn btn-secondary grid-button"
+                   title="Click to go to view downloadable datasets"
+                   role="button">
+                    Data Downloads<br><span class="fw-light"><i class="fas fa-chevron-right"></i> Germline Variants</span>
+                </a>
             </div>
         </div>
     </div>

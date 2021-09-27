@@ -45,14 +45,14 @@
             <div class="navbar-collapse collapse" id="navbarCollapse">
                 <ul class="navbar-nav justify-content-evenly">
                     <li class="nav-item mx-xl-1 mx-xxl-2">
-                        <a class="nav-link" id="home_menu" href="/"><em>TP53</em> Database</a>
+                        <a class="nav-link" id="home_menu" href="/">The <em>TP53</em> Database</a>
                     </li>
                     <li class="nav-item mx-xl-2 mx-xxl-3">
                         <a class="nav-link" id="about" href="about">About</a>
                     </li>
                     <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
-                        <!--<a class="nav-link" id="tp53data" href="search_tp53data">Data-->
-                            <!--Explorer</a>-->
+                    <!--<a class="nav-link" id="tp53data" href="search_tp53data">Data-->
+                    <!--Explorer</a>-->
                     <!--</li>-->
                     <li class="nav-item mx-xl-2 mx-xxl-3">
                         <a class="nav-link" id="help" href="help">User Manual</a>
@@ -68,18 +68,30 @@
                     <!--</li>-->
 
                     <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
-                        <!--<a class="nav-link" id="contact" href="contact">Contact</a>-->
+                    <!--<a class="nav-link" id="contact" href="contact">Contact</a>-->
                     <!--</li>-->
 
-                    <li class="nav-item ms-5 mt-2">
-                        <form action="cse_search" method="get" role="search" class="d-flex">
-                            <input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"
-                                   aria-label="Search">
-                            <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
-                        </form>
-                    </li>
+                    <!--<li class="nav-item ms-5 mt-2">-->
+                        <!--<form action="cse_search" method="get" role="search" class="d-flex">-->
+                            <!--<input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"-->
+                                   <!--aria-label="Search">-->
+                            <!--<button class="btn btn-outline-light btn-sm" type="submit">Search</button>-->
+                        <!--</form>-->
+                    <!--</li>-->
                 </ul>
+                <!--<li class="nav-item ms-5 mt-2">-->
+                        <!--<form action="cse_search" method="get" role="search" class="d-flex ">-->
+                            <!--<input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"-->
+                                   <!--aria-label="Search">-->
+                            <!--<button class="btn btn-outline-light btn-sm" type="submit">Search</button>-->
+                        <!--</form>-->
+                    <!--</li>-->
             </div>
+            <!--<form action="cse_search" method="get" role="search" class="d-flex float-end px-2">-->
+                <!--<input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"-->
+                       <!--aria-label="Search">-->
+                <!--<button class="btn btn-outline-light btn-sm" type="submit">Search</button>-->
+            <!--</form>-->
         </div>
     </nav>
 </header>
@@ -88,11 +100,14 @@
 {% endblock %}
 <footer class="mt-auto">
     <div class="container">
-        <!--<p class="float-start mb-1">-->
-        <!--<a href="https://isb-cgc.org"><i class="far fa-copyright"></i> ISB-CGC</a> All Rights Reserved.-->
-        <!--</p>-->
-        <div class="float-end py-4">
-            <a class="fw-bold turquoise-text" href="#">Back to top</a>
+        <div class="p-2 my-4">
+            <a class="pe-2" href="/">Home</a> |
+            <a class="px-2" href="about#contact-div">Contact Us</a> |
+            <a class="px-2" href="about#cite-div">How to Cite</a> |
+            <a class="px-2" href="about#disclaimer-div">Disclaimer</a> |
+            <a class="px-2" href="about#credits-div">Credits</a> |
+            <a class="ps-2" target="_blank" rel="noopener noreferrer" href="https://isb-cgc.org">ISB-CGC</a>
+            <a class="fw-bold float-end" href="#">Back to top</a>
         </div>
     </div>
 </footer>

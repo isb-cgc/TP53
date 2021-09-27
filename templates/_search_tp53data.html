@@ -1,5 +1,5 @@
 {% extends "tp53data.html" %}
-{% block title %}Data Explorer: Menu{% endblock %}
+{% block title %}TP53 Database: Menu{% endblock %}
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
@@ -11,7 +11,7 @@
 <div class="page-banner text-center">
     <h2 class="pb-3 my-0 fw-normal">Search <em>TP53</em> Data</h2>
 </div>
-<div id="search_tp53" class="p-5">
+<div class="p-5 tile-cards">
     <div class="container">
         <div class="row py-0">
             <div class="col-lg-4">
@@ -225,7 +225,7 @@
                     <div class="card-header" title="Click to read about the data"
                          data-bs-toggle="collapse" href="#abtEIM" role="button" aria-expanded="false"
                          aria-controls="abtEIM">
-                        <span class="card-header-text">Experimentally Induced Models</span>
+                        <span class="card-header-text">Experimentally Induced Variants</span>
                     </div>
                     <div class="card-body">
                         <div id="abtEIM" class="card-text collapse p-3 rounded bg-light">

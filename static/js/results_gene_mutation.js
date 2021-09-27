@@ -82,51 +82,42 @@ $(document).ready(function () {
             {
                 data: "CLINVARlink",
                 className: "text-end pe-2",
-                render: function (data, type) {
-                    if (data != null)
-                        return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to ClinVar ' + data + '">' + data + '</a>';
+                render: function (data) {
+                    if(data == null || data === '')
+                        return '';
                     else
-                        return data;
+                        return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to ClinVar ' + data + '">' + data + '</a>';
                 }
             },
             {
                 data: "COSMIClink",
                 className: "text-end pe-2",
-                render: function (data, type) {
-                    if (data != null)
-                        return '<a href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" rel="noopener noreferrer" title="Go to COSMIC ' + data + '">' + data + '</i></a>';
+                render: function (data) {
+                    if(data == null || data === '')
+                        return '';
                     else
-                        return data;
+                        return '<a href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" rel="noopener noreferrer" title="Go to COSMIC ' + data + '">' + data + '</i></a>';
                 }
             },
             {
                 data: "SNPlink",
                 className: "text-end pe-2",
-                render: function (data, type) {
-                    // if (type == 'export'){
-                    //     return data;
-                    // }
-                    // else {
-                    if (data !== '')
-                        return '<a href=\"https://www.ncbi.nlm.nih.gov/snp/rs' + data + '" target="_blank" rel="noopener noreferrer" title="Go to dbSNP ' + data + '">' + data + '</a>';
+                render: function (data) {
+                    if(data == null || data === '')
+                        return '';
                     else
-                        return data;
-                    // }
+                        return '<a href=\"https://www.ncbi.nlm.nih.gov/snp/rs' + data + '" target="_blank" rel="noopener noreferrer" title="Go to dbSNP ' + data + '">' + data + '</a>';
                 }
             },
             {
                 data: "gnomADlink",
                 className: "text-nowrap text-end pe-2",
-                render: function (data, type) {
-                    // if (type == 'export'){
-                    //     return data;
-                    // }
-                    // else {
-                    if (data !== '')
-                        return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
+                render: function (data) {
+                    console.log(data);
+                    if(data == null || data === '')
+                        return '';
                     else
-                        return data;
-                    // }
+                        return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
                 }
             }
         ],
