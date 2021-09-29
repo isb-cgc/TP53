@@ -20,325 +20,45 @@ from google.cloud import bigquery
 from google.api_core.exceptions import BadRequest
 from flask_talisman import Talisman
 import bq_builder
+import settings
 import concurrent.futures
 import requests
 import sys
-import copy
 import csv
+import utils
+import graphs
+import filters
 from io import StringIO
-
-
-TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
-# IS_TEST = os.environ.get('IS_TEST', True)
-
-M_C_DESC_FILE = 'M_C_DESC.TXT.LIST'
-M_P_DESC_FILE = 'M_P_DESC.TXT.LIST'
-M_G_DESC_HG19_FILE = 'M_G_DESC_HG19.TXT.LIST'
-M_G_DESC_HG38_FILE = 'M_G_DESC_HG38.TXT.LIST'
-M_TYPE_FILE = 'M_TYPE.TXT.LIST'
-M_DESC_FILE = 'M_DESC.TXT.LIST'
-M_MOTIF_FILE = 'M_MOTIF.TXT.LIST'
-M_EXON_INTRON_FILE = 'M_EXON_INTRON.TXT.LIST'
-M_EFFECT_FILE = 'M_EFFECT.TXT.LIST'
-M_TA_CLASS_FILE = 'M_TA_CLASS.TXT.LIST'
-M_SIFT_FILE = 'M_SIFT.TXT.LIST'
-
-CL_C_DESC_FILE = 'CL_C_DESC.TXT.LIST'
-CL_P_DESC_FILE = 'CL_P_DESC.TXT.LIST'
-CL_G_DESC_HG19_FILE = 'CL_G_DESC_HG19.TXT.LIST'
-CL_G_DESC_HG38_FILE = 'CL_G_DESC_HG38.TXT.LIST'
-TOPO_FILE = 'TOPO.TXT.LIST'
-MORPH_FILE = 'MORPH.TXT.LIST'
-CL_TUMOR_ORG_GROUP_FILE = 'CL_TUMOR_ORG_GROUP.TXT.LIST'
-CL_TP53STAT_FILE = 'CL_TP53STAT.TXT.LIST'
-CL_DESC_FILE = 'CL_DESC.TXT.LIST'
-CL_EFFECT_FILE = 'CL_EFFECT.TXT.LIST'
-CL_MOTIF_FILE = 'CL_MOTIF.TXT.LIST'
-CL_START_MATERIAL_FILE = 'CL_START_MATERIAL.TXT.LIST'
-CL_TA_CLASS_FILE = 'CL_TA_CLASS.TXT.LIST'
-CL_TYPE_FILE = 'CL_TYPE.TXT.LIST'
-CL_SIFT_FILE = 'CL_SIFT.TXT.LIST'
-CL_EXON_INTRON_FILE = 'CL_EXON_INTRON.TXT.LIST'
-
-CL_GERM_MUT_FILE = 'CL_GERM_MUT.TXT.LIST'
-CL_TOBACCO_FILE = 'CL_TOBACCO.TXT.LIST'
-CL_INF_AGNT_FILE = 'CL_INF_AGNT.TXT.LIST'
-CL_EXPOSURE_FILE = 'CL_EXPOSURE.TXT.LIST'
-
-
-SM_START_MATERIAL_FILE = 'SM_START_MATERIAL.TXT.LIST'
-
-SM_C_DESC_FILE = 'SM_C_DESC.TXT.LIST'
-SM_P_DESC_FILE = 'SM_P_DESC.TXT.LIST'
-SM_G_DESC_HG19_FILE = 'SM_G_DESC_HG19.TXT.LIST'
-SM_G_DESC_HG38_FILE = 'SM_G_DESC_HG38.TXT.LIST'
-
-SM_TYPE_FILE = 'SM_TYPE.TXT.LIST'
-SM_DESC_FILE = 'SM_DESC.TXT.LIST'
-SM_MOTIF_FILE = 'SM_MOTIF.TXT.LIST'
-SM_EXON_INTRON_FILE = 'SM_EXON_INTRON.TXT.LIST'
-SM_EFFECT_FILE = 'SM_EFFECT.TXT.LIST'
-SM_TA_CLASS_FILE = 'SM_TA_CLASS.TXT.LIST'
-SM_SIFT_FILE = 'SM_SIFT.TXT.LIST'
-SM_TUMOR_ORG_GROUP_FILE = 'SM_TUMOR_ORG_GROUP.TXT.LIST'
-SM_SAMPLE_SOURCE_GROUP_FILE = 'SM_SAMPLE_SOURCE_GROUP.TXT.LIST'
-SM_GERM_MUT_FILE = 'SM_GERM_MUT.TXT.LIST'
-SM_TOBACCO_FILE = 'SM_TOBACCO.TXT.LIST'
-SM_INF_AGNT_FILE = 'SM_INF_AGNT.TXT.LIST'
-SM_EXPOSURE_FILE = 'SM_EXPOSURE.TXT.LIST'
-SM_REF_FILE = 'SM_REF.json'
-
-COUNTRY_FILE = 'COUNTRY.TXT.LIST'
-
-GM_C_DESC_FILE = 'GM_C_DESC.TXT.LIST'
-GM_P_DESC_FILE = 'GM_P_DESC.TXT.LIST'
-GM_G_DESC_HG19_FILE = 'GM_G_DESC_HG19.TXT.LIST'
-GM_G_DESC_HG38_FILE = 'GM_G_DESC_HG38.TXT.LIST'
-GM_TYPE_FILE = 'GM_TYPE.TXT.LIST'
-GM_DESC_FILE = 'GM_DESC.TXT.LIST'
-GM_MOTIF_FILE = 'GM_MOTIF.TXT.LIST'
-GM_EXON_INTRON_FILE = 'GM_EXON_INTRON.TXT.LIST'
-GM_EFFECT_FILE = 'GM_EFFECT.TXT.LIST'
-GM_TA_CLASS_FILE = 'GM_TA_CLASS.TXT.LIST'
-GM_SIFT_FILE = 'GM_SIFT.TXT.LIST'
-GM_FAMILY_HIST_FILE = 'GM_FAMILY_HIST.TXT.LIST'
-GM_INH_MODE_FILE = 'GM_INH_MODE.TXT.LIST'
-GM_FAMILY_CASE_FILE = 'GM_FAMILY_CASE.TXT.LIST'
-
-TOPO_MORPH_JSON_FILE = 'TOPO_MORPH.json'
-GM_REF_FILE = 'GM_REF.json'
-
 
 app = Flask(__name__)
 
-global m_c_desc_list
-m_c_desc_list = None
+hsts_max_age = 3600 if settings.IS_TEST else 31536000
 
-global m_p_desc_list
-m_p_desc_list = None
-
-global m_g_desc_hg19_list
-m_g_desc_hg19_list = None
-
-global m_g_desc_hg38_list
-m_g_desc_hg38_list = None
-
-global m_type_list
-m_type_list = None
-
-global m_desc_list
-m_desc_list = None
-
-global m_motif_list
-m_motif_list = None
-
-global m_exon_intron_list
-m_exon_intron_list = None
-
-global m_effect_list
-m_effect_list = None
-
-global m_ta_class_list
-m_ta_class_list = None
-
-global m_sift_list
-m_sift_list = None
-
-global cl_c_desc_list
-cl_c_desc_list = None
-
-global cl_p_desc_list
-cl_p_desc_list = None
-
-global cl_g_desc_hg19_list
-cl_g_desc_hg19_list = None
-
-global cl_g_desc_hg38_list
-cl_g_desc_hg38_list = None
-
-global topo_list
-topo_list = None
-
-global morph_list
-morph_list = None
-
-global cl_tumor_org_group_list
-cl_tumor_org_group_list = None
-
-global cl_tp53stat_list
-cl_tp53stat_list = None
-
-global cl_desc_list
-cl_desc_list = None
-
-global cl_effect_list
-cl_effect_list = None
-
-global cl_motif_list
-cl_motif_list = None
-
-global cl_start_material_list
-cl_start_material_list = None
-
-global cl_ta_class_list
-cl_ta_class_list = None
-
-global cl_type_list
-cl_type_list = None
-
-global cl_sift_list
-cl_sift_list = None
-
-global cl_exon_intron_list
-cl_exon_intron_list = None
-
-global cl_inf_agnt_list
-cl_inf_agnt_list = None
-
-global cl_germ_mut_list
-cl_germ_mut_list = None
-
-global cl_tobacco_list
-cl_tobacco_list = None
-
-global country_list
-country_list = None
-
-global cl_exposure_list
-cl_exposure_list = None
-
-global sm_c_desc_list
-sm_c_desc_list = None
-global sm_p_desc_list
-sm_p_desc_list = None
-global sm_g_desc_hg19_list
-sm_g_desc_hg19_list = None
-global sm_g_desc_hg38_list
-sm_g_desc_hg38_list = None
-global sm_morph_list
-sm_morph_list = None
-global sm_start_material_list
-sm_start_material_list = None
-global sm_type_list
-sm_type_list = None
-global sm_desc_list
-sm_desc_list = None
-global sm_motif_list
-sm_motif_list = None
-global sm_exon_intron_list
-sm_exon_intron_list = None
-global sm_effect_list
-sm_effect_list = None
-global sm_ta_class_list
-sm_ta_class_list = None
-global sm_sift_list
-sm_sift_list = None
-global sm_tumor_org_group_list
-sm_tumor_org_group_list = None
-global sm_sample_source_list
-sm_sample_source_list = None
-global sm_germ_mut_list
-sm_germ_mut_list = None
-global sm_inf_agnt_list
-sm_inf_agnt_list = None
-global sm_exposure_list
-sm_exposure_list = None
-global sm_tobacco_list
-sm_tobacco_list = None
-global sm_ref_data
-sm_ref_data = None
-
-global gm_c_desc_list
-gm_c_desc_list = None
-global gm_p_desc_list
-gm_p_desc_list = None
-global gm_g_desc_hg19_list
-gm_g_desc_hg19_list = None
-global gm_g_desc_hg38_list
-gm_g_desc_hg38_list = None
-global gm_type_list
-gm_type_list = None
-global gm_desc_list
-gm_desc_list = None
-global gm_motif_list
-gm_motif_list = None
-global gm_exon_intron_list
-gm_exon_intron_list = None
-global gm_effect_list
-gm_effect_list = None
-global gm_ta_class_list
-gm_ta_class_list = None
-global gm_sift_list
-gm_sift_list = None
-global gm_family_hist_list
-gm_family_hist_list = None
-global gm_inh_mode_list
-gm_inh_mode_list = None
-global gm_family_case_list
-gm_family_case_list = None
-global topo_morph_assc
-topo_morph_assc = None
-global gm_ref_data
-gm_ref_data = None
+Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_policy={
+    'default-src': [
+        "\'self\'",
+        '*.googletagmanager.com',
+        '*.gstatic.com',
+        '*.google.com',
+        '*.google-analytics.com',
+        '*.googleapis.com',
+        "*.fontawesome.com",
+        "\'unsafe-inline\'",
+        "\'unsafe-eval\'",
+        'data:'
+    ],
+})
 
 
-# IS_TEST = True
-BQ_DATASET = os.environ.get('BQ_DATASET', 'P53_data')
-GOOGLE_SE_ID = os.environ.get('GOOGLE_SE_ID', 'dab1bee9d7d88fe88')
 
-# hsts_max_age = 3600 if IS_TEST else 31536000
-#
-# Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_policy={
-#     'default-src': [
-#         '\'self\'',
-#         '*.googletagmanager.com',
-#         '*.gstatic.com',
-#         '*.google.com',
-#         '*.google-analytics.com',
-#         '*.googleapis.com',
-#         "*.fontawesome.com",
-#         '\'unsafe-inline\'',
-#         'data:'
-#     ]
-# })
-
-
-# MAX_RESULT_SIZE=50000
-# GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'tp53testBQ.key.json')
-KEY_FILE_NAME = os.environ.get('KEY_FILE_NAME', 'tp53devBQ.key.json')
-
-GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, KEY_FILE_NAME)
+GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, settings.KEY_FILE_NAME)
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
 
 project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
-bq_builder.set_project_dataset(proj_id=project_id, d_set=BQ_DATASET)
+bq_builder.set_project_dataset(proj_id=project_id, d_set=settings.BQ_DATASET)
 
 bigquery_client = bigquery.Client()
-TP53_DATA_DIR_URL = os.environ.get('TP53_DATA_DIR_URL', 'https://storage.googleapis.com/tp53-data-files')
-DATA_VERSION = os.environ.get('DATA_VERSION', 'r20')
 
-# @app.route("/googlee122c0dbd92c3af2.html")
-# def google_site_verf():
-#     return render_template("googlee122c0dbd92c3af2.html")
-#
-# @app.route("/googlee122c0dbd92c3af2.html")
-# def google_site_verf():
-#     return render_template("googlee122c0dbd92c3af2.html")
-
-# @app.route("/googlee6c70a3643842b1d6.html")
-# def google_site_verf():
-#     return render_template("googlee6c70a3643842b1d6.html")
-
-# @app.route("/sitemap.xml")
-# def sitemap():
-#     template = render_template("sitemap.xml")
-#     response = make_response(template)
-#     response.headers['Content-Type'] = 'application/xml'
-#
-#     return response
-
-
-# @app.route('/robots.txt')
 @app.route('/urllist.txt')
 def urllist():
     URL_LIST_FILENAME = os.environ.get('URL_LIST_FILENAME', 'dev_urllist.txt')
@@ -354,398 +74,39 @@ def home():
     return render_template("home.html")
 
 
-def get_param_val(request, input_name):
-    if request.method == 'POST':
-        method_request = request.form
-    else:
-        method_request = request.args
-
-    return method_request.get(input_name)
-
-
-def list_param_val(request, input_name):
-    if request.method == 'POST':
-        method_request = request.form
-    else:
-        method_request = request.args
-    return method_request.getlist(input_name)
-
-
-
-def build_criteria(param_col_name_map):
-    criteria = []
-
-    for param_key in param_col_name_map:
-        or_group = ''
-        between_op = False
-        if param_col_name_map[param_key].get('or_group'):
-            or_group = param_col_name_map[param_key].get('or_group')
-        if param_col_name_map[param_key].get('multi_columns'):
-            i = param_key.rindex('_')
-            x = slice(i)
-            param_name = param_key[x]
-            or_group = param_name
-        else:
-            param_name = param_key
-        if param_col_name_map[param_key].get('between_op', False):
-            between_op = True
-            start_param = get_param_val(request, param_col_name_map[param_key]['start_param'])
-            end_param = get_param_val(request, param_col_name_map[param_key]['end_param'])
-            if not start_param and not end_param:
-                vals = []
-            else:
-                vals = [start_param or param_col_name_map[param_key]['min_val'],
-                        end_param or param_col_name_map[param_key]['max_val']]
-        elif param_col_name_map[param_key]['multi_val']:
-            vals = list_param_val(request, param_name)
-
-        else:
-            val = get_param_val(request, param_name)
-            vals = [val] if val else []
-        if vals and len(vals):
-            wrap_with = '"' if param_col_name_map[param_key].get('wrap', True) else ''
-            criteria.append(
-                {'column_name': param_col_name_map[param_key]['col_name'], 'vals': vals, 'wrap_with': wrap_with,
-                 'or_group': or_group, 'between_op': between_op})
-    return criteria
-
-
-def get_mut_id_criteria():
-    param_col_name_map = {
-        'mut_id_list':{
-            'multi_val': True,
-            'col_name': 'MUT_ID',
-            'wrap': False
-        }
-    }
-    return build_criteria(param_col_name_map)
-
-
-def get_mutation_criteria(prefix):
-    chrpos_type = get_param_val(request, '{prefix}_chrpos_type'.format(prefix=prefix)) or 'hg38'
-    codon_range = (get_param_val(request, '{prefix}_codon_range'.format(prefix=prefix)) == 'checked')
-
-    param_col_name_map = {
-        '{prefix}_type_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Type'
-        },
-        '{prefix}_description_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Description'
-        },
-        '{prefix}_motif_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Structural_motif'
-        },
-        '{prefix}_exonintron_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'ExonIntron'
-        },
-        '{prefix}_effect_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Effect'
-        },
-        '{prefix}_ta_class_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'TransactivationClass'
-        },
-        '{prefix}_sift_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'SIFTClass'
-        },
-        '{prefix}_chrpos'.format(prefix=prefix): {
-            'multi_val': False,
-            'col_name': '{chrpos_type}_Chr17_coordinates'.format(chrpos_type=chrpos_type),
-            'wrap': False
-        },
-        '{prefix}_mut_base'.format(prefix=prefix): {
-            'multi_val': False,
-            'col_name': 'Mutant_nucleotide',
-        },
-        '{prefix}_codon_no'.format(prefix=prefix): {
-            'multi_val': False,
-            'col_name': 'Codon_number',
-            'wrap': False
-        },
-        '{prefix}_codon_range'.format(prefix=prefix): {
-            'between_op': True,
-            'max_val': 393,
-            'min_val': 0,
-            'start_param': '{prefix}_codon_start'.format(prefix=prefix),
-            'end_param': '{prefix}_codon_end'.format(prefix=prefix),
-            'col_name': 'Codon_number',
-            'wrap': False
-        },
-        '{prefix}_wild_codon'.format(prefix=prefix): {
-            'multi_val': False,
-            'col_name': 'WT_codon'
-        },
-        '{prefix}_mut_codon'.format(prefix=prefix): {
-            'multi_val': False,
-            'col_name': 'Mutant_codon'
-        },
-        '{prefix}_wild_aa'.format(prefix=prefix): {
-            'multi_val': False,
-            'col_name': 'WT_AA'
-        },
-        '{prefix}_mut_aa'.format(prefix=prefix): {
-            'multi_val': False,
-            'col_name': 'Mutant_AA'
-        }
-
-    }
-    if codon_range:
-        del param_col_name_map['{prefix}_codon_no'.format(prefix=prefix)]
-    else:
-        del param_col_name_map['{prefix}_codon_range'.format(prefix=prefix)]
-    return build_criteria(param_col_name_map)
-
-
-def get_cell_line_criteria(prefix):
-    param_col_name_map = {
-        'cl_name': {
-            'multi_val': False,
-            'col_name': 'Sample_Name'
-        },
-        'atcc_id': {
-            'multi_val': False,
-            'col_name': 'ATCC_ID'
-        },
-        'cosmic_id': {
-            'multi_val': False,
-            'col_name': 'Cosmic_ID',
-            'wrap': False
-        },
-        'tp53_status': {
-            'multi_val': True,
-            'col_name': 'TP53status'
-        },
-        '{prefix}_tumor_origin'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Tumor_origin_group'
-        },
-        '{prefix}_topo_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Short_topo'
-        },
-        '{prefix}_morph_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Morphology'
-        }
-    }
-
-    return build_criteria(param_col_name_map)
-
-
-def get_tumor_origin_criteria(prefix):
-    param_col_name_map = {
-        '{prefix}_tumor_origin'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Tumor_origin_group'
-        }
-    }
-    return build_criteria(param_col_name_map)
-
-
-def get_ref_criteria(prefix):
-    param_col_name_map = {
-        '{prefix}_refs_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Ref_ID',
-            'wrap': False
-        }
-    }
-
-    return build_criteria(param_col_name_map)
-
-
-def get_topo_morph_criteria(prefix):
-    param_col_name_map = {
-        '{prefix}_topo_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Short_topo'
-        },
-        '{prefix}_morph_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Morphology'
-        }
-    }
-
-    return build_criteria(param_col_name_map)
-
-
-def get_method_criteria(prefix):
-    param_col_name_map = {
-        '{prefix}_start_material'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Start_material'
-        }
-    }
-    criteria = build_criteria(param_col_name_map)
-    exon_columns = list_param_val(request, '{prefix}_exon_analyzed'.format(prefix=prefix))
-    for exon_col in exon_columns:
-        criteria.append({'column_name': exon_col, 'vals': ['TRUE'], 'wrap_with': ''})
-
-    return criteria
-
-
-def get_variation_criteria(prefix):
-    type_input = get_param_val(request, 'type_input')
-
-
-    print(type_input)
-    param_col_name_map = {
-        '{prefix}_cdna_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'or_group': 'variation',
-            'col_name': 'c_description'
-        },
-        '{prefix}_p_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'or_group': 'variation',
-            'col_name': 'ProtDescription'
-        },
-        '{prefix}_hg19_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'or_group': 'variation',
-            'col_name': 'g_description'
-        },
-        '{prefix}_hg38_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'or_group': 'variation',
-            'col_name': 'g_description_GRCh38'
-        }
-    }
-    gv_input_name = '{prefix}_{type_input}_list'.format(prefix=prefix, type_input=(type_input[5:])) if type_input else ''
-
-
-    if param_col_name_map.get(gv_input_name, None):
-        trimmed_map = {gv_input_name: param_col_name_map.get(gv_input_name, None)}
-    else:
-        trimmed_map = param_col_name_map
-
-    return build_criteria(trimmed_map)
-
-
-def get_ngs_criteria(prefix):
-    param_col_name_map = {
-        '{prefix}_ngs'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'WGS_WXS'
-        }
-    }
-    return build_criteria(param_col_name_map)
-
-
-def get_sample_source_criteria(prefix):
-    param_col_name_map = {
-        '{prefix}_sample_source'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Sample_source_group'
-        }
-    }
-    return build_criteria(param_col_name_map)
-
-
-def get_country_criteria(prefix):
-    param_col_name_map = {
-        '{prefix}_country_list_0'.format(prefix=prefix): {
-            'multi_val': True,
-            'multi_columns': True,
-            'col_name': 'Country'
-        },
-        '{prefix}_country_list_1'.format(prefix=prefix): {
-            'multi_val': True,
-            'multi_columns': True,
-            'col_name': 'Population'
-        },
-        '{prefix}_country_list_2'.format(prefix=prefix): {
-            'multi_val': True,
-            'multi_columns': True,
-            'col_name': 'Development'
-        },
-        '{prefix}_country_list_3'.format(prefix=prefix): {
-            'multi_val': True,
-            'multi_columns': True,
-            'col_name': 'Region'
-        }
-    }
-    return build_criteria(param_col_name_map)
-
-
-def get_patient_criteria(prefix):
-    param_col_name_map = {
-        '{prefix}_age_range'.format(prefix=prefix): {
-            'between_op': True,
-            'max_val': 120,
-            'min_val': 0,
-            'start_param': '{prefix}_age_start'.format(prefix=prefix),
-            'end_param': '{prefix}_age_end'.format(prefix=prefix),
-            'col_name': 'Age',
-            'wrap': False
-        },
-        '{prefix}_gender'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Sex'
-        },
-        '{prefix}_germ_mut'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Germline_mutation'
-        },
-        '{prefix}_tobacco'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Tobacco_search'
-        },
-        '{prefix}_alcohol'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Alcohol_search'
-        },
-        '{prefix}_inf_agnt_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Infectious_agent'
-        },
-        '{prefix}_exposure_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Exposure'
-        }
-    }
-
-    criteria = build_criteria(param_col_name_map)
-    return criteria
-
-
 @app.route("/results_gene_mut_by_gv", methods=['GET', 'POST'])
 def results_gene_mut_by_gv():
     prefix = 'gv'
 
-    criteria = get_variation_criteria(prefix)
+    criteria = filters.get_variation_criteria(prefix)
     return render_template("results_gene_mutation.html", criteria=criteria, submenu = 'search_gene_by_var')
+
 
 @app.route("/results_gene_mut_by_mutids", methods=['GET', 'POST'])
 def results_gene_mut_by_mutids():
-    criteria = get_mut_id_criteria()
+    criteria = filters.get_mut_id_criteria()
     return render_template("results_gene_mutation.html", criteria=criteria, submenu = 'search_gene_by_mut')
+
 
 @app.route("/results_gene_mut_by_mut", methods=['GET', 'POST'])
 def results_gene_mut_by_mut():
     prefix = 'gmut'
-    criteria = get_mutation_criteria(prefix)
+    criteria = filters.get_mutation_criteria(prefix)
     return render_template("results_gene_mutation.html", criteria=criteria, submenu = 'search_gene_by_mut')
 
 
 @app.route("/results_gene_dist", methods=['GET', 'POST'])
 def results_gene_dist():
-    criteria = get_param_val(request, 'criteria')
+    criteria = filters.get_param_val('criteria')
     if criteria:
         include_criteria = json.loads(criteria)
     else:
-        include_criteria = get_mut_id_criteria()
+        include_criteria = filters.get_mut_id_criteria()
     criteria_map = {
         'include': include_criteria,
         'exclude': []
     }
-    action = get_param_val(request, 'action')
+    action = filters.get_param_val('action')
     if action == 'get_gv_tumor_dist':
         gv_tumor_dist_tables = {
             'somatic_tumor_dist': 'SomaticView',
@@ -755,28 +116,29 @@ def results_gene_dist():
         subtitle = 'Tumor Site Distribution of Variants'
         graph_configs = {}
         sql_maps = {}
-        graph_configs[action] = build_graph_configs(action)['tumor_dist']
+        graph_configs[action] = graphs.build_graph_configs(action)['tumor_dist']
         for dist_table in gv_tumor_dist_tables:
-            sql_maps[dist_table] = (build_graph_sqls(graph_configs, criteria_map=criteria_map, table=gv_tumor_dist_tables[dist_table])[action])
+            sql_maps[dist_table] = (graphs.build_graph_sqls(graph_configs, criteria_map=criteria_map, table=gv_tumor_dist_tables[dist_table])[action])
     else:
         table = 'MutationView'
         template = 'mutation_dist_stats.html'
         subtitle = 'Variant Distributions'
-        graph_configs = build_graph_configs(action, table)
-        sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
-    graph_result = build_graph_data(sql_maps)
+        graph_configs = graphs.build_graph_configs(action, table)
+        sql_maps = graphs.build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
+    graph_result = graphs.build_graph_data(bigquery_client, sql_maps)
     return render_template(template, criteria_map=criteria_map, title='Statistics on Functional/Structural Data', subtitle=subtitle,
                            graph_result=graph_result)
+
 
 @app.route("/get_distribution", methods=['GET', 'POST'])
 def get_distribution():
     criteria_map = {}
     if request.method == 'POST':
-        criteria = get_param_val(request, 'criteria')
+        criteria = filters.get_param_val('criteria')
         if criteria:
-            criteria_map = json.loads(get_param_val(request, 'criteria'))
-    action = get_param_val(request, 'action')
-    query_dataset = get_param_val(request, 'query_dataset')
+            criteria_map = json.loads(criteria)
+    action = filters.get_param_val('action')
+    query_dataset = filters.get_param_val('query_dataset')
     template = 'mutation_stats.html'
     if query_dataset == 'SomaticView':
         table = 'SomaticTumorStats' if action == 'get_tumor_dist' else 'SomaticView'
@@ -797,61 +159,14 @@ def get_distribution():
         subtitle = 'Tumor Site Distribution of Variants'
 
     title = 'Search Results on {dataset_type} Variants'.format(dataset_type=dataset_type)
-    graph_configs = build_graph_configs(action, table)
-    sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
-    graph_result = build_graph_data(sql_maps)
+    graph_configs = graphs.build_graph_configs(action, table)
+    sql_maps = graphs.build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
+    graph_result = graphs.build_graph_data(bigquery_client, sql_maps)
 
     return render_template(template, criteria_map=criteria_map, title=title,
                            subtitle=subtitle, submenu=submenu,
                            graph_result=graph_result)
 
-
-# graph_configs = build_graph_configs(action, table)
-#     sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
-#     graph_result = build_graph_data(sql_maps)
-#     return render_template(template, criteria_map=criteria_map, title=title, subtitle=subtitle, submenu=submenu,
-#                            graph_result=graph_result)
-
-# @app.route("/sm_query", methods=['GET', 'POST'])
-# def sm_query():
-#     parameters = dict(request.form)
-#     draw = parameters['draw']
-#     order_col = int(parameters['order[0][column]'])
-#     order_dir = parameters['order[0][dir]']
-#     start = int(parameters['start'])
-#     length = int(parameters['length'])
-#     criteria_map = json.loads(parameters['criteria'])
-#     column_filters = ["MUT_ID", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
-#                       "TransactivationClass", "DNE_LOFclass", "AGVGDClass","TCGA_ICGC_GENIE_count","CLINVARlink", "COSMIClink"]
-#     sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table='SomaticView',
-#                                             ord_column=column_filters[order_col-1], desc_ord=(order_dir == 'desc'),
-#                                             start=start, length=length)
-#     sql_cnt_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table='SomaticView',
-#                                                 do_counts=True, distinct_col='Mutation_ID')
-#
-#     query_page_job = bigquery_client.query(sql_stm)
-#     query_count_job = bigquery_client.query(sql_cnt_stm)
-#     page_result_list = []
-#     recordsTotal = 0
-#     try:
-#         page_result = query_page_job.result(timeout=30)
-#
-#         count_result = query_count_job.result(timeout=30)
-#         page_result_list = [dict(row) for row in page_result]
-#         recordsTotal = list(count_result)[0].CNT
-#     except BadRequest:
-#         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
-#     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
-#         error_msg = "Sorry, query job has timed out."
-#
-#     data = {
-#         "draw": draw,
-#         "recordsTotal": recordsTotal,
-#         "recordsFiltered": recordsTotal,
-#         "data": page_result_list
-#     }
-#
-#     return jsonify(data)
 
 @app.route("/mutation_query", methods=['GET', 'POST'])
 def mutation_query( ):
@@ -951,7 +266,6 @@ def mutation_query( ):
     sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
                                             ord_column_list=[column_filters[order_col-1], distinct_col], desc_ord=(order_dir == 'desc'),
                                             start=start, length=length)
-    print(sql_stm)
     sql_cnt_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
                                                 do_counts=True, distinc_col=distinct_col)
 
@@ -979,6 +293,7 @@ def mutation_query( ):
 
     return jsonify(data)
 
+
 @app.route("/gv_query", methods=['GET', 'POST'])
 def gv_query():
     parameters = dict(request.form)
@@ -998,7 +313,6 @@ def gv_query():
                                             distinct_col=distinct_col,
                                             ord_column=column_filters[order_col-1], desc_ord=(order_dir == 'desc'),
                                             start=start, length=length)
-    print(sql_stm)
     sql_cnt_stm = bq_builder.build_simple_query(criteria=criteria, table='MutationView', column_filters=column_filters,
                                                 do_counts=True, distinct_col=distinct_col)
 
@@ -1043,7 +357,6 @@ def cl_query():
     sql_stm = bq_builder.build_simple_query(criteria=criteria, table='CellLineView', column_filters=column_filters,
                                             ord_column=column_filters[order_col], desc_ord=(order_dir == 'desc'),
                                             start=start, length=length)
-    # print(sql_stm)
     sql_cnt_stm = bq_builder.build_simple_query(criteria=criteria, table='CellLineView', column_filters=column_filters,
                                                 do_counts=True, distinct_col='CellLineView_ID')
 
@@ -1071,30 +384,30 @@ def cl_query():
     return jsonify(data)
 
 
-
-# @app.route("/search_tp53data")
-# def search_tp53data():
-#     return render_template("search_tp53data.html")
-
 @app.route("/explore_gv")
 def explore_gv():
     return render_template("explore_gv.html")
+
 
 @app.route("/explore_sm")
 def explore_sm():
     return render_template("explore_sm.html")
 
+
 @app.route("/explore_gm")
 def explore_gm():
     return render_template("explore_gm.html")
+
 
 @app.route("/explore_cl")
 def explore_cl():
     return render_template("explore_cl.html")
 
+
 @app.route("/explore_mm")
 def explore_mm():
     return render_template("explore_mm.html")
+
 
 @app.route("/explore_eim")
 def explore_eim():
@@ -1103,13 +416,13 @@ def explore_eim():
 
 @app.route("/search_gene_by_var")
 def search_gene_by_var():
-    return render_template("search_tp53_gene_variants.html", c_desc_list=m_c_desc_list, p_desc_list=m_p_desc_list,
-                           g_desc_hg19_list=m_g_desc_hg19_list, g_desc_hg38_list=m_g_desc_hg38_list)
+    return render_template("search_tp53_gene_variants.html", c_desc_list=settings.m_c_desc_list, p_desc_list=settings.m_p_desc_list,
+                           g_desc_hg19_list=settings.m_g_desc_hg19_list, g_desc_hg38_list=settings.m_g_desc_hg38_list)
 
 
 @app.route("/mut_details", methods=['GET'])
 def mut_details():
-    mut_id = get_param_val(request, 'mut_id')
+    mut_id = filters.get_param_val('mut_id')
 
     simple_queries = {
         'mutation': {
@@ -1265,38 +578,37 @@ def mut_details():
 
 @app.route("/search_gene_by_mut")
 def search_gene_by_mut():
-    return render_template("search_tp53_gene_by_mut.html", type_list=m_type_list, desc_list=m_desc_list,
-                           motif_list=m_motif_list, effect_list=m_effect_list,
-                           exon_intron_list=m_exon_intron_list, ta_class_list=m_ta_class_list, sift_list=m_sift_list)
+    return render_template("search_tp53_gene_by_mut.html", type_list=settings.m_type_list, desc_list=settings.m_desc_list,
+                           motif_list=settings.m_motif_list, effect_list=settings.m_effect_list,
+                           exon_intron_list=settings.m_exon_intron_list, ta_class_list=settings.m_ta_class_list, sift_list=settings.m_sift_list)
 
 
 @app.route("/search_somatic_mut")
 def search_somatic_mut():
     return render_template("search_somatic_mut.html",
-
-                           cl_start_material_list=sm_start_material_list,
-                           country_list=country_list,
-                           c_desc_list=sm_c_desc_list,
-                           p_desc_list=sm_p_desc_list,
-                           g_desc_hg19_list=sm_g_desc_hg19_list,
-                           g_desc_hg38_list=sm_g_desc_hg38_list,
-                           type_list=sm_type_list,
-                           desc_list=sm_desc_list,
-                           motif_list=sm_motif_list,
-                           exon_intron_list=sm_exon_intron_list,
-                           effect_list=sm_effect_list,
-                           ta_class_list=sm_ta_class_list,
-                           sift_list=sm_sift_list,
-                           topo_list=topo_list,
-                           morph_list=morph_list,
-                           topo_morph_assc=topo_morph_assc,
-                           tumor_org_group_list=sm_tumor_org_group_list,
-                           sample_source_list=sm_sample_source_list,
-                           germ_mut_list=sm_germ_mut_list,
-                           tobacco_list=sm_tobacco_list,
-                           inf_agnt_list=sm_inf_agnt_list,
-                           exposure_list=sm_exposure_list,
-                           ref_data=sm_ref_data
+                           cl_start_material_list=settings.sm_start_material_list,
+                           country_list=settings.country_list,
+                           c_desc_list=settings.sm_c_desc_list,
+                           p_desc_list=settings.sm_p_desc_list,
+                           g_desc_hg19_list=settings.sm_g_desc_hg19_list,
+                           g_desc_hg38_list=settings.sm_g_desc_hg38_list,
+                           type_list=settings.sm_type_list,
+                           desc_list=settings.sm_desc_list,
+                           motif_list=settings.sm_motif_list,
+                           exon_intron_list=settings.sm_exon_intron_list,
+                           effect_list=settings.sm_effect_list,
+                           ta_class_list=settings.sm_ta_class_list,
+                           sift_list=settings.sm_sift_list,
+                           topo_list=settings.topo_list,
+                           morph_list=settings.morph_list,
+                           topo_morph_assc=settings.topo_morph_assc,
+                           tumor_org_group_list=settings.sm_tumor_org_group_list,
+                           sample_source_list=settings.sm_sample_source_list,
+                           germ_mut_list=settings.sm_germ_mut_list,
+                           tobacco_list=settings.sm_tobacco_list,
+                           inf_agnt_list=settings.sm_inf_agnt_list,
+                           exposure_list=settings.sm_exposure_list,
+                           ref_data=settings.sm_ref_data
                            )
 
 
@@ -1313,11 +625,11 @@ def db_dev_somatic_stats():
 @app.route("/search_somatic_prevalence")
 def search_somatic_prevalence():
     return render_template("search_somatic_prevalence.html",
-                           morph_list=morph_list,
-                           topo_list=topo_list,
-                           topo_morph_assc=topo_morph_assc,
-                           cl_start_material_list=sm_start_material_list,
-                           country_list=country_list
+                           morph_list=settings.morph_list,
+                           topo_list=settings.topo_list,
+                           topo_morph_assc=settings.topo_morph_assc,
+                           cl_start_material_list=settings.sm_start_material_list,
+                           country_list=settings.country_list
                            )
 
 
@@ -1370,33 +682,35 @@ def results_somatic_mutation_list():
         criteria_type = ['include', 'exclude']
         for type in criteria_type:
             prefix = 'sm_{type}'.format(type=type)
-            criteria_map[type] = get_ref_criteria(prefix)
-            criteria_map[type] += get_method_criteria(prefix)
-            criteria_map[type] += get_ngs_criteria(prefix)
-            criteria_map[type] += get_variation_criteria(prefix)
-            criteria_map[type] += get_mutation_criteria(prefix)
-            criteria_map[type] += get_topo_morph_criteria(prefix)
-            criteria_map[type] += get_tumor_origin_criteria(prefix)
-            criteria_map[type] += get_patient_criteria(prefix)
-            criteria_map[type] += get_country_criteria(prefix)
-            criteria_map[type] += get_sample_source_criteria(prefix)
+            criteria_map[type] = filters.get_ref_criteria(prefix)
+            criteria_map[type] += filters.get_method_criteria(prefix)
+            criteria_map[type] += filters.get_ngs_criteria(prefix)
+            criteria_map[type] += filters.get_variation_criteria(prefix)
+            criteria_map[type] += filters.get_mutation_criteria(prefix)
+            criteria_map[type] += filters.get_topo_morph_criteria(prefix)
+            criteria_map[type] += filters.get_tumor_origin_criteria(prefix)
+            criteria_map[type] += filters.get_patient_criteria(prefix)
+            criteria_map[type] += filters.get_country_criteria(prefix)
+            criteria_map[type] += filters.get_sample_source_criteria(prefix)
 
     return render_template("results_somatic_mutation.html", criteria_map=criteria_map)
+
 
 @app.route('/pdf/<filename>') #the url you'll send the user to when he wants the pdf
 def pdf_viewer(filename):
     return send_from_directory(os.path.join(app.root_path, 'static/download'),
                                filename+'.pdf')
 
+
 @app.route("/download_dataset", methods=['GET', 'POST'])
 def download_dataset():
-    filename = get_param_val(request, 'filename')
-    criteria_param = get_param_val(request, 'criteria_map')
+    filename = filters.get_param_val('filename')
+    criteria_param = filters.get_param_val('criteria_map')
     criteria_map = {}
     if criteria_param:
         criteria_map = json.loads(criteria_param)
 
-    query_datatable=get_param_val(request, 'query_datatable')
+    query_datatable=filters.get_param_val('query_datatable')
     if not len(criteria_map.get('exclude', [])):
         sql_stm = bq_builder.build_simple_query(criteria=criteria_map.get('include', []), table=query_datatable, column_filters=['*'])
     else:
@@ -1415,7 +729,7 @@ def download_dataset():
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
     # query_result = {'data': data, 'msg': error_msg}
-    filename_full='{filename}{version}.csv'.format(filename=filename, version=('_'+DATA_VERSION if DATA_VERSION else ''))
+    filename_full='{filename}{version}.csv'.format(filename=filename, version=('_'+settings.DATA_VERSION if settings.DATA_VERSION else ''))
     si = StringIO()
     cw = csv.writer(si)
     cw.writerow(table_header)
@@ -1425,63 +739,26 @@ def download_dataset():
     output.headers["Content-type"] = "text/csv"
     return output
 
-# @app.route("/results_somatic_mutation", methods=['GET', 'POST'])
-# def results_somatic_mutation():
-#     action = get_param_val(request, 'action')
-#     title = 'Statistics on Somatic Variants'
-#     template = 'mutation_stats.html'
-#     table = 'SomaticView'
-#     submenu = 'stats_somatic_mut'
-#     subtitle = 'Tumor Site Distribution of Variations'
-#     if action == 'get_mutation_dist':
-#         subtitle = 'Variant Distributions'
-#         template = 'mutation_dist_stats.html'
-#     elif action == 'get_tumor_dist':
-#         # subtitle = 'Tumor Site Distribution of Variations'
-#         table = 'SomaticTumorStats'
-#
-#
-#     criteria_map = {}
-#     if request.method == 'POST':
-#         submenu = 'search_somatic_mut'
-#         title = 'Search Results on Somatic Variants'
-#         criteria_type = ['include', 'exclude']
-#         for type in criteria_type:
-#             prefix = 'sm_{type}'.format(type=type)
-#             criteria_map[type] = get_ref_criteria(prefix)
-#             criteria_map[type] += get_method_criteria(prefix)
-#             criteria_map[type] += get_ngs_criteria(prefix)
-#             criteria_map[type] += get_variation_criteria(prefix)
-#             criteria_map[type] += get_mutation_criteria(prefix)
-#             criteria_map[type] += get_topo_morph_criteria(prefix)
-#             criteria_map[type] += get_tumor_origin_criteria(prefix)
-#             criteria_map[type] += get_patient_criteria(prefix)
-#             criteria_map[type] += get_country_criteria(prefix)
-#             criteria_map[type] += get_sample_source_criteria(prefix)
-#     graph_configs = build_graph_configs(action, table)
-#     sql_maps = build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
-#     graph_result = build_graph_data(sql_maps)
-#     return render_template(template, criteria_map=criteria_map, title=title, subtitle=subtitle, submenu=submenu,
-#                            graph_result=graph_result)
 
 @app.route("/results_somatic_prevalence_list", methods=['POST'])
 def results_somatic_prevalence_list():
     prefix = 'mut_prev'
-    criteria = get_topo_morph_criteria(prefix)
-    criteria += get_method_criteria(prefix)
-    criteria += get_ngs_criteria(prefix)
-    criteria += get_country_criteria(prefix)
+    criteria = filters.get_topo_morph_criteria(prefix)
+    criteria += filters.get_method_criteria(prefix)
+    criteria += filters.get_ngs_criteria(prefix)
+    criteria += filters.get_country_criteria(prefix)
 
     return render_template("results_somatic_prevalence.html", criteria=criteria, submenu = "search_somatic_prevalence")
+
 
 @app.route("/get_prevalence_distribution", methods=['GET', 'POST'])
 def get_prevalence_distribution():
     criteria = []
-    action = get_param_val(request, 'action')
+    action = filters.get_param_val('action')
     if request.method == 'POST':
-        criteria = get_param_val(request, 'criteria')
+        criteria = filters.get_param_val('criteria')
         if criteria:
-            criteria = json.loads(get_param_val(request, 'criteria'))
+            criteria = json.loads(filters.get_param_val('criteria'))
         title = 'Search Results'
     if action == 'get_country_graph':
         group_by = 'Country'
@@ -1497,7 +774,7 @@ def get_prevalence_distribution():
 
     query_job = bigquery_client.query(sql_stm)
     data = []
-    error_msg = None
+    # error_msg = None
     try:
         result = query_job.result(timeout=30)
         rows = list(result)
@@ -1528,25 +805,25 @@ def get_prevalence_distribution():
 @app.route("/search_germline_mut")
 def search_germline_mut():
     return render_template("search_germline_mut.html",
-                           topo_list=topo_list,
-                           morph_list=morph_list,
-                           topo_morph_assc=topo_morph_assc,
-                           c_desc_list=gm_c_desc_list,
-                           p_desc_list=gm_p_desc_list,
-                           g_desc_hg19_list=gm_g_desc_hg19_list,
-                           g_desc_hg38_list=gm_g_desc_hg38_list,
-                           type_list=gm_type_list,
-                           desc_list=gm_desc_list,
-                           motif_list=gm_motif_list,
-                           exon_intron_list=gm_exon_intron_list,
-                           effect_list=gm_effect_list,
-                           ta_class_list=gm_ta_class_list,
-                           sift_list=gm_sift_list,
-                           family_hist_list=gm_family_hist_list,
-                           inh_mode_list=gm_inh_mode_list,
-                           family_case_list=gm_family_case_list,
-                           country_list=country_list,
-                           ref_data=gm_ref_data
+                           topo_list=settings.topo_list,
+                           morph_list=settings.morph_list,
+                           topo_morph_assc=settings.topo_morph_assc,
+                           c_desc_list=settings.gm_c_desc_list,
+                           p_desc_list=settings.gm_p_desc_list,
+                           g_desc_hg19_list=settings.gm_g_desc_hg19_list,
+                           g_desc_hg38_list=settings.gm_g_desc_hg38_list,
+                           type_list=settings.gm_type_list,
+                           desc_list=settings.gm_desc_list,
+                           motif_list=settings.gm_motif_list,
+                           exon_intron_list=settings.gm_exon_intron_list,
+                           effect_list=settings.gm_effect_list,
+                           ta_class_list=settings.gm_ta_class_list,
+                           sift_list=settings.gm_sift_list,
+                           family_hist_list=settings.gm_family_hist_list,
+                           inh_mode_list=settings.gm_inh_mode_list,
+                           family_case_list=settings.gm_family_case_list,
+                           country_list=settings.country_list,
+                           ref_data=settings.gm_ref_data
                            )
 
 
@@ -1582,39 +859,6 @@ def db_dev_germline_stats():
     return render_template("db_dev_germline_stats.html")
 
 
-def get_germline_patient_criteria(prefix):
-    param_col_name_map = {
-        '{prefix}_age_range'.format(prefix=prefix): {
-            'between_op': True,
-            'max_val': 120,
-            'min_val': 0,
-            'start_param': '{prefix}_age_start'.format(prefix=prefix),
-            'end_param': '{prefix}_age_end'.format(prefix=prefix),
-            'col_name': 'Age',
-            'wrap': False
-        },
-        '{prefix}_gender'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Sex'
-        },
-        '{prefix}_family_hist_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Class'
-        },
-        '{prefix}_inh_mode_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'Mode_of_inheritance'
-        },
-        '{prefix}_family_case_list'.format(prefix=prefix): {
-            'multi_val': True,
-            'col_name': 'FamilyCase_group'
-        },
-
-    }
-
-    criteria = build_criteria(param_col_name_map)
-    return criteria
-
 @app.route("/results_germline_mutation_list", methods=['GET', 'POST'])
 def results_germline_mutation_list():
     criteria_map = {}
@@ -1622,267 +866,13 @@ def results_germline_mutation_list():
         criteria_type = ['include', 'exclude']
         for type in criteria_type:
             prefix = 'gm_{type}'.format(type=type)
-            criteria_map[type] = get_ref_criteria(prefix)
-            criteria_map[type] += get_topo_morph_criteria(prefix)
-            criteria_map[type] += get_variation_criteria(prefix)
-            criteria_map[type] += get_mutation_criteria(prefix)
-            criteria_map[type] += get_germline_patient_criteria(prefix)
-            criteria_map[type] += get_country_criteria(prefix)
+            criteria_map[type] = filters.get_ref_criteria(prefix)
+            criteria_map[type] += filters.get_topo_morph_criteria(prefix)
+            criteria_map[type] += filters.get_variation_criteria(prefix)
+            criteria_map[type] += filters.get_mutation_criteria(prefix)
+            criteria_map[type] += filters.get_germline_patient_criteria(prefix)
+            criteria_map[type] += filters.get_country_criteria(prefix)
     return render_template("results_germline_mutation.html", criteria_map=criteria_map)
-
-# @app.route("/results_germline_mutation", methods=['GET', 'POST'])
-# def results_germline_mutation():
-#     action = get_param_val(request, 'action')
-#     template = "mutation_dist_stats.html" if action == 'get_mutation_dist' else "mutation_stats.html"
-#     submenu = 'stats_germline_mut'
-#     title = 'Statistics on Germline Variations'
-#
-#     if action == 'get_mutation_dist':
-#         table = 'GermlineView'
-#         subtitle = 'Variant Distributions'
-#     elif action == 'get_codon_dist':
-#         table = 'GermlineMutationStats'
-#         subtitle = 'Codon Distribution of Point Variants'
-#     elif action == 'get_tumor_dist':
-#         table = 'GermlineTumorStats'
-#         subtitle = 'Tumor Site Distribution of Variations'
-#     else: # action == 'get_tumor_dist_view':
-#         table = 'GermlineView'
-#         subtitle = 'Tumor Site Distribution of Variations'
-#
-#     criteria_map = {}
-#     if request.method == 'POST':
-#         submenu = 'search_germline_mut'
-#         title = 'Search Results on Germline Variations'
-#         criteria_type = ['include', 'exclude']
-#         for type in criteria_type:
-#             prefix = 'gm_{type}'.format(type=type)
-#             criteria_map[type] = get_ref_criteria(prefix)
-#             criteria_map[type] += get_topo_morph_criteria(prefix)
-#             criteria_map[type] += get_variation_criteria(prefix)
-#             criteria_map[type] += get_mutation_criteria(prefix)
-#             criteria_map[type] += get_germline_patient_criteria(prefix)
-#             criteria_map[type] += get_country_criteria(prefix)
-#     graph_configs = build_graph_configs(action, table)
-#     sql_maps = build_graph_sqls(graph_configs, criteria_map, table)
-#     graph_result = build_graph_data(sql_maps)
-#     # print(graph_result)
-#     return render_template(template, criteria_map=criteria_map, title=title, subtitle=subtitle,
-#                            submenu=submenu,
-#                            graph_result=graph_result)
-
-    # return render_template("results_germline_mutation.html", criteria_map=criteria_map, query_result=query_result)
-
-def build_graph_configs(action, table=None):
-
-    if action == 'get_mutation_dist':
-        graph_configs = {
-            'exon_intron': {
-                'query_type': 'group_counts',
-                'group_by': 'ExonIntron',
-                # 'include_vals': exon_intron_labels,
-                # 'exclude_vals': ['', 'NA']
-            },
-            'type': {
-                'query_type': 'group_counts',
-                'group_by': 'Type',
-                'exclude_vals': ['']
-            },
-            'codon_no': {
-                'query_type': 'group_counts',
-                'group_by': 'Codon_number',
-                'exclude_vals': [0]
-            },
-            'effect': {
-                'query_type': 'group_counts',
-                'group_by': 'Effect',
-                'exclude_vals': ['']
-            },
-            'mut_pt': {
-                'query_type': 'group_counts',
-                'group_by': 'Effect',
-                'exclude_vals': ['']
-            },
-            'mut_pt_s': {
-                'query_type': 'mutation_rate',
-                'exclude_vals': [''],
-                'label_by': 'Effect'
-            },
-            'sift_class': {
-                'query_type': 'group_counts',
-                'group_by': 'SIFTClass',
-                'exclude_vals': ['']
-            },
-            'sift_class_s': {
-                'query_type': 'mutation_rate',
-                'label_by': 'SIFTClass',
-                'exclude_vals': ['']
-            },
-            'ta_class': {
-                'query_type': 'group_counts',
-                'group_by': 'TransactivationClass',
-                'exclude_vals': ['']
-            },
-            'ta_class_s': {
-                'query_type': 'mutation_rate',
-                'label_by': 'TransactivationClass',
-                'exclude_vals': ['']
-            }
-        }
-    elif action == 'get_mutation_type':
-        graph_configs = {
-            'type': {
-                'query_type': 'group_counts',
-                'group_by': 'Type',
-                'exclude_vals': ['']
-            },
-            'effect': {
-                'query_type': 'group_counts',
-                'group_by': 'Effect',
-                'exclude_vals': ['']
-            }
-        }
-    elif action == 'get_codon_dist':
-        graph_configs = {
-            'codon_dist': {
-                'query_type': 'codon_counts',
-                'codon_col': 'Codon_number'
-            }
-        }
-    elif action == 'get_tumor_dist':
-        stat_graph_col = 'StatisticGraphGermline' if table == 'GermlineTumorStats' else 'StatisticGraph'
-        count_col = 'Count' if table == 'GermlineTumorStats' else 'DatasetRx'
-        graph_configs = {
-            'tumor_dist': {
-                'query_type': 'group_sums',
-                'group_by': stat_graph_col,
-                'sum_col': count_col
-            }
-        }
-    else:
-        graph_configs = {
-            'tumor_dist': {
-                'query_type': 'group_counts',
-                'group_by': 'Short_topo'
-            }
-        }
-    return graph_configs
-
-def build_graph_sqls(graph_configs, criteria_map, table):
-    sql_maps = {}
-    # build sql_maps
-    for graph_id in graph_configs:
-        if criteria_map:
-            cri = copy.deepcopy(criteria_map)
-        else:
-            cri = {
-                'include': [],
-                'exclude': []
-            }
-
-        if graph_configs[graph_id].get('group_by') and graph_configs[graph_id].get('include_vals'):
-            include_cri = {'column_name': graph_configs[graph_id]['group_by']}
-            include_vals = graph_configs[graph_id].get('include_vals')
-            if include_vals and len(include_vals) > 0:
-                if type(include_vals[0]) == int:
-                    include_cri['vals'] = include_vals
-                    include_cri['wrap_with'] = ''
-                else:
-                    include_cri['vals'] = include_vals
-                    include_cri['wrap_with'] = '"'
-            cri['include'].append(include_cri)
-        if graph_configs[graph_id].get('group_by') and graph_configs[graph_id].get('exclude_vals'):
-            exclude_cri = {'column_name': graph_configs[graph_id]['group_by']}
-            exclude_vals = graph_configs[graph_id].get('exclude_vals')
-            if exclude_vals and len(exclude_vals) > 0:
-                if type(exclude_vals[0]) == int:
-                    exclude_cri['vals'] = exclude_vals
-                    exclude_cri['wrap_with'] = ''
-                else:
-                    exclude_cri['vals'] = exclude_vals
-                    exclude_cri['wrap_with'] = '"'
-            cri['exclude'].append(exclude_cri)
-
-        if graph_id == 'mut_pt' or graph_id == 'mut_pt_s':
-            cri['include'].append(
-                {'column_name': 'Effect', 'vals': ["missense", "nonsense", "silent"], 'wrap_with': '"'})
-        elif graph_id == 'sift_class' or graph_id == 'sift_class_s' or graph_id == 'ta_class' or graph_id == 'ta_class_s':
-            cri['include'].append({'column_name': 'Effect', 'vals': ["missense"], 'wrap_with': '"'})
-
-        query_type = graph_configs[graph_id]['query_type']
-        if query_type == 'group_sums':
-            stm = bq_builder.build_mutation_dist_sum_query(criteria_map=cri, table=table,
-                                                           group_by=graph_configs[graph_id]['group_by'],
-                                                           sum_col=graph_configs[graph_id]['sum_col'])
-        elif query_type == 'codon_counts':
-            stm = bq_builder.build_codon_dist_query(column=graph_configs[graph_id]['codon_col'], table=table)
-        elif query_type == 'mutation_rate':
-            label_by=graph_configs[graph_id].get('label_by', 'effect')
-            stm = bq_builder.build_mutation_rate_query(criteria_map=cri, table=table, label_by=label_by)
-            print(stm)
-        else:
-            stm = bq_builder.build_mutation_query(criteria_map=cri, table=table, group_by=graph_configs[graph_id]['group_by'])
-        sql_maps[graph_id] = stm
-    return sql_maps
-
-def build_graph_data(sql_maps):
-    query_jobs = {}
-    for graph_id in sql_maps:
-        job = bigquery_client.query(sql_maps[graph_id])
-        query_jobs[graph_id] = job
-    graph_data = {}
-    error_msg = None
-    try:
-        for graph_id in query_jobs:
-            result = query_jobs[graph_id].result(timeout=30)
-            data = []
-            total = 0
-            is_scatter_chart = False
-            for sf in result.schema:
-                if sf.name == 'RATE':
-                    is_scatter_chart = True
-                    break
-            rows = list(result)
-            labels = []
-            datasets = {}
-            for row in rows:
-                label = row.get('LABEL')
-                labels.append(label)
-
-                mut_rate = row.get('RATE', None)
-                cnt = row.get('CNT')
-                if is_scatter_chart:
-                    name = row.get('NAME', None)
-                    if not datasets.get(label):
-                        datasets[label] = []
-                    datasets[label].append(
-                        {
-                            'name': name,
-                            'rate': mut_rate,
-                            'count': cnt
-                        }
-                    )
-
-                else:
-                    data.append(cnt)
-                total += cnt
-            graph_data[graph_id] = {
-                'chart_type': 'scatter' if is_scatter_chart else 'count',
-                'labels': labels,
-                'data': data,
-                'datasets': datasets,
-                'total': total
-            }
-            # print(graph_data[graph_id])
-
-        # print(graph_data['sift_class_s'])
-    except BadRequest:
-        error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
-    except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
-        error_msg = "Sorry, query job has timed out."
-
-    graph_result = {'graph_data': graph_data, 'msg': error_msg}
-    return graph_result
 
 
 @app.route("/view_exp_ind_mut")
@@ -1906,11 +896,13 @@ def view_exp_ind_mut():
 
     return render_template("view_exp_ind_mut.html", criteria=criteria, query_result=query_result)
 
+
 @app.route("/view_data", methods = ['GET'])
 def view_data():
     bq_view_name = request.args.get('bq_view_name', None)
-    columns, data = load_csv_file('{filename}_{version}.csv'.format(filename=bq_view_name, version=DATA_VERSION))
-    return render_template("view_data.html", bq_view_name=bq_view_name, ver=DATA_VERSION, columns=columns, data=data)
+    columns, data = utils.load_csv_file(settings.TP53_DATA_DIR_URL, '{filename}_{version}.csv'.format(filename=bq_view_name, version=settings.DATA_VERSION))
+    return render_template("view_data.html", bq_view_name=bq_view_name, ver=settings.DATA_VERSION, columns=columns, data=data)
+
 
 @app.route("/view_mouse")
 def view_mouse():
@@ -1956,28 +948,28 @@ def view_val_poly():
 @app.route("/search_cell_lines")
 def search_cell_lines():
     return render_template("search_cell_lines.html",
-                           c_desc_list=cl_c_desc_list,
-                           p_desc_list=cl_p_desc_list,
-                           g_desc_hg19_list=cl_g_desc_hg19_list,
-                           g_desc_hg38_list=cl_g_desc_hg38_list,
-                           cl_tp53stat_list=cl_tp53stat_list,
-                           topo_list=topo_list,
-                           morph_list=morph_list,
-                           topo_morph_assc=topo_morph_assc,
-                           tumor_org_group_list=cl_tumor_org_group_list,
-                           cl_start_material_list=cl_start_material_list,
-                           desc_list=cl_desc_list,
-                           effect_list=cl_effect_list,
-                           motif_list=cl_motif_list,
-                           type_list=cl_type_list,
-                           sift_list=cl_sift_list,
-                           exon_intron_list=cl_exon_intron_list,
-                           ta_class_list=cl_ta_class_list,
-                           germ_mut_list=cl_germ_mut_list,
-                           tobacco_list=cl_tobacco_list,
-                           inf_agnt_list=cl_inf_agnt_list,
-                           country_list=country_list,
-                           exposure_list=cl_exposure_list
+                           c_desc_list=settings.cl_c_desc_list,
+                           p_desc_list=settings.cl_p_desc_list,
+                           g_desc_hg19_list=settings.cl_g_desc_hg19_list,
+                           g_desc_hg38_list=settings.cl_g_desc_hg38_list,
+                           cl_tp53stat_list=settings.cl_tp53stat_list,
+                           topo_list=settings.topo_list,
+                           morph_list=settings.morph_list,
+                           topo_morph_assc=settings.topo_morph_assc,
+                           tumor_org_group_list=settings.cl_tumor_org_group_list,
+                           cl_start_material_list=settings.cl_start_material_list,
+                           desc_list=settings.cl_desc_list,
+                           effect_list=settings.cl_effect_list,
+                           motif_list=settings.cl_motif_list,
+                           type_list=settings.cl_type_list,
+                           sift_list=settings.cl_sift_list,
+                           exon_intron_list=settings.cl_exon_intron_list,
+                           ta_class_list=settings.cl_ta_class_list,
+                           germ_mut_list=settings.cl_germ_mut_list,
+                           tobacco_list=settings.cl_tobacco_list,
+                           inf_agnt_list=settings.cl_inf_agnt_list,
+                           country_list=settings.country_list,
+                           exposure_list=settings.cl_exposure_list
 
                            )
 
@@ -1989,7 +981,7 @@ def stats_cell_lines():
 
 @app.route("/cell_lines_mutation_stats", methods=['GET', 'POST'])
 def cell_lines_mutation_stats():
-    action = get_param_val(request, 'action')
+    action = filters.get_param_val('action')
     if action == 'get_mutation_type':
         table = 'CellLineView'
         subtitle='Type of Variants'
@@ -1999,10 +991,10 @@ def cell_lines_mutation_stats():
     else: # action == 'get_codon_dist'
         table = 'CellLineMutationStats'
         subtitle = 'Codon Distribution of Point Variants'
-    graph_configs = build_graph_configs(action, table)
-    sql_maps = build_graph_sqls(graph_configs, {}, table)
-    # print(build_graph_sqls)
-    graph_result = build_graph_data(sql_maps)
+    graph_configs = graphs.build_graph_configs(action, table)
+    sql_maps = graphs.build_graph_sqls(graph_configs, {}, table)
+    # print(graphs.build_graph_sqls)
+    graph_result = graphs.build_graph_data(bigquery_client, sql_maps)
     return render_template("mutation_stats.html", criteria_map={}, title='Statistics on Cell Line Variants',
                            subtitle=subtitle,
                            submenu='stats_cell_lines',
@@ -2013,29 +1005,25 @@ def cell_lines_mutation_stats():
 def results_cell_line_mutation():
     criteria = []
     if request.method == 'POST':
-        mut_id_criteria = get_mut_id_criteria()
+        mut_id_criteria = filters.get_mut_id_criteria()
         if (len(mut_id_criteria)):
             criteria = mut_id_criteria
         else:
             prefix = 'cl'
-            criteria += get_cell_line_criteria(prefix)
-            criteria += get_method_criteria(prefix)
-            criteria += get_variation_criteria(prefix)
-            criteria += get_mutation_criteria(prefix)
-            criteria += get_patient_criteria(prefix)
-            criteria += get_country_criteria(prefix)
-            criteria += get_mut_id_criteria()
+            criteria += filters.get_cell_line_criteria(prefix)
+            criteria += filters.get_method_criteria(prefix)
+            criteria += filters.get_variation_criteria(prefix)
+            criteria += filters.get_mutation_criteria(prefix)
+            criteria += filters.get_patient_criteria(prefix)
+            criteria += filters.get_country_criteria(prefix)
+            criteria += filters.get_mut_id_criteria()
     return render_template("results_cell_lines.html", criteria=criteria)
 
-
-# @app.route("/mutation_search_form")
-# def mutation_search_form():
-#     return render_template("mutation_search_form.html")
 
 @app.route("/get_tp53data")
 def get_tp53data():
 
-    return render_template("get_tp53data.html", TP53_DATA_DIR_URL=TP53_DATA_DIR_URL, ver=DATA_VERSION)
+    return render_template("get_tp53data.html", TP53_DATA_DIR_URL=settings.TP53_DATA_DIR_URL, ver=settings.DATA_VERSION)
 
 
 @app.route("/help")
@@ -2118,16 +1106,6 @@ def resources():
     return render_template("resources.html")
 
 
-# @app.route("/refs_corner")
-# def refs_corner():
-#     return render_template("refs_corner.html")
-
-
-# @app.route("/ppl_events")
-# def ppl_events():
-#     return render_template("ppl_events.html")
-
-
 @app.route("/about")
 def about():
     return render_template("about.html")
@@ -2147,18 +1125,14 @@ def tp53book2013():
 def p53IsoformsPredictions():
     return render_template("p53IsoformsPredictions.html")
 
-
-# @app.route("/contact")
-# def contact():
-#     return render_template("contact.html")
-
 @app.route("/get_db_version")
 def get_db_version():
-    return DATA_VERSION
+    return settings.DATA_VERSION
+
 
 @app.route("/cse_search")
 def cse_search():
-    return render_template("cse_search.html", google_se_id=GOOGLE_SE_ID)
+    return render_template("cse_search.html", google_se_id=settings.GOOGLE_SE_ID)
 
 
 @app.route('/favicon.ico')
@@ -2173,295 +1147,7 @@ def warmup():
     return '', 200, {}
 
 
-def load_topo_morph_assc(json_file):
-    topo_morph_map = {}
-    try:
-        file_path = TP53_STATIC_URL + '/list-files/' + json_file
-        data = requests.get(file_path).json()
-        for row in data:
-            topo = row['Short_topo']
-            morph = row['Morphology']
-            if topo not in topo_morph_map.keys():
-                topo_morph_map[topo] = []
-            topo_morph_map[topo].append(morph)
-        del data
-    except:
-        print('Error while loading ' + json_file)
-    return topo_morph_map
-
-
-def load_list(list_file, json=False, limit=None):
-    data_list = []
-
-    try:
-        file_path = TP53_STATIC_URL + '/list-files/' + list_file
-        file_data = requests.get(file_path)
-
-        if json:
-            data_list = file_data.json()
-
-        else:
-            lines = file_data.text.splitlines()
-            if limit:
-                lines = lines[0:limit]
-            for line in lines:
-                data_list.append({'label': line})
-    except:
-        data_list = []
-    return data_list
-
-def load_csv_file(list_file):
-    column_list = []
-    # data_list = []
-
-    try:
-        file_path = TP53_DATA_DIR_URL + '/' + list_file
-        file_data = requests.get(file_path)
-        lines = file_data.text.splitlines()
-        reader = csv.reader(lines, delimiter=',')
-        column_list = next(reader)
-        data_list = list(reader)
-        for row in data_list:
-            row.insert(0, '')
-    except:
-        data_list = []
-    return column_list, data_list
-
-def setup_app(app):
-    global m_c_desc_list
-    if not m_c_desc_list:
-        m_c_desc_list = load_list(M_C_DESC_FILE)
-
-    global m_p_desc_list
-    if not m_p_desc_list:
-        m_p_desc_list = load_list(M_P_DESC_FILE)
-
-    global m_g_desc_hg19_list
-    if not m_g_desc_hg19_list:
-        m_g_desc_hg19_list = load_list(M_G_DESC_HG19_FILE)
-
-    global m_g_desc_hg38_list
-    if not m_g_desc_hg38_list:
-        m_g_desc_hg38_list = load_list(M_G_DESC_HG38_FILE)
-
-    global m_type_list
-    if not m_type_list:
-        m_type_list = load_list(M_TYPE_FILE)
-
-    global m_desc_list
-    if not m_desc_list:
-        m_desc_list = load_list(M_DESC_FILE)
-
-    global m_motif_list
-    if not m_motif_list:
-        m_motif_list = load_list(M_MOTIF_FILE)
-
-    global m_exon_intron_list
-    if not m_exon_intron_list:
-        m_exon_intron_list = load_list(M_EXON_INTRON_FILE)
-
-    global m_effect_list
-    if not m_effect_list:
-        m_effect_list = load_list(M_EFFECT_FILE)
-
-    global m_ta_class_list
-    if not m_ta_class_list:
-        m_ta_class_list = load_list(M_TA_CLASS_FILE)
-
-    global m_sift_list
-    if not m_sift_list:
-        m_sift_list = load_list(M_SIFT_FILE)
-
-    global cl_c_desc_list
-    if not cl_c_desc_list:
-        cl_c_desc_list = load_list(CL_C_DESC_FILE)
-
-    global cl_p_desc_list
-    if not cl_p_desc_list:
-        cl_p_desc_list = load_list(CL_P_DESC_FILE)
-
-    global cl_g_desc_hg19_list
-    if not cl_g_desc_hg19_list:
-        cl_g_desc_hg19_list = load_list(CL_G_DESC_HG19_FILE)
-
-    global cl_g_desc_hg38_list
-    if not cl_g_desc_hg38_list:
-        cl_g_desc_hg38_list = load_list(CL_G_DESC_HG38_FILE)
-
-    global cl_tp53stat_list
-    if not cl_tp53stat_list:
-        cl_tp53stat_list = load_list(CL_TP53STAT_FILE)
-
-    global cl_tumor_org_group_list
-    if not cl_tumor_org_group_list:
-        cl_tumor_org_group_list = load_list(CL_TUMOR_ORG_GROUP_FILE)
-
-    global cl_desc_list
-    if not cl_desc_list:
-        cl_desc_list = load_list(CL_DESC_FILE)
-
-    global cl_effect_list
-    if not cl_effect_list:
-        cl_effect_list = load_list(CL_EFFECT_FILE)
-
-    global cl_motif_list
-    if not cl_motif_list:
-        cl_motif_list = load_list(CL_MOTIF_FILE)
-
-    global cl_start_material_list
-    if not cl_start_material_list:
-        cl_start_material_list = load_list(CL_START_MATERIAL_FILE)
-
-    global cl_ta_class_list
-    if not cl_ta_class_list:
-        cl_ta_class_list = load_list(CL_TA_CLASS_FILE)
-
-    global cl_type_list
-    if not cl_type_list:
-        cl_type_list = load_list(CL_TYPE_FILE)
-
-    global cl_sift_list
-    if not cl_sift_list:
-        cl_sift_list = load_list(CL_SIFT_FILE)
-
-    global cl_exon_intron_list
-    if not cl_exon_intron_list:
-        cl_exon_intron_list = load_list(CL_EXON_INTRON_FILE)
-
-    global cl_germ_mut_list
-    if not cl_germ_mut_list:
-        cl_germ_mut_list = load_list(CL_GERM_MUT_FILE)
-
-    global cl_tobacco_list
-    if not cl_tobacco_list:
-        cl_tobacco_list = load_list(CL_TOBACCO_FILE)
-
-    global cl_inf_agnt_list
-    if not cl_inf_agnt_list:
-        cl_inf_agnt_list = load_list(CL_INF_AGNT_FILE)
-
-    global topo_list
-    if not topo_list:
-        topo_list = load_list(TOPO_FILE)
-
-    global morph_list
-    if not morph_list:
-        morph_list = load_list(MORPH_FILE)
-    global country_list
-    if not country_list:
-        country_list = load_list(COUNTRY_FILE)
-    global cl_exposure_list
-    if not cl_exposure_list:
-        cl_exposure_list = load_list(CL_EXPOSURE_FILE)
-    global sm_start_material_list
-    if not sm_start_material_list:
-        sm_start_material_list = load_list(SM_START_MATERIAL_FILE)
-    global sm_c_desc_list
-    if not sm_c_desc_list:
-        sm_c_desc_list = load_list(SM_C_DESC_FILE)
-    global sm_p_desc_list
-    if not sm_p_desc_list:
-        sm_p_desc_list = load_list(SM_P_DESC_FILE)
-    global sm_g_desc_hg19_list
-    if not sm_g_desc_hg19_list:
-        sm_g_desc_hg19_list = load_list(SM_G_DESC_HG19_FILE)
-    global sm_g_desc_hg38_list
-    if not sm_g_desc_hg38_list:
-        sm_g_desc_hg38_list = load_list(SM_G_DESC_HG38_FILE)
-    global sm_type_list
-    if not sm_type_list:
-        sm_type_list = load_list(SM_TYPE_FILE)
-    global sm_desc_list
-    if not sm_desc_list:
-        sm_desc_list = load_list(SM_DESC_FILE)
-    global sm_motif_list
-    if not sm_motif_list:
-        sm_motif_list = load_list(SM_MOTIF_FILE)
-    global sm_exon_intron_list
-    if not sm_exon_intron_list:
-        sm_exon_intron_list = load_list(SM_EXON_INTRON_FILE)
-    global sm_effect_list
-    if not sm_effect_list:
-        sm_effect_list = load_list(SM_EFFECT_FILE)
-    global sm_ta_class_list
-    if not sm_ta_class_list:
-        sm_ta_class_list = load_list(SM_TA_CLASS_FILE)
-    global sm_sift_list
-    if not sm_sift_list:
-        sm_sift_list = load_list(SM_SIFT_FILE)
-    global sm_tumor_org_group_list
-    if not sm_tumor_org_group_list:
-        sm_tumor_org_group_list = load_list(SM_TUMOR_ORG_GROUP_FILE)
-    global sm_sample_source_list
-    if not sm_sample_source_list:
-        sm_sample_source_list = load_list(SM_SAMPLE_SOURCE_GROUP_FILE)
-    global sm_germ_mut_list
-    if not sm_germ_mut_list:
-        sm_germ_mut_list = load_list(SM_GERM_MUT_FILE)
-    global sm_tobacco_list
-    if not sm_tobacco_list:
-        sm_tobacco_list = load_list(SM_TOBACCO_FILE)
-    global sm_inf_agnt_list
-    if not sm_inf_agnt_list:
-        sm_inf_agnt_list = load_list(SM_INF_AGNT_FILE)
-    global sm_exposure_list
-    if not sm_exposure_list:
-        sm_exposure_list = load_list(SM_EXPOSURE_FILE)
-    global gm_c_desc_list
-    if not gm_c_desc_list:
-        gm_c_desc_list = load_list(GM_C_DESC_FILE)
-    global gm_p_desc_list
-    if not gm_p_desc_list:
-        gm_p_desc_list = load_list(GM_P_DESC_FILE)
-    global gm_g_desc_hg19_list
-    if not gm_g_desc_hg19_list:
-        gm_g_desc_hg19_list = load_list(GM_G_DESC_HG19_FILE)
-    global gm_g_desc_hg38_list
-    if not gm_g_desc_hg38_list:
-        gm_g_desc_hg38_list = load_list(GM_G_DESC_HG38_FILE)
-    global gm_type_list
-    if not gm_type_list:
-        gm_type_list = load_list(GM_TYPE_FILE)
-    global gm_desc_list
-    if not gm_desc_list:
-        gm_desc_list = load_list(GM_DESC_FILE)
-    global gm_motif_list
-    if not gm_motif_list:
-        gm_motif_list = load_list(GM_MOTIF_FILE)
-    global gm_exon_intron_list
-    if not gm_exon_intron_list:
-        gm_exon_intron_list = load_list(GM_EXON_INTRON_FILE)
-    global gm_effect_list
-    if not gm_effect_list:
-        gm_effect_list = load_list(GM_EFFECT_FILE)
-    global gm_ta_class_list
-    if not gm_ta_class_list:
-        gm_ta_class_list = load_list(GM_TA_CLASS_FILE)
-    global gm_sift_list
-    if not gm_sift_list:
-        gm_sift_list = load_list(GM_SIFT_FILE)
-    global gm_family_hist_list
-    if not gm_family_hist_list:
-        gm_family_hist_list = load_list(GM_FAMILY_HIST_FILE)
-    global gm_inh_mode_list
-    if not gm_inh_mode_list:
-        gm_inh_mode_list = load_list(GM_INH_MODE_FILE)
-    global gm_family_case_list
-    if not gm_family_case_list:
-        gm_family_case_list = load_list(GM_FAMILY_CASE_FILE)
-    global topo_morph_assc
-    if not topo_morph_assc:
-        topo_morph_assc = json.dumps(load_topo_morph_assc(TOPO_MORPH_JSON_FILE))
-    global gm_ref_data
-    if not gm_ref_data:
-        gm_ref_data = load_list(GM_REF_FILE, json=True)
-    global sm_ref_data
-    if not sm_ref_data:
-        sm_ref_data = load_list(SM_REF_FILE, json=True)
-    return
-
-
-setup_app(app)
+settings.setup_app(app)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

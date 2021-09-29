@@ -113,7 +113,6 @@ $(document).ready(function () {
                 data: "gnomADlink",
                 className: "text-nowrap text-end pe-2",
                 render: function (data) {
-                    console.log(data);
                     if(data == null || data === '')
                         return '';
                     else
