@@ -116,7 +116,7 @@ def get_germline_patient_criteria(prefix):
     return criteria
 
 
-def get_mutation_criteria(prefix):
+def get_variant_feature_criteria(prefix):
     chrpos_type = get_param_val('{prefix}_chrpos_type'.format(prefix=prefix)) or 'hg38'
     codon_range = (get_param_val('{prefix}_codon_range'.format(prefix=prefix)) == 'checked')
 
@@ -285,7 +285,7 @@ def get_method_criteria(prefix):
     return criteria
 
 
-def get_variation_criteria(prefix):
+def get_gene_variant_criteria(prefix):
     type_input = get_param_val('type_input')
 
 

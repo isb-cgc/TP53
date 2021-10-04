@@ -220,7 +220,7 @@ var updateActionButtonGroups = function (selectedRowCounts, selectedRowCellLineC
 
 
 var displayGeneVariationDistributions = function (action, selectedRowSet) {
-    var form = $("<form method='POST' action='results_gene_dist'></form>");
+    var form = $("<form method='POST' action='/get_distribution'></form>");
     var input;
     if (selectedRowSet.size){
         var mutIds = Array.from(selectedRowSet);
@@ -235,6 +235,8 @@ var displayGeneVariationDistributions = function (action, selectedRowSet) {
 
     input = $("<input type='hidden' name='action' value='" + action + "'/>");
     input.appendTo(form);
+    input = $("<input type='hidden' name='query_dataset' value='Mutation'/>");
+    input.appendTo(form);
     form.appendTo($("body"));
     form.submit();
     form.remove();
@@ -242,7 +244,7 @@ var displayGeneVariationDistributions = function (action, selectedRowSet) {
 
 var displayCellLines = function (selectedRowSet) {
     var mutIds = Array.from(selectedRowSet);
-    var form = $("<form method='POST' action='results_cell_line_mutation'></form>");
+    var form = $("<form method='POST' action='/results_cell_line_mutation'></form>");
     for (var i = 0; i < mutIds.length; i++) {
         var input = $("<input type='hidden' name='mut_id_list' value='" + mutIds[i] + "'/>");
         input.appendTo(form);

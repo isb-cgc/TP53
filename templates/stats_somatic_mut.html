@@ -2,10 +2,6 @@
 {% block title %}TP53 Database: Selected Statistics on Somatic Variant Data{% endblock %}
 {% block head %}
 {{ super() }}
-<script type="text/javascript">
-    active_submenu = 'stats_somatic_mut';
-</script>
-
 
 {% endblock %}
 
@@ -23,10 +19,10 @@
         </div>
         <div class="col-lg-4 col-md-10">
             <ul class="list-group list-group-flush pt-3">
-                <a href="get_distribution?action=get_mutation_dist&query_dataset=SomaticView"
+                <a href="get_distribution?action=get_mutation_dist&query_dataset=Somatic"
                    class="list-group-item list-group-item-action">
                     Variant Distributions</a>
-                <a href="get_distribution?action=get_tumor_dist&query_dataset=SomaticView"
+                <a href="get_distribution?action=get_tumor_dist&query_dataset=Somatic"
                    class="list-group-item list-group-item-action">
                     Tumors Site Distributions</a>
                 <a href="prevalence_somatic_stats" class="list-group-item list-group-item-action">

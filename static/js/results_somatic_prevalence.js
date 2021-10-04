@@ -14,7 +14,7 @@ $(document).ready(function () {
             type: "POST",
             data: {
                 criteria: JSON.stringify($('#criteria_div').data('criteria')),
-                query_dataset: 'PrevalenceView' //somatic
+                query_dataset: 'Prevalence' //somatic
             },
             dataType: "json",
             dataSrc: "data"

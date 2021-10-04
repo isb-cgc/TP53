@@ -167,7 +167,6 @@ def build_graph_sqls(graph_configs, criteria_map, table):
         elif query_type == 'mutation_rate':
             label_by=graph_configs[graph_id].get('label_by', 'effect')
             stm = bq_builder.build_mutation_rate_query(criteria_map=cri, table=table, label_by=label_by)
-            print(stm)
         else:
             stm = bq_builder.build_mutation_query(criteria_map=cri, table=table, group_by=graph_configs[graph_id]['group_by'])
         sql_maps[graph_id] = stm

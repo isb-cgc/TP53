@@ -122,8 +122,27 @@ $(document).ready(function () {
            .trigger('change');
    });
 
+   set_active_submenu(active_submenu);
+
+
 });
 
+function set_active_submenu(submenu_id) {
+    if (!submenu_id)
+        return;
+    var active_submenu_div = $('#'+submenu_id);
+    var collapsed_div_id = active_submenu_div.attr('aria-controls');
+    // var collapsed_div_id = $(".collapsible-sidebar #" + submenu_id).attr('aria-controls');
+    active_submenu_div.attr('aria-expanded', true);
+    toggle_collapse_jQSel($(".collapsible-sidebar #" + collapsed_div_id), false);
+    // toggle_collapse_jQSel($(".collapsible-sidebar #" + submenu_id), false);
+
+    // toggle_collapse_jQSel($(".collapsible-sidebar #" + submenu_id + ".sub-navitem").parents('.collapse'), false);
+
+    // $(".sidebar, .collapsible-sidebar").find(".active").removeClass("active");
+    // $('#' + submenu_id).addClass("active");
+
+}
 var enableTooltip = function () {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -133,7 +152,7 @@ var enableTooltip = function () {
 
 //type can be cdna, p, hg19 or hg38
 var displayGeneVariations = function (type, descrption) {
-    var form = $("<form method='POST' action='results_gene_mut_by_gv' target='_blank' rel='noopener noreferrer'></form>");
+    var form = $("<form method='POST' action='/results_gene_mut/gv' target='_blank' rel='noopener noreferrer'></form>");
     var input = $("<input type='hidden' name='type_input' value='type_"+type+"'/>");
     input.appendTo(form);
     input = $("<input type='hidden' name='gv_"+type+"_list' value='"+descrption+"'/>");

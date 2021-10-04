@@ -66,18 +66,6 @@ $(document).ready(function () {
 
     $('.download-btn').on('click', function () {
         download_csv('tp53db_mouse_models', 'MouseModelView');
-        // var input;
-        // var form = $("<form method='POST' action='download_dataset'></form>");
-        //
-        // input = $("<input type='hidden' name='filename' value='tp53db_mouse_models'/>");
-        // input.appendTo(form);
-        //
-        // input = $("<input type='hidden' name='query_datatable' value='MouseModelView'/>");
-        // input.appendTo(form);
-        //
-        // form.appendTo($("body"));
-        // form.submit();
-        // form.remove();
     });
 
 });

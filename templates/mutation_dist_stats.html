@@ -7,7 +7,6 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/stats_mutation.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/JSmol.min.nojq.js') }}"></script>
 <script type="text/javascript">
-    active_submenu = "{{ submenu }}";
     var graph_result = {{ graph_result | tojson | safe }};
     var pdb_filepath = "{{ url_for('static', filename='pdb/1tsr_B.pdb') }}";
     var j2s_path = "{{ url_for('static', filename='js/libs/j2s') }}";

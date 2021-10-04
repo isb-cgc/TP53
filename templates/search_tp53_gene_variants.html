@@ -21,7 +21,7 @@
 <div id="search_tp53_gv" class="container">
     <div class="p-2 my-3">
         <h2>Enter List of Variants</h2>
-        <form class="search-form" action="{{ url_for('results_gene_mut_by_gv') }}" method="POST">
+        <form class="search-form" action="{{ url_for('results_gene_mut', search_by='gv') }}" method="POST">
             {% with id_prefix='gv' %}
             <fieldset class="mb-3">
                 <div class="row">

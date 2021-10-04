@@ -144,7 +144,7 @@ var updateActionButtonGroups = function (selectedRowCounts) {
 
 var displayGeneVariations_by_mutids = function (selectedRowSet) {
     var rowIds = Array.from(selectedRowSet);
-    var form = $("<form method='POST' action='results_gene_mut_by_mutids'></form>");
+    var form = $("<form method='POST' action='/results_gene_mut/mut_id'></form>");
     for (var i = 0; i < rowIds.length; i++) {
         var indx = rowIds[i].indexOf(':');
         var input = $("<input type='hidden' name='mut_id_list' value='" + rowIds[i].substring(0, indx) + "'/>");

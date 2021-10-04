@@ -16,7 +16,7 @@
 </div>
 <div id="search_tp53_gmut" class="container">
     <div class="p-2 my-3">
-        <form action="{{ url_for('results_gene_mut_by_mut') }}" method="POST" id="mutationSearchFormForm">
+        <form action="{{ url_for('results_gene_mut', search_by='gmut') }}" method="POST" id="mutationSearchFormForm">
             {% with id_prefix='gmut' %}
             {% include 'form_fields_mutation.html' %}
             {% endwith %}
