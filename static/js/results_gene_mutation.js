@@ -42,7 +42,7 @@ $(document).ready(function () {
                 orderable: false,
                 className: "text-center",
                 render: function(data){
-                    return '<a title="View Variant Details" class="rounded-circle btn sm-round-btn turquoise-btn" href="mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
+                    return '<a title="View Variant Details" class="rounded-circle btn sm-round-btn turquoise-btn" href="/mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
                 }
             },
             {

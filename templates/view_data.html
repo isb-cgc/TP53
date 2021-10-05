@@ -1,9 +1,9 @@
 {% extends "tp53data.html" %}
-{% block title %}TP53 Database: View {{ bq_view_name }} Data{% endblock %}
+{% block title %}TP53 Database: View {{ title }} {% endblock %}
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
-    active_submenu = 'get_tp53data';
+    // active_submenu = 'get_tp53data';
     dataSet = {{data|tojson|safe}};
     var bq_view_name = "{{ bq_view_name }}";
     var db_version = "{{ ver }}";
@@ -19,7 +19,7 @@
 
 <div class="page-banner">
     <div class="container">
-        <h1 class="fw-bold p-2 my-0">View Data: {{ bq_view_name }}</h1>
+        <h1 class="fw-bold p-2 my-0">View Data: <span class="fw-light">{{ title|safe }}</span></h1>
     </div>
 </div>
 <div id="view_data" class="py-3 mx-5" data-view-name="{{ bq_view_name }}">

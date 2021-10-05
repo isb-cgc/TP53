@@ -71,7 +71,7 @@ $(document).ready(function () {
                     }
                     else {
                         if (data != null)
-                            return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to ClinVar ' + data + '"><i class="far fa-arrow-alt-circle-right"></i></a>';
+                            return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to ClinVar ' + data + '">'+data+'</a>';
                         else
                             return data;
                     }

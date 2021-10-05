@@ -60,6 +60,25 @@ bq_builder.set_project_dataset(proj_id=project_id, d_set=settings.BQ_DATASET)
 
 bigquery_client = bigquery.Client()
 
+TITLE_BQVIEW_MAP = {
+    "MutationView": "Functional / Structural Data in <em>TP53</em> with Annotations",
+    "FunctionDownload": "Functional Assessment of <em>p53</em> Mutant Proteins in Various Experimental Assays",
+    "FunctionIshiokaDownload": "Systematic Functional Assessment of <em>p53</em> Mutant Proteins in Yeast Assays",
+    "SomaticDownload": "Somatic Variants in Human Tumor Samples (Data File)",
+    "SomaticRefDownload": "Somatic Variants in Human Tumor Samples (References File)",
+    "PrevalenceDownload": "Prevalence of Somatic Variants by Tumor Site",
+    "PrevalenceDownloadR249S": "Prevalence of the R249S <em>TP53</em> Variants in Liver Cancer",
+    "PrognosisDownload": "Prognostic Value of Somatic Variants",
+    "GermlineDownload": "<em>TP53</em> Germline Variants and Family History (Data File)",
+    "GermlineRefDownload": "<em>TP53</em> Germline Variants and Family History (References File)",
+    "GermlinePrevalenceView": "<em>TP53</em> Germline Variants Prevalence in Selected Cohorts",
+    "GermlineFrequencyDownload": "Frequency of Individual Variants in Case-Controls Series",
+    "CellLineDownload": "<em>TP53</em> Variant Status of Human Cell-lines",
+    "MouseModelView": "Mouse Models with Engineered <em>TP53</em>",
+    "InducedMutationView": "Variants Induced in Experimental Models of Mutagenesis"
+
+}
+
 #########################################
 # Functional / Structural Variant Search
 #########################################
@@ -810,11 +829,13 @@ def view_full_data(dataset):
     return render_template("view_{dataset}.html".format(dataset=dataset), criteria=criteria, query_result=query_result)
 
 
+
 @app.route("/view_data", methods = ['GET'])
 def view_data():
     bq_view_name = request.args.get('bq_view_name', None)
+    title = TITLE_BQVIEW_MAP[bq_view_name]
     columns, data = utils.load_csv_file(settings.TP53_DATA_DIR_URL, '{filename}_{version}.csv'.format(filename=bq_view_name, version=settings.DATA_VERSION))
-    return render_template("view_data.html", bq_view_name=bq_view_name, ver=settings.DATA_VERSION, columns=columns, data=data)
+    return render_template("view_data.html", title=title,  bq_view_name=bq_view_name, ver=settings.DATA_VERSION, columns=columns, data=data)
 
 
 ##
