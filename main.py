@@ -168,14 +168,18 @@ def get_distribution():
     template = 'mutation_stats.html'
     title = 'Statistics on Functional/Structural Data' if query_dataset == 'Mutation' else 'Search Results on {query_dataset} Variants'.format(query_dataset=query_dataset)
 
-
+    print(action)
     if action == 'get_mutation_dist':
         table = '{query_dataset}View'.format(query_dataset=query_dataset)
         template = 'mutation_dist_stats.html'
-
         subtitle = 'Variant Distributions'
-    elif action.index('tumor_dist') > 0:
-        table = '{query_dataset}View'.format(query_dataset=query_dataset) if (query_dataset == 'Somatic' or query_dataset == 'Germline') else '{query_dataset}TumorStats'.format(query_dataset=query_dataset)
+    elif action == 'get_gv_tumor_dist':
+        subtitle = 'Tumor Site Distribution of Variants'
+    elif action == 'get_tumor_dist':
+        table = '{query_dataset}TumorStats'.format(query_dataset=query_dataset)
+        subtitle = 'Tumor Site Distribution of Variants'
+    elif action == 'get_tumor_dist_view':
+        table = '{query_dataset}View'.format(query_dataset=query_dataset)
         subtitle = 'Tumor Site Distribution of Variants'
     elif action == 'get_codon_dist':
         table = 'GermlineMutationStats'
@@ -198,8 +202,9 @@ def get_distribution():
                     action])
     else:
         graph_configs = graphs.build_graph_configs(action, table)
+
         sql_maps = graphs.build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
-        print(sql_maps)
+        # print(sql_maps)
     graph_result = graphs.build_graph_data(bigquery_client, sql_maps)
 
     return render_template(template, criteria_map=criteria_map, title=title,

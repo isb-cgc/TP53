@@ -371,14 +371,20 @@ h1 a {
     color: #ddf0ee;
 }
 
-.card-header a:hover::after{
+.card-header a::after{
     font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    content: "  \f30b";
+    font-weight: bold;
+    content: "";
     display: inline-block;
-    width: 1.3rem;
+    width: 1.5rem;
+    font-size: 1rem;
     text-align: right;
 }
+
+.card-header a:hover::after{
+    content: "  \f30b";
+}
+
 .card-header-text{
     font-size: 1.1rem;
 }
@@ -554,10 +560,12 @@ th.custom50w{
 
 button.btn-view-details{
     color: #54B5AB;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 26px;
+    /*width: 1.5rem;*/
+    height: 26px;
+    /*height: 1.5rem;*/
     border: none;
-    text-align: center;
+    /*text-align: center;*/
     display: inline-block;
     background-color: white;
     border-radius: 50%;
@@ -634,67 +642,37 @@ footer a{
 }
 
 @media (max-width: 991px) {
-    /*.sidebar{*/
-        /*left: -260px;*/
-    /*}*/
-
     .collapsible-sidebar, .collapsible-sidebar.hover{
         left: -220px;
     }
     .collapsible-sidebar.hover:hover {
         left: 0;
     }
-
-    .collapsible-sidebar.hover .nav, .collapsible-sidebar.hover hr, .collapsible-sidebar.hover:hover .sidebar-icon {
+    .collapsible-sidebar.hover .nav {
         display: none;
     }
-
-    .collapsible-sidebar.hover:hover .nav, .collapsible-sidebar.hover:hover hr, .collapsible-sidebar.hover .sidebar-icon {
+    .collapsible-sidebar.hover:hover .nav {
         display: block;
     }
 
-    /*main#landing{*/
-        /*padding-left: 40px;*/
-    /*}*/
-
     .narrow-panel{
         padding-left: 40px;
-        /*padding-right: 0;*/
     }
-    /*.main-panel{*/
-        /*padding-left: 0;*/
+    /*.card-header{*/
+        /*padding: 10px 32px;*/
     /*}*/
-
-    .stat-card {
-        margin: 5px;
-    }
-
-    .landing-tray{
-        display: none;
-    }
-
     .three_d_viwer {
         width: 400px;
     }
 }
 
-@media (min-width: 992px) and (max-width: 1143px) {
-    .navbar i {
-        display: none;
-    }
-
-    /*.stat-card {*/
-        /*margin: -80px 5px 5px 5px;*/
-        /*font-size: 1.2rem;*/
+/*@media (min-width: 992px) and (max-width: 1143px) {*/
+    /*.navbar i {*/
+        /*display: none;*/
     /*}*/
+/*}*/
 
-    /*.landing-count {*/
-        /*font-size: 2rem;*/
-    /*}*/
-
-}
-
-@media (min-width: 1144px) and (max-width: 1200px) {
+/*@media (min-width: 1144px) and (max-width: 1200px) {*/
     /*.stat-card {*/
         /*margin: -80px 5px 5px 5px;*/
         /*font-size: 1.5rem;*/
@@ -705,7 +683,7 @@ footer a{
         /*font-size: 2rem;*/
     /*}*/
 
-}
+/*}*/
 
 table .form-control{
     font-size: x-small;
