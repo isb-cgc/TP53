@@ -4,7 +4,6 @@
 {{ super() }}
 <script type="text/javascript">
     active_menu = 'resources';
-    active_submenu = '';
 </script>
 
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/molstar.js') }}"></script>
@@ -70,11 +69,11 @@
                 <div class="p-3">
                     <h3>Reference sequences used to annotate <em>TP53</em> gene variations</h3>
                     <ul>
-                        <li>Graphical view of the <a href="hg38seq">Genomic sequence (hg38)</a>
+                        <li>Graphical view of the <a href="/hg38seq">Genomic sequence (hg38)</a>
                             with exon-intron boundaries for the main <em>p53</em> isoform.
                         </li>
 
-                        <li><a href="tp53seq">Coding and protein sequence</a> with residue numbers,
+                        <li><a href="/tp53seq">Coding and protein sequence</a> with residue numbers,
                             amino-acids, highlighted CpG sites and exon-intron boundaries.
                         </li>
 
@@ -88,7 +87,7 @@
                 <div class="p-3">
                     <h3>Other links to human sequences</h3>
                     <ul>
-                        <li><a href="p53isoforms"><em>p53</em> isoforms</a>
+                        <li><a href="/p53isoforms"><em>p53</em> isoforms</a>
                         </li>
 
                         <li><a target="_blank" rel="noopener noreferrer"
@@ -112,7 +111,7 @@
                 <div class="p-3">
                     <h3>Sequences in other species</h3>
                     <ul>
-                        <li><a href="seq_align">Protein sequence alignment</a></li>
+                        <li><a href="/seq_align">Protein sequence alignment</a></li>
                         <li><a target="_blank" rel="noopener noreferrer"
                                href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1T4W">Structure
                             of
@@ -169,7 +168,7 @@
                 <hr>
                 <div class="p-3">
                     <div>The genomic reference sequence used for annotating <em>TP53</em> variants is <a
-                            href="hg38seq">NC_000017.11 (hg38 build)</a> from GenBank.
+                            href="/hg38seq">NC_000017.11 (hg38 build)</a> from GenBank.
                     </div>
                     <div>
                         Variants are reported according to <a
@@ -348,9 +347,9 @@
                                 family
                                 history data
                             </li>
-                            <li><a target="_blank" rel="noopener noreferrer" href="aa_codes">Amino-acid letter codes
+                            <li><a target="_blank" rel="noopener noreferrer" href="/aa_codes">Amino-acid letter codes
                                 and properties</a></li>
-                            <li><a target="_blank" rel="noopener noreferrer" href="genetic_code">Genetic code</a>
+                            <li><a target="_blank" rel="noopener noreferrer" href="/genetic_code">Genetic code</a>
                             </li>
                             <li><a target="_blank" rel="noopener noreferrer" href="https://www.lovd.nl/2.0/">LOVD, a
                                 software to build variant
@@ -399,7 +398,7 @@
                                                 href="https://www.ncbi.nlm.nih.gov/pubmed/16395672">Mathe
                                 (2006)</a>.
                                 See details here:
-                                <a target="_blank" rel="noopener noreferrer" href="dt_method">Structure-Function
+                                <a target="_blank" rel="noopener noreferrer" href="/dt_method">Structure-Function
                                     Predictions Based on Scores Derived from Delaunay Tessellations</a>
                             </li>
 
@@ -464,7 +463,7 @@
                                        href="https://www.rcsb.org/pdb/explore/explore.do?structureId=2J21">M133L/V203A/N239Y/N268D/R282W</a>
                                 </li>
                             </ul>
-                            <li><a href="stability">Thermodynamic Stability Data</a>
+                            <li><a href="/stability">Thermodynamic Stability Data</a>
                         </ul>
                     </div>
                 </div>
