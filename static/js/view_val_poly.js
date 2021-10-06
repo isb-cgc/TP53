@@ -36,7 +36,7 @@ $(document).ready(function () {
                     data: 'snp',
                     render: function(data) {
                         if (data)
-                            return '<a href = "https://www.ncbi.nlm.nih.gov/snp/rs'+data+'" target = "_blank" rel="noopener noreferrer" >'+data+'</a>';
+                            return '<a href="https://www.ncbi.nlm.nih.gov/snp/rs'+data+'" target = "_blank" rel="noopener noreferrer" >'+data+'</a>';
                         else return '';
                     }
                 },
