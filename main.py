@@ -245,6 +245,7 @@ def mutation_query():
     distinct_col = '{query_dataset}View_ID'.format(query_dataset=query_dataset)
     if query_dataset == 'Somatic':
         column_filters = [
+            "g_description",
             "g_description_GRCh38",
             "c_description",
             "ProtDescription",
@@ -268,6 +269,7 @@ def mutation_query():
         ]
     elif query_dataset == 'Germline':
         column_filters = [
+            "g_description",
             "g_description_GRCh38",
             "c_description",
             "ProtDescription",

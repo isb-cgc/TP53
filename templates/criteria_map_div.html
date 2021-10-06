@@ -1,10 +1,3 @@
-
-
-<!--<div>-->
-    <!--<a class="btn btn-sm btn-outline-dark criteria-btn collapsed" aria-label="View/Hide Criteria"-->
-       <!--data-bs-toggle="collapse" href="#criteria_div" role="button" aria-expanded="false"-->
-       <!--aria-controls="criteria_div"></a>-->
-<!--</div>-->
 <div id="criteria_div" class="my-2 collapse bg-light rounded-2 border border-1"
     data-criteria='{{ criteria_map|tojson }}'>
     {% for type in ['include', 'exclude'] %}
@@ -36,7 +29,5 @@
         {% endfor %}
     </div>
     {% endfor %}
-
-
 </div>
 

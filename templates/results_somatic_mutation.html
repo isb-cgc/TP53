@@ -13,6 +13,11 @@
 {% endblock %}
 
 {% block subcontent %}
+
+<script type="text/javascript">
+    var show_hg19 = "{{ criteria_map }}".indexOf("&#39;g_description&#39;") > 0|false;
+</script>
+
 <div class="page-banner">
     <div class="container">
         <h1 class="fw-bold p-2 my-0">Search Results: <span class="ms-2 fw-light">Somatic Variant Data</span></h1>
@@ -57,7 +62,11 @@
                     <input class="form-check-input check-all" type="checkbox"
                            aria-label="Select All">
                 </td>
-
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Mutation nomenclature according to HGVS standards and using the GenBank NC_000017.10 (hg19 assembly) genomic sequence as reference">
+                    Genomic Description (hg19)
+                </th>
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title="Mutation nomenclature according to HGVS

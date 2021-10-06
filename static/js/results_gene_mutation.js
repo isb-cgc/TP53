@@ -30,7 +30,7 @@ $(document).ready(function () {
                 $('.spinner').show();
             });
         },
-        order: [[ 2, "asc" ]],
+        order: [[ show_hg19? 2:3, "asc" ]],
         scrollX: true,
         columns: [
             {

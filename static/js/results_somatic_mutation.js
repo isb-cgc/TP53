@@ -26,7 +26,7 @@ $(document).ready(function () {
             $('.spinner').hide();
             $('input.check-all').prop( "checked", false ); //reset 'Select All' checkbox
         },
-        order: [[ 1, "asc" ]],
+        order: [[ show_hg19 ? 1:2, "asc" ]],
         scrollX: true,
 
         columns: [
@@ -37,7 +37,13 @@ $(document).ready(function () {
                     return '<input class="form-check-input row-check" type="checkbox" aria-label="Select Row" value="' + data+":"+ row.SomaticView_ID + '"/>';
                 },
             },
-            {data: "g_description_GRCh38"},
+            {
+                data: "g_description",
+                visible: show_hg19
+            },
+            {
+                data: "g_description_GRCh38",
+            },
             {data: "c_description"},
             {
                 data: "ProtDescription",
