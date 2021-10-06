@@ -26,6 +26,9 @@ $(document).ready(function () {
         drawCallback: function () {
             $('.spinner').hide();
             $('input.check-all').prop( "checked", false ); //reset 'Select All' checkbox
+            $('.submit-link').on('click', function () {
+                $('.spinner').show();
+            });
         },
         order: [[ 2, "asc" ]],
         scrollX: true,
@@ -42,7 +45,7 @@ $(document).ready(function () {
                 orderable: false,
                 className: "text-center",
                 render: function(data){
-                    return '<a title="View Variant Details" class="rounded-circle btn sm-round-btn turquoise-btn" href="/mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
+                    return '<a title="View Variant Details" class="rounded-circle btn sm-round-btn turquoise-btn submit-link" href="/mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
                 }
             },
             {

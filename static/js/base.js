@@ -55,30 +55,11 @@ $(document).ready(function () {
     });
 
 });
-// $( window ).load(function() {
-//   console.log('hello');
-// });
+
 $(window).on('pagehide', function(){
     $('.spinner').hide();
 });
 
-
-// var reset_spinner_dimension = function () {
-//     var main_height = $('.main-panel').height() ? $('.main-panel').height() : 0;
-//     var win_height = $(window).height();
-//     $('.spinner').height(main_height < win_height ? '100vh' : $('.main-panel').css('height'));
-//     // $('.spinner').height('100vh');
-// };
-//
-// var display_spinner = function (show) {
-//     console.log('display_spinner show'+ show);
-//     if (show) {
-//         $('.spinner').show();
-//     }
-//     else {
-//         $('.spinner').hide();
-//     }
-// };
 
 var toggle_collapse_jQSel = function (selections, triggerHide) {
     $.each(selections, function (index, value) {
