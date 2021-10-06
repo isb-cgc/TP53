@@ -2,9 +2,7 @@
 {% block title %}TP53 Database: Search Results on Somatic Variant Data{% endblock %}
 {% block head %}
 {{ super() }}
-<script type="text/javascript">
-    active_submenu = "search_somatic_mut";
-</script>
+
 
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/select.dataTables.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
@@ -17,7 +15,7 @@
 {% block subcontent %}
 <div class="page-banner">
     <div class="container">
-        <h1 class="fw-bold p-2 my-0">Search Results: <span class="ms-2 fw-light">Somatic Variant Data</h1>
+        <h1 class="fw-bold p-2 my-0">Search Results: <span class="ms-2 fw-light">Somatic Variant Data</span></h1>
     </div>
 </div>
 <div class="m-5">

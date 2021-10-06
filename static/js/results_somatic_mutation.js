@@ -131,6 +131,7 @@ $(document).ready(function () {
     };
 
     $('button.action-button').on('click', function(){
+        $('.spinner').show();
         var action = $(this).val();
         displayDistributions(action, selectedRowSet);
     });
@@ -156,7 +157,6 @@ $(document).ready(function () {
             criteria_map = $('#criteria_div').data('criteria');
         }
         download_csv('tp53db_somatic_mutations', 'SomaticView', criteria_map);
-
     });
 
 });

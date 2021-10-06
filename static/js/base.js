@@ -4,6 +4,7 @@ var active_menu;
 // var scrollSpy;
 $(document).ready(function () {
 
+    // $('.spinner').hide();
     function set_active_menu(menu_id) {
         if (!menu_id) {
             menu_id = 'home_menu';
@@ -47,8 +48,19 @@ $(document).ready(function () {
         $('#browser-alert').show();
     }
 
-});
 
+
+    $('.submit-link').on('click', function () {
+        $('.spinner').show();
+    });
+
+});
+// $( window ).load(function() {
+//   console.log('hello');
+// });
+$(window).on('pagehide', function(){
+    $('.spinner').hide();
+});
 
 
 // var reset_spinner_dimension = function () {

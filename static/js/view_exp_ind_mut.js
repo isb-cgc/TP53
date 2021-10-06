@@ -103,7 +103,9 @@ $(document).ready(function () {
     };
 
     $('button.action-button').on('click', function () {
+        $('.spinner').show();
         displayGeneVariations_by_mutids(selectedRowSet);
+        $('.spinner').hide();
     });
 
     $('.download-btn').on('click', function () {

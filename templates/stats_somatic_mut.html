@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block subcontent %}
+
 <div class="page-banner">
     <div class="container">
         <h1 class="fw-bold p-2 my-0">Selected Statistics on Somatic Variant Data</h1>
@@ -20,16 +21,19 @@
         <div class="col-lg-4 col-md-10">
             <ul class="list-group list-group-flush pt-3">
                 <a href="get_distribution?action=get_mutation_dist&query_dataset=Somatic"
-                   class="list-group-item list-group-item-action">
+                   class="list-group-item list-group-item-action submit-link">
                     Variant Distributions</a>
                 <a href="get_distribution?action=get_tumor_dist&query_dataset=Somatic"
-                   class="list-group-item list-group-item-action">
+                   class="list-group-item list-group-item-action submit-link">
                     Tumors Site Distributions</a>
-                <a href="prevalence_somatic_stats" class="list-group-item list-group-item-action">
+                <a href="prevalence_somatic_stats"
+                   class="list-group-item list-group-item-action submit-link">
                     <em>TP53</em> Somatic Prevalence by Tumor Site</a>
-                <a href="prognosis_somatic_stats" class="list-group-item list-group-item-action">
+                <a href="prognosis_somatic_stats"
+                   class="list-group-item list-group-item-action submit-link">
                     Prognostic Value of Somatic Variants</a>
-                <a href="db_dev_somatic_stats" class="list-group-item list-group-item-action">
+                <a href="db_dev_somatic_stats"
+                   class="list-group-item list-group-item-action submit-link">
                     Statistics on Dataset Development</a>
             </ul>
         </div>

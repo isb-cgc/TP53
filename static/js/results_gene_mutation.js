@@ -160,19 +160,18 @@ $(document).ready(function () {
             updateActionButtonGroups(selectedRowSet.size, selectedRowCellLineCount);
         } );
 
-
-
-
     var selectRow = function(r){
         table.row(r).select();
     };
 
     $('button.action-button').on('click', function(){
+        $('.spinner').show();
         var action = $(this).val();
         displayGeneVariationDistributions(action, selectedRowSet);
     });
 
     $('button.cell-search-button').on('click', function(){
+        $('.spinner').show();
         displayCellLines(selectedRowSet);
     });
 
@@ -194,8 +193,6 @@ $(document).ready(function () {
 
         download_csv('tp53db_gene_mutations', 'MutationView', criteria_map);
     });
-
-
 
 });
 

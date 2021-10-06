@@ -199,6 +199,7 @@ $(document).ready(function () {
     };
 
     $('button.action-button').on('click', function(){
+        $('.spinner').show();
         var action = $(this).val();
         displayDistributions(action, selectedRowSet);
     });
