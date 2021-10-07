@@ -2,11 +2,11 @@
 {% block title %}TP53 Database: Prevalence of TP53 Germline Variants in Selected Cohorts{% endblock %}
 {% block head %}
 {{ super() }}
-<script type="text/javascript">
-    active_submenu = 'stats_germline_mut';
-</script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
+<!--<script type="text/javascript">-->
+    <!--active_submenu = 'stats_germline_mut';-->
+<!--</script>-->
+<!--<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>-->
+<!--<script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>-->
 <script type="text/javascript" src="{{ url_for('static', filename='js/view_germline_prevalence.js') }}"></script>
 
 
@@ -18,13 +18,12 @@
         <h1 class="fw-bold p-2 my-0">Prevalence of TP53 Germline Variants in Selected Cohorts</h1>
     </div>
 </div>
-<div class="container">
-    <div id="view_germline_prevalence" class="p-4">
+    <div id="view_germline_prevalence" class="m-5">
 
         {% if query_result.data|length %}
         <div class="my-2">
             <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-outline-secondary download-btn"><i class="fas fa-download"></i>
+                <button type="button" class="btn darkblue-btn download-btn"><i class="fas fa-download"></i>
                     Download
                 </button>
             </div>
@@ -94,5 +93,4 @@
         </div>
         {% endif %}
     </div>
-</div>
 {% endblock %}

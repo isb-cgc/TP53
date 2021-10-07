@@ -96,9 +96,6 @@ $(document).ready(function () {
         }
     };
 
-
-
-
     for (const graph_id in graph_configs) {
         draw_charts(graph_configs[graph_id], null, true, true);
     }
@@ -184,17 +181,23 @@ var draw_charts = function (graph_config, target_id, is_dimension_static, includ
                 graph_data.labels = x_labels;
                 graph_data.data = temp_data;
             }
-            $('#' + canvas_id).parent('div').filter('.small-chart').removeClass('col-5').addClass('col-10');
+            var selected_div = $('#' + canvas_id).parent('div').filter('.small-chart').removeClass('col-5');
+                if (target_id === 'expanded-canvas')
+                    selected_div.addClass('col-10');
             build_bar_config(canvas_id, graph_title, graph_data, horizontal, x_scale, y_scale, true);
         }
-        else if (graph_type === 'scatter') {
-            build_scatter_plot(canvas_id, graph_title, graph_data);
-        }
-        else { // pi chart
+        else{ //scatter or pie chart
             if (!is_dimension_static)
                 $('#' + canvas_id).parent('div').filter('.small-chart').removeClass('col-10').addClass('col-5');
-            build_pie_config(canvas_id, graph_title, graph_data);
+
+            if (graph_type === 'scatter'){
+                build_scatter_plot(canvas_id, graph_title, graph_data);
+            }
+            else if (graph_type === 'pie'){
+                build_pie_config(canvas_id, graph_title, graph_data);
+            }
         }
+
         $('#'+graph_id+'_anchor_text').html(graph_title); //update anchor titles
 
         if (include_3d_graph && Object.keys(graph_config).includes('graph3D_id')) {

@@ -121,7 +121,8 @@ var build_bar_config = function (chart_id, chart_title, data, is_horizontal, x_s
             }
         }
     };
-    $('#'+chart_id).parent('div').filter('.small-chart').removeClass('col-5').addClass('col-10');
+    $('#'+chart_id).parent('div').filter('.small-chart').removeClass('col-5');
+    // $('#'+chart_id).parent('div').filter('.small-chart').removeClass('col-5').addClass('col-10');
     new Chart(
         document.getElementById(chart_id),
         config
