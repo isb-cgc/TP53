@@ -14,8 +14,6 @@ commands:
       - run:
           name: "Assign Tier-level vars"
           command: |
-
-            RUNTIME_SA_KEY=${RT_SA_KEY_DEV}
             if [ ! -f deployment.key.json ]; then
               echo "Deployment JSON keyfile not found - loading from CircleCI."
               KEY=${DEPLOYMENT_KEY_TP53_DEV}
@@ -26,22 +24,22 @@ commands:
             fi
             CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53_DEV}
             IS_TEST_ENV=True
-            PROJECT_ID=isb-cgc-tp53-dev
             GSE_ID=${GSE_ID_DEV}
+            SUFFIX=-dev
+            PREFIX=dev_
             if [[ ${TIER} == "PROD" ]]; then
-              KEY=${DEPLOYMENT_KEY_TP53}
-              CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53}
-              RUNTIME_SA_KEY=${RT_SA_KEY}
-              PROJECT_ID=isb-cgc-tp53
-              GSE_ID=${GOOGLESE_ID}
+              KEY=${DEPLOYMENT_KEY_TP53_PROD}
+              CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53_PROD}
               IS_TEST_ENV=False
               GSE_ID=${GSE_ID_PROD}
+              SUFFIX=
+              PREFIX=
             elif [[ ${TIER} == "TEST" ]]; then
               KEY=${DEPLOYMENT_KEY_TP53_TEST}
               CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53_TEST}
-              RUNTIME_SA_KEY=${RT_SA_KEY_TEST}
-              PROJECT_ID=isb-cgc-tp53-test
               GSE_ID=${GSE_ID_TEST}
+              SUFFIX=-test
+              PREFIX=test_
             elif [[ ${TIER} == "DEV" ]]; then
               echo "Using default deployment configuration for tier ${TIER}"
             else
@@ -50,19 +48,31 @@ commands:
             fi
             echo "export DEPLOYMENT_KEY=\"${KEY}\"" >> $BASH_ENV
             echo "export DEPLOYMENT_CLIENT_EMAIL=${CLIENT_EMAIL}" >> $BASH_ENV
-            echo "export DEPLOYMENT_PROJECT_ID=${PROJECT_ID}" >> $BASH_ENV
+            echo "export DEPLOYMENT_PROJECT_ID=${PROJECT_ID}${SUFFIX}" >> $BASH_ENV
             echo "export GOOGLE_SE_ID=${GSE_ID}" >> $BASH_ENV
-            echo "export WEBAPP_RUNTIME_SA_KEY=${RUNTIME_SA_KEY}" >> $BASH_ENV
             echo "export IS_TEST=${IS_TEST_ENV}" >> $BASH_ENV
+            echo "export DEPLOYMENT_BUCKET=${DEP_BUCKET}${SUFFIX}" >> $BASH_ENV
+            echo "export STATIC_BUCKET=${BUCKET}${SUFFIX}" >> $BASH_ENV
 
+#DEP_BUCKET_NAME=tp53-dep-files
+#BUCKET=tp53-static-files
+#SITEMAP_XML_FILE=sitemap.xml
+#SITEMAP_LIST_FILE=urllist.txt
+#PROJECT_ID=isb-cgc-tp53
+#WEBAPP_RUNTIME_SA_KEY=runtime-sa.key.json
 
-            echo "Project settings assigned:"
-            echo "Deployment client: ${DEPLOYMENT_CLIENT_EMAIL}"
-            echo "Deployment project: ${DEPLOYMENT_PROJECT_ID}"
-            #echo "Deployment bucket: gs://${BUCKET}"
+#GSE_ID_DEV=dab1bee9d7d88fe88
+#GSE_ID_TEST=e6c70a3643842b1d6
+#GSE_ID_PROD=04bb5e112c9ab6e0b
 
-            TP53_STATIC_URL
-            TP53_DATA_DIR_URL
+#DEPLOYMENT_CLIENT_EMAIL_TP53_DEV=deploy-sa@isb-cgc-tp53-dev.iam.gserviceaccount.com
+#DEPLOYMENT_CLIENT_EMAIL_TP53_TEST=deploy-sa@isb-cgc-tp53-test.iam.gserviceaccount.com
+#DEPLOYMENT_CLIENT_EMAIL_TP53_PROD=deploy-sa@isb-cgc-tp53.iam.gserviceaccount.com
+
+#NEED TO ENCODE
+#DEPLOYMENT_KEY_TP53_DEV
+#DEPLOYMENT_KEY_TP53_TEST
+#DEPLOYMENT_KEY_TP53_PROD
 
   auth:
     steps:
@@ -114,8 +124,9 @@ jobs:
             - ./filters.py
             - ./graphs.py
             - ./settings.py
-            - ./LICENSE
             - ./main.py
+            - ./utils.py
+            - ./LICENSE
             - ./requirements.txt
 
   deploy_job:
@@ -137,15 +148,15 @@ jobs:
             sudo -E gcloud app deploy --verbosity=debug ./app.yaml --quiet
 workflows:
   version: 2
-#  build_and_deploy:
-#    jobs:
-#      - build_job
-#      - deploy_job:
-#          requires:
-#            - build_job
-#          filters:
-#            branches:
-#              only:
-#                - master
-#                - tp53-test
-#                - tp53-prod
+  build_and_deploy:
+    jobs:
+      - build_job
+      - deploy_job:
+          requires:
+            - build_job
+          filters:
+            branches:
+              only:
+                - master
+                - tp53-test
+                - tp53-prod

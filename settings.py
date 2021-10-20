@@ -277,7 +277,7 @@ IS_TEST = True
 BQ_DATASET = os.environ.get('BQ_DATASET', 'P53_data')
 GOOGLE_SE_ID = os.environ.get('GOOGLE_SE_ID', 'dab1bee9d7d88fe88')
 # KEY_FILE_NAME = os.environ.get('KEY_FILE_NAME', 'tp53devBQ.key.json')
-TP53_DATA_DIR_URL = os.environ.get('TP53_DATA_DIR_URL', 'https://storage.googleapis.com/tp53-data-files')
+# TP53_DATA_DIR_URL = os.environ.get('TP53_DATA_DIR_URL', 'https://storage.googleapis.com/tp53-data-files')
 DATA_VERSION = os.environ.get('DATA_VERSION', 'r20')
 
 def setup_app(app):
