@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'home_menu';
+    active_submenu = '';
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/search_tp53.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/chosen.jquery.min.js') }}"></script>
+
+
+{% endblock %}
+
+{% block content %}
+<main>
+    {% block subcontent %}
+    {% endblock %}
+</main>
+<div class="spinner">
+    <div class="spinner-group d-flex justify-content-center">
+        {% for n in range(3) %}
+        {% set color_factor = 20 * n %}
+        <div class="spinner-grow mx-1" style="color: hsl(174, 40%, {{ color_factor }}%); width:40px; height:40px;"
+             role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

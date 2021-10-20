@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}Temperature Sensitivity Annotations{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'help';
+    active_submenu = '';
+</script>
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="page-banner">
+        <div class="container">
+            <h1 class="fw-bold p-2 my-0">Temperature Sensitivity Annotations</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="p-2 my-3">
+            <h2>Example in Yeast</h2>
+            <hr>
+            <table class="table table-sm table-striped text-center">
+
+                <thead>
+                <tr>
+                    <th>25&#8451;</th>
+                    <th>30&#8451; (Reference)</th>
+                    <th>37&#8451;</th>
+                    <th>Thermo Sensitivity</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                <tr>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>-</td>
+                    <td>Yes mut_H</td>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Yes mut_H</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>Yes mut_L</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>+</td>
+                    <td>Yes mut_L</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>+</td>
+                    <td>-</td>
+                    <td>Yes mut_L & H</td>
+                </tr>
+
+                </tbody>
+            </table>
+            <div class="fst-italic">+ = active<br>- = inactive</div>
+        </div>
+        <div class="p-2 my-3">
+            <h2>Example in Human Cells</h2>
+            <hr>
+            <table class="table table-sm table-striped text-center">
+                <!--<caption>+ = active<br>- = inactive</caption>-->
+                <thead>
+                <tr>
+                    <th>32&#8451;</th>
+                    <th>37&#8451; (Reference)</th>
+                    <th>Thermo Sensitivity</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>-</td>
+                    <td>Yes mut_H</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>+</td>
+                    <td>Yes mut_L</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="fst-italic">+ = active<br>- = inactive</div>
+        </div>
+    </div>
+</main>
+{% endblock %}

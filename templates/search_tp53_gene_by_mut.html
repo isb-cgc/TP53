@@ -1,0 +1,36 @@
+{% extends "tp53data.html" %}
+{% block title %}Search Functional / Structural Data: by Variant Features{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'search_gene_by_mut';
+</script>
+{% endblock %}
+{% block subcontent %}
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">
+            Search Variant Data: <span class="fw-normal">by Variant Features</span>
+        </h1>
+    </div>
+</div>
+<div id="search_tp53_gmut" class="container">
+    <div class="p-2 my-3">
+        <form action="{{ url_for('results_gene_mut', search_by='gmut') }}" method="POST" id="mutationSearchFormForm">
+            {% with id_prefix='gmut' %}
+            {% include 'form_fields_mutation.html' %}
+            {% endwith %}
+            <div class="form-group row py-3">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-wide darkblue-btn me-2">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                    <button type="reset" class="btn btn-wide btn-outline-dark ">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

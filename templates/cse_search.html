@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}The TP53 Database: Keyword Search Results{% endblock %}
+{% block head %}
+{{ super() }}
+<script async src="https://cse.google.com/cse.js?cx={{google_se_id}}"></script>
+
+<!--<script async src="https://cse.google.com/cse.js?cx=dab1bee9d7d88fe88"></script>-->
+{% endblock %}
+{% block content %}
+<main class="bg-white">
+    <div class="page-banner">
+        <div class="container">
+            <h1 class="fw-bold p-2 my-0">Search Results</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="my-3">
+            <div class="gcse-searchresults-only"></div>
+        </div>
+    </div>
+</main>
+{% endblock %}

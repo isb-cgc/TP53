@@ -1,0 +1,50 @@
+{% extends "tp53data.html" %}
+{% block title %}TP53 Database: View {{ title }} {% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    // active_submenu = 'get_tp53data';
+    dataSet = {{data|tojson|safe}};
+    var bq_view_name = "{{ bq_view_name }}";
+    var db_version = "{{ ver }}";
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/select.dataTables.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/view_data.js') }}"></script>
+
+{% endblock %}
+
+{% block subcontent %}
+
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">View Data: <span class="fw-light">{{ title|safe }}</span></h1>
+    </div>
+</div>
+<div id="view_data" class="py-3 mx-5" data-view-name="{{ bq_view_name }}">
+    <div class="pb-2">
+        <button type="button" class="btn btn-sm darkblue-btn download-btn"><i class="fas fa-download"></i>
+            Download
+        </button>
+    </div>
+    <table id="view-data-table" class="table table-striped table-sm result-table small-font" cellspacing="0"
+           width="100%">
+        <thead>
+        <tr>
+            <th data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="Select all rows on this page">
+                <input class="form-check-input check-all" type="checkbox">
+            </th>
+            {% for col_name in columns %}
+            <th {% if col_name=='PubMedLink' %} class="external_link" {% endif %}>{{ col_name }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}

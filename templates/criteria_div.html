@@ -1,0 +1,20 @@
+<div id="criteria_div" class="my-2 p-1 collapse bg-light rounded-2 border border-1"
+     data-criteria='{{ criteria|tojson }}'>
+    {% if criteria|length == 0 %}
+    <div class="fw-light fst-italic">None Selected</div>
+    {% endif %}
+    {% for criterion in criteria %}
+        <span class="badge rounded-pill bg-secondary">
+            {{ criterion.column_name }}
+            {% if criterion.between_op %}BETWEEN [{{ criterion.vals[0] }} AND {{ criterion.vals[1] }}]</span><br>
+            {% elif criterion.vals|length > 1 %}
+                </span> IN (
+                {% for val in criterion.vals %}
+                <span class="badge rounded-pill bg-secondary">{{ criterion.wrap_with }}{{ val }}{{ criterion.wrap_with }}</span>
+                {% endfor %}
+                )<br>
+            {% else %}
+                = {{ criterion.wrap_with }}{{ criterion.vals[0] }}{{ criterion.wrap_with }}</span><br>
+            {% endif %}
+    {% endfor %}
+</div>

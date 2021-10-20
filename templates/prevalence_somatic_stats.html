@@ -1,0 +1,49 @@
+{% extends "tp53data.html" %}
+{% block title %}TP53 Database: Statistics on Prevalent Somatic Variants{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/chart.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/build_chart_config.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/prevalence_som_stats.js') }}"></script>
+
+<script type="text/javascript">
+    var graph_data = {{ graph_data | tojson | safe }};
+</script>
+
+{% endblock %}
+
+{% block subcontent %}
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">{{ title }}
+        {% if subtitle %}
+        :
+        {% endif %}
+        <span class="ms-2 fw-light">{{ subtitle }}</span></h1>
+    </div>
+</div>
+<div class="container">
+    <div class="my-3">
+        <div class="py-2">
+            <div>
+                <a class="text-start btn btn-sm btn-outline-dark criteria-btn collapsed"
+                   data-bs-toggle="collapse" href="#criteria_div" role="button" aria-label="View/Hide Criteria"
+                   aria-expanded="false"
+                   aria-controls="criteria_div"></a>
+            </div>
+            {% include 'criteria_div.html' %}
+        </div>
+    </div>
+    <div class="p-2">
+        <div class="border rounded-2 p-3 my-3 mx-auto">
+            <div data-graph-id="som_prev" class="btn-group btn-group-sm float-end">
+                <button type="button" class="btn btn-outline-secondary d-img-btn"><i class="fas fa-download"></i> Image
+                </button>
+                <button type="button" class="btn btn-outline-secondary d-data-btn"><i class="fas fa-download"></i> Data
+                </button>
+            </div>
+            <canvas id="som_prev_chart"></canvas>
+        </div>
+    </div>
+</div>
+{% endblock %}

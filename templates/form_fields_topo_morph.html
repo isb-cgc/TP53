@@ -1,0 +1,72 @@
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Topography
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Site of the tumor defined by organ or group of organs, according to the ICD-O nomenclature.
+                 (examples: 'colon', 'brain', 'bronchus and lung'). Note that some tumors are annoted 'Head & Neck, NOS'
+                  or 'Colorectum, NOS' because no detail is given in the original publication (NOS= not otherwise specified).
+                  <br> For the database search tool, a short name is used in place of the ICD-O name (example: 'Lung'
+                   for 'bronchus and lung'). <a target='_blank' rel='noopener noreferrer' href='/topo'>See a numerical list of topographies</a>.
+                   <br><strong>For metastasis, the topography corresponds to the primary site of the tumor and the site
+                    of metastasis is indicated in brackets in the tumor_origin field.</strong>">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-sm-6 col-md-7 text-start">
+            <select name="{{ id_prefix }}_topo_list" class="form-control chosen-select topo-morph-select"
+                    id="{{ id_prefix }}_topo_input"
+                    data-placeholder="Choose Topographies..."
+                    data-topo-morph-assc="{{ topo_morph_assc }}"
+                    data-morph-toggle="#{{ id_prefix }}_morph_input"
+                    aria-label="Topography List" multiple>
+                {% for topo_item in topo_list %}
+                <option value="{{ topo_item.label }}">{{ topo_item.label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                Clear All</a>
+            <br>
+            <a class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                Add All</a>
+        </div>
+    </div>
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Morphology
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Tumor type, including morphology and/or histologic type. The terminology used is based on ICD-O
+                (2nd and 3rd editions) and SNOMED classifications. Terms have been added, such as 'normal tissue' or
+                'na'. <a target='_blank' rel='noopener noreferrer' href='/morph'> See alphabetical list of morphologies.">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-sm-6 col-md-7">
+            <select name="{{ id_prefix }}_morph_list" class="form-control chosen-select"
+                    id="{{ id_prefix }}_morph_input"
+                    data-placeholder="Choose Morphologies..."
+                    aria-label="Morphology List" multiple>
+                {% for morph_item in morph_list %}
+                <option value="{{ morph_item.label }}">{{ morph_item.label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                Clear All</a>
+            <br>
+            <a class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                Add All</a>
+        </div>
+    </div>
+</fieldset>

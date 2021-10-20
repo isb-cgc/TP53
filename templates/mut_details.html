@@ -1,0 +1,813 @@
+{% extends "tp53data.html" %}
+{% block title %}TP53 Database: Variant Details{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'search_tp53data';
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/mut_details.js') }}"></script>
+
+{% endblock %}
+
+{% block subcontent %}
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">Variant Details</h1>
+    </div>
+</div>
+<div class="container">
+    <div id="mut_details" class="p-3">
+        <h2>Variant Selected: {{ mut_desc.c_description }}; {{ mut_desc.ProtDescription }}</h2>
+        <hr>
+        {% if mut_desc and mut_desc.Polymorphism == 'validated' %}
+        
+        <div class="m-3">
+            This gene is a <strong>validated polymorphism</strong>.
+            {% if mut_desc.SNPlink or mut_desc.CLINVARlink or (mut_desc.PubMedlink and mut_desc.PubMedlink != 'NA') %}
+            <span class="fst-italic">
+                Check detailed population frequency or disease association in :
+            </span>
+            {% endif %}
+            
+            {% if mut_desc.SNPlink %}
+            <a class="btn-tiny btn btn-outline-dark"
+               href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs={{mut_desc.SNPlink}}" target="_blank"
+               rel="noopener noreferrer">SNP
+                Database</a>
+            {% endif %}
+            
+            {% if mut_desc.CLINVARlink %}
+            <a class="btn-tiny btn btn-outline-dark"
+               href="http://p53.bii.a-star.edu.sg/aboutp53/snps/snpdetail.php?geneid=X54156&snppos={{mut_desc.CLINVARlink}}"
+               target="_blank" rel="noopener noreferrer"><em>p53</em> Knowledgebase</a>
+            {% endif %}
+            
+            {% if mut_desc.PubMedlink and mut_desc.PubMedlink != 'NA' %}
+            <a class="btn-tiny btn btn-outline-dark"
+               href="https://www.ncbi.nlm.nih.gov/pubmed/{{mut_desc.PubMedlink}}" target="_blank"
+               rel="noopener noreferrer">PubMed</a>
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="my-3">
+            <div class="my-2 p-3 bg-white rounded-2">
+                <button data-download="{{ tsv_data }}" class="text-start btn btn-sm darkblue-btn download-btn">
+                    <i class="fas fa-download"></i> Download
+                </button>
+
+                <div class="my-2 p-3">
+                    <h3>Variant Description</h3>
+                    <hr>
+                    {% if not mut_desc %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% else %}
+                    <table id="mutation-description" class="table table-sm small-font">
+                        <thead>
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Variant nomenclature according to HGVS standards and using the GenBank NC_000017.11 (hg38 assembly) genomic sequence as reference.">
+                                Genomic Description (hg38)
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Variant nomenclature according to HGVS standards and using the NM_000546.5 coding sequence as reference.">
+                                cDNA Description
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Variant description at the protein level as recommended by HGVS and using the Uniprot reference sequence P04637.">
+                                Protein Description
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Location of the variant in the introns or exons in TP53 gene for the reference sequence NM_000546.5.
+                                        Terms occurring in this column are &quot;1-intron&quot;' to &quot;11-intron&quot; and &quot;2-exon&quot;
+                                        to &quot;11-exon&quot;. An &quot;i'&quot; or &quot;e&quot; in front mean that the variant is located within the indicated intron
+                                        or exon with no information on the precise location.">
+                                Exon nb
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Yes or No indicate if the position of the variant falls within a CpG
+                                        site or not.">CpG Site
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Annotation on the position of the variant within conserved nucleotides of p53 consensus, criptic or alternative splice sites:
+                                        consensus SD or SA: the variant is located at conserved dinucleotides involved in p53 consensus splice sites
+                                        (SD for splice donor site, SA for splice acceptor site) producing the full-lenght p53 protein (TA isoform);
+										criptic SD or SA: the variant is located at conserved dinucleotides involved in splice sites (gt or ag)
+                                        that have been observed experimentally in p53 sequences carrying mutated consensus splice sites;
+										alternative SD or SA: conserved dinucleotides involved in splice sites (gt or ag)
+                                        responsible for producing p53 isoforms beta and gamma;
+										alternative: mutated nucleotides are in the &quot;cassette&quot; sequence responsible for producing the p53 delta isoform;
+										no: the position is outside the above mentioned nucleotides.">
+                                Splice Site
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Trinucleotide sequence context of variants. The 5' base and 3' base of the start position of the variant are indicated on the left and right respectively of the mutated base.
+                                        This context is provided on the coding strand of the gene sequence and is based on hg38 TP53 sequence.">
+                                Sequence Context
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="For variants in exons, sequence of the codon in which the variant occurred in NM_000546.5 transcript.">
+                                WT Codon
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Base sequence of the mutated codon in NM_000546.5 transcript.">
+                                Mutant Codon
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Effect of the variant. The terms
+                                        occurring in this column are: missense (change of one amino-acid), nonsense (introduction of a stop codon), FS
+                                        (frameshift), silent (no change in the protein sequence),
+                                        splice (variants located in the two first and two last conserved nucleotides of the introns and are thus predicted to alter splicing,
+                                        or variants that have been shown to alter splicing experimentally), other (inframe deletions or insertions), intronic (variants in introns outside splicing sites), NA (variants upstream in 5' or 3' UTR).">
+                                Effect
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="Variant classification based on protein 3D structure and variant type.
+                                        This classification has been used to derive gentoype-phenotype correlations
+                                        in sporadic breast cancers (Olivier et al., 2006).
+                                        <br/>
+										<b>0</b>=silent+intron;
+                                        <br/>
+										<b>1</b>=missense in DNA-binding loops(L2,H1,L3,L1,S2,S2',H2);
+                                        <br/>
+										<b>2</b>=other missense;
+                                        <br/>
+										<b>3</b>=inFrame del/ins;
+                                        <br/>
+										<b>4</b>=FS+splice+nonsense.">
+                                Effect Group3
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ mut_desc.g_description_GRCh38 }}</td>
+                            <td>{{ mut_desc.c_description }}</td>
+                            <td>{{ mut_desc.ProtDescription }}</td>
+                            <td>{{ mut_desc.ExonIntron }}</td>
+                            <td>{{ mut_desc.CpG_site }}</td>
+                            <td>{{ mut_desc.Splice_site }}</td>
+                            <td>{{ mut_desc.Context_coding_3 }}</td>
+                            <td>{{ mut_desc.WT_codon }}</td>
+                            <td>{{ mut_desc.Mutant_codon }}</td>
+                            <td>{{ mut_desc.Effect }}</td>
+                            <td>{{ mut_desc.EffectGroup3 }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+                <div class="my-2 p-3">
+                    <h3>Predicted or Observed Splicing Effects on Main Transcript</h3>
+                    <hr>
+                    {% if query_result.splice_pred|length == 0 %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% else %}
+                    <table id="predicted-effect-on-splicing" class="table table-sm small-font">
+                        <thead>
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Indicate if the predicted splice site is an acceptor site or donor site.">
+                                Site Type
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Indicate if the predicted splice site correspond to a canonical p53 splice site.">
+                                p53Site
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Fit score of the predicted splice site for the non-mutated sequence (scores are specific of prediction tools).">
+                                WT Score
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Fit score of the predicted splice site for the mutated sequence (scores are specific of prediction tools).">
+                                MUT Score
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Predicted effect of the variant on the predicted splice site.">
+                                Variation
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Prediction tool used.">
+                                Source
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in query_result.splice_pred %}
+                        <tr>
+                            <td>{{ row.Splice_Site_Type or '' }}</td>
+                            <td>{{ row.p53SpliceSite or '' }}</td>
+                            <td>{{ row.WT_score or '' }}</td>
+                            <td>{{ row.Mutant_score or '' }}</td>
+                            <td>{{ row.Variation or '' }}</td>
+                            <td>{{ row.Source or '' }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+
+                <div class="my-2 p-3">
+                    <h3>Protein Features</h3>
+                    <hr>
+                    {% if not prot_desc %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% else %}
+                    <table id="protein-description" class="table table-sm small-font">
+                        <thead>
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="2D and 3D motifs where the variant is located according to structures described in
+                                        Cho et al. (1994) and May and May (1999)">
+                                Structural Motif
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Function of the domain in which the mutated residue is located">
+                                Domain Function
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Known function of the wild-type residue. When the function is not known but the structure
+							            is known, the solvent accessibility (SA) of the residue is indicated by the terms buried, exposed or partially exposed
+							            (SA calculated with Naccess and 1TSR (chain B) structure of p53:
+										<20 = buried, >
+										=20 and
+										<50 = partially exposed, >
+										=50 = exposed).">
+                                Residue Function
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="&quot;Yes&quot; indicate the a variant is located in a codon defined as a cancer hotspot by Chang (2017).">
+                                Cancer Hotspot
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Variant rate of amino-acid substitution calculated by summing up the nucleotide substitution
+                                        rates. This value is only valid for amino-acid substitutions
+                                        resulting from single nucleotide substitutions.">
+                                Variant Rate
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="SwissProt identification number with link to the variant page of the SwissProt database.">
+                                SwissProt
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ prot_desc.Structural_motif or '' }}</td>
+                            <td>{{ prot_desc.Domain_function or '' }}</td>
+                            <td>{{ prot_desc.Residue_function or '' }}</td>
+                            <td>{{ prot_desc.Hotspot or '' }}</td>
+                            <td>{{ prot_desc.Mut_rate or '' }}</td>
+                            <td><a target="_blank" rel="noopener noreferrer"
+                                   href="https://web.expasy.org/variant_pages/VAR_{{prot_desc.SwissProtLink}}.html">
+                                {{ prot_desc.SwissProtLink or '' }}</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+                <div class="my-2 p-3">
+                    <h3>Systematic Assessment of Transactivation Capacities in Yeast and Saos2 Assays by <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://www.ncbi.nlm.nih.gov/pubmed/12826609">Kato
+                        (2003)</a> and <a target="_blank" rel="noopener noreferrer"
+                                          href="https://www.ncbi.nlm.nih.gov/pubmed/15781620">Kakudo
+                        (2005)</a>
+                    </h3>
+                    <hr>
+                    {% if not sys_assess %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% else %}
+                    <table id="assessment" class="table table-sm small-font">
+                        <thead>
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in yeast functional assays
+							            and expressed as percent of wild-type activity.">
+                                WAF1
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in yeast functional assays
+							            and expressed as percent of wild-type activity.">
+                                MDM2
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in yeast functional assays
+							            and expressed as percent of wild-type activity.">
+                                BAX
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in yeast functional assays
+							            and expressed as percent of wild-type activity.">
+                                H1433s
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in yeast functional assays
+							            and expressed as percent of wild-type activity.">
+                                AIP1
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in yeast functional assays
+							            and expressed as percent of wild-type activity.">
+                                GADD45
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in yeast functional assays
+							            and expressed as percent of wild-type activity.">
+                                NOXA
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in yeast functional assays
+							            and expressed as percent of wild-type activity.">
+                                P53R2
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in the human cell-line Saos-2.
+                                Values are normalized with p53-null vector values and expressed as percent of wild-type activity.">
+                                WAF1 (Saos2)
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in the human cell-line Saos-2.
+                                Values are normalized with p53-null vector values and expressed as percent of wild-type activity.">
+                                MDM2 (Saos2)
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in the human cell-line Saos-2.
+                                Values are normalized with p53-null vector values and expressed as percent of wild-type activity.">
+                                BAX (Saos2)
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in the human cell-line Saos-2.
+                                Values are normalized with p53-null vector values and expressed as percent of wild-type activity.">
+                                h1433s (Saos2)
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in the human cell-line Saos-2.
+                                Values are normalized with p53-null vector values and expressed as percent of wild-type activity.">
+                                AIP1 (Saos2)
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Promoter-specific transcriptional activity measured in the human cell-line Saos-2.
+                                Values are normalized with p53-null vector values and expressed as percent of wild-type activity.">
+                                PUMA (Saos2)
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ sys_assess.WAF1nWT if sys_assess.WAF1nWT != None }}</td>
+                            <td>{{ sys_assess.MDM2nWT if sys_assess.MDM2nWT != None }}</td>
+                            <td>{{ sys_assess.BAXnWT if sys_assess.BAXnWT != None }}</td>
+                            <td>{{ sys_assess.h1433snWT if sys_assess.h1433snWT != None }}</td>
+                            <td>{{ sys_assess.AIP1nWT if sys_assess.AIP1nWT != None }}</td>
+                            <td>{{ sys_assess.GADD45nWT if sys_assess.GADD45nWT != None }}</td>
+                            <td>{{ sys_assess.NOXAnWT if sys_assess.NOXAnWT != None }}</td>
+                            <td>{{ sys_assess.P53R2nWT if sys_assess.P53R2nWT != None}}</td>
+                            <td>{{ sys_assess.WAF1nWT_Saos2 if sys_assess.WAF1nWT_Saos2 != None }}</td>
+                            <td>{{ sys_assess.MDM2nWT_Saos2 if sys_assess.MDM2nWT_Saos2 != None }}</td>
+                            <td>{{ sys_assess.BAXnWT_Saos2 if sys_assess.BAXnWT_Saos2 != None }}</td>
+                            <td>{{ sys_assess.h1433snWT_Saos2 if sys_assess.h1433snWT_Saos2 != None }}</td>
+                            <td>{{ sys_assess.AIP1nWT_Saos2 if sys_assess.AIP1nWT_Saos2 != None }}</td>
+                            <td>{{ sys_assess.PUMAnWT_Saos2 if sys_assess.PUMAnWT_Saos2 != None }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+                <div class="my-2 p-3">
+                    <h3>Predicted or Observed Impacts on Protein Functions</h3>
+                    <hr>
+                    {% if not prot_pred %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% else %}
+                    <table id="predicted-effect-on-protein" class="table table-sm small-font">
+                        <thead>
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Functional classification based on the overall transcriptional activity (TA) on 8 different promoters as measured in yeast assays by Kato et al.
+							            For each mutant, the median of the 8 promoter-specific activities (expressed as percent of the wild-type protein) is calculated and missense variants are classified as &quot;non-functional&quot; if the median is <=20,
+							            &quot;partially functional&quot; if the median is >20 and <=75, &quot;functional&quot; if the median is >75 and <=140, and &quot;supertrans&quot; if the median is >140.">
+                                Transactivation Class
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="Dominant-negative (DN) Effect on transactivation by wild-type p53.
+                                        Classification established for  mutants for which available DN activity on more than
+                                        2 p53-response elements is available. Data are based on WAF1 and RGC promoters in various studies
+                                        (these promoters were the most frequently used in different studies to assess DNE status), and on
+                                        two large systematic study (Dearth et al that includes 76 mutants;
+                                        Monti et al that includes 104 mutants).
+                                        Mutants were classified as <b>&quot;Yes&quot;</b> if they had dominant-negative activity on both WAF1 and
+                                        RGC promoters, or on all promoters in the large studies, <b>&quot;Moderate&quot;</b> if they had dominant-negative
+                                        activity on some but not all promoters, and <b>&quot;No&quot;</b> if they had no dominant-negative
+                                        activity on both WAF1 and RGC promoters, or none of the promoters in the large studies.">
+                                DNE
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="Functional classification for loss of growth-suppression and dominant-negative activities based on Z-scores from Giacomelli et al., (2018) study:
+                                        <br/>DNE_LOF = p53WTNutlin3 Z-score >= 0.61 and Etoposide Z-score <= -0.21;
+                                        <br/>notDNE_notLOF = p53WTNutlin3 Z-score < 0.61 and Etoposide Z-score > -0.21;
+                                        <br/>notDNE_LOF if p53WTNutlin3 Z-score < 0.61 and Etoposide Z-score <= -0.21;
+                                        <br/>unclass = others">
+                                DNE_LOF Class
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="Missense variant functional predictions by an optimized Align-GVGD tool. Variants classified as &quot;C0&quot; are considered tolerated while other classes are considered damaging.">
+                                Align-GVGD
+                            </th>
+
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="Missense variant functional predictions by BayesDel tool (Feng 2017) used without allele frequency.
+                                        <br/>Score >=0.16: damaging
+                                        <br/>Score <0.16: tolerated
+                                        <br/>Further details in Fortuno (2018).">
+                                BayesDel
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="Missense variant functional predictions by REVEL tool (Ioannidis 2016).
+                                        <br/>Score >=0.5: damaging
+                                        <br/>Score <0.5: tolerated
+                                        <br/>Further details in Fortuno (2018).">
+                                REVEL
+                            </th>
+
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="Functional classification based on SIFT program using default settings.
+                                        Missense variants are classified as &quot;damaging&quot; or &quot;tolerated&quot;.">
+                                SIFT
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="Functional classification based on Polyphen2 HVAR annotations retrieved with Annovar software:
+                                        <br/>D: probably Damaging
+                                        <br/>P: Possibly damaging
+                                        <br/>B: Benign.">
+                                Polyphen2
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Functional predictions derived from a computer model that takes into account
+                                        the 3D structure of WT and mutant proteins and is trained on the transactivaton dataset from
+                                        Kato et al. Variants are classified as &quot;functional&quot; or &quot;non-functional&quot;.">
+                                Structure Function
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ prot_pred.TransactivationClass or '' }}</td>
+                            <td>{{ prot_pred.DNEclass or '' }}</td>
+                            <td>{{ prot_pred.DNE_LOFclass or '' }}</td>
+                            <td>{{ prot_pred.AGVGDClass or '' }}</td>
+                            <td>{{ prot_pred.BayesDel or '' }}</td>
+                            <td>{{ prot_pred.REVEL or '' }}</td>
+                            <td>{{ prot_pred.SIFTClass or '' }}</td>
+                            <td>{{ prot_pred.Polyphen2 or '' }}</td>
+                            <td>{{ prot_pred.StructureFunctionClass or '' }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+                <div class="my-2 p-3">
+                    <h3>Predicted Effect on <em>p53</em> <a href="/p53IsoformsPredictions">Protein Isoforms</a></h3>
+                    <hr>
+                    {% if query_result.p53_pred|length == 0 %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% else %}
+                    <table id="predicted-effect-on-p53" class="table table-sm small-font">
+                        <thead>
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Indicate if the variant fall within the canonical isoform coding for the full length p53 protein.">
+                                TAp53 Alpha
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Indicate if the variant fall within the specified isoform.">
+                                TAp53 Beta
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Indicate if the variant fall within the specified isoform.">
+                                TAp53 Gamma
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Indicate if the variant fall within the specified isoform.">
+                                Delta40p53 Alpha
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Indicate if the variant fall within the specified isoform.">
+                                Delta40p53 Beta
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Indicate if the variant fall within the specified isoform.">
+                                Delta40p53 Gamma
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Indicate if the variant fall within the specified isoform.">
+                                Delta133p53 Alpha
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Indicate if the variant fall within the specified isoform.">
+                                Delta133p53 Beta
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Indicate if the variant fall within the specified isoform.">
+                                Delta133p53 Gamma
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Indicate if the variant fall within the specified isoform.">
+                                Deltap53 Alpha
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in query_result.p53_pred %}
+                        <tr>
+                            <td>{{ row.TAp53 or '' }}</td>
+                            <td>{{ row.TAp53beta or '' }}</td>
+                            <td>{{ row.TAp53gamma or '' }}</td>
+                            <td>{{ row.delta40p53 or '' }}</td>
+                            <td>{{ row.delta40p53beta or '' }}</td>
+                            <td>{{ row.delta40p53gamma or '' }}</td>
+                            <td>{{ row.delta133p53 or '' }}</td>
+                            <td>{{ row.delta133p53beta or '' }}</td>
+                            <td>{{ row.delta133p53gamma or '' }}</td>
+                            <td>{{ row.deltap53 or '' }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+                <div class="my-2 p-3">
+                    <h3>Various Activities Assessed in Yeast or Human Assays</h3>
+                    <hr>
+                    {% if query_result.vars_act|length == 0 %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% else %}
+                    <table id="various-activities" class="table table-sm small-font clientside-processed">
+                        <thead>
+
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="WTp53 functional property that is lost by the mutant protein.<br/>
+										 Same annotations as in previous column, with <b>partial</b>
+										  indicating that the loss of function is partial (residual activity).">
+                                Lost Function
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="Functional property of mutant that is similar to the activity of the wild-type protein.
+                                        - Activities of mutant proteins in human or yeast cells:
+                                        <b>DNAb</b> = DNA binding capacity tested by gel-shift or ChIP assay;
+                                        <b>TA</b> = transactivation of a reporter gene under the control of a p53-response element
+                                        (indicated in brakets);
+                                        <b>TR</b> = transrepression of a reporter gene under the control of a gene-specific response-element
+                                        (name of gene indicated in brakets);
+                                        <b>TETR</b> = capacity to form tetramers;
+                                        <b>x binding</b> = interaction with protein x;
+										<b>drug sensitivity</b> = conserved capacity to mediate cytotoxic effect of drug.
+                                        - Activities of over-expressed mutant proteins in human cells:
+                                        <b>APO</b> = induction of apoptosis;
+                                        <b>GS</b> = growth suppression measured by colony forming assay (CFA), establishment of stable clones, or other proliferation assay;
+                                        <b>GA</b> = cell cycle arrest measured by FACS;
+                                        <b>TUMOR-</b> = inhibition of tumorigenicity in nude mice;
+                                        <b>up/downregulation</b> = induction or repression of an endogenous GENE (in upper-case letters) or protein (in lowercase letters);
+                                        <b>HR repression</b> = inhibition of Homologous Recombination;
+                                        - Biological effect after over-expression in mouse or rat embryonic fibroblasts:
+                                        <b>TRANSF-</b> = ability to counteract the transformation of primary cells induced by the co-transfection of ras or another
+                                        transformant oncogene, such as HPV E7;
+                                        &quot;<b>super</b>&quot; indicates that the activity of mutant protein is higher than the one of wtp53 (on transactivation, induction of apoptosis, DNA binding or growth suppression).">
+                                Retained Function
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="Functional properties displayed by the
+                                        mutant but not by the wild-type protein.<br/>
+                                        - Activities of over-expressed mutant proteins in human or yeast cells:<br/>
+                                        same annotations as in column 9, plus:<br/>
+                                        <b>TUMOR+</b> = confer tumorigenic property (in nude mice) to transfected cells;<br/>
+                                        <b>p73 interference</b> = ability to counteract p73 activity when both proteins are expressed in a cell system;<br/>
+                                        <b>Drug resistance</b> = confer resistance to a cytotoxic drug;<br/>
+                                        <b>Growth advantage</b> = increase growth rate.<br/>
+                                        - Biological effect after over-expression in mouse or rat embryonic fibroblasts:<br/>
+                                        <b>TRANSF+</b> = ability to cooperate with ras or another transformant oncogene, such as HPV E7, in the transformation of
+                                            primary cells.<br/>
+                                        &quot;<b>moderate</b>&quot; indicates that the mutant protein has a partial effect on the activity studied;
+                                        &quot;<b>no</b>&quot; indicates that the mutant protein has no effect on the activity studied.">
+                                Gain of Function
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="Inhibition of the wild-type protein by
+                                        mutant proteins in <strong>transactivation or cell growth assays</strong>.<br/>
+                                        - <b>Yes</b> = the mutant protein counteract the activity of the wild-type
+                                        protein when the two proteins are co-expressed in human or yeast
+                                        cells (the p53-response element or cell growth assay performed is indicated in brakets);<br/>
+                                        - <b>No</b> = the mutant protein does not counteract the effects of the
+                                        wild-type protein.<br/>
+                                        &quot;<b>moderate</b>&quot; indicates that the mutant protein has a partial inhibiting effect on
+                                        the wild-type protein.">
+                                Dominant Negative Activity
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="Sensitivity of mutant to temperature changes in <strong>transactivation assays </strong>
+                                        (the p53-RE is indicated in brackets), and in other experimental assays (specified in brackets).<br/>
+										<b>Yes</b> = the activity of the mutant protein is affected by the
+							             temperature at which is preformed the test;<br/>
+										 &nbsp;&nbsp;<b>mut_H</b> = the protein is inactive (mutant) at higher temperatures;<br/>
+										 &nbsp;&nbsp;<b>mut_L</b> = the protein is inactive (mutant) at lower temperatures;<br/>
+										<b>No</b> = the activity of the mutant protein is NOT affected by the temperature at which is preformed the test.<br/>
+										<br/>
+										Note that functional tests are performed at different temperature in yeast (30ÝC) and human (37ÝC) cells.">
+                                Temperature Sensitivity
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-html="true"
+                                data-bs-placement="top"
+                                title="Name of cell-line(s) that have been
+                                        used for testing mutant activities. &quot;<b>(endo)</b>&quot; indicates that activities have been tested on endogenous mutants.">
+                                Cell Lines
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="PMID link to original publication.">PubMed
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for row in query_result.vars_act %}
+                        <tr>
+                            <td>{{ row.Loss_of_Function or '' }}</td>
+                            <td>{{ row.Conserved_WT_Function or '' }}</td>
+                            <td>{{ row.Gain_of_Function or '' }}</td>
+                            <td>{{ row.Dominant_Negative_Activity or '' }}</td>
+                            <td>{{ row.Temperature_Sensitivity or '' }}</td>
+                            <td>{{ row.Cell_lines or '' }}</td>
+                            <td><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank"
+                                   rel="noopener noreferrer">{{ row.PubMed
+                                }}</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+
+                </div>
+                <div class="my-2 p-3">
+                    <h3>Mouse Models Engineered with the Selected Mutant</h3>
+                    <hr>
+                    {% if query_result.mouse|length == 0 %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% else %}
+                    <table id="mouse-models" class="table table-sm  small-font clientside-processed">
+                        <thead>
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Model name as indicated in caMOD or original publication.">
+                                Model descriptor
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="List of organs affected or targeted by transgene.">Targeted or affected organs
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Model ID from caMOD database.">caMOD
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="PMID link to original publication.">PubMed
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in query_result.mouse %}
+                        <tr>
+                            <td>{{ row.ModelDescription|safe }}</td>
+                            <td>{{ row.TumorSites or '' }}</td>
+                            <td>
+                                {{ row.caMOD_ID }}
+                                <!--<a href="https://cancermodels.nci.nih.gov/camod/ViewModelAction.do?aModelID={{ row.caMOD_ID }}&unprotected_method=populateModelCharacteristics" target="_blank" rel="noopener noreferrer">{{ row.caMOD_ID or '' }}</a>-->
+                            </td>
+                            <td><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank"
+                                   rel="noopener noreferrer">{{ row.PubMed
+                                }}</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+                <div class="my-2 p-3">
+                    <h3>Experimentally Induced Variants</h3>
+                    <hr>
+                    {% if query_result.induced|length == 0 %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% else %}
+                    <table id="induced-mutations" class="table table-sm small-font">
+                        <thead>
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Agents to which were exposed the cells.">Exposure
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Experimental assay/model used.">Model
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="PMID link to original publication.">PubMed
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in query_result.induced %}
+                        <tr>
+                            <td>{{ row.Exposure }}</td>
+                            <td>{{ row.Model }}</td>
+                            <td><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{ row.PubMed }}" target="_blank"
+                                   rel="noopener noreferrer">{{ row.PubMed
+                                }}</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

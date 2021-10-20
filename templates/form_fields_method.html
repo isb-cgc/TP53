@@ -1,0 +1,59 @@
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Start Material
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Indicates if DNA or RNA was screened for variants.">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-sm-8">
+            {% for sm_item in cl_start_material_list %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_start_material"
+                       value="{{ sm_item.label }}"
+                       id="{{ id_prefix }}_sm_{{ sm_item.label|lower|replace('/','_') }}">
+                <label class="form-check-label"
+                       for="{{ id_prefix }}_sm_{{ sm_item.label|lower|replace('/','_') }}">
+                    {{ sm_item.label }}
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Exon Analyzed
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Exons that have been screened for variant. In the downloaded file, '-1' or 'TRUE' indicate that
+                 the exon has been screened and '0' or 'FALSE' indicate that it has not been screened.">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-sm-6 col-md-7">
+            <select name="{{ id_prefix }}_exon_analyzed" class="form-control chosen-select"
+                    id="{{ id_prefix }}_exon_analyzed"
+                    data-placeholder="Choose Exons..." aria-label="Exon Analyzed List"
+                    multiple>
+                {% for n in range(2,12) %}
+                <option value="exon{{ n }}">Exon {{ n }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                Clear All</a>
+            <br>
+            <a class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                Add All</a>
+        </div>
+    </div>
+</fieldset>
