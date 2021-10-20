@@ -52,10 +52,12 @@ Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_p
     ],
 })
 
-GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, settings.KEY_FILE_NAME)
+GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'privatekey.json')
+# GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, settings.KEY_FILE_NAME)
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
 
 project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
+# project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
 bq_builder.set_project_dataset(proj_id=project_id, d_set=settings.BQ_DATASET)
 
 bigquery_client = bigquery.Client()
@@ -350,13 +352,17 @@ def get_paginated_results(sql_stm, sql_cnt_stm):
 
 def run_bq_sql(sql_stm):
     query_job = bigquery_client.query(sql_stm)
+    # error_msg = None
+
     try:
         query_result = query_job.result(timeout=30)
-    except BadRequest:
-        error_msg = "There was a problem while running the BigQuery job"
+        return query_result
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
-    return query_result
+        raise error_msg
+    except (BadRequest, Exception):
+        error_msg = "There was a problem while running the BigQuery job"
+        raise error_msg
 
 
 @app.route("/<prefix>_query", methods=['GET', 'POST'])
@@ -929,12 +935,16 @@ def show(page):
 # return sitemap file (urllist.txt or sitemap.xml)
 @app.route('/<txt_url>.txt')
 @app.route('/<xml_url>.xml')
-def get_sitemap_file(txt_url=None, xml_url=None):
+@app.route('/<google_site_ver>.html')
+def get_sitemap_file(txt_url=None, xml_url=None, google_site_ver=None):
     url_list_filename = None
     if txt_url == 'urllist':
         url_list_filename = os.environ.get('URL_LIST_FILENAME', 'dev_urllist.txt')
     elif xml_url == 'sitemap':
         url_list_filename = os.environ.get('SITEMAP_FILENAME', 'dev_sitemap.xml')
+    elif google_site_ver and google_site_ver.index('google')==0:
+        print(google_site_ver.index('google'))
+        return send_from_directory(app.root_path, 'templates/{filename}.html'.format(filename=google_site_ver))
 
     if url_list_filename:
         return send_from_directory(app.root_path, url_list_filename)
@@ -969,9 +979,4 @@ def warmup():
 settings.setup_app(app)
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        TIER = sys.argv[1]
-        if TIER.lower() != 'test' and TIER.lower() != 'prod' and TIER.lower() != 'uat':
-            TIER = 'test'  # default DATA SET
-        bq_builder.set_project_dataset(proj_id=project_id, d_set=TIER)
     app.run(host='127.0.0.1', port=8080, debug=True)
