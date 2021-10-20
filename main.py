@@ -46,6 +46,7 @@ Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_p
         '*.google-analytics.com',
         '*.googleapis.com',
         "*.fontawesome.com",
+        "*.stolaf.edu",
         "\'unsafe-inline\'",
         "\'unsafe-eval\'",
         'data:'
@@ -842,7 +843,7 @@ def view_full_data(dataset):
 def view_data():
     bq_view_name = request.args.get('bq_view_name', None)
     title = TITLE_BQVIEW_MAP[bq_view_name]
-    columns, data = utils.load_csv_file(settings.TP53_DATA_DIR_URL, '{filename}_{version}.csv'.format(filename=bq_view_name, version=settings.DATA_VERSION))
+    columns, data = utils.load_csv_file(settings.TP53_STATIC_URL, '{filename}_{version}.csv'.format(filename=bq_view_name, version=settings.DATA_VERSION))
     return render_template("view_data.html", title=title,  bq_view_name=bq_view_name, ver=settings.DATA_VERSION, columns=columns, data=data)
 
 
@@ -919,7 +920,7 @@ def results_cell_line_mutation():
 
 @app.route("/get_tp53data")
 def get_tp53data():
-    return render_template("get_tp53data.html", TP53_DATA_DIR_URL=settings.TP53_DATA_DIR_URL, ver=settings.DATA_VERSION)
+    return render_template("get_tp53data.html", TP53_DATA_DIR_URL='{static_dir}/data'.format(static_dir=settings.TP53_STATIC_URL), ver=settings.DATA_VERSION)
 
 
 # single page rendering
