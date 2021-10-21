@@ -14,6 +14,7 @@
 # limitations under the License.
 ###
 
+import logging
 # import re
 
 # change dataset you want to use
