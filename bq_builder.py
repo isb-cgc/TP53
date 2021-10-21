@@ -17,24 +17,26 @@
 # import re
 
 # change dataset you want to use
-global project_id
-project_id = 'isb-cgc-tp53-dev'
+# global project_id
+# project_id = 'isb-cgc-tp53-dev'
 
-global dataset
-dataset = 'TP53_data'  # default
+# global dataset
+# dataset = 'P53_data'  # default
 
 global bq_proj_dataset
-bq_proj_dataset = "{projectId}.{dataset}".format(projectId=project_id, dataset=dataset)
+bq_proj_dataset = "{projectId}.{dataset}".format(projectId='isb-cgc-tp53-dev', dataset='P53_data')
+print('bq_proj_dataset set up =====')
 
 
-def set_project_dataset(proj_id='isb-cgc-tp53-dev', d_set='TP53_data'):
-    global project_id
-    global dataset
-    global bq_proj_dataset
-    project_id = proj_id
-    dataset = d_set
+def set_project_dataset(proj_id='isb-cgc-tp53-dev', d_set='P53_data'):
+    # global project_id
+    # global dataset
+    # global bq_proj_dataset
+    # project_id = proj_id
+    # dataset = d_set
 
     bq_proj_dataset = "{projectId}.{dataset}".format(projectId=proj_id, dataset=d_set)
+    print('bq_proj_dataset set up AGAIN TO ====='+bq_proj_dataset)
 
 def build_group_sum_graph_query(criteria, view, group_by):
     query_temp = """
