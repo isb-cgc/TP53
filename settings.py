@@ -17,9 +17,10 @@
 import os
 from flask import json
 import utils
+import logging
 
-DEPLOYMENT_PROJECT_ID=os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
-print('DEPLOYMENT_PROJECT_ID SETUP======'+DEPLOYMENT_PROJECT_ID)
+BQ_GCP=os.environ.get('BQ_GCP', 'isb-cgc-tp53-dev')
+logging.info('BIGQUERY_GCP SETUP======'+BQ_GCP)
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
 IS_TEST = os.environ.get('IS_TEST', True)
 
