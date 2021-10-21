@@ -57,8 +57,8 @@ Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_p
 GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'privatekey.json')
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
 
-project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
-bq_builder.set_project_dataset(proj_id=project_id, d_set=settings.BQ_DATASET)
+# project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
+bq_builder.set_project_dataset(proj_id=settings.DEPLOYMENT_PROJECT_ID, d_set=settings.BQ_DATASET)
 
 bigquery_client = bigquery.Client()
 
