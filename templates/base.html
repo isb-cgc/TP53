@@ -6,20 +6,19 @@
     <meta name="description"
           content="The  TP53 Database: knowledgebase and statistical tools for the analysis of TP53 gene variants in human cancers">
     <title>{% block title %}{% endblock %}</title>
-    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data: fonts.gstatic.com;">-->
+
+    {% if not config["TESTING"] %}
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-FYLD05GBR2"></script>-->
-    <!--<script>-->
-        <!--window.dataLayer = window.dataLayer || [];-->
-
-        <!--function gtag() {-->
-            <!--dataLayer.push(arguments);-->
-        <!--}-->
-
-        <!--gtag('js', new Date());-->
-
-        <!--gtag('config', 'G-FYLD05GBR2');-->
-    <!--</script>-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FYLD05GBR2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-FYLD05GBR2');
+    </script>
+    {% endif %}
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/libs/jquery-3.6.0.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/libs/popper.min.js') }}"></script>

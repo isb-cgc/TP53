@@ -20,7 +20,7 @@ import utils
 
 
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
-# IS_TEST = os.environ.get('IS_TEST', True)
+IS_TEST = os.environ.get('IS_TEST', True)
 
 M_C_DESC_FILE = 'M_C_DESC.TXT.LIST'
 M_P_DESC_FILE = 'M_P_DESC.TXT.LIST'
