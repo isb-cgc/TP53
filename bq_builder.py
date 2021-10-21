@@ -37,6 +37,7 @@ def set_project_dataset(proj_id='isb-cgc-tp53-dev', d_set='P53_data'):
     # dataset = d_set
 
     bq_proj_dataset = "{projectId}.{dataset}".format(projectId=proj_id, dataset=d_set)
+    print('bq_proj_dataset set up AGAIN TO ====='+bq_proj_dataset)
     logging.info('bq_proj_dataset set up AGAIN TO ====='+bq_proj_dataset)
 
 def build_group_sum_graph_query(criteria, view, group_by):
