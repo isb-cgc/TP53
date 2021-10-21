@@ -23,7 +23,6 @@ import bq_builder
 import settings
 import concurrent.futures
 import requests
-import sys
 import csv
 import utils
 import graphs
@@ -46,7 +45,6 @@ Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_p
         '*.google-analytics.com',
         '*.googleapis.com',
         "*.fontawesome.com",
-        "*.stolaf.edu",
         "\'unsafe-inline\'",
         "\'unsafe-eval\'",
         'data:'
@@ -54,11 +52,9 @@ Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_p
 })
 
 GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'privatekey.json')
-# GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, settings.KEY_FILE_NAME)
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
 
 project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
-# project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
 bq_builder.set_project_dataset(proj_id=project_id, d_set=settings.BQ_DATASET)
 
 bigquery_client = bigquery.Client()
@@ -119,49 +115,9 @@ def results_gene_mut(search_by=None):
         criteria = filters.get_mut_id_criteria()
     return render_template("results_gene_mutation.html", criteria=criteria)
 
-#
-#
-# @app.route("/results_gene_dist", methods=['GET', 'POST'])
-# def results_gene_dist():
-#     criteria = filters.get_param_val('criteria')
-#     if criteria:
-#         include_criteria = json.loads(criteria)
-#     else:
-#         include_criteria = filters.get_mut_id_criteria()
-#     criteria_map = {
-#         'include': include_criteria,
-#         'exclude': []
-#     }
-#     action = filters.get_param_val('action')
-#     if action == 'get_gv_tumor_dist':
-#         gv_tumor_dist_tables = {
-#             'somatic_tumor_dist': 'SomaticView',
-#             'germline_tumor_dist': 'GermlineView'
-#         }
-#         template = 'mutation_stats.html'
-#         subtitle = 'Tumor Site Distribution of Variants'
-#         graph_configs = {}
-#         sql_maps = {}
-#         graph_configs[action] = graphs.build_graph_configs(action)['tumor_dist']
-#         for dist_table in gv_tumor_dist_tables:
-#             sql_maps[dist_table] = (graphs.build_graph_sqls(graph_configs, criteria_map=criteria_map, table=gv_tumor_dist_tables[dist_table])[action])
-#     elif action == 'get_mutation_dist':
-#         table = 'MutationView'
-#         template = 'mutation_dist_stats.html'
-#         subtitle = 'Variant Distributions'
-#         graph_configs = graphs.build_graph_configs(action, table)
-#         sql_maps = graphs.build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
-#     else:
-#         return render_template('error.html')
-#     graph_result = graphs.build_graph_data(bigquery_client, sql_maps)
-#     return render_template(template, criteria_map=criteria_map, title='Statistics on Functional/Structural Data', subtitle=subtitle,
-#                            graph_result=graph_result)
-
 
 @app.route("/get_distribution", methods=['GET', 'POST'])
 def get_distribution():
-    criteria_map = {}
-    # if request.method == 'POST':
     criteria = filters.get_param_val('criteria')
     if criteria:
         cri = json.loads(criteria)
@@ -939,10 +895,10 @@ def show(page):
 @app.route('/<google_site_ver>.html')
 def get_sitemap_file(txt_url=None, xml_url=None, google_site_ver=None):
     url_list_filename = None
-    if txt_url == 'urllist':
-        url_list_filename = os.environ.get('URL_LIST_FILENAME', 'dev_urllist.txt')
-    elif xml_url == 'sitemap':
-        url_list_filename = os.environ.get('SITEMAP_FILENAME', 'dev_sitemap.xml')
+    if txt_url.lower() == 'urllist':
+        url_list_filename = os.environ.get('SITEMAP_LIST_FILE', 'urllist.txt')
+    elif xml_url.lower() == 'sitemap':
+        url_list_filename = os.environ.get('SITEMAP_XML_FILE', 'sitemap.xml')
     elif google_site_ver and google_site_ver.index('google')==0:
         print(google_site_ver.index('google'))
         return send_from_directory(app.root_path, 'templates/{filename}.html'.format(filename=google_site_ver))

@@ -54,25 +54,6 @@ commands:
             echo "export DEPLOYMENT_BUCKET=${DEP_BUCKET}${SUFFIX}" >> $BASH_ENV
             echo "export STATIC_BUCKET=${BUCKET}${SUFFIX}" >> $BASH_ENV
 
-#DEP_BUCKET_NAME=tp53-dep-files
-#BUCKET=tp53-static-files
-#SITEMAP_XML_FILE=sitemap.xml
-#SITEMAP_LIST_FILE=urllist.txt
-#PROJECT_ID=isb-cgc-tp53
-#WEBAPP_RUNTIME_SA_KEY=runtime-sa.key.json
-
-#GSE_ID_DEV=dab1bee9d7d88fe88
-#GSE_ID_TEST=e6c70a3643842b1d6
-#GSE_ID_PROD=04bb5e112c9ab6e0b
-
-#DEPLOYMENT_CLIENT_EMAIL_TP53_DEV=deploy-sa@isb-cgc-tp53-dev.iam.gserviceaccount.com
-#DEPLOYMENT_CLIENT_EMAIL_TP53_TEST=deploy-sa@isb-cgc-tp53-test.iam.gserviceaccount.com
-#DEPLOYMENT_CLIENT_EMAIL_TP53_PROD=deploy-sa@isb-cgc-tp53.iam.gserviceaccount.com
-
-#NEED TO ENCODE
-#DEPLOYMENT_KEY_TP53_DEV
-#DEPLOYMENT_KEY_TP53_TEST
-#DEPLOYMENT_KEY_TP53_PROD
 
   auth:
     steps:
