@@ -49,7 +49,7 @@ commands:
             echo "export DEPLOYMENT_KEY=\"${KEY}\"" >> $BASH_ENV
             echo "export DEPLOYMENT_CLIENT_EMAIL=${CLIENT_EMAIL}" >> $BASH_ENV
             echo "export DEPLOYMENT_PROJECT_ID=${PROJECT_ID}${SUFFIX}" >> $BASH_ENV
-            echo "setting DEPLOYMENT_PROJECT_ID to ${DEPLOYMENT_PROJECT_ID}"
+            echo "setting DEPLOYMENT_PROJECT_ID to ${PROJECT_ID}${SUFFIX}"
             echo "export GOOGLE_SE_ID=${GSE_ID}" >> $BASH_ENV
             echo "export IS_TEST=${IS_TEST_ENV}" >> $BASH_ENV
             echo "export DEPLOYMENT_BUCKET=${DEP_BUCKET}${SUFFIX}" >> $BASH_ENV
