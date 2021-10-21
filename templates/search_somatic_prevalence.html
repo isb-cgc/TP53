@@ -1,0 +1,108 @@
+{% extends "tp53data.html" %}
+{% block title %}TP53 Database: Search on Somatic Variant Prevalence Data{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'search_somatic_prevalence';
+</script>
+
+
+{% endblock %}
+
+{% block subcontent %}
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">
+            Search Somatic Variant Prevalence Data
+        </h1>
+    </div>
+</div>
+<div id="search_somatic_prev" class="container">
+    <div class="p-2 my-3">
+        <form action="{{ url_for('results_somatic_prevalence_list') }}" method="POST" id="mutationSearchFormForm">
+            {% with id_prefix='mut_prev' %}
+            {% include 'form_fields_topo_morph.html' %}
+            {% include 'form_fields_method.html' %}
+            <fieldset class="mb-3">
+                <div class="row">
+                    <legend class="text-end col-form-label col-sm-3 pt-0">
+                        NGS Study
+                        <button class="btn btn-sm pe-0" type="button"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="right" aria-label="help button"
+                                title="Whole genome or whole exome sequencing study.">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+
+                    </legend>
+                    <div class="col-sm-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"
+                                   value="Yes"
+                                   id="{{ id_prefix }}_ngs_yes">
+                            <label class="form-check-label"
+                                   for="{{ id_prefix }}_ngs_yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ngs"
+                                   value="No"
+                                   id="{{ id_prefix }}_ngs_no">
+                            <label class="form-check-label"
+                                   for="{{ id_prefix }}_ngs_no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="mb-3">
+                <div class="row">
+                    <legend class="text-end col-form-label col-sm-3 pt-0">
+                        Country/Region
+                        <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                data-bs-placement="right" aria-label="help button"
+                                title="Country/Region in which the patient was living at the time of surgery. When not otherwise
+                                specified in the original publication, the country corresponding to the address of the hospital
+                                is entered.">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+
+                    </legend>
+                    <div class="col-sm-6 col-md-7">
+                        <select name="{{ id_prefix }}_country_list" class="form-control chosen-select"
+                                id="{{ id_prefix }}_country_input"
+                                data-placeholder="Choose Countries..."
+                                aria-label="Country or Population List" multiple>
+                            {% for country in country_list %}
+                            <option value="{{ country.label }}">{{ country.label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-sm-3 col-md-2 text-start">
+                        <a class="clear-all-select small-font"><i
+                                class="far fa-times-circle"></i>
+                            Clear All</a>
+                        <br>
+                        <a class="add-all-select small-font"><i
+                                class="far fa-check-circle"></i>
+                            Add All</a>
+                    </div>
+                </div>
+            </fieldset>
+            {% endwith %}
+            <div class="form-group row py-3">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-wide darkblue-btn me-2">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                    <button type="reset" class="btn btn-wide btn-outline-dark ">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

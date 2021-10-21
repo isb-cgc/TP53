@@ -1,0 +1,154 @@
+{% extends "tp53data.html" %}
+{% block title %}Search Functional / Structural Data: by Gene Variants{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'search_gene_by_var';
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/search_gv.js') }}"></script>
+
+{% endblock %}
+
+{% block subcontent %}
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">
+            Search Functional / Structural Data: <span class="fw-normal">by Gene Variants</span>
+        </h1>
+    </div>
+</div>
+
+<div id="search_tp53_gv" class="container">
+    <div class="p-2 my-3">
+        <h2>Enter List of Variants</h2>
+        <form class="search-form" action="{{ url_for('results_gene_mut', search_by='gv') }}" method="POST">
+            {% with id_prefix='gv' %}
+            <fieldset class="mb-3">
+                <div class="row">
+                    <legend id="{{ id_prefix }}_search_by" class="text-end col-form-label col-sm-3 pt-0">Search by
+                    </legend>
+                    <div class="col-sm-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type_input" id="type_cdna"
+                                   value="type_cdna"
+                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_cdna_div"
+                                   aria-expanded="false"
+                                   aria-controls="{{ id_prefix }}_cdna_div"
+                                   aria-labelledby="{{ id_prefix }}_search_by">
+                            <label class="form-check-label" for="type_cdna">
+                                cDNA Description
+                            </label>
+                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-html="true"
+                                    data-bs-placement="right"
+                                    aria-label="help button"
+                                    title="Variant nomenclature according to <a href='/resources#mutation' target='_blank'>HGVS</a> standards and using the NM_000546.5 coding sequence as reference. (i.e.: c.524G>A)">
+                                <i class="far fa-question-circle"></i>
+                            </button>
+
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type_input" id="type_p"
+                                   value="type_p"
+                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_p_div"
+                                   aria-expanded="false"
+                                   aria-controls="{{ id_prefix }}_p_div"
+                                   aria-labelledby="{{ id_prefix }}_search_by">
+                            <label class="form-check-label" for="type_p">
+                                Protein Description
+                            </label>
+                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-html="true"
+                                    data-bs-placement="right"
+                                    aria-label="help button"
+                                    title="Variant description at the protein level as recommended by <a href='/resources#mutation'>HGVS</a> and using the Uniprot reference sequence P04637. (i.e.: p.R175H)">
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type_input" id="type_hg19"
+                                   value="type_hg19"
+                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_hg19_div"
+                                   aria-expanded="false"
+                                   aria-controls="{{ id_prefix }}_hg19_div"
+                                   aria-labelledby="{{ id_prefix }}_search_by">
+                            <label class="form-check-label" for="type_hg19">
+                                Genomic Description (hg19)
+                            </label>
+
+                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-html="true"
+                                    data-bs-placement="right"
+                                    aria-label="help button"
+                                    title="Variant nomenclature according to <a href='/resources#mutation' target='_blank' rel='noopener noreferrer'>HGVS</a> standards and using the GenBank NC_000017.10 (hg19 assembly) genomic sequence as reference. (i.e.: g.7578406C>T)">
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type_input" id="type_hg38"
+                                   value="type_hg38"
+                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_hg38_div"
+                                   aria-expanded="false"
+                                   aria-controls="{{ id_prefix }}_hg38_div"
+                                   aria-labelledby="{{ id_prefix }}_search_by">
+                            <label class="form-check-label" for="type_hg38">
+                                Genomic Description (hg38)
+                            </label>
+                            <button class="btn btn-sm p-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-html="true"
+                                    data-bs-placement="right" aria-label="help button"
+                                    title="Variant nomenclature according to <a href='/resources#mutation' target='_blank' rel='noopener noreferrer'>HGVS</a> standards and using the GenBank NC_000017.11 (hg38 assembly) genomic sequence as reference. (i.e.: g.7675088C>T)">
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div id="gv_type_collapse">
+                {% include 'form_fields_variations.html' %}
+            </div>
+            {% endwith %}
+
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-8">
+                    <div>
+                        <button type="submit" class="btn btn-wide darkblue-btn me-2"><i class="fas fa-search"></i> Search
+                        </button>
+                        <button type="reset" class="btn btn-wide btn-outline-dark"><i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-8">
+                <div class="grey-text pt-3">* For format conversions, we recommend to use <a
+                        href="https://mutalyzer.nl/"
+                        target="_blank" rel="noopener noreferrer">Mutalyzer <i class="fas fa-external-link-alt"></i></a>.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-3 my-3">
+        <hr>
+        <div class="row">
+            <div class="col-sm-3"><h2 class="d-inline">PHANTM Classifier</h2></div>
+            <div class="col-sm-8">
+            Explore the origin and phenotype of <em>TP53</em> variants with the Phenotypic
+            Annotation of <em>TP53</em> Mutations (PHANTM) classifier.
+                </div>
+        </div>
+
+        <div class="row pt-2">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-8">
+                <a href="http://mutantp53.broadinstitute.org" target="_blank"
+                   class="btn btn-wide btn-outline-dark" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> PHANTM</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

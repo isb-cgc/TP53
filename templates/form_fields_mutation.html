@@ -1,0 +1,459 @@
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Type
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Nature of the variant. The terms
+                                    occurring in this column are 'A:T&gt;C:G' (A to C or T
+                                    to G base change), 'A:T&gt;G:C' (A to G or T to C base
+                                    change), 'A:T&gt;T:A' (A to T or T to A base change),
+                                    'G:C&gt;A:T' (G to A or C to T base change at non CpG
+                                    sites), 'G:C&gt;A:T at CpG' (G to A or C to T base
+                                    change at CpG sites),
+                                    'G:C&gt;C:G' (G to C or C to G base change),
+                                    'G:C&gt;T:A' (G to T or C to A base change),
+                                    'tandem' (two consecutive base changes), 'ins'
+                                    (insertion), 'del' (deletion) and 'complex'
+                                    (complex changes).">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-sm-6 col-md-7">
+            <select name="{{ id_prefix }}_type_list" class="form-control chosen-select" id="{{ id_prefix }}_type_input"
+                    data-placeholder="Choose Types..." aria-label="Type List" multiple>
+                {% for type in type_list %}
+                <option value="{{ type.label }}">{{ type.label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                Clear All</a>
+            <br>
+            <a class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                Add All</a>
+        </div>
+    </div>
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Description
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Nucleotide change read from the coding sequence. For
+                                        deletions and insertions, the number of bases deleted (del) or
+                                        inserted (ins) is given. For more complex variant events, a full
+                                        description is given as indicated in the original publication.">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-sm-6 col-md-7">
+            <select name="{{ id_prefix }}_description_list" class="form-control chosen-select"
+                    id="{{ id_prefix }}_description_input"
+                    data-placeholder="Choose Descriptions..." aria-label="Description List" multiple>
+                {% for desc in desc_list %}
+                <option value="{{ desc.label }}">{{ desc.label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                Clear All</a>
+            <br>
+            <a class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                Add All</a>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Struct-Function Motif
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right" aria-label="help button"
+                    title="2D and 3D motifs where the variant is located according to structures described in
+                                        <a href='http://www.ncbi.nlm.nih.gov/pubmed/8023157' target='_blank' rel='noopener noreferrer'>Cho
+                                        et al. (1994)</a> and <a href='https://www.ncbi.nlm.nih.gov/pubmed/10618702' target='_blank' rel='noopener noreferrer'>
+                                        May and May (1999)</a>">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-sm-6 col-md-7">
+            <select name="{{ id_prefix }}_motif_list" class="form-control chosen-select"
+                    id="{{ id_prefix }}_motif_input"
+                    data-placeholder="Choose Struct-Function Motifs..."
+                    aria-label="Struct-Function Motif List" multiple>
+                {% for motif in motif_list %}
+                <option value="{{ motif.label }}">{{ motif.label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                Clear All</a>
+            <br>
+            <a class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                Add All</a>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Exon/Intron
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Location of the variant in the introns or exons in TP53 gene for the reference sequence NM_000546.5.
+                                        Terms occurring in this column are '1-intron' to '11-intron' and '2-exon'
+                                        to '11-exon'. An 'i' or 'e' in front mean that the variant is located within the indicated intron
+                                        or exon with no information on the precise location.">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-sm-6 col-md-7">
+            <select name="{{ id_prefix }}_exonintron_list" class="form-control chosen-select"
+                    id="{{ id_prefix }}_exonintron_input"
+                    data-placeholder="Choose Exons or Introns..."
+                    aria-label="Exon Intron List" multiple>
+                {% for exon_intron in exon_intron_list %}
+                <option value="{{ exon_intron.label }}">{{ exon_intron.label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                Clear All</a>
+            <br>
+            <a class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                Add All</a>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Effect
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right" aria-label="help button"
+                    title="Effect of the variant. The terms
+                                        occurring in this column are: missense (change of one amino-acid), nonsense (introduction of a stop codon), FS
+                                        (frameshift), silent (no change in the protein sequence),
+                                        splice (variants located in the two first and two last conserved nucleotides of the introns and are thus predicted to alter splicing,
+                                        or variants that have been shown to alter splicing experimentally), other (inframe deletions or insertions), intronic (variants in introns outside splicing sites), NA (variants upstream in 5' or 3' UTR).">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-sm-6 col-md-7">
+            <select name="{{ id_prefix }}_effect_list" class="form-control chosen-select"
+                    id="{{ id_prefix }}_effect_input"
+                    data-placeholder="Choose Effects..." aria-label="Effect List" multiple>
+                {% for effect in effect_list %}
+                <option value="{{ effect.label }}">{{ effect.label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                Clear All</a>
+            <br>
+            <a class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                Add All</a>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Transactivation Class
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right" aria-label="help button"
+                    title="Functional classification based on the overall transcriptional activity (TA) on 8 different promoters as measured in yeast assays by <a href='https://www.ncbi.nlm.nih.gov/pubmed/12826609' target='_blank' rel='noopener noreferrer'>Kato et al</a>.
+							            For each mutant, the median of the 8 promoter-specific activities (expressed as percent of the wild-type protein) is calculated and missense variants are classified as 'non-functional' if the median is &lt;=20,
+							            partially functional' if the median is &gt;20 and &lt;=75, 'functional' if the median is &gt;75 and &lt;=140, and 'supertrans' if the median is &gt;140.">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-md-8 col-sm-6">
+            {% for ta_class in ta_class_list %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_ta_class_list"
+                       value="{{ ta_class.label }}"
+                       id="{{ id_prefix }}_ta_class_{{ ta_class.label|replace(' ','_')|lower }}">
+                <label class="form-check-label"
+                       for="{{ id_prefix }}_ta_class_{{ ta_class.label|replace(' ','_')|lower }}">
+                    {{ ta_class.label }}
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            SIFT Class
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Functional classification based on <a href='https://sift.jcvi.org/protein_batch_submit.php?species=human' target='_blank' rel='noopener noreferrer'>SIFT program</a> using default settings.
+                                        Missense variants are classified as 'damaging' or tolerated'.">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-md-8 col-sm-6">
+            {% for sift in sift_list %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_sift_list"
+                       value="{{ sift.label }}"
+                       id="{{ id_prefix }}_sift_{{ sift.label|replace(' ','_')|lower }}">
+                <label class="form-check-label" for="{{ id_prefix }}_sift_{{ sift.label|replace(' ','_')|lower }}">
+                    {{ sift.label|lower }}
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="mb-3">
+    <div class="row">
+        <legend id="{{ id_prefix }}_chrpos_legend" class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Chromosome Positioning
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Chromosome coordinate of variant: start position based on hg19 or hg38 human genome assembly.">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-md-8 col-sm-6">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="{{ id_prefix }}_chrpos_type"
+                       id="{{ id_prefix }}_chrpos_hg19" value="hg19">
+                <label class="form-check-label" for="{{ id_prefix }}_chrpos_hg19">
+                    hg19
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="{{ id_prefix }}_chrpos_type"
+                       id="{{ id_prefix }}_chrpos_hg38" value="hg38" checked>
+                <label class="form-check-label" for="{{ id_prefix }}_chrpos_hg38">
+                    hg38
+                </label>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <input type="number" class="form-control" id="{{ id_prefix }}_chrpos" name="{{ id_prefix }}_chrpos" aria-labelledby="{{ id_prefix }}_chrpos_legend">
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Mutant Base (coding)
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Mutant base, described on the coding strand.">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-md-8 col-sm-6">
+
+            <select name="{{ id_prefix }}_mut_base" class="form-select" aria-label="Default select example">
+                <option value="" selected>Any</option>
+                <option id="{{ id_prefix }}_mut_base_a" value="A">A</option>
+                <option id="{{ id_prefix }}_mut_base_c" value="C">C</option>
+                <option id="{{ id_prefix }}_mut_base_g" value="G">G</option>
+                <option id="{{ id_prefix }}_mut_base_t" value="T">T</option>
+            </select>
+
+            <!--<div class="form-check">-->
+            <!--<input class="form-check-input" type="radio" name="{{ id_prefix }}_mut_base" id="{{ id_prefix }}_mut_base_a" value="A">-->
+            <!--<label class="form-check-label" for="{{ id_prefix }}_mut_base_a">-->
+            <!--A-->
+            <!--</label>-->
+            <!--</div>-->
+            <!--<div class="form-check">-->
+            <!--<input class="form-check-input" type="radio" name="{{ id_prefix }}_mut_base" id="{{ id_prefix }}_mut_base_c" value="C">-->
+            <!--<label class="form-check-label" for="{{ id_prefix }}_mut_base_c">-->
+            <!--C-->
+            <!--</label>-->
+            <!--</div>-->
+            <!--<div class="form-check">-->
+            <!--<input class="form-check-input" type="radio" name="{{ id_prefix }}_mut_base" id="{{ id_prefix }}_mut_base_g" value="G">-->
+            <!--<label class="form-check-label" for="{{ id_prefix }}_mut_base_g">-->
+            <!--G-->
+            <!--</label>-->
+            <!--</div>-->
+            <!--<div class="form-check">-->
+            <!--<input class="form-check-input" type="radio" name="{{ id_prefix }}_mut_base" id="{{ id_prefix }}_mut_base_t" value="T">-->
+            <!--<label class="form-check-label" for="{{ id_prefix }}_mut_base_t">-->
+            <!--T-->
+            <!--</label>-->
+            <!--</div>-->
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Codon Number
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right" aria-label="help button"
+                    title="For variants in exons, codon number
+                                        at which the variant is located (1-393). If a variant spans more
+                                        than one codon, (e.g. tandem variant or deletion of several
+                                        bases) only the first (5') codon is entered. For variants in
+                                        introns, 0 is entered.">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-md-8 col-sm-6">
+            <div class="form-check form-switch">
+                <input data-bs-toggle="collapse" data-bs-target=".{{ id_prefix }}-codon-collapse" aria-expanded="false"
+                       aria-controls="{{ id_prefix }}_collapse_bysingle {{ id_prefix }}_collapse_byrange"
+                       class="form-check-input" type="checkbox"
+                       id="{{ id_prefix }}_codon_range" name="{{ id_prefix }}_codon_range" value="checked">
+                <label class="form-check-label" for="{{ id_prefix }}_codon_range">Enter by Range</label>
+            </div>
+            <div id="{{ id_prefix }}_codon_div">
+                <div id="{{ id_prefix }}_collapse_bysingle" class="{{ id_prefix }}-codon-collapse row collapse show"
+                     data-bs-parent="#{{ id_prefix }}_codon_div">
+                    <div class="col-md-3 col-sm-5">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="{{ id_prefix }}_codon_no"
+                                   name="{{ id_prefix }}_codon_no"
+                                   min="0"
+                                   max="393">
+                            <label for="{{ id_prefix }}_codon_no">Codon No.</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="{{ id_prefix }}_collapse_byrange" class="{{ id_prefix }}-codon-collapse row collapse"
+                     data-bs-parent="#{{ id_prefix }}_codon_div">
+                    <div class="col-lg-2 col-md-3">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="{{ id_prefix }}_codon_start"
+                                   name="{{ id_prefix }}_codon_start"
+                                   min="0"
+                                   max="393">
+                            <label for="{{ id_prefix }}_codon_start">Start (&#8804;)</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-1 text-center">
+                        <label class="col-form-label">to</label>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="{{ id_prefix }}_codon_end"
+                                   name="{{ id_prefix }}_codon_end"
+                                   min="1"
+                                   max="393">
+                            <label for="{{ id_prefix }}_codon_end">(&#8804;) End</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend id="{{ id_prefix }}_wild_codon_legend" class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Wild-Type Codon
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right" aria-label="help button"
+                    title="For variants in exons, sequence of the codon in which the variant occurred in NM_000546.5 transcript.">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-md-8 col-sm-6">
+            <input type="text" class="form-control" id="{{ id_prefix }}_wild_codon" name="{{ id_prefix }}_wild_codon" aria-labelledby="{{ id_prefix }}_wild_codon_legend">
+        </div>
+    </div>
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend id="{{ id_prefix }}_mut_codon_legend" class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Mutant Codon
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right" aria-label="help button"
+                    title="Base sequence of the mutated codon in NM_000546.5 transcript.">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-md-8 col-sm-6">
+            <input type="text" class="form-control" id="{{ id_prefix }}_mut_codon" name="{{ id_prefix }}_mut_codon" aria-labelledby="{{ id_prefix }}_mut_codon_legend">
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="mb-3">
+    <div class="row">
+        <legend id="{{ id_prefix }}_wild_aa_legend" class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Wild-Type Amino Acid
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right" aria-label="help button"
+                    title="Wild-type amino acid encoded at the codon in which the variant occurred (three-letter amino acid
+                                        abbreviation). Check <a href='/aa_codes' target='_blank' rel='noopener noreferrer'>AA letter code</a> and
+                                        <a href='/genetic_code' target='_blank' rel='noopener noreferrer'>Genetic code</a>">
+                <i class="far fa-question-circle"></i>
+            </button>
+
+        </legend>
+        <div class="col-md-8 col-sm-6">
+            <input type="text" class="form-control" id="{{ id_prefix }}_wild_aa" name="{{ id_prefix }}_wild_aa" aria-labelledby="{{ id_prefix }}_wild_aa_legend">
+        </div>
+    </div>
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend id="{{ id_prefix }}_mut_aa_legend" class="text-end col-form-label col-md-3 col-sm-5 pt-0">
+            Mutant Amino Acid
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip" data-bs-html="true"
+                    data-bs-placement="right" aria-label="help button"
+                    title="Mutated amino acid encoded at the
+                                        codon in which the variant occurred (three-letter amino acid
+                                        abbreviation). The chain terminating variants due to single base
+                                        substitutions are designated by 'stop'. &nbsp;&nbsp;
+                                        Check <a href='/aa_codes' target='_blank' rel='noopener noreferrer'>AA letter code</a> and
+                                        <a href='/genetic_code' target='_blank' rel='noopener noreferrer'>Genetic code</a>">
+                <i class="far fa-question-circle"></i>
+            </button>
+        </legend>
+        <div class="col-md-8 col-sm-6">
+            <input type="text" class="form-control" id="{{ id_prefix }}_mut_aa" name="{{ id_prefix }}_mut_aa" aria-labelledby="{{ id_prefix }}_mut_aa_legend">
+        </div>
+    </div>
+</fieldset>
+<div class="mb-3">
+    <div class="row">
+        <div class="text-end col-md-3 col-sm-5 py-1">
+            <div>
+                Help Resources <i class="fas fa-link"></i>
+            </div>
+            <div>
+                <a href="/tp53seq" target="_blank" rel="noopener noreferrer">p53 Coding Sequence <i class="far fa-arrow-alt-circle-right"></i></a>
+            </div>
+            <div>
+                <a href="/genetic_code" target="_blank" rel="noopener noreferrer">Genetic Code <i class="far fa-arrow-alt-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+

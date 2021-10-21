@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+{% block title %}Amino Acid Properties{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'resources';
+    active_submenu = '';
+</script>
+{% endblock %}
+
+{% block content %}
+<main class="bg-white">
+    <div class="page-banner">
+        <div class="container">
+            <h1 class="fw-bold p-2 my-0">Amino Acid Properties</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="py-5">
+            <table class="table">
+                <thead>
+                <tr valign="middle">
+                    <th width="50">Amino-Acid Name</th>
+                    <th width="50">3-Letter Code</th>
+                    <th width="50">1-Letter Code</th>
+                    <th width="50">Structure</th>
+                    <th width="100">Properties</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+
+                    <td>Alanine</td>
+                    <td>Ala</td>
+                    <td>A</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Ala.gif') }}"
+                             alt="Ala"/></a></td>
+                    <td>Non-polar, aliphatic residues</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Arginine</td>
+                    <td>Arg</td>
+                    <td>R</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Arg.gif') }}"
+                             alt="Arg"/></a></td>
+                    <td>Positively charged (basic amino acids; non-acidic amino acids); Polar; Hydrophilic; pK=12.5</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Asparagine</td>
+                    <td>Asn</td>
+                    <td>N</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Asn.gif') }}"
+                             alt="Asn"/></a></td>
+                    <td>Polar, non-charged</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Aspartate</td>
+                    <td>Asp</td>
+                    <td>D</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Asp.gif') }}"
+                             alt="Asp"/></a></td>
+                    <td>Negatively charged (acidic amino acids); Polar; Hydrophilic; pK=3.9</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Cysteine</td>
+                    <td>Cys</td>
+                    <td>C</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Cys.gif') }}"
+                             alt="Cys"/></a></td>
+                    <td>Polar, non-charged</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Glutamate</td>
+                    <td>Glu</td>
+                    <td>E</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Glu.gif') }}"
+                             alt="Glu"/></a></td>
+                    <td>Negatively charged (acidic amino acids); Polar; Hydrophilic; pK=4.2</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Glutamine</td>
+                    <td>Gln</td>
+                    <td>Q</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Gln.gif') }}"
+                             alt="Gln"/></a></td>
+                    <td>Polar, non-charged</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Glycine</td>
+                    <td>Gly</td>
+                    <td>G</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Gly.gif') }}"
+                             alt="Gly"/></a></td>
+                    <td>Non-polar, aliphatic residues</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Histidine</td>
+                    <td>His</td>
+                    <td>H</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/His.gif') }}"
+                             alt="His"/></a></td>
+                    <td>Positively charged (basic amino acids; non-acidic amino acids); Polar; Hydrophilic; pK=6.0</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Isoleucine</td>
+                    <td>Ile</td>
+                    <td>I</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Ile.gif') }}"
+                             alt="Ile"/></a></td>
+                    <td>Non-polar, aliphatic residues</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Leucine</td>
+                    <td>Leu</td>
+                    <td>L</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Leu.gif') }}"
+                             alt="Leu"/></a></td>
+                    <td>Non-polar, aliphatic residues</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Lysine</td>
+                    <td>Lys</td>
+                    <td>K</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Lys.gif') }}"
+                             alt=" Lys"/></a></td>
+                    <td>Positively charged (basic amino acids; non-acidic amino acids); Polar; Hydrophilic; pK=10.5</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Methionine</td>
+                    <td>Met</td>
+                    <td>M</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Met.gif') }}"
+                             alt="Met"/></a></td>
+                    <td>Polar, non-charged</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Phenylalanine</td>
+                    <td>Phe</td>
+                    <td>F</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Phe.gif') }}"
+                             alt="Phe"/></a></td>
+                    <td>Aromatic</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Proline</td>
+                    <td>Pro</td>
+                    <td>P</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Pro.gif') }}"
+                             alt="Pro"/></a></td>
+                    <td>Non-polar, aliphatic residues</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Serine</td>
+                    <td>Ser</td>
+                    <td>S</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Ser.gif') }}"
+                             alt="Ser"/></a></td>
+                    <td>Polar, non-charged</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Threonine</td>
+                    <td>Thr</td>
+                    <td>T</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Thr.gif') }}"
+                             alt="Thr"/></a></td>
+                    <td>Polar, non-charged</td>
+
+                </tr>
+
+                <tr>
+                    <td>Tryptophan</td>
+                    <td>Trp</td>
+                    <td>W</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Trp.gif') }}"
+                             alt="Trp"/></a></td>
+                    <td>Aromatic</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Tyrosine</td>
+                    <td>Tyr</td>
+                    <td>Y</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Tyr.gif') }}"
+                             alt="Tyr"/></a></td>
+                    <td>Aromatic</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Valine</td>
+                    <td>Val</td>
+                    <td>V</td>
+                    <td><img border="0" width="80" src="{{ url_for('static', filename='img/Val.gif') }}"
+                             alt="Val"/></a></td>
+                    <td>Non-polar, aliphatic residues</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Stop</td>
+                    <td>Stop</td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+{% endblock %}

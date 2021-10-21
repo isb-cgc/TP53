@@ -1,0 +1,49 @@
+{% extends "tp53data_submenu.html" %}
+{% block title %}Explore Datasets: Mouse Models{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'mm-exp-btn';
+</script>
+{% endblock %}
+
+{% block subcontent %}
+<div class="page-banner">
+    <div class="container py-3">
+        <h1 class="fw-bold px-2 my-0">Mouse Models</h1>
+        <h2 class="px-2 my-0 fw-light">
+            Explore data for mouse models with engineered <em>p53</em> that are compiled in the caMOD database or reported in the
+            scientific literature.
+        </h2>
+    </div>
+</div>
+
+<div class="tile-cards p-5">
+    <div class="container">
+        <div class="row py-0">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header" title="View Mouse Model Data" role="button">
+                        <a class="card-header-text" href="/view_mouse">View Data</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text p-3 rounded bg-light">
+                            Allows the display or download of the description of mouse models with engineered <em>p53</em> that are compiled in the caMOD database or reported in the scientific literature.
+                            <!--Links to caMOD database are available for further details on the model phenotypes.-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4 py-0">
+            <div class="col-lg-4 d-grid">
+                <a href="/get_tp53data#get_mouse" class="btn btn-secondary grid-button"
+                   title="Click to View Downloadable Datasets"
+                   role="button">
+                    Data Downloads<br><span class="fw-light"><i class="fas fa-chevron-right"></i> Mouse Models</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

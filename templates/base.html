@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="h-100">
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="description"
+          content="The  TP53 Database: knowledgebase and statistical tools for the analysis of TP53 gene variants in human cancers">
+    <title>{% block title %}{% endblock %}</title>
+
+    {% if not config["TESTING"] %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FYLD05GBR2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-FYLD05GBR2');
+    </script>
+    {% endif %}
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/jquery-3.6.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/bootstrap.min.js') }}"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/base.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/vnd.microsoft.icon">
+    {% endblock %}
+</head>
+
+
+<body tabindex="0" class="d-flex flex-column h-100 bg-light">
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark-purple py-4">
+        <div class="container">
+            <button class="navbar-toggler collapsed " type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse" id="navbarCollapse">
+                <ul class="navbar-nav justify-content-evenly">
+                    <li class="nav-item mx-xl-1 mx-xxl-2">
+                        <a class="nav-link" id="home_menu" href="/">The <em>TP53</em> Database</a>
+                    </li>
+                    <li class="nav-item mx-xl-2 mx-xxl-3">
+                        <a class="nav-link" id="about" href="/about">About</a>
+                    </li>
+                    <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
+                    <!--<a class="nav-link" id="tp53data" href="search_tp53data">Data-->
+                    <!--Explorer</a>-->
+                    <!--</li>-->
+                    <li class="nav-item mx-xl-2 mx-xxl-3">
+                        <a class="nav-link" id="help" href="/help">User Manual</a>
+                    </li>
+                    <li class="nav-item mx-xl-2 mx-xxl-3">
+                        <a class="nav-link" id="resources" href="/resources">Other Resources</a>
+                    </li>
+                    <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
+                    <!--<a class="nav-link" id="refs_corner" href="refs_corner"><i class="fas fa-book"></i> Refs Corner</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item mx-2">-->
+                    <!--<a class="nav-link" id="ppl_events" href="ppl_events"><i class="me-2 far fa-newspaper"></i>People & Events</a>-->
+                    <!--</li>-->
+
+                    <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
+                    <!--<a class="nav-link" id="contact" href="contact">Contact</a>-->
+                    <!--</li>-->
+
+                    <!--<li class="nav-item ms-5 mt-2">-->
+                        <!--<form action="cse_search" method="get" role="search" class="d-flex">-->
+                            <!--<input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"-->
+                                   <!--aria-label="Search">-->
+                            <!--<button class="btn btn-outline-light btn-sm" type="submit">Search</button>-->
+                        <!--</form>-->
+                    <!--</li>-->
+                </ul>
+                <!--<li class="nav-item ms-5 mt-2">-->
+                        <!--<form action="cse_search" method="get" role="search" class="d-flex ">-->
+                            <!--<input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"-->
+                                   <!--aria-label="Search">-->
+                            <!--<button class="btn btn-outline-light btn-sm" type="submit">Search</button>-->
+                        <!--</form>-->
+                    <!--</li>-->
+            </div>
+            <!--<form action="cse_search" method="get" role="search" class="d-flex float-end px-2">-->
+                <!--<input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"-->
+                       <!--aria-label="Search">-->
+                <!--<button class="btn btn-outline-light btn-sm" type="submit">Search</button>-->
+            <!--</form>-->
+        </div>
+    </nav>
+</header>
+
+{% block content %}
+{% endblock %}
+<footer class="mt-auto">
+    <div class="container">
+        <!--<div class="p-2 my-4">-->
+            <!--<a class="pe-2" href="/">Home</a> |-->
+            <!--<a class="px-2" href="about#contact-div">Contact Us</a> |-->
+            <!--<a class="px-2" href="about#cite-div">How to Cite</a> |-->
+            <!--<a class="px-2" href="about#disclaimer-div">Disclaimer</a> |-->
+            <!--<a class="px-2" href="about#credits-div">Credits</a> |-->
+            <!--<a class="ps-2" target="_blank" rel="noopener noreferrer" href="https://isb-cgc.org">ISB-CGC</a>-->
+            <!--<a class="fw-bold float-end" href="#">Back to top</a>-->
+        <!--</div>-->
+        <div class="p-2 my-1">©2021 National Cancer Institute (NCI) of the National Institutes of Health, Bethesda, Maryland 20892 – All Rights Reserved.
+            <a class="fw-bold float-end" href="#">Back to top</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{% extends "tp53data.html" %}
+{% block title %}TP53 Database: View Mouse Models{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'view_mouse';
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/view_mouse.js') }}"></script>
+
+{% endblock %}
+
+{% block subcontent %}
+
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">View Mouse Models</h1>
+    </div>
+</div>
+<div class="container">
+    <div id="view_mouse_model" class="my-3">
+        One of the source database for curating data, the Cancer Models Database (caMOD), was retired in 2015.
+        Information about many of the mouse models hosted in caMOD was obtained from
+        the Jackson Laboratory Mouse Tumor Biology (MTB) Database and can be accessed through that resource at
+        <a href="http://tumor.informatics.jax.org/mtbwi/index.do" target="_blank" rel="noopener noreferrer">tumor.informatics.jax.org</a>.
+        {% if query_result.data|length %}
+        <div class="my-2">
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn darkblue-btn download-btn"><i class="fas fa-download"></i>
+                    Download
+                </button>
+            </div>
+        </div>
+            <table id="mouse-result-table" class="my-2 table table-striped table-sm small-font result-table" cellspacing="0"
+               width="100%">
+            <thead>
+            <tr>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Model name as indicated in caMOD or original publication.">
+                    Model Descriptor
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="left"
+                    title="List of organs affected or targeted by transgene.">
+                    Targeted or Affected Organs
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Amino-acid substitution. Note that amino-acids are numbered according to the human sequence.">
+                    AAChange in Human
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Model ID from caMOD database.">
+                    CAMOD ID
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="PubMed reference number provided by NCBI.">
+                    PubMed
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in query_result.data %}
+            <tr>
+                <td>{{ row.ModelDescription|safe }}</td>
+                <td>{{ row.TumorSites }}</td>
+                <td>{{ row.AAchange }}</td>
+                <td>{{ row.caMOD_ID }}</td>
+                <td>{{ row.PubMed }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% elif table.msg %}
+        <div class="row">
+            <div class="col-md-12 text-center"><strong>{{ table.msg|safe }}</strong>
+            </div>
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-md-12 text-center fw-light">No data has been found
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

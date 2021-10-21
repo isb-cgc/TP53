@@ -1,0 +1,174 @@
+{% extends "tp53data.html" %}
+{% block title %}TP53 Database: Search Results on Somatic Variant Prevalence Data{% endblock %}
+{% block head %}
+{{ super() }}
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/select.dataTables.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/results_somatic_prevalence.js') }}"></script>
+
+{% endblock %}
+
+{% block subcontent %}
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">Search Results: <span class="ms-2 fw-light">Somatic Variant Prevalence Data</h1>
+    </div>
+</div>
+<div class="mx-5">
+    <div class="my-2">
+        <a class="text-start btn btn-sm btn-outline-dark criteria-btn collapsed"
+           data-bs-toggle="collapse" href="#criteria_div" role="button" aria-label="View/Hide Criteria"
+           aria-expanded="false"
+           aria-controls="criteria_div"></a>
+        <button type="button" title="Download Data in .csv"
+                class="btn btn-sm darkblue-btn download-btn ms-2">
+            <i class="fas fa-download"></i>
+            Download
+        </button>
+        <button type="button" class="btn btn-sm darkblue-btn action-button"
+                value="get_country_graph" title="View Somatic Variant Prevalence by Country"><i
+                class="fas fa-chart-bar"></i>
+            Country Graph
+        </button>
+        <button type="button" class="btn btn-sm darkblue-btn action-button"
+                value="get_topo_graph" title="View Somatic Variant Prevalence by Topography"><i
+                class="fas fa-chart-bar"></i>
+            Topography Graph
+        </button>
+        <button type="button" class="btn btn-sm darkblue-btn action-button"
+                value="get_morph_graph" title="View Somatic Variant Prevalence by Morphology"><i
+                class="fas fa-chart-bar"></i>
+            Morphology Graph
+        </button>
+
+        <div class="btn-group btn-group-sm ms-1" title="No of selected rows">
+            <div class="pb-1"><em>Selected Rows</em> <span
+                    class="badge rounded-pill bg-secondary cart-count">0</span></div>
+        </div>
+        {% include 'criteria_div.html' %}
+    </div>
+    <div class="mb-3">
+        <table id="sm-result-table" class="table table-striped table-sm result-table small-font" cellspacing="0"
+               width="100%">
+            <thead>
+            <tr>
+                <td data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Select all rows on this page">
+                    <input class="form-check-input check-all" type="checkbox"
+                           aria-label="Select All">
+                </td>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="Site of the tumor defined by organ or
+                                                        group of organs, according to the ICD-O
+                                                        nomenclature. (examples:
+                                                        'colon', 'brain', 'bronchus and
+                                                        lung'). Note that some tumors are annoted
+                                                        'Head&;Neck,NOS' or 'Colorectum, NOS'
+                                                        because no detail is given in the original
+                                                        publication (NOS= not
+                                                        otherwise specified).
+                                                        For the database search tool, a short name is used
+                                                        in place of the ICD-O name (example: 'Lung' for 'bronchus and
+                                                        lung').
+                                                        <strong>For metastasis, the topography corresponds
+                                                            to the primary
+                                                            site of the tumor and the site of metastasis is
+                                                            indicated in
+                                                            brackets in the tumor_origin field.</strong>">Topography</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="For the database search tool, a short name is used in place of the ICD-O name (example:
+                    <strong>Lung</strong> for <strong>bronchus and lung</strong>).">
+                    Short Topography
+                </th>
+
+                <th data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="top"
+                    title="ICD-O code for topography.">Topography Code</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Tumor type, including morphology and/or histologic type. The terminology used is based on ICD-O (2nd and 3rd editions) and SNOMED classifications. Terms have been added, such as 'normal tissue' or 'na'." >
+                    Morphology
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="ICD-O or SNOMED codes for morphology." >
+                    Morphology Code</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Number of tumor samples analyzed for TP53 variants.">
+                    Sample Analyzed</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Number of tumor samples with a variant in TP53.">
+                    Sample Mutated</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Prevalence calculated by the number of mutated samples vs analyzed samples [(Sample Mutated / Sample Analyzed) * 100] ">
+                    Prevalence (%)</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Country/Region in which the patient was living at the time of surgery. When not otherwise specified in the original publication, the country corresponding to the address of the hospital is entered.">Country</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Grouping by region.">Region</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Any relevant information.">Comment</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="PubMed ID with link to ncbi database.">PubMed ID</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Indicates if the sample analysed was fresh, fixed or frozen.">Tissue Processing</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Indicates if DNA or RNA was screened for mutations.">Starting Nucleic Acid Material</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Prescreening method used to select sample to be sequenced: ‘SSCP’ for single strand polymorphism, ‘DGE’ for denaturant gel electrophoresis, ‘FASAY’ for yeast assay, ‘none’ if no prescreening was done, etc…">Prescreening Assays</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Indicates whether the exon 2 has been screened for mutation.">Exon2</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Indicates whether the exon 3 has been screened for mutation.">Exon3</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Indicates whether the exon 4 has been screened for mutation.">Exon4</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Indicates whether the exon 5 has been screened for mutation.">Exon5</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Indicates whether the exon 6 has been screened for mutation.">Exon6</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Indicates whether the exon 7 has been screened for mutation.">Exon7</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Indicates whether the exon 8 has been screened for mutation.">Exon8</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Indicates whether the exon 9 has been screened for mutation.">Exon9</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Indicates whether the exon 10 has been screened for mutation.">Exon10</th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Indicates whether the exon 11 has been screened for mutation.">Exon11</th>
+
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+{% endblock %}

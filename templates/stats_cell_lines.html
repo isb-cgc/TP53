@@ -1,0 +1,38 @@
+{% extends "tp53data.html" %}
+{% block title %}TP53 Database: Statistics on Cell Lines{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_submenu = 'stats_cell_lines';
+</script>
+
+
+{% endblock %}
+
+{% block subcontent %}
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">Selected Statistics on Cell Lines Data</h1>
+    </div>
+</div>
+<div class="container">
+    <div id="stats_cell_lines" class="p-2 my-3">
+        <div>Please note that cell-line data are also included in the dataset of somatic
+            variants.
+        </div>
+        <div class="col-lg-4 col-md-10">
+            <ul class="list-group list-group-flush pt-3">
+                <a href="/cell_lines_mutation_stats?action=get_tumor_dist"
+                   class="list-group-item list-group-item-action submit-link">
+                    Tumor Site Distributions</a>
+                <a href="/cell_lines_mutation_stats?action=get_mutation_type"
+                   class="list-group-item list-group-item-action submit-link">
+                    Type of Variants</a>
+                <a href="/cell_lines_mutation_stats?action=get_codon_dist"
+                   class="list-group-item list-group-item-action submit-link">
+                    Codon Distribution of Variants</a>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

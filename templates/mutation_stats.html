@@ -1,0 +1,71 @@
+{% extends "tp53data.html" %}
+{% block title %}TP53 Database: Statistic Charts{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/chart.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/build_chart_config.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/stats_mutation.js') }}"></script>
+
+{% endblock %}
+
+{% block subcontent %}
+
+<script type="text/javascript">
+    var graph_result = {{ graph_result | tojson | safe }};
+</script>
+<div class="page-banner">
+    <div class="container">
+        <h1 class="fw-bold p-2 my-0">{{ title }}
+            {% if subtitle %}
+            :
+            {% endif %}
+            <span class="ms-2 fw-light">{{ subtitle }}</span>
+        </h1>
+    </div>
+</div>
+<div class="container">
+    <div class="my-3">
+        {% if criteria_map.items()|length > 0 %}
+        <div class="pt-2">
+            <div>
+                <a class="btn btn-sm btn-outline-dark criteria-btn collapsed" aria-label="View/Hide Criteria"
+                   data-bs-toggle="collapse" href="#criteria_div" role="button" aria-expanded="false"
+                   aria-controls="criteria_div"></a>
+            </div>
+            {% include 'criteria_map_div.html' %}
+        </div>
+        {% endif %}
+
+        {% if graph_result.graph_data|length >1 %}
+        <div class="p-1">
+            {% for graph_id in graph_result.graph_data %}
+            {% if loop.index0 > 0 %}
+            <div>
+                Jump to View: <a href="#{{ graph_id }}" class="ms-1"><span
+                    id="{{ graph_id }}_anchor_text"></span> <i class="far fa-arrow-alt-circle-down"></i></a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% for graph_id in graph_result.graph_data %}
+        <div id="{{ graph_id }}" class="{{ 'mt-5' if loop.index0 > 0 }}">
+            <div class="small-chart col-5 border rounded-2 p-3 my-3 mx-auto">
+                <div data-graph-id="{{ graph_id }}" class="btn-group btn-group-sm float-end">
+                    <button type="button" class="btn btn-outline-secondary d-img-btn"><i class="fas fa-download"></i>
+                        Image
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary d-data-btn"><i class="fas fa-download"></i>
+                        Data
+                    </button>
+                </div>
+                <canvas id="{{ graph_id }}_chart"></canvas>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,275 @@
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Age at Diagnosis
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Age of the patient at the time of diagnosis.">
+                <i class="far fa-question-circle"></i>
+            </button>
+
+        </legend>
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" id="{{ id_prefix }}_age_start"
+                               name="{{ id_prefix }}_age_start"
+                               min="0"
+                               max="120">
+                        <label for="{{ id_prefix }}_age_start">Start</label>
+                    </div>
+                </div>
+                <div class="col-lg-1 text-center">
+                    <label class="col-form-label">to</label>
+                </div>
+                <div class="col-lg-2">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" id="{{ id_prefix }}_age_end"
+                               name="{{ id_prefix }}_age_end"
+                               min="0"
+                               max="120">
+                        <label for="{{ id_prefix }}_age_end">End</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Sex
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-placement="right" aria-label="help button"
+                    title="Sex of the patient (M for male, F for female).">
+                <i class="far fa-question-circle"></i>
+            </button>
+
+        </legend>
+        <div class="col-sm-8">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_gender"
+                       value="F"
+                       id="{{ id_prefix }}_gender_f">
+                <label class="form-check-label"
+                       for="{{ id_prefix }}_gender_f">
+                    Female
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_gender"
+                       value="M"
+                       id="{{ id_prefix }}_gender_m">
+                <label class="form-check-label"
+                       for="{{ id_prefix }}_gender_m">
+                    Male
+                </label>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Germline Variation
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Germline variant detected in any gene in the patient.">
+                <i class="far fa-question-circle"></i>
+            </button>
+
+        </legend>
+        <div class="col-sm-6 col-md-7">
+            {% if germ_mut_list|length >3 %}
+            <select name="{{ id_prefix }}_germ_mut" class="form-control chosen-select"
+                    id="{{ id_prefix }}_germ_mut"
+                    data-placeholder="Choose Germline Variations..."
+                    aria-label="Germline Variation List" multiple>
+                {% for germ_mut in germ_mut_list %}
+                <option value="{{ germ_mut.label }}">{{ germ_mut.label }}</option>
+                {% endfor %}
+            </select>
+            {% else %}
+            {% for germ_mut in germ_mut_list %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_germ_mut"
+                       value="{{ germ_mut.label }}"
+                       id="{{ id_prefix }}_gm_{{ germ_mut.label|lower }}">
+                <label class="form-check-label"
+                       for="{{ id_prefix }}_gm_{{ germ_mut.label|lower }}">
+                    {{ germ_mut.label }}
+                </label>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        {% if germ_mut_list|length >3 %}
+        <div class="col-sm-3 col-md-2 text-start">
+            <a class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                Clear All</a>
+            <br>
+            <a class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                Add All</a>
+        </div>
+        {% endif %}
+    </div>
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Tobacco
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Information on the smoking status of the patient. Terms occurring in this column are 'smoker' (with
+                  qualitative amount in brackets), 'non-smoker', 'passive-smoker' and 'chewer'.">
+                <i class="far fa-question-circle"></i>
+            </button>
+
+        </legend>
+        <div class="col-sm-8">
+            {% for tobacco_opt in tobacco_list %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_tobacco"
+                       value="{{ tobacco_opt.label }}"
+                       id="{{ id_prefix }}_{{ tobacco_opt.label|lower }}">
+                <label class="form-check-label"
+                       for="{{ id_prefix }}_{{ tobacco_opt.label|lower }}">
+                    {{ tobacco_opt.label }}
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Alcohol
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-placement="right" aria-label="help button"
+                    title="Information on the drinking status of the patient. Terms occurring in this column are ‘drinker’,
+                 and 'non-drinker'.">
+                <i class="far fa-question-circle"></i>
+            </button>
+
+        </legend>
+        <div class="col-sm-8">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_alcohol"
+                       value="drinker"
+                       id="{{ id_prefix }}_alcohol_drinker">
+                <label class="form-check-label"
+                       for="{{ id_prefix }}_alcohol_drinker">
+                    Drinker
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="{{ id_prefix }}_alcohol"
+                       value="non-drinker"
+                       id="{{ id_prefix }}_alcohol_n_drinker">
+                <label class="form-check-label"
+                       for="{{ id_prefix }}_alcohol_n_drinker">
+                    Non-Drinker
+                </label>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Country/Population
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    data-bs-placement="right"
+                    aria-label="help button"
+                    title="Country/Region in which the patient was living at the time of surgery. When not otherwise
+                specified in the original publication, the country corresponding to the address of the hospital
+                is entered.">
+                <i class="far fa-question-circle"></i>
+            </button>
+
+        </legend>
+        <div class="col-sm-6 col-md-7">
+            <select name="{{ id_prefix }}_country_list" class="form-control chosen-select"
+                    id="{{ id_prefix }}_country_input"
+                    data-placeholder="Choose Countries..."
+                    aria-label="Country or Population List" multiple>
+                {% for country in country_list %}
+                <option value="{{ country.label }}">{{ country.label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                Clear All</a>
+            <br>
+            <a class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                Add All</a>
+        </div>
+    </div>
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Infectious Agent
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-placement="right" aria-label="help button"
+                    title="Pathogen (virus or bacteria) detected in the patient.">
+                <i class="far fa-question-circle"></i>
+            </button>
+
+        </legend>
+        <div class="col-sm-6 col-md-7">
+            <select name="{{ id_prefix }}_inf_agnt_list" class="form-control chosen-select"
+                    id="{{ id_prefix }}_inf_agnt_input"
+                    data-placeholder="Choose Infectious Agents..."
+                    aria-label="Infectious Agent List" multiple>
+                {% for inf_agnt in inf_agnt_list %}
+                <option value="{{ inf_agnt.label }}">{{ inf_agnt.label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                Clear All</a>
+            <br>
+            <a class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                Add All</a>
+        </div>
+    </div>
+</fieldset>
+<fieldset class="mb-3">
+    <div class="row">
+        <legend class="text-end col-form-label col-sm-3 pt-0">
+            Exposure
+            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                    data-bs-placement="right" aria-label="help button"
+                    title="Risk factors to which the patient has been exposed to, such as aflatoxins, radon, thorotrast, etc...">
+                <i class="far fa-question-circle"></i>
+            </button>
+
+        </legend>
+        <div class="col-sm-6 col-md-7">
+            <select name="{{ id_prefix }}_exposure_list" class="form-control chosen-select"
+                    id="{{ id_prefix }}_exposure_input"
+                    data-placeholder="Choose Exposures..."
+                    aria-label="Exposure List" multiple>
+                {% for exposure in exposure_list %}
+                <option value="{{ exposure.label }}">{{ exposure.label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-2 text-start">
+            <a class="clear-all-select small-font"><i class="far fa-times-circle"></i>
+                Clear All</a>
+            <br>
+            <a class="add-all-select small-font"><i class="far fa-check-circle"></i>
+                Add All</a>
+        </div>
+    </div>
+</fieldset>
