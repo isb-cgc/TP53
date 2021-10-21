@@ -19,8 +19,8 @@ from flask import Flask, render_template, request, send_from_directory, json, js
 from google.cloud import bigquery
 from google.api_core.exceptions import BadRequest
 from flask_talisman import Talisman
-import bq_builder
 import settings
+import bq_builder
 import concurrent.futures
 import requests
 import csv

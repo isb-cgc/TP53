@@ -21,6 +21,7 @@ import logging
 
 BQ_GCP=os.environ.get('BQ_GCP', 'isb-cgc-tp53-dev')
 logging.info('BIGQUERY_GCP SETUP======'+BQ_GCP)
+print('BIGQUERY_GCP SETUP======'+BQ_GCP)
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
 IS_TEST = os.environ.get('IS_TEST', True)
 
