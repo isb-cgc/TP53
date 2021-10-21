@@ -8,39 +8,13 @@ runtime_config:
   python_version: 3
 
 
-
 instance_class: F4
 network:
   instance_tag: isb-cgc-tp53
 
-
-#BQ_DATASET to set from prod, test or uat
 env_variables:
-#  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files'
-#  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-test'
-#  TP53_STATIC_URL: 'https://storage.googleapis.com/tp53-static-files-dev'
-#  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files'
-#  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files-test'
-#  TP53_DATA_DIR_URL: 'https://storage.googleapis.com/tp53-data-files-dev'
-#  SITEMAP_FILENAME: 'prod_sitemap.xml' # PROD
-#  SITEMAP_FILENAME: 'test_sitemap.xml' # TEST
-#  URL_LIST_FILENAME: 'dev_urllist.txt' # DEV
-#  URL_LIST_FILENAME: 'prod_urllist.txt'
-#  URL_LIST_FILENAME: 'test_urllist.txt'
-#  SITEMAP_FILENAME: 'dev_sitemap.xml' # DEV
-#  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53'
-#  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-test'
-#  DEPLOYMENT_PROJECT_ID: 'isb-cgc-tp53-dev'
-#  GOOGLE_SE_ID: '04bb5e112c9ab6e0b' #PROD
-#  GOOGLE_SE_ID: 'e6c70a3643842b1d6' #TEST
-#  GOOGLE_SE_ID: 'dab1bee9d7d88fe88' #DEV
-#  KEY_FILE_NAME: 'tp53prodBQ.key.json' # PROD
-#  KEY_FILE_NAME: 'tp53testBQ.key.json' # TEST
-#  KEY_FILE_NAME: 'tp53devBQ.key.json' # DEV
-#  IS_TEST: True
   BQ_DATASET: 'P53_data'
   DATA_VERSION: 'r20'
-
 
 
 handlers:
