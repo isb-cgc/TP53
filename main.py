@@ -33,6 +33,9 @@ from jinja2 import TemplateNotFound
 
 
 app = Flask(__name__)
+app.config['TESTING'] = settings.IS_TEST
+app.config['ENV'] = 'development' if settings.IS_TEST else 'production'
+
 
 hsts_max_age = 3600 if settings.IS_TEST else 31536000
 
