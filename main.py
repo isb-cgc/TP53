@@ -58,6 +58,7 @@ GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'privatekey.json')
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
 
 # project_id = os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
+print('DATASET SET UP=========')
 bq_builder.set_project_dataset(proj_id=settings.DEPLOYMENT_PROJECT_ID, d_set=settings.BQ_DATASET)
 
 bigquery_client = bigquery.Client()

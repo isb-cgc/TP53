@@ -19,6 +19,7 @@ from flask import json
 import utils
 
 DEPLOYMENT_PROJECT_ID=os.environ.get('DEPLOYMENT_PROJECT_ID', 'isb-cgc-tp53-dev')
+print('DEPLOYMENT_PROJECT_ID SETUP======'+DEPLOYMENT_PROJECT_ID)
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
 IS_TEST = os.environ.get('IS_TEST', True)
 
