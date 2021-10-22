@@ -23,23 +23,15 @@ commands:
               KEY="NA"
             fi
             CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53_DEV}
-            IS_TEST_ENV=True
-            GSE_ID=${GSE_ID_DEV}
             SUFFIX=-dev
-            PREFIX=dev_
             if [[ ${TIER} == "PROD" ]]; then
               KEY=${DEPLOYMENT_KEY_TP53_PROD}
               CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53_PROD}
-              IS_TEST_ENV=False
-              GSE_ID=${GSE_ID_PROD}
               SUFFIX=
-              PREFIX=
             elif [[ ${TIER} == "TEST" ]]; then
               KEY=${DEPLOYMENT_KEY_TP53_TEST}
               CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53_TEST}
-              GSE_ID=${GSE_ID_TEST}
               SUFFIX=-test
-              PREFIX=test_
             elif [[ ${TIER} == "DEV" ]]; then
               echo "Using default deployment configuration for tier ${TIER}"
             else
@@ -49,11 +41,7 @@ commands:
             echo "export DEPLOYMENT_KEY=\"${KEY}\"" >> $BASH_ENV
             echo "export DEPLOYMENT_CLIENT_EMAIL=${CLIENT_EMAIL}" >> $BASH_ENV
             echo "export DEPLOYMENT_PROJECT_ID=${PROJECT_ID}${SUFFIX}" >> $BASH_ENV
-            echo "export BQ_GCP=${PROJECT_ID}${SUFFIX}" >> $BASH_ENV
-            echo "export GOOGLE_SE_ID=${GSE_ID}" >> $BASH_ENV
-            echo "export IS_TEST=${IS_TEST_ENV}" >> $BASH_ENV
             echo "export DEPLOYMENT_BUCKET=${DEP_BUCKET}${SUFFIX}" >> $BASH_ENV
-            echo "export STATIC_BUCKET=${BUCKET}${SUFFIX}" >> $BASH_ENV
 
 
   auth:
@@ -101,7 +89,6 @@ jobs:
             - ./templates
             - ./shell
             - ./static
-            - ./app.yaml
             - ./bq_builder.py
             - ./filters.py
             - ./graphs.py
