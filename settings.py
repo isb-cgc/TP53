@@ -277,8 +277,6 @@ DATA_VERSION = os.environ.get('DATA_VERSION', 'r20')
 IS_TEST = os.environ.get('IS_TEST', True)
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
 
-print('DEPLOYMENT_PROJECT_ID SETUP======'+os.environ.get('DEPLOYMENT_PROJECT_ID', 'not found'))
-print('PROJECT_ID SETUP======'+os.environ.get('PROJECT_ID', 'not found'))
 print('BQ_GCP SETUP======'+BQ_GCP)
 print('BQ_DATASET SETUP======'+BQ_DATASET)
 print('GOOGLE_SE_ID SETUP======'+GOOGLE_SE_ID)
