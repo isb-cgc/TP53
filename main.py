@@ -897,9 +897,9 @@ def show(page):
 @app.route('/<google_site_ver>.html')
 def get_sitemap_file(txt_url=None, xml_url=None, google_site_ver=None):
     url_list_filename = None
-    if txt_url.lower() == 'urllist':
+    if txt_url and txt_url.lower() == 'urllist':
         url_list_filename = os.environ.get('SITEMAP_LIST_FILE', 'urllist.txt')
-    elif xml_url.lower() == 'sitemap':
+    elif xml_url and xml_url.lower() == 'sitemap':
         url_list_filename = os.environ.get('SITEMAP_XML_FILE', 'sitemap.xml')
     elif google_site_ver and google_site_ver.index('google')==0:
         print(google_site_ver.index('google'))
