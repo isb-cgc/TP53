@@ -17,7 +17,6 @@
 import os
 from flask import json
 import utils
-import logging
 
 
 M_C_DESC_FILE = 'M_C_DESC.TXT.LIST'
@@ -277,12 +276,6 @@ DATA_VERSION = os.environ.get('DATA_VERSION', 'r20')
 IS_TEST = os.environ.get('IS_TEST', True)
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
 
-print('BQ_GCP SETUP======'+BQ_GCP)
-print('BQ_DATASET SETUP======'+BQ_DATASET)
-print('GOOGLE_SE_ID SETUP======'+GOOGLE_SE_ID)
-print('DATA_VERSION SETUP======'+DATA_VERSION)
-print('IS_TEST SETUP======{is_test}'.format(is_test=IS_TEST))
-print('TP53_STATIC_URL SETUP======'+TP53_STATIC_URL)
 
 # IS_TEST = True
 # KEY_FILE_NAME = os.environ.get('KEY_FILE_NAME', 'tp53devBQ.key.json')
