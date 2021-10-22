@@ -32,7 +32,7 @@ print('bq_proj_dataset set up =====')
 def set_project_dataset(proj_id='isb-cgc-tp53-dev', d_set='P53_data'):
     # global project_id
     # global dataset
-    # global bq_proj_dataset
+    global bq_proj_dataset
     # project_id = proj_id
     # dataset = d_set
 
