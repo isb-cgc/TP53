@@ -19,11 +19,6 @@ from flask import json
 import utils
 import logging
 
-BQ_GCP=os.environ.get('BQ_GCP', 'isb-cgc-tp53-dev')
-logging.info('BIGQUERY_GCP SETUP======'+BQ_GCP)
-print('BIGQUERY_GCP SETUP======'+BQ_GCP)
-TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
-IS_TEST = os.environ.get('IS_TEST', True)
 
 M_C_DESC_FILE = 'M_C_DESC.TXT.LIST'
 M_P_DESC_FILE = 'M_P_DESC.TXT.LIST'
@@ -275,13 +270,25 @@ topo_morph_assc = None
 global gm_ref_data
 gm_ref_data = None
 
-
-IS_TEST = True
+BQ_GCP=os.environ.get('BQ_GCP', 'isb-cgc-tp53-dev')
 BQ_DATASET = os.environ.get('BQ_DATASET', 'P53_data')
 GOOGLE_SE_ID = os.environ.get('GOOGLE_SE_ID', 'dab1bee9d7d88fe88')
+DATA_VERSION = os.environ.get('DATA_VERSION', 'r20')
+IS_TEST = os.environ.get('IS_TEST', True)
+TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
+
+print('DEPLOYMENT_PROJECT_ID SETUP======'+os.environ.get('DEPLOYMENT_PROJECT_ID', 'not found'))
+print('PROJECT_ID SETUP======'+os.environ.get('PROJECT_ID', 'not found'))
+print('BQ_GCP SETUP======'+BQ_GCP)
+print('BQ_DATASET SETUP======'+BQ_DATASET)
+print('GOOGLE_SE_ID SETUP======'+GOOGLE_SE_ID)
+print('DATA_VERSION SETUP======'+DATA_VERSION)
+print('IS_TEST SETUP======'+IS_TEST)
+print('TP53_STATIC_URL SETUP======'+TP53_STATIC_URL)
+
+# IS_TEST = True
 # KEY_FILE_NAME = os.environ.get('KEY_FILE_NAME', 'tp53devBQ.key.json')
 # TP53_DATA_DIR_URL = os.environ.get('TP53_DATA_DIR_URL', 'https://storage.googleapis.com/tp53-data-files')
-DATA_VERSION = os.environ.get('DATA_VERSION', 'r20')
 
 def setup_app(app):
     global m_c_desc_list
