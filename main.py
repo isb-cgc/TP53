@@ -148,7 +148,6 @@ def get_distribution():
     template = 'mutation_stats.html'
     title = 'Statistics on Functional/Structural Data' if query_dataset == 'Mutation' else 'Search Results on {query_dataset} Variants'.format(query_dataset=query_dataset)
 
-    print(action)
     if action == 'get_mutation_dist':
         table = '{query_dataset}View'.format(query_dataset=query_dataset)
         template = 'mutation_dist_stats.html'
@@ -902,7 +901,6 @@ def get_sitemap_file(txt_url=None, xml_url=None, google_site_ver=None):
     elif xml_url and xml_url.lower() == 'sitemap':
         url_list_filename = os.environ.get('SITEMAP_XML_FILE', 'sitemap.xml')
     elif google_site_ver and google_site_ver.index('google')==0:
-        print(google_site_ver.index('google'))
         return send_from_directory(app.root_path, 'templates/{filename}.html'.format(filename=google_site_ver))
 
     if url_list_filename:
