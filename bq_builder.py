@@ -14,31 +14,14 @@
 # limitations under the License.
 ###
 
-import logging
-# import re
-
-# change dataset you want to use
-# global project_id
-# project_id = 'isb-cgc-tp53-dev'
-
-# global dataset
-# dataset = 'P53_data'  # default
 
 global bq_proj_dataset
 bq_proj_dataset = "{projectId}.{dataset}".format(projectId='isb-cgc-tp53-dev', dataset='P53_data')
-print('bq_proj_dataset set up =====')
 
 
 def set_project_dataset(proj_id='isb-cgc-tp53-dev', d_set='P53_data'):
-    # global project_id
-    # global dataset
     global bq_proj_dataset
-    # project_id = proj_id
-    # dataset = d_set
-
     bq_proj_dataset = "{projectId}.{dataset}".format(projectId=proj_id, dataset=d_set)
-    print('bq_proj_dataset set up AGAIN TO ====='+bq_proj_dataset)
-    logging.info('bq_proj_dataset set up AGAIN TO ====='+bq_proj_dataset)
 
 def build_group_sum_graph_query(criteria, view, group_by):
     query_temp = """
@@ -128,7 +111,6 @@ def build_mutation_query(criteria_map, table, group_by):
         if where_clause:
             filtered_select_sql = filtered_select_sql.format(bq_proj_dataset=bq_proj_dataset, table=table, where_clause=where_clause)
     query = count_query.format(group_by=group_by, filtered_select_sql=filtered_select_sql)
-    # print(query)
     return query
 
 
@@ -173,7 +155,6 @@ def build_query_w_exclusion(criteria_map, table, column_filters=None, do_counts=
                 .format(ord_columns=ord_columns.format(ord_dir=ord_dir), ord_dir=ord_dir)
         if length:
             filtered_select_sql += " LIMIT {limit_cnt} OFFSET {skip_rows}".format(limit_cnt=length, skip_rows=start)
-    # print(filtered_select_sql)
 
     return filtered_select_sql
 
@@ -203,14 +184,12 @@ def build_codon_dist_query(column, table):
         ORDER BY LABEL
     """
     query = query_temp.format(bq_proj_dataset=bq_proj_dataset, column=column, table=table)
-    # print(query)
     return query
 
 
 
 def build_mutation_dist_sum_query(criteria_map, table, group_by, sum_col):
 
-    # print(criteria_map)
     query_module = """
             SELECT *
             FROM `{bq_proj_dataset}.{table}`	
@@ -239,25 +218,8 @@ def build_mutation_dist_sum_query(criteria_map, table, group_by, sum_col):
         if where_clause:
             filtered_select_sql = filtered_select_sql.format(bq_proj_dataset=bq_proj_dataset, table=table, where_clause=where_clause)
     query = sum_query.format(group_by=group_by, sum_col=sum_col, filtered_select_sql=filtered_select_sql)
-    # print(query)
     return query
 
-# def build_tumor_graph_query(criteria, view):
-#
-#     query_temp = """
-#         SELECT Country, SUM(Sample_analyzed) AS Sample_analyzed_SUM, SUM(Sample_mutated) AS Sample_mutated_SUM,
-#         SUM(Sample_mutated)/SUM(Sample_analyzed) AS ratio
-#         FROM `{bq_proj_dataset}.{view}`
-#         WHERE {where_clause}
-#         GROUP BY Country
-#         ORDER BY ratio
-#     """
-#     where_clause = build_where_clause(criteria)
-#     query = query_temp.format(bq_proj_dataset=bq_proj_dataset, view=view, where_clause=where_clause)
-#     # columns = ', '.join("tbl.{0}".format(col) for col in column_filters)
-#     # query = query_temp.format(bq_proj_dataset=bq_proj_dataset, mut_id=mut_id, join_table=join_table, columns=columns,
-#     #                           join_column=join_column, ord_column=ord_column)
-#     return query
 
 def build_mutation_view_join_query(mut_id, join_table, column_filters, join_column, ord_column):
     query_temp = """
