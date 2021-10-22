@@ -283,7 +283,7 @@ print('BQ_GCP SETUP======'+BQ_GCP)
 print('BQ_DATASET SETUP======'+BQ_DATASET)
 print('GOOGLE_SE_ID SETUP======'+GOOGLE_SE_ID)
 print('DATA_VERSION SETUP======'+DATA_VERSION)
-print('IS_TEST SETUP======'+IS_TEST)
+print('IS_TEST SETUP======{is_test}'.format(is_test=IS_TEST))
 print('TP53_STATIC_URL SETUP======'+TP53_STATIC_URL)
 
 # IS_TEST = True
