@@ -626,13 +626,17 @@ button[aria-expanded="true"].btn-view-details::before{
 }
 footer{
     color: rgba(255,255,255,.55);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     background-color: #2F2C55;
     z-index: 350;
 }
 
 footer a{
     color: #D7D8F1;
+}
+
+footer img{
+    display: inline;
 }
 
 .page-item.active .page-link {
