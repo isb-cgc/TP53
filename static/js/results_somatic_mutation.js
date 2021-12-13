@@ -60,7 +60,7 @@ $(document).ready(function () {
                     }
                 }
             },
-            {data: "hg18_Chr17_coordinates"},
+            {data: "hg19_Chr17_coordinates"},
             {data: "hg38_Chr17_coordinates"},
             {data: "Codon_number"},
             {
