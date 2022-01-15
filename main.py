@@ -36,7 +36,10 @@ app = Flask(__name__)
 app.config['TESTING'] = settings.IS_TEST
 app.config['ENV'] = 'development' if settings.IS_TEST else 'production'
 
-hsts_max_age = 3600 if settings.IS_TEST else 31536000
+# length of time (in seconds) the browser will respect the HSTS header
+# production and UAT should be set to 31,536,000 seconds (by not setting any HSTS_MAX_age,
+# else set to 3600 (test and dev)
+hsts_max_age = int(os.environ.get('HSTS_MAX_AGE') or 3600)
 
 Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_policy={
     'default-src': [
