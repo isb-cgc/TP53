@@ -94,6 +94,15 @@ $(document).ready(function () {
             {data: "Sex"},
             {data: "Age"},
             {data: "Germline_mutation"},
+            {
+                data: "PubMed",
+                render: function (data, type, row, meta) {
+                    if (data != null)
+                        return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank" rel="noopener noreferrer">' + data + '</a>';
+                    else
+                        return '';
+                }
+            }
         ],
         select: {
             style: 'multi',

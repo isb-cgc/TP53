@@ -227,8 +227,8 @@ def mutation_query():
             "Morphology",
             "Sex",
             "Age",
-            "Germline_mutation"
-        ]
+            "Germline_mutation",
+            "PubMed"]
     elif query_dataset == 'Germline':
         column_filters = [
             "g_description",
@@ -250,7 +250,8 @@ def mutation_query():
             "Age_at_diagnosis",
             "Topography",
             "Morphology",
-            "Ref_ID"]
+            "PubMed"]
+            # "Ref_ID"]
     elif query_dataset == 'Prevalence':
         criteria_map = {
             'include': criteria_map,
