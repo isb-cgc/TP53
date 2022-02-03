@@ -227,8 +227,17 @@ def mutation_query():
             "Morphology",
             "Sex",
             "Age",
-            "Germline_mutation"
-        ]
+            "Germline_mutation",
+            "PubMed",
+            "DS_AG",
+            "DS_AL",
+            "DS_DG",
+            "DS_DL",
+            "DP_AG",
+            "DP_AL",
+            "DP_DG",
+            "DP_DL"
+            ]
     elif query_dataset == 'Germline':
         column_filters = [
             "g_description",
@@ -250,7 +259,17 @@ def mutation_query():
             "Age_at_diagnosis",
             "Topography",
             "Morphology",
-            "Ref_ID"]
+            "PubMed",
+            "DS_AG",
+            "DS_AL",
+            "DS_DG",
+            "DS_DL",
+            "DP_AG",
+            "DP_AL",
+            "DP_DG",
+            "DP_DL"
+        ]
+            # "Ref_ID"]
     elif query_dataset == 'Prevalence':
         criteria_map = {
             'include': criteria_map,
@@ -335,11 +354,12 @@ def simple_query(prefix):
     length = int(parameters['length'])
     criteria = json.loads(parameters['criteria'])
     if prefix == 'gv':
-        table = 'MutationView'
+        table = 'MutationView_SpliceAI'
         distinct_col = 'MUT_ID'
         column_filters = ["MUT_ID", "g_description", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
                       "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "Somatic_count", "Germline_count", "Cellline_count",
-                      "TCGA_ICGC_GENIE_count", "Polymorphism", "CLINVARlink", "COSMIClink", "SNPlink", "gnomADlink"]
+                      "TCGA_ICGC_GENIE_count", "Polymorphism", "CLINVARlink", "COSMIClink", "SNPlink", "gnomADlink",
+                          "DS_AG", "DS_AL", "DS_DG",	"DS_DL", "DP_AG", "DP_AL", "DP_DG", "DP_DL"]
         order_col_name = column_filters[order_col-1]
     elif prefix == 'cl':
         table = 'CellLineView'
@@ -367,7 +387,7 @@ def mut_details():
         'mutation': {
             'column_filters': ['*'],
             'criteria': [{'column_name': 'MUT_ID', 'vals': [mut_id]}],
-            'table': 'MutationView',
+            'table': 'MutationView_SpliceAI',
             'ord_column': 'MUT_ID'
         },
         'splice_pred': {
@@ -377,6 +397,7 @@ def mut_details():
             'table': 'SPLICING_PREDICTION_VIEW',
             'ord_column': 'MUT_ID'
         },
+
         'p53_pred': {
             'column_filters': ['TAp53', 'TAp53beta', 'TAp53gamma', 'delta40p53', 'delta40p53beta', 'delta40p53gamma',
                                'delta133p53', 'delta133p53beta', 'delta133p53gamma', 'deltap53', 'MUT_ID'],
