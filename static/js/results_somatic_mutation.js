@@ -102,6 +102,38 @@ $(document).ready(function () {
                     else
                         return '';
                 }
+            },
+            {
+                data: "DS_AG",
+                className: "text-end pe-2"
+            },
+            {
+                data: "DS_AL",
+                className: "text-end pe-2"
+            },
+            {
+                data: "DS_DG",
+                className: "text-end pe-2"
+            },
+            {
+                data: "DS_DL",
+                className: "text-end pe-2"
+            },
+            {
+                data: "DP_AG",
+                className: "text-end pe-2"
+            },
+            {
+                data: "DP_AL",
+                className: "text-end pe-2"
+            },
+            {
+                data: "DP_DG",
+                className: "text-end pe-2"
+            },
+            {
+                data: "DP_DL",
+                className: "text-end pe-2"
             }
         ],
         select: {

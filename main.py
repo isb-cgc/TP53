@@ -228,7 +228,16 @@ def mutation_query():
             "Sex",
             "Age",
             "Germline_mutation",
-            "PubMed"]
+            "PubMed",
+            "DS_AG",
+            "DS_AL",
+            "DS_DG",
+            "DS_DL",
+            "DP_AG",
+            "DP_AL",
+            "DP_DG",
+            "DP_DL"
+            ]
     elif query_dataset == 'Germline':
         column_filters = [
             "g_description",
@@ -250,7 +259,16 @@ def mutation_query():
             "Age_at_diagnosis",
             "Topography",
             "Morphology",
-            "PubMed"]
+            "PubMed",
+            "DS_AG",
+            "DS_AL",
+            "DS_DG",
+            "DS_DL",
+            "DP_AG",
+            "DP_AL",
+            "DP_DG",
+            "DP_DL"
+        ]
             # "Ref_ID"]
     elif query_dataset == 'Prevalence':
         criteria_map = {
