@@ -121,6 +121,87 @@ $(document).ready(function () {
                     else
                         return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
                 }
+            },
+
+            {
+                data: "DS_AG",
+                className: "text-end pe-2",
+                // render: function (data) {
+                //     if(data == null || data === '')
+                //         return '';
+                //     else
+                //         return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
+                // }
+            },
+            {
+                data: "DS_AL",
+                className: "text-end pe-2",
+                // render: function (data) {
+                //     if(data == null || data === '')
+                //         return '';
+                //     else
+                //         return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
+                // }
+            },
+            {
+                data: "DS_DG",
+                className: "text-end pe-2",
+                // render: function (data) {
+                //     if(data == null || data === '')
+                //         return '';
+                //     else
+                //         return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
+                // }
+            },
+            {
+                data: "DS_DL",
+                className: "text-end pe-2",
+                // render: function (data) {
+                //     if(data == null || data === '')
+                //         return '';
+                //     else
+                //         return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
+                // }
+            },
+            {
+                data: "DP_AG",
+                className: "text-end pe-2",
+                // render: function (data) {
+                //     if(data == null || data === '')
+                //         return '';
+                //     else
+                //         return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
+                // }
+            },
+            {
+                data: "DP_AL",
+                className: "text-end pe-2",
+                // render: function (data) {
+                //     if(data == null || data === '')
+                //         return '';
+                //     else
+                //         return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
+                // }
+            },
+            {
+                data: "DP_DG",
+                className: "text-end pe-2",
+                // render: function (data) {
+                //     if(data == null || data === '')
+                //         return '';
+                //     else
+                //         return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
+                // }
+            },
+            {
+                data: "DP_DL",
+                className: "text-end pe-2",
+                // render: function (data) {
+                //     if(data == null || data === '')
+                //         return '';
+                //     else
+                //         return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
+                // }
             }
         ],
         select: {

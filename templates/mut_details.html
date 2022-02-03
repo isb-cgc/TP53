@@ -226,6 +226,74 @@
                 </div>
 
                 <div class="my-2 p-3">
+                    <h3>SpliceAI Prediction on Canonical Transcript (NM_000546.5)</h3>
+                    <hr>
+                    {% if mut_desc.DS_AG or mut_desc.DS_AL or mut_desc.DS_DG or mut_desc.DS_DL
+                    or mut_desc.DP_AG or mut_desc.DP_AL or mut_desc.DP_DG or mut_desc.DP_DL %}
+                    <table id="splice-ai-tbl" class="table table-sm small-font">
+                        <thead>
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Delta score–acceptor gain.">
+                                Delta Score<br>Acceptor Gain
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Delta score–acceptor loss.">
+                                Delta Score<br>Acceptor Loss
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Delta score–donor gain.">
+                                Delta Score<br>Donor Gain
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Delta score–donor loss.">
+                                Delta Score<br>Donor Gain
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Delta position–acceptor gain.">
+                                Delta Position<br>Acceptor Gain
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Delta position–acceptor loss.">
+                                Delta Position<br>Acceptor Loss
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Delta position–donor gain.">
+                                Delta Position<br>Donor Gain
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Delta position–donor loss.">
+                                Delta Position<br>Donor Loss
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ mut_desc.DS_AG or 0 }}</td>
+                            <td>{{ mut_desc.DS_AL or 0 }}</td>
+                            <td>{{ mut_desc.DS_DG or 0 }}</td>
+                            <td>{{ mut_desc.DS_DL or 0 }}</td>
+                            <td>{{ mut_desc.DP_AG or 0 }}</td>
+                            <td>{{ mut_desc.DP_AL or 0 }}</td>
+                            <td>{{ mut_desc.DP_DG or 0 }}</td>
+                            <td>{{ mut_desc.DP_DL or 0 }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% endif %}
+                </div>
+
+                <div class="my-2 p-3">
                     <h3>Protein Features</h3>
                     <hr>
                     {% if not prot_desc %}
