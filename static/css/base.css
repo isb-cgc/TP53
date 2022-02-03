@@ -735,7 +735,9 @@ table .form-control{
     color: #666F79;
 }
 
-
+#mut_stats_tabs .nav-link{
+    padding-bottom: .4rem;
+}
 /*div.dataTables_wrapper div.dataTables_filter {*/
     /*text-align: left;*/
 /*}*/
