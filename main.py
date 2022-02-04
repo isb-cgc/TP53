@@ -354,6 +354,7 @@ def simple_query(prefix):
     length = int(parameters['length'])
     criteria = json.loads(parameters['criteria'])
     if prefix == 'gv':
+        table = 'MutationView'
         distinct_col = 'MUT_ID'
         column_filters = ["MUT_ID", "g_description", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
                       "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "Somatic_count", "Germline_count", "Cellline_count",
