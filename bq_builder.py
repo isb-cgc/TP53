@@ -50,6 +50,11 @@ def build_mutation_rate_query(criteria_map, table, label_by='Effect'):
             ORDER BY CNT DESC
     """
 
+    if not criteria_map or len(criteria_map) == 0:
+        criteria_map = criteria_map or {
+            'include': [],
+            'exclude': []
+        }
     filtered_select_sql = ''
     for type in ['include', 'exclude']:
         if type == 'include':
@@ -95,6 +100,11 @@ def build_mutation_query(criteria_map, table, group_by):
             GROUP BY {group_by}
             ORDER BY CNT DESC
     """
+    if not criteria_map or len(criteria_map) == 0:
+        criteria_map = criteria_map or {
+            'include': [],
+            'exclude': []
+        }
     filtered_select_sql = ''
     for type in ['include', 'exclude']:
         if type == 'include':
@@ -128,6 +138,11 @@ def build_query_w_exclusion(criteria_map, table, column_filters=None, do_counts=
         select_clause = distinc_col
     else:
         select_clause = '*'
+    if not criteria_map or len(criteria_map) == 0:
+        criteria_map = criteria_map or {
+            'include': [],
+            'exclude': []
+        }
 
     # select_clause = distinc_col if distinc_col else '*'
     for type in ['include', 'exclude']:
@@ -203,6 +218,11 @@ def build_mutation_dist_sum_query(criteria_map, table, group_by, sum_col):
             ORDER BY CNT DESC
     """
     filtered_select_sql = ''
+    if not criteria_map or len(criteria_map) == 0:
+        criteria_map = criteria_map or {
+            'include': [],
+            'exclude': []
+        }
     for type in ['include', 'exclude']:
         if type == 'include':
             filtered_select_sql += query_module

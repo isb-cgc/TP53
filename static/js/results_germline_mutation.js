@@ -86,12 +86,17 @@ $(document).ready(function () {
             {data: "Age"},
             {data: "Topography"},
             {data: "Morphology"},
-            // {data: "Ref_ID"},
             {
                 data: "PubMed",
                 render: function (data, type, row, meta) {
-                    if (data != null)
-                        return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank" rel="noopener noreferrer">' + data + '</a>';
+                    if (data) {
+                        if (data.toLowerCase() === 'na') {
+                            return 'NA';
+                        }
+                        else {
+                            return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank" rel="noopener noreferrer">' + data + '</a>';
+                        }
+                    }
                     else
                         return '';
                 }

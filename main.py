@@ -166,7 +166,7 @@ def get_distribution():
         table = 'GermlineMutationStats'
         subtitle = 'Codon Distribution of Point Variants'
     else:
-        return render_template('error.html')
+        return render_template('error.html', error_message='Unable to generate the plot: <em>Search criteria is missing.</em><br/>Please revisit the search page and re-run the query.')
 
     if action == 'get_gv_tumor_dist':
         gv_tumor_dist_tables = {
@@ -185,7 +185,6 @@ def get_distribution():
         graph_configs = graphs.build_graph_configs(action, table)
 
         sql_maps = graphs.build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
-        # print(sql_maps)
     graph_result = graphs.build_graph_data(bigquery_client, sql_maps)
 
     return render_template(template, criteria_map=criteria_map, title=title,
@@ -202,6 +201,11 @@ def mutation_query():
     start = int(parameters['start'])
     length = int(parameters['length'])
     criteria_map = json.loads(parameters['criteria'])
+    if len(criteria_map) == 0:
+        criteria_map = {
+            'include': [],
+            'exclude': []
+        }
     query_dataset = parameters['query_dataset']
     table = '{query_dataset}View'.format(query_dataset=query_dataset)
     distinct_col = '{query_dataset}View_ID'.format(query_dataset=query_dataset)
