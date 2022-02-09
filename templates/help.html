@@ -84,7 +84,7 @@
                                                 <td>Unique identifier of each gene variation reported in
                                                     the database. This identifier is used in all
                                                     datasets
-                                                    (somatic, polymorhisms, germline).
+                                                    (tumor variant, polymorhisms, germline).
                                                 </td>
                                             </tr>
 
@@ -824,12 +824,12 @@
                                             <tr>
 
                                                 <td><a id="SomaticCount"></a>Somatic_count</td>
-                                                <td>Number of occurence in the IARC somatic dataset
+                                                <td>Number of occurence in the tumor variant dataset
                                                     (number
                                                     of
                                                     tumors
                                                     reported
-                                                    to carry this somatic variant). Total count is
+                                                    to carry this tumor variant). Total count is
                                                     29,891 in
                                                     R20.
                                                 </td>
@@ -986,7 +986,7 @@
                         </li>
                         <li class="list-group-item">
                             <div>
-                                Somatic Variants Found in Human Tumor Samples <button aria-label="Show/Hide" class="btn-view-details"
+                                Tumor Variants Found in Human Tumor Samples <button aria-label="Show/Hide" class="btn-view-details"
                                         data-bs-toggle="collapse"
                                         data-bs-target="#collapseSM" aria-expanded="false"
                                         aria-controls="collapseSM">
@@ -996,14 +996,18 @@
                                 <div class="bg-light p-3 my-3">
                                     <h4>somaticMutationDataIARC <em>TP53</em> Database, R20.txt</h4>
 
-                                    <p> This dataset contains <em>TP53</em> somatic variants identified
+                                    <p> This dataset contains <em>TP53</em> tumor variants identified
                                         in
                                         human tumor samples (including metastasis and cell-lines).
                                         It includes data on the type and position of variations,
                                         detailed information on the tumor in which the variants
                                         have been found,
                                         and on various characteristics of the patients in which the
-                                        tumor developed. </p>
+                                        tumor developed. Please note that true somatic origin of the tumor variants may
+                                        not have been confirmed unless a matched normal sample was used to filter out
+                                        germline variants. Therefore, it cannot be excluded that a small number of the
+                                        variants listed may be of germline origin.
+                                    </p>
 
                                     <p> Each row in the downloaded tab-delimited text file
                                         represents a single variant reported in a tumor sample with
@@ -1240,7 +1244,7 @@
                         </li>
                         <li class="list-group-item">
                             <div>
-                                Prevalence of <em>TP53</em> Somatic Variants by Tumor Site <button aria-label="Show/Hide" class="btn-view-details"
+                                Prevalence of <em>TP53</em> Tumor Variants by Tumor Site <button aria-label="Show/Hide" class="btn-view-details"
                                         data-bs-toggle="collapse"
                                         data-bs-target="#collapsePrev" aria-expanded="false"
                                         aria-controls="collapsePrev">
@@ -1251,16 +1255,16 @@
                                     <h4>prevalenceSomaticIARC <em>TP53</em> Database, R20.txt</h4>
 
                                     <p> This dataset contains information on the proportion of
-                                        tumors that carry a somatic <em>TP53</em>
+                                        tumors that carry a <em>TP53</em> tumor
                                         variant extracted from publications contained in the
-                                        Somatic dataset, and in additional publications that do not
+                                        tumor variant dataset, and in additional publications that do not
                                         give a
                                         detailed description of the variants (many studies do not
                                         provide detailed information on each variant detected
                                         but rather report their results in the form of summary
-                                        tables, preventing their inclusion in the somaticMutation
+                                        tables, preventing their inclusion in the tumor variant
                                         dataset), or publications reporting negative results (no
-                                        variant found, thus not included in the somaticMutation
+                                        variant found, thus not included in the tumor variant mutation
                                         dataset).
                                     </p>
 
@@ -1342,7 +1346,7 @@
                                                 fully annotated in the database;
                                                 several variants in the series are reported with
                                                 errors (such as position and base that do not fit,
-                                                or report of neutral polymorphisms as somatic
+                                                or report of neutral polymorphisms as tumor
                                                 variants).
 
                                             </td>
@@ -1436,7 +1440,7 @@
                         </li>
                         <li class="list-group-item">
                             <div>
-                                Prognostic Value of <em>TP53</em> Somatic Variants <button aria-label="Show/Hide" class="btn-view-details"
+                                Prognostic Value of <em>TP53</em> Tumor Variants <button aria-label="Show/Hide" class="btn-view-details"
                                         data-bs-toggle="collapse"
                                         data-bs-target="#collapsePV" aria-expanded="false"
                                         aria-controls="collapsePV">
@@ -1466,7 +1470,7 @@
                                         variant detected but rather report their results in the form of
                                         summary
                                         tables. Such publications have been included in the prognosis
-                                        dataset but not in the somaticMutation dataset.
+                                        dataset but not in the tumor variant dataset.
                                         For some of them, the variants have been published in a
                                         previous paper and can be retrieved with the
                                         Cross_Ref_ID study identifier (see below).
@@ -2553,7 +2557,7 @@
                                         </tr>
                                         <tr>
                                             <td>Ref_ID...</td>
-                                            <td> Same as somatic Ref_ID, <a class="jump-link"
+                                            <td> Same as tumor variant Ref_ID, <a class="jump-link"
                                                                             href="#Referencedescription">see
                                                 reference annotations</a>.
                                             </td>
@@ -3017,7 +3021,7 @@
                                 <div class="bg-light p-3 my-3">
 
 
-                                    <p>The same references (same Ref_ID) are used for the somatic,
+                                    <p>The same references (same Ref_ID) are used for the tumor variant,
                                         prevalence and prognosis data sets. Independent references
                                         are used for
                                         the Function and Germline data sets.
@@ -3810,17 +3814,17 @@
                                             can be retrieved with this search option.
                                             Each dataset entry corresponds to a unique gene variation.
                                         </li>
-                                        <li><b>Somatic variants</b>.
+                                        <li><b>Tumor variants</b>.
                                             This option allows the retrieval and analysis of <em>TP53</em>
                                             variants
                                             reported as somatic events in tumor samples and cell-lines.
                                             Each dataset entry corresponds to a variant identified in a
                                             human sample.
                                         </li>
-                                        <li><b>Somatic variant prevalence</b>.
+                                        <li><b>Tumor variant prevalence</b>.
                                             This option allows the analysis of the prevalence of
                                             <em>TP53</em>
-                                            somatic variants by cancer type and population groups.
+                                            tumor variants by cancer type and population groups.
                                             Each dataset entry corresponds to the prevalence of
                                             <em>TP53</em>
                                             variant for a specific type of cancer in a defined human
@@ -4009,7 +4013,7 @@
                                             number of tumors observed in individuals carriers of the
                                             selected variants (% is shown).
                                         </li>
-                                        <li><b>Somatic data</b>. Distribution of tumor sites associated
+                                        <li><b>Tumor variant data</b>. Distribution of tumor sites associated
                                             with
                                             the selected variants;
                                             number of variations classified by tumor site divided by
@@ -4017,7 +4021,7 @@
                                             number of variations observed in tumors carrying the selected
                                             variants (% is shown).
                                         </li>
-                                        <li><b>Gene variation data, somatic graph</b>. Proportion of the
+                                        <li><b>Gene variation data, tumor variant graph</b>. Proportion of the
                                             selected variants among all variants reported in the
                                             database
                                             by tumor sites;
@@ -4082,51 +4086,51 @@
                         while it may in fact be the second or third nucleotide that is actually deleted. This
                         information is thus only reliable at the codon level.
                     </div>
-                    <h3 class="mt-4">Some variants present in the somatic dataset may not be retrieved with the
+                    <h3 class="mt-4">Some variants present in the tumor variant dataset may not be retrieved with the
                         'Functional/Structural Data' search option
                     </h3>
                     <div>There may be two reasons for this:</div>
                     <ol>
                         <li>Variants retrieved with this option only include gene variation that are fully
-                            described, while in the dataset of somatic variants some variants are not fully
+                            described, while in the dataset of tumor variants some variants are not fully
                             described.
                         </li>
-                        <li>Somatic variants may be reported in individuals with different SNP status. If a
+                        <li>Tumor variants may be reported in individuals with different SNP status. If a
                             variant is close to a SNP, it may have a different impact on the protein sequence
                             depending on the SNP status. For example, the variant c.637C>T on the first base of
                             codon 213, will result in a p.R213X change in the protein sequence if the SNP present on
                             the third base of the codon is an A (CGA>TGA), while it will result in a p.R213W change
                             if the SNP present on the third base of the codon is a G (CGG>TGG). Variants not
-                            described from the reference sequence are included in the somatic dataset, but not in
+                            described from the reference sequence are included in the tumor variant dataset, but not in
                             the Gene variation dataset.
                         </li>
                     </ol>
                     <h3 class="mt-4">Some variant numbers retrieved from the variant prevalence and variant spectrum
                         datasets may be different</h3>
-                    <div>Data in the prevalence dataset are "independent" from data included in the somatic variants
+                    <div>Data in the prevalence dataset are "independent" from data included in the tumor variants
                         dataset. Numbers differ for the following reasons:
                     </div>
                     <ul>
                         <li>Because we retrieve data from papers, and in many papers the only information that can
                             be extracted is the total number of samples analyzed and total number of samples mutated
-                            (variants are not described in details), variants cannot be included in the somatic
-                            dataset. Thus, numbers in the prevalence table do not match numbers in the somatic
+                            (variants are not described in details), variants cannot be included in the tumor variant
+                            dataset. Thus, numbers in the prevalence table do not match numbers in the tumor variant
                             dataset (variant spectrum).
                         </li>
                         <li>Numbers by histology may also differ, as for example, a paper may contain variant
                             details for lung ADC, SCC, LCC (which are all non-small cell lung cancers), but total
                             numbers of samples analyzed for each histology is not available. In this case, variants
-                            corresponding to ADC, SCC and LCC will be entered in the somatic dataset but in the
+                            corresponding to ADC, SCC and LCC will be entered in the tumor variant dataset but in the
                             prevalence table the prevalence will be indicated only for non-small cell carcinoma
                             (group that includes the 3 tumor types).
                         </li>
                         <li>Cell-lines are not included in the prevalence count.</li>
                         <li>Samples with more than one <em>TP53</em> variant are counted once in the prevalence
                             table while
-                            all variants are entered in the somatic dataset.
+                            all variants are entered in the tumor variant dataset.
                         </li>
                         <li>The prevalence may be missing for some papers that describe variants included in the
-                            somatic dataset. The prevalence dataset has been added in a recent version of the
+                            tumor variant dataset. The prevalence dataset has been added in a recent version of the
                             database (2001 while the database started in 1994) and not all papers have been
                             reviewed. The non-reviewed papers correspond mainly to publications that describe less
                             than 10 variants (about 400 papers). For some papers, the prevalence could not be

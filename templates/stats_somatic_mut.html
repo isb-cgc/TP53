@@ -1,5 +1,5 @@
 {% extends "tp53data.html" %}
-{% block title %}TP53 Database: Selected Statistics on Somatic Variant Data{% endblock %}
+{% block title %}TP53 Database: Selected Statistics on Tumor Variant Data{% endblock %}
 {% block head %}
 {{ super() }}
 
@@ -9,12 +9,12 @@
 
 <div class="page-banner">
     <div class="container">
-        <h1 class="fw-bold p-2 my-0">Selected Statistics on Somatic Variant Data</h1>
+        <h1 class="fw-bold p-2 my-0">Selected Statistics on Tumor Variant Data</h1>
     </div>
 </div>
 <div class="container">
     <div id="stats_germline_mut" class="p-2 my-3">
-        <div>This dataset includes <em>TP53</em> somatic variants reported in primary
+        <div>This dataset includes <em>TP53</em> tumor variants reported in primary
             tissues, body fluids and cell-lines.<br>For more details on dataset contents and annotations, see the <a
                     href="/help">User Manual</a>.
         </div>
@@ -28,10 +28,10 @@
                     Tumors Site Distributions</a>
                 <a href="/prevalence_somatic_stats"
                    class="list-group-item list-group-item-action submit-link">
-                    <em>TP53</em> Somatic Prevalence by Tumor Site</a>
+                    <em>TP53</em> Tumor Variant Prevalence by Tumor Site</a>
                 <a href="/prognosis_somatic_stats"
                    class="list-group-item list-group-item-action submit-link">
-                    Prognostic Value of Somatic Variants</a>
+                    Prognostic Value of Tumor Variants</a>
                 <a href="/db_dev_somatic_stats"
                    class="list-group-item list-group-item-action submit-link">
                     Statistics on Dataset Development</a>
