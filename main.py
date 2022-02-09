@@ -275,10 +275,11 @@ def mutation_query():
         ]
             # "Ref_ID"]
     elif query_dataset == 'Prevalence':
-        criteria_map = {
-            'include': criteria_map,
-            'exclude': []
-        }
+        if 'include' not in criteria_map:
+            criteria_map = {
+                'include': criteria_map,
+                'exclude': []
+            }
         distinct_col = 'Prevalence_ID'
         column_filters = [
             "Topography",
@@ -664,7 +665,7 @@ def download_dataset():
     return output
 
 
-@app.route("/results_somatic_prevalence_list", methods=['POST'])
+@app.route("/results_somatic_prevalence_list", methods=['GET','POST'])
 def results_somatic_prevalence_list():
     prefix = 'mut_prev'
     criteria = filters.get_topo_morph_criteria(prefix)
