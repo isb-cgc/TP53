@@ -67,11 +67,11 @@ TITLE_BQVIEW_MAP = {
     "MutationView": "Functional / Structural Data in <em>TP53</em> with Annotations",
     "FunctionDownload": "Functional Assessment of <em>p53</em> Mutant Proteins in Various Experimental Assays",
     "FunctionIshiokaDownload": "Systematic Functional Assessment of <em>p53</em> Mutant Proteins in Yeast Assays",
-    "SomaticDownload": "Somatic Variants in Human Tumor Samples (Data File)",
-    "SomaticRefDownload": "Somatic Variants in Human Tumor Samples (References File)",
-    "PrevalenceDownload": "Prevalence of Somatic Variants by Tumor Site",
+    "SomaticDownload": "Tumor Variants in Human Tumor Samples (Data File)",
+    "SomaticRefDownload": "Tumor Variants in Human Tumor Samples (References File)",
+    "PrevalenceDownload": "Prevalence of Tumor Variants by Tumor Site",
     "PrevalenceDownloadR249S": "Prevalence of the R249S <em>TP53</em> Variants in Liver Cancer",
-    "PrognosisDownload": "Prognostic Value of Somatic Variants",
+    "PrognosisDownload": "Prognostic Value of Tumor Variants",
     "GermlineDownload": "<em>TP53</em> Germline Variants and Family History (Data File)",
     "GermlineRefDownload": "<em>TP53</em> Germline Variants and Family History (References File)",
     "GermlinePrevalenceView": "<em>TP53</em> Germline Variants Prevalence in Selected Cohorts",
@@ -148,7 +148,10 @@ def get_distribution():
     query_dataset = filters.get_param_val('query_dataset')
 
     template = 'mutation_stats.html'
-    title = 'Statistics on Functional/Structural Data' if query_dataset == 'Mutation' else 'Search Results on {query_dataset} Variants'.format(query_dataset=query_dataset)
+    if query_dataset == 'Mutation':
+        title = 'Statistics on Functional/Structural Data'
+    else:
+        title = 'Search Results on {query_dataset} Variants'.format(query_dataset=('Tumor' if query_dataset == 'Somatic' else query_dataset))
 
     if action == 'get_mutation_dist':
         table = '{query_dataset}View'.format(query_dataset=query_dataset)
@@ -166,7 +169,7 @@ def get_distribution():
         table = 'GermlineMutationStats'
         subtitle = 'Codon Distribution of Point Variants'
     else:
-        return render_template('error.html')
+        return render_template('error.html', error_message='Unable to generate the plot: <em>Search criteria is missing.</em><br/>Please revisit the search page and re-run the query.')
 
     if action == 'get_gv_tumor_dist':
         gv_tumor_dist_tables = {
@@ -185,7 +188,6 @@ def get_distribution():
         graph_configs = graphs.build_graph_configs(action, table)
 
         sql_maps = graphs.build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
-        # print(sql_maps)
     graph_result = graphs.build_graph_data(bigquery_client, sql_maps)
 
     return render_template(template, criteria_map=criteria_map, title=title,
@@ -202,6 +204,11 @@ def mutation_query():
     start = int(parameters['start'])
     length = int(parameters['length'])
     criteria_map = json.loads(parameters['criteria'])
+    if len(criteria_map) == 0:
+        criteria_map = {
+            'include': [],
+            'exclude': []
+        }
     query_dataset = parameters['query_dataset']
     table = '{query_dataset}View'.format(query_dataset=query_dataset)
     distinct_col = '{query_dataset}View_ID'.format(query_dataset=query_dataset)
@@ -271,10 +278,11 @@ def mutation_query():
         ]
             # "Ref_ID"]
     elif query_dataset == 'Prevalence':
-        criteria_map = {
-            'include': criteria_map,
-            'exclude': []
-        }
+        if 'include' not in criteria_map:
+            criteria_map = {
+                'include': criteria_map,
+                'exclude': []
+            }
         distinct_col = 'Prevalence_ID'
         column_filters = [
             "Topography",
@@ -598,7 +606,7 @@ def prevalence_somatic_stats():
         'data': data,
         'total': total_cnt
     }
-    return render_template("prevalence_somatic_stats.html", criteria=[], graph_data=graph_data, title='Statistics on Somatic Variants', subtitle='Somatic Variant Prevalence by Tumor Site')
+    return render_template("prevalence_somatic_stats.html", criteria=[], graph_data=graph_data, title='Statistics on Tumor Variants', subtitle='Tumor Variant Prevalence by Tumor Site')
 
 
 @app.route("/results_somatic_mutation_list", methods=['GET', 'POST'])
@@ -660,7 +668,7 @@ def download_dataset():
     return output
 
 
-@app.route("/results_somatic_prevalence_list", methods=['POST'])
+@app.route("/results_somatic_prevalence_list", methods=['GET','POST'])
 def results_somatic_prevalence_list():
     prefix = 'mut_prev'
     criteria = filters.get_topo_morph_criteria(prefix)
@@ -682,14 +690,14 @@ def get_prevalence_distribution():
         title = 'Search Results'
     if action == 'get_country_graph':
         group_by = 'Country'
-        subtitle = 'Somatic Variant Prevalence by Country'
+        subtitle = 'Tumor Variant Prevalence by Country'
     elif action == 'get_topo_graph':
         group_by = 'Short_topo'
-        subtitle = 'Somatic Variant Prevalence by Topography'
+        subtitle = 'Tumor Variant Prevalence by Topography'
     else:
         # get_morph_graph
         group_by = 'Morphogroup'
-        subtitle = 'Somatic Variant Prevalence by Morphology'
+        subtitle = 'Tumor Variant Prevalence by Morphology'
     sql_stm = bq_builder.build_group_sum_graph_query(criteria=criteria, view='PrevalenceView', group_by=group_by)
 
     query_job = bigquery_client.query(sql_stm)
