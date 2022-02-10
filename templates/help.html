@@ -69,7 +69,7 @@
                             </div>
                             <div class="collapse" id="collapseGV">
                                 <div class="bg-light p-3 my-3">
-                                    <h3 id="Mutationdescription">geneMutationIARC <em>TP53</em> Database,R20.txt</h3>
+                                    <h3 id="Mutationdescription">MutationView_r20.csv</h3>
                                     <div class="pb-5">
                                         <table class="table">
                                             <thead>
@@ -944,7 +944,6 @@
                                     </div>
 
                                     <br>
-
                                     <h4>Predicted effect on <em>p53</em> protein isoforms:</h4>
 
                                     <br>
@@ -981,6 +980,66 @@
                                             </tbody>
                                         </table>
                                     </div>
+
+                                    <br>
+                                    <h4 id="SpliceAi">SpliceAI Prediction on Canonical Transcript (NM_000546.5):</h4>
+                                    <br>
+                                    <div class="pb-5">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Column head</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td><a id="DsAg"></a>DS_AG</td>
+                                                <td>Delta score - acceptor gain
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DsAl"></a>DS_AL
+                                                </td>
+                                                <td>Delta score - acceptor loss
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DsDg"></a>DS_DG</td>
+                                                <td>Delta score - donor gain
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DsDl"></a>DS_DL
+                                                </td>
+                                                <td>Delta score - donor loss
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DpAg"></a>DP_AG</td>
+                                                <td>Delta point - acceptor gain
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DpAl"></a>DP_AL
+                                                </td>
+                                                <td>Delta point - acceptor loss
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DpDg"></a>DP_DG</td>
+                                                <td>Delta point - donor gain
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DpDl"></a>DP_DL
+                                                </td>
+                                                <td>Delta point - donor loss
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </li>
@@ -994,7 +1053,7 @@
                             </div>
                             <div class="collapse" id="collapseSM">
                                 <div class="bg-light p-3 my-3">
-                                    <h4>somaticMutationDataIARC <em>TP53</em> Database, R20.txt</h4>
+                                    <h4>SomaticDownload_r20.csv</h4>
 
                                     <p> This dataset contains <em>TP53</em> tumor variants identified
                                         in
@@ -1202,6 +1261,12 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>DS_AG ... DP_DL</td>
+                                            <td>See <a class="jump-link"
+                                                       href="#SpliceAi">SpliceAI Prediction on Canonical Transcript
+                                                (NM_000546.5)</a></td>
+                                        </tr>
+                                        <tr>
                                             <td>PubMed</td>
                                             <td>PubMed reference number provided by NCBI.</td>
                                         </tr>
@@ -1222,7 +1287,7 @@
 
                                     <br>
 
-                                    <h4>somaticMutationReference-IARC <em>TP53</em> Database, R20.txt
+                                    <h4>SomaticRefDownload_r20.csv
                                     </h4>
 
                                     <p>This file lists the publications in which are described the
@@ -1252,7 +1317,7 @@
                             </div>
                             <div class="collapse" id="collapsePrev">
                                 <div class="bg-light p-3 my-3">
-                                    <h4>prevalenceSomaticIARC <em>TP53</em> Database, R20.txt</h4>
+                                    <h4>PrevalenceDownload_r20.csv</h4>
 
                                     <p> This dataset contains information on the proportion of
                                         tumors that carry a <em>TP53</em> tumor
@@ -1450,7 +1515,7 @@
                                 <div class="bg-light p-3 my-3">
 
 
-                                    <h4>prognosisSomatic-IARC <em>TP53</em> Database,R20</h4>
+                                    <h4>PrognosisDownload_r20.csv</h4>
 
                                     <p>This dataset includes information on all studies that have
                                         analyzed the
@@ -1612,7 +1677,7 @@
                                 <div class="bg-light p-3 my-3">
 
 
-                                    <h4>germlineMutationData-IARC <em>TP53</em> Database,R20</h4>
+                                    <h4>GermlineDownload_r20.csv</h4>
 
                                     <p>Inherited <em>TP53</em> variants are associated with a rare
                                         autosomal
@@ -1847,12 +1912,22 @@
                                                 file.
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>DS_AG ... DP_DL</td>
+                                            <td>See <a class="jump-link"
+                                                       href="#SpliceAi">SpliceAI Prediction on Canonical Transcript
+                                                (NM_000546.5)</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>PubMedLink</td>
+                                            <td>A link to the PubMed reference in NCBI.</td>
+                                        </tr>
 
                                         </tbody>
                                     </table>
 
                                     <br>
-                                    <h4>germlineMutationReference-IARC <em>TP53</em> Database,R20</h4>
+                                    <h4>GermlineRefDownload_r20.csv</h4>
 
                                     <p> Each row represents a reference identified by a unique
                                         identification
@@ -1863,7 +1938,7 @@
                                     </p>
 
                                     <br>
-                                    <h4>germlinePrevalenceIARC <em>TP53</em> Database, R20</h4>
+                                    <h4>GermlinePrevalenceView_r20.csv</h4>
 
                                     <p> This dataset includes studies reporting <em>TP53</em> germline
                                         variant
@@ -1875,7 +1950,7 @@
                                         variant status in a selected cohort.
                                     </p>
 
-                                    <table class="p53table">
+                                    <table class="table">
 
                                         <tbody>
                                         <tr>
@@ -1927,7 +2002,7 @@
                                     </table>
 
                                     <br>
-                                    <h4>germlineFrequency_IARCTP53Database_R20</h4>
+                                    <h4>GermlineFrequencyDownload_r20.csv</h4>
 
                                     <p> This new dataset includes studies reporting the frequency of
                                         individual <em>TP53</em> germline variants in case-control
@@ -1936,7 +2011,7 @@
                                         <em>TP53</em>.
                                     </p>
 
-                                    <table class="p53table">
+                                    <table class="table">
 
                                         <tbody>
                                         <tr>
@@ -2017,7 +2092,7 @@
                                         functional assays performed in yeast or human cells, are
                                         provided in two datasets.</p>
 
-                                    <h4>functionalAssessment-IARC <em>TP53</em> Database, R20</h4>
+                                    <h4>FunctionDownload_r20.csv</h4>
                                     <div id="FunctionalAssessment" class="row border-top border-bottom mx-1 my-3 p-2">
                                         <div class="col-1 text-end"><i class="fas fa-exclamation-triangle"></i></div>
                                         <div class="col-10">In this dataset, data were extracted from publications
@@ -2310,7 +2385,7 @@
 
                                     <br>
 
-                                    <h4>systematicFunctionalAssessment-IARC <em>TP53</em> Database, R20
+                                    <h4>FunctionIshiokaDownload_r20.csv
                                     </h4>
                                     <a id="systematicFunctionalAssessment"></a>
                                     <p>
@@ -2391,10 +2466,7 @@
                             </div>
                             <div class="collapse" id="collapseHC">
                                 <div class="bg-light p-3 my-3">
-
-
-                                    <h4>CellLinesMutationStatus-IARC <em>TP53</em> Database,R20</h4>
-
+                                    <h4>CellLineDownload_r20.csv</h4>
                                     <p>This dataset includes cell-lines that have been screened for
                                         <em>TP53</em> variant and have been
                                         published in the scientific literature, or in the
@@ -2604,7 +2676,7 @@
                                         original publication
                                     </p>
                                     <br>
-                                    <h4>Mouse ModelsIARC <em>TP53</em> Database, R20</h4>
+                                    <h4>MouseModelView_r20.csv</h4>
                                     <br>
                                     <table class="table">
 
@@ -2668,7 +2740,7 @@
                                     </p>
 
                                     <br>
-                                    <h4>inducedMutationIARC <em>TP53</em> Database, R20</h4>
+                                    <h4>InducedMutationView_r20.csv</h4>
                                     <br>
                                     <table class="table">
                                         <thead>
@@ -3291,7 +3363,7 @@
                         <tr>
 
                             <td>COSMIC</td>
-                            <td>Catalog Of Somatic Variants in Cancer</td>
+                            <td>Catalog Of Somatic Mutations in Cancer</td>
 
                         </tr>
                         <tr>
