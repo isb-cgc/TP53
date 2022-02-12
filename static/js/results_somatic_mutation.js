@@ -110,35 +110,35 @@ $(document).ready(function () {
                 }
             },
             {
-                data: "DS_AG",
+                data: "SpliceAI_DS_AG",
                 className: "text-end pe-2"
             },
             {
-                data: "DS_AL",
+                data: "SpliceAI_DS_AL",
                 className: "text-end pe-2"
             },
             {
-                data: "DS_DG",
+                data: "SpliceAI_DS_DG",
                 className: "text-end pe-2"
             },
             {
-                data: "DS_DL",
+                data: "SpliceAI_DS_DL",
                 className: "text-end pe-2"
             },
             {
-                data: "DP_AG",
+                data: "SpliceAI_DP_AG",
                 className: "text-end pe-2"
             },
             {
-                data: "DP_AL",
+                data: "SpliceAI_DP_AL",
                 className: "text-end pe-2"
             },
             {
-                data: "DP_DG",
+                data: "SpliceAI_DP_DG",
                 className: "text-end pe-2"
             },
             {
-                data: "DP_DL",
+                data: "SpliceAI_DP_DL",
                 className: "text-end pe-2"
             }
         ],

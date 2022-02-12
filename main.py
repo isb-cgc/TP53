@@ -236,14 +236,14 @@ def mutation_query():
             "Age",
             "Germline_mutation",
             "PubMed",
-            "DS_AG",
-            "DS_AL",
-            "DS_DG",
-            "DS_DL",
-            "DP_AG",
-            "DP_AL",
-            "DP_DG",
-            "DP_DL"
+            "SpliceAI_DS_AG",
+            "SpliceAI_DS_AL",
+            "SpliceAI_DS_DG",
+            "SpliceAI_DS_DL",
+            "SpliceAI_DP_AG",
+            "SpliceAI_DP_AL",
+            "SpliceAI_DP_DG",
+            "SpliceAI_DP_DL"
             ]
     elif query_dataset == 'Germline':
         column_filters = [
@@ -267,14 +267,14 @@ def mutation_query():
             "Topography",
             "Morphology",
             "PubMed",
-            "DS_AG",
-            "DS_AL",
-            "DS_DG",
-            "DS_DL",
-            "DP_AG",
-            "DP_AL",
-            "DP_DG",
-            "DP_DL"
+            "SpliceAI_DS_AG",
+            "SpliceAI_DS_AL",
+            "SpliceAI_DS_DG",
+            "SpliceAI_DS_DL",
+            "SpliceAI_DP_AG",
+            "SpliceAI_DP_AL",
+            "SpliceAI_DP_DG",
+            "SpliceAI_DP_DL"
         ]
             # "Ref_ID"]
     elif query_dataset == 'Prevalence':
@@ -367,7 +367,8 @@ def simple_query(prefix):
         column_filters = ["MUT_ID", "g_description", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
                       "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "Somatic_count", "Germline_count", "Cellline_count",
                       "TCGA_ICGC_GENIE_count", "Polymorphism", "CLINVARlink", "COSMIClink", "SNPlink", "gnomADlink",
-                          "DS_AG", "DS_AL", "DS_DG",	"DS_DL", "DP_AG", "DP_AL", "DP_DG", "DP_DL"]
+                          "SpliceAI_DS_AG", "SpliceAI_DS_AL", "SpliceAI_DS_DG",	"SpliceAI_DS_DL",
+                          "SpliceAI_DP_AG", "SpliceAI_DP_AL", "SpliceAI_DP_DG", "SpliceAI_DP_DL"]
         order_col_name = column_filters[order_col-1]
     elif prefix == 'cl':
         table = 'CellLineView'

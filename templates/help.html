@@ -994,47 +994,48 @@
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <td><a id="DsAg"></a>DS_AG</td>
-                                                <td>Delta score - acceptor gain
+                                                <td><a id="DsAg"></a>SpliceAI_DS_AG</td>
+                                                <td>SpliceAI delta score - acceptor gain: The highest delta score of a variant for <strong>acceptor gain (AG)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance [references: <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/34283047/">PMID 34283047</a> and <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/33942434/">PMID: 33942434</a>]). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td><a id="DsAl"></a>DS_AL
+                                                <td><a id="DsAl"></a>SpliceAI_DS_AL
                                                 </td>
-                                                <td>Delta score - acceptor loss
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a id="DsDg"></a>DS_DG</td>
-                                                <td>Delta score - donor gain
+                                                <td>SpliceAI delta score - acceptor loss: The highest delta score of a variant for <strong>acceptor loss (AL)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance [references: <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/34283047/">PMID 34283047</a> and <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/33942434/">PMID: 33942434</a>]). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td><a id="DsDl"></a>DS_DL
-                                                </td>
-                                                <td>Delta score - donor loss
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a id="DpAg"></a>DP_AG</td>
-                                                <td>Delta point - acceptor gain
+                                                <td><a id="DsDg"></a>SpliceAI_DS_DG</td>
+                                                <td>SpliceAI delta score - donor gain: The highest delta score of a variant for <strong>donor gain (DG)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance [references: <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/34283047/">PMID 34283047</a> and <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/33942434/">PMID: 33942434</a>]). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td><a id="DpAl"></a>DP_AL
+                                                <td><a id="DsDl"></a>SpliceAI_DS_DL
                                                 </td>
-                                                <td>Delta point - acceptor loss
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a id="DpDg"></a>DP_DG</td>
-                                                <td>Delta point - donor gain
+                                                <td>SpliceAI delta score - donor loss: The highest delta score of a variant for <strong>donor loss (DL)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance [references: <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/34283047/">PMID 34283047</a> and <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/33942434/">PMID: 33942434</a>]). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td><a id="DpDl"></a>DP_DL
+                                                <td><a id="DpAg"></a>SpliceAI_DP_AG</td>
+                                                <td>SpliceAI delta point - acceptor gain: The location of <strong>acceptor gain (AG)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).
                                                 </td>
-                                                <td>Delta point - donor loss
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DpAl"></a>SpliceAI_DP_AL
+                                                </td>
+                                                <td>SpliceAI delta point - acceptor loss: The location of <strong>acceptor loss (AL)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DpDg"></a>SpliceAI_DP_DG</td>
+                                                <td>SpliceAI delta point - donor gain: The location of <strong>donor gain (DG)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DpDl"></a>SpliceAI_DP_DL
+                                                </td>
+                                                <td>SpliceAI delta point - donor loss: The location of <strong>donor loss (DL)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).
                                                 </td>
                                             </tr>
                                             </tbody>
