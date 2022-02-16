@@ -154,7 +154,8 @@ def get_distribution():
         title = 'Search Results on {query_dataset} Variants'.format(query_dataset=('Tumor' if query_dataset == 'Somatic' else query_dataset))
 
     if action == 'get_mutation_dist':
-        table = '{query_dataset}View'.format(query_dataset=query_dataset)
+        table = 'GermlineView_Carriers' if query_dataset == 'Germline' else '{query_dataset}View'.format(
+            query_dataset=query_dataset)
         template = 'mutation_dist_stats.html'
         subtitle = 'Variant Distributions'
     elif action == 'get_gv_tumor_dist':
@@ -163,7 +164,7 @@ def get_distribution():
         table = '{query_dataset}TumorStats'.format(query_dataset=query_dataset)
         subtitle = 'Tumor Site Distribution of Variants'
     elif action == 'get_tumor_dist_view':
-        table = '{query_dataset}View'.format(query_dataset=query_dataset)
+        table = 'GermlineView_Carriers' if query_dataset == 'Germline' else '{query_dataset}View'.format(query_dataset=query_dataset)
         subtitle = 'Tumor Site Distribution of Variants'
     elif action == 'get_codon_dist':
         table = 'GermlineMutationStats'
