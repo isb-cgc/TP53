@@ -738,6 +738,7 @@ table .form-control{
 #mut_stats_tabs .nav-link{
     padding-bottom: .4rem;
 }
-/*div.dataTables_wrapper div.dataTables_filter {*/
-    /*text-align: left;*/
-/*}*/
+
+#announcement-banner{
+    background-color: #D7D8F1;
+}
