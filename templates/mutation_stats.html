@@ -52,7 +52,10 @@
         <div id="{{ graph_id }}" class="{{ 'mt-5' if loop.index0 > 0 }}">
             <div class="small-chart col-5 border rounded-2 p-3 my-3 mx-auto">
                 {% if 'codon' not in graph_id and  ('germline' in graph_id or 'Germline' in title ) %}
-                <div class="pb-1 fw-light fst-italic small-font">*The variant distributions are calculated based on individuals that are carriers of a TP53 germline variant and families in which at least one family member has been identified as a carrier of a germline variant in the TP53 gene</div>
+                <div class="pb-1 fw-light fst-italic small-font">*The variant distributions are calculated based on
+                    individuals that are carriers of a germline TP53 variant and families in which at least one family
+                    member has been identified as a confirmed or obligatory carriers of a germline variant in the TP53
+                    gene.</div>
                 {% endif %}
                 <div data-graph-id="{{ graph_id }}" class="btn-group btn-group-sm float-end">
                     <button type="button" class="btn btn-outline-secondary d-img-btn"><i class="fas fa-download"></i>
