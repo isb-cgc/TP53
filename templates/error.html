@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 {% block title %}Error Page{% endblock %}
 {% block content %}
-<div class="home_content">
-    <h2>
-        <div>Oops! Something went wrong..</div>
-    </h2>
-</div>
+<main>
+    <div class="page-banner">
+        <div class="container">
+            <h1 class="fw-bold p-2 my-0">Error</h1>
+        </div>
+    </div>
+    <div class="container my-5">
+        <h2>
+            <div><i class="fas fa-exclamation-triangle"></i> Something went wrong...</div>
+        </h2>
+        <div class="my-2">
+            {{ error_message|safe }}
+        </div>
+    </div>
+</main>
 {% endblock %}

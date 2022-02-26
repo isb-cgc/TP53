@@ -1,5 +1,5 @@
 {% extends "tp53data_submenu.html" %}
-{% block title %}Explore Datasets: Somatic Variants{% endblock %}
+{% block title %}Explore Datasets: Tumor Variants{% endblock %}
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
@@ -10,11 +10,13 @@
 {% block subcontent %}
 <div class="page-banner py-3">
     <div class="container">
-        <h1 class="fw-bold px-2 my-0">Somatic Variants</h1>
+        <h1 class="fw-bold px-2 my-0">Tumor Variants</h1>
         <h2 class="px-2 my-0 fw-light">
-            Explore data for <em>TP53</em> somatic variants identified in human tumor samples (including metastasis and
+            Explore data for <em>TP53</em> tumor variants identified in human tumor samples (including metastasis and
             cell-lines). Includes data on the type and position of variants, detailed information on the tumor in which
             the variants have been found, and on various characteristics of the patients in which the tumor developed.
+            <span class="small-font"><em>*Please note that not all studies confirmed true somatic origin of the tumor variants by filtering out
+                germline variants from a matched normal sample.</em></span>
         </h2>
     </div>
 </div>
@@ -24,8 +26,8 @@
         <div class="row py-0">
             <div class="col-lg-4">
                 <div class="card">
-                    <div class="card-header" title="Search Somatic Variant Data" role="button">
-                        <a class="card-header-text" href="/search_somatic_mut">Search Somatic Variant Data</a>
+                    <div class="card-header" title="Search Tumor Variant Data" role="button">
+                        <a class="card-header-text" href="/search_somatic_mut">Search Tumor Variant Data</a>
                     </div>
                     <div class="card-body">
                         <div class="card-text p-3 rounded bg-light">
@@ -38,12 +40,12 @@
             </div>
             <div class="col-lg-4">
                 <div class="card">
-                    <div class="card-header" title="Search Prevalence Data on Somatic Variants" role="button">
+                    <div class="card-header" title="Search Prevalence Data on Tumor Variants" role="button">
                         <a class="card-header-text" href="/search_somatic_prevalence">Search Variant Prevalence Data</a>
                     </div>
                     <div class="card-body">
                         <div class="card-text p-3 rounded bg-light">
-                            Retrieve the analysis of the <strong>prevalence of <em>TP53</em> somatic variations by
+                            Retrieve the analysis of the <strong>prevalence of <em>TP53</em> tumor variations by
                             cancer type and population groups</strong>. Each dataset entry corresponds to the prevalence of <em>TP53</em>
                             variation for a specific type of cancer in a defined human population.
                         </div>
@@ -52,14 +54,14 @@
             </div>
             <div class="col-lg-4">
                 <div class="card">
-                    <div class="card-header" title="View Selected Statistics on Somatic Variants" role="button">
+                    <div class="card-header" title="View Selected Statistics on Tumor Variants" role="button">
                         <a class="card-header-text" href="/stats_somatic_mut">Selected Statistics</a>
                     </div>
                     <div class="card-body">
                         <div class="card-text p-3 rounded bg-light">
-                            This dataset includes <em>TP53</em> somatic variants reported in primary tissues, body
+                            This dataset includes <em>TP53</em> tumor variants reported in primary tissues, body
                             fluids and cell-lines.
-                            Statistics on <strong>variant</strong>  or <strong>tumor site distributions</strong>, <strong>prognostic value of somatic variants</strong> and
+                            Statistics on <strong>variant</strong>  or <strong>tumor site distributions</strong>, <strong>prognostic value of tumor variants</strong> and
                             <strong>dataset development</strong> can be viewed.
                         </div>
                     </div>
@@ -71,7 +73,7 @@
                 <a href="/get_tp53data#get_som_mut" class="btn btn-secondary grid-button"
                    title="Click to View Downloadable Datasets"
                    role="button">
-                    Data Downloads<br><span class="fw-light"><i class="fas fa-chevron-right"></i> Somatic Variants</span>
+                    Data Downloads<br><span class="fw-light"><i class="fas fa-chevron-right"></i> Tumor Variants</span>
                 </a>
             </div>
         </div>

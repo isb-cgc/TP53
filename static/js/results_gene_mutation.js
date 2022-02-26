@@ -121,6 +121,38 @@ $(document).ready(function () {
                     else
                         return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
                 }
+            },
+            {
+                data: "SpliceAI_DS_AG",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DS_AL",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DS_DG",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DS_DL",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DP_AG",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DP_AL",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DP_DG",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DP_DL",
+                className: "text-end pe-2"
             }
         ],
         select: {
