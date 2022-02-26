@@ -53,6 +53,12 @@
             <div class="tab-pane bg-white fade show active border border-top-0" id="nav-mut-type-tab" role="tabpanel"
                  aria-labelledby="nav-mut-type-tab">
                 <div class="p-3">
+                    {% if 'Germline' in title %}
+                    <div class="fw-light text-end fst-italic small-font">*The variant distributions are calculated based
+                        on individuals that are confirmed or obligate carriers of a germline TP53 variant and families
+                        in which at least one family member has been identified as a carrier of a germline TP53 variant.
+                    </div>
+                    {% endif %}
                     <div class="row mt-2">
                         <div class="col-1"></div>
                         <div class="col-6 border rounded-2 p-3 bg-white m-1">
@@ -145,6 +151,12 @@
             <div class="tab-pane bg-white fade border border-top-0" id="nav-mut-effect-tab" role="tabpanel"
                  aria-labelledby="nav-mut-effect-tab">
                 <div class="p-3">
+                    {% if 'Germline' in title %}
+                    <div class="fw-light text-end fst-italic small-font">*The variant distributions are calculated based
+                        on individuals that are confirmed or obligate carriers of a germline TP53 variant and families
+                        in which at least one family member has been identified as a carrier of a germline TP53 variant.
+                    </div>
+                    {% endif %}
                     <div class="row mt-2">
                         <div class="col-2"></div>
                         <div class="col-4 border rounded-2 p-3 bg-white m-1">
