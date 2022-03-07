@@ -92,7 +92,11 @@ jobs:
       - run:
           name: Compare Config
           command: |
-            sudo -E /bin/bash ./shell/compareConfig.sh "gs://${DEPLOYMENT_BUCKET}/${CONFIG_FILE}"
+            if [[ ${TIER} == "TEST" ]]; then
+              SUFFIX=-test
+            elif [[ ${TIER} == "DEV" ]]; then
+              SUFFIX=-dev
+            sudo -E /bin/bash ./shell/compareConfig.sh "gs://${DEP_BUCKET}${SUFFIX}/${CONFIG_FILE}"
       - save_cache:
           key: tp53-{{ epoch }}
           paths:
