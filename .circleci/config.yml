@@ -96,6 +96,10 @@ jobs:
               SUFFIX=-test
             elif [[ ${TIER} == "DEV" ]]; then
               SUFFIX=-dev
+            else
+              echo "[ERROR] - Unrecognized tier: ${TIER} - exitng."
+              exit 1
+            fi
             sudo -E /bin/bash ./shell/compareConfig.sh "gs://${DEP_BUCKET}${SUFFIX}/${CONFIG_FILE}"
       - save_cache:
           key: tp53-{{ epoch }}
