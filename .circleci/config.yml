@@ -85,6 +85,8 @@ jobs:
       - restore_cache:
           keys:
             - tp53-lib-{{ checksum "requirements.txt" }}
+      - auth
+      
       - run:
           name: Install Dependencies
           command: |
