@@ -86,6 +86,8 @@ jobs:
           keys:
             - tp53-lib-{{ checksum "requirements.txt" }}
 
+      - install_cloud_sdk
+
       - deployment_setup
 
       - auth
