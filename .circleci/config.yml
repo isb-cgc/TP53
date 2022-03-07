@@ -89,9 +89,24 @@ jobs:
           name: Install Dependencies
           command: |
             sudo -E /bin/bash ./shell/install-deps.sh
-      - deployment_setup
       - run:
           name: Compare Config
+          command: |
+            TIER=DEV
+            if [[ ${CIRCLE_BRANCH} =~ tp53-(prod|test|uat).* ]]; then
+              TIER=$(awk -F- '{print toupper($2)}' \<<< ${CIRCLE_BRANCH})
+            fi
+            echo "export TIER=${TIER}" >> $BASH_ENV
+            echo "Tier was identified as ${TIER} for branch ${CIRCLE_BRANCH}"
+
+            if [[ ${TIER} == "TEST" ]]; then
+              SUFFIX=-test
+            elif [[ ${TIER} == "DEV" ]]; then
+              SUFFIX=-dev
+            else
+              echo "[ERROR] - Unrecognized tier: ${TIER} - exitng."
+              exit 1
+            fi
             sudo -E /bin/bash ./shell/compareConfig.sh "gs://${DEP_BUCKET}${SUFFIX}/${CONFIG_FILE}"
       - save_cache:
           key: tp53-{{ epoch }}
