@@ -85,6 +85,13 @@ jobs:
       - restore_cache:
           keys:
             - tp53-lib-{{ checksum "requirements.txt" }}
+
+      - install_cloud_sdk
+
+      - deployment_setup
+
+      - auth
+
       - run:
           name: Install Dependencies
           command: |
