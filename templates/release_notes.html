@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Release Notes{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'release_notes';
+</script>
+
+{% endblock %}
+
+{% block content %}
+<main class="bg-white">
+    <div class="page-banner">
+        <div class="container">
+            <h1 class="fw-bold p-2 my-0">Release Notes</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="p-2">
+            <div class="py-3">
+                <div>These release notes describe changes to the <em>TP53</em> application. For information about <em>TP53</em> database releases, see <a target="_blank" rel="noopener noreferrer" href="about#database-dev-div">Database Development on the About</a> page.</div>
+            </div>
+            <div class="py-2">
+                <h3>March 2022 (R20 Database)</h3>
+                <div class="px-3">
+                    <div class="fw-bold">Enhancements and New Features</div>
+                    <ul>
+                        <li>Label "Sample" is replaced with "Tumor" in <strong>Search Germline Variant</strong> form for clarity.</li>
+                        <li>Terminology "Somatic Variant" is changed to "Tumor Variant"</li>
+                        <li><strong>Search germline variant</strong> will perform queries against all data regardless of the <samp>carrier</samp> value.</li>
+                        <li>Two filters, <strong>Confirmed or Obligate Carriers Only</strong> and <strong>Cancer-Affected Individuals Only</strong>,
+                            are added to <strong>Search Germline Variant</strong> under <strong>Individual and Pedigree</strong> tab.</li>
+                        <li>SpliceAI scores have been added to functional/structural data, germline variant, and tumor(somatic) variant search.</li>
+                        <li>PubMed links are added to the germline and tumor(somatic) variant search results.</li>
+                        <li>Various JavaScript libraries have been updated for security purposes.</li>
+                    </ul>
+                    <div class="fw-bold">Bug Fixes</div>
+                    <ul>
+                        <li>Downloads preview: resolved symbol display issue.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="py-2">
+                <h3>October 2021 (R20 Database)</h3>
+                <div class="px-3">
+                    <div class="fw-bold">Initial build release</div>
+                    <ul>
+                        <li>Oct 25, 2021: The <em>TP53</em> database web application was successfully transferred from IARC to US National Cancer Institute (NCI) with data R20.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
