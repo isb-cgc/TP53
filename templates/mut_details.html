@@ -226,6 +226,132 @@
                 </div>
 
                 <div class="my-2 p-3">
+                    <h3>SpliceAI Predictions on Canonical Transcript (NM_000546.5) by
+                        <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href="https://pubmed.ncbi.nlm.nih.gov/30661751/">Jaganathan (2019)</a> <span class="small-font fw-normal">[<i
+                                class="fab fa-github"></i> <a target="_blank"
+                                                              rel="noopener noreferrer"
+                                                              href="https://github.com/Illumina/SpliceAI">GitHub</a>]</span>
+                    </h3>
+                    <hr>
+                    {% if mut_desc.SpliceAI_DS_AG or mut_desc.SpliceAI_DS_AL or mut_desc.SpliceAI_DS_DG or mut_desc.SpliceAI_DS_DL
+                    or mut_desc.SpliceAI_DP_AG or mut_desc.SpliceAI_DP_AL or mut_desc.SpliceAI_DP_DG or mut_desc.SpliceAI_DP_DL %}
+                    <table id="splice-ai-tbl" class="table table-sm small-font">
+                        <thead>
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="The highest delta score of a variant for <strong>acceptor gain (AG)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance <span class='fst-italic'> [references: PMID 34283047, PMID 33942434]</span>). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.">
+                                Delta Score_AG
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="The highest delta score of a variant for <strong>acceptor loss (AL)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance <span class='fst-italic'> [references: PMID 34283047, PMID 33942434]</span>). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.">
+                                Delta Score_AL
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="The highest delta score of a variant for <strong>donor gain (DG)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance <span class='fst-italic'> [references: PMID 34283047, PMID 33942434]</span>). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.">
+                                Delta Score_DG
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="The highest delta score of a variant for <strong>donor Loss (DL)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance <span class='fst-italic'> [references: PMID 34283047, PMID 33942434]</span>). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.">
+                                Delta Score_DL
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="The location of <strong>acceptor gain (AG)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).">
+                                Delta Position_AG
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="The location of <strong>acceptor loss (AL)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).">
+                                Delta Position_AL
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="The location of <strong>donor gain (DG)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).">
+                                Delta Position_DG
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-html="true"
+                                title="The location of <strong>donor loss (DL)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).">
+                                Delta Position_DL
+                            </th>
+
+
+                            <!--<th data-bs-toggle="tooltip"-->
+                                <!--data-bs-placement="top"-->
+                                <!--title="Delta score–acceptor gain.">-->
+                                <!--Delta Score<br>Acceptor Gain-->
+                            <!--</th>-->
+                            <!--<th data-bs-toggle="tooltip"-->
+                                <!--data-bs-placement="top"-->
+                                <!--title="Delta score–acceptor loss.">-->
+                                <!--Delta Score<br>Acceptor Loss-->
+                            <!--</th>-->
+                            <!--<th data-bs-toggle="tooltip"-->
+                                <!--data-bs-placement="top"-->
+                                <!--title="Delta score–donor gain.">-->
+                                <!--Delta Score<br>Donor Gain-->
+                            <!--</th>-->
+                            <!--<th data-bs-toggle="tooltip"-->
+                                <!--data-bs-placement="top"-->
+                                <!--title="Delta score–donor loss.">-->
+                                <!--Delta Score<br>Donor Gain-->
+                            <!--</th>-->
+                            <!--<th data-bs-toggle="tooltip"-->
+                                <!--data-bs-placement="top"-->
+                                <!--title="Delta position–acceptor gain.">-->
+                                <!--Delta Position<br>Acceptor Gain-->
+                            <!--</th>-->
+                            <!--<th data-bs-toggle="tooltip"-->
+                                <!--data-bs-placement="top"-->
+                                <!--title="Delta position–acceptor loss.">-->
+                                <!--Delta Position<br>Acceptor Loss-->
+                            <!--</th>-->
+                            <!--<th data-bs-toggle="tooltip"-->
+                                <!--data-bs-placement="top"-->
+                                <!--title="Delta position–donor gain.">-->
+                                <!--Delta Position<br>Donor Gain-->
+                            <!--</th>-->
+                            <!--<th data-bs-toggle="tooltip"-->
+                                <!--data-bs-placement="top"-->
+                                <!--title="Delta position–donor loss.">-->
+                                <!--Delta Position<br>Donor Loss-->
+                            <!--</th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ mut_desc.SpliceAI_DS_AG or 0 }}</td>
+                            <td>{{ mut_desc.SpliceAI_DS_AL or 0 }}</td>
+                            <td>{{ mut_desc.SpliceAI_DS_DG or 0 }}</td>
+                            <td>{{ mut_desc.SpliceAI_DS_DL or 0 }}</td>
+                            <td>{{ mut_desc.SpliceAI_DP_AG or 0 }}</td>
+                            <td>{{ mut_desc.SpliceAI_DP_AL or 0 }}</td>
+                            <td>{{ mut_desc.SpliceAI_DP_DG or 0 }}</td>
+                            <td>{{ mut_desc.SpliceAI_DP_DL or 0 }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% endif %}
+                </div>
+
+                <div class="my-2 p-3">
                     <h3>Protein Features</h3>
                     <hr>
                     {% if not prot_desc %}
@@ -688,7 +814,7 @@
 										 &nbsp;&nbsp;<b>mut_L</b> = the protein is inactive (mutant) at lower temperatures;<br/>
 										<b>No</b> = the activity of the mutant protein is NOT affected by the temperature at which is preformed the test.<br/>
 										<br/>
-										Note that functional tests are performed at different temperature in yeast (30ÝC) and human (37ÝC) cells.">
+										Note that functional tests are performed at different temperature in yeast (30&#8451;) and human (37&#8451;) cells.">
                                 Temperature Sensitivity
                             </th>
                             <th data-bs-toggle="tooltip"

@@ -6,7 +6,7 @@
                     data-bs-toggle="collapse"
                     data-bs-target="#{{ id_prefix }}_collapse_sample" aria-expanded="false"
                     aria-controls="{{ id_prefix }}_collapse_sample">
-                Sample
+                Tumor
             </button>
         </h3>
         <div id="{{ id_prefix }}_collapse_sample" class="accordion-collapse collapse"
@@ -49,6 +49,54 @@
              aria-labelledby="{{ id_prefix }}_heading_ind"
              data-bs-parent="#{{ id_prefix }}_form_accordion">
             <div class="accordion-body bg-light">
+                <fieldset class="mb-3">
+                    <div class="row">
+                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                            Confirmed or Obligate Carriers Only
+                            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-html="true"
+                                    data-bs-placement="right" aria-label="help button"
+                                    title="Records of individuals who have been identified as <strong>confirmed</strong>
+                                    OR <strong>obligatory</strong> <em>TP53</em> variant carriers">
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                        </legend>
+                        <div class="col-md-8 pt-1">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox"
+                                       id="{{ id_prefix }}_carriers_only" name="{{ id_prefix }}_carriers_only"
+                                       value="checked">
+
+                            </div>
+                            <input class="form-check-input " type="hidden"
+                                   id="{{ id_prefix }}_confirmed_carriers" name="{{ id_prefix }}_carrier"
+                                   value="Confirmed">
+                            <input class="form-check-input" type="hidden"
+                                   id="{{ id_prefix }}_obligatory_carriers" name="{{ id_prefix }}_carrier"
+                                   value="Obligatory">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="mb-3">
+                    <div class="row">
+                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                            Cancer-Affected Individuals Only
+                            <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
+                                    data-bs-html="true"
+                                    data-bs-placement="right" aria-label="help button"
+                                    title="Records of individuals who were affected by cancer at time of follow-up.">
+                                <i class="far fa-question-circle"></i>
+                            </button>
+                        </legend>
+                        <div class="col-md-8 pt-1">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox"
+                                       id="{{ id_prefix }}_affected_only" name="{{ id_prefix }}_affected_only"
+                                       value="False">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
                 <fieldset class="mb-3">
                     <div class="row">
                         <legend class="text-end col-form-label col-sm-3 pt-0">

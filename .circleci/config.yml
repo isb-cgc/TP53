@@ -74,7 +74,7 @@ jobs:
       TZ: "/usr/share/zoneinfo/America/Los_Angeles"
     working_directory: ~/TP53
     docker:
-      - image: circleci/python:3.7.0-stretch
+      - image: cimg/python:3.7.12
     steps:
       - checkout
       - run:
@@ -85,10 +85,21 @@ jobs:
       - restore_cache:
           keys:
             - tp53-lib-{{ checksum "requirements.txt" }}
+
+      - install_cloud_sdk
+
+      - deployment_setup
+
+      - auth
+
       - run:
           name: Install Dependencies
           command: |
             sudo -E /bin/bash ./shell/install-deps.sh
+      - run:
+          name: Compare Config
+          command: |
+            sudo -E /bin/bash ./shell/compareConfig.sh "gs://${DEPLOYMENT_BUCKET}/${CONFIG_FILE}"
       - save_cache:
           key: tp53-{{ epoch }}
           paths:

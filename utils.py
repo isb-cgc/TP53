@@ -68,6 +68,7 @@ def load_csv_file(base_url, list_file):
     try:
         file_path = base_url + '/data/' + list_file
         file_data = requests.get(file_path)
+        file_data.encoding="utf-8"
         lines = file_data.text.splitlines()
         reader = csv.reader(lines, delimiter=',')
         column_list = next(reader)
