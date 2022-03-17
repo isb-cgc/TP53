@@ -626,13 +626,17 @@ button[aria-expanded="true"].btn-view-details::before{
 }
 footer{
     color: rgba(255,255,255,.55);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     background-color: #2F2C55;
     z-index: 350;
 }
 
 footer a{
     color: #D7D8F1;
+}
+
+footer img{
+    display: inline;
 }
 
 .page-item.active .page-link {
@@ -731,7 +735,10 @@ table .form-control{
     color: #666F79;
 }
 
+#mut_stats_tabs .nav-link{
+    padding-bottom: .4rem;
+}
 
-/*div.dataTables_wrapper div.dataTables_filter {*/
-    /*text-align: left;*/
-/*}*/
+#announcement-banner{
+    background-color: #D7D8F1;
+}

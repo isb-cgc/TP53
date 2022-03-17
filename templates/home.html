@@ -24,7 +24,16 @@
             version</a>
         </div>
     </div>
-    <div class="p-5 tile-cards">
+    <div id="announcement-banner" class="p-1 alert alert-dismissible" role="alert">
+        <div class="container darkpurple-text">
+            Learn about the latest features and changes in the <a href="/release_notes">Release Notes</a>.
+            <br/>Did you find any issues? Please <a target="_blank" rel="noopener noreferrer" href="https://forms.gle/wUWAPsNaBuErz6NQ6">submit a report</a>.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        </div>
+
+    </div>
+    <div class="p-5 pb-4 tile-cards">
         <div class="container">
             <div class="row tall-ht-row py-0">
                 <div class="col-lg-4">
@@ -89,8 +98,8 @@
                                 <div class="row">
                                     <div class="col px-0">
                                         <a class="card-header-text" href="/explore_sm"
-                                           title="Click to learn about somatic variant data search options">
-                                            Somatic Variants
+                                           title="Click to learn about tumor variant data search options">
+                                            Tumor Variants
                                         </a>
                                     </div>
                                     <div class="col-1 px-0">
@@ -109,7 +118,7 @@
                                 <div class="list-group list-group-flush">
                                     <a href="/search_somatic_mut"
                                        class="list-group-item list-group-item-action">
-                                        Search Somatic Variant Data
+                                        Search Tumor Variant Data
                                     </a>
                                     <a href="/search_somatic_prevalence"
                                        class="list-group-item list-group-item-action">
@@ -127,12 +136,11 @@
                             </div>
                             <div class="search-submenu">
                                 <div class="card-text p-3 rounded bg-light">
-                                    Explore data for <em>TP53</em> somatic variants identified in human tumor samples.
+                                    Explore data for <em>TP53</em> tumor variants identified in human tumor samples.
                                     Includes data on the type and position of variants, detailed information on the
                                     tumor in which the variants have been found, and on various characteristics of the
                                     patients in which the tumor developed.
-                                </div>
-                                <!--<div class="text-end"><a href="explore_sm">View Options <i class="fas fa-long-arrow-alt-right"></i></a></div>-->
+                                    </div>
                             </div>
                         </div>
                     </div>

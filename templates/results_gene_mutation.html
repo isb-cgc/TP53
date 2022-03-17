@@ -152,7 +152,7 @@
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title="Number of occurence in the somatic dataset (number of tumors reported to carry
-                    this somatic variant). Total count is 29,891 in R20.">
+                    this tumor variant). Total count is 29,891 in R20.">
                     Somatic Count
                 </th>
                 <th data-bs-toggle="tooltip"
@@ -197,8 +197,56 @@
                     title="Link to gnomAD database.">
                     gnomAD
                 </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="The highest delta score of a variant for <strong>acceptor gain (AG)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance <span class='fst-italic'> [references: PMID 34283047, PMID 33942434]</span>). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.">
+                    SpliceAI DS_AG
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="The highest delta score of a variant for <strong>acceptor loss (AL)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance <span class='fst-italic'> [references: PMID 34283047, PMID 33942434]</span>). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.">
+                    SpliceAI DS_AL
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="The highest delta score of a variant for <strong>donor gain (DG)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance <span class='fst-italic'> [references: PMID 34283047, PMID 33942434]</span>). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.">
+                    SpliceAI DS_DG
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="The highest delta score of a variant for <strong>donor Loss (DL)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance <span class='fst-italic'> [references: PMID 34283047, PMID 33942434]</span>). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.">
+                    SpliceAI DS_DL
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="The location of <strong>acceptor gain (AG)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).">
+                    SpliceAI DP_AG
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="The location of <strong>acceptor loss (AL)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).">
+                    SpliceAI DP_AL
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="The location of <strong>donor gain (DG)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).">
+                    SpliceAI DP_DG
+                </th>
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="The location of <strong>donor loss (DL)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).">
+                    SpliceAI DP_DL
+                </th>
 
-                </tr>
+                <!--</tr>-->
                 </thead>
             </table>
         </div>

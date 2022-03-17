@@ -69,7 +69,7 @@
                             </div>
                             <div class="collapse" id="collapseGV">
                                 <div class="bg-light p-3 my-3">
-                                    <h3 id="Mutationdescription">geneMutationIARC <em>TP53</em> Database,R20.txt</h3>
+                                    <h3 id="Mutationdescription">MutationView_r20.csv</h3>
                                     <div class="pb-5">
                                         <table class="table">
                                             <thead>
@@ -84,7 +84,7 @@
                                                 <td>Unique identifier of each gene variation reported in
                                                     the database. This identifier is used in all
                                                     datasets
-                                                    (somatic, polymorhisms, germline).
+                                                    (tumor variant, polymorhisms, germline).
                                                 </td>
                                             </tr>
 
@@ -824,12 +824,12 @@
                                             <tr>
 
                                                 <td><a id="SomaticCount"></a>Somatic_count</td>
-                                                <td>Number of occurence in the IARC somatic dataset
+                                                <td>Number of occurence in the tumor variant dataset
                                                     (number
                                                     of
                                                     tumors
                                                     reported
-                                                    to carry this somatic variant). Total count is
+                                                    to carry this tumor variant). Total count is
                                                     29,891 in
                                                     R20.
                                                 </td>
@@ -944,7 +944,6 @@
                                     </div>
 
                                     <br>
-
                                     <h4>Predicted effect on <em>p53</em> protein isoforms:</h4>
 
                                     <br>
@@ -981,12 +980,73 @@
                                             </tbody>
                                         </table>
                                     </div>
+
+                                    <br>
+                                    <h4 id="SpliceAi">SpliceAI Prediction on Canonical Transcript (NM_000546.5):</h4>
+                                    <br>
+                                    <div class="pb-5">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Column head</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td><a id="DsAg"></a>SpliceAI_DS_AG</td>
+                                                <td>SpliceAI delta score - acceptor gain: The highest delta score of a variant for <strong>acceptor gain (AG)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance [references: <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/34283047/">PMID 34283047</a> and <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/33942434/">PMID: 33942434</a>]). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DsAl"></a>SpliceAI_DS_AL
+                                                </td>
+                                                <td>SpliceAI delta score - acceptor loss: The highest delta score of a variant for <strong>acceptor loss (AL)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance [references: <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/34283047/">PMID 34283047</a> and <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/33942434/">PMID: 33942434</a>]). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DsDg"></a>SpliceAI_DS_DG</td>
+                                                <td>SpliceAI delta score - donor gain: The highest delta score of a variant for <strong>donor gain (DG)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance [references: <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/34283047/">PMID 34283047</a> and <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/33942434/">PMID: 33942434</a>]). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DsDl"></a>SpliceAI_DS_DL
+                                                </td>
+                                                <td>SpliceAI delta score - donor loss: The highest delta score of a variant for <strong>donor loss (DL)</strong>, ranging from 0 to 1 and can be interpreted as the probability that the variant affects splicing at any position within a window around it (10kb as maximum distance, as recommended for best performance [references: <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/34283047/">PMID 34283047</a> and <a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/33942434/">PMID: 33942434</a>]). The maximum of four delta scores (DS_AG, DS_AL, DS_DG, DS_DL) is used as basis for spliceogenicity predictions.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DpAg"></a>SpliceAI_DP_AG</td>
+                                                <td>SpliceAI delta point - acceptor gain: The location of <strong>acceptor gain (AG)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DpAl"></a>SpliceAI_DP_AL
+                                                </td>
+                                                <td>SpliceAI delta point - acceptor loss: The location of <strong>acceptor loss (AL)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DpDg"></a>SpliceAI_DP_DG</td>
+                                                <td>SpliceAI delta point - donor gain: The location of <strong>donor gain (DG)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a id="DpDl"></a>SpliceAI_DP_DL
+                                                </td>
+                                                <td>SpliceAI delta point - donor loss: The location of <strong>donor loss (DL)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div>
-                                Somatic Variants Found in Human Tumor Samples <button aria-label="Show/Hide" class="btn-view-details"
+                                Tumor Variants Found in Human Tumor Samples <button aria-label="Show/Hide" class="btn-view-details"
                                         data-bs-toggle="collapse"
                                         data-bs-target="#collapseSM" aria-expanded="false"
                                         aria-controls="collapseSM">
@@ -994,16 +1054,20 @@
                             </div>
                             <div class="collapse" id="collapseSM">
                                 <div class="bg-light p-3 my-3">
-                                    <h4>somaticMutationDataIARC <em>TP53</em> Database, R20.txt</h4>
+                                    <h4>TumorVariantDownload_r20.csv</h4>
 
-                                    <p> This dataset contains <em>TP53</em> somatic variants identified
+                                    <p> This dataset contains <em>TP53</em> tumor variants identified
                                         in
                                         human tumor samples (including metastasis and cell-lines).
                                         It includes data on the type and position of variations,
                                         detailed information on the tumor in which the variants
                                         have been found,
                                         and on various characteristics of the patients in which the
-                                        tumor developed. </p>
+                                        tumor developed. Please note that true somatic origin of the tumor variants may
+                                        not have been confirmed unless a matched normal sample was used to filter out
+                                        germline variants. Therefore, it cannot be excluded that a small number of the
+                                        variants listed may be of germline origin.
+                                    </p>
 
                                     <p> Each row in the downloaded tab-delimited text file
                                         represents a single variant reported in a tumor sample with
@@ -1082,7 +1146,7 @@
                                         <tr>
                                             <td>Sample_source...TNM</td>
                                             <td><a class="jump-link"
-                                                   href="#Sample_source">see sample annotations</a>
+                                                   href="#Sample_source">see tumor annotations</a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1198,6 +1262,12 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>DS_AG ... DP_DL</td>
+                                            <td>See <a class="jump-link"
+                                                       href="#SpliceAi">SpliceAI Prediction on Canonical Transcript
+                                                (NM_000546.5)</a></td>
+                                        </tr>
+                                        <tr>
                                             <td>PubMed</td>
                                             <td>PubMed reference number provided by NCBI.</td>
                                         </tr>
@@ -1218,7 +1288,7 @@
 
                                     <br>
 
-                                    <h4>somaticMutationReference-IARC <em>TP53</em> Database, R20.txt
+                                    <h4>TumorVariantRefDownload_r20.csv
                                     </h4>
 
                                     <p>This file lists the publications in which are described the
@@ -1240,7 +1310,7 @@
                         </li>
                         <li class="list-group-item">
                             <div>
-                                Prevalence of <em>TP53</em> Somatic Variants by Tumor Site <button aria-label="Show/Hide" class="btn-view-details"
+                                Prevalence of <em>TP53</em> Tumor Variants by Tumor Site <button aria-label="Show/Hide" class="btn-view-details"
                                         data-bs-toggle="collapse"
                                         data-bs-target="#collapsePrev" aria-expanded="false"
                                         aria-controls="collapsePrev">
@@ -1248,19 +1318,19 @@
                             </div>
                             <div class="collapse" id="collapsePrev">
                                 <div class="bg-light p-3 my-3">
-                                    <h4>prevalenceSomaticIARC <em>TP53</em> Database, R20.txt</h4>
+                                    <h4>PrevalenceDownload_r20.csv</h4>
 
                                     <p> This dataset contains information on the proportion of
-                                        tumors that carry a somatic <em>TP53</em>
+                                        tumors that carry a <em>TP53</em> tumor
                                         variant extracted from publications contained in the
-                                        Somatic dataset, and in additional publications that do not
+                                        tumor variant dataset, and in additional publications that do not
                                         give a
                                         detailed description of the variants (many studies do not
                                         provide detailed information on each variant detected
                                         but rather report their results in the form of summary
-                                        tables, preventing their inclusion in the somaticMutation
+                                        tables, preventing their inclusion in the tumor variant
                                         dataset), or publications reporting negative results (no
-                                        variant found, thus not included in the somaticMutation
+                                        variant found, thus not included in the tumor variant mutation
                                         dataset).
                                     </p>
 
@@ -1342,7 +1412,7 @@
                                                 fully annotated in the database;
                                                 several variants in the series are reported with
                                                 errors (such as position and base that do not fit,
-                                                or report of neutral polymorphisms as somatic
+                                                or report of neutral polymorphisms as tumor
                                                 variants).
 
                                             </td>
@@ -1436,7 +1506,7 @@
                         </li>
                         <li class="list-group-item">
                             <div>
-                                Prognostic Value of <em>TP53</em> Somatic Variants <button aria-label="Show/Hide" class="btn-view-details"
+                                Prognostic Value of <em>TP53</em> Tumor Variants <button aria-label="Show/Hide" class="btn-view-details"
                                         data-bs-toggle="collapse"
                                         data-bs-target="#collapsePV" aria-expanded="false"
                                         aria-controls="collapsePV">
@@ -1446,7 +1516,7 @@
                                 <div class="bg-light p-3 my-3">
 
 
-                                    <h4>prognosisSomatic-IARC <em>TP53</em> Database,R20</h4>
+                                    <h4>PrognosisDownload_r20.csv</h4>
 
                                     <p>This dataset includes information on all studies that have
                                         analyzed the
@@ -1466,7 +1536,7 @@
                                         variant detected but rather report their results in the form of
                                         summary
                                         tables. Such publications have been included in the prognosis
-                                        dataset but not in the somaticMutation dataset.
+                                        dataset but not in the tumor variant dataset.
                                         For some of them, the variants have been published in a
                                         previous paper and can be retrieved with the
                                         Cross_Ref_ID study identifier (see below).
@@ -1608,7 +1678,7 @@
                                 <div class="bg-light p-3 my-3">
 
 
-                                    <h4>germlineMutationData-IARC <em>TP53</em> Database,R20</h4>
+                                    <h4>GermlineDownload_r20.csv</h4>
 
                                     <p>Inherited <em>TP53</em> variants are associated with a rare
                                         autosomal
@@ -1843,12 +1913,22 @@
                                                 file.
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>DS_AG ... DP_DL</td>
+                                            <td>See <a class="jump-link"
+                                                       href="#SpliceAi">SpliceAI Prediction on Canonical Transcript
+                                                (NM_000546.5)</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>PubMedLink</td>
+                                            <td>A link to the PubMed reference in NCBI.</td>
+                                        </tr>
 
                                         </tbody>
                                     </table>
 
                                     <br>
-                                    <h4>germlineMutationReference-IARC <em>TP53</em> Database,R20</h4>
+                                    <h4>GermlineRefDownload_r20.csv</h4>
 
                                     <p> Each row represents a reference identified by a unique
                                         identification
@@ -1859,7 +1939,7 @@
                                     </p>
 
                                     <br>
-                                    <h4>germlinePrevalenceIARC <em>TP53</em> Database, R20</h4>
+                                    <h4>GermlinePrevalenceView_r20.csv</h4>
 
                                     <p> This dataset includes studies reporting <em>TP53</em> germline
                                         variant
@@ -1871,7 +1951,7 @@
                                         variant status in a selected cohort.
                                     </p>
 
-                                    <table class="p53table">
+                                    <table class="table">
 
                                         <tbody>
                                         <tr>
@@ -1923,7 +2003,7 @@
                                     </table>
 
                                     <br>
-                                    <h4>germlineFrequency_IARCTP53Database_R20</h4>
+                                    <h4>GermlineFrequencyDownload_r20.csv</h4>
 
                                     <p> This new dataset includes studies reporting the frequency of
                                         individual <em>TP53</em> germline variants in case-control
@@ -1932,7 +2012,7 @@
                                         <em>TP53</em>.
                                     </p>
 
-                                    <table class="p53table">
+                                    <table class="table">
 
                                         <tbody>
                                         <tr>
@@ -2013,7 +2093,7 @@
                                         functional assays performed in yeast or human cells, are
                                         provided in two datasets.</p>
 
-                                    <h4>functionalAssessment-IARC <em>TP53</em> Database, R20</h4>
+                                    <h4>FunctionDownload_r20.csv</h4>
                                     <div id="FunctionalAssessment" class="row border-top border-bottom mx-1 my-3 p-2">
                                         <div class="col-1 text-end"><i class="fas fa-exclamation-triangle"></i></div>
                                         <div class="col-10">In this dataset, data were extracted from publications
@@ -2125,10 +2205,8 @@
                                                 <br>
                                                 <b>drug sensitivity</b> = conserved capacity to mediate
                                                 cytotoxic effect of drug (specific drug used is
-                                                indicated, <a
-                                                    class="jump-link"
-                                                    href="#List_of_abbreviations">see List of
-                                                abbreviations</a>).<br>
+                                                indicated, <a href="#List_of_abbreviations">see List of
+                                                Abbreviations</a>).<br>
                                                 <br>
                                                 - Activities of over-expressed mutant proteins in human
                                                 cells:<br>
@@ -2209,10 +2287,8 @@
                                                 activity when both proteins are expressed in a cell
                                                 system;<br>
                                                 <b>Drug resistance</b> = confer resistance to a
-                                                cytotoxic drug (<a class="jump-link"
-                                                                   href="#List_of_abbreviations">see
-                                                    List of
-                                                    abbreviations</a>);<br>
+                                                cytotoxic drug (<a href="#List_of_abbreviations">see
+                                                    List of Abbreviations</a>);<br>
                                                 <b>Growth advantage</b> = increase growth rate. <br>
                                                 <br>
                                                 - Biological effect after over-expression in mouse or
@@ -2249,7 +2325,7 @@
                                                 test.<br>
                                                 <br>
                                                 Note that functional tests are performed at different
-                                                temperature in yeast (30ÝC) and human (37ÝC) cells. (Read more on
+                                                temperature in yeast (30&#8451;) and human (37&#8451;) cells. (Read more on
                                                 <a target="_blank" rel="noopener noreferrer" href="/ts_annotations">Temperature
                                                     Sensitivity Annotations</a> to learn about its detailed annotation
                                                 rules.)
@@ -2306,7 +2382,7 @@
 
                                     <br>
 
-                                    <h4>systematicFunctionalAssessment-IARC <em>TP53</em> Database, R20
+                                    <h4>FunctionIshiokaDownload_r20.csv
                                     </h4>
                                     <a id="systematicFunctionalAssessment"></a>
                                     <p>
@@ -2387,10 +2463,7 @@
                             </div>
                             <div class="collapse" id="collapseHC">
                                 <div class="bg-light p-3 my-3">
-
-
-                                    <h4>CellLinesMutationStatus-IARC <em>TP53</em> Database,R20</h4>
-
+                                    <h4>CellLineDownload_r20.csv</h4>
                                     <p>This dataset includes cell-lines that have been screened for
                                         <em>TP53</em> variant and have been
                                         published in the scientific literature, or in the
@@ -2553,7 +2626,7 @@
                                         </tr>
                                         <tr>
                                             <td>Ref_ID...</td>
-                                            <td> Same as somatic Ref_ID, <a class="jump-link"
+                                            <td> Same as tumor variant Ref_ID, <a class="jump-link"
                                                                             href="#Referencedescription">see
                                                 reference annotations</a>.
                                             </td>
@@ -2581,26 +2654,15 @@
                             </div>
                             <div class="collapse" id="collapseMouse">
                                 <div class="bg-light p-3 my-3">
-
-                                    <p>The dataset contains mouse models with engineered <em>p53</em>
-                                        that
-                                        are compiled in the <a
-                                                href="https://cancermodels.nci.nih.gov/camod/login.do"
-                                                target="_blank" rel="noopener noreferrer">
-                                            caMOD database</a> or reported in the scientific
-                                        literature.
-                                        Data curated at caMOD were courteously provided by the caMOD
-                                        team. A direct link to the caMOD web site is available for
-                                        each model for a detailed
-                                        description of model genetics and phenotypes. Data reported
-                                        in the literature but not compiled in caMOD are curated at
-                                        IARC and a link to PubMed
-                                        abstract is provided. For a detailed description of model
-                                        genetics and phenotypes, please refer to caMOD and/or
-                                        original publication
+                                    <p>The dataset contains mouse models with engineered <em>p53</em> that were compiled
+                                        in the caMOD database or reported in the scientific literature.
+                                        Data curated at caMOD were courteously provided by the caMOD team.
+                                        Data reported in the literature but not compiled in caMOD were curated at IARC
+                                        and a link to PubMed abstract is provided. For a detailed description of model
+                                        genetics and phenotypes, please refer to caMOD and/or original publication
                                     </p>
                                     <br>
-                                    <h4>Mouse ModelsIARC <em>TP53</em> Database, R20</h4>
+                                    <h4>MouseModelView_r20.csv</h4>
                                     <br>
                                     <table class="table">
 
@@ -2664,7 +2726,7 @@
                                     </p>
 
                                     <br>
-                                    <h4>inducedMutationIARC <em>TP53</em> Database, R20</h4>
+                                    <h4>InducedMutationView_r20.csv</h4>
                                     <br>
                                     <table class="table">
                                         <thead>
@@ -2764,7 +2826,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div>
-                                Sample <button aria-label="Show/Hide" class="btn-view-details"
+                                Tumor <button aria-label="Show/Hide" class="btn-view-details"
                                         data-bs-toggle="collapse"
                                         data-bs-target="#collapseSamp" aria-expanded="false"
                                         aria-controls="collapseSamp">
@@ -2783,10 +2845,12 @@
                                         staging, check out
                                         <a href="https://training.seer.cancer.gov/icdo3/"
                                            target="_blank" rel="noopener noreferrer">
-                                            ICD-O training at SEER</a>, <a
-                                                href="https://www.cancerstaging.org/cstage/index.html"
-                                                target="_blank" rel="noopener noreferrer">
-                                            Collaborative staging initiative</a> and <a
+                                            ICD-O training at SEER</a>
+                                        <!--, <a-->
+                                                <!--href="https://www.cancerstaging.org/cstage/index.html"-->
+                                                <!--target="_blank" rel="noopener noreferrer">-->
+                                            <!--Collaborative staging initiative</a>-->
+                                        and <a
                                                 href="https://www.cancer.gov/cancertopics/"
                                                 target="_blank" rel="noopener noreferrer">
                                             Cancer Information at NCI</a>.
@@ -3017,7 +3081,7 @@
                                 <div class="bg-light p-3 my-3">
 
 
-                                    <p>The same references (same Ref_ID) are used for the somatic,
+                                    <p>The same references (same Ref_ID) are used for the tumor variant,
                                         prevalence and prognosis data sets. Independent references
                                         are used for
                                         the Function and Germline data sets.
@@ -3239,19 +3303,19 @@
                         <tr>
 
                             <td>B(a)P</td>
-                            <td>benzo(a)pyrene</td>
+                            <td>Benzo(a)Pyrene</td>
 
                         </tr>
                         <tr>
 
                             <td>B(a)PDE</td>
-                            <td>benzo(a)pyrene diol epoxide</td>
+                            <td>Benzo(a)Pyrene Diol Epoxide</td>
 
                         </tr>
                         <tr>
 
                             <td>BLEO</td>
-                            <td>bleomycin</td>
+                            <td>Bleomycin</td>
 
                         </tr>
                         <tr>
@@ -3269,7 +3333,7 @@
                         <tr>
 
                             <td>CDDP</td>
-                            <td>cisplatin</td>
+                            <td>Cisplatin</td>
 
                         </tr>
                         <tr>
@@ -3287,13 +3351,13 @@
                         <tr>
 
                             <td>COSMIC</td>
-                            <td>Catalog Of Somatic Variants in Cancer</td>
+                            <td>Catalog Of Somatic Mutations in Cancer</td>
 
                         </tr>
                         <tr>
 
                             <td>CPT</td>
-                            <td>camptothecin</td>
+                            <td>Camptothecin</td>
 
                         </tr>
                         <tr>
@@ -3335,7 +3399,7 @@
                         <tr>
 
                             <td>DOX</td>
-                            <td>doxorubicin</td>
+                            <td>Doxorubicin</td>
 
                         </tr>
                         <tr>
@@ -3359,7 +3423,7 @@
                         <tr>
 
                             <td>ETO</td>
-                            <td>etoposide</td>
+                            <td>Etoposide</td>
 
                         </tr>
 
@@ -3396,7 +3460,7 @@
                         <tr>
 
                             <td>GEM</td>
-                            <td>gemcitabine</td>
+                            <td>Gemcitabine</td>
 
                         </tr>
                         <tr>
@@ -3487,7 +3551,7 @@
                         <tr>
 
                             <td align="left">MTX</td>
-                            <td align="left">methotrexate</td>
+                            <td align="left">Methotrexate</td>
 
                         </tr>
                         <tr>
@@ -3530,16 +3594,12 @@
                         <tr>
 
                             <td align="left">MSI</td>
-                            <td align="left">Microsatellite instable/td&gt;
-
-                            </td>
+                            <td align="left">Microsatellite instable</td>
                         </tr>
                         <tr>
 
                             <td align="left">MSS</td>
-                            <td align="left">Microsatellite stable/td&gt;
-
-                            </td>
+                            <td align="left">Microsatellite stable</td>
                         </tr>
                         <tr>
 
@@ -3552,13 +3612,13 @@
                         <tr>
 
                             <td align="left">NA</td>
-                            <td align="left">not applicable/ not available</td>
+                            <td align="left">Not applicable/Not available</td>
 
                         </tr>
                         <tr>
 
                             <td align="left">ND</td>
-                            <td align="left">not done</td>
+                            <td align="left">Not done</td>
 
                         </tr>
                         <tr>
@@ -3570,7 +3630,7 @@
                         <tr>
 
                             <td align="left">neg.</td>
-                            <td align="left">negative</td>
+                            <td align="left">Negative</td>
 
                         </tr>
                         <tr>
@@ -3582,7 +3642,7 @@
                         <tr>
 
                             <td align="left">NIM</td>
-                            <td align="left">nimustine</td>
+                            <td align="left">Nimustine</td>
 
                         </tr>
                         <tr>
@@ -3627,7 +3687,7 @@
                         <tr>
 
                             <td align="left">OXA</td>
-                            <td align="left">oxaliplatin</td>
+                            <td align="left">Oxaliplatin</td>
 
                         </tr>
 
@@ -3645,7 +3705,7 @@
                         <tr>
 
                             <td align="left">pos.</td>
-                            <td align="left">positive</td>
+                            <td align="left">Positive</td>
 
                         </tr>
                         <tr>
@@ -3688,7 +3748,7 @@
                         <tr>
 
                             <td align="left">TAX</td>
-                            <td align="left">taxol</td>
+                            <td align="left">Taxol</td>
 
                         </tr>
                         <tr>
@@ -3700,7 +3760,7 @@
                         <tr>
 
                             <td align="left">TOP</td>
-                            <td align="left">topotecan</td>
+                            <td align="left">Topotecan</td>
 
                         </tr>
                         <tr>
@@ -3726,19 +3786,19 @@
                         <tr>
 
                             <td align="left">VIN</td>
-                            <td align="left">vinblastine</td>
+                            <td align="left">Vinblastine</td>
 
                         </tr>
                         <tr>
 
                             <td align="left">VINC</td>
-                            <td align="left">vincristine</td>
+                            <td align="left">Vincristine</td>
 
                         </tr>
                         <tr>
 
                             <td align="left">VM26</td>
-                            <td align="left">teniposide</td>
+                            <td align="left">Teniposide</td>
 
                         </tr>
                         <tr>
@@ -3810,17 +3870,17 @@
                                             can be retrieved with this search option.
                                             Each dataset entry corresponds to a unique gene variation.
                                         </li>
-                                        <li><b>Somatic variants</b>.
+                                        <li><b>Tumor variants</b>.
                                             This option allows the retrieval and analysis of <em>TP53</em>
                                             variants
                                             reported as somatic events in tumor samples and cell-lines.
                                             Each dataset entry corresponds to a variant identified in a
                                             human sample.
                                         </li>
-                                        <li><b>Somatic variant prevalence</b>.
+                                        <li><b>Tumor variant prevalence</b>.
                                             This option allows the analysis of the prevalence of
                                             <em>TP53</em>
-                                            somatic variants by cancer type and population groups.
+                                            tumor variants by cancer type and population groups.
                                             Each dataset entry corresponds to the prevalence of
                                             <em>TP53</em>
                                             variant for a specific type of cancer in a defined human
@@ -4009,7 +4069,7 @@
                                             number of tumors observed in individuals carriers of the
                                             selected variants (% is shown).
                                         </li>
-                                        <li><b>Somatic data</b>. Distribution of tumor sites associated
+                                        <li><b>Tumor variant data</b>. Distribution of tumor sites associated
                                             with
                                             the selected variants;
                                             number of variations classified by tumor site divided by
@@ -4017,7 +4077,7 @@
                                             number of variations observed in tumors carrying the selected
                                             variants (% is shown).
                                         </li>
-                                        <li><b>Gene variation data, somatic graph</b>. Proportion of the
+                                        <li><b>Gene variation data, tumor variant graph</b>. Proportion of the
                                             selected variants among all variants reported in the
                                             database
                                             by tumor sites;
@@ -4082,51 +4142,51 @@
                         while it may in fact be the second or third nucleotide that is actually deleted. This
                         information is thus only reliable at the codon level.
                     </div>
-                    <h3 class="mt-4">Some variants present in the somatic dataset may not be retrieved with the
+                    <h3 class="mt-4">Some variants present in the tumor variant dataset may not be retrieved with the
                         'Functional/Structural Data' search option
                     </h3>
                     <div>There may be two reasons for this:</div>
                     <ol>
                         <li>Variants retrieved with this option only include gene variation that are fully
-                            described, while in the dataset of somatic variants some variants are not fully
+                            described, while in the dataset of tumor variants some variants are not fully
                             described.
                         </li>
-                        <li>Somatic variants may be reported in individuals with different SNP status. If a
+                        <li>Tumor variants may be reported in individuals with different SNP status. If a
                             variant is close to a SNP, it may have a different impact on the protein sequence
                             depending on the SNP status. For example, the variant c.637C>T on the first base of
                             codon 213, will result in a p.R213X change in the protein sequence if the SNP present on
                             the third base of the codon is an A (CGA>TGA), while it will result in a p.R213W change
                             if the SNP present on the third base of the codon is a G (CGG>TGG). Variants not
-                            described from the reference sequence are included in the somatic dataset, but not in
+                            described from the reference sequence are included in the tumor variant dataset, but not in
                             the Gene variation dataset.
                         </li>
                     </ol>
                     <h3 class="mt-4">Some variant numbers retrieved from the variant prevalence and variant spectrum
                         datasets may be different</h3>
-                    <div>Data in the prevalence dataset are "independent" from data included in the somatic variants
+                    <div>Data in the prevalence dataset are "independent" from data included in the tumor variants
                         dataset. Numbers differ for the following reasons:
                     </div>
                     <ul>
                         <li>Because we retrieve data from papers, and in many papers the only information that can
                             be extracted is the total number of samples analyzed and total number of samples mutated
-                            (variants are not described in details), variants cannot be included in the somatic
-                            dataset. Thus, numbers in the prevalence table do not match numbers in the somatic
+                            (variants are not described in details), variants cannot be included in the tumor variant
+                            dataset. Thus, numbers in the prevalence table do not match numbers in the tumor variant
                             dataset (variant spectrum).
                         </li>
                         <li>Numbers by histology may also differ, as for example, a paper may contain variant
                             details for lung ADC, SCC, LCC (which are all non-small cell lung cancers), but total
                             numbers of samples analyzed for each histology is not available. In this case, variants
-                            corresponding to ADC, SCC and LCC will be entered in the somatic dataset but in the
+                            corresponding to ADC, SCC and LCC will be entered in the tumor variant dataset but in the
                             prevalence table the prevalence will be indicated only for non-small cell carcinoma
                             (group that includes the 3 tumor types).
                         </li>
                         <li>Cell-lines are not included in the prevalence count.</li>
                         <li>Samples with more than one <em>TP53</em> variant are counted once in the prevalence
                             table while
-                            all variants are entered in the somatic dataset.
+                            all variants are entered in the tumor variant dataset.
                         </li>
                         <li>The prevalence may be missing for some papers that describe variants included in the
-                            somatic dataset. The prevalence dataset has been added in a recent version of the
+                            tumor variant dataset. The prevalence dataset has been added in a recent version of the
                             database (2001 while the database started in 1994) and not all papers have been
                             reviewed. The non-reviewed papers correspond mainly to publications that describe less
                             than 10 variants (about 400 papers). For some papers, the prevalence could not be

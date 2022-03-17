@@ -84,6 +84,11 @@ def get_mut_id_criteria():
 
 def get_germline_patient_criteria(prefix):
     param_col_name_map = {
+        '{prefix}_affected_only'.format(prefix=prefix): {
+            'col_name': 'Unaffected',
+            'multi_val': False,
+            'wrap': False
+        },
         '{prefix}_age_range'.format(prefix=prefix): {
             'between_op': True,
             'max_val': 120,
@@ -111,6 +116,14 @@ def get_germline_patient_criteria(prefix):
         },
 
     }
+
+
+
+    if get_param_val('{prefix}_carriers_only'.format(prefix=prefix)):
+        param_col_name_map['{prefix}_carrier'.format(prefix=prefix)] = {
+            'multi_val': True,
+            'col_name': 'Germline_carrier',
+        }
 
     criteria = build_criteria(param_col_name_map)
     return criteria

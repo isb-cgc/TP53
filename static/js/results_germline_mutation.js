@@ -57,7 +57,7 @@ $(document).ready(function () {
                     }
                 }
             },
-            {data: "hg18_Chr17_coordinates"},
+            {data: "hg19_Chr17_coordinates"},
             {data: "hg38_Chr17_coordinates"},
             {data: "Class"},
             {data: "Country"},
@@ -86,7 +86,55 @@ $(document).ready(function () {
             {data: "Age"},
             {data: "Topography"},
             {data: "Morphology"},
-            {data: "Ref_ID"},
+            {
+                data: "PubMed",
+                render: function (data, type, row, meta) {
+                    if (data) {
+                        if (data.toLowerCase() === 'na') {
+                            return 'NA';
+                        }
+                        else {
+                            return '<a href="https://www.ncbi.nlm.nih.gov/pubmed/' + data + '" target="_blank" rel="noopener noreferrer">' + data + '</a>';
+                        }
+                    }
+                    else
+                        return '';
+                }
+            },
+            {
+                data: "SpliceAI_DS_AG",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DS_AL",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DS_DG",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DS_DL",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DP_AG",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DP_AL",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DP_DG",
+                className: "text-end pe-2"
+            },
+            {
+                data: "SpliceAI_DP_DL",
+                className: "text-end pe-2"
+            }
+
+
         ],
         select: {
             style: 'multi',
