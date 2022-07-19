@@ -912,6 +912,19 @@ def results_cell_line_mutation():
 def get_tp53data():
     return render_template("get_tp53data.html", TP53_DATA_DIR_URL='{static_dir}/data'.format(static_dir=settings.TP53_STATIC_URL), ver=settings.DATA_VERSION)
 
+#
+# Events Page
+#
+@app.route("/events")
+def events():
+    upcoming_list = settings.event_list['upcoming_list']
+    past_list = settings.event_list['past_list']
+    # past_list=settings.event_list.past_list
+    past_list = []
+    # upcoming_list=[]
+
+    print(upcoming_list)
+    return render_template("events.html", upcoming_list=upcoming_list, past_list=past_list)
 
 # single page rendering
 @app.route('/', defaults={'page': 'home'})
