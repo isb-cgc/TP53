@@ -75,6 +75,7 @@ SM_TOBACCO_FILE = 'SM_TOBACCO.TXT.LIST'
 SM_INF_AGNT_FILE = 'SM_INF_AGNT.TXT.LIST'
 SM_EXPOSURE_FILE = 'SM_EXPOSURE.TXT.LIST'
 SM_REF_FILE = 'SM_REF.json'
+EVENT_FILE = 'EVENTS.json'
 
 COUNTRY_FILE = 'COUNTRY.TXT.LIST'
 
@@ -268,6 +269,9 @@ global topo_morph_assc
 topo_morph_assc = None
 global gm_ref_data
 gm_ref_data = None
+
+global event_list
+event_list = None
 
 BQ_GCP=os.environ.get('BQ_GCP', 'isb-cgc-tp53-dev')
 BQ_DATASET = os.environ.get('BQ_DATASET', 'P53_data')
@@ -508,6 +512,9 @@ def setup_app(app):
     global sm_ref_data
     if not sm_ref_data:
         sm_ref_data = utils.load_list(SM_REF_FILE, TP53_STATIC_URL, json=True)
+    global event_list
+    if not event_list:
+        event_list = utils.load_list(EVENT_FILE, TP53_STATIC_URL, json=True)
     return
 
 
