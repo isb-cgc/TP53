@@ -46,29 +46,32 @@
             </div>
             <h5>Past Meetings and Conferences</h5>
             <div>
-                <div class="card">
+                {% for event in past_list %}
+                <div class="card mb-2">
                     <div class="card-body text-muted small-font">
                         <div class="row">
                             <div class="col-md-1 d-none d-lg-block">
                                 <div class="text-end">
-                                    <div class="card-subtitle fw-light fs-6">May</div>
-                                    <div class="fw-bold fs-6">22-25</div>
-                                    <div class="card-subtitle fw-light ">2022</div>
+                                    <div class="card-subtitle fw-light fs-6">{{ event.date.month }}</div>
+                                    <div class="fw-bold fs-6">{{ event.date.days }}</div>
+                                    <div class="card-subtitle fw-light ">{{ event.date.year }}</div>
                                 </div>
                             </div>
                             <div class="col-md-11">
-                                <h5 class="card-title"><strong>18<sup>th</sup> International p53 Workshop</strong></h5>
-                                <h6 class="card-subtitle mb-2 text-muted">May 22-25, 2022</h6>
-                                <div class="card-subtitle  fw-light">Weizmann Institute of Science</div>
-                                <div class="card-subtitle  fw-light">Rehovot, Israel</div>
-                                <a class="hover-arrow-link"
-                                   href="https://www.weizmann.ac.il/conferences/P53W2020/18th-international-p53-workshop"
-                                   target="_blank" rel="noopener noreferrer">Visit Website</a>
+                                <h5 class="card-title">{{ event.title|safe }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ event.date.month }} {{event.date.days}},
+                                    {{ event.date.year}}</h6>
+                                <div class="card-subtitle  fw-light">{{ event.host|safe }}</div>
+                                <div class="card-subtitle  fw-light">{{ event.location|safe }}</div>
+                                <p class="card-text">
+                                    {{ event.content|safe }}
+                                </p>
 
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
