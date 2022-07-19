@@ -19,81 +19,59 @@
         <div class="p-2">
             <h3>Upcoming Meetings and Conferences</h3>
             <div class="py-1 mb-5">
-                <div class="card">
+                {% for event in upcoming_list %}
+                <div class="card mb-2">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-1 d-none d-lg-block">
                                 <div class="text-end">
-                                    <div class="card-subtitle fw-light fs-5">Oct</div>
-                                    <div class="fw-bold fs-5">13-16</div>
-                                    <div class="card-subtitle fw-light ">2022</div>
+                                    <div class="card-subtitle fw-light fs-5">{{ event.date.month}}</div>
+                                    <div class="fw-bold fs-5">{{ event.date.days}}</div>
+                                    <div class="card-subtitle fw-light ">{{event.date.year}}</div>
                                 </div>
                             </div>
                             <div class="col-md-11">
-                                <h5 class="card-title"><strong>6<sup>th</sup> International LFS Association Symposium</strong></h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Oct 13-16, 2022</h6>
-                                <div class="card-subtitle  fw-light">Hosted by <strong>National Cancer Institute</strong> in partnership with the <strong>LiFE Consortium</strong></div>
-                                <div class="card-subtitle  fw-light">Bethesda, Maryland</div>
+                                <h5 class="card-title">{{ event.title|safe }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ event.date.month}} {{ event.date.days }}, {{ event.date.year}}</h6>
+                                <div class="card-subtitle  fw-light">{{ event.host|safe }}</div>
+                                <div class="card-subtitle  fw-light">{{ event.location|safe }}</div>
                                 <p class="card-text">
-                                    <a class="hover-arrow-link"
-                                   href="https://www.lfsassociation.org/reach-22/"
-                                   target="_blank" rel="noopener noreferrer">Visit Website</a>
-<!--                                    Conference details can be found at: <a class="hover-arrow-link"-->
-<!--                                   href="https://www.lfsassociation.org/"-->
-<!--                                                                           target="_blank" rel="noopener noreferrer">Li-Fraumeni Syndrome Association</a>-->
-<!--                                    More information to follow soon.-->
+                                    {{ event.content|safe }}
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <!--<div class="card-header">-->
-                    <!---->
-                    <!--</div>-->
-                    <!--<div class="card-body">-->
-                    <!--<h5 class="card-title"><strong>18th International p53 Workshop</strong> , Israel</h5>-->
-                    <!--<h6 class="card-subtitle mb-2 text-muted">Weizmann Institute of Science, Rehovot, Israel</h6>-->
-                    <!--<div class="card-text">-->
-                    <!--<div>The 18th p53 workshop celebrates the 40th birthday of the p53 field.</div>-->
-                    <!--<div>-->
-                    <!--Starting from an anonymous protein of ambiguous nature, p53 has blossomed into the most-->
-                    <!--extensively studied human gene. Thanks to years of dedicated research by the entire p53-->
-                    <!--community, we are finally on the road to harnessing basic science towards the development of-->
-                    <!--novel p53-based cancer therapies.</div>-->
-                    <!--<div>-->
-                    <!--This workshop will bring together experts from diverse backgrounds and provide an exciting-->
-                    <!--platform to discuss the latest discoveries in p53 research.</div>-->
-                    <!--</div>-->
-                    <!--<a class="hover-arrow-link"-->
-                    <!--href="https://www.weizmann.ac.il/conferences/P53W2020/18th-international-p53-workshop"-->
-                    <!--target="_blank" rel="noopener noreferrer">Visit Website</a>-->
-                    <!--</div>-->
                 </div>
+                {% endfor %}
             </div>
             <h5>Past Meetings and Conferences</h5>
             <div>
-                <div class="card">
+                {% for event in past_list %}
+                <div class="card mb-2">
                     <div class="card-body text-muted small-font">
                         <div class="row">
                             <div class="col-md-1 d-none d-lg-block">
                                 <div class="text-end">
-                                    <div class="card-subtitle fw-light fs-6">May</div>
-                                    <div class="fw-bold fs-6">22-25</div>
-                                    <div class="card-subtitle fw-light ">2022</div>
+                                    <div class="card-subtitle fw-light fs-6">{{ event.date.month }}</div>
+                                    <div class="fw-bold fs-6">{{ event.date.days }}</div>
+                                    <div class="card-subtitle fw-light ">{{ event.date.year }}</div>
                                 </div>
                             </div>
                             <div class="col-md-11">
-                                <h5 class="card-title"><strong>18<sup>th</sup> International p53 Workshop</strong></h5>
-                                <h6 class="card-subtitle mb-2 text-muted">May 22-25, 2022</h6>
-                                <div class="card-subtitle  fw-light">Weizmann Institute of Science</div>
-                                <div class="card-subtitle  fw-light">Rehovot, Israel</div>
-                                <a class="hover-arrow-link"
-                                   href="https://www.weizmann.ac.il/conferences/P53W2020/18th-international-p53-workshop"
-                                   target="_blank" rel="noopener noreferrer">Visit Website</a>
+                                <h5 class="card-title">{{ event.title|safe }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ event.date.month }} {{event.date.days}},
+                                    {{ event.date.year}}</h6>
+                                <div class="card-subtitle  fw-light">{{ event.host|safe }}</div>
+                                <div class="card-subtitle  fw-light">{{ event.location|safe }}</div>
+                                <p class="card-text">
+                                    {{ event.content|safe }}
+                                </p>
 
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
