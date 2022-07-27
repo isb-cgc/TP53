@@ -933,6 +933,44 @@
                     </table>
                     {% endif %}
                 </div>
+                <div class="my-2 p-3">
+                    <h3>GDC Cases</h3>
+                    <hr>
+                    {% if query_result.gdc_cases|length == 0 %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% else %}
+                    <table id="gdc-cases" class="table table-sm  small-font clientside-processed">
+                        <thead>
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Submitter identifier">GDC Case ID
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="GDC Program name">Program
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Project name abbreviation; the program name appended with a project name abbreviation; eg. TCGA-OV, etc.">
+                                Project Short Name
+                            </th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in query_result.gdc_cases %}
+                        <tr>
+                            <td><a href="https://portal.gdc.cancer.gov/cases/{{ row.CaseUUID }}" target="_blank"
+                                   rel="noopener noreferrer">{{ row.CaseID }}</a></td>
+                            <td>{{ row.Program }}</td>
+                            <td><a href="https://portal.gdc.cancer.gov/projects/{{ row.ProjectShortName }}" target="_blank" rel="noopener noreferrer">{{ row.ProjectShortName}}</a>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

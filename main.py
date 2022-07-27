@@ -363,11 +363,12 @@ def simple_query(prefix):
     length = int(parameters['length'])
     criteria = json.loads(parameters['criteria'])
     if prefix == 'gv':
-        table = 'MutationView'
+        # table = 'MutationView'
+        table = 'MutationView_gdc'
         distinct_col = 'MUT_ID'
         column_filters = ["MUT_ID", "g_description", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
                       "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "Somatic_count", "Germline_count", "Cellline_count",
-                      "TCGA_ICGC_GENIE_count", "Polymorphism", "CLINVARlink", "COSMIClink", "SNPlink", "gnomADlink",
+                      "TCGA_ICGC_GENIE_count", "GDC_case_count", "Polymorphism", "CLINVARlink", "COSMIClink", "SNPlink", "gnomADlink",
                           "SpliceAI_DS_AG", "SpliceAI_DS_AL", "SpliceAI_DS_DG",	"SpliceAI_DS_DL",
                           "SpliceAI_DP_AG", "SpliceAI_DP_AL", "SpliceAI_DP_DG", "SpliceAI_DP_DL"]
         order_col_name = column_filters[order_col-1]
@@ -414,6 +415,12 @@ def mut_details():
             'criteria': [{'column_name': 'MUT_ID', 'vals': [mut_id]}],
             'table': 'ISOFORMS_STATUS',
             'ord_column': 'MUT_ID'
+        },
+        'gdc_cases': {
+            'column_filters': ['CaseUUID', 'CaseID', 'Program', 'ProjectShortName', 'g_description_GRCh38', 'MUT_ID'],
+            'criteria': [{'column_name': 'MUT_ID', 'vals': [mut_id]}],
+            'table': 'Mutation_GDC',
+            'ord_column': 'CaseUUID'
         }
     }
     join_queries = {
