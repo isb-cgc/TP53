@@ -18,6 +18,8 @@ echo "Dependencies Installed"
 # Install PIP + Dependencies
 echo "Installing pip3..."
 #curl --silent https://bootstrap.pypa.io/get-pip.py | python3
+sudo apt-get update
+sudo apt-get upgrade
 sudo apt-get -y install python3-pip
 
 # Install our primary python libraries
