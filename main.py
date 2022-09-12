@@ -77,8 +77,8 @@ client_secrets_file = os.path.join(app.root_path, 'client_secret.json')
 # Flow is OAuth 2.0 class that stores all the information on how we want to authorize our users
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
-    scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", "openid"], # specify what to get after the authorization
-    redirect_uri="http://localhost:8080/callback"  # where to redirect after the authorization
+    scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"], # specify what to get after the authorization
+    redirect_uri=settings.OAUTH_CALLBACK  # where to redirect after the authorization
 )
 
 TITLE_BQVIEW_MAP = {

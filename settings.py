@@ -278,10 +278,10 @@ BQ_DATASET = os.environ.get('BQ_DATASET', 'P53_data')
 GOOGLE_SE_ID = os.environ.get('GOOGLE_SE_ID', 'dab1bee9d7d88fe88')
 DATA_VERSION = os.environ.get('DATA_VERSION', 'r20')
 GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
-GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", None)
 IS_TEST = os.environ.get('IS_TEST', 'True').lower() == 'true'
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
 SECRET_KEY = os.environ.get('SIGNED_SESSION_COOKIE', 'FALSE_SESSION_COOKIE')
+OAUTH_CALLBACK = os.environ.get('OAUTH_CALLBACK', 'http://localhost:8080/callback')
 
 def setup_app(app):
     global m_c_desc_list
