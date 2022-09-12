@@ -1,5 +1,5 @@
 ###
-# Copyright 2021, ISB
+# Copyright 2022, ISB
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,11 @@
 ###
 
 import os
-from flask import Flask, render_template, request, send_from_directory, json, jsonify, make_response, abort
+from google.oauth2 import id_token
+from google_auth_oauthlib.flow import Flow
+from pip._vendor import cachecontrol
+import google.auth.transport.requests
+from flask import Flask, render_template, request, send_from_directory, json, jsonify, make_response, abort, session, redirect
 from google.cloud import bigquery
 from google.api_core.exceptions import BadRequest
 from flask_talisman import Talisman
@@ -33,6 +37,12 @@ from jinja2 import TemplateNotFound
 
 
 app = Flask(__name__)
+
+# Configuration for GOOGLE OAUTH
+GOOGLE_CLIENT_ID = settings.GOOGLE_CLIENT_ID
+# GOOGLE_CLIENT_SECRET = settings.GOOGLE_CLIENT_SECRET
+GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configuration"
+
 app.config['TESTING'] = settings.IS_TEST
 app.config['ENV'] = 'development' if settings.IS_TEST else 'production'
 
@@ -50,18 +60,26 @@ Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_p
         '*.google-analytics.com',
         '*.googleapis.com',
         "*.fontawesome.com",
+        "*.googleusercontent.com",
         "\'unsafe-inline\'",
         "\'unsafe-eval\'",
         'data:'
-    ],
+    ]
 })
 
 GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'privatekey.json')
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
-
 bq_builder.set_project_dataset(proj_id=settings.BQ_GCP, d_set=settings.BQ_DATASET)
-
 bigquery_client = bigquery.Client()
+
+client_secrets_file = os.path.join(app.root_path, 'client_secret.json')
+#
+# Flow is OAuth 2.0 class that stores all the information on how we want to authorize our users
+flow = Flow.from_client_secrets_file(
+    client_secrets_file=client_secrets_file,
+    scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", "openid"], # specify what to get after the authorization
+    redirect_uri="http://localhost:8080/callback"  # where to redirect after the authorization
+)
 
 TITLE_BQVIEW_MAP = {
     "MutationView": "Functional / Structural Data in <em>TP53</em> with Annotations",
@@ -194,6 +212,34 @@ def get_distribution():
     return render_template(template, criteria_map=criteria_map, title=title,
                            subtitle=subtitle,
                            graph_result=graph_result)
+
+
+def login_is_required(function):
+    # a function to check if the user is authorized or not
+    def wrapper(*args, **kwargs):
+        if "user" not in session:  # authorization required
+            return abort(401)
+        else:
+            return function()
+
+    return wrapper
+
+
+@app.route("/gdc_cases_query", methods=['POST'])
+@login_is_required
+def gdc_query():
+    parameters = dict(request.form)
+    mut_id = json.loads(parameters['mut_id'])
+    if mut_id:
+        column_filters = ['CaseUUID', 'CaseID', 'Program', 'ProjectShortName', 'g_description_GRCh38', 'MUT_ID']
+        criteria = [{'column_name': 'MUT_ID', 'vals': [mut_id]}]
+        table = 'Mutation_GDC'
+        sql_stm = bq_builder.build_simple_query(criteria=criteria, table=table, column_filters=column_filters)
+        result = run_bq_sql(sql_stm)
+        result_list = [dict(row) for row in result]
+        return jsonify({ "data": result_list })
+    else:
+        return abort(404)
 
 
 @app.route("/mutation_query", methods=['GET', 'POST'])
@@ -417,7 +463,7 @@ def mut_details():
             'ord_column': 'MUT_ID'
         },
         'gdc_cases': {
-            'column_filters': ['CaseUUID', 'CaseID', 'Program', 'ProjectShortName', 'g_description_GRCh38', 'MUT_ID'],
+            'column_filters': ['CaseUUID'],
             'criteria': [{'column_name': 'MUT_ID', 'vals': [mut_id]}],
             'table': 'Mutation_GDC',
             'ord_column': 'CaseUUID'
@@ -544,6 +590,7 @@ def mut_details():
         error_msg = "Sorry, query job has timed out."
 
     return render_template("mut_details.html",
+                           mut_id=mut_id,
                            query_result=query_result,
                            mut_desc=mut_desc,
                            sys_assess=sys_assess,
@@ -982,8 +1029,58 @@ def warmup():
     # Handle your warmup logic here, e.g. set up a database connection pool
     return '', 200, {}
 
+#
+# Log-in methods
+
+
+@app.route("/login", methods=['GET','POST'])
+def login():
+    authorization_url, state = flow.authorization_url()
+    session["state"] = state
+    session["request_referrer"] = request.referrer
+    return redirect(authorization_url)
+
+
+@app.route("/callback")
+# Page after the authorization
+def callback():
+    flow.fetch_token(authorization_response=request.url)
+    if not session["state"] == request.args["state"]:
+        abort(500)  # state does not match!
+    credentials = flow.credentials
+    request_session = requests.session()
+    cached_session = cachecontrol.CacheControl(request_session)
+    token_request = google.auth.transport.requests.Request(session=cached_session)
+
+    id_info = id_token.verify_oauth2_token(
+        id_token=credentials.id_token,
+        request=token_request,
+        audience=GOOGLE_CLIENT_ID,
+        clock_skew_in_seconds=5
+    )
+    user = {
+        'email': id_info.get("email"),
+        'name': id_info.get("name"),
+        'picture': id_info.get("picture")
+    }
+    session["user"] = user  # defining the results to show on the page
+    request_referrer = session["request_referrer"]
+    session.pop('request_referrer')
+    app.logger.info('User {userid} has acknowledged the data agreement has logged in '.format(userid=user['email']))
+    return redirect(request_referrer)  # the final page where the authorized users will end up
+
+
+@app.route("/logout", methods=['GET', 'POST'])  # the logout page and function
+def logout():
+    session.clear()
+    return redirect('/home')
+
 
 settings.setup_app(app)
+app.secret_key = settings.SECRET_KEY
+
 
 if __name__ == '__main__':
+    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+    print("running locally")
     app.run(host='127.0.0.1', port=8080, debug=True)
