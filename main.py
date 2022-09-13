@@ -15,6 +15,7 @@
 ###
 
 import os
+import logging
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
@@ -1067,7 +1068,7 @@ def callback():
     session["user"] = user  # defining the results to show on the page
     request_referrer = session["request_referrer"]
     session.pop('request_referrer')
-    app.logger.info('User {userid} has acknowledged the data agreement has logged in '.format(userid=user['email']))
+    logging.info('User {userid} has acknowledged the data agreement has logged in '.format(userid=user['email']))
     return redirect(request_referrer)  # the final page where the authorized users will end up
 
 
