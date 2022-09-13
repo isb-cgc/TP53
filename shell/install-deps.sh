@@ -9,7 +9,7 @@ find . -type f -name '*.pyc' -delete
 echo "Preparing System..."
 apt-get -y --force-yes install software-properties-common
 apt-get update -qq
-apt-get upgrade
+#apt-get upgrade
 
 # Install apt-get dependencies
 echo "Installing Dependencies..."
