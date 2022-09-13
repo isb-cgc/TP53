@@ -21,8 +21,7 @@ from pip._vendor import cachecontrol
 import google.auth.transport.requests
 from flask import Flask, render_template, request, send_from_directory, json, jsonify, make_response, abort, session, \
     redirect
-from google.cloud import bigquery
-import google.cloud.logging
+from google.cloud import bigquery, logging
 from google.api_core.exceptions import BadRequest
 from flask_talisman import Talisman
 import settings
@@ -34,7 +33,6 @@ import utils
 import graphs
 import filters
 from io import StringIO
-# from logging.config import dictConfig
 from jinja2 import TemplateNotFound
 
 app = Flask(__name__)
@@ -72,7 +70,7 @@ GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'privatekey.json')
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
-logging_client = google.cloud.logging.Client()
+logging_client = logging.Client()
 
 
 bq_builder.set_project_dataset(proj_id=settings.BQ_GCP, d_set=settings.BQ_DATASET)
@@ -1118,4 +1116,5 @@ app.secret_key = settings.SECRET_KEY
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
 else:
+    logging_client.logger('app_login_log')
     logging_client.setup_logging()
