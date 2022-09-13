@@ -69,6 +69,7 @@ Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_p
 
 GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'privatekey.json')
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
+os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 bq_builder.set_project_dataset(proj_id=settings.BQ_GCP, d_set=settings.BQ_DATASET)
 bigquery_client = bigquery.Client()
 
