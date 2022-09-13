@@ -1081,6 +1081,6 @@ app.secret_key = settings.SECRET_KEY
 
 
 if __name__ == '__main__':
-    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
-    print("running locally")
+    # os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+    # print("running locally")
     app.run(host='127.0.0.1', port=8080, debug=True)
