@@ -7,9 +7,9 @@ find . -type f -name '*.pyc' -delete
 
 # Install and update apt-get info
 echo "Preparing System..."
-sudo apt-get -y --force-yes install software-properties-common
-sudo apt-get update -qq
-sudo apt-get upgrade
+apt-get -y --force-yes install software-properties-common
+apt-get update -qq
+apt-get upgrade
 
 # Install apt-get dependencies
 echo "Installing Dependencies..."
@@ -20,7 +20,7 @@ echo "Dependencies Installed"
 echo "Installing pip3..."
 #curl --silent https://bootstrap.pypa.io/get-pip.py | python3
 #sudo apt-get update -qq
-sudo apt-get install -y python3-pip
+apt-get install -y python3-pip
 
 # Install our primary python libraries
 # If we're not on CircleCI, or we are but the lib directory isn't there (cache miss), install lib
