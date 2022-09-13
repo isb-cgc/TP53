@@ -13,7 +13,7 @@ sudo apt-get upgrade
 
 # Install apt-get dependencies
 echo "Installing Dependencies..."
-apt-get install -y --force-yes unzip libffi-dev libssl-dev python3-dev libpython3-dev
+sudo apt-get install -y --force-yes unzip libffi-dev libssl-dev python3-dev libpython3-dev
 echo "Dependencies Installed"
 
 # Install PIP + Dependencies
@@ -26,7 +26,7 @@ sudo apt-get install -y python3-pip
 # If we're not on CircleCI, or we are but the lib directory isn't there (cache miss), install lib
 if [ ! -d "lib" ]; then
     echo "Installing Python Libraries..."
-    pip3 install -r ${HOMEROOT}/requirements.txt -t ${HOMEROOT}/lib --upgrade --only-binary all
+    sudo pip3 install -r ${HOMEROOT}/requirements.txt -t ${HOMEROOT}/lib --upgrade --only-binary all
 else
     echo "Using restored cache for Python Libraries"
 fi
