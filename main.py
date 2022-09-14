@@ -606,16 +606,19 @@ def mut_details():
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
 
-    return render_template("mut_details.html",
-                           mut_id=mut_id,
-                           query_result=query_result,
-                           mut_desc=mut_desc,
-                           sys_assess=sys_assess,
-                           prot_desc=prot_desc,
-                           prot_pred=prot_pred,
-                           tsv_data=tsv_data,
-                           error_msg=error_msg)
-
+    response = make_response(render_template("mut_details.html",
+                                             mut_id=mut_id,
+                                             query_result=query_result,
+                                             mut_desc=mut_desc,
+                                             sys_assess=sys_assess,
+                                             prot_desc=prot_desc,
+                                             prot_pred=prot_pred,
+                                             tsv_data=tsv_data,
+                                             error_msg=error_msg))
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
 
 @app.route("/search_somatic_mut")
 def search_somatic_mut():
@@ -1096,16 +1099,18 @@ def callback():
     request_referrer = session["request_referrer"]
     session.pop('request_referrer')
     app.logger.info(
-        '[LOGIN]: User {user_email} has logged in after acknowledging the data agreement.'.format(user_email=user['email']))
+        '[LOGIN]: User {user_email} has acknowledged the data agreement and signed in successfully.'.format(
+            user_email=user['email']))
     return redirect(request_referrer)  # the final page where the authorized users will end up
 
 
 @app.route("/logout", methods=['GET', 'POST'])  # the logout page and function
 def logout():
-    user_email = session['user']['email']
-    session.clear()
-    app.logger.info(
-        '[LOGOUT]: User {user_email} is logged out.'.format(user_email=user_email))
+    if 'user' in session:
+        user_email = session['user']['email']
+        session.clear()
+        app.logger.info(
+            '[LOGOUT]: User {user_email} has logged out.'.format(user_email=user_email))
 
     return redirect('/home')
 
