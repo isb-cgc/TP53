@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Events{% endblock %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">
+    active_menu = 'events';
+</script>
+
+{% endblock %}
+
+{% block content %}
+<main class="bg-white">
+    <div class="page-banner">
+        <div class="container">
+            <h1 class="fw-bold p-2 my-0">Events</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="p-2">
+            <h3>Upcoming Meetings and Conferences</h3>
+            <div class="py-1 mb-5">
+                {% for event in upcoming_list %}
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-1 d-none d-lg-block">
+                                <div class="text-end">
+                                    <div class="card-subtitle fw-light fs-5">{{ event.date.month}}</div>
+                                    <div class="fw-bold fs-5">{{ event.date.days}}</div>
+                                    <div class="card-subtitle fw-light ">{{event.date.year}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-11">
+                                <h5 class="card-title">{{ event.title|safe }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ event.date.month}} {{ event.date.days }}, {{ event.date.year}}</h6>
+                                <div class="card-subtitle  fw-light">{{ event.host|safe }}</div>
+                                <div class="card-subtitle  fw-light">{{ event.location|safe }}</div>
+                                <p class="card-text">
+                                    {{ event.content|safe }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <h5>Past Meetings and Conferences</h5>
+            <div>
+                {% for event in past_list %}
+                <div class="card mb-2">
+                    <div class="card-body text-muted small-font">
+                        <div class="row">
+                            <div class="col-md-1 d-none d-lg-block">
+                                <div class="text-end">
+                                    <div class="card-subtitle fw-light fs-6">{{ event.date.month }}</div>
+                                    <div class="fw-bold fs-6">{{ event.date.days }}</div>
+                                    <div class="card-subtitle fw-light ">{{ event.date.year }}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-11">
+                                <h5 class="card-title">{{ event.title|safe }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ event.date.month }} {{event.date.days}},
+                                    {{ event.date.year}}</h6>
+                                <div class="card-subtitle  fw-light">{{ event.host|safe }}</div>
+                                <div class="card-subtitle  fw-light">{{ event.location|safe }}</div>
+                                <p class="card-text">
+                                    {{ event.content|safe }}
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
