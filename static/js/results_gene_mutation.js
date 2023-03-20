@@ -32,7 +32,14 @@ $(document).ready(function () {
         },
         order: [[ show_hg19? 2:3, "asc" ]],
         scrollX: true,
+        fixedColumns: {
+            // left: 2,
+            // right: 0
+            left: 0,
+            right: 1
+        },
         columns: [
+
             {
                 data: "MUT_ID",
                 orderable: false,
@@ -40,14 +47,23 @@ $(document).ready(function () {
                     return '<input class="form-check-input row-check" type="checkbox" aria-label="Select Row" value="' + data + '"/>';
                 },
             },
-            {
-                data: "MUT_ID",
-                orderable: false,
-                className: "text-center",
-                render: function(data){
-                    return '<a title="View Variant Details" class="rounded-circle btn sm-round-btn turquoise-btn submit-link" href="/mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
-                }
-            },
+            // {
+            //     data: "MUT_ID",
+            //     orderable: false,
+            //     className: "text-center dt-nowrap",
+            //
+            //     render: function(data){
+            //         return '<a title="View Variant Details" class="btn darkblue-btn submit-link btn-tiny" href="/mut_details?mut_id='+data+'">View <i class="fas fa-angle-double-right"></i></a>';
+            //     }
+            // },
+            // {
+            //     data: "MUT_ID",
+            //     orderable: false,
+            //     className: "text-center",
+            //     render: function(data){
+            //         return '<a title="View Variant Details" class="rounded-circle btn sm-round-btn turquoise-btn submit-link" href="/mut_details?mut_id='+data+'"><i class="fas fa-arrow-right"></i></a>';
+            //     }
+            // },
             {
                 data: "g_description",
                 visible: show_hg19
@@ -154,6 +170,15 @@ $(document).ready(function () {
             {
                 data: "SpliceAI_DP_DL",
                 className: "text-end pe-2"
+            },
+            {
+                data: "MUT_ID",
+                orderable: false,
+                className: "text-center dt-nowrap",
+
+                render: function(data){
+                    return '<a title="View Variant Details" class="btn darkblue-btn submit-link btn-tiny" href="/mut_details?mut_id='+data+'">View <i class="fas fa-angle-double-right"></i></a>';
+                }
             }
         ],
         select: {

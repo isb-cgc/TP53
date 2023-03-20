@@ -9,6 +9,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/select.dataTables.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.fixedColumns.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/results_gene_mutation.js') }}"></script>
 
 {% endblock %}
@@ -20,7 +21,7 @@
     </div>
 </div>
 <div class="m-5">
-    <div id="view_exp_ind_mut" class="my-4">
+    <div id="gm-result" class="my-4">
         <div class="my-2">
             <a class="text-start btn btn-sm btn-outline-dark criteria-btn collapsed"
                data-bs-toggle="collapse" href="#criteria_div" role="button" aria-label="View/Hide Criteria"
@@ -64,11 +65,17 @@
                     <input class="form-check-input check-all" type="checkbox"
                            aria-label="Select All">
                 </td>
-                <th data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="View variant details">
-                    View Variant Details
-                </th>
+<!--                <th data-bs-toggle="tooltip"-->
+<!--                    data-bs-placement="top"-->
+<!--                    title="View variant details">-->
+<!--                    Variant<br/>Details-->
+<!--                </th>-->
+
+<!--                <th data-bs-toggle="tooltip"-->
+<!--                    data-bs-placement="top"-->
+<!--                    title="View variant details">-->
+<!--                    View Variant Details-->
+<!--                </th>-->
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title="Mutation nomenclature according to HGVS standards and using the GenBank NC_000017.10 (hg19 assembly) genomic sequence as reference">
@@ -250,8 +257,12 @@
                     title="The location of <strong>donor loss (DL)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).">
                     SpliceAI DP_DL
                 </th>
-
-                <!--</tr>-->
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="View variant details">
+                    Variant<br/>Details
+                </th>
+                </tr>
                 </thead>
             </table>
         </div>
