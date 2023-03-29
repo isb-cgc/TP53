@@ -1,5 +1,5 @@
 ###
-# Copyright 2022, ISB
+# Copyright 2023, ISB
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,13 +15,8 @@
 ###
 
 import os
-from google.oauth2 import id_token
-from google_auth_oauthlib.flow import Flow
-from pip._vendor import cachecontrol
-import google.auth.transport.requests
-from flask import Flask, render_template, request, send_from_directory, json, jsonify, make_response, abort, session, \
-    redirect
-from google.cloud import bigquery, logging
+from flask import Flask, render_template, request, send_from_directory, json, jsonify, make_response, abort
+from google.cloud import bigquery
 from google.api_core.exceptions import BadRequest
 from flask_talisman import Talisman
 import settings
@@ -33,15 +28,11 @@ import utils
 import graphs
 import filters
 from io import StringIO
+
 from jinja2 import TemplateNotFound
 
+
 app = Flask(__name__)
-
-# Configuration for GOOGLE OAUTH
-GOOGLE_CLIENT_ID = settings.GOOGLE_CLIENT_ID
-# GOOGLE_CLIENT_SECRET = settings.GOOGLE_CLIENT_SECRET
-GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configuration"
-
 app.config['TESTING'] = settings.IS_TEST
 app.config['ENV'] = 'development' if settings.IS_TEST else 'production'
 
@@ -59,32 +50,18 @@ Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_p
         '*.google-analytics.com',
         '*.googleapis.com',
         "*.fontawesome.com",
-        "*.googleusercontent.com",
         "\'unsafe-inline\'",
         "\'unsafe-eval\'",
         'data:'
-    ]
+    ],
 })
 
 GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'privatekey.json')
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
-os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
-
-logging_client = logging.Client()
-
 
 bq_builder.set_project_dataset(proj_id=settings.BQ_GCP, d_set=settings.BQ_DATASET)
-bigquery_client = bigquery.Client()
 
-client_secrets_file = os.path.join(app.root_path, 'client_secret.json')
-#
-# Flow is OAuth 2.0 class that stores all the information on how we want to authorize our users
-flow = Flow.from_client_secrets_file(
-    client_secrets_file=client_secrets_file,
-    scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email",
-            "openid"],  # specify what to get after the authorization
-    redirect_uri=settings.OAUTH_CALLBACK  # where to redirect after the authorization
-)
+bigquery_client = bigquery.Client()
 
 TITLE_BQVIEW_MAP = {
     "MutationView": "Functional / Structural Data in <em>TP53</em> with Annotations",
@@ -105,7 +82,6 @@ TITLE_BQVIEW_MAP = {
 
 }
 
-
 #########################################
 # Functional / Structural Variant Search
 #########################################
@@ -115,21 +91,17 @@ TITLE_BQVIEW_MAP = {
 #
 @app.route("/search_gene_by_var")
 def search_gene_by_var():
-    return render_template("search_tp53_gene_variants.html", c_desc_list=settings.m_c_desc_list,
-                           p_desc_list=settings.m_p_desc_list,
+    return render_template("search_tp53_gene_variants.html", c_desc_list=settings.m_c_desc_list, p_desc_list=settings.m_p_desc_list,
                            g_desc_hg19_list=settings.m_g_desc_hg19_list, g_desc_hg38_list=settings.m_g_desc_hg38_list)
-
 
 #
 # by Variant Features
 #
 @app.route("/search_gene_by_mut")
 def search_gene_by_mut():
-    return render_template("search_tp53_gene_by_mut.html", type_list=settings.m_type_list,
-                           desc_list=settings.m_desc_list,
+    return render_template("search_tp53_gene_by_mut.html", type_list=settings.m_type_list, desc_list=settings.m_desc_list,
                            motif_list=settings.m_motif_list, effect_list=settings.m_effect_list,
-                           exon_intron_list=settings.m_exon_intron_list, ta_class_list=settings.m_ta_class_list,
-                           sift_list=settings.m_sift_list)
+                           exon_intron_list=settings.m_exon_intron_list, ta_class_list=settings.m_ta_class_list, sift_list=settings.m_sift_list)
 
 
 #
@@ -139,11 +111,11 @@ def search_gene_by_mut():
 @app.route("/results_gene_mut/<search_by>", methods=['GET', 'POST'])
 def results_gene_mut(search_by=None):
     criteria = []
-    if search_by == 'gv':  # search by gene variants
+    if search_by == 'gv': # search by gene variants
         criteria = filters.get_gene_variant_criteria(search_by)
-    elif search_by == 'gmut':  # search by variant features
+    elif search_by == 'gmut': # search by variant features
         criteria = filters.get_variant_feature_criteria(search_by)
-    elif search_by == 'mut_id':  # search by variant ID (MUT_ID)
+    elif search_by == 'mut_id': # search by variant ID (MUT_ID)
         criteria = filters.get_mut_id_criteria()
     return render_template("results_gene_mutation.html", criteria=criteria)
 
@@ -179,8 +151,7 @@ def get_distribution():
     if query_dataset == 'Mutation':
         title = 'Statistics on Functional/Structural Data'
     else:
-        title = 'Search Results on {query_dataset} Variants'.format(
-            query_dataset=('Tumor' if query_dataset == 'Somatic' else query_dataset))
+        title = 'Search Results on {query_dataset} Variants'.format(query_dataset=('Tumor' if query_dataset == 'Somatic' else query_dataset))
 
     if action == 'get_mutation_dist':
         table = 'GermlineView_Carriers' if query_dataset == 'Germline' else '{query_dataset}View'.format(
@@ -193,15 +164,13 @@ def get_distribution():
         table = '{query_dataset}TumorStats'.format(query_dataset=query_dataset)
         subtitle = 'Tumor Site Distribution of Variants'
     elif action == 'get_tumor_dist_view':
-        table = 'GermlineView_Carriers' if query_dataset == 'Germline' else '{query_dataset}View'.format(
-            query_dataset=query_dataset)
+        table = 'GermlineView_Carriers' if query_dataset == 'Germline' else '{query_dataset}View'.format(query_dataset=query_dataset)
         subtitle = 'Tumor Site Distribution of Variants'
     elif action == 'get_codon_dist':
         table = 'GermlineMutationStats'
         subtitle = 'Codon Distribution of Point Variants'
     else:
-        return render_template('error.html',
-                               error_message='Unable to generate the plot: <em>Search criteria is missing.</em><br/>Please revisit the search page and re-run the query.')
+        return render_template('error.html', error_message='Unable to generate the plot: <em>Search criteria is missing.</em><br/>Please revisit the search page and re-run the query.')
 
     if action == 'get_gv_tumor_dist':
         gv_tumor_dist_tables = {
@@ -225,34 +194,6 @@ def get_distribution():
     return render_template(template, criteria_map=criteria_map, title=title,
                            subtitle=subtitle,
                            graph_result=graph_result)
-
-
-def login_is_required(function):
-    # a function to check if the user is authorized or not
-    def wrapper(*args, **kwargs):
-        if "user" not in session:  # authorization required
-            return abort(401)
-        else:
-            return function()
-
-    return wrapper
-
-
-@app.route("/gdc_cases_query", methods=['POST'])
-@login_is_required
-def gdc_query():
-    parameters = dict(request.form)
-    mut_id = json.loads(parameters['mut_id'])
-    if mut_id:
-        column_filters = ['CaseUUID', 'CaseID', 'Program', 'ProjectShortName', 'g_description_GRCh38', 'MUT_ID']
-        criteria = [{'column_name': 'MUT_ID', 'vals': [mut_id]}]
-        table = 'Mutation_GDC'
-        sql_stm = bq_builder.build_simple_query(criteria=criteria, table=table, column_filters=column_filters)
-        result = run_bq_sql(sql_stm)
-        result_list = [dict(row) for row in result]
-        return jsonify({"data": result_list})
-    else:
-        return abort(404)
 
 
 @app.route("/mutation_query", methods=['GET', 'POST'])
@@ -304,7 +245,7 @@ def mutation_query():
             "SpliceAI_DP_AL",
             "SpliceAI_DP_DG",
             "SpliceAI_DP_DL"
-        ]
+            ]
     elif query_dataset == 'Germline':
         column_filters = [
             "g_description",
@@ -336,7 +277,7 @@ def mutation_query():
             "SpliceAI_DP_DG",
             "SpliceAI_DP_DL"
         ]
-        # "Ref_ID"]
+            # "Ref_ID"]
     elif query_dataset == 'Prevalence':
         if 'include' not in criteria_map:
             criteria_map = {
@@ -375,14 +316,14 @@ def mutation_query():
         return abort(404)
 
     sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
-                                                 ord_column_list=[column_filters[order_col - 1], distinct_col],
-                                                 desc_ord=(order_dir == 'desc'),
-                                                 start=start, length=length)
+                                            ord_column_list=[column_filters[order_col-1], distinct_col], desc_ord=(order_dir == 'desc'),
+                                            start=start, length=length)
     sql_cnt_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
-                                                     do_counts=True, distinc_col=distinct_col)
+                                                do_counts=True, distinc_col=distinct_col)
     data = get_paginated_results(sql_stm, sql_cnt_stm)
     data['draw'] = draw
     return jsonify(data)
+
 
 
 def get_paginated_results(sql_stm, sql_cnt_stm):
@@ -422,30 +363,24 @@ def simple_query(prefix):
     length = int(parameters['length'])
     criteria = json.loads(parameters['criteria'])
     if prefix == 'gv':
-        # table = 'MutationView'
-        table = 'MutationView_gdc'
+        table = 'MutationView'
         distinct_col = 'MUT_ID'
-        column_filters = ["MUT_ID", "g_description", "g_description_GRCh38", "c_description", "ProtDescription",
-                          "ExonIntron", "Effect",
-                          "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "Somatic_count", "Germline_count",
-                          "Cellline_count",
-                          "TCGA_ICGC_GENIE_count", "GDC_case_count", "Polymorphism", "CLINVARlink", "COSMIClink",
-                          "SNPlink", "gnomADlink",
-                          "SpliceAI_DS_AG", "SpliceAI_DS_AL", "SpliceAI_DS_DG", "SpliceAI_DS_DL",
+        column_filters = ["MUT_ID", "g_description", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
+                      "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "Somatic_count", "Germline_count", "Cellline_count",
+                      "TCGA_ICGC_GENIE_count", "Polymorphism", "CLINVARlink", "COSMIClink", "SNPlink", "gnomADlink",
+                          "SpliceAI_DS_AG", "SpliceAI_DS_AL", "SpliceAI_DS_DG",	"SpliceAI_DS_DL",
                           "SpliceAI_DP_AG", "SpliceAI_DP_AL", "SpliceAI_DP_DG", "SpliceAI_DP_DL"]
-        order_col_name = column_filters[order_col - 1]
+        order_col_name = column_filters[order_col-1]
     elif prefix == 'cl':
         table = 'CellLineView'
         distinct_col = 'CellLineView_ID'
         column_filters = ["CellLineView_ID", "Sample_Name", "Short_topo", "Morphology", "ATCC_ID", "Cosmic_ID",
-                          "depmap_ID", "Sex", "Age", "TP53status", "ExonIntron", "c_description", "ProtDescription",
-                          "Pubmed"]
+                          "depmap_ID", "Sex", "Age", "TP53status", "ExonIntron", "c_description", "ProtDescription", "Pubmed"]
         order_col_name = column_filters[order_col]
     else:
         return abort(404)
     sql_stm = bq_builder.build_simple_query(criteria=criteria, table=table, column_filters=column_filters,
-                                            distinct_col=distinct_col, ord_column=order_col_name,
-                                            desc_ord=(order_dir == 'desc'),
+                                            distinct_col=distinct_col, ord_column=order_col_name, desc_ord=(order_dir == 'desc'),
                                             start=start, length=length)
     sql_cnt_stm = bq_builder.build_simple_query(criteria=criteria, table=table, column_filters=column_filters,
                                                 do_counts=True, distinct_col=distinct_col)
@@ -479,12 +414,6 @@ def mut_details():
             'criteria': [{'column_name': 'MUT_ID', 'vals': [mut_id]}],
             'table': 'ISOFORMS_STATUS',
             'ord_column': 'MUT_ID'
-        },
-        'gdc_cases': {
-            'column_filters': ['CaseUUID'],
-            'criteria': [{'column_name': 'MUT_ID', 'vals': [mut_id]}],
-            'table': 'Mutation_GDC',
-            'ord_column': 'CaseUUID'
         }
     }
     join_queries = {
@@ -568,15 +497,16 @@ def mut_details():
                             'MUT_ID': mut_desc['MUT_ID'],
                         }
 
-                    if mut_desc['TransactivationClass'] != 'NA' or \
-                            mut_desc['DNEclass'] != 'NA' or \
-                            mut_desc['DNE_LOFclass'] != 'NA' or \
-                            mut_desc['AGVGDClass'] != 'NA' or \
-                            mut_desc['BayesDel'] or \
-                            mut_desc['REVEL'] or \
-                            mut_desc['SIFTClass'] != 'NA' or \
-                            mut_desc['Polyphen2'] != 'NA' or \
-                            mut_desc['StructureFunctionClass'] != 'NA':
+                    if mut_desc['TransactivationClass'] != 'NA' or\
+                        mut_desc['DNEclass'] != 'NA' or\
+                        mut_desc['DNE_LOFclass'] != 'NA' or\
+                        mut_desc['AGVGDClass'] != 'NA' or\
+                        mut_desc['BayesDel'] or\
+                        mut_desc['REVEL'] or\
+                        mut_desc['SIFTClass'] != 'NA' or\
+                        mut_desc['Polyphen2'] != 'NA' or\
+                        mut_desc['StructureFunctionClass'] != 'NA':
+
                         prot_pred = {
                             'TransactivationClass': mut_desc['TransactivationClass'],
                             'DNEclass': mut_desc['DNEclass'],
@@ -606,19 +536,15 @@ def mut_details():
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
 
-    response = make_response(render_template("mut_details.html",
-                                             mut_id=mut_id,
-                                             query_result=query_result,
-                                             mut_desc=mut_desc,
-                                             sys_assess=sys_assess,
-                                             prot_desc=prot_desc,
-                                             prot_pred=prot_pred,
-                                             tsv_data=tsv_data,
-                                             error_msg=error_msg))
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "0"
-    return response
+    return render_template("mut_details.html",
+                           query_result=query_result,
+                           mut_desc=mut_desc,
+                           sys_assess=sys_assess,
+                           prot_desc=prot_desc,
+                           prot_pred=prot_pred,
+                           tsv_data=tsv_data,
+                           error_msg=error_msg)
+
 
 @app.route("/search_somatic_mut")
 def search_somatic_mut():
@@ -682,8 +608,7 @@ def prevalence_somatic_stats():
         'data': data,
         'total': total_cnt
     }
-    return render_template("prevalence_somatic_stats.html", criteria=[], graph_data=graph_data,
-                           title='Statistics on Tumor Variants', subtitle='Tumor Variant Prevalence by Tumor Site')
+    return render_template("prevalence_somatic_stats.html", criteria=[], graph_data=graph_data, title='Statistics on Tumor Variants', subtitle='Tumor Variant Prevalence by Tumor Site')
 
 
 @app.route("/results_somatic_mutation_list", methods=['GET', 'POST'])
@@ -715,17 +640,15 @@ def download_dataset():
     if criteria_param:
         criteria_map = json.loads(criteria_param)
 
-    query_datatable = filters.get_param_val('query_datatable')
+    query_datatable=filters.get_param_val('query_datatable')
     if not len(criteria_map.get('exclude', [])):
-        sql_stm = bq_builder.build_simple_query(criteria=criteria_map.get('include', []), table=query_datatable,
-                                                column_filters=['*'])
+        sql_stm = bq_builder.build_simple_query(criteria=criteria_map.get('include', []), table=query_datatable, column_filters=['*'])
     else:
-        sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=query_datatable,
-                                                     column_filters=['*'])
+        sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=query_datatable, column_filters=['*'])
 
     query_job = bigquery_client.query(sql_stm)
     error_msg = None
-    query_result = []
+    query_result=[]
     table_header = []
     try:
         result = query_job.result(timeout=30)
@@ -736,8 +659,7 @@ def download_dataset():
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
     # query_result = {'data': data, 'msg': error_msg}
-    filename_full = '{filename}{version}.csv'.format(filename=filename, version=(
-        '_' + settings.DATA_VERSION if settings.DATA_VERSION else ''))
+    filename_full='{filename}{version}.csv'.format(filename=filename, version=('_'+settings.DATA_VERSION if settings.DATA_VERSION else ''))
     si = StringIO()
     cw = csv.writer(si)
     cw.writerow(table_header)
@@ -748,7 +670,7 @@ def download_dataset():
     return output
 
 
-@app.route("/results_somatic_prevalence_list", methods=['GET', 'POST'])
+@app.route("/results_somatic_prevalence_list", methods=['GET','POST'])
 def results_somatic_prevalence_list():
     prefix = 'mut_prev'
     criteria = filters.get_topo_morph_criteria(prefix)
@@ -807,8 +729,7 @@ def get_prevalence_distribution():
         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
-    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, criteria=criteria, title=title,
-                           subtitle=subtitle)
+    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, criteria=criteria, title=title, subtitle=subtitle)
 
 
 @app.route("/search_germline_mut")
@@ -907,15 +828,13 @@ def view_full_data(dataset):
     return render_template("view_{dataset}.html".format(dataset=dataset), criteria=criteria, query_result=query_result)
 
 
-@app.route("/view_data", methods=['GET'])
+
+@app.route("/view_data", methods = ['GET'])
 def view_data():
     bq_view_name = request.args.get('bq_view_name', None)
     title = TITLE_BQVIEW_MAP[bq_view_name]
-    columns, data = utils.load_csv_file(settings.TP53_STATIC_URL,
-                                        '{filename}_{version}.csv'.format(filename=bq_view_name,
-                                                                          version=settings.DATA_VERSION))
-    return render_template("view_data.html", title=title, bq_view_name=bq_view_name, ver=settings.DATA_VERSION,
-                           columns=columns, data=data)
+    columns, data = utils.load_csv_file(settings.TP53_STATIC_URL, '{filename}_{version}.csv'.format(filename=bq_view_name, version=settings.DATA_VERSION))
+    return render_template("view_data.html", title=title,  bq_view_name=bq_view_name, ver=settings.DATA_VERSION, columns=columns, data=data)
 
 
 ##
@@ -955,11 +874,11 @@ def cell_lines_mutation_stats():
     action = filters.get_param_val('action')
     if action == 'get_mutation_type':
         table = 'CellLineView'
-        subtitle = 'Type of Variants'
+        subtitle='Type of Variants'
     elif action == 'get_tumor_dist':
         table = 'CellLineSiteStats'
         subtitle = 'Tumor Site Distribution of Variants'
-    else:  # action == 'get_codon_dist'
+    else: # action == 'get_codon_dist'
         table = 'CellLineMutationStats'
         subtitle = 'Codon Distribution of Point Variants'
     graph_configs = graphs.build_graph_configs(action, table)
@@ -991,10 +910,7 @@ def results_cell_line_mutation():
 
 @app.route("/get_tp53data")
 def get_tp53data():
-    return render_template("get_tp53data.html",
-                           TP53_DATA_DIR_URL='{static_dir}/data'.format(static_dir=settings.TP53_STATIC_URL),
-                           ver=settings.DATA_VERSION)
-
+    return render_template("get_tp53data.html", TP53_DATA_DIR_URL='{static_dir}/data'.format(static_dir=settings.TP53_STATIC_URL), ver=settings.DATA_VERSION)
 
 #
 # Events Page
@@ -1006,7 +922,6 @@ def events():
 
     print(upcoming_list)
     return render_template("events.html", upcoming_list=upcoming_list, past_list=past_list)
-
 
 # single page rendering
 @app.route('/', defaults={'page': 'home'})
@@ -1028,7 +943,7 @@ def get_sitemap_file(txt_url=None, xml_url=None, google_site_ver=None):
         url_list_filename = os.environ.get('SITEMAP_LIST_FILE', 'urllist.txt')
     elif xml_url and xml_url.lower() == 'sitemap':
         url_list_filename = os.environ.get('SITEMAP_XML_FILE', 'sitemap.xml')
-    elif google_site_ver and google_site_ver.index('google') == 0:
+    elif google_site_ver and google_site_ver.index('google')==0:
         return send_from_directory(app.root_path, 'templates/{filename}.html'.format(filename=google_site_ver))
 
     if url_list_filename:
@@ -1038,10 +953,10 @@ def get_sitemap_file(txt_url=None, xml_url=None, google_site_ver=None):
 
 
 # view pdf files
-@app.route('/pdf/<filename>')  # the url you'll send the user to when he wants the pdf
+@app.route('/pdf/<filename>') #the url you'll send the user to when he wants the pdf
 def pdf_viewer(filename):
     return send_from_directory(os.path.join(app.root_path, 'static/download'),
-                               filename + '.pdf')
+                               filename+'.pdf')
 
 
 @app.route("/cse_search")
@@ -1061,65 +976,7 @@ def warmup():
     return '', 200, {}
 
 
-#
-# Log-in methods
-
-
-@app.route("/login", methods=['GET', 'POST'])
-def login():
-    authorization_url, state = flow.authorization_url()
-    session["state"] = state
-    session["request_referrer"] = request.referrer
-    return redirect(authorization_url)
-
-
-@app.route("/callback")
-# Page after the authorization
-def callback():
-    flow.fetch_token(authorization_response=request.url)
-    if not session["state"] == request.args["state"]:
-        abort(500)  # state does not match!
-    credentials = flow.credentials
-    request_session = requests.session()
-    cached_session = cachecontrol.CacheControl(request_session)
-    token_request = google.auth.transport.requests.Request(session=cached_session)
-
-    id_info = id_token.verify_oauth2_token(
-        id_token=credentials.id_token,
-        request=token_request,
-        audience=GOOGLE_CLIENT_ID,
-        clock_skew_in_seconds=5
-    )
-    user = {
-        'email': id_info.get("email"),
-        'name': id_info.get("name"),
-        'picture': id_info.get("picture")
-    }
-    session["user"] = user  # defining the results to show on the page
-    request_referrer = session["request_referrer"]
-    session.pop('request_referrer')
-    app.logger.info(
-        '[LOGIN]: User {user_email} has acknowledged the data agreement and signed in successfully.'.format(
-            user_email=user['email']))
-    return redirect(request_referrer)  # the final page where the authorized users will end up
-
-
-@app.route("/logout", methods=['GET', 'POST'])  # the logout page and function
-def logout():
-    if 'user' in session:
-        user_email = session['user']['email']
-        session.clear()
-        app.logger.info(
-            '[LOGOUT]: User {user_email} has logged out.'.format(user_email=user_email))
-
-    return redirect('/home')
-
-
 settings.setup_app(app)
-app.secret_key = settings.SECRET_KEY
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
-else:
-    logging_client.logger('app_login_log')
-    logging_client.setup_logging()
