@@ -20,7 +20,7 @@
         <h2>Variant Selected: {{ mut_desc.c_description }}; {{ mut_desc.ProtDescription }}</h2>
         <hr>
         {% if mut_desc and mut_desc.Polymorphism == 'validated' %}
-        
+
         <div class="m-3">
             This gene is a <strong>validated polymorphism</strong>.
             {% if mut_desc.SNPlink or mut_desc.CLINVARlink or (mut_desc.PubMedlink and mut_desc.PubMedlink != 'NA') %}
@@ -28,20 +28,20 @@
                 Check detailed population frequency or disease association in :
             </span>
             {% endif %}
-            
+
             {% if mut_desc.SNPlink %}
             <a class="btn-tiny btn btn-outline-dark"
                href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs={{mut_desc.SNPlink}}" target="_blank"
                rel="noopener noreferrer">SNP
                 Database</a>
             {% endif %}
-            
+
             {% if mut_desc.CLINVARlink %}
             <a class="btn-tiny btn btn-outline-dark"
                href="http://p53.bii.a-star.edu.sg/aboutp53/snps/snpdetail.php?geneid=X54156&snppos={{mut_desc.CLINVARlink}}"
                target="_blank" rel="noopener noreferrer"><em>p53</em> Knowledgebase</a>
             {% endif %}
-            
+
             {% if mut_desc.PubMedlink and mut_desc.PubMedlink != 'NA' %}
             <a class="btn-tiny btn btn-outline-dark"
                href="https://www.ncbi.nlm.nih.gov/pubmed/{{mut_desc.PubMedlink}}" target="_blank"
@@ -230,14 +230,17 @@
                         <a
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                href="https://pubmed.ncbi.nlm.nih.gov/30661751/">Jaganathan (2019)</a> <span class="small-font fw-normal">[<i
+                                href="https://pubmed.ncbi.nlm.nih.gov/30661751/">Jaganathan (2019)</a> <span
+                                class="small-font fw-normal">[<i
                                 class="fab fa-github"></i> <a target="_blank"
                                                               rel="noopener noreferrer"
                                                               href="https://github.com/Illumina/SpliceAI">GitHub</a>]</span>
                     </h3>
                     <hr>
-                    {% if mut_desc.SpliceAI_DS_AG or mut_desc.SpliceAI_DS_AL or mut_desc.SpliceAI_DS_DG or mut_desc.SpliceAI_DS_DL
-                    or mut_desc.SpliceAI_DP_AG or mut_desc.SpliceAI_DP_AL or mut_desc.SpliceAI_DP_DG or mut_desc.SpliceAI_DP_DL %}
+                    {% if mut_desc.SpliceAI_DS_AG or mut_desc.SpliceAI_DS_AL or mut_desc.SpliceAI_DS_DG or
+                    mut_desc.SpliceAI_DS_DL
+                    or mut_desc.SpliceAI_DP_AG or mut_desc.SpliceAI_DP_AL or mut_desc.SpliceAI_DP_DG or
+                    mut_desc.SpliceAI_DP_DL %}
                     <table id="splice-ai-tbl" class="table table-sm small-font">
                         <thead>
                         <tr>
@@ -289,48 +292,6 @@
                                 title="The location of <strong>donor loss (DL)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).">
                                 Delta Position_DL
                             </th>
-
-
-                            <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta score–acceptor gain.">-->
-                                <!--Delta Score<br>Acceptor Gain-->
-                            <!--</th>-->
-                            <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta score–acceptor loss.">-->
-                                <!--Delta Score<br>Acceptor Loss-->
-                            <!--</th>-->
-                            <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta score–donor gain.">-->
-                                <!--Delta Score<br>Donor Gain-->
-                            <!--</th>-->
-                            <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta score–donor loss.">-->
-                                <!--Delta Score<br>Donor Gain-->
-                            <!--</th>-->
-                            <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta position–acceptor gain.">-->
-                                <!--Delta Position<br>Acceptor Gain-->
-                            <!--</th>-->
-                            <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta position–acceptor loss.">-->
-                                <!--Delta Position<br>Acceptor Loss-->
-                            <!--</th>-->
-                            <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta position–donor gain.">-->
-                                <!--Delta Position<br>Donor Gain-->
-                            <!--</th>-->
-                            <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta position–donor loss.">-->
-                                <!--Delta Position<br>Donor Loss-->
-                            <!--</th>-->
                         </tr>
                         </thead>
                         <tbody>
@@ -933,7 +894,92 @@
                     </table>
                     {% endif %}
                 </div>
+                <div class="my-2 p-3">
+                    <h3>GDC Cases</h3>
+                    <hr>
+                    {% if query_result.gdc_cases|length == 0 %}
+                    <div class="fw-light fst-italic">No Data</div>
+                    {% elif session['user'] %}
+                    <table id="gdc-cases-table" class="table table-sm small-font" data-mut-id="{{ mut_id }}">
+                        <thead>
+                        <tr>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Submitter identifier">GDC Case ID
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="GDC Program name">Program
+                            </th>
+                            <th data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Project name abbreviation; the program name appended with a project name abbreviation; eg. TCGA-OV, etc.">
+                                Project Short Name
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <div class="fw-light fst-italic mb-2"><strong>
+                        {{ query_result.gdc_cases|length }}</strong> case(s) available
+                    </div>
+                    <div class="p-2 border rounded-2">
+                        <div class="text-muted fst-italic small-font mb-1"><i class="fas fa-lock"></i> To view this
+                            data, please acknowledge a data use agreement and login. Click the <strong>Show
+                                Data</strong> button to continue.
+                        </div>
+                        <a type="button" class="btn btn-secondary btn-tiny view-gdc-data" data-bs-toggle="modal"
+                           data-bs-target="#data-consent-modal">
+                            Show Data <i class="fas fa-angle-double-right"></i></a>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
+</div>
+<div class="modal fade" id="data-consent-modal" tabindex="-1"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="{{ url_for('login')}}">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        Agreement for Non-Identification of GDC Data
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        You are about to access US Government data which may contain information that must be
+                        protected under the US Privacy Act.
+                    </div>
+                    <div class="mt-2">
+                        By signing in with a Google account, you are agreeing to the following:
+                    </div>
+                    <div class="mt-2">
+                        <ul>
+                            <li>Users agree not to use this data, either alone or in concert with any other information,
+                                to
+                                identify or contact individual participants from whom data and/or samples were
+                                collected.
+                            </li>
+                            <li>Users also agree not to generate information (e.g., facial images or comparable
+                                representations) that could allow the identities of research participants to be readily
+                                ascertained.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-2 fw-light fst-italic">Your acknowledgement will be recorded upon your login.</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn darkblue-btn">Acknowledge and Proceed to Login <i
+                            class="fas fa-angle-double-right"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
