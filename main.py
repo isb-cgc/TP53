@@ -425,14 +425,14 @@ def simple_query(prefix):
         # table = 'MutationView'
         table = 'MutationView_gdc'
         distinct_col = 'MUT_ID'
-        column_filters = ["MUT_ID", "g_description", "g_description_GRCh38", "c_description", "ProtDescription",
+        column_filters = ["g_description", "g_description_GRCh38", "c_description", "ProtDescription",
                           "ExonIntron", "Effect",
                           "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "Somatic_count", "Germline_count",
                           "Cellline_count",
                           "TCGA_ICGC_GENIE_count", "GDC_case_count", "Polymorphism", "CLINVARlink", "COSMIClink",
                           "SNPlink", "gnomADlink",
                           "SpliceAI_DS_AG", "SpliceAI_DS_AL", "SpliceAI_DS_DG", "SpliceAI_DS_DL",
-                          "SpliceAI_DP_AG", "SpliceAI_DP_AL", "SpliceAI_DP_DG", "SpliceAI_DP_DL"]
+                          "SpliceAI_DP_AG", "SpliceAI_DP_AL", "SpliceAI_DP_DG", "SpliceAI_DP_DL", "MUT_ID"]
         order_col_name = column_filters[order_col - 1]
     elif prefix == 'cl':
         table = 'CellLineView'
