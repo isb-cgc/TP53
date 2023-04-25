@@ -42,14 +42,18 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <span class="navbar-collapse collapse" id="navbarCollapse">
-                <ul class="navbar-nav">
+            <div class="navbar-collapse collapse" id="navbarCollapse">
+                <ul class="navbar-nav justify-content-evenly">
                     <li class="nav-item mx-xl-1 mx-xxl-2">
                         <a class="nav-link" id="home_menu" href="/">The <em>TP53</em> Database</a>
                     </li>
                     <li class="nav-item mx-xl-2 mx-xxl-3">
                         <a class="nav-link" id="about" href="/about">About</a>
                     </li>
+                    <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
+                    <!--<a class="nav-link" id="tp53data" href="search_tp53data">Data-->
+                    <!--Explorer</a>-->
+                    <!--</li>-->
                     <li class="nav-item mx-xl-2 mx-xxl-3">
                         <a class="nav-link" id="help" href="/help">User Manual</a>
                     </li>
@@ -81,19 +85,6 @@
                     <!--</form>-->
                     <!--</li>-->
                 </ul>
-                <ul class="ms-auto navbar-nav">
-                    <li class="d-flex navbar-item nav-item mx-xl-2 mx-xxl-3">
-                        {% if session['user'] %}
-                            <img src="{{ session['user']['picture']}}" width="32px" height="32px" referrerpolicy="no-referrer" class="mt-2 rounded-circle" alt="Google ID picture">
-                            <a class="nav-link" href="{{ url_for('logout') }}" title="Sign Out" alt="Sign Out">Sign Out <i
-                                    class="fas fa-sign-out-alt"></i></a>
-<!--                        {% else %}-->
-<!--                            <a type="button" class="nav-link" title="Sign In" alt="Sign In" data-bs-toggle="modal" data-bs-target="#data-consent-modal"><i class="fas fa-sign-in-alt"></i> Sign In</a>-->
-
-                        {% endif %}
-                    </li>
-                </ul>
-
                 <!--<li class="nav-item ms-5 mt-2">-->
                 <!--<form action="cse_search" method="get" role="search" class="d-flex ">-->
                 <!--<input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"-->

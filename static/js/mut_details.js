@@ -49,7 +49,9 @@ $(document).ready(function () {
 
     $('button.download-btn').on('click', function(){
         var tsv_data = $(this).data('download');
-        trigger_file_download('mutation_details.tsv', encodeURI(tsv_data));
+        var downloadable_data =  encodeURI(tsv_data);
+        var filename = 'mutation_details.tsv';
+        trigger_file_download(filename, downloadable_data);
     });
 
 });
