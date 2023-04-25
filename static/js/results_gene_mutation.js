@@ -78,6 +78,7 @@ $(document).ready(function () {
             {data: "Germline_count"},
             {data: "Cellline_count"},
             {data: "TCGA_ICGC_GENIE_count"},
+            {data: "GDC_case_count"},
             {data: "Polymorphism"},
             {
                 data: "CLINVARlink",
