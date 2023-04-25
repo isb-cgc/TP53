@@ -27,19 +27,22 @@ $(document).ready(function () {
         },
         columns: [
             {
-                data: 'CaseID',
+                data: "Program",
+            },
+            {
+                data: 'CaseBarcode',
                 render: function (data, type, row) {
                     return '<a href="https://portal.gdc.cancer.gov/cases/'+ row['CaseUUID'] + '" target="_blank" rel="noopener noreferrer">' + data + '</a>';
                 }
             },
             {
-                data: "Program",
-            },
-            {
-                data: "ProjectShortName",
-                render: function (data) {
-                    return '<a href="https://portal.gdc.cancer.gov/projects/'+ data +'" target="_blank" rel="noopener noreferrer">' + data + '</a>';
-                }
+                data: "somatic_status"
+            },{
+                data: "somatic_p_value",
+                render: $.fn.dataTable.render.number(',', '.', 3, '')
+            },{
+                data: "variant_p_value",
+                render: $.fn.dataTable.render.number(',', '.', 3, '')
             }
         ]
     });

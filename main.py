@@ -244,7 +244,9 @@ def gdc_query():
     parameters = dict(request.form)
     mut_id = json.loads(parameters['mut_id'])
     if mut_id:
-        column_filters = ['CaseUUID', 'CaseID', 'Program', 'ProjectShortName', 'g_description_GRCh38', 'MUT_ID']
+        column_filters = ['Program', 'CaseUUID', 'CaseBarcode', 'g_description_GRCh38', 'somatic_status', 'somatic_p_value',
+                          'variant_p_value', 'MUT_ID']
+        # column_filters = ['CaseUUID', 'CaseID', 'Program', 'ProjectShortName', 'g_description_GRCh38', 'MUT_ID']
         criteria = [{'column_name': 'MUT_ID', 'vals': [mut_id]}]
         table = 'Mutation_GDC'
         sql_stm = bq_builder.build_simple_query(criteria=criteria, table=table, column_filters=column_filters)
