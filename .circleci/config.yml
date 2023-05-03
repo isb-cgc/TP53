@@ -74,7 +74,7 @@ jobs:
       TZ: "/usr/share/zoneinfo/America/Los_Angeles"
     working_directory: ~/TP53
     docker:
-      - image: cimg/python:3.7.12
+      - image: cimg/python:3.8
     steps:
       - checkout
       - run:
@@ -120,7 +120,7 @@ jobs:
       TZ: "/usr/share/zoneinfo/America/Los_Angeles"
     working_directory: ~/TP53
     docker:
-      - image: cimg/python:3.7.12
+      - image: cimg/python:3.8
 
     steps:
       - restore_cache:
