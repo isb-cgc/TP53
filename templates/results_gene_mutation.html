@@ -9,6 +9,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/select.dataTables.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.fixedColumns.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/results_gene_mutation.js') }}"></script>
 
 {% endblock %}
@@ -20,7 +21,7 @@
     </div>
 </div>
 <div class="m-5">
-    <div id="view_exp_ind_mut" class="my-4">
+    <div id="gm-result" class="my-4">
         <div class="my-2">
             <a class="text-start btn btn-sm btn-outline-dark criteria-btn collapsed"
                data-bs-toggle="collapse" href="#criteria_div" role="button" aria-label="View/Hide Criteria"
@@ -64,11 +65,17 @@
                     <input class="form-check-input check-all" type="checkbox"
                            aria-label="Select All">
                 </td>
-                <th data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="View variant details">
-                    View Variant Details
-                </th>
+<!--                <th data-bs-toggle="tooltip"-->
+<!--                    data-bs-placement="top"-->
+<!--                    title="View variant details">-->
+<!--                    Variant<br/>Details-->
+<!--                </th>-->
+
+<!--                <th data-bs-toggle="tooltip"-->
+<!--                    data-bs-placement="top"-->
+<!--                    title="View variant details">-->
+<!--                    View Variant Details-->
+<!--                </th>-->
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title="Mutation nomenclature according to HGVS standards and using the GenBank NC_000017.10 (hg19 assembly) genomic sequence as reference">
@@ -151,23 +158,23 @@
                 </th>
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
-                    title="Number of occurence in the somatic dataset (number of tumors reported to carry
+                    title="Number of occurrence in the somatic dataset (number of tumors reported to carry
                     this tumor variant). Total count is 29,891 in R20.">
                     Somatic Count
                 </th>
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
-                    title="Number of occurence in the germline dataset (number of pedigree/individual carriers of this germline variant). Total count is 1,532 in R20.">
+                    title="Number of occurrence in the germline dataset (number of pedigree/individual carriers of this germline variant). Total count is 1,532 in R20.">
                     Germline Count
                 </th>
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
-                    title="Number of occurence in the cell-line dataset (number of cell-lines reported to carry this mutation). Total cell-line count is 2,766 in R20.">
+                    title="Number of occurrence in the cell-line dataset (number of cell-lines reported to carry this mutation). Total cell-line count is 2,766 in R20.">
                     CellLine Count
                 </th>
                 <th data-bs-toggle="tooltip"
                     data-bs-placement="top"
-                    title="Sum of variation occurence from TCGA (MC3), ICGC (v28) and GENIE (V5) datasets. Total count is 23,570.">
+                    title="Sum of variation occurrence from TCGA (MC3), ICGC (v28) and GENIE (V5) datasets. Total count is 23,570.">
                     TCGA ICGC GENIE Count
                 </th>
                 <th data-bs-toggle="tooltip"
@@ -245,8 +252,12 @@
                     title="The location of <strong>donor loss (DL)</strong> relative to variant position in the pre-mRNA transcript (positive values are upstream of the variant, negative values are downstream).">
                     SpliceAI DP_DL
                 </th>
-
-                <!--</tr>-->
+                <th data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="View variant details">
+                    Variant<br/>Details
+                </th>
+                </tr>
                 </thead>
             </table>
         </div>
