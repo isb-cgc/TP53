@@ -6,8 +6,8 @@ $(document).ready(function () {
     var selectedRowCellLineCount = 0;
     var table = $('#gm-result-table').DataTable({
         dom: "<'row'<'col-sm-12 col-md-6'l>>" +
-                "<'row'<'col-sm-12'tr>>" +
-                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         pageLength: 10,
         serverSide: true,
         rowId: 'MUT_ID',
@@ -20,17 +20,17 @@ $(document).ready(function () {
             dataType: "json",
             dataSrc: "data"
         },
-        preDrawCallback: function(){
+        preDrawCallback: function () {
             $('.spinner').show();
         },
         drawCallback: function () {
             $('.spinner').hide();
-            $('input.check-all').prop( "checked", false ); //reset 'Select All' checkbox
+            $('input.check-all').prop("checked", false); //reset 'Select All' checkbox
             $('.submit-link').on('click', function () {
                 $('.spinner').show();
             });
         },
-        order: [[ show_hg19? 2:3, "asc" ]],
+        order: [[show_hg19 ? 2 : 3, "asc"]],
         scrollX: true,
         fixedColumns: {
             left: 0,
@@ -57,10 +57,9 @@ $(document).ready(function () {
             {
                 data: "ProtDescription",
                 render: function (data, type, row) {
-                    if (type == 'export'){
+                    if (type == 'export') {
                         return data;
-                    }
-                    else{
+                    } else {
                         if (data !== '' && row['Effect'] === 'missense')
                             return '<a data-bs-toggle="tooltip" data-bs-placement="right" title="Link to PHenotypic ANnotation of TP53 Mutations" ' +
                                 'href="http://mutantp53.broadinstitute.org/?query=' + data + '" target="_blank" rel="noopener noreferrer">' + data + '</a>';
@@ -74,17 +73,37 @@ $(document).ready(function () {
             {data: "TransactivationClass"},
             {data: "DNE_LOFclass"},
             {data: "AGVGDClass"},
-            {data: "Somatic_count"},
-            {data: "Germline_count"},
-            {data: "Cellline_count"},
-            {data: "TCGA_ICGC_GENIE_count"},
-            {data: "GDC_case_count"},
+            {
+                data: "Somatic_count",
+                render: $.fn.dataTable.render.number(','),
+                class: "numeric-cell-td"
+            },
+            {
+                data: "Germline_count",
+                render: $.fn.dataTable.render.number(','),
+                class: "numeric-cell-td"
+            },
+            {
+                data: "Cellline_count",
+                render: $.fn.dataTable.render.number(','),
+                class: "numeric-cell-td"
+            },
+            {
+                data: "TCGA_ICGC_GENIE_count",
+                render: $.fn.dataTable.render.number(','),
+                class: "numeric-cell-td"
+            },
+            {
+                data: "GDC_case_count",
+                render: $.fn.dataTable.render.number(','),
+                class: "numeric-cell-td"
+            },
             {data: "Polymorphism"},
             {
                 data: "CLINVARlink",
                 className: "text-end pe-2",
                 render: function (data) {
-                    if(data == null || data === '')
+                    if (data == null || data === '')
                         return '';
                     else
                         return '<a href="https://www.ncbi.nlm.nih.gov/clinvar/variation/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to ClinVar ' + data + '">' + data + '</a>';
@@ -94,7 +113,7 @@ $(document).ready(function () {
                 data: "COSMIClink",
                 className: "text-end pe-2",
                 render: function (data) {
-                    if(data == null || data === '')
+                    if (data == null || data === '')
                         return '';
                     else
                         return '<a href="https://cancer.sanger.ac.uk/cosmic/mutation/overview?id=' + data + '" target="_blank" rel="noopener noreferrer" title="Go to COSMIC ' + data + '">' + data + '</i></a>';
@@ -104,7 +123,7 @@ $(document).ready(function () {
                 data: "SNPlink",
                 className: "text-end pe-2",
                 render: function (data) {
-                    if(data == null || data === '')
+                    if (data == null || data === '')
                         return '';
                     else
                         return '<a href=\"https://www.ncbi.nlm.nih.gov/snp/rs' + data + '" target="_blank" rel="noopener noreferrer" title="Go to dbSNP ' + data + '">' + data + '</a>';
@@ -114,7 +133,7 @@ $(document).ready(function () {
                 data: "gnomADlink",
                 className: "text-nowrap text-end pe-2",
                 render: function (data) {
-                    if(data == null || data === '')
+                    if (data == null || data === '')
                         return '';
                     else
                         return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
@@ -157,8 +176,8 @@ $(document).ready(function () {
                 orderable: false,
                 className: "text-center dt-nowrap",
 
-                render: function(data){
-                    return '<a title="View Variant Details" class="btn darkblue-btn submit-link btn-tiny" href="/mut_details?mut_id='+data+'">View <i class="fas fa-angle-double-right"></i></a>';
+                render: function (data) {
+                    return '<a title="View Variant Details" class="btn darkblue-btn submit-link btn-tiny" href="/mut_details?mut_id=' + data + '">View <i class="fas fa-angle-double-right"></i></a>';
                 }
             }
         ],
@@ -166,7 +185,7 @@ $(document).ready(function () {
             style: 'multi',
             selector: '.row-check'
         },
-        rowCallback: function( row, data ) {
+        rowCallback: function (row, data) {
             if (selectedRowSet.has(data.MUT_ID)) {
                 selectRow(row);
                 $(row).find('.row-check').prop('checked', true);
@@ -182,10 +201,10 @@ $(document).ready(function () {
     });
 
     table
-        .on( 'select', function ( e, dt, type, indexes ) {
+        .on('select', function (e, dt, type, indexes) {
             var rows_data = table.rows(indexes).data().toArray();
-            for(var i=0; i< rows_data.length; i++) {
-                if (!selectedRowSet.has(rows_data[i].MUT_ID)){
+            for (var i = 0; i < rows_data.length; i++) {
+                if (!selectedRowSet.has(rows_data[i].MUT_ID)) {
                     selectedRowSet.add(rows_data[i].MUT_ID);
                     selectedRowCellLineCount += rows_data[i].Cellline_count;
                 }
@@ -193,26 +212,26 @@ $(document).ready(function () {
             updateActionButtonGroups(selectedRowSet.size, selectedRowCellLineCount);
 
         })
-        .on( 'deselect', function ( e, dt, type, indexes ) {
+        .on('deselect', function (e, dt, type, indexes) {
             var rows_data = table.rows(indexes).data().toArray();
-            for(var i=0; i< rows_data.length; i++) {
+            for (var i = 0; i < rows_data.length; i++) {
                 selectedRowSet.delete(rows_data[i].MUT_ID);
                 selectedRowCellLineCount -= rows_data[i].Cellline_count;
             }
             updateActionButtonGroups(selectedRowSet.size, selectedRowCellLineCount);
-        } );
+        });
 
-    var selectRow = function(r){
+    var selectRow = function (r) {
         table.row(r).select();
     };
 
-    $('button.action-button').on('click', function(){
+    $('button.action-button').on('click', function () {
         $('.spinner').show();
         var action = $(this).val();
         displayGeneVariationDistributions(action, selectedRowSet);
     });
 
-    $('button.cell-search-button').on('click', function(){
+    $('button.cell-search-button').on('click', function () {
         $('.spinner').show();
         displayCellLines(selectedRowSet);
     });
@@ -225,7 +244,7 @@ $(document).ready(function () {
             include_criteria = [{'column_name': 'MUT_ID', 'vals': mutIds}];
 
         }
-        if(include_criteria){
+        if (include_criteria) {
             criteria_map = {
                 include: include_criteria,
                 exclude: []
@@ -243,8 +262,7 @@ var selectAllRows = function (t, bool) {
     if (bool) {
         t.rows().select();
 
-    }
-    else {
+    } else {
         t.rows().deselect();
     }
     $('.row-check').prop('checked', bool);
@@ -261,15 +279,18 @@ var updateActionButtonGroups = function (selectedRowCounts, selectedRowCellLineC
 var displayGeneVariationDistributions = function (action, selectedRowSet) {
     var form = $("<form method='POST' action='/get_distribution'></form>");
     var input;
-    if (selectedRowSet.size){
+    if (selectedRowSet.size) {
         var mutIds = Array.from(selectedRowSet);
         for (var i = 0; i < mutIds.length; i++) {
             input = $("<input type='hidden' name='mut_id_list' value='" + mutIds[i] + "'/>");
             input.appendTo(form);
         }
-    }
-    else{
-        $("<input>", { value: JSON.stringify($('#criteria_div').data('criteria')), name: 'criteria', type: 'hidden' }).appendTo(form);
+    } else {
+        $("<input>", {
+            value: JSON.stringify($('#criteria_div').data('criteria')),
+            name: 'criteria',
+            type: 'hidden'
+        }).appendTo(form);
     }
 
     input = $("<input type='hidden' name='action' value='" + action + "'/>");

@@ -5,9 +5,15 @@ $(document).ready(function () {
     $('.clientside-processed').DataTable(
     );
     $('#gdc-cases-table').DataTable({
-        dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+        dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6 d-flex justify-content-end' f B>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        buttons: [
+            // 'csv'
+
+        { extend: 'csv', text: '<i class="fas fa-download"></i> Download', className: 'btn-tiny ms-2' }
+
+        ],
         pageLength: 10,
         ajax: {
             url: "/gdc_cases_query",
@@ -28,6 +34,7 @@ $(document).ready(function () {
         columns: [
             {
                 data: "Program",
+                orderData: [0,1]
             },
             {
                 data: 'CaseBarcode',

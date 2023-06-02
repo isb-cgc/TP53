@@ -32,6 +32,10 @@ table {
     font-family: 'Open Sans', sans-serif;
 }
 
+td.numeric-cell-td {
+    padding-right: 2rem;
+    text-align: right;
+}
 .bg-dark-purple{
     background-color: #2F2C55;
 }
