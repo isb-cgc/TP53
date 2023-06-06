@@ -34,6 +34,7 @@ import graphs
 import filters
 from io import StringIO
 from jinja2 import TemplateNotFound
+from datetime import timedelta
 
 app = Flask(__name__)
 
@@ -49,6 +50,9 @@ app.config['ENV'] = 'development' if settings.IS_TEST else 'production'
 # production and UAT should be set to 31,536,000 seconds (by not setting any HSTS_MAX_age,
 # else set to 3600 (test and dev)
 hsts_max_age = int(os.environ.get('HSTS_MAX_AGE') or 3600)
+# PERMANENT_SESSION_LIFETIME = timedelta(minutes=2)
+# SESSION_REFRESH_EACH_REQUEST = True
+
 
 Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_policy={
     'default-src': [
@@ -1072,6 +1076,7 @@ def login():
     authorization_url, state = flow.authorization_url()
     session["state"] = state
     session["request_referrer"] = request.referrer
+    session.permanent = True
     return redirect(authorization_url)
 
 

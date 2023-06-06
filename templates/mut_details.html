@@ -968,8 +968,8 @@
                         </tbody>
                     </table>
                     {% else %}
-                    <div class="fw-light fst-italic mb-2"><strong>
-                        {{ query_result.gdc_cases|length }}</strong> case(s) available
+                    <div class="fw-light fst-italic mb-2">
+                        <strong>{{ "{:,}".format(query_result.gdc_cases|length ) }}</strong> case(s) available
                     </div>
                     <div class="p-2 border rounded-2">
                         <div class="text-muted fst-italic small-font mb-1"><i class="fas fa-lock"></i> To view this
