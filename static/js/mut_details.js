@@ -46,10 +46,14 @@ $(document).ready(function () {
                 data: "somatic_status"
             },{
                 data: "somatic_p_value",
-                render: $.fn.dataTable.render.number(',', '.', 3, '')
+                render: function (data) {
+                    return data.toExponential(1);
+                }
             },{
                 data: "variant_p_value",
-                render: $.fn.dataTable.render.number(',', '.', 3, '')
+                render: function (data) {
+                    return data.toExponential(1);
+                }
             }
         ]
     });
