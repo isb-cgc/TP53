@@ -459,7 +459,6 @@ h1 a {
 .btn-tiny {
     padding: .2rem .4rem;
     font-size: .75rem;
-    /*border-radius: .3rem;*/
 }
 
 .btn-wide{
@@ -746,4 +745,17 @@ table .form-control{
 
 #announcement-banner{
     background-color: #D7D8F1;
+}
+
+.show-info-button{
+    margin-top: -.5rem;
+}
+
+.show-info-button:before{
+    font-weight: 900;
+    content: "\f078  ";
+    font-family: 'Font Awesome 5 Free';
+}
+.show-info-button.collapsed:before{
+    content: "\f054  ";
 }

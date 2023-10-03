@@ -37,6 +37,9 @@
                         <a href="#headingAI">Additional Information</a>
                     </li>
                     <li class="nav-item">
+                        <a href="#gdcCaseLinks">GDC Case Links</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#contact">Contact</a>
                     </li>
                 </ul>
@@ -4193,6 +4196,29 @@
                             retrieved from the information provided in the publication (about 100 papers).
                         </li>
                     </ul>
+                </div>
+            </div>
+            <div id="gdcCaseLinks" class="mt-5">
+                <h2>GDC Case Links</h2>
+                <hr>
+                <div class="m-3">
+                    <h3 class="mt-4">How they are linked</h3>
+                    <p>We performed linking between variants present in the <em>TP53</em> database and a subset of
+                        the cases present in the Genomic Data Commons (GDC). Specifically, we generated this list of
+                        variants for the programs with known normal/tumor pairings in the programs MMRF, TCGA,
+                        TARGET, BEATAML, HCMI, CMI, and CGCI. We sliced bam files hosted by Data Commons Frameworks
+                        in Google Cloud bucket for the region surrounding <em>TP53</em> (chr17:7668221-7687690) via
+                        the samtools view command.
+                    </p>
+                    <p>
+                        We processed these bam following the methodology present in 10.1016/j.cell.2018.03.039. We ran
+                        Varscan2 using the somatic pipeline passing both tumor and normal samples with the flags
+                        --min-var-freq 0.10 --p-value 0.10 --min_coverage 3 --strand_filter 1. These variants were
+                        further filtered for a Benjamini Hochberg adjusted variant pvalue <= 0.01, a minimum read depth
+                        of 20 in both tumor and normal, and an alternate allele fraction between 0.4 and 0.6 for the
+                        normal samples.
+
+                    </p>
                 </div>
             </div>
             <div id="contact" class="mt-5">

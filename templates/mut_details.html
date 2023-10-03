@@ -230,14 +230,17 @@
                         <a
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                href="https://pubmed.ncbi.nlm.nih.gov/30661751/">Jaganathan (2019)</a> <span class="small-font fw-normal">[<i
+                                href="https://pubmed.ncbi.nlm.nih.gov/30661751/">Jaganathan (2019)</a> <span
+                                class="small-font fw-normal">[<i
                                 class="fab fa-github"></i> <a target="_blank"
                                                               rel="noopener noreferrer"
                                                               href="https://github.com/Illumina/SpliceAI">GitHub</a>]</span>
                     </h3>
                     <hr>
-                    {% if mut_desc.SpliceAI_DS_AG or mut_desc.SpliceAI_DS_AL or mut_desc.SpliceAI_DS_DG or mut_desc.SpliceAI_DS_DL
-                    or mut_desc.SpliceAI_DP_AG or mut_desc.SpliceAI_DP_AL or mut_desc.SpliceAI_DP_DG or mut_desc.SpliceAI_DP_DL %}
+                    {% if mut_desc.SpliceAI_DS_AG or mut_desc.SpliceAI_DS_AL or mut_desc.SpliceAI_DS_DG or
+                    mut_desc.SpliceAI_DS_DL
+                    or mut_desc.SpliceAI_DP_AG or mut_desc.SpliceAI_DP_AL or mut_desc.SpliceAI_DP_DG or
+                    mut_desc.SpliceAI_DP_DL %}
                     <table id="splice-ai-tbl" class="table table-sm small-font">
                         <thead>
                         <tr>
@@ -292,44 +295,44 @@
 
 
                             <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta score–acceptor gain.">-->
-                                <!--Delta Score<br>Acceptor Gain-->
+                            <!--data-bs-placement="top"-->
+                            <!--title="Delta score–acceptor gain.">-->
+                            <!--Delta Score<br>Acceptor Gain-->
                             <!--</th>-->
                             <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta score–acceptor loss.">-->
-                                <!--Delta Score<br>Acceptor Loss-->
+                            <!--data-bs-placement="top"-->
+                            <!--title="Delta score–acceptor loss.">-->
+                            <!--Delta Score<br>Acceptor Loss-->
                             <!--</th>-->
                             <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta score–donor gain.">-->
-                                <!--Delta Score<br>Donor Gain-->
+                            <!--data-bs-placement="top"-->
+                            <!--title="Delta score–donor gain.">-->
+                            <!--Delta Score<br>Donor Gain-->
                             <!--</th>-->
                             <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta score–donor loss.">-->
-                                <!--Delta Score<br>Donor Gain-->
+                            <!--data-bs-placement="top"-->
+                            <!--title="Delta score–donor loss.">-->
+                            <!--Delta Score<br>Donor Gain-->
                             <!--</th>-->
                             <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta position–acceptor gain.">-->
-                                <!--Delta Position<br>Acceptor Gain-->
+                            <!--data-bs-placement="top"-->
+                            <!--title="Delta position–acceptor gain.">-->
+                            <!--Delta Position<br>Acceptor Gain-->
                             <!--</th>-->
                             <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta position–acceptor loss.">-->
-                                <!--Delta Position<br>Acceptor Loss-->
+                            <!--data-bs-placement="top"-->
+                            <!--title="Delta position–acceptor loss.">-->
+                            <!--Delta Position<br>Acceptor Loss-->
                             <!--</th>-->
                             <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta position–donor gain.">-->
-                                <!--Delta Position<br>Donor Gain-->
+                            <!--data-bs-placement="top"-->
+                            <!--title="Delta position–donor gain.">-->
+                            <!--Delta Position<br>Donor Gain-->
                             <!--</th>-->
                             <!--<th data-bs-toggle="tooltip"-->
-                                <!--data-bs-placement="top"-->
-                                <!--title="Delta position–donor loss.">-->
-                                <!--Delta Position<br>Donor Loss-->
+                            <!--data-bs-placement="top"-->
+                            <!--title="Delta position–donor loss.">-->
+                            <!--Delta Position<br>Donor Loss-->
                             <!--</th>-->
                         </tr>
                         </thead>
@@ -934,8 +937,30 @@
                     {% endif %}
                 </div>
                 <div class="my-2 p-3">
-                    <h3>GDC Cases</h3>
+                    <h3 class="d-inline">GDC Cases
+                    </h3>
+                    <button class="btn-tiny btn btn-outline-dark ms-2 show-info-button collapsed" type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#gdc_cases_info" aria-expanded="false" aria-controls="gdc_cases_info">About
+                        this data
+                    </button>
+                    <div id="gdc_cases_info" class="bg-light rounded-2 p-2 mt-1 collapse">
+                        <p>We performed linking between variants present in the <em>TP53</em> database and a subset of
+                            the cases present in the Genomic Data Commons (GDC). Specifically, we generated this list of
+                            variants for the programs with known normal/tumor pairings in the programs MMRF, TCGA,
+                            TARGET, BEATAML, HCMI, CMI, and CGCI. We sliced bam files hosted by Data Commons Frameworks
+                            in Google Cloud bucket for the region surrounding <em>TP53</em> (chr17:7668221-7687690) via
+                            the samtools view command.</p>
+                        <p>We processed these bam following the methodology present in 10.1016/j.cell.2018.03.039. We
+                            ran Varscan2 using the somatic pipeline passing both tumor and normal samples with the flags
+                            --min-var-freq 0.10 --p-value 0.10 --min_coverage 3 --strand_filter 1. These variants were
+                            further filtered for a Benjamini Hochberg adjusted variant pvalue <= 0.01, a minimum read
+                            depth of 20 in both tumor and normal, and an alternate allele fraction between 0.4 and 0.6
+                            for the normal samples.</p>
+                    </div>
+                    </span>
                     <hr>
+
                     {% if query_result.gdc_cases|length == 0 %}
                     <div class="fw-light fst-italic">No Data</div>
                     {% elif session['user'] %}
