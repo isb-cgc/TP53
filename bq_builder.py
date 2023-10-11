@@ -13,7 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###
-
+import re
+from google.api_core.exceptions import BadRequest
 
 global bq_proj_dataset
 bq_proj_dataset = "{projectId}.{dataset}".format(projectId='isb-cgc-tp53-dev', dataset='P53_data')
@@ -258,13 +259,21 @@ def build_mutation_view_join_query(mut_id, join_table, column_filters, join_colu
 
     return query
 
-def build_where_clause(criteria, include = True):
+
+def validate_vals(vals):
+    for val in vals:
+        if re.search(r'[\'\"()]|SELECT|FROM', val, re.IGNORECASE):
+            raise BadRequest('Invalid user input found')
+
+
+def build_where_clause(criteria, include=True):
     where_clause = 'TRUE' if include else 'FALSE'
     or_groups = {}
     log_op = 'AND' if include else 'OR'
     for criterion in criteria:
         column_name = criterion.get('column_name')
         vals = criterion.get('vals')
+        validate_vals(vals)
         wrap_with = criterion.get('wrap_with', '')
 
         or_group = criterion.get('or_group')
