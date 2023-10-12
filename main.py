@@ -983,7 +983,6 @@ def events():
     upcoming_list = settings.event_list['upcoming_list']
     past_list = settings.event_list['past_list']
 
-    print(upcoming_list)
     return render_template("events.html", upcoming_list=upcoming_list, past_list=past_list)
 
 
