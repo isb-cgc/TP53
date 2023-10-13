@@ -31,7 +31,6 @@ from io import StringIO
 
 from jinja2 import TemplateNotFound
 
-
 app = Flask(__name__)
 app.config['TESTING'] = settings.IS_TEST
 app.config['ENV'] = 'development' if settings.IS_TEST else 'production'
@@ -82,6 +81,7 @@ TITLE_BQVIEW_MAP = {
 
 }
 
+
 #########################################
 # Functional / Structural Variant Search
 #########################################
@@ -91,17 +91,21 @@ TITLE_BQVIEW_MAP = {
 #
 @app.route("/search_gene_by_var")
 def search_gene_by_var():
-    return render_template("search_tp53_gene_variants.html", c_desc_list=settings.m_c_desc_list, p_desc_list=settings.m_p_desc_list,
+    return render_template("search_tp53_gene_variants.html", c_desc_list=settings.m_c_desc_list,
+                           p_desc_list=settings.m_p_desc_list,
                            g_desc_hg19_list=settings.m_g_desc_hg19_list, g_desc_hg38_list=settings.m_g_desc_hg38_list)
+
 
 #
 # by Variant Features
 #
 @app.route("/search_gene_by_mut")
 def search_gene_by_mut():
-    return render_template("search_tp53_gene_by_mut.html", type_list=settings.m_type_list, desc_list=settings.m_desc_list,
+    return render_template("search_tp53_gene_by_mut.html", type_list=settings.m_type_list,
+                           desc_list=settings.m_desc_list,
                            motif_list=settings.m_motif_list, effect_list=settings.m_effect_list,
-                           exon_intron_list=settings.m_exon_intron_list, ta_class_list=settings.m_ta_class_list, sift_list=settings.m_sift_list)
+                           exon_intron_list=settings.m_exon_intron_list, ta_class_list=settings.m_ta_class_list,
+                           sift_list=settings.m_sift_list)
 
 
 #
@@ -111,18 +115,20 @@ def search_gene_by_mut():
 @app.route("/results_gene_mut/<search_by>", methods=['GET', 'POST'])
 def results_gene_mut(search_by=None):
     criteria = []
-    if search_by == 'gv': # search by gene variants
+    if search_by == 'gv':  # search by gene variants
         criteria = filters.get_gene_variant_criteria(search_by)
-    elif search_by == 'gmut': # search by variant features
+    elif search_by == 'gmut':  # search by variant features
         criteria = filters.get_variant_feature_criteria(search_by)
-    elif search_by == 'mut_id': # search by variant ID (MUT_ID)
+    elif search_by == 'mut_id':  # search by variant ID (MUT_ID)
         criteria = filters.get_mut_id_criteria()
     return render_template("results_gene_mutation.html", criteria=criteria)
 
 
 @app.route("/get_distribution", methods=['GET', 'POST'])
 def get_distribution():
+    error_msg = None
     criteria = filters.get_param_val('criteria')
+    graph_result = {}
     if criteria:
         cri = json.loads(criteria)
         if type(cri) == list:
@@ -133,7 +139,6 @@ def get_distribution():
         else:
             criteria_map = cri
     else:
-
         criteria_map = {
             'include': filters.get_mut_id_criteria(),
             'exclude': []
@@ -146,12 +151,12 @@ def get_distribution():
     # 'Somatic' for Somatic Search,
     # 'Germline' for Germline Search
     query_dataset = filters.get_param_val('query_dataset')
-
     template = 'mutation_stats.html'
     if query_dataset == 'Mutation':
         title = 'Statistics on Functional/Structural Data'
     else:
-        title = 'Search Results on {query_dataset} Variants'.format(query_dataset=('Tumor' if query_dataset == 'Somatic' else query_dataset))
+        title = 'Search Results on {query_dataset} Variants'.format(
+            query_dataset=('Tumor' if query_dataset == 'Somatic' else query_dataset))
 
     if action == 'get_mutation_dist':
         table = 'GermlineView_Carriers' if query_dataset == 'Germline' else '{query_dataset}View'.format(
@@ -164,33 +169,41 @@ def get_distribution():
         table = '{query_dataset}TumorStats'.format(query_dataset=query_dataset)
         subtitle = 'Tumor Site Distribution of Variants'
     elif action == 'get_tumor_dist_view':
-        table = 'GermlineView_Carriers' if query_dataset == 'Germline' else '{query_dataset}View'.format(query_dataset=query_dataset)
+        table = 'GermlineView_Carriers' if query_dataset == 'Germline' else '{query_dataset}View'.format(
+            query_dataset=query_dataset)
         subtitle = 'Tumor Site Distribution of Variants'
     elif action == 'get_codon_dist':
         table = 'GermlineMutationStats'
         subtitle = 'Codon Distribution of Point Variants'
     else:
-        return render_template('error.html', error_message='Unable to generate the plot: <em>Search criteria is missing.</em><br/>Please revisit the search page and re-run the query.')
+        return render_template('error.html',
+                               error_message='Unable to generate the plot: <em>Search criteria is missing.</em><br/>Please revisit the search page and re-run the query.')
 
-    if action == 'get_gv_tumor_dist':
-        gv_tumor_dist_tables = {
-            'somatic_tumor_dist': 'SomaticView',
-            'germline_tumor_dist': 'GermlineView'
-        }
-        graph_configs = {}
-        sql_maps = {}
-        graph_configs[action] = graphs.build_graph_configs(action)['tumor_dist']
-        for dist_table in gv_tumor_dist_tables:
-            sql_maps[dist_table] = (
-                graphs.build_graph_sqls(graph_configs, criteria_map=criteria_map,
-                                        table=gv_tumor_dist_tables[dist_table])[
-                    action])
-    else:
-        graph_configs = graphs.build_graph_configs(action, table)
-
-        sql_maps = graphs.build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
-    graph_result = graphs.build_graph_data(bigquery_client, sql_maps)
-
+    try:
+        if action == 'get_gv_tumor_dist':
+            gv_tumor_dist_tables = {
+                'somatic_tumor_dist': 'SomaticView',
+                'germline_tumor_dist': 'GermlineView'
+            }
+            graph_configs = {}
+            sql_maps = {}
+            graph_configs[action] = graphs.build_graph_configs(action)['tumor_dist']
+            for dist_table in gv_tumor_dist_tables:
+                sql_maps[dist_table] = (
+                    graphs.build_graph_sqls(graph_configs, criteria_map=criteria_map,
+                                            table=gv_tumor_dist_tables[dist_table])[
+                        action])
+        else:
+            graph_configs = graphs.build_graph_configs(action, table)
+            sql_maps = graphs.build_graph_sqls(graph_configs, criteria_map=criteria_map, table=table)
+        graph_result = graphs.build_graph_data(bigquery_client, sql_maps)
+        error_msg = graph_result.get('msg', None)
+    except BadRequest:
+        error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
+    except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
+        error_msg = "Sorry, query job has timed out."
+    if error_msg:
+        return render_template("error.html", error_message=error_msg)
     return render_template(template, criteria_map=criteria_map, title=title,
                            subtitle=subtitle,
                            graph_result=graph_result)
@@ -198,6 +211,7 @@ def get_distribution():
 
 @app.route("/mutation_query", methods=['GET', 'POST'])
 def mutation_query():
+    error_msg = None
     parameters = dict(request.form)
     draw = parameters['draw']
     order_col = int(parameters['order[0][column]'])
@@ -245,7 +259,7 @@ def mutation_query():
             "SpliceAI_DP_AL",
             "SpliceAI_DP_DG",
             "SpliceAI_DP_DL"
-            ]
+        ]
     elif query_dataset == 'Germline':
         column_filters = [
             "g_description",
@@ -277,7 +291,7 @@ def mutation_query():
             "SpliceAI_DP_DG",
             "SpliceAI_DP_DL"
         ]
-            # "Ref_ID"]
+        # "Ref_ID"]
     elif query_dataset == 'Prevalence':
         if 'include' not in criteria_map:
             criteria_map = {
@@ -314,16 +328,22 @@ def mutation_query():
         ]
     else:
         return abort(404)
-
-    sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
-                                            ord_column_list=[column_filters[order_col-1], distinct_col], desc_ord=(order_dir == 'desc'),
-                                            start=start, length=length)
-    sql_cnt_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
-                                                do_counts=True, distinc_col=distinct_col)
-    data = get_paginated_results(sql_stm, sql_cnt_stm)
-    data['draw'] = draw
+    try:
+        sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
+                                                     ord_column_list=[column_filters[order_col - 1], distinct_col],
+                                                     desc_ord=(order_dir == 'desc'),
+                                                     start=start, length=length)
+        sql_cnt_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=table,
+                                                         do_counts=True, distinc_col=distinct_col)
+        data = get_paginated_results(sql_stm, sql_cnt_stm)
+        data['draw'] = draw
+    except BadRequest:
+        error_msg = "There was a problem with your search input. Please revise your search criteria and try again."
+    except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
+        error_msg = "Sorry, query job has timed out."
+    if error_msg:
+        return jsonify(error_message=error_msg), 400
     return jsonify(data)
-
 
 
 def get_paginated_results(sql_stm, sql_cnt_stm):
@@ -355,6 +375,7 @@ def run_bq_sql(sql_stm):
 
 @app.route("/<prefix>_query", methods=['GET', 'POST'])
 def simple_query(prefix):
+    error_msg = None
     parameters = dict(request.form)
     draw = parameters['draw']
     order_col = int(parameters['order[0][column]'])
@@ -362,37 +383,49 @@ def simple_query(prefix):
     start = int(parameters['start'])
     length = int(parameters['length'])
     criteria = json.loads(parameters['criteria'])
+    data = {}
     if prefix == 'gv':
         table = 'MutationView'
         distinct_col = 'MUT_ID'
-        column_filters = ["g_description", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron", "Effect",
-                      "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "Somatic_count", "Germline_count", "Cellline_count",
-                      "TCGA_ICGC_GENIE_count", "Polymorphism", "CLINVARlink", "COSMIClink", "SNPlink", "gnomADlink",
-                          "SpliceAI_DS_AG", "SpliceAI_DS_AL", "SpliceAI_DS_DG",	"SpliceAI_DS_DL",
+        column_filters = ["g_description", "g_description_GRCh38", "c_description", "ProtDescription", "ExonIntron",
+                          "Effect",
+                          "TransactivationClass", "DNE_LOFclass", "AGVGDClass", "Somatic_count", "Germline_count",
+                          "Cellline_count",
+                          "TCGA_ICGC_GENIE_count", "Polymorphism", "CLINVARlink", "COSMIClink", "SNPlink", "gnomADlink",
+                          "SpliceAI_DS_AG", "SpliceAI_DS_AL", "SpliceAI_DS_DG", "SpliceAI_DS_DL",
                           "SpliceAI_DP_AG", "SpliceAI_DP_AL", "SpliceAI_DP_DG", "SpliceAI_DP_DL", "MUT_ID"]
-        order_col_name = column_filters[order_col-1]
+        order_col_name = column_filters[order_col - 1]
     elif prefix == 'cl':
         table = 'CellLineView'
         distinct_col = 'CellLineView_ID'
         column_filters = ["CellLineView_ID", "Sample_Name", "Short_topo", "Morphology", "ATCC_ID", "Cosmic_ID",
-                          "depmap_ID", "Sex", "Age", "TP53status", "ExonIntron", "c_description", "ProtDescription", "Pubmed"]
+                          "depmap_ID", "Sex", "Age", "TP53status", "ExonIntron", "c_description", "ProtDescription",
+                          "Pubmed"]
         order_col_name = column_filters[order_col]
     else:
         return abort(404)
-    sql_stm = bq_builder.build_simple_query(criteria=criteria, table=table, column_filters=column_filters,
-                                            distinct_col=distinct_col, ord_column=order_col_name, desc_ord=(order_dir == 'desc'),
-                                            start=start, length=length)
-    sql_cnt_stm = bq_builder.build_simple_query(criteria=criteria, table=table, column_filters=column_filters,
-                                                do_counts=True, distinct_col=distinct_col)
-    data = get_paginated_results(sql_stm, sql_cnt_stm)
-    data['draw'] = draw
+
+    try:
+        sql_stm = bq_builder.build_simple_query(criteria=criteria, table=table, column_filters=column_filters,
+                                                distinct_col=distinct_col, ord_column=order_col_name,
+                                                desc_ord=(order_dir == 'desc'),
+                                                start=start, length=length)
+        sql_cnt_stm = bq_builder.build_simple_query(criteria=criteria, table=table, column_filters=column_filters,
+                                                    do_counts=True, distinct_col=distinct_col)
+        data = get_paginated_results(sql_stm, sql_cnt_stm)
+        data['draw'] = draw
+    except BadRequest:
+        error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
+    except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
+        error_msg = "Sorry, query job has timed out."
+    if error_msg:
+        return jsonify(error_message=error_msg), 400
     return jsonify(data)
 
 
 @app.route("/mut_details", methods=['GET'])
 def mut_details():
     mut_id = filters.get_param_val('mut_id')
-
     simple_queries = {
         'mutation': {
             'column_filters': ['*'],
@@ -441,20 +474,7 @@ def mut_details():
             'ord_column': 'MUT_ID'
         }
     }
-
     sql_stms = {}
-    for t_id in simple_queries:
-        sql_stms[t_id] = bq_builder.build_simple_query(criteria=simple_queries[t_id]['criteria'],
-                                                       table=simple_queries[t_id]['table'],
-                                                       column_filters=simple_queries[t_id]['column_filters'],
-                                                       ord_column=simple_queries[t_id]['ord_column'])
-    for t_id in join_queries:
-        sql_stms[t_id] = bq_builder.build_mutation_view_join_query(mut_id=join_queries[t_id]['mut_id'],
-                                                                   join_table=join_queries[t_id]['table'],
-                                                                   column_filters=join_queries[t_id]['column_filters'],
-                                                                   join_column=join_queries[t_id]['join_column'],
-                                                                   ord_column=join_queries[t_id]['ord_column'])
-
     error_msg = None
     query_result = {}
     sys_assess = {}
@@ -462,6 +482,18 @@ def mut_details():
     prot_pred = {}
     tsv_data = None
     try:
+        for t_id in simple_queries:
+            sql_stms[t_id] = bq_builder.build_simple_query(criteria=simple_queries[t_id]['criteria'],
+                                                           table=simple_queries[t_id]['table'],
+                                                           column_filters=simple_queries[t_id]['column_filters'],
+                                                           ord_column=simple_queries[t_id]['ord_column'])
+        for t_id in join_queries:
+            sql_stms[t_id] = bq_builder.build_mutation_view_join_query(mut_id=join_queries[t_id]['mut_id'],
+                                                                       join_table=join_queries[t_id]['table'],
+                                                                       column_filters=join_queries[t_id][
+                                                                           'column_filters'],
+                                                                       join_column=join_queries[t_id]['join_column'],
+                                                                       ord_column=join_queries[t_id]['ord_column'])
         query_job = bigquery_client.query(sql_stms['mutation'])
         query_result['mutation'] = list(query_job.result(timeout=30))
         del sql_stms['mutation']
@@ -497,16 +529,15 @@ def mut_details():
                             'MUT_ID': mut_desc['MUT_ID'],
                         }
 
-                    if mut_desc['TransactivationClass'] != 'NA' or\
-                        mut_desc['DNEclass'] != 'NA' or\
-                        mut_desc['DNE_LOFclass'] != 'NA' or\
-                        mut_desc['AGVGDClass'] != 'NA' or\
-                        mut_desc['BayesDel'] or\
-                        mut_desc['REVEL'] or\
-                        mut_desc['SIFTClass'] != 'NA' or\
-                        mut_desc['Polyphen2'] != 'NA' or\
-                        mut_desc['StructureFunctionClass'] != 'NA':
-
+                    if mut_desc['TransactivationClass'] != 'NA' or \
+                            mut_desc['DNEclass'] != 'NA' or \
+                            mut_desc['DNE_LOFclass'] != 'NA' or \
+                            mut_desc['AGVGDClass'] != 'NA' or \
+                            mut_desc['BayesDel'] or \
+                            mut_desc['REVEL'] or \
+                            mut_desc['SIFTClass'] != 'NA' or \
+                            mut_desc['Polyphen2'] != 'NA' or \
+                            mut_desc['StructureFunctionClass'] != 'NA':
                         prot_pred = {
                             'TransactivationClass': mut_desc['TransactivationClass'],
                             'DNEclass': mut_desc['DNEclass'],
@@ -535,15 +566,17 @@ def mut_details():
         error_msg = "There was a problem while running the query: BadRequest"
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
-
+    if error_msg:
+        return render_template("error.html", error_message=error_msg)
     return render_template("mut_details.html",
                            query_result=query_result,
                            mut_desc=mut_desc,
                            sys_assess=sys_assess,
                            prot_desc=prot_desc,
                            prot_pred=prot_pred,
-                           tsv_data=tsv_data,
-                           error_msg=error_msg)
+                           tsv_data=tsv_data)
+                           # ,
+                           # error_msg=error_msg)
 
 
 @app.route("/search_somatic_mut")
@@ -588,27 +621,37 @@ def search_somatic_prevalence():
 
 @app.route("/prevalence_somatic_stats")
 def prevalence_somatic_stats():
-    sql_stm = bq_builder.build_mutation_prevalence()
-    result = run_bq_sql(sql_stm)
-    labels = []
-    data = []
-    total_cnt = 0
-    for row in list(result):
-        topo = row.get('Topography')
-        anal_cnt = row.get('Sample_analyzed')
-        mut_cnt = row.get('Sample_mutated')
-        label = "{topo} ({mut_cnt}/{anal_cnt})".format(topo=topo, anal_cnt=anal_cnt, mut_cnt=mut_cnt)
-        labels.append(label)
-        ratio = mut_cnt * 100 / anal_cnt
-        data.append(ratio)
-        total_cnt += mut_cnt
-    graph_data = {
-        'chart_type': 'ratio',
-        'labels': labels,
-        'data': data,
-        'total': total_cnt
-    }
-    return render_template("prevalence_somatic_stats.html", criteria=[], graph_data=graph_data, title='Statistics on Tumor Variants', subtitle='Tumor Variant Prevalence by Tumor Site')
+    error_msg = None
+    graph_data = {}
+    try:
+        sql_stm = bq_builder.build_mutation_prevalence()
+        result = run_bq_sql(sql_stm)
+        labels = []
+        data = []
+        total_cnt = 0
+        for row in list(result):
+            topo = row.get('Topography')
+            anal_cnt = row.get('Sample_analyzed')
+            mut_cnt = row.get('Sample_mutated')
+            label = "{topo} ({mut_cnt}/{anal_cnt})".format(topo=topo, anal_cnt=anal_cnt, mut_cnt=mut_cnt)
+            labels.append(label)
+            ratio = mut_cnt * 100 / anal_cnt
+            data.append(ratio)
+            total_cnt += mut_cnt
+        graph_data = {
+            'chart_type': 'ratio',
+            'labels': labels,
+            'data': data,
+            'total': total_cnt
+        }
+    except BadRequest:
+        error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
+    except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
+        error_msg = "Sorry, query job has timed out."
+    if error_msg:
+        return render_template("error.html", error_message=error_msg)
+    return render_template("prevalence_somatic_stats.html", criteria=[], graph_data=graph_data,
+                           title='Statistics on Tumor Variants', subtitle='Tumor Variant Prevalence by Tumor Site')
 
 
 @app.route("/results_somatic_mutation_list", methods=['GET', 'POST'])
@@ -634,23 +677,23 @@ def results_somatic_mutation_list():
 
 @app.route("/download_dataset", methods=['GET', 'POST'])
 def download_dataset():
+    error_msg = None
+    query_result = []
+    table_header = []
     filename = filters.get_param_val('filename')
     criteria_param = filters.get_param_val('criteria_map')
     criteria_map = {}
     if criteria_param:
         criteria_map = json.loads(criteria_param)
-
-    query_datatable=filters.get_param_val('query_datatable')
-    if not len(criteria_map.get('exclude', [])):
-        sql_stm = bq_builder.build_simple_query(criteria=criteria_map.get('include', []), table=query_datatable, column_filters=['*'])
-    else:
-        sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=query_datatable, column_filters=['*'])
-
-    query_job = bigquery_client.query(sql_stm)
-    error_msg = None
-    query_result=[]
-    table_header = []
+    query_datatable = filters.get_param_val('query_datatable')
     try:
+        if not len(criteria_map.get('exclude', [])):
+            sql_stm = bq_builder.build_simple_query(criteria=criteria_map.get('include', []), table=query_datatable,
+                                                    column_filters=['*'])
+        else:
+            sql_stm = bq_builder.build_query_w_exclusion(criteria_map=criteria_map, table=query_datatable,
+                                                         column_filters=['*'])
+        query_job = bigquery_client.query(sql_stm)
         result = query_job.result(timeout=30)
         query_result = list(result)
         table_header = [sf.name for sf in result.schema]
@@ -658,8 +701,12 @@ def download_dataset():
         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
+    if error_msg:
+        return jsonify(error_message=error_msg), 400
+        # return render_template("error.html", error_message=error_msg)
     # query_result = {'data': data, 'msg': error_msg}
-    filename_full='{filename}{version}.csv'.format(filename=filename, version=('_'+settings.DATA_VERSION if settings.DATA_VERSION else ''))
+    filename_full = '{filename}{version}.csv'.format(filename=filename, version=(
+        '_' + settings.DATA_VERSION if settings.DATA_VERSION else ''))
     si = StringIO()
     cw = csv.writer(si)
     cw.writerow(table_header)
@@ -670,7 +717,7 @@ def download_dataset():
     return output
 
 
-@app.route("/results_somatic_prevalence_list", methods=['GET','POST'])
+@app.route("/results_somatic_prevalence_list", methods=['GET', 'POST'])
 def results_somatic_prevalence_list():
     prefix = 'mut_prev'
     criteria = filters.get_topo_morph_criteria(prefix)
@@ -683,6 +730,7 @@ def results_somatic_prevalence_list():
 
 @app.route("/get_prevalence_distribution", methods=['GET', 'POST'])
 def get_prevalence_distribution():
+    error_msg = None
     criteria = []
     action = filters.get_param_val('action')
     if request.method == 'POST':
@@ -700,12 +748,10 @@ def get_prevalence_distribution():
         # get_morph_graph
         group_by = 'Morphogroup'
         subtitle = 'Tumor Variant Prevalence by Morphology'
-    sql_stm = bq_builder.build_group_sum_graph_query(criteria=criteria, view='PrevalenceView', group_by=group_by)
-
-    query_job = bigquery_client.query(sql_stm)
-    data = []
-    # error_msg = None
     try:
+        sql_stm = bq_builder.build_group_sum_graph_query(criteria=criteria, view='PrevalenceView', group_by=group_by)
+        query_job = bigquery_client.query(sql_stm)
+        data = []
         result = query_job.result(timeout=30)
         rows = list(result)
         labels = []
@@ -729,7 +775,10 @@ def get_prevalence_distribution():
         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
-    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, criteria=criteria, title=title, subtitle=subtitle)
+    if error_msg:
+        return render_template('error.html', error_message=error_msg)
+    return render_template("prevalence_somatic_stats.html", graph_data=graph_data, criteria=criteria, title=title,
+                           subtitle=subtitle)
 
 
 @app.route("/search_germline_mut")
@@ -762,20 +811,21 @@ def view_germline_prevalence():
     column_filters = ['Diagnosis', 'Cohort', 'Cases_Analyzed', 'Cases_mutated', 'Mutation_prevalence', 'Remark',
                       'PubMed']
     criteria = []
-    sql_stm = bq_builder.build_simple_query(criteria=criteria, table='GermlinePrevalenceView',
-                                            column_filters=column_filters)
-    query_job = bigquery_client.query(sql_stm)
-    data = []
+    query_result = {}
     error_msg = None
     try:
+        sql_stm = bq_builder.build_simple_query(criteria=criteria, table='GermlinePrevalenceView',
+                                                column_filters=column_filters)
+        query_job = bigquery_client.query(sql_stm)
         result = query_job.result(timeout=30)
         data = list(result)
+        query_result = {'data': data, 'msg': error_msg}
     except BadRequest:
         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
-    query_result = {'data': data, 'msg': error_msg}
-
+    if error_msg:
+        return render_template("error.html", error_message=error_msg)
     return render_template("view_germline_prevalence.html", criteria=criteria, query_result=query_result)
 
 
@@ -797,7 +847,9 @@ def results_germline_mutation_list():
 
 @app.route("/view_<dataset>")
 def view_full_data(dataset):
+    error_msg = None
     criteria = []
+    query_result = {}
     if dataset == 'exp_ind_mut':
         column_filters = ['Exposure', 'g_description_GRCh38', 'c_description', 'ProtDescription', 'Model', 'Clone_ID',
                           'Add_Info', 'PubMed', 'MUT_ID', 'Induced_ID']
@@ -810,31 +862,31 @@ def view_full_data(dataset):
                           'SNPlink', 'gnomADlink', 'CLINVARlink', 'PubMedlink', 'SourceDatabases']
         table = 'MutationView'
         criteria = [{'column_name': 'polymorphism', 'vals': ['validated'], 'wrap_with': '"'}]
-
-    sql_stm = bq_builder.build_simple_query(criteria=criteria, table=table,
-                                            column_filters=column_filters)
-    query_job = bigquery_client.query(sql_stm)
-    data = []
-    error_msg = None
     try:
+        sql_stm = bq_builder.build_simple_query(criteria=criteria, table=table,
+                                                column_filters=column_filters)
+        query_job = bigquery_client.query(sql_stm)
         result = query_job.result(timeout=30)
         data = list(result)
+        query_result = {'data': data, 'msg': error_msg}
     except BadRequest:
         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
-    query_result = {'data': data, 'msg': error_msg}
-
+    if error_msg:
+        return render_template("error.html", error_message=error_msg)
     return render_template("view_{dataset}.html".format(dataset=dataset), criteria=criteria, query_result=query_result)
 
 
-
-@app.route("/view_data", methods = ['GET'])
+@app.route("/view_data", methods=['GET'])
 def view_data():
     bq_view_name = request.args.get('bq_view_name', None)
     title = TITLE_BQVIEW_MAP[bq_view_name]
-    columns, data = utils.load_csv_file(settings.TP53_STATIC_URL, '{filename}_{version}.csv'.format(filename=bq_view_name, version=settings.DATA_VERSION))
-    return render_template("view_data.html", title=title,  bq_view_name=bq_view_name, ver=settings.DATA_VERSION, columns=columns, data=data)
+    columns, data = utils.load_csv_file(settings.TP53_STATIC_URL,
+                                        '{filename}_{version}.csv'.format(filename=bq_view_name,
+                                                                          version=settings.DATA_VERSION))
+    return render_template("view_data.html", title=title, bq_view_name=bq_view_name, ver=settings.DATA_VERSION,
+                           columns=columns, data=data)
 
 
 ##
@@ -871,19 +923,28 @@ def search_cell_lines():
 
 @app.route("/cell_lines_mutation_stats", methods=['GET', 'POST'])
 def cell_lines_mutation_stats():
+    error_msg = None
     action = filters.get_param_val('action')
     if action == 'get_mutation_type':
         table = 'CellLineView'
-        subtitle='Type of Variants'
+        subtitle = 'Type of Variants'
     elif action == 'get_tumor_dist':
         table = 'CellLineSiteStats'
         subtitle = 'Tumor Site Distribution of Variants'
-    else: # action == 'get_codon_dist'
+    else:  # action == 'get_codon_dist'
         table = 'CellLineMutationStats'
         subtitle = 'Codon Distribution of Point Variants'
     graph_configs = graphs.build_graph_configs(action, table)
-    sql_maps = graphs.build_graph_sqls(graph_configs, {}, table)
-    graph_result = graphs.build_graph_data(bigquery_client, sql_maps)
+    try:
+        sql_maps = graphs.build_graph_sqls(graph_configs, {}, table)
+        graph_result = graphs.build_graph_data(bigquery_client, sql_maps)
+        error_msg = graph_result.get('msg', None)
+    except BadRequest:
+        error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
+    except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
+        error_msg = "Sorry, query job has timed out."
+    if error_msg:
+        return render_template("error.html", error_message=error_msg)
     return render_template("mutation_stats.html", criteria_map={}, title='Statistics on Cell Line Variants',
                            subtitle=subtitle,
                            graph_result=graph_result)
@@ -910,7 +971,10 @@ def results_cell_line_mutation():
 
 @app.route("/get_tp53data")
 def get_tp53data():
-    return render_template("get_tp53data.html", TP53_DATA_DIR_URL='{static_dir}/data'.format(static_dir=settings.TP53_STATIC_URL), ver=settings.DATA_VERSION)
+    return render_template("get_tp53data.html",
+                           TP53_DATA_DIR_URL='{static_dir}/data'.format(static_dir=settings.TP53_STATIC_URL),
+                           ver=settings.DATA_VERSION)
+
 
 #
 # Events Page
@@ -920,8 +984,8 @@ def events():
     upcoming_list = settings.event_list['upcoming_list']
     past_list = settings.event_list['past_list']
 
-    print(upcoming_list)
     return render_template("events.html", upcoming_list=upcoming_list, past_list=past_list)
+
 
 # single page rendering
 @app.route('/', defaults={'page': 'home'})
@@ -943,7 +1007,7 @@ def get_sitemap_file(txt_url=None, xml_url=None, google_site_ver=None):
         url_list_filename = os.environ.get('SITEMAP_LIST_FILE', 'urllist.txt')
     elif xml_url and xml_url.lower() == 'sitemap':
         url_list_filename = os.environ.get('SITEMAP_XML_FILE', 'sitemap.xml')
-    elif google_site_ver and google_site_ver.index('google')==0:
+    elif google_site_ver and google_site_ver.index('google') == 0:
         return send_from_directory(app.root_path, 'templates/{filename}.html'.format(filename=google_site_ver))
 
     if url_list_filename:
@@ -953,10 +1017,10 @@ def get_sitemap_file(txt_url=None, xml_url=None, google_site_ver=None):
 
 
 # view pdf files
-@app.route('/pdf/<filename>') #the url you'll send the user to when he wants the pdf
+@app.route('/pdf/<filename>')  # the url you'll send the user to when he wants the pdf
 def pdf_viewer(filename):
     return send_from_directory(os.path.join(app.root_path, 'static/download'),
-                               filename+'.pdf')
+                               filename + '.pdf')
 
 
 @app.route("/cse_search")
