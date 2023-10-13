@@ -13,7 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###
-
+import re
+from google.api_core.exceptions import BadRequest
 
 global bq_proj_dataset
 bq_proj_dataset = "{projectId}.{dataset}".format(projectId='isb-cgc-tp53-dev', dataset='P53_data')
@@ -22,6 +23,7 @@ bq_proj_dataset = "{projectId}.{dataset}".format(projectId='isb-cgc-tp53-dev', d
 def set_project_dataset(proj_id='isb-cgc-tp53-dev', d_set='P53_data'):
     global bq_proj_dataset
     bq_proj_dataset = "{projectId}.{dataset}".format(projectId=proj_id, dataset=d_set)
+
 
 def build_group_sum_graph_query(criteria, view, group_by):
     query_temp = """
@@ -34,6 +36,7 @@ def build_group_sum_graph_query(criteria, view, group_by):
     where_clause = build_where_clause(criteria)
     query = query_temp.format(bq_proj_dataset=bq_proj_dataset, view=view, group_by=group_by, where_clause=where_clause)
     return query
+
 
 def build_mutation_rate_query(criteria_map, table, label_by='Effect'):
     label_alias = 'AS LABEL'
@@ -173,6 +176,7 @@ def build_query_w_exclusion(criteria_map, table, column_filters=None, do_counts=
 
     return filtered_select_sql
 
+
 def build_codon_dist_query(column, table):
     query_temp = """
         (
@@ -200,7 +204,6 @@ def build_codon_dist_query(column, table):
     """
     query = query_temp.format(bq_proj_dataset=bq_proj_dataset, column=column, table=table)
     return query
-
 
 
 def build_mutation_dist_sum_query(criteria_map, table, group_by, sum_col):
@@ -258,13 +261,21 @@ def build_mutation_view_join_query(mut_id, join_table, column_filters, join_colu
 
     return query
 
-def build_where_clause(criteria, include = True):
+
+def validate_vals(vals):
+    for val in vals:
+        if type(val) == str and re.search(r'\"|SELECT|FROM|--', val, re.IGNORECASE):
+            raise BadRequest('Invalid user input found')
+
+
+def build_where_clause(criteria, include=True):
     where_clause = 'TRUE' if include else 'FALSE'
     or_groups = {}
     log_op = 'AND' if include else 'OR'
     for criterion in criteria:
         column_name = criterion.get('column_name')
         vals = criterion.get('vals')
+        validate_vals(vals)
         wrap_with = criterion.get('wrap_with', '')
 
         or_group = criterion.get('or_group')
@@ -287,9 +298,11 @@ def build_where_clause(criteria, include = True):
             else:
                 where_clause += '\n{log_op} {column_name} {op} ({vals_str})'.format(column_name=column_name, op=op,
                                                                                     log_op=log_op, vals_str=vals_str)
+
     for group in or_groups:
         where_clause += '\n{log_op} ('.format(log_op=log_op) + (' OR '.join(or_groups[group])) + ')'
     return where_clause
+
 
 def build_simple_query(criteria, table, column_filters, do_counts=False, distinct_col=None, ord_column=None,
                        desc_ord=False, start=0, length=None):
@@ -332,6 +345,7 @@ def build_simple_query(criteria, table, column_filters, do_counts=False, distinc
                    )
 
     return query_str
+
 
 def build_mutation_prevalence():
     query_temp = """
