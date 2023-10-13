@@ -264,7 +264,7 @@ def build_mutation_view_join_query(mut_id, join_table, column_filters, join_colu
 
 def validate_vals(vals):
     for val in vals:
-        if re.search(r'[\"()]|SELECT|FROM', (val if type(val) == str else str(val)), re.IGNORECASE):
+        if type(val) == str and re.search(r'\"|SELECT|FROM|--', val, re.IGNORECASE):
             raise BadRequest('Invalid user input found')
 
 

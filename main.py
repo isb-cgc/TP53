@@ -383,6 +383,7 @@ def simple_query(prefix):
     start = int(parameters['start'])
     length = int(parameters['length'])
     criteria = json.loads(parameters['criteria'])
+    data = {}
     if prefix == 'gv':
         table = 'MutationView'
         distinct_col = 'MUT_ID'
