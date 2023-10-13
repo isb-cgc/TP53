@@ -14,6 +14,15 @@ $(document).ready(function () {
             data: {
                 criteria: JSON.stringify($('#criteria_div').data('criteria'))
             },
+            error: function (result) {
+                let msg = 'There has been an error while running the search. Please try again.';
+                if (result.responseJSON && result.responseJSON.error_message) {
+                    msg = result.responseJSON.error_message;
+                }
+                $('.spinner').hide();
+                $('.dataTables_info').parents('.row').append(
+                    '<div class="col-sm-12 text-center fw-bold"><i class="fas fa-exclamation-triangle me-2"></i>'+msg+'</div>');
+            },
             dataType: "json",
             dataSrc: "data"
         },
