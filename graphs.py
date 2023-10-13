@@ -116,6 +116,7 @@ def build_graph_configs(action, table=None):
         }
     return graph_configs
 
+
 def build_graph_sqls(graph_configs, criteria_map, table):
     sql_maps = {}
     # build sql_maps
@@ -127,7 +128,6 @@ def build_graph_sqls(graph_configs, criteria_map, table):
                 'include': [],
                 'exclude': []
             }
-
         if graph_configs[graph_id].get('group_by') and graph_configs[graph_id].get('include_vals'):
             include_cri = {'column_name': graph_configs[graph_id]['group_by']}
             include_vals = graph_configs[graph_id].get('include_vals')
@@ -165,12 +165,13 @@ def build_graph_sqls(graph_configs, criteria_map, table):
         elif query_type == 'codon_counts':
             stm = bq_builder.build_codon_dist_query(column=graph_configs[graph_id]['codon_col'], table=table)
         elif query_type == 'mutation_rate':
-            label_by=graph_configs[graph_id].get('label_by', 'effect')
+            label_by = graph_configs[graph_id].get('label_by', 'effect')
             stm = bq_builder.build_mutation_rate_query(criteria_map=cri, table=table, label_by=label_by)
         else:
             stm = bq_builder.build_mutation_query(criteria_map=cri, table=table, group_by=graph_configs[graph_id]['group_by'])
         sql_maps[graph_id] = stm
     return sql_maps
+
 
 def build_graph_data(bq_client, sql_maps):
     query_jobs = {}
@@ -224,6 +225,5 @@ def build_graph_data(bq_client, sql_maps):
         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
-
     graph_result = {'graph_data': graph_data, 'msg': error_msg}
     return graph_result
