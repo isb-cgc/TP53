@@ -24,6 +24,7 @@ def set_project_dataset(proj_id='isb-cgc-tp53-dev', d_set='P53_data'):
     global bq_proj_dataset
     bq_proj_dataset = "{projectId}.{dataset}".format(projectId=proj_id, dataset=d_set)
 
+
 def build_group_sum_graph_query(criteria, view, group_by):
     query_temp = """
         SELECT {group_by} AS LABEL, SUM(Sample_analyzed) AS Sample_analyzed_SUM, SUM(Sample_mutated) AS Sample_mutated_SUM
@@ -35,6 +36,7 @@ def build_group_sum_graph_query(criteria, view, group_by):
     where_clause = build_where_clause(criteria)
     query = query_temp.format(bq_proj_dataset=bq_proj_dataset, view=view, group_by=group_by, where_clause=where_clause)
     return query
+
 
 def build_mutation_rate_query(criteria_map, table, label_by='Effect'):
     label_alias = 'AS LABEL'
@@ -174,6 +176,7 @@ def build_query_w_exclusion(criteria_map, table, column_filters=None, do_counts=
 
     return filtered_select_sql
 
+
 def build_codon_dist_query(column, table):
     query_temp = """
         (
@@ -201,7 +204,6 @@ def build_codon_dist_query(column, table):
     """
     query = query_temp.format(bq_proj_dataset=bq_proj_dataset, column=column, table=table)
     return query
-
 
 
 def build_mutation_dist_sum_query(criteria_map, table, group_by, sum_col):
@@ -262,7 +264,7 @@ def build_mutation_view_join_query(mut_id, join_table, column_filters, join_colu
 
 def validate_vals(vals):
     for val in vals:
-        if re.search(r'[\'\"()]|SELECT|FROM', val, re.IGNORECASE):
+        if type(val) == str and re.search(r'\"|(\'|\")\s?\)|SELECT|FROM|--', val, re.IGNORECASE):
             raise BadRequest('Invalid user input found')
 
 
@@ -296,9 +298,11 @@ def build_where_clause(criteria, include=True):
             else:
                 where_clause += '\n{log_op} {column_name} {op} ({vals_str})'.format(column_name=column_name, op=op,
                                                                                     log_op=log_op, vals_str=vals_str)
+
     for group in or_groups:
         where_clause += '\n{log_op} ('.format(log_op=log_op) + (' OR '.join(or_groups[group])) + ')'
     return where_clause
+
 
 def build_simple_query(criteria, table, column_filters, do_counts=False, distinct_col=None, ord_column=None,
                        desc_ord=False, start=0, length=None):
@@ -341,6 +345,7 @@ def build_simple_query(criteria, table, column_filters, do_counts=False, distinc
                    )
 
     return query_str
+
 
 def build_mutation_prevalence():
     query_temp = """
