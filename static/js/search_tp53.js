@@ -162,8 +162,8 @@ var displayGeneVariations = function (type, descrption) {
     form.remove();
 };
 
-var trigger_file_download = function(filename, data){
-    var d_link = document.createElement('a');
+let trigger_file_download = function(filename, data){
+    let d_link = document.createElement('a');
     d_link.setAttribute('href', data);
     d_link.setAttribute('download', filename);
     document.body.appendChild(d_link); // Required for FF
