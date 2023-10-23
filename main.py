@@ -154,7 +154,7 @@ def results_gene_mut(search_by=None):
 
 @app.route("/get_distribution", methods=['GET', 'POST'])
 def get_distribution():
-    error_msg = None
+    # error_msg = None
     criteria = filters.get_param_val('criteria')
     graph_result = {}
     if criteria:
