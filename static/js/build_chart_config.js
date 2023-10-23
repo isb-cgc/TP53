@@ -34,13 +34,13 @@ const pecentile_scale = {
     }
 };
 
-const get_exon_intron_labels = function(){
+const get_exon_intron_labels = function () {
     var labels = [];
-    for(var i = 1; i < 12; i++){
-        labels.push(i+'-exon');
+    for (var i = 1; i < 12; i++) {
+        labels.push(i + '-exon');
         if (i === 11)
             break;
-        labels.push(i+'-intron');
+        labels.push(i + '-intron');
     }
     return labels;
 };
@@ -52,9 +52,9 @@ var build_bar_config = function (chart_id, chart_title, data, is_horizontal, x_s
     var chart_data = {
         labels: data['labels'],
         datasets: [{
-            data: is_dist_chart ? (data['data'].map(function(x){
-                    return x * 100/total_cnt;
-                })): data['data']
+            data: is_dist_chart ? (data['data'].map(function (x) {
+                return x * 100 / total_cnt;
+            })) : data['data']
         }]
     };
     var scale_option = {};
@@ -62,9 +62,8 @@ var build_bar_config = function (chart_id, chart_title, data, is_horizontal, x_s
 
     if (is_horizontal && y_scale) {
         scale_option.x = y_scale;
-    }
-    else {
-        if (y_scale != null){
+    } else {
+        if (y_scale != null) {
             scale_option.y = y_scale;
         }
         if (x_scale != null) {
@@ -72,19 +71,18 @@ var build_bar_config = function (chart_id, chart_title, data, is_horizontal, x_s
         }
     }
 
-    var aspectRatio = function(){
-        if (is_horizontal){
+    var aspectRatio = function () {
+        if (is_horizontal) {
             var no_of_bars = data['labels'].length;
             if (no_of_bars > 20)
-                return (35/no_of_bars);
+                return (35 / no_of_bars);
             else if (no_of_bars > 5)
                 return 2;
             else if (no_of_bars > 0)
-                return 10/no_of_bars;
+                return 10 / no_of_bars;
             else //0
                 return 4;
-        }
-        else
+        } else
             return 2;
     };
     var config = {
@@ -106,13 +104,12 @@ var build_bar_config = function (chart_id, chart_title, data, is_horizontal, x_s
                 tooltip: {
                     callbacks: {
                         label: function (tooltipItem) {
-                            if (is_dist_chart){
+                            if (is_dist_chart) {
                                 var percent = tooltipItem.raw;
                                 var dataIndex = tooltipItem.dataIndex;
                                 var count = data['data'][dataIndex];
                                 return (percent).toFixed(2) + '% (' + formatNumbersByCommas(count) + ')';
-                            }
-                            else{
+                            } else {
                                 return (tooltipItem.raw).toFixed(2) + '%';
                             }
                         }
@@ -121,13 +118,14 @@ var build_bar_config = function (chart_id, chart_title, data, is_horizontal, x_s
             }
         }
     };
-    $('#'+chart_id).parent('div').filter('.small-chart').removeClass('col-5');
+    $('#' + chart_id).parent('div').filter('.small-chart').removeClass('col-5');
     // $('#'+chart_id).parent('div').filter('.small-chart').removeClass('col-5').addClass('col-10');
     new Chart(
         document.getElementById(chart_id),
         config
     );
 };
+
 var build_pie_config = function (chart_id, chart_title, data) {
     var total_cnt = data['total'];
     var chart_data = {
@@ -175,11 +173,11 @@ var build_scatter_plot = function (chart_id, chart_title, data) {
     var total_cnt = data['total'];
     var datasets = [];
     var labels = Object.keys(data.datasets);
-    for (var i=0; i< labels.length; i++) {
+    for (var i = 0; i < labels.length; i++) {
         var d_set = {
             label: labels[i],
-            data: data.datasets[labels[i]].map(function(d){
-                if (d['rate']!= null) {
+            data: data.datasets[labels[i]].map(function (d) {
+                if (d['rate'] != null) {
                     return {
                         x: d['count'] / total_cnt * 100,
                         y: d['rate'],
@@ -213,7 +211,7 @@ var build_scatter_plot = function (chart_id, chart_title, data) {
                             var percent = tooltipItem.label; //x
                             var name = tooltipItem.raw.name; //aa_change
                             var d_set = tooltipItem.raw.label;  //
-                            return name + ': ' + d_set + ' ('+ percent + '%, ' + mut_rate +')'
+                            return name + ': ' + d_set + ' (' + percent + '%, ' + mut_rate + ')'
                         }
                     }
                 },
@@ -231,12 +229,12 @@ var build_scatter_plot = function (chart_id, chart_title, data) {
                     ticks: {
                         // Include a dollar sign in the ticks
                         callback: function (value, index, values) {
-                            return value+'%';
+                            return value + '%';
                         }
                     }
                 },
                 y: {
-                    title:{
+                    title: {
                         text: 'log(Nucleotide Substitute Rate)',
                         display: true,
                     }
@@ -253,7 +251,7 @@ var build_scatter_plot = function (chart_id, chart_title, data) {
     );
 };
 
-var build_3d_graph = function (chart_id, data, width, height){
+var build_3d_graph = function (chart_id, data, width, height) {
     var total_cnt = data['total'];
     var y_data = data['data'];
     var x_data = data['labels'];
@@ -267,7 +265,7 @@ var build_3d_graph = function (chart_id, data, width, height){
         mid: [],
         low: []
     };
-    for(var i=0; i< y_data.length; i++){
+    for (var i = 0; i < y_data.length; i++) {
         var percent = y_data[i] * 100 / total_cnt;
         if (percent >= highThreshold) {
             data_by_threshold.high.push(x_data[i]);
@@ -286,12 +284,12 @@ var build_3d_graph = function (chart_id, data, width, height){
 
     var jsmolQueries = '';
 
-    for(const threshold in data_by_threshold){
+    for (const threshold in data_by_threshold) {
         if (data_by_threshold[threshold].length > 0)
-            jsmolQueries += "Select " + data_by_threshold[threshold].join() + "; colour atoms "+color_by_threshold[threshold]+" ; wireframe 0.25; ";
+            jsmolQueries += "Select " + data_by_threshold[threshold].join() + "; colour atoms " + color_by_threshold[threshold] + " ; wireframe 0.25; ";
 
     }
-    var jsmol_script = "load " + pdb_filepath + "; rotate x 30; translate x 0.43; translate y 1.14; wireframe off; colour atoms [255,255,255]; spacefill off; select (*:E); wireframe on; select(*:F); wireframe on; select(*:B); cartoons on;"+jsmolQueries+" select (*:E); colour atoms [255,255,255]; select (*:F); colour atoms [255,255,255];";
+    var jsmol_script = "load " + pdb_filepath + "; rotate x 30; translate x 0.43; translate y 1.14; wireframe off; colour atoms [255,255,255]; spacefill off; select (*:E); wireframe on; select(*:F); wireframe on; select(*:B); cartoons on;" + jsmolQueries + " select (*:E); colour atoms [255,255,255]; select (*:F); colour atoms [255,255,255];";
 
     var jsmol_Info = {
         width: width,
@@ -310,63 +308,58 @@ var build_3d_graph = function (chart_id, data, width, height){
     Jmol.setDocument(false);
     Jmol.getApplet("tp53JSmol", jsmol_Info);
 
-    $('#'+chart_id).data('jmol', data_by_threshold);
-    $('#'+chart_id).data('jmol-info', jsmol_Info);
-    $('#'+chart_id).html(Jmol.getAppletHtml(tp53JSmol));
+    $('#' + chart_id).data('jmol', data_by_threshold);
+    $('#' + chart_id).data('jmol-info', jsmol_Info);
+    $('#' + chart_id).html(Jmol.getAppletHtml(tp53JSmol));
 };
 
 
-var formatNumbersByCommas = function(num){
+var formatNumbersByCommas = function (num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
-var convert_chartdata = function(chartjs_data){
-    var tsv_data = '';
-    var total_count = chartjs_data.total;
-    var chart_type = chartjs_data.chart_type; //'scatter', 'ratio' or 'count'
-    if (chart_type === 'scatter' && 'datasets' in chartjs_data){
-        var chart_datasets =chartjs_data.datasets;
-        var datasets = Object.keys(chart_datasets);
+let convert_chartdata = function (chartjs_data) {
+    let tsv_data = '';
+    let total_count = chartjs_data.total;
+    let chart_type = chartjs_data.chart_type; //'scatter', 'ratio' or 'count'
+    if (chart_type === 'scatter' && 'datasets' in chartjs_data) {
+        let chart_datasets = chartjs_data.datasets;
+        let datasets = Object.keys(chart_datasets);
         if (datasets.length) {
             tsv_data += "Label\tAAchange\tlog(Mut_rateAA)\tCount (N=" + formatNumbersByCommas(total_count) + ")\t%\n";
-            for (var i = 0; i < datasets.length; i++) {
-                var ds = datasets[i];
-                for (var j = 0; j < chart_datasets[ds].length; j++) {
+            for (let i = 0; i < datasets.length; i++) {
+                let ds = datasets[i];
+                for (let j = 0; j < chart_datasets[ds].length; j++) {
                     tsv_data += ds + '\t';
                     tsv_data += chart_datasets[ds][j].name + '\t';
-                    var rate = (chart_datasets[ds][j].rate ? chart_datasets[ds][j].rate.toFixed(3):'');
+                    let rate = (chart_datasets[ds][j].rate ? chart_datasets[ds][j].rate.toFixed(3) : '');
                     tsv_data += rate + '\t';
                     tsv_data += chart_datasets[ds][j].count + '\t';
                     tsv_data += (chart_datasets[ds][j].count * 100 / total_count).toFixed(3) + '\n';
                 }
-
             }
         }
     }
 
     if (tsv_data === '' && chartjs_data.data.length) {
-        if (chart_type === 'ratio'){
+        if (chart_type === 'ratio') {
             tsv_data += 'Label\t% (N=' + formatNumbersByCommas(total_count) + ')\n';
-        }
-        else{
+        } else {
             tsv_data += 'Label\tCount (N=' + formatNumbersByCommas(total_count) + ')\t%\n';
         }
-        for (var k = 0; k < chartjs_data.data.length; k++) {
-            var label = chartjs_data.labels[k];
-            var val = chartjs_data.data[k];
+        for (let k = 0; k < chartjs_data.data.length; k++) {
+            let label = chartjs_data.labels[k];
+            let val = chartjs_data.data[k];
             tsv_data += label + '\t';
-            if (chart_type === 'ratio'){
-                tsv_data+= val.toFixed(2)+'\n';
-            }
-            else{
-                tsv_data+= val+'\t'+ (val*100/total_count).toFixed(2)+'\n';
+            if (chart_type === 'ratio') {
+                tsv_data += val.toFixed(2) + '\n';
+            } else {
+                tsv_data += val + '\t' + (val * 100 / total_count).toFixed(2) + '\n';
             }
         }
     }
 
-    if(tsv_data.length){
-        tsv_data = 'data:text/tab-separated-values;charset=utf-8,' + tsv_data;
-    }
+    tsv_data = 'data:text/tab-separated-values;charset=utf-8,' + tsv_data;
     return encodeURI(tsv_data);
 };
 
