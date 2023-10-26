@@ -12,6 +12,8 @@ $(document).ready(function () {
         $('#' + menu_id).parent().addClass("active");
     }
 
+
+
     // function set_active_submenu(submenu_id) {
     //     if (!submenu_id)
     //         return;
@@ -82,6 +84,9 @@ var toggle_collapse_jQSel = function (selections, triggerHide) {
 // var open_sidebar = function(){
 //     $('div.collapsible-sidebar').addClass('hover');
 // };
+let assign_var = function (val){
+        return val;
+};
 
 var download_csv = function (filename, table, criteria_map) {
     var input;
