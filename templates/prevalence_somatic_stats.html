@@ -7,7 +7,8 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/prevalence_som_stats.js') }}"></script>
 
 <script type="text/javascript">
-    var graph_data = {{ graph_data | tojson | safe }};
+    let graph_data = assign_var({{ graph_data | tojson | safe }});
+
 </script>
 
 {% endblock %}

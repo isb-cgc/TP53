@@ -3,7 +3,7 @@
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
-    var show_hg19 = "{{ criteria }}".indexOf("&#39;g_description&#39;") > 0|false;
+    let show_hg19 = (assign_var("{{ criteria }}").indexOf("&#39;g_description&#39;") > 0|false);
 </script>
 
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/select.dataTables.min.js') }}"></script>
