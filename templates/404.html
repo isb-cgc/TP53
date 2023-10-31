@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_name %}404{% endblock %}
+{% block content %}
+<main>
+    <div class="container py-5 text-center">
+        <div class="pt-5 error-code-banner">404</div>
+        <div class="mt-3 error-code-msg"><i class="fas fa-exclamation-triangle"></i> PAGE NOT FOUND</div>
+        <div class="error-code-msg fs-5">The page you were looking for does not exist.</div>
+        <div class="mt-5"><a class="btn btn-wide darkblue-btn" role="button" href="/">Go
+            Home</a></div>
+    </div>
+</main>
+{% endblock %}

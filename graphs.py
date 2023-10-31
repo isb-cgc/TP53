@@ -178,10 +178,16 @@ def build_graph_data(bq_client, sql_maps):
     for graph_id in sql_maps:
         job = bq_client.query(sql_maps[graph_id])
         query_jobs[graph_id] = job
+    # print("sql_maps['tumor_dist']")
+    # print(sql_maps['tumor_dist'])
     graph_data = {}
     error_msg = None
     try:
         for graph_id in query_jobs:
+            # print('graph_id')
+            # print(graph_id)
+            # print('query_jobs[graph_id]')
+            # print(query_jobs[graph_id])
             result = query_jobs[graph_id].result(timeout=30)
             data = []
             total = 0
@@ -225,5 +231,7 @@ def build_graph_data(bq_client, sql_maps):
         error_msg = "There was a problem with your search input. Please revise your search criteria and search again."
     except (concurrent.futures.TimeoutError, requests.exceptions.ReadTimeout):
         error_msg = "Sorry, query job has timed out."
+    print('=====error msg')
+    print(error_msg)
     graph_result = {'graph_data': graph_data, 'msg': error_msg}
     return graph_result

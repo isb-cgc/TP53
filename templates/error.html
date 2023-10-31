@@ -7,12 +7,15 @@
             <h1 class="fw-bold p-2 my-0">Error</h1>
         </div>
     </div>
-    <div class="container my-5">
+    <div class="container my-5 text-dark">
         <h2>
             <div><i class="fas fa-exclamation-triangle"></i> Something went wrong...</div>
         </h2>
-        <div class="my-2">
+        <div class="mt-2 fs-6">
             {{ error_message|safe }}
+        </div>
+        <div class="font-monospace">
+            {{ error_message2|safe }}
         </div>
     </div>
 </main>
