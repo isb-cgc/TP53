@@ -16,6 +16,7 @@
 
 from flask import request
 
+
 def get_param_val(input_name):
     if request.method == 'POST':
         method_request = request.form
