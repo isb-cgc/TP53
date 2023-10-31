@@ -743,3 +743,15 @@ table .form-control{
 #announcement-banner{
     background-color: #D7D8F1;
 }
+
+.error-code-banner{
+    font-size: 7em;
+    font-weight: bold;
+    color: #777777;
+}
+
+.error-code-msg{
+    font-size: 2em;
+    font-weight: bold;
+    color: #555555;
+}
