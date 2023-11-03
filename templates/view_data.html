@@ -3,10 +3,9 @@
 {% block head %}
 {{ super() }}
 <script type="text/javascript">
-    // active_submenu = 'get_tp53data';
-    dataSet = {{data|tojson|safe}};
-    var bq_view_name = "{{ bq_view_name }}";
-    var db_version = "{{ ver }}";
+    let dataSet = assign_var({{data|tojson|safe}});
+    let bq_view_name = assign_var("{{ bq_view_name }}");
+    let db_version = assign_var("{{ ver }}");
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/select.dataTables.min.js') }}"></script>
