@@ -216,6 +216,7 @@ def get_distribution():
 
 @app.route("/mutation_query", methods=['GET', 'POST'])
 def mutation_query():
+    error_msg = None
     try:
         draw = filters.get_param_val('draw')
         order_col = (
