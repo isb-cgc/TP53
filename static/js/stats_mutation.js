@@ -197,15 +197,17 @@ var draw_charts = function (graph_config, target_id, is_dimension_static, includ
                 build_pie_config(canvas_id, graph_title, graph_data);
             }
         }
-
         $('#'+graph_id+'_anchor_text').html(graph_title); //update anchor titles
-
         if (include_3d_graph && Object.keys(graph_config).includes('graph3D_id')) {
             var jmol_legend = $('#jmol-legend');
             var jmol_info_text = $('#jmol-info-text');
             var width = jmol_legend.width();
             var height = $('#codon_no_chart').height() - jmol_legend.height() - jmol_info_text.height();
             build_3d_graph(graph_config['graph3D_id'], graph_data, width, height);
+        }
+        if (!graph_data.data.length){
+            //disable buttons
+            $('div[data-graph-id=\''+graph_id+'\'] .btn').prop("disabled",true);
         }
     }
 };

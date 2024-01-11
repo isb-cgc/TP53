@@ -3,19 +3,17 @@
 {% block head %}
 {{ super() }}
 
-
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/select.dataTables.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/dataTables.buttons.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/buttons.html5.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/results_somatic_mutation.js') }}"></script>
-
 
 {% endblock %}
 
 {% block subcontent %}
 
 <script type="text/javascript">
-    var show_hg19 = "{{ criteria_map }}".indexOf("&#39;g_description&#39;") > 0|false;
+    let show_hg19 = (assign_var("{{ criteria_map }}").indexOf("&#39;g_description&#39;") > 0|false);
 </script>
 
 <div class="page-banner">

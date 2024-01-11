@@ -11,7 +11,7 @@
 {% block subcontent %}
 
 <script type="text/javascript">
-    var graph_result = {{ graph_result | tojson | safe }};
+    let graph_result = assign_var({{ graph_result | tojson | safe }});
 </script>
 <div class="page-banner">
     <div class="container">
