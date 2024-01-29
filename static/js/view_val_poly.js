@@ -44,7 +44,7 @@ $(document).ready(function () {
                     data: 'gnomAd',
                     render: function(data) {
                         if (data)
-                            return ' <a href="http://gnomad.broadinstitute.org/variant/' + data + '" target = "_blank" rel="noopener noreferrer" >' + data + '</a>';
+                            return ' <a href="http://gnomad.broadinstitute.org/variant/' + data + '?dataset=gnomad_r2_1" target = "_blank" rel="noopener noreferrer" >' + data + '</a>';
                         else return '';
                     }
                 },
