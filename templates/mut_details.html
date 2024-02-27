@@ -20,7 +20,7 @@
         <h2>Variant Selected: {{ mut_desc.c_description }}; {{ mut_desc.ProtDescription }}</h2>
         <hr>
         {% if mut_desc and mut_desc.Polymorphism == 'validated' %}
-        
+
         <div class="m-3">
             This gene is a <strong>validated polymorphism</strong>.
             {% if mut_desc.SNPlink or mut_desc.CLINVARlink or (mut_desc.PubMedlink and mut_desc.PubMedlink != 'NA') %}
@@ -28,20 +28,20 @@
                 Check detailed population frequency or disease association in :
             </span>
             {% endif %}
-            
+
             {% if mut_desc.SNPlink %}
             <a class="btn-tiny btn btn-outline-dark"
                href="https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs={{mut_desc.SNPlink}}" target="_blank"
                rel="noopener noreferrer">SNP
                 Database</a>
             {% endif %}
-            
+
             {% if mut_desc.CLINVARlink %}
             <a class="btn-tiny btn btn-outline-dark"
                href="http://p53.bii.a-star.edu.sg/aboutp53/snps/snpdetail.php?geneid=X54156&snppos={{mut_desc.CLINVARlink}}"
                target="_blank" rel="noopener noreferrer"><em>p53</em> Knowledgebase</a>
             {% endif %}
-            
+
             {% if mut_desc.PubMedlink and mut_desc.PubMedlink != 'NA' %}
             <a class="btn-tiny btn btn-outline-dark"
                href="https://www.ncbi.nlm.nih.gov/pubmed/{{mut_desc.PubMedlink}}" target="_blank"
