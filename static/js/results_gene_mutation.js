@@ -125,7 +125,7 @@ $(document).ready(function () {
                     if(data == null || data === '')
                         return '';
                     else
-                        return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
+                        return '<a href="https://gnomad.broadinstitute.org/variant/' + data + '?dataset=gnomad_r2_1" target="_blank" rel="noopener noreferrer" title="Go to gnomAd ' + data + '">' + data + '</a>';
                 }
             },
             {
