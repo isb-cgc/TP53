@@ -18,6 +18,7 @@ import os
 from flask import json
 import utils
 
+
 M_C_DESC_FILE = 'M_C_DESC.TXT.LIST'
 M_P_DESC_FILE = 'M_P_DESC.TXT.LIST'
 M_G_DESC_HG19_FILE = 'M_G_DESC_HG19.TXT.LIST'
