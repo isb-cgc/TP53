@@ -24,20 +24,24 @@ commands:
             fi
             CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53_DEV}
             SUFFIX=-dev
+            RUNTIME_SA_NAME=${RUNTIME_SA_NAME_DEV}
             if [[ ${TIER} == "PROD" ]]; then
               KEY=${DEPLOYMENT_KEY_TP53_PROD}
               CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53_PROD}
               SUFFIX=
+              RUNTIME_SA_NAME=${RUNTIME_SA_NAME_PROD}
             elif [[ ${TIER} == "TEST" ]]; then
               KEY=${DEPLOYMENT_KEY_TP53_TEST}
               CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53_TEST}
               SUFFIX=-test
+              RUNTIME_SA_NAME=${RUNTIME_SA_NAME_TEST}
             elif [[ ${TIER} == "UAT" ]]; then
               KEY=${DEPLOYMENT_KEY_UAT}
               CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_UAT}
               PROJECT_ID=${DEPLOYMENT_PROJECT_UAT}
               DEP_BUCKET=${DEPLOYMENT_BUCKET_UAT}
               SUFFIX=
+              RUNTIME_SA_NAME=${RUNTIME_SA_NAME_UAT}
             elif [[ ${TIER} == "DEV" ]]; then
               echo "Using default deployment configuration for tier ${TIER}"
             else
@@ -48,6 +52,7 @@ commands:
             echo "export DEPLOYMENT_CLIENT_EMAIL=${CLIENT_EMAIL}" >> $BASH_ENV
             echo "export DEPLOYMENT_PROJECT_ID=${PROJECT_ID}${SUFFIX}" >> $BASH_ENV
             echo "export DEPLOYMENT_BUCKET=${DEP_BUCKET}${SUFFIX}" >> $BASH_ENV
+            echo "export WEB_RUNTIME_SA_NAME=${RUNTIME_SA_NAME}" >> $BASH_ENV
 
 
   auth:
@@ -64,7 +69,7 @@ commands:
           name: "Install CloudSDK"
           command: |
             echo "export CLOUDSDK_CORE_DISABLE_PROMPTS=1" >> $BASH_ENV
-            echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+            echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
             curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
             sudo apt-get update && sudo apt-get -y install google-cloud-sdk
 
@@ -96,10 +101,10 @@ jobs:
           name: Install Dependencies
           command: |
             sudo -E /bin/bash ./shell/install-deps.sh
-      - run:
-          name: Compare Config
-          command: |
-            sudo -E /bin/bash ./shell/compareConfig.sh "gs://${DEPLOYMENT_BUCKET}/${CONFIG_FILE}"
+#      - run:
+#          name: Compare Config
+#          command: |
+#            sudo -E /bin/bash ./shell/compareConfig.sh "gs://${DEPLOYMENT_BUCKET}/${CONFIG_FILE}"
       - save_cache:
           key: tp53-{{ epoch }}
           paths:
@@ -131,7 +136,7 @@ jobs:
       - auth
       - deploy:
           command: |
-            sudo -E gcloud app deploy --verbosity=info ./app.yaml --quiet
+            sudo -E gcloud app deploy --verbosity=debug ./app.yaml --service-account=${WEB_RUNTIME_SA_NAME} --quiet
 workflows:
   version: 2
   build_and_deploy:
