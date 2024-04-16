@@ -1,5 +1,5 @@
 ###
-# Copyright 2023, ISB
+# Copyright 2024, ISB
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -56,8 +56,8 @@ Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_p
     ],
 })
 
-GOOGLE_APPLICATION_CREDENTIALS = os.path.join(app.root_path, 'privatekey.json')
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
+if os.environ.get('IS_GAE_DEPLOYMENT', 'False') != 'True':
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join(app.root_path, 'privatekey.json')
 
 bq_builder.set_project_dataset(proj_id=settings.BQ_GCP, d_set=settings.BQ_DATASET)
 
@@ -1028,22 +1028,22 @@ def show(page):
 
 
 # return sitemap file (urllist.txt or sitemap.xml)
-@app.route('/<txt_url>.txt')
-@app.route('/<xml_url>.xml')
-# @app.route('/<google_site_ver>.html')
-def get_sitemap_file(txt_url=None, xml_url=None, google_site_ver=None):
-    url_list_filename = None
-    if txt_url and txt_url.lower() == 'urllist':
-        url_list_filename = os.environ.get('SITEMAP_LIST_FILE', 'urllist.txt')
-    elif xml_url and xml_url.lower() == 'sitemap':
-        url_list_filename = os.environ.get('SITEMAP_XML_FILE', 'sitemap.xml')
-    # elif google_site_ver and google_site_ver.index('google') == 0:
-    #     return send_from_directory(app.root_path, 'templates/{filename}.html'.format(filename=google_site_ver))
-
-    if url_list_filename:
-        return send_from_directory(app.root_path, url_list_filename)
-    else:
-        return abort(404)
+# @app.route('/<txt_url>.txt')
+# @app.route('/<xml_url>.xml')
+# # @app.route('/<google_site_ver>.html')
+# def get_sitemap_file(txt_url=None, xml_url=None, google_site_ver=None):
+#     url_list_filename = None
+#     if txt_url and txt_url.lower() == 'urllist':
+#         url_list_filename = os.environ.get('SITEMAP_LIST_FILE', 'urllist.txt')
+#     elif xml_url and xml_url.lower() == 'sitemap':
+#         url_list_filename = os.environ.get('SITEMAP_XML_FILE', 'sitemap.xml')
+#     # elif google_site_ver and google_site_ver.index('google') == 0:
+#     #     return send_from_directory(app.root_path, 'templates/{filename}.html'.format(filename=google_site_ver))
+#
+#     if url_list_filename:
+#         return send_from_directory(app.root_path, url_list_filename)
+#     else:
+#         return abort(404)
 
 
 # view pdf files
@@ -1053,9 +1053,9 @@ def pdf_viewer(filename):
                                filename + '.pdf')
 
 
-@app.route("/cse_search")
-def cse_search():
-    return render_template("cse_search.html", google_se_id=settings.GOOGLE_SE_ID)
+# @app.route("/cse_search")
+# def cse_search():
+#     return render_template("cse_search.html", google_se_id=settings.GOOGLE_SE_ID)
 
 
 @app.route('/favicon.ico')
