@@ -24,24 +24,20 @@ commands:
             fi
             CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53_DEV}
             SUFFIX=-dev
-            RUNTIME_SA_NAME=${RUNTIME_SA_NAME_DEV}
             if [[ ${TIER} == "PROD" ]]; then
               KEY=${DEPLOYMENT_KEY_TP53_PROD}
               CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53_PROD}
               SUFFIX=
-              RUNTIME_SA_NAME=${RUNTIME_SA_NAME_PROD}
             elif [[ ${TIER} == "TEST" ]]; then
               KEY=${DEPLOYMENT_KEY_TP53_TEST}
               CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_TP53_TEST}
               SUFFIX=-test
-              RUNTIME_SA_NAME=${RUNTIME_SA_NAME_TEST}
             elif [[ ${TIER} == "UAT" ]]; then
               KEY=${DEPLOYMENT_KEY_UAT}
               CLIENT_EMAIL=${DEPLOYMENT_CLIENT_EMAIL_UAT}
               PROJECT_ID=${DEPLOYMENT_PROJECT_UAT}
               DEP_BUCKET=${DEPLOYMENT_BUCKET_UAT}
               SUFFIX=
-              RUNTIME_SA_NAME=${RUNTIME_SA_NAME_UAT}
             elif [[ ${TIER} == "DEV" ]]; then
               echo "Using default deployment configuration for tier ${TIER}"
             else
@@ -52,7 +48,6 @@ commands:
             echo "export DEPLOYMENT_CLIENT_EMAIL=${CLIENT_EMAIL}" >> $BASH_ENV
             echo "export DEPLOYMENT_PROJECT_ID=${PROJECT_ID}${SUFFIX}" >> $BASH_ENV
             echo "export DEPLOYMENT_BUCKET=${DEP_BUCKET}${SUFFIX}" >> $BASH_ENV
-            echo "export WEB_RUNTIME_SA_NAME=${RUNTIME_SA_NAME}" >> $BASH_ENV
 
 
   auth:
@@ -62,6 +57,7 @@ commands:
           command: |
             sudo -E /bin/bash ./shell/gcloud_authenticate.sh
             sudo -E /bin/bash ./shell/gcloud-pull-tier-files.sh
+            xargs -a deployment_config.txt -I{} echo "export {}" >> $BASH_ENV
 
   install_cloud_sdk:
     steps:
