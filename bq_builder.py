@@ -1,5 +1,5 @@
 ###
-# Copyright 2021, ISB
+# Copyright 2024, ISB
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 import re
 from google.api_core.exceptions import BadRequest
 
-global bq_proj_dataset
 bq_proj_dataset = "{projectId}.{dataset}".format(projectId='isb-cgc-tp53-dev', dataset='P53_data')
 
 
