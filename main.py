@@ -899,6 +899,7 @@ def view_full_data(dataset):
 
 @app.route("/view_data", methods=['GET'])
 def view_data():
+    print(settings.DATA_VERSION)
     bq_view_name = request.args.get('bq_view_name', None)
     if bq_view_name and bq_view_name in TITLE_BQVIEW_MAP:
         title = TITLE_BQVIEW_MAP[bq_view_name]
