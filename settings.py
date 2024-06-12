@@ -1,5 +1,5 @@
 ###
-# Copyright 2023, ISB
+# Copyright 2024, ISB
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -100,183 +100,80 @@ GM_REF_FILE = 'GM_REF.json'
 
 # app = Flask(__name__)
 
-global m_c_desc_list
 m_c_desc_list = None
-
-global m_p_desc_list
 m_p_desc_list = None
-
-global m_g_desc_hg19_list
 m_g_desc_hg19_list = None
-
-global m_g_desc_hg38_list
 m_g_desc_hg38_list = None
-
-global m_type_list
 m_type_list = None
-
-global m_desc_list
 m_desc_list = None
-
-global m_motif_list
 m_motif_list = None
-
-global m_exon_intron_list
 m_exon_intron_list = None
-
-global m_effect_list
 m_effect_list = None
-
-global m_ta_class_list
 m_ta_class_list = None
-
-global m_sift_list
 m_sift_list = None
-
-global cl_c_desc_list
 cl_c_desc_list = None
-
-global cl_p_desc_list
 cl_p_desc_list = None
-
-global cl_g_desc_hg19_list
 cl_g_desc_hg19_list = None
-
-global cl_g_desc_hg38_list
 cl_g_desc_hg38_list = None
-
-global topo_list
 topo_list = None
-
-global morph_list
 morph_list = None
-
-global cl_tumor_org_group_list
 cl_tumor_org_group_list = None
-
-global cl_tp53stat_list
 cl_tp53stat_list = None
-
-global cl_desc_list
 cl_desc_list = None
-
-global cl_effect_list
 cl_effect_list = None
-
-global cl_motif_list
 cl_motif_list = None
-
-global cl_start_material_list
 cl_start_material_list = None
-
-global cl_ta_class_list
 cl_ta_class_list = None
-
-global cl_type_list
 cl_type_list = None
-
-global cl_sift_list
 cl_sift_list = None
-
-global cl_exon_intron_list
 cl_exon_intron_list = None
-
-global cl_inf_agnt_list
 cl_inf_agnt_list = None
-
-global cl_germ_mut_list
 cl_germ_mut_list = None
-
-global cl_tobacco_list
 cl_tobacco_list = None
-
-global country_list
 country_list = None
-
-global cl_exposure_list
 cl_exposure_list = None
-
-global sm_c_desc_list
 sm_c_desc_list = None
-global sm_p_desc_list
 sm_p_desc_list = None
-global sm_g_desc_hg19_list
 sm_g_desc_hg19_list = None
-global sm_g_desc_hg38_list
 sm_g_desc_hg38_list = None
-global sm_morph_list
 sm_morph_list = None
-global sm_start_material_list
 sm_start_material_list = None
-global sm_type_list
 sm_type_list = None
-global sm_desc_list
 sm_desc_list = None
-global sm_motif_list
 sm_motif_list = None
-global sm_exon_intron_list
 sm_exon_intron_list = None
-global sm_effect_list
 sm_effect_list = None
-global sm_ta_class_list
 sm_ta_class_list = None
-global sm_sift_list
 sm_sift_list = None
-global sm_tumor_org_group_list
 sm_tumor_org_group_list = None
-global sm_sample_source_list
 sm_sample_source_list = None
-global sm_germ_mut_list
 sm_germ_mut_list = None
-global sm_inf_agnt_list
 sm_inf_agnt_list = None
-global sm_exposure_list
 sm_exposure_list = None
-global sm_tobacco_list
 sm_tobacco_list = None
-global sm_ref_data
 sm_ref_data = None
-
-global gm_c_desc_list
 gm_c_desc_list = None
-global gm_p_desc_list
 gm_p_desc_list = None
-global gm_g_desc_hg19_list
 gm_g_desc_hg19_list = None
-global gm_g_desc_hg38_list
 gm_g_desc_hg38_list = None
-global gm_type_list
 gm_type_list = None
-global gm_desc_list
 gm_desc_list = None
-global gm_motif_list
 gm_motif_list = None
-global gm_exon_intron_list
 gm_exon_intron_list = None
-global gm_effect_list
 gm_effect_list = None
-global gm_ta_class_list
 gm_ta_class_list = None
-global gm_sift_list
 gm_sift_list = None
-global gm_family_hist_list
 gm_family_hist_list = None
-global gm_inh_mode_list
 gm_inh_mode_list = None
-global gm_family_case_list
 gm_family_case_list = None
-global topo_morph_assc
 topo_morph_assc = None
-global gm_ref_data
 gm_ref_data = None
-
-global event_list
 event_list = None
 
 BQ_GCP=os.environ.get('BQ_GCP', 'isb-cgc-tp53-dev')
 BQ_DATASET = os.environ.get('BQ_DATASET', 'P53_data')
 # GOOGLE_SE_ID = os.environ.get('GOOGLE_SE_ID', 'dab1bee9d7d88fe88')
-DATA_VERSION = os.environ.get('DATA_VERSION', 'r20')
+DATA_VERSION = os.environ.get('DATA_VERSION', 'r21')
 IS_TEST = os.environ.get('IS_TEST', 'True').lower() == 'true'
 TP53_STATIC_URL = os.environ.get('TP53_STATIC_URL', 'https://storage.googleapis.com/tp53-static-files-dev')
 
