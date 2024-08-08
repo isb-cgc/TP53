@@ -15,8 +15,9 @@
 ###
 import logging
 import os
-from flask import Flask, render_template, request, send_from_directory, json, jsonify, make_response, abort
-from google.cloud import bigquery
+from flask import Flask, render_template, url_for, redirect\
+    # , request, send_from_directory, json, jsonify, make_response, abort
+# from google.cloud import bigquery
 from google.api_core.exceptions import BadRequest
 from flask_talisman import Talisman
 import settings
@@ -59,28 +60,28 @@ Talisman(app, strict_transport_security_max_age=hsts_max_age, content_security_p
 if os.environ.get('IS_GAE_DEPLOYMENT', 'False') != 'True':
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join(app.root_path, 'privatekey.json')
 
-bq_builder.set_project_dataset(proj_id=settings.BQ_GCP, d_set=settings.BQ_DATASET)
+# bq_builder.set_project_dataset(proj_id=settings.BQ_GCP, d_set=settings.BQ_DATASET)
+#
+# bigquery_client = bigquery.Client()
 
-bigquery_client = bigquery.Client()
-
-TITLE_BQVIEW_MAP = {
-    "MutationView": "Functional / Structural Data in <em>TP53</em> with Annotations",
-    "FunctionDownload": "Functional Assessment of <em>p53</em> Mutant Proteins in Various Experimental Assays",
-    "FunctionIshiokaDownload": "Systematic Functional Assessment of <em>p53</em> Mutant Proteins in Yeast Assays",
-    "TumorVariantDownload": "Tumor Variants in Human Tumor Samples (Data File)",
-    "TumorVariantRefDownload": "Tumor Variants in Human Tumor Samples (References File)",
-    "PrevalenceDownload": "Prevalence of Tumor Variants by Tumor Site",
-    "PrevalenceDownloadR249S": "Prevalence of the R249S <em>TP53</em> Variants in Liver Cancer",
-    "PrognosisDownload": "Prognostic Value of Tumor Variants",
-    "GermlineDownload": "<em>TP53</em> Germline Variants and Family History (Data File)",
-    "GermlineRefDownload": "<em>TP53</em> Germline Variants and Family History (References File)",
-    "GermlinePrevalenceView": "<em>TP53</em> Germline Variants Prevalence in Selected Cohorts",
-    "GermlineFrequencyDownload": "Frequency of Individual Variants in Case-Controls Series",
-    "CellLineDownload": "<em>TP53</em> Variant Status of Human Cell-lines",
-    "MouseModelView": "Mouse Models with Engineered <em>TP53</em>",
-    "InducedMutationView": "Variants Induced in Experimental Models of Mutagenesis"
-
-}
+# TITLE_BQVIEW_MAP = {
+#     "MutationView": "Functional / Structural Data in <em>TP53</em> with Annotations",
+#     "FunctionDownload": "Functional Assessment of <em>p53</em> Mutant Proteins in Various Experimental Assays",
+#     "FunctionIshiokaDownload": "Systematic Functional Assessment of <em>p53</em> Mutant Proteins in Yeast Assays",
+#     "TumorVariantDownload": "Tumor Variants in Human Tumor Samples (Data File)",
+#     "TumorVariantRefDownload": "Tumor Variants in Human Tumor Samples (References File)",
+#     "PrevalenceDownload": "Prevalence of Tumor Variants by Tumor Site",
+#     "PrevalenceDownloadR249S": "Prevalence of the R249S <em>TP53</em> Variants in Liver Cancer",
+#     "PrognosisDownload": "Prognostic Value of Tumor Variants",
+#     "GermlineDownload": "<em>TP53</em> Germline Variants and Family History (Data File)",
+#     "GermlineRefDownload": "<em>TP53</em> Germline Variants and Family History (References File)",
+#     "GermlinePrevalenceView": "<em>TP53</em> Germline Variants Prevalence in Selected Cohorts",
+#     "GermlineFrequencyDownload": "Frequency of Individual Variants in Case-Controls Series",
+#     "CellLineDownload": "<em>TP53</em> Variant Status of Human Cell-lines",
+#     "MouseModelView": "Mouse Models with Engineered <em>TP53</em>",
+#     "InducedMutationView": "Variants Induced in Experimental Models of Mutagenesis"
+#
+# }
 
 
 #########################################
@@ -1026,8 +1027,10 @@ TITLE_BQVIEW_MAP = {
 # #     except TemplateNotFound:
 # #         abort(404)
 #
-@app.route('/', methods=['GET'])
-def redirect():
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def redirect_to_nci(path):
     return render_template('redirect_to_nci.html'), {"Refresh": "10; url=https://tp53.cancer.gov"}
 
 # return sitemap file (urllist.txt or sitemap.xml)
@@ -1069,13 +1072,15 @@ def redirect():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return redirect(url_for('redirect_to_nci'))
+    # return render_template('redirect_to_nci.html')
+    # return render_template('404.html'), 404
 
 
-@app.route('/_ah/warmup')
-def warmup():
-    # Handle your warmup logic here, e.g. set up a database connection pool
-    return '', 200, {}
+# @app.route('/_ah/warmup')
+# def warmup():
+#     # Handle your warmup logic here, e.g. set up a database connection pool
+#     return '', 200, {}
 
 
 settings.setup_app(app)
